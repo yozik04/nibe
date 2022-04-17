@@ -1,0 +1,9 @@
+construct >= 2.10.0, < 3.0.0
+
+tox>=3.0.0
+coverage>=6.0.0
+black>=22.0.0
+isort>=5.0.0
+
+pandas>=1.0.5
+python-slugify>=4.0.0

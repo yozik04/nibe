@@ -1,0 +1,11 @@
+__pycache__
+.idea
+/.vscode
+/venv
+.DS_Store
+*.ipynb
+.coverage
+coverage.xml
+/dist
+/nibe.egg-info
+/.tox

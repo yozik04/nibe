@@ -1,0 +1,85 @@
+# Nibe library
+Nibe library for communication with Nibe heatpumps.
+
+Initially supports only RS485 communication via NibeGW developed by Pauli Anttila for [Openhab's integration](https://www.openhab.org/addons/bindings/nibeheatpump/).
+
+## Connection methods
+Currently, only NibeGW is supported
+
+### NibeGW
+For this connection method to work you will need to connect an Arduino with special firmware that will act as a proxy between Heatpump RS485 and this library. Some details regarding how this method works can be found [here](https://www.openhab.org/addons/bindings/nibeheatpump/#prerequisites).
+
+NibeGW firmware for Arduino or RPi can be [download here](https://github.com/openhab/openhab-addons/tree/3.2.x/bundles/org.openhab.binding.nibeheatpump/contrib/NibeGW).
+
+- Library will open 9999 UDP listening port to receive packets from NibeGW. 
+- For read commands library will send UDP packets to NibeGW port 9999.
+- For write commands library will send UDP packets to NibeGW port 10000.
+
+#### Supported heatpump models
+ - F1145
+ - F1155
+ - F1245
+ - F1255
+ - F1345
+ - F1355
+ - F370
+ - F470
+ - F730
+ - F750
+ - SMO20
+ - SMO40
+ - VVM225
+ - VVM310
+ - VVM320
+ - VVM325
+ - VVM500
+
+#### Python code
+
+```python3
+import asyncio
+import logging
+
+from nibe.coil import Coil
+from nibe.connection.nibegw import NibeGW
+from nibe.heatpump import HeatPump, Model
+
+logger = logging.getLogger("nibe").getChild(__name__)
+
+def on_coil_update(coil: Coil):
+    logger.debug(f"{coil.name}: {coil.value}")
+
+async def main():
+    heatpump = HeatPump(Model.F1255)
+    heatpump.initialize()
+
+    heatpump.subscribe(HeatPump.COIL_UPDATE_EVENT, on_coil_update)
+
+    connection = NibeGW(heatpump=heatpump, remote_ip="192.168.1.2")
+    await connection.start()
+
+if __name__ == '__main__':
+    logging.basicConfig(level=logging.DEBUG)
+
+    loop = asyncio.get_event_loop()
+    loop.run_until_complete(main())
+    loop.run_forever()
+```
+
+## HOWTOs for developers
+### How to capture and replay traffic from NibeGW
+### Requirements
+APT:
+ - tcpdump
+ - tcpreplay
+
+On recipient device run:
+```bash
+sudo tcpdump -i eth0 udp port 9999 -w nibe-9999.pcap
+
+tcprewrite --infile=nibe-9999.pcap --outfile=nibe-9999rw.pcap --dstipmap=192.168.1.3:192.168.1.2 --enet-dmac=CC:CC:CC:CC:CC:CC --fixcsum
+
+sudo tcpreplay --intf1=eth0 nibe-9999rw.pcap
+```
+
+You will need to replace IP addresses for rewrite and Mac address of new recipient device

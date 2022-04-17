@@ -1,0 +1,3330 @@
+{
+  "40004": {
+    "title": "BT1 Outdoor Temperature",
+    "info": "Current outdoor temperature",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "name": "bt1-outdoor-temperature-40004"
+  },
+  "40012": {
+    "title": "EB100-EP14-BT3 Return temp",
+    "info": "Return temperature",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "name": "eb100-ep14-bt3-return-temp-40012"
+  },
+  "40013": {
+    "title": "BT7 HW Top",
+    "info": "Hot water top temperature, BT7",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "name": "bt7-hw-top-40013"
+  },
+  "40014": {
+    "title": "BT6 HW Load",
+    "info": "Hot water load temperature, BT6",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "name": "bt6-hw-load-40014"
+  },
+  "40033": {
+    "title": "BT50 Room Temp S1",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "name": "bt50-room-temp-s1-40033"
+  },
+  "40045": {
+    "title": "EQ1-BT64 Cool Supply Temp",
+    "info": "Cool supply temperature, BT64",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "name": "eq1-bt64-cool-supply-temp-40045"
+  },
+  "40054": {
+    "title": "EB100-FD1 Temperature limiter",
+    "size": "s16",
+    "factor": 1,
+    "name": "eb100-fd1-temperature-limiter-40054"
+  },
+  "40067": {
+    "title": "BT1 Average",
+    "info": "EB100-BT1 Outdoor temperature average",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "name": "bt1-average-40067"
+  },
+  "40071": {
+    "title": "BT25 Ext. Supply",
+    "info": "External supply temperature, BT25",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "name": "bt25-ext-supply-40071"
+  },
+  "40074": {
+    "title": "EB100-FR1 Anode Status",
+    "size": "s16",
+    "factor": 1,
+    "name": "eb100-fr1-anode-status-40074"
+  },
+  "40121": {
+    "title": "BT63 Add Supply Temp",
+    "unit": "\u00baC",
+    "size": "s16",
+    "factor": 10,
+    "name": "bt63-add-supply-temp-40121"
+  },
+  "40152": {
+    "title": "BT71 Ext. Return Temp",
+    "info": "External return temperature, BT71",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "name": "bt71-ext-return-temp-40152"
+  },
+  "40185": {
+    "title": "BT1 Average, 1h",
+    "info": "EB100-BT1 Outdoor temperature average, 1h",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "name": "bt1-average-1h-40185"
+  },
+  "40195": {
+    "title": "BT50 Room Temp S1 Average",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "name": "bt50-room-temp-s1-average-40195"
+  },
+  "40212": {
+    "title": "BT74 Average",
+    "info": "BT74 heating cooling sensor average",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "name": "bt74-average-40212"
+  },
+  "40216": {
+    "title": "BT25 Ext. supply temp, cooling",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "name": "bt25-ext-supply-temp-cooling-40216"
+  },
+  "40221": {
+    "title": "Calc. Cooling Supply S8",
+    "info": "Calculated supply temperature in cooling mode for the climate system",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "name": "calc-cooling-supply-s8-40221"
+  },
+  "40222": {
+    "title": "Calc. Cooling Supply S7",
+    "info": "Calculated supply temperature in cooling mode for the climate system",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "name": "calc-cooling-supply-s7-40222"
+  },
+  "40223": {
+    "title": "Calc. Cooling Supply S6",
+    "info": "Calculated supply temperature in cooling mode for the climate system",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "name": "calc-cooling-supply-s6-40223"
+  },
+  "40224": {
+    "title": "Calc. Cooling Supply S5",
+    "info": "Calculated supply temperature in cooling mode for the climate system",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "name": "calc-cooling-supply-s5-40224"
+  },
+  "40737": {
+    "title": "EB101-EP14 Tot. Cooling op.time compr",
+    "unit": "h",
+    "size": "u32",
+    "factor": 1,
+    "min": 0.0,
+    "max": 9999999.0,
+    "default": 0.0,
+    "name": "eb101-ep14-tot-cooling-op-time-compr-40737"
+  },
+  "40739": {
+    "title": "EB101-EP14 Tot. Pool1 op.time compr",
+    "unit": "h",
+    "size": "u32",
+    "factor": 1,
+    "min": 0.0,
+    "max": 9999999.0,
+    "default": 0.0,
+    "name": "eb101-ep14-tot-pool1-op-time-compr-40739"
+  },
+  "40741": {
+    "title": "EB101-EP14 Tot. Pool2 op.time compr",
+    "unit": "h",
+    "size": "u32",
+    "factor": 1,
+    "min": 0.0,
+    "max": 9999999.0,
+    "default": 0.0,
+    "name": "eb101-ep14-tot-pool2-op-time-compr-40741"
+  },
+  "40755": {
+    "title": "Tot. ext. HW add op.time",
+    "info": "Total external hw-electric additive operation time",
+    "unit": "h",
+    "size": "s32",
+    "factor": 10,
+    "min": 0.0,
+    "max": 9999999.0,
+    "default": 0.0,
+    "name": "tot-ext-hw-add-op-time-40755"
+  },
+  "40775": {
+    "title": "EB108 Cpr Frequency Desired F2040",
+    "info": "The desired frequency as shown in service info",
+    "unit": "Hz",
+    "size": "u8",
+    "factor": 1,
+    "name": "eb108-cpr-frequency-desired-f2040-40775"
+  },
+  "40776": {
+    "title": "EB107 Cpr Frequency Desired F2040",
+    "info": "The desired frequency as shown in service info",
+    "unit": "Hz",
+    "size": "u8",
+    "factor": 1,
+    "name": "eb107-cpr-frequency-desired-f2040-40776"
+  },
+  "40777": {
+    "title": "EB106 Cpr Frequency Desired F2040",
+    "info": "The desired frequency as shown in service info",
+    "unit": "Hz",
+    "size": "u8",
+    "factor": 1,
+    "name": "eb106-cpr-frequency-desired-f2040-40777"
+  },
+  "40778": {
+    "title": "EB105 Cpr Frequency Desired F2040",
+    "info": "The desired frequency as shown in service info",
+    "unit": "Hz",
+    "size": "u8",
+    "factor": 1,
+    "name": "eb105-cpr-frequency-desired-f2040-40778"
+  },
+  "40779": {
+    "title": "EB104 Cpr Frequency Desired F2040",
+    "info": "The desired frequency as shown in service info",
+    "unit": "Hz",
+    "size": "u8",
+    "factor": 1,
+    "name": "eb104-cpr-frequency-desired-f2040-40779"
+  },
+  "40780": {
+    "title": "EB103 Cpr Frequency Desired F2040",
+    "info": "The desired frequency as shown in service info",
+    "unit": "Hz",
+    "size": "u8",
+    "factor": 1,
+    "name": "eb103-cpr-frequency-desired-f2040-40780"
+  },
+  "40781": {
+    "title": "EB102 Cpr Frequency Desired F2040",
+    "info": "The desired frequency as shown in service info",
+    "unit": "Hz",
+    "size": "u8",
+    "factor": 1,
+    "name": "eb102-cpr-frequency-desired-f2040-40781"
+  },
+  "40782": {
+    "title": "EB101 Cpr Frequency Desired F2040",
+    "info": "The desired frequency as shown in service info",
+    "unit": "Hz",
+    "size": "u8",
+    "factor": 1,
+    "name": "eb101-cpr-frequency-desired-f2040-40782"
+  },
+  "40889": {
+    "title": "BT64 Average",
+    "info": "BT64 Cooling supply average",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "name": "bt64-average-40889"
+  },
+  "40940": {
+    "title": "Degree Minutes (32 bit)",
+    "info": "Degree minutes, 32bit value. Full resolution.",
+    "size": "s32",
+    "factor": 10,
+    "min": -30000.0,
+    "max": 30000.0,
+    "default": 0.0,
+    "name": "degree-minutes-32-bit-40940",
+    "write": true
+  },
+  "41000": {
+    "title": "EB101 F2120 Alarm Number",
+    "size": "u8",
+    "factor": 1,
+    "name": "eb101-f2120-alarm-number-41000"
+  },
+  "41002": {
+    "title": "EB101 F2120 Fan Speed",
+    "info": "F2120 Current Fan Speed",
+    "unit": "rpm",
+    "size": "u16",
+    "factor": 1,
+    "name": "eb101-f2120-fan-speed-41002"
+  },
+  "41003": {
+    "title": "EB101 F2120 Max Fan Speed",
+    "info": "F2120 Current Max Fan Speed",
+    "unit": "rpm",
+    "size": "u16",
+    "factor": 1,
+    "name": "eb101-f2120-max-fan-speed-41003"
+  },
+  "41004": {
+    "title": "EB101 F2120 Min Fan Speed",
+    "info": "F2120 Current Min Fan Speed",
+    "unit": "rpm",
+    "size": "u16",
+    "factor": 1,
+    "name": "eb101-f2120-min-fan-speed-41004"
+  },
+  "41005": {
+    "title": "EB101 F2120 Max Compressor Speed",
+    "info": "F2120 Current Max Compressor Speed",
+    "unit": "Hz",
+    "size": "u16",
+    "factor": 10,
+    "name": "eb101-f2120-max-compressor-speed-41005"
+  },
+  "41006": {
+    "title": "EB101 F2120 Min Compressor Speed",
+    "info": "F2120 Current Min Compressor Speed",
+    "unit": "Hz",
+    "size": "u16",
+    "factor": 10,
+    "name": "eb101-f2120-min-compressor-speed-41006"
+  },
+  "41007": {
+    "title": "EB101 F2120 Calculated Power",
+    "info": "F2120 Current Calculated Power",
+    "unit": "kW",
+    "size": "u16",
+    "factor": 10,
+    "name": "eb101-f2120-calculated-power-41007"
+  },
+  "41008": {
+    "title": "EB101 F2120 Time To Defrost",
+    "unit": "min",
+    "size": "u16",
+    "factor": 1,
+    "name": "eb101-f2120-time-to-defrost-41008"
+  },
+  "41027": {
+    "title": "Humidity average",
+    "info": "Humidity average",
+    "unit": "%",
+    "size": "s16",
+    "factor": 10,
+    "name": "humidity-average-41027"
+  },
+  "41162": {
+    "title": "EB101-EP14-BP8 LP Dew Pressure Sensor",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "name": "eb101-ep14-bp8-lp-dew-pressure-sensor-41162"
+  },
+  "41163": {
+    "title": "EB101-EP14-BP9 HP Dew Pressure Sensor",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "name": "eb101-ep14-bp9-hp-dew-pressure-sensor-41163"
+  },
+  "41164": {
+    "title": "EB101-EP14-BT81 Evi Temp",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "name": "eb101-ep14-bt81-evi-temp-41164"
+  },
+  "41165": {
+    "title": "EB101-EP14-BP11 Evi Pressure",
+    "unit": "bar",
+    "size": "s16",
+    "factor": 10,
+    "name": "eb101-ep14-bp11-evi-pressure-41165"
+  },
+  "41166": {
+    "title": "EB101-EP14-BP11 Evi Dew Pressure",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "name": "eb101-ep14-bp11-evi-dew-pressure-41166"
+  },
+  "41167": {
+    "title": "EB101-EP14-BT84 Evaptor temp",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "name": "eb101-ep14-bt84-evaptor-temp-41167"
+  },
+  "41168": {
+    "title": "EB101-EP14 Fan Status",
+    "size": "u8",
+    "factor": 1,
+    "name": "eb101-ep14-fan-status-41168"
+  },
+  "41169": {
+    "title": "EB101-EP14 Fan Set",
+    "unit": "rpm",
+    "size": "u16",
+    "factor": 1,
+    "name": "eb101-ep14-fan-set-41169"
+  },
+  "41191": {
+    "title": "PV Panel State",
+    "size": "u8",
+    "factor": 1,
+    "name": "pv-panel-state-41191"
+  },
+  "41265": {
+    "title": "Smart Home Mode",
+    "info": "Current smart home mode, 0=Default,1=Away from home,2=Vacation",
+    "size": "u8",
+    "factor": 1,
+    "name": "smart-home-mode-41265",
+    "mappings": {
+      "0": "Default",
+      "1": "Away from home",
+      "2": "Vacation"
+    }
+  },
+  "41266": {
+    "title": "Offset to smart home system",
+    "info": "Offset to smart home system",
+    "unit": "\u00b0C",
+    "size": "s8",
+    "factor": 10,
+    "name": "offset-to-smart-home-system-41266"
+  },
+  "41267": {
+    "title": "Smart Home ctrl syst 8",
+    "info": "Smart Home is controlling the system",
+    "size": "u8",
+    "factor": 1,
+    "name": "smart-home-ctrl-syst-8-41267"
+  },
+  "41268": {
+    "title": "Smart Home ctrl syst 7",
+    "info": "Smart Home is controlling the system",
+    "size": "u8",
+    "factor": 1,
+    "name": "smart-home-ctrl-syst-7-41268"
+  },
+  "41269": {
+    "title": "Smart Home ctrl syst 6",
+    "info": "Smart Home is controlling the system",
+    "size": "u8",
+    "factor": 1,
+    "name": "smart-home-ctrl-syst-6-41269"
+  },
+  "41270": {
+    "title": "Smart Home ctrl syst 5",
+    "info": "Smart Home is controlling the system",
+    "size": "u8",
+    "factor": 1,
+    "name": "smart-home-ctrl-syst-5-41270"
+  },
+  "41271": {
+    "title": "Smart Home ctrl syst 4",
+    "info": "Smart Home is controlling the system",
+    "size": "u8",
+    "factor": 1,
+    "name": "smart-home-ctrl-syst-4-41271"
+  },
+  "41272": {
+    "title": "Smart Home ctrl syst 3",
+    "info": "Smart Home is controlling the system",
+    "size": "u8",
+    "factor": 1,
+    "name": "smart-home-ctrl-syst-3-41272"
+  },
+  "41273": {
+    "title": "Smart Home ctrl syst 2",
+    "info": "Smart Home is controlling the system",
+    "size": "u8",
+    "factor": 1,
+    "name": "smart-home-ctrl-syst-2-41273"
+  },
+  "41274": {
+    "title": "Smart Home ctrl syst 1",
+    "info": "Smart Home is controlling the system",
+    "size": "u8",
+    "factor": 1,
+    "name": "smart-home-ctrl-syst-1-41274"
+  },
+  "41458": {
+    "title": "wood boiler, 1= active, 0 = not active",
+    "size": "u8",
+    "factor": 1,
+    "name": "wood-boiler-1-active-0-not-active-41458"
+  },
+  "41772": {
+    "title": "EB101-EP14 Alarm condensor in level",
+    "info": "Alarm condensor in level",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "name": "eb101-ep14-alarm-condensor-in-level-41772"
+  },
+  "41773": {
+    "title": "EB101-EP14 Alarm condensor out level",
+    "info": "Alarm condensor out level",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "name": "eb101-ep14-alarm-condensor-out-level-41773"
+  },
+  "41928": {
+    "title": "Smart Price Adaption Price",
+    "info": "The current electric price",
+    "size": "u16",
+    "factor": 100,
+    "name": "smart-price-adaption-price-41928"
+  },
+  "41929": {
+    "title": "Smart Price Adaption Price Level",
+    "info": "Whether the current price is unknown (0), low (1), medium (2), high (3)",
+    "size": "u8",
+    "factor": 1,
+    "name": "smart-price-adaption-price-level-41929"
+  },
+  "41930": {
+    "title": "AA23-BE5 Power 10",
+    "unit": "W",
+    "size": "u16",
+    "factor": 1,
+    "name": "aa23-be5-power-10-41930"
+  },
+  "41931": {
+    "title": "AA23-BE5 Power 9",
+    "unit": "W",
+    "size": "u16",
+    "factor": 1,
+    "name": "aa23-be5-power-9-41931"
+  },
+  "41932": {
+    "title": "AA23-BE5 Power 8",
+    "unit": "W",
+    "size": "u16",
+    "factor": 1,
+    "name": "aa23-be5-power-8-41932"
+  },
+  "41933": {
+    "title": "AA23-BE5 Power 7",
+    "unit": "W",
+    "size": "u16",
+    "factor": 1,
+    "name": "aa23-be5-power-7-41933"
+  },
+  "41934": {
+    "title": "AA23-BE5 Power 6",
+    "unit": "W",
+    "size": "u16",
+    "factor": 1,
+    "name": "aa23-be5-power-6-41934"
+  },
+  "41935": {
+    "title": "AA23-BE5 Power 5",
+    "unit": "W",
+    "size": "u16",
+    "factor": 1,
+    "name": "aa23-be5-power-5-41935"
+  },
+  "41936": {
+    "title": "AA23-BE5 Power 4",
+    "unit": "W",
+    "size": "u16",
+    "factor": 1,
+    "name": "aa23-be5-power-4-41936"
+  },
+  "41937": {
+    "title": "AA23-BE5 Power 3",
+    "unit": "W",
+    "size": "u16",
+    "factor": 1,
+    "name": "aa23-be5-power-3-41937"
+  },
+  "41938": {
+    "title": "AA23-BE5 Power 2",
+    "unit": "W",
+    "size": "u16",
+    "factor": 1,
+    "name": "aa23-be5-power-2-41938"
+  },
+  "41939": {
+    "title": "AA23-BE5 Power 1",
+    "unit": "W",
+    "size": "u16",
+    "factor": 1,
+    "name": "aa23-be5-power-1-41939"
+  },
+  "41940": {
+    "title": "AA23-BE5 Error High 10",
+    "unit": "W",
+    "size": "u16",
+    "factor": 1,
+    "name": "aa23-be5-error-high-10-41940"
+  },
+  "41941": {
+    "title": "AA23-BE5 Error High 9",
+    "unit": "W",
+    "size": "u16",
+    "factor": 1,
+    "name": "aa23-be5-error-high-9-41941"
+  },
+  "41942": {
+    "title": "AA23-BE5 Error High 8",
+    "unit": "W",
+    "size": "u16",
+    "factor": 1,
+    "name": "aa23-be5-error-high-8-41942"
+  },
+  "41943": {
+    "title": "AA23-BE5 Error High 7",
+    "unit": "W",
+    "size": "u16",
+    "factor": 1,
+    "name": "aa23-be5-error-high-7-41943"
+  },
+  "41944": {
+    "title": "AA23-BE5 Error High 6",
+    "unit": "W",
+    "size": "u16",
+    "factor": 1,
+    "name": "aa23-be5-error-high-6-41944"
+  },
+  "41945": {
+    "title": "AA23-BE5 Error High 5",
+    "unit": "W",
+    "size": "u16",
+    "factor": 1,
+    "name": "aa23-be5-error-high-5-41945"
+  },
+  "41946": {
+    "title": "AA23-BE5 Error High 4",
+    "unit": "W",
+    "size": "u16",
+    "factor": 1,
+    "name": "aa23-be5-error-high-4-41946"
+  },
+  "41947": {
+    "title": "AA23-BE5 Error High 3",
+    "unit": "W",
+    "size": "u16",
+    "factor": 1,
+    "name": "aa23-be5-error-high-3-41947"
+  },
+  "41948": {
+    "title": "AA23-BE5 Error High 2",
+    "unit": "W",
+    "size": "u16",
+    "factor": 1,
+    "name": "aa23-be5-error-high-2-41948"
+  },
+  "41949": {
+    "title": "AA23-BE5 Error High 1",
+    "unit": "W",
+    "size": "u16",
+    "factor": 1,
+    "name": "aa23-be5-error-high-1-41949"
+  },
+  "41950": {
+    "title": "AA23-BE5 Error Low 10",
+    "unit": "W",
+    "size": "u16",
+    "factor": 1,
+    "name": "aa23-be5-error-low-10-41950"
+  },
+  "41951": {
+    "title": "AA23-BE5 Error Low 9",
+    "unit": "W",
+    "size": "u16",
+    "factor": 1,
+    "name": "aa23-be5-error-low-9-41951"
+  },
+  "41952": {
+    "title": "AA23-BE5 Error Low 8",
+    "unit": "W",
+    "size": "u16",
+    "factor": 1,
+    "name": "aa23-be5-error-low-8-41952"
+  },
+  "41953": {
+    "title": "AA23-BE5 Error Low 7",
+    "unit": "W",
+    "size": "u16",
+    "factor": 1,
+    "name": "aa23-be5-error-low-7-41953"
+  },
+  "41954": {
+    "title": "AA23-BE5 Error Low 6",
+    "unit": "W",
+    "size": "u16",
+    "factor": 1,
+    "name": "aa23-be5-error-low-6-41954"
+  },
+  "41955": {
+    "title": "AA23-BE5 Error Low 5",
+    "unit": "W",
+    "size": "u16",
+    "factor": 1,
+    "name": "aa23-be5-error-low-5-41955"
+  },
+  "41956": {
+    "title": "AA23-BE5 Error Low 4",
+    "unit": "W",
+    "size": "u16",
+    "factor": 1,
+    "name": "aa23-be5-error-low-4-41956"
+  },
+  "41957": {
+    "title": "AA23-BE5 Error Low 3",
+    "unit": "W",
+    "size": "u16",
+    "factor": 1,
+    "name": "aa23-be5-error-low-3-41957"
+  },
+  "41958": {
+    "title": "AA23-BE5 Error Low 2",
+    "unit": "W",
+    "size": "u16",
+    "factor": 1,
+    "name": "aa23-be5-error-low-2-41958"
+  },
+  "41959": {
+    "title": "AA23-BE5 Error Low 1",
+    "unit": "W",
+    "size": "u16",
+    "factor": 1,
+    "name": "aa23-be5-error-low-1-41959"
+  },
+  "41960": {
+    "title": "AA23-BE5 Com Percentage 10",
+    "unit": "%",
+    "size": "u8",
+    "factor": 1,
+    "name": "aa23-be5-com-percentage-10-41960"
+  },
+  "41961": {
+    "title": "AA23-BE5 Com Percentage 9",
+    "unit": "%",
+    "size": "u8",
+    "factor": 1,
+    "name": "aa23-be5-com-percentage-9-41961"
+  },
+  "41962": {
+    "title": "AA23-BE5 Com Percentage 8",
+    "unit": "%",
+    "size": "u8",
+    "factor": 1,
+    "name": "aa23-be5-com-percentage-8-41962"
+  },
+  "41963": {
+    "title": "AA23-BE5 Com Percentage 7",
+    "unit": "%",
+    "size": "u8",
+    "factor": 1,
+    "name": "aa23-be5-com-percentage-7-41963"
+  },
+  "41964": {
+    "title": "AA23-BE5 Com Percentage 6",
+    "unit": "%",
+    "size": "u8",
+    "factor": 1,
+    "name": "aa23-be5-com-percentage-6-41964"
+  },
+  "41965": {
+    "title": "AA23-BE5 Com Percentage 5",
+    "unit": "%",
+    "size": "u8",
+    "factor": 1,
+    "name": "aa23-be5-com-percentage-5-41965"
+  },
+  "41966": {
+    "title": "AA23-BE5 Com Percentage 4",
+    "unit": "%",
+    "size": "u8",
+    "factor": 1,
+    "name": "aa23-be5-com-percentage-4-41966"
+  },
+  "41967": {
+    "title": "AA23-BE5 Com Percentage 3",
+    "unit": "%",
+    "size": "u8",
+    "factor": 1,
+    "name": "aa23-be5-com-percentage-3-41967"
+  },
+  "41968": {
+    "title": "AA23-BE5 Com Percentage 2",
+    "unit": "%",
+    "size": "u8",
+    "factor": 1,
+    "name": "aa23-be5-com-percentage-2-41968"
+  },
+  "41969": {
+    "title": "AA23-BE5 Com Percentage 1",
+    "unit": "%",
+    "size": "u8",
+    "factor": 1,
+    "name": "aa23-be5-com-percentage-1-41969"
+  },
+  "41980": {
+    "title": "AA23-BE5 Voltage1 10",
+    "unit": "V",
+    "size": "u16",
+    "factor": 10,
+    "name": "aa23-be5-voltage1-10-41980"
+  },
+  "41981": {
+    "title": "AA23-BE5 Voltage1 9",
+    "unit": "V",
+    "size": "u16",
+    "factor": 10,
+    "name": "aa23-be5-voltage1-9-41981"
+  },
+  "41982": {
+    "title": "AA23-BE5 Voltage1 8",
+    "unit": "V",
+    "size": "u16",
+    "factor": 10,
+    "name": "aa23-be5-voltage1-8-41982"
+  },
+  "41983": {
+    "title": "AA23-BE5 Voltage1 7",
+    "unit": "V",
+    "size": "u16",
+    "factor": 10,
+    "name": "aa23-be5-voltage1-7-41983"
+  },
+  "41984": {
+    "title": "AA23-BE5 Voltage1 6",
+    "unit": "V",
+    "size": "u16",
+    "factor": 10,
+    "name": "aa23-be5-voltage1-6-41984"
+  },
+  "41985": {
+    "title": "AA23-BE5 Voltage1 5",
+    "unit": "V",
+    "size": "u16",
+    "factor": 10,
+    "name": "aa23-be5-voltage1-5-41985"
+  },
+  "41986": {
+    "title": "AA23-BE5 Voltage1 4",
+    "unit": "V",
+    "size": "u16",
+    "factor": 10,
+    "name": "aa23-be5-voltage1-4-41986"
+  },
+  "41987": {
+    "title": "AA23-BE5 Voltage1 3",
+    "unit": "V",
+    "size": "u16",
+    "factor": 10,
+    "name": "aa23-be5-voltage1-3-41987"
+  },
+  "41988": {
+    "title": "AA23-BE5 Voltage1 2",
+    "unit": "V",
+    "size": "u16",
+    "factor": 10,
+    "name": "aa23-be5-voltage1-2-41988"
+  },
+  "41989": {
+    "title": "AA23-BE5 Voltage1 1",
+    "unit": "V",
+    "size": "u16",
+    "factor": 10,
+    "name": "aa23-be5-voltage1-1-41989"
+  },
+  "41990": {
+    "title": "AA23-BE5 Voltage2 10",
+    "unit": "V",
+    "size": "u16",
+    "factor": 10,
+    "name": "aa23-be5-voltage2-10-41990"
+  },
+  "41991": {
+    "title": "AA23-BE5 Voltage2 9",
+    "unit": "V",
+    "size": "u16",
+    "factor": 10,
+    "name": "aa23-be5-voltage2-9-41991"
+  },
+  "41992": {
+    "title": "AA23-BE5 Voltage2 8",
+    "unit": "V",
+    "size": "u16",
+    "factor": 10,
+    "name": "aa23-be5-voltage2-8-41992"
+  },
+  "41993": {
+    "title": "AA23-BE5 Voltage2 7",
+    "unit": "V",
+    "size": "u16",
+    "factor": 10,
+    "name": "aa23-be5-voltage2-7-41993"
+  },
+  "41994": {
+    "title": "AA23-BE5 Voltage2 6",
+    "unit": "V",
+    "size": "u16",
+    "factor": 10,
+    "name": "aa23-be5-voltage2-6-41994"
+  },
+  "41995": {
+    "title": "AA23-BE5 Voltage2 5",
+    "unit": "V",
+    "size": "u16",
+    "factor": 10,
+    "name": "aa23-be5-voltage2-5-41995"
+  },
+  "41996": {
+    "title": "AA23-BE5 Voltage2 4",
+    "unit": "V",
+    "size": "u16",
+    "factor": 10,
+    "name": "aa23-be5-voltage2-4-41996"
+  },
+  "41997": {
+    "title": "AA23-BE5 Voltage2 3",
+    "unit": "V",
+    "size": "u16",
+    "factor": 10,
+    "name": "aa23-be5-voltage2-3-41997"
+  },
+  "41998": {
+    "title": "AA23-BE5 Voltage2 2",
+    "unit": "V",
+    "size": "u16",
+    "factor": 10,
+    "name": "aa23-be5-voltage2-2-41998"
+  },
+  "41999": {
+    "title": "AA23-BE5 Voltage2 1",
+    "unit": "V",
+    "size": "u16",
+    "factor": 10,
+    "name": "aa23-be5-voltage2-1-41999"
+  },
+  "42000": {
+    "title": "AA23-BE5 Temperature 10",
+    "unit": "\u00b0C",
+    "size": "u16",
+    "factor": 10,
+    "name": "aa23-be5-temperature-10-42000"
+  },
+  "42001": {
+    "title": "AA23-BE5 Temperature 9",
+    "unit": "\u00b0C",
+    "size": "u16",
+    "factor": 10,
+    "name": "aa23-be5-temperature-9-42001"
+  },
+  "42002": {
+    "title": "AA23-BE5 Temperature 8",
+    "unit": "\u00b0C",
+    "size": "u16",
+    "factor": 10,
+    "name": "aa23-be5-temperature-8-42002"
+  },
+  "42003": {
+    "title": "AA23-BE5 Temperature 7",
+    "unit": "\u00b0C",
+    "size": "u16",
+    "factor": 10,
+    "name": "aa23-be5-temperature-7-42003"
+  },
+  "42004": {
+    "title": "AA23-BE5 Temperature 6",
+    "unit": "\u00b0C",
+    "size": "u16",
+    "factor": 10,
+    "name": "aa23-be5-temperature-6-42004"
+  },
+  "42005": {
+    "title": "AA23-BE5 Temperature 5",
+    "unit": "\u00b0C",
+    "size": "u16",
+    "factor": 10,
+    "name": "aa23-be5-temperature-5-42005"
+  },
+  "42006": {
+    "title": "AA23-BE5 Temperature 4",
+    "unit": "\u00b0C",
+    "size": "u16",
+    "factor": 10,
+    "name": "aa23-be5-temperature-4-42006"
+  },
+  "42007": {
+    "title": "AA23-BE5 Temperature 3",
+    "unit": "\u00b0C",
+    "size": "u16",
+    "factor": 10,
+    "name": "aa23-be5-temperature-3-42007"
+  },
+  "42008": {
+    "title": "AA23-BE5 Temperature 2",
+    "unit": "\u00b0C",
+    "size": "u16",
+    "factor": 10,
+    "name": "aa23-be5-temperature-2-42008"
+  },
+  "42009": {
+    "title": "AA23-BE5 Temperature 1",
+    "unit": "\u00b0C",
+    "size": "u16",
+    "factor": 10,
+    "name": "aa23-be5-temperature-1-42009"
+  },
+  "42010": {
+    "title": "AA23-BE5 Energy 10",
+    "unit": "kWh",
+    "size": "u32",
+    "factor": 10,
+    "name": "aa23-be5-energy-10-42010"
+  },
+  "42012": {
+    "title": "AA23-BE5 Energy 9",
+    "unit": "kWh",
+    "size": "u32",
+    "factor": 10,
+    "name": "aa23-be5-energy-9-42012"
+  },
+  "42014": {
+    "title": "AA23-BE5 Energy 8",
+    "unit": "kWh",
+    "size": "u32",
+    "factor": 10,
+    "name": "aa23-be5-energy-8-42014"
+  },
+  "42016": {
+    "title": "AA23-BE5 Energy 7",
+    "unit": "kWh",
+    "size": "u32",
+    "factor": 10,
+    "name": "aa23-be5-energy-7-42016"
+  },
+  "42018": {
+    "title": "AA23-BE5 Energy 6",
+    "unit": "kWh",
+    "size": "u32",
+    "factor": 10,
+    "name": "aa23-be5-energy-6-42018"
+  },
+  "42020": {
+    "title": "AA23-BE5 Energy 5",
+    "unit": "kWh",
+    "size": "u32",
+    "factor": 10,
+    "name": "aa23-be5-energy-5-42020"
+  },
+  "42022": {
+    "title": "AA23-BE5 Energy 4",
+    "unit": "kWh",
+    "size": "u32",
+    "factor": 10,
+    "name": "aa23-be5-energy-4-42022"
+  },
+  "42024": {
+    "title": "AA23-BE5 Energy 3",
+    "unit": "kWh",
+    "size": "u32",
+    "factor": 10,
+    "name": "aa23-be5-energy-3-42024"
+  },
+  "42026": {
+    "title": "AA23-BE5 Energy 2",
+    "unit": "kWh",
+    "size": "u32",
+    "factor": 10,
+    "name": "aa23-be5-energy-2-42026"
+  },
+  "42028": {
+    "title": "AA23-BE5 Energy 1",
+    "unit": "kWh",
+    "size": "u32",
+    "factor": 10,
+    "name": "aa23-be5-energy-1-42028"
+  },
+  "42030": {
+    "title": "AA23-BE5 EME20 Version",
+    "size": "u16",
+    "factor": 1,
+    "name": "aa23-be5-eme20-version-42030"
+  },
+  "42033": {
+    "title": "PV Panel Heat Offset",
+    "unit": "\u00b0C",
+    "size": "u8",
+    "factor": 10,
+    "name": "pv-panel-heat-offset-42033"
+  },
+  "42035": {
+    "title": "AA23-BE5 EME20 Total Power",
+    "unit": "W",
+    "size": "u32",
+    "factor": 1,
+    "name": "aa23-be5-eme20-total-power-42035"
+  },
+  "42037": {
+    "title": "AA23-BE5 EME20 Total Average Power",
+    "unit": "W",
+    "size": "u32",
+    "factor": 1,
+    "name": "aa23-be5-eme20-total-average-power-42037"
+  },
+  "42075": {
+    "title": "AA23-BE5 EME20 Total Energy",
+    "unit": "kWh",
+    "size": "u32",
+    "factor": 10,
+    "name": "aa23-be5-eme20-total-energy-42075"
+  },
+  "42080": {
+    "title": "AA23-BE5 Alarm 504",
+    "size": "u8",
+    "factor": 1,
+    "name": "aa23-be5-alarm-504-42080"
+  },
+  "42081": {
+    "title": "AA23-BE5 Alarm 505",
+    "size": "u8",
+    "factor": 1,
+    "name": "aa23-be5-alarm-505-42081"
+  },
+  "42082": {
+    "title": "AA23-BE5 Alarm 506",
+    "size": "u8",
+    "factor": 1,
+    "name": "aa23-be5-alarm-506-42082"
+  },
+  "42083": {
+    "title": "AA23-BE5 Alarm 507",
+    "size": "u8",
+    "factor": 1,
+    "name": "aa23-be5-alarm-507-42083"
+  },
+  "42084": {
+    "title": "AA23-BE5 Alarm 508",
+    "size": "u8",
+    "factor": 1,
+    "name": "aa23-be5-alarm-508-42084"
+  },
+  "42085": {
+    "title": "AA23-BE5 Alarm 509",
+    "size": "u8",
+    "factor": 1,
+    "name": "aa23-be5-alarm-509-42085"
+  },
+  "42086": {
+    "title": "AA23-BE5 Alarm 510",
+    "size": "u8",
+    "factor": 1,
+    "name": "aa23-be5-alarm-510-42086"
+  },
+  "42087": {
+    "title": "AA23-BE5 Alarm 511",
+    "size": "u8",
+    "factor": 1,
+    "name": "aa23-be5-alarm-511-42087"
+  },
+  "42100": {
+    "title": "BT1 Average, 24h",
+    "info": "EB100-BT1 Outdoor temperature average, 24h",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "name": "bt1-average-24h-42100"
+  },
+  "42101": {
+    "title": "Used heating power average, 24h",
+    "info": "Used heating power average, 24h",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "name": "used-heating-power-average-24h-42101"
+  },
+  "43001": {
+    "title": "Software version",
+    "size": "u16",
+    "factor": 1,
+    "name": "software-version-43001"
+  },
+  "43005": {
+    "title": "Degree Minutes (16 bit)",
+    "info": "Degree minutes, 16bit value (-32768 < x < 32767). Values outside valid values are rounded to the closest valid value.",
+    "size": "s16",
+    "factor": 10,
+    "min": -30000.0,
+    "max": 30000.0,
+    "default": 0.0,
+    "name": "degree-minutes-16-bit-43005",
+    "write": true
+  },
+  "43009": {
+    "title": "Calc. Supply S1",
+    "info": "Calculated supply temperature for the climate system",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "name": "calc-supply-s1-43009"
+  },
+  "43013": {
+    "title": "Freeze Protection Status",
+    "info": "1 = Freeze protection active",
+    "size": "u8",
+    "factor": 1,
+    "name": "freeze-protection-status-43013",
+    "mappings": {
+      "1": "Freeze protection active"
+    }
+  },
+  "43024": {
+    "title": "Status Cooling",
+    "info": " 0=Off 1=On",
+    "size": "u8",
+    "factor": 1,
+    "name": "status-cooling-43024",
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
+  },
+  "43065": {
+    "title": "Heat Medium Flow dT Actual",
+    "info": "Current value of the delta T for the heat medium flow",
+    "size": "s16",
+    "factor": 10,
+    "name": "heat-medium-flow-dt-actual-43065"
+  },
+  "43081": {
+    "title": "Tot. op.time add.",
+    "info": "Total electric additive operation time",
+    "unit": "h",
+    "size": "s32",
+    "factor": 10,
+    "min": 0.0,
+    "max": 1000000.0,
+    "default": 0.0,
+    "name": "tot-op-time-add-43081"
+  },
+  "43084": {
+    "title": "Int. el.add. Power",
+    "info": "Current power from the internal electrical addition",
+    "unit": "kW",
+    "size": "s16",
+    "factor": 100,
+    "name": "int-el-add-power-43084"
+  },
+  "43086": {
+    "title": "Prio",
+    "info": "Indicates what heating action (HW/heat/pool) currently prioritised 10=Off 20=Hot Water 30=Heat 40=Pool 41=Pool 2 50=Transfer 60=Cooling",
+    "size": "u8",
+    "factor": 1,
+    "name": "prio-43086",
+    "mappings": {
+      "10": "Off",
+      "20": "Hot Water",
+      "30": "Heat",
+      "40": "Pool",
+      "41": "Pool 2",
+      "50": "Transfer",
+      "60": "Cooling"
+    }
+  },
+  "43091": {
+    "title": "Int. el.add. State",
+    "info": "Number of steps active for internal step-controlled addition",
+    "size": "u8",
+    "factor": 1,
+    "name": "int-el-add-state-43091"
+  },
+  "43096": {
+    "title": "Mixing Valve State S1",
+    "info": "State of the mixing valve for the climate system",
+    "size": "u8",
+    "factor": 1,
+    "name": "mixing-valve-state-s1-43096"
+  },
+  "43161": {
+    "title": "External adjustment activated via input S1",
+    "size": "u8",
+    "factor": 1,
+    "name": "external-adjustment-activated-via-input-s1-43161"
+  },
+  "43171": {
+    "title": "Blocking status of the step controlled add heat acc",
+    "info": "0 = Unblocked, 1 = Blocked",
+    "size": "u8",
+    "factor": 1,
+    "name": "blocking-status-of-the-step-controlled-add-heat-acc-43171",
+    "mappings": {
+      "0": "Unblocked",
+      "1": "Blocked"
+    }
+  },
+  "43189": {
+    "title": "GP10 Ext. Supply Pump Status",
+    "info": "External supply pump status. 1=on,0=off",
+    "size": "u8",
+    "factor": 1,
+    "name": "gp10-ext-supply-pump-status-43189",
+    "mappings": {
+      "1": "on",
+      "0": "off"
+    }
+  },
+  "43239": {
+    "title": "Tot. HW op.time add.",
+    "info": "Total electric additive operation time in hot water mode",
+    "unit": "h",
+    "size": "s32",
+    "factor": 10,
+    "min": 0.0,
+    "max": 9999999.0,
+    "default": 0.0,
+    "name": "tot-hw-op-time-add-43239"
+  },
+  "43473": {
+    "title": "Docked Heat Compressors",
+    "info": "Number of compressors docked to heating",
+    "size": "u8",
+    "factor": 1,
+    "name": "docked-heat-compressors-43473"
+  },
+  "43474": {
+    "title": "Docked Hot Water Compressors",
+    "info": "Number of compressors docked to hot water",
+    "size": "u8",
+    "factor": 1,
+    "name": "docked-hot-water-compressors-43474"
+  },
+  "43514": {
+    "title": "EB100-EP14 PCA Base Relays",
+    "info": "Indicates active relays on the PCA Base card. Please refer to the wiring diagram for relay description. Binary encoded. 1=on, 0=off. Bit0=K4,Bit1=K3,Bit2=K2,Bit3=K1",
+    "size": "u8",
+    "factor": 1,
+    "name": "eb100-ep14-pca-base-relays-43514"
+  },
+  "43516": {
+    "title": "PCA-Power Relays EP14",
+    "info": "Indicates the active relays on the PCA-Power card. The information is binary encoded",
+    "size": "u8",
+    "factor": 1,
+    "name": "pca-power-relays-ep14-43516"
+  },
+  "44014": {
+    "title": "EB101 Version",
+    "size": "u16",
+    "factor": 1,
+    "name": "eb101-version-44014"
+  },
+  "44032": {
+    "title": "EB101 Slave Type",
+    "size": "u8",
+    "factor": 1,
+    "name": "eb101-slave-type-44032"
+  },
+  "44033": {
+    "title": "EB101 Compressor EP14 Size",
+    "unit": "kW",
+    "size": "u8",
+    "factor": 1,
+    "name": "eb101-compressor-ep14-size-44033"
+  },
+  "44055": {
+    "title": "EB101-EP14-BT3 Return Temp.",
+    "info": "Return temperature, BT3",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "name": "eb101-ep14-bt3-return-temp-44055"
+  },
+  "44058": {
+    "title": "EB101-EP14-BT12 Condensor Out",
+    "info": "Condensor temperature, BT12",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "name": "eb101-ep14-bt12-condensor-out-44058"
+  },
+  "44059": {
+    "title": "EB101-EP14-BT14 Hot Gas Temp",
+    "info": "Hot gas temperature, BT14",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "name": "eb101-ep14-bt14-hot-gas-temp-44059"
+  },
+  "44060": {
+    "title": "EB101-EP14-BT15 Liquid Line",
+    "info": "Liquid line temperature, BT15",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "name": "eb101-ep14-bt15-liquid-line-44060"
+  },
+  "44061": {
+    "title": "EB101-EP14-BT17 Suction",
+    "info": "Suction temperature, BT17",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "name": "eb101-ep14-bt17-suction-44061"
+  },
+  "44065": {
+    "title": "EB101-EP14 Compr. time to start",
+    "size": "u8",
+    "factor": 1,
+    "name": "eb101-ep14-compr-time-to-start-44065"
+  },
+  "44069": {
+    "title": "EB101-EP14 Compressor starts",
+    "size": "u32",
+    "factor": 1,
+    "min": 0.0,
+    "max": 9999999.0,
+    "default": 0.0,
+    "name": "eb101-ep14-compressor-starts-44069"
+  },
+  "44071": {
+    "title": "EB101-EP14 Tot. op.time compr",
+    "unit": "h",
+    "size": "u32",
+    "factor": 1,
+    "min": 0.0,
+    "max": 9999999.0,
+    "default": 0.0,
+    "name": "eb101-ep14-tot-op-time-compr-44071"
+  },
+  "44073": {
+    "title": "EB101-EP14 Tot. HW op.time compr",
+    "unit": "h",
+    "size": "u32",
+    "factor": 1,
+    "min": 0.0,
+    "max": 9999999.0,
+    "default": 0.0,
+    "name": "eb101-ep14-tot-hw-op-time-compr-44073"
+  },
+  "44075": {
+    "title": "EB101-EP14 Alarm number",
+    "info": "The value indicates the most severe current alarm",
+    "size": "u16",
+    "factor": 1,
+    "name": "eb101-ep14-alarm-number-44075"
+  },
+  "44266": {
+    "title": "Cool Degree Minutes",
+    "size": "s16",
+    "factor": 10,
+    "min": -30000.0,
+    "max": 30000.0,
+    "default": 0.0,
+    "name": "cool-degree-minutes-44266",
+    "write": true
+  },
+  "44267": {
+    "title": "Calc. Cooling Supply S4",
+    "info": "Calculated supply temperature in cooling mode for the climate system",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "name": "calc-cooling-supply-s4-44267"
+  },
+  "44268": {
+    "title": "Calc. Cooling Supply S3",
+    "info": "Calculated supply temperature in cooling mode for the climate system",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "name": "calc-cooling-supply-s3-44268"
+  },
+  "44269": {
+    "title": "Calc. Cooling Supply S2",
+    "info": "Calculated supply temperature in cooling mode for the climate system",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "name": "calc-cooling-supply-s2-44269"
+  },
+  "44270": {
+    "title": "Calc. Cooling Supply S1",
+    "info": "Calculated supply temperature in cooling mode for the climate system",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "name": "calc-cooling-supply-s1-44270"
+  },
+  "44331": {
+    "title": "Software release",
+    "size": "u8",
+    "factor": 1,
+    "name": "software-release-44331"
+  },
+  "44362": {
+    "title": "EB101-EP14-BT28 Outdoor Temp",
+    "info": "Current outdoor temperature, BT28",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "name": "eb101-ep14-bt28-outdoor-temp-44362"
+  },
+  "44363": {
+    "title": "EB101-EP14-BT16 Evaporator",
+    "info": "Evaporator temperature, BT16",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "name": "eb101-ep14-bt16-evaporator-44363"
+  },
+  "44396": {
+    "title": "EB101 Speed charge pump",
+    "unit": "%",
+    "size": "u8",
+    "factor": 1,
+    "name": "eb101-speed-charge-pump-44396"
+  },
+  "44457": {
+    "title": "EB101-EP14 Compressor State",
+    "info": "On/Off",
+    "size": "u8",
+    "factor": 1,
+    "name": "eb101-ep14-compressor-state-44457"
+  },
+  "44483": {
+    "title": "State of the extra additional heat in series",
+    "info": "0 = Off, 1 = On",
+    "size": "u8",
+    "factor": 1,
+    "name": "state-of-the-extra-additional-heat-in-series-44483"
+  },
+  "44487": {
+    "title": "Docked Cool Compressors",
+    "info": "Number of compressors docked to cooling",
+    "size": "u8",
+    "factor": 1,
+    "name": "docked-cool-compressors-44487"
+  },
+  "44699": {
+    "title": "EB101-EP14 High Pressure Sensor Outdoor Unit",
+    "unit": "bar",
+    "size": "s16",
+    "factor": 10,
+    "name": "eb101-ep14-high-pressure-sensor-outdoor-unit-44699"
+  },
+  "44700": {
+    "title": "EB101-EP14 Low Pressure Sensor Outdoor Unit",
+    "unit": "bar",
+    "size": "s16",
+    "factor": 10,
+    "name": "eb101-ep14-low-pressure-sensor-outdoor-unit-44700"
+  },
+  "44701": {
+    "title": "EB101-EP14 Actual Cpr Frequency Outdoor Unit",
+    "unit": "Hz",
+    "size": "s16",
+    "factor": 10,
+    "name": "eb101-ep14-actual-cpr-frequency-outdoor-unit-44701"
+  },
+  "44702": {
+    "title": "EB101-EP14 Protection Status Register Outdoor Unit",
+    "size": "u16",
+    "factor": 1,
+    "name": "eb101-ep14-protection-status-register-outdoor-unit-44702"
+  },
+  "44703": {
+    "title": "EB101-EP14 Defrosting Outdoor Unit",
+    "info": "0=No, 1=Active, 2 = Passive",
+    "size": "u8",
+    "factor": 1,
+    "name": "eb101-ep14-defrosting-outdoor-unit-44703",
+    "mappings": {
+      "0": "No",
+      "1": "Active",
+      "2": "Passive"
+    }
+  },
+  "44706": {
+    "title": "EB101-EP14 Calculated Power Outdoor Unit",
+    "unit": "kW",
+    "size": "u8",
+    "factor": 1,
+    "name": "eb101-ep14-calculated-power-outdoor-unit-44706"
+  },
+  "44775": {
+    "title": "EB101-EP14 calc. ou compressor freq",
+    "info": "Calculated compressor frequency",
+    "unit": "Hz",
+    "size": "u8",
+    "factor": 1,
+    "name": "eb101-ep14-calc-ou-compressor-freq-44775"
+  },
+  "44866": {
+    "title": "EB101-EP14 Current Sensor",
+    "size": "s16",
+    "factor": 10,
+    "name": "eb101-ep14-current-sensor-44866"
+  },
+  "44867": {
+    "title": "EB101-EP14 Hz Down Mode Outdoor Unit",
+    "info": "0=No, 1=Yes",
+    "size": "u8",
+    "factor": 1,
+    "name": "eb101-ep14-hz-down-mode-outdoor-unit-44867",
+    "mappings": {
+      "1": "Yes"
+    }
+  },
+  "44874": {
+    "title": "State SG Ready",
+    "size": "u8",
+    "factor": 1,
+    "name": "state-sg-ready-44874"
+  },
+  "44878": {
+    "title": "SG Ready input A",
+    "size": "u8",
+    "factor": 1,
+    "name": "sg-ready-input-a-44878"
+  },
+  "44879": {
+    "title": "SG Ready input B",
+    "size": "u8",
+    "factor": 1,
+    "name": "sg-ready-input-b-44879"
+  },
+  "44896": {
+    "title": "Smart Price Adaption Heating Offset",
+    "size": "s8",
+    "factor": 10,
+    "name": "smart-price-adaption-heating-offset-44896"
+  },
+  "44897": {
+    "title": "Smart Price Adaption HW Comfort Mode",
+    "info": "0=Eco,1=Normal,2=Luxury,10=Normal+,20=Mini",
+    "size": "s8",
+    "factor": 1,
+    "name": "smart-price-adaption-hw-comfort-mode-44897",
+    "mappings": {
+      "0": "Eco",
+      "1": "Normal",
+      "2": "Luxury",
+      "10": "Normal+",
+      "20": "Mini"
+    }
+  },
+  "44898": {
+    "title": "Smart Price Adaption Pool Offset",
+    "size": "s8",
+    "factor": 1,
+    "name": "smart-price-adaption-pool-offset-44898"
+  },
+  "44899": {
+    "title": "Smart Price Adaption Cool Offset",
+    "size": "s8",
+    "factor": 1,
+    "name": "smart-price-adaption-cool-offset-44899"
+  },
+  "44908": {
+    "title": "State smart price adaption",
+    "size": "u8",
+    "factor": 1,
+    "name": "state-smart-price-adaption-44908"
+  },
+  "44977": {
+    "title": "EB101-EP14-BT16 Evaporator 2",
+    "info": "Evaporator 2 temperature, BT16",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "name": "eb101-ep14-bt16-evaporator-2-44977"
+  },
+  "44978": {
+    "title": "EB101-EP14 Inverter Temperature",
+    "info": "Inverter temperature",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "name": "eb101-ep14-inverter-temperature-44978"
+  },
+  "44979": {
+    "title": "EB101-EP14-Fan Speed Step",
+    "size": "u8",
+    "factor": 1,
+    "name": "eb101-ep14-fan-speed-step-44979"
+  },
+  "45001": {
+    "title": "Alarm",
+    "info": "Indicates the alarm number of the most severe current alarm",
+    "size": "s16",
+    "factor": 1,
+    "name": "alarm-45001"
+  },
+  "47291": {
+    "title": "Floor drying timer",
+    "unit": "hrs",
+    "size": "u16",
+    "factor": 1,
+    "min": 0.0,
+    "max": 10000.0,
+    "default": 0.0,
+    "name": "floor-drying-timer-47291"
+  },
+  "47325": {
+    "title": "Step controlled add. max. step",
+    "info": "Maximum number of steps allowed in step controlled add.",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 7.0,
+    "default": 3.0,
+    "name": "step-controlled-add-max-step-47325"
+  },
+  "48206": {
+    "title": "Silent Mode Status",
+    "info": "1 = active, 0 = inactive",
+    "size": "u8",
+    "factor": 1,
+    "name": "silent-mode-status-48206",
+    "mappings": {
+      "1": "active",
+      "0": "inactive"
+    }
+  },
+  "49239": {
+    "title": "EB101 Installed",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "eb101-installed-49239"
+  },
+  "45171": {
+    "title": "Alarm Reset",
+    "info": "Reset alarm by setting value 1",
+    "size": "u8",
+    "factor": 1,
+    "name": "alarm-reset-45171",
+    "write": true
+  },
+  "47007": {
+    "title": "Heat Curve S1",
+    "info": "Heat curve, see manual for more information",
+    "size": "s8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 15.0,
+    "default": 9.0,
+    "name": "heat-curve-s1-47007",
+    "write": true
+  },
+  "47011": {
+    "title": "Heat Offset S1",
+    "info": "Offset of the heat curve, see manual for more information",
+    "size": "s8",
+    "factor": 1,
+    "min": -10.0,
+    "max": 10.0,
+    "default": 0.0,
+    "name": "heat-offset-s1-47011",
+    "write": true
+  },
+  "47015": {
+    "title": "Min Supply System 1",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "min": 50.0,
+    "max": 700.0,
+    "default": 200.0,
+    "name": "min-supply-system-1-47015",
+    "write": true
+  },
+  "47019": {
+    "title": "Max Supply System 1",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "min": 50.0,
+    "max": 800.0,
+    "default": 600.0,
+    "name": "max-supply-system-1-47019",
+    "write": true
+  },
+  "47026": {
+    "title": "Own Heating Curve P1",
+    "info": "User defined heating curve point",
+    "unit": "\u00b0C",
+    "size": "s8",
+    "factor": 1,
+    "min": 5.0,
+    "max": 80.0,
+    "default": 45.0,
+    "name": "own-heating-curve-p1-47026",
+    "write": true
+  },
+  "47027": {
+    "title": "Point offset outdoor temp.",
+    "info": "Outdoor temperature point where the heat curve is offset",
+    "unit": "\u00b0C",
+    "size": "s8",
+    "factor": 1,
+    "min": -40.0,
+    "max": 30.0,
+    "default": 0.0,
+    "name": "point-offset-outdoor-temp-47027",
+    "write": true
+  },
+  "47028": {
+    "title": "Point offset",
+    "info": "Amount of offset at the point offset temperature",
+    "unit": "\u00b0C",
+    "size": "s8",
+    "factor": 1,
+    "min": -10.0,
+    "max": 10.0,
+    "default": 0.0,
+    "name": "point-offset-47028",
+    "write": true
+  },
+  "47032": {
+    "title": "External adjustment S1",
+    "info": "Change of the offset of the heat curve when closing the external adjustment input",
+    "size": "s8",
+    "factor": 1,
+    "min": -10.0,
+    "max": 10.0,
+    "default": 0.0,
+    "name": "external-adjustment-s1-47032",
+    "write": true
+  },
+  "47036": {
+    "title": "External adjustment with room sensor S1",
+    "info": "Room temperature setting when closing the external adjustment input",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "min": 50.0,
+    "max": 300.0,
+    "default": 200.0,
+    "name": "external-adjustment-with-room-sensor-s1-47036",
+    "write": true
+  },
+  "47041": {
+    "title": "Hot water comfort mode",
+    "info": "Setting in menu 2.2. 0=Economy,1=Normal,2=Luxury,4=Smart Control 0=Economy 1=Normal 2=Luxury",
+    "size": "s8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 4.0,
+    "default": 1.0,
+    "name": "hot-water-comfort-mode-47041",
+    "write": true,
+    "mappings": {
+      "0": "Economy",
+      "1": "Normal",
+      "2": "Luxury",
+      "4": "Smart Control"
+    }
+  },
+  "47043": {
+    "title": "Start temperature HW Luxury",
+    "info": "Start temperature for heating water",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "min": 50.0,
+    "max": 700.0,
+    "default": 520.0,
+    "name": "start-temperature-hw-luxury-47043",
+    "write": true
+  },
+  "47044": {
+    "title": "Start temperature HW Normal",
+    "info": "Start temperature for heating water",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "min": 50.0,
+    "max": 700.0,
+    "default": 490.0,
+    "name": "start-temperature-hw-normal-47044",
+    "write": true
+  },
+  "47045": {
+    "title": "Start temperature HW Economy",
+    "info": "Start temperature for heating water",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "min": 50.0,
+    "max": 700.0,
+    "default": 450.0,
+    "name": "start-temperature-hw-economy-47045",
+    "write": true
+  },
+  "47046": {
+    "title": "Stop temperature Periodic HW",
+    "info": "Temperature where hot water generation will stop",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "min": 550.0,
+    "max": 700.0,
+    "default": 550.0,
+    "name": "stop-temperature-periodic-hw-47046",
+    "write": true
+  },
+  "47047": {
+    "title": "Stop temperature HW Luxury",
+    "info": "Temperature where hot water generation will stop",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "min": 50.0,
+    "max": 700.0,
+    "default": 580.0,
+    "name": "stop-temperature-hw-luxury-47047",
+    "write": true
+  },
+  "47048": {
+    "title": "Stop temperature HW Normal",
+    "info": "Temperature where hot water generation will stop",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "min": 50.0,
+    "max": 700.0,
+    "default": 550.0,
+    "name": "stop-temperature-hw-normal-47048",
+    "write": true
+  },
+  "47049": {
+    "title": "Stop temperature HW Economy",
+    "info": "Temperature where hot water generation will stop",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "min": 50.0,
+    "max": 700.0,
+    "default": 510.0,
+    "name": "stop-temperature-hw-economy-47049",
+    "write": true
+  },
+  "47050": {
+    "title": "Periodic HW",
+    "info": "Activates the periodic hot water generation",
+    "size": "s8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 1.0,
+    "name": "periodic-hw-47050",
+    "write": true
+  },
+  "47051": {
+    "title": "Periodic HW Interval",
+    "info": "Interval between Periodic hot water sessions",
+    "unit": "days",
+    "size": "s8",
+    "factor": 1,
+    "min": 1.0,
+    "max": 90.0,
+    "default": 14.0,
+    "name": "periodic-hw-interval-47051",
+    "write": true
+  },
+  "47054": {
+    "title": "Run time HWC",
+    "info": "Run time for the hot water circulation system",
+    "unit": "min",
+    "size": "s8",
+    "factor": 1,
+    "min": 1.0,
+    "max": 60.0,
+    "default": 60.0,
+    "name": "run-time-hwc-47054",
+    "write": true
+  },
+  "47055": {
+    "title": "Still time HWC",
+    "info": "Still time for the hot water circulation system",
+    "unit": "min",
+    "size": "s8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 60.0,
+    "default": 0.0,
+    "name": "still-time-hwc-47055",
+    "write": true
+  },
+  "47131": {
+    "title": "Language",
+    "info": "Display language in the heat pump 0=English 1=Svenska 2=Deutsch 3=Francais 4=Espanol 5=Suomi 6=Lietuviu 7=Cesky 8=Polski 9=Nederlands 10=Norsk 11=Dansk 12=Eesti 13=Latviesu 16=Magyar",
+    "size": "s8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 21.0,
+    "default": 0.0,
+    "name": "language-47131",
+    "write": true,
+    "mappings": {
+      "0": "English",
+      "1": "Svenska",
+      "2": "Deutsch",
+      "3": "Francais",
+      "4": "Espanol",
+      "5": "Suomi",
+      "6": "Lietuviu",
+      "7": "Cesky",
+      "8": "Polski",
+      "9": "Nederlands",
+      "10": "Norsk",
+      "11": "Dansk",
+      "12": "Eesti",
+      "13": "Latviesu",
+      "16": "Magyar"
+    }
+  },
+  "47134": {
+    "title": "Period HW",
+    "unit": "min",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 180.0,
+    "default": 60.0,
+    "name": "period-hw-47134",
+    "write": true
+  },
+  "47135": {
+    "title": "Period Heat",
+    "unit": "min",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 180.0,
+    "default": 0.0,
+    "name": "period-heat-47135",
+    "write": true
+  },
+  "47137": {
+    "title": "Operational mode",
+    "info": "The operational mode of the heat pump 0=Auto 1=Manual 2=Add. heat only",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 2.0,
+    "default": 0.0,
+    "name": "operational-mode-47137",
+    "write": true,
+    "mappings": {
+      "0": "Auto",
+      "1": "Manual",
+      "2": "Add. heat only"
+    }
+  },
+  "47138": {
+    "title": "Operational mode heat medium pump",
+    "info": " 10=Intermittent 20=Continous 30=Economy 40=Auto",
+    "size": "u8",
+    "factor": 1,
+    "min": 10.0,
+    "max": 40.0,
+    "default": 40.0,
+    "name": "operational-mode-heat-medium-pump-47138",
+    "write": true,
+    "mappings": {
+      "10": "Intermittent",
+      "20": "Continous",
+      "30": "Economy",
+      "40": "Auto"
+    }
+  },
+  "47206": {
+    "title": "DM start heating",
+    "info": "The value the degree minutes needed to be reached for the pump to start heating",
+    "size": "s16",
+    "factor": 1,
+    "min": -1000.0,
+    "max": -30.0,
+    "default": -60.0,
+    "name": "dm-start-heating-47206",
+    "write": true
+  },
+  "47209": {
+    "title": "DM between add. steps",
+    "info": "The number of degree minutes between start of each electric addition step",
+    "size": "s16",
+    "factor": 1,
+    "name": "dm-between-add-steps-47209",
+    "write": true
+  },
+  "47214": {
+    "title": "Fuse",
+    "info": "Size of the fuse that the HP is connected to",
+    "unit": "A",
+    "size": "u16",
+    "factor": 1,
+    "min": 1.0,
+    "max": 400.0,
+    "default": 16.0,
+    "name": "fuse-47214",
+    "write": true
+  },
+  "47276": {
+    "title": "Floor drying",
+    "info": " 0=Off 1=On",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "floor-drying-47276",
+    "write": true
+  },
+  "47277": {
+    "title": "Floor drying period 7",
+    "info": "Days each period is active",
+    "unit": "days",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 30.0,
+    "default": 2.0,
+    "name": "floor-drying-period-7-47277",
+    "write": true
+  },
+  "47278": {
+    "title": "Floor drying period 6",
+    "info": "Days each period is active",
+    "unit": "days",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 30.0,
+    "default": 2.0,
+    "name": "floor-drying-period-6-47278",
+    "write": true
+  },
+  "47279": {
+    "title": "Floor drying period 5",
+    "info": "Days each period is active",
+    "unit": "days",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 30.0,
+    "default": 2.0,
+    "name": "floor-drying-period-5-47279",
+    "write": true
+  },
+  "47280": {
+    "title": "Floor drying period 4",
+    "info": "Days each period is active",
+    "unit": "days",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 30.0,
+    "default": 3.0,
+    "name": "floor-drying-period-4-47280",
+    "write": true
+  },
+  "47281": {
+    "title": "Floor drying period 3",
+    "info": "Days each period is active",
+    "unit": "days",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 30.0,
+    "default": 2.0,
+    "name": "floor-drying-period-3-47281",
+    "write": true
+  },
+  "47282": {
+    "title": "Floor drying period 2",
+    "info": "Days each period is active",
+    "unit": "days",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 30.0,
+    "default": 2.0,
+    "name": "floor-drying-period-2-47282",
+    "write": true
+  },
+  "47283": {
+    "title": "Floor drying period 1",
+    "info": "Days each period is active",
+    "unit": "days",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 30.0,
+    "default": 2.0,
+    "name": "floor-drying-period-1-47283",
+    "write": true
+  },
+  "47284": {
+    "title": "Floor drying temp. 7",
+    "info": "Supply temperature each period",
+    "unit": "\u00b0C",
+    "size": "u8",
+    "factor": 1,
+    "min": 15.0,
+    "max": 70.0,
+    "default": 20.0,
+    "name": "floor-drying-temp-7-47284",
+    "write": true
+  },
+  "47285": {
+    "title": "Floor drying temp. 6",
+    "info": "Supply temperature each period",
+    "unit": "\u00b0C",
+    "size": "u8",
+    "factor": 1,
+    "min": 15.0,
+    "max": 70.0,
+    "default": 30.0,
+    "name": "floor-drying-temp-6-47285",
+    "write": true
+  },
+  "47286": {
+    "title": "Floor drying temp. 5",
+    "info": "Supply temperature each period",
+    "unit": "\u00b0C",
+    "size": "u8",
+    "factor": 1,
+    "min": 15.0,
+    "max": 70.0,
+    "default": 40.0,
+    "name": "floor-drying-temp-5-47286",
+    "write": true
+  },
+  "47287": {
+    "title": "Floor drying temp. 4",
+    "info": "Supply temperature each period",
+    "unit": "\u00b0C",
+    "size": "u8",
+    "factor": 1,
+    "min": 15.0,
+    "max": 70.0,
+    "default": 45.0,
+    "name": "floor-drying-temp-4-47287",
+    "write": true
+  },
+  "47288": {
+    "title": "Floor drying temp. 3",
+    "info": "Supply temperature each period",
+    "unit": "\u00b0C",
+    "size": "u8",
+    "factor": 1,
+    "min": 15.0,
+    "max": 70.0,
+    "default": 40.0,
+    "name": "floor-drying-temp-3-47288",
+    "write": true
+  },
+  "47289": {
+    "title": "Floor drying temp. 2",
+    "info": "Supply temperature each period",
+    "unit": "\u00b0C",
+    "size": "u8",
+    "factor": 1,
+    "min": 15.0,
+    "max": 70.0,
+    "default": 30.0,
+    "name": "floor-drying-temp-2-47289",
+    "write": true
+  },
+  "47290": {
+    "title": "Floor drying temp. 1",
+    "info": "Supply temperature each period",
+    "unit": "\u00b0C",
+    "size": "u8",
+    "factor": 1,
+    "min": 15.0,
+    "max": 70.0,
+    "default": 20.0,
+    "name": "floor-drying-temp-1-47290",
+    "write": true
+  },
+  "47300": {
+    "title": "DOT",
+    "info": "Dimensioning outdoor temperature",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "min": -400.0,
+    "max": 200.0,
+    "default": -180.0,
+    "name": "dot-47300",
+    "write": true
+  },
+  "47301": {
+    "title": "delta T at DOT",
+    "info": "Delta T (BT12-BT3)at dimensioning outdoor temperature",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "min": 10.0,
+    "max": 250.0,
+    "default": 100.0,
+    "name": "delta-t-at-dot-47301",
+    "write": true
+  },
+  "47323": {
+    "title": "Step controlled add. start DM",
+    "info": "DM where the first step of step controlled add. starts",
+    "size": "s16",
+    "factor": 1,
+    "min": -2000.0,
+    "max": -30.0,
+    "default": -400.0,
+    "name": "step-controlled-add-start-dm-47323",
+    "write": true
+  },
+  "47324": {
+    "title": "Step controlled add. diff. DM",
+    "info": "Difference in DM of each step in the step controlled add.",
+    "size": "s16",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1000.0,
+    "default": 100.0,
+    "name": "step-controlled-add-diff-dm-47324",
+    "write": true
+  },
+  "47326": {
+    "title": "Step controlled add. mode",
+    "info": "Binary or linear stepping method. 0=Linear 1=Binary",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "step-controlled-add-mode-47326",
+    "write": true,
+    "mappings": {
+      "0": "Linear",
+      "1": "Binary"
+    }
+  },
+  "47335": {
+    "title": "Time betw. switch heat/cool",
+    "info": "Time between switching from heating to cooling or vice versa.",
+    "unit": "h",
+    "size": "s8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 48.0,
+    "default": 2.0,
+    "name": "time-betw-switch-heat-cool-47335",
+    "write": true
+  },
+  "47336": {
+    "title": "Heat at room under temp.",
+    "info": "This value indicates how many degrees under set room temp heating will be allowed",
+    "unit": "\u00b0C",
+    "size": "s8",
+    "factor": 10,
+    "min": 5.0,
+    "max": 100.0,
+    "default": 10.0,
+    "name": "heat-at-room-under-temp-47336",
+    "write": true
+  },
+  "47337": {
+    "title": "Cool at room over temp.",
+    "info": "This value indicates how many degrees over set room temp cooling will be allowed",
+    "unit": "\u00b0C",
+    "size": "s8",
+    "factor": 10,
+    "min": 5.0,
+    "max": 100.0,
+    "default": 30.0,
+    "name": "cool-at-room-over-temp-47337",
+    "write": true
+  },
+  "47340": {
+    "title": "Cooling with room sensor",
+    "info": "Enables use of room sensor together with cooling 0=Off 1=On",
+    "size": "u8",
+    "factor": 10,
+    "min": 0.0,
+    "max": 18.0,
+    "default": 0.0,
+    "name": "cooling-with-room-sensor-47340",
+    "write": true
+  },
+  "47343": {
+    "title": "Start Active Cooling DM",
+    "info": "Value the degree minutes have to reach to start active cooling",
+    "size": "s16",
+    "factor": 1,
+    "min": 10.0,
+    "max": 300.0,
+    "default": 90.0,
+    "name": "start-active-cooling-dm-47343",
+    "write": true
+  },
+  "47370": {
+    "title": "Allow Additive Heating",
+    "info": "Whether to allow additive heating (only valid for operational mode Manual)",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 1.0,
+    "name": "allow-additive-heating-47370",
+    "write": true
+  },
+  "47371": {
+    "title": "Allow Heating",
+    "info": "Whether to allow heating (only valid for operational mode Manual or Add. heat only)",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 1.0,
+    "name": "allow-heating-47371",
+    "write": true
+  },
+  "47372": {
+    "title": "Allow Cooling",
+    "info": "Whether to allow cooling (only valid for operational mode Manual or Add. heat only)",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 1.0,
+    "name": "allow-cooling-47372",
+    "write": true
+  },
+  "47374": {
+    "title": "Start Temperature Cooling",
+    "info": "Start temperature for cooling, as set in menu 4.9.2 0=Off 1=On",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "min": -200.0,
+    "max": 400.0,
+    "default": 250.0,
+    "name": "start-temperature-cooling-47374",
+    "write": true
+  },
+  "47375": {
+    "title": "Stop Temperature Heating",
+    "info": "Stop temperature for heating, as set in menu 4.9.2",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "min": -200.0,
+    "max": 400.0,
+    "default": 170.0,
+    "name": "stop-temperature-heating-47375",
+    "write": true
+  },
+  "47376": {
+    "title": "Stop Temperature Additive",
+    "info": "Stop temperature for additive, as set in menu 4.9.2",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "min": -250.0,
+    "max": 400.0,
+    "default": 150.0,
+    "name": "stop-temperature-additive-47376",
+    "write": true
+  },
+  "47377": {
+    "title": "Outdoor Filter Time",
+    "info": " 12=12 Hours 24=24 Hours",
+    "unit": "h",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 48.0,
+    "default": 24.0,
+    "name": "outdoor-filter-time-47377",
+    "write": true,
+    "mappings": {
+      "12": "12 Hours",
+      "24": "24 Hours"
+    }
+  },
+  "47378": {
+    "title": "Max diff. comp.",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "min": 10.0,
+    "max": 250.0,
+    "default": 100.0,
+    "name": "max-diff-comp-47378",
+    "write": true
+  },
+  "47379": {
+    "title": "Max diff. add.",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "min": 10.0,
+    "max": 240.0,
+    "default": 70.0,
+    "name": "max-diff-add-47379",
+    "write": true
+  },
+  "47384": {
+    "title": "Date format",
+    "info": " 1=DD-MM-YY 2=YY-MM-DD",
+    "size": "u8",
+    "factor": 1,
+    "min": 1.0,
+    "max": 2.0,
+    "default": 1.0,
+    "name": "date-format-47384",
+    "write": true,
+    "mappings": {
+      "1": "DD-MM-YY",
+      "2": "YY-MM-DD"
+    }
+  },
+  "47385": {
+    "title": "Time format",
+    "info": " 12=12 hours 24=24 Hours",
+    "size": "u8",
+    "factor": 1,
+    "min": 12.0,
+    "max": 24.0,
+    "default": 24.0,
+    "name": "time-format-47385",
+    "write": true,
+    "mappings": {
+      "12": "12 hours",
+      "24": "24 hours"
+    }
+  },
+  "47387": {
+    "title": "HW production",
+    "info": "Activates hot water production where applicable 0=Off 1=On",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "hw-production-47387",
+    "write": true
+  },
+  "47388": {
+    "title": "Alarm lower room temp.",
+    "info": "Lowers the room temperature during red light alarms to notify the occupants of the building that something is the matter 0=Off 1=On",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "alarm-lower-room-temp-47388",
+    "write": true
+  },
+  "47389": {
+    "title": "Alarm lower HW temp.",
+    "info": "Lowers the hot water temperature during red light alarms to notify the occupants of the building that something is the matter 0=Off 1=On",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 1.0,
+    "name": "alarm-lower-hw-temp-47389",
+    "write": true
+  },
+  "47394": {
+    "title": "Use room sensor S1",
+    "info": "When activated the system uses the room sensor 0=Off 1=On",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "use-room-sensor-s1-47394",
+    "write": true
+  },
+  "47398": {
+    "title": "Room sensor setpoint S1",
+    "info": "Sets the room temperature setpoint for the system",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "min": 50.0,
+    "max": 300.0,
+    "default": 200.0,
+    "name": "room-sensor-setpoint-s1-47398",
+    "write": true
+  },
+  "47402": {
+    "title": "Room sensor factor S1",
+    "info": "Setting of how much the difference between set and actual room temperature should affect the supply temperature.",
+    "size": "u8",
+    "factor": 10,
+    "min": 0.0,
+    "max": 60.0,
+    "default": 10.0,
+    "name": "room-sensor-factor-s1-47402",
+    "write": true
+  },
+  "47442": {
+    "title": "preset flow clim. sys.",
+    "info": "Preset flow setting for climate system. 0 = manual setting, 1 = radiator, 2 = floor heating, 3 = radiator + floor heating.",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 3.0,
+    "default": 1.0,
+    "name": "preset-flow-clim-sys-47442",
+    "write": true,
+    "mappings": {
+      "0": "manual setting",
+      "1": "radiator",
+      "2": "floor heating",
+      "3": "radiator + floor heating"
+    }
+  },
+  "47613": {
+    "title": "Max Internal Add",
+    "info": "Maximum allowed steps for the internally connected addition.",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 7.0,
+    "default": 3.0,
+    "name": "max-internal-add-47613",
+    "write": true
+  },
+  "47614": {
+    "title": "Int. connected add. mode",
+    "info": "Binary or linear stepping method for the internally connected external addition. 0=Linear 1=Binary",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "int-connected-add-mode-47614",
+    "write": true
+  },
+  "48043": {
+    "title": "Holiday - Activated",
+    "info": "0=inactive, 10=active",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 10.0,
+    "default": 0.0,
+    "name": "holiday-activated-48043",
+    "write": true,
+    "mappings": {
+      "10": "active"
+    }
+  },
+  "48072": {
+    "title": "DM diff start add.",
+    "info": "The value below the last compressor step the degree minutes needed to be reached for the pump to start electric addition",
+    "size": "s16",
+    "factor": 1,
+    "name": "dm-diff-start-add-48072",
+    "write": true
+  },
+  "48074": {
+    "title": "Cool/Heat Sensor Set Point",
+    "info": "Set point for change between cooling and heating when using the cool/heat sensor",
+    "size": "s16",
+    "factor": 10,
+    "min": 50.0,
+    "max": 400.0,
+    "default": 210.0,
+    "name": "cool-heat-sensor-set-point-48074",
+    "write": true
+  },
+  "48085": {
+    "title": "Heat medium pump manual speed",
+    "info": "Heat medium pump speed if manual",
+    "unit": "%",
+    "size": "s8",
+    "factor": 1,
+    "min": 1.0,
+    "max": 100.0,
+    "default": 70.0,
+    "name": "heat-medium-pump-manual-speed-48085",
+    "write": true
+  },
+  "48130": {
+    "title": "Manual heat medium pump speed",
+    "info": "Manual heat medium pump speed?",
+    "unit": "%",
+    "size": "s8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "manual-heat-medium-pump-speed-48130",
+    "write": true
+  },
+  "48132": {
+    "title": "Temporary Lux",
+    "info": "0=Off, 1=3h, 2=6h, 3=12h, 4=One time increase",
+    "size": "s8",
+    "factor": 1,
+    "name": "temporary-lux-48132",
+    "write": true,
+    "mappings": {
+      "0": "Off",
+      "1": "3h",
+      "2": "6h",
+      "3": "12h",
+      "4": "One time increase"
+    }
+  },
+  "48177": {
+    "title": "Min cooling supply temp S1",
+    "info": "Minimum allowed supply temperature during cooling",
+    "unit": "\u00b0C",
+    "size": "s8",
+    "factor": 1,
+    "min": -5.0,
+    "max": 30.0,
+    "default": 18.0,
+    "name": "min-cooling-supply-temp-s1-48177",
+    "write": true
+  },
+  "48181": {
+    "title": "Own Cooling Curve P3",
+    "info": "User defined cooling curve point",
+    "unit": "\u00b0C",
+    "size": "s8",
+    "factor": 1,
+    "min": -5.0,
+    "max": 40.0,
+    "default": 20.0,
+    "name": "own-cooling-curve-p3-48181",
+    "write": true
+  },
+  "48185": {
+    "title": "Own Cooling Curve P5",
+    "info": "User defined cooling curve point",
+    "unit": "\u00b0C",
+    "size": "s8",
+    "factor": 1,
+    "min": -5.0,
+    "max": 40.0,
+    "default": 20.0,
+    "name": "own-cooling-curve-p5-48185",
+    "write": true
+  },
+  "48189": {
+    "title": "Cooling use mix. valve S1",
+    "info": "Sets if the valve should be used or not in cooling mode. Only applies if cooling is available in the system",
+    "size": "u8",
+    "factor": 1,
+    "name": "cooling-use-mix-valve-s1-48189",
+    "write": true
+  },
+  "48214": {
+    "title": "Cooling delta temp. at 20\u00b0C",
+    "info": "Delta Temperature at 20\u00b0C. Used to control charge pump speed",
+    "unit": "\u00b0C",
+    "size": "s8",
+    "factor": 1,
+    "min": 3.0,
+    "max": 10.0,
+    "default": 3.0,
+    "name": "cooling-delta-temp-at-20degc-48214",
+    "write": true
+  },
+  "48215": {
+    "title": "Cooling delta temp. at 40\u00b0C",
+    "info": "Delta Temperature at 40\u00b0C. Used to control charge pump speed",
+    "unit": "\u00b0C",
+    "size": "s8",
+    "factor": 1,
+    "min": 3.0,
+    "max": 20.0,
+    "default": 6.0,
+    "name": "cooling-delta-temp-at-40degc-48215",
+    "write": true
+  },
+  "48235": {
+    "title": "Operational mode charge pump S1",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 1.0,
+    "name": "operational-mode-charge-pump-s1-48235",
+    "write": true
+  },
+  "48279": {
+    "title": "Position of Addition",
+    "info": "Addition before QN10:0, Addition after QN10:1",
+    "size": "u8",
+    "factor": 1,
+    "name": "position-of-addition-48279",
+    "write": true
+  },
+  "48282": {
+    "title": "SG Ready heating",
+    "info": "Sets whether or not SG Ready should affect heating",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 1.0,
+    "name": "sg-ready-heating-48282",
+    "write": true
+  },
+  "48283": {
+    "title": "SG Ready cooling",
+    "info": "Sets whether or not SG Ready should affect cooling",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 1.0,
+    "name": "sg-ready-cooling-48283",
+    "write": true
+  },
+  "48284": {
+    "title": "SG Ready hot water",
+    "info": "Sets whether or not SG Ready should affect hot water",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 1.0,
+    "name": "sg-ready-hot-water-48284",
+    "write": true
+  },
+  "48285": {
+    "title": "SG Ready pool",
+    "info": "Sets whether or not SG Ready should affect pool",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 1.0,
+    "name": "sg-ready-pool-48285",
+    "write": true
+  },
+  "48374": {
+    "title": "Speed circ.pump Heat Slave 1",
+    "unit": "%",
+    "size": "u8",
+    "factor": 1,
+    "min": 1.0,
+    "max": 100.0,
+    "default": 70.0,
+    "name": "speed-circ-pump-heat-slave-1-48374",
+    "write": true
+  },
+  "48382": {
+    "title": "Op mode circ.pump Heat Slave 1",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 1.0,
+    "name": "op-mode-circ-pump-heat-slave-1-48382",
+    "write": true
+  },
+  "48390": {
+    "title": "Speed circ.pump HW Slave 1",
+    "unit": "%",
+    "size": "u8",
+    "factor": 1,
+    "min": 1.0,
+    "max": 100.0,
+    "default": 70.0,
+    "name": "speed-circ-pump-hw-slave-1-48390",
+    "write": true
+  },
+  "48398": {
+    "title": "Op mode circ.pump HW Slave 1",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 1.0,
+    "name": "op-mode-circ-pump-hw-slave-1-48398",
+    "write": true
+  },
+  "48422": {
+    "title": "Speed circ.pump Cooling Slave 1",
+    "unit": "%",
+    "size": "u8",
+    "factor": 1,
+    "min": 1.0,
+    "max": 100.0,
+    "default": 70.0,
+    "name": "speed-circ-pump-cooling-slave-1-48422",
+    "write": true
+  },
+  "48431": {
+    "title": "Op mode circ.pump Cooling Slave 1",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 1.0,
+    "name": "op-mode-circ-pump-cooling-slave-1-48431",
+    "write": true
+  },
+  "48440": {
+    "title": "Speed circ.pump Waiting Slave 1",
+    "unit": "%",
+    "size": "u8",
+    "factor": 1,
+    "min": 1.0,
+    "max": 100.0,
+    "default": 30.0,
+    "name": "speed-circ-pump-waiting-slave-1-48440",
+    "write": true
+  },
+  "48467": {
+    "title": "EB101 Max charge pump reg speed",
+    "info": "Max charge pump reg speed",
+    "unit": "%",
+    "size": "u8",
+    "factor": 1,
+    "min": 80.0,
+    "max": 100.0,
+    "default": 100.0,
+    "name": "eb101-max-charge-pump-reg-speed-48467",
+    "write": true
+  },
+  "48475": {
+    "title": "Operational mode charge pump in cooling mode S1",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 1.0,
+    "name": "operational-mode-charge-pump-in-cooling-mode-s1-48475",
+    "write": true
+  },
+  "48604": {
+    "title": "Heating use mix. valve S1",
+    "info": "Sets if the valve should be used or not in heating mode. Only applies if cooling is available in the system. Otherwise the valve is always used in heating mode.",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 1.0,
+    "name": "heating-use-mix-valve-s1-48604",
+    "write": true
+  },
+  "48731": {
+    "title": "Cool curve S1",
+    "info": "Cool curve, see manual for more information",
+    "size": "s8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 9.0,
+    "default": 0.0,
+    "name": "cool-curve-s1-48731",
+    "write": true
+  },
+  "48732": {
+    "title": "Cool offset S8",
+    "info": "Offset of the cool curve, see manual for more information ",
+    "size": "s8",
+    "factor": 1,
+    "min": -10.0,
+    "max": 10.0,
+    "default": 0.0,
+    "name": "cool-offset-s8-48732",
+    "write": true
+  },
+  "48733": {
+    "title": "Cool offset S7",
+    "info": "Offset of the cool curve, see manual for more information ",
+    "size": "s8",
+    "factor": 1,
+    "min": -10.0,
+    "max": 10.0,
+    "default": 0.0,
+    "name": "cool-offset-s7-48733",
+    "write": true
+  },
+  "48734": {
+    "title": "Cool offset S6",
+    "info": "Offset of the cool curve, see manual for more information ",
+    "size": "s8",
+    "factor": 1,
+    "min": -10.0,
+    "max": 10.0,
+    "default": 0.0,
+    "name": "cool-offset-s6-48734",
+    "write": true
+  },
+  "48735": {
+    "title": "Cool offset S5",
+    "info": "Offset of the cool curve, see manual for more information ",
+    "size": "s8",
+    "factor": 1,
+    "min": -10.0,
+    "max": 10.0,
+    "default": 0.0,
+    "name": "cool-offset-s5-48735",
+    "write": true
+  },
+  "48736": {
+    "title": "Cool offset S4",
+    "info": "Offset of the cool curve, see manual for more information ",
+    "size": "s8",
+    "factor": 1,
+    "min": -10.0,
+    "max": 10.0,
+    "default": 0.0,
+    "name": "cool-offset-s4-48736",
+    "write": true
+  },
+  "48737": {
+    "title": "Cool offset S3",
+    "info": "Offset of the cool curve, see manual for more information ",
+    "size": "s8",
+    "factor": 1,
+    "min": -10.0,
+    "max": 10.0,
+    "default": 0.0,
+    "name": "cool-offset-s3-48737",
+    "write": true
+  },
+  "48738": {
+    "title": "Cool offset S2",
+    "info": "Offset of the cool curve, see manual for more information ",
+    "size": "s8",
+    "factor": 1,
+    "min": -10.0,
+    "max": 10.0,
+    "default": 0.0,
+    "name": "cool-offset-s2-48738",
+    "write": true
+  },
+  "48739": {
+    "title": "Cool offset S1",
+    "info": "Offset of the cool curve, see manual for more information ",
+    "size": "s8",
+    "factor": 1,
+    "min": -10.0,
+    "max": 10.0,
+    "default": 0.0,
+    "name": "cool-offset-s1-48739",
+    "write": true
+  },
+  "48740": {
+    "title": "Own Cooling Curve P4",
+    "info": "User defined cooling curve point",
+    "unit": "\u00b0C",
+    "size": "s8",
+    "factor": 1,
+    "min": -5.0,
+    "max": 40.0,
+    "default": 20.0,
+    "name": "own-cooling-curve-p4-48740",
+    "write": true
+  },
+  "48741": {
+    "title": "Own Cooling Curve P2",
+    "info": "User defined cooling curve point",
+    "unit": "\u00b0C",
+    "size": "s8",
+    "factor": 1,
+    "min": -5.0,
+    "max": 40.0,
+    "default": 20.0,
+    "name": "own-cooling-curve-p2-48741",
+    "write": true
+  },
+  "48742": {
+    "title": "Own Cooling Curve P1",
+    "info": "User defined cooling curve point",
+    "unit": "\u00b0C",
+    "size": "s8",
+    "factor": 1,
+    "min": -5.0,
+    "max": 40.0,
+    "default": 20.0,
+    "name": "own-cooling-curve-p1-48742",
+    "write": true
+  },
+  "48743": {
+    "title": "Hot water high power mode",
+    "size": "s8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "hot-water-high-power-mode-48743",
+    "write": true
+  },
+  "48785": {
+    "title": "Room sensor cool setpoint S1",
+    "info": "Sets the room temperature setpoint for the system in cooling mode",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "min": 50.0,
+    "max": 350.0,
+    "default": 250.0,
+    "name": "room-sensor-cool-setpoint-s1-48785",
+    "write": true
+  },
+  "48793": {
+    "title": "Room sensor cool factor S1",
+    "info": "Setting of how much the difference between set and actual room temperature should affect the supply temperature in cooling mode.",
+    "size": "u8",
+    "factor": 10,
+    "min": 0.0,
+    "max": 60.0,
+    "default": 10.0,
+    "name": "room-sensor-cool-factor-s1-48793",
+    "write": true
+  },
+  "48794": {
+    "title": "RH set value",
+    "info": "RH set value",
+    "unit": "%",
+    "size": "s8",
+    "factor": 1,
+    "min": 30.0,
+    "max": 90.0,
+    "default": 60.0,
+    "name": "rh-set-value-48794",
+    "write": true
+  },
+  "48810": {
+    "title": "Prevent humidity S8 ",
+    "info": " ",
+    "size": "s8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "prevent-humidity-s8-48810",
+    "write": true
+  },
+  "48811": {
+    "title": "Prevent humidity S7",
+    "info": " ",
+    "size": "s8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "prevent-humidity-s7-48811",
+    "write": true
+  },
+  "48812": {
+    "title": "Prevent humidity S6",
+    "info": " ",
+    "size": "s8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "prevent-humidity-s6-48812",
+    "write": true
+  },
+  "48813": {
+    "title": "Prevent humidity S5",
+    "info": " ",
+    "size": "s8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "prevent-humidity-s5-48813",
+    "write": true
+  },
+  "48814": {
+    "title": "Prevent humidity S4",
+    "info": " ",
+    "size": "s8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "prevent-humidity-s4-48814",
+    "write": true
+  },
+  "48815": {
+    "title": "Prevent humidity S3",
+    "info": " ",
+    "size": "s8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "prevent-humidity-s3-48815",
+    "write": true
+  },
+  "48816": {
+    "title": "Prevent humidity S2",
+    "info": " ",
+    "size": "s8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "prevent-humidity-s2-48816",
+    "write": true
+  },
+  "48817": {
+    "title": "Prevent humidity S1",
+    "info": " ",
+    "size": "s8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "prevent-humidity-s1-48817",
+    "write": true
+  },
+  "48926": {
+    "title": "Humidity factor",
+    "info": "Setting of how much the difference between set and actual room humidity should affect the supply temperature.",
+    "size": "u8",
+    "factor": 10,
+    "min": 5.0,
+    "max": 100.0,
+    "default": 10.0,
+    "name": "humidity-factor-48926",
+    "write": true
+  },
+  "48927": {
+    "title": "Humidity cool factor",
+    "info": "Setting of how much the difference between set and actual room humidity should affect the supply temperature in cooling mode.",
+    "size": "u8",
+    "factor": 10,
+    "name": "humidity-cool-factor-48927",
+    "write": true
+  },
+  "48931": {
+    "title": "EME PV Panel Affect Heating",
+    "info": "0=not affecting, 1=affecting",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "eme-pv-panel-affect-heating-48931",
+    "write": true,
+    "mappings": {
+      "0": "not affecting",
+      "1": "affecting"
+    }
+  },
+  "48932": {
+    "title": "EME PV Panel Affect Hot Water",
+    "info": "0=not affecting, 1=affecting",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "eme-pv-panel-affect-hot-water-48932",
+    "write": true
+  },
+  "48968": {
+    "title": "FLM 1 set point, cooling",
+    "info": "Set point, cooling, when using FLM cooling",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "min": 50.0,
+    "max": 400.0,
+    "default": 210.0,
+    "name": "flm-1-set-point-cooling-48968",
+    "write": true
+  },
+  "48970": {
+    "title": "Outdoor Air Mixing function",
+    "info": "Activates the Outdoor Air Mixing function.",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "outdoor-air-mixing-function-48970",
+    "write": true
+  },
+  "48976": {
+    "title": "Smart home room control",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "smart-home-room-control-48976",
+    "write": true
+  },
+  "49289": {
+    "title": "Ground water pump speed control ",
+    "info": " ",
+    "size": "s8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "ground-water-pump-speed-control-49289",
+    "write": true
+  },
+  "49297": {
+    "title": "EME20 Activated",
+    "info": "0=not activated, 1=activated",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "eme20-activated-49297",
+    "write": true,
+    "mappings": {
+      "0": "not activated",
+      "1": "activated"
+    }
+  }
+}
