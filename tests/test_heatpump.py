@@ -9,13 +9,13 @@ class HeatpumpTestCase(unittest.TestCase):
         self.heat_pump = HeatPump(Model.F1255)
         self.heat_pump.initialize()
 
-        self.assertGreater(len(self.heat_pump._id_to_coil), 100)
+        self.assertGreater(len(self.heat_pump._address_to_coil), 100)
 
     def test_get_coil_by_returns_same(self):
         coil_address = 40004
 
-        a = self.heat_pump.get_coil_by_id(coil_address)
-        b = self.heat_pump.get_coil_by_id(str(coil_address))
+        a = self.heat_pump.get_coil_by_address(coil_address)
+        b = self.heat_pump.get_coil_by_address(str(coil_address))
 
         self.assertEqual(coil_address, a.address)
 
@@ -27,7 +27,7 @@ class HeatpumpTestCase(unittest.TestCase):
 
     def test_listener(self):
         mock = Mock()
-        coil = self.heat_pump.get_coil_by_id(40004)
+        coil = self.heat_pump.get_coil_by_address(40004)
         self.heat_pump.subscribe(self.heat_pump.COIL_UPDATE_EVENT, mock)
 
         mock.assert_not_called()
@@ -38,7 +38,7 @@ class HeatpumpTestCase(unittest.TestCase):
 
     def test_listener_with_exception(self):
         mock = Mock(side_effect=Exception("Test exception that needs to be logged"))
-        coil = self.heat_pump.get_coil_by_id(40004)
+        coil = self.heat_pump.get_coil_by_address(40004)
         self.heat_pump.subscribe(self.heat_pump.COIL_UPDATE_EVENT, mock)
 
         self.heat_pump.notify_coil_update(

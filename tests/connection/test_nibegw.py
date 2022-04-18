@@ -17,7 +17,7 @@ class TestNibeGW(TestCase):
         self.nibegw.connection_made(self.transport)
 
     def test_read_coil(self):
-        coil = self.heatpump.get_coil_by_id(43424)
+        coil = self.heatpump.get_coil_by_address(43424)
         loop = asyncio.get_event_loop_policy().get_event_loop()
 
         async def send_receive():
@@ -37,7 +37,7 @@ class TestNibeGW(TestCase):
         )
 
     def test_write_coil(self):
-        coil = self.heatpump.get_coil_by_id(48132)
+        coil = self.heatpump.get_coil_by_address(48132)
         coil.value = "One time increase"
         loop = asyncio.get_event_loop_policy().get_event_loop()
 

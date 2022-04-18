@@ -62,11 +62,11 @@ class Coil:
         self._value = None
 
     @property
-    def value(self):
+    def value(self) -> Union[int, float, str]:
         return self._value
 
     @value.setter
-    def value(self, value):
+    def value(self, value: Union[int, float, str]):
         assert (
             self.mappings is None or value in self.reverse_mappings
         ), f"Provided value {value} is not in {self.reverse_mappings.keys()}"
