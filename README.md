@@ -1,5 +1,5 @@
 # Nibe library
-Nibe library for communication with Nibe heatpumps.
+Library for communication with Nibe heatpumps.
 
 Initially supports only RS485 communication via NibeGW developed by Pauli Anttila for [Openhab's integration](https://www.openhab.org/addons/bindings/nibeheatpump/).
 
