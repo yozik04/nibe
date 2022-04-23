@@ -90,13 +90,13 @@ class NibeGW(asyncio.DatagramProtocol):
             return coil
 
     async def write_coil(self, coil: Coil, timeout: int = 1) -> bool:
-        assert coil.write, f"Coil {coil.name} is not writable"
+        assert coil.is_writable, f"Coil {coil.name} is not writable"
         assert coil.value is not None
         async with self._send_lock:
             data = WriteRequest.build(
                 dict(
                     fields=dict(
-                        value=dict(coil_address=coil.address, value=coil.encoded_value)
+                        value=dict(coil_address=coil.address, value=coil.raw_value)
                     )
                 )
             )
@@ -121,7 +121,7 @@ class NibeGW(asyncio.DatagramProtocol):
             return
 
         try:
-            coil.value = coil.decode(raw_value)
+            coil.raw_value = raw_value
             logger.debug(f"{coil.name}: {coil.value}")
             self._heatpump.notify_coil_update(coil)
         except DecodeException as e:
