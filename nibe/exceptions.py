@@ -12,3 +12,7 @@ class EncodeException(NibeException):
 
 class CoilWriteException(NibeException):
     pass
+
+
+class CoilReadException(NibeException):
+    pass

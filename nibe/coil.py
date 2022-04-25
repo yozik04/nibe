@@ -99,12 +99,12 @@ class Coil:
             value = value.upper()
             assert (
                 value in self.reverse_mappings
-            ), f"Provided value {value} is not in {self.reverse_mappings.keys()}"
+            ), f"Provided value '{value}' is not in {self.reverse_mappings.keys()} for {self.name}"
 
             self._value = value
             return
 
-        assert isinstance(value, (int, float)), f"Provided value {value} is invalid type (int and float are supported)"
+        assert isinstance(value, (int, float)), f"Provided value '{value}' is invalid type (int and float are supported) for {self.name}"
 
         self.check_value_bounds(value)
 
