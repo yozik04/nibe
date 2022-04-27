@@ -5,8 +5,11 @@ from construct import (Array, Bytes, Checksum, Const, Enum, FixedSized, Flag, In
                        Int16ul, RawCopy, Struct, Switch, this,)
 
 
-def xor8(data: bytes):
-    return reduce(xor, data)
+def xor8(data: bytes) -> int:
+    chksum = reduce(xor, data)
+    if chksum == 0x5c:
+        chksum = 0xc5
+    return chksum
 
 
 # fmt: off

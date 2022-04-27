@@ -20,6 +20,12 @@ class MessageResponseParsingTestCase(unittest.TestCase):
             ChecksumError, self._parse_hexlified_raw_message, "5c00206a060cb901000000f9"
         )
 
+    def test_parse_multiple_5c_checksum(self):
+        data = self._parse_hexlified_raw_message("5c00206850449c2d00489cf4014c9c56014d9cf8014e9cc4014f9c4b00509c2800619cef00fda700004ea80a0080a80000ada90000afa9000004bc000067be0000a3b7010063befd006d9cf8006e9cff00eeacc800c5")
+        self.assertEqual(data.address, "MODBUS40")
+        self.assertEqual(data.cmd, "MODBUS_DATA_MSG")
+        self.assertIsInstance(data.data, list)
+
     def test_parse_multiple_read_request(self):
         data = self._parse_hexlified_raw_message(
             "5c00206850449c9600489c49014c9c21014d9cb4014e9c8d014f9c2401509c0d01619ce400fda700004ea80"
