@@ -83,3 +83,12 @@ sudo tcpreplay --intf1=eth0 nibe-9999rw.pcap
 ```
 
 You will need to replace IP addresses for rewrite and Mac address of new recipient device
+
+## Scratchpad
+
+```bash
+sudo iptables -t mangle -A PREROUTING -i eth0 -m udp -p udp --dport 9999 -j TEE --gateway 127.0.0.2
+???
+sudo iptables -t nat -A PREROUTING -p udp -i lo0 --dport 9999 -j DNAT --to 192.168.5.197:9999
+
+```

@@ -2,6 +2,7 @@ import asyncio
 import logging
 import socket
 from binascii import hexlify
+from construct import ChecksumError
 
 from nibe.coil import Coil
 from nibe.exceptions import DecodeException, NibeException, CoilWriteException, CoilReadException
@@ -12,6 +13,7 @@ logger = logging.getLogger("nibe").getChild(__name__)
 
 
 class NibeGW(asyncio.DatagramProtocol):
+    DEFAULT_TIMEOUT = 5
     def __init__(
         self,
         heatpump: HeatPump,
@@ -66,15 +68,14 @@ class NibeGW(asyncio.DatagramProtocol):
                     self._write_future.set_result(msg.fields.value.data.result)
             else:
                 logger.debug(f"Unknown command {cmd}")
+        except ChecksumError:
+            logger.warning(f"Ignoring packet from {addr} due to checksum error: {hexlify(data)}")
         except NibeException as e:
             logger.error(f"Failed handling packet from {addr}: {e}")
         except Exception as e:
-            logger.exception(
-                f"Unexpected exception during parsing packet data '{hexlify(data)}' from {addr}",
-                e,
-            )
+            logger.exception(f"Unexpected exception during parsing packet data '{hexlify(data)}' from {addr}", e)
 
-    async def read_coil(self, coil: Coil, timeout: int = 1) -> Coil:
+    async def read_coil(self, coil: Coil, timeout: int = DEFAULT_TIMEOUT) -> Coil:
         async with self._send_lock:
             data = ReadRequest.build(
                 dict(fields=dict(value=dict(coil_address=coil.address)))
@@ -95,7 +96,7 @@ class NibeGW(asyncio.DatagramProtocol):
 
             return coil
 
-    async def write_coil(self, coil: Coil, timeout: int = 1) -> Coil:
+    async def write_coil(self, coil: Coil, timeout: int = DEFAULT_TIMEOUT) -> Coil:
         assert coil.is_writable, f"{coil.name} is not writable"
         assert coil.value is not None
         async with self._send_lock:
@@ -111,18 +112,16 @@ class NibeGW(asyncio.DatagramProtocol):
 
             logger.debug(f"Sending {hexlify(data)} (write request) to {self._remote_ip}:{self._remote_write_port}")
             self._transport.sendto(data, (self._remote_ip, self._remote_write_port))
-            logger.debug(f"Waiting for write feedback for {coil.name}")
 
             try:
                 await asyncio.wait_for(self._write_future, timeout)
 
                 result = self._write_future.result()
-                logger.debug(f"Write feedback received: {result}")
 
                 if not result:
                     raise CoilWriteException(f"Heatpump denied writing {coil.name}")
                 else:
-                    logger.debug(f"Write confirmed for {coil.name}")
+                    logger.info(f"Write succeeded for {coil.name}")
             except asyncio.TimeoutError:
                 raise CoilWriteException(f"Timeout waiting for write feedback for {coil.name}")
             finally:
