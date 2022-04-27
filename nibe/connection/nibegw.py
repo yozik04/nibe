@@ -140,7 +140,7 @@ class NibeGW(asyncio.DatagramProtocol):
 
         try:
             coil.raw_value = raw_value
-            logger.debug(f"{coil.name}: {coil.value}")
+            logger.info(f"{coil.name}: {coil.value}")
             self._heatpump.notify_coil_update(coil)
         except DecodeException as e:
             logger.error(f"Unable to decode: {e}")
