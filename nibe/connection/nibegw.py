@@ -2,10 +2,12 @@ import asyncio
 import logging
 import socket
 from binascii import hexlify
+
 from construct import ChecksumError
 
 from nibe.coil import Coil
-from nibe.exceptions import DecodeException, NibeException, CoilWriteException, CoilReadException
+from nibe.exceptions import (CoilReadException, CoilWriteException, DecodeException,
+                             NibeException)
 from nibe.heatpump import HeatPump
 from nibe.parsers import ReadRequest, Response, WriteRequest
 
@@ -14,6 +16,7 @@ logger = logging.getLogger("nibe").getChild(__name__)
 
 class NibeGW(asyncio.DatagramProtocol):
     DEFAULT_TIMEOUT = 5
+
     def __init__(
         self,
         heatpump: HeatPump,
@@ -69,11 +72,16 @@ class NibeGW(asyncio.DatagramProtocol):
             else:
                 logger.debug(f"Unknown command {cmd}")
         except ChecksumError:
-            logger.warning(f"Ignoring packet from {addr} due to checksum error: {hexlify(data)}")
+            logger.warning(
+                f"Ignoring packet from {addr} due to checksum error: {hexlify(data)}"
+            )
         except NibeException as e:
             logger.error(f"Failed handling packet from {addr}: {e}")
         except Exception as e:
-            logger.exception(f"Unexpected exception during parsing packet data '{hexlify(data)}' from {addr}", e)
+            logger.exception(
+                f"Unexpected exception during parsing packet data '{hexlify(data)}' from {addr}",
+                e
+            )
 
     async def read_coil(self, coil: Coil, timeout: int = DEFAULT_TIMEOUT) -> Coil:
         async with self._send_lock:
@@ -83,14 +91,18 @@ class NibeGW(asyncio.DatagramProtocol):
 
             self._read_future = asyncio.get_event_loop().create_future()
 
-            logger.debug(f"Sending {hexlify(data)} (read request) to {self._remote_ip}:{self._remote_write_port}")
+            logger.debug(
+                f"Sending {hexlify(data)} (read request) to {self._remote_ip}:{self._remote_write_port}"
+            )
             self._transport.sendto(data, (self._remote_ip, self._remote_read_port))
             logger.debug(f"Waiting for read response for {coil.name}")
 
             try:
                 await asyncio.wait_for(self._read_future, timeout)
             except asyncio.TimeoutError:
-                raise CoilReadException(f"Timeout waiting for read response for {coil.name}")
+                raise CoilReadException(
+                    f"Timeout waiting for read response for {coil.name}"
+                )
             finally:
                 self._read_future = None
 
@@ -110,7 +122,9 @@ class NibeGW(asyncio.DatagramProtocol):
 
             self._write_future = asyncio.get_event_loop().create_future()
 
-            logger.debug(f"Sending {hexlify(data)} (write request) to {self._remote_ip}:{self._remote_write_port}")
+            logger.debug(
+                f"Sending {hexlify(data)} (write request) to {self._remote_ip}:{self._remote_write_port}"
+            )
             self._transport.sendto(data, (self._remote_ip, self._remote_write_port))
 
             try:
@@ -123,7 +137,9 @@ class NibeGW(asyncio.DatagramProtocol):
                 else:
                     logger.info(f"Write succeeded for {coil.name}")
             except asyncio.TimeoutError:
-                raise CoilWriteException(f"Timeout waiting for write feedback for {coil.name}")
+                raise CoilWriteException(
+                    f"Timeout waiting for write feedback for {coil.name}"
+                )
             finally:
                 self._write_future = None
 

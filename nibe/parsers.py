@@ -1,19 +1,40 @@
 from functools import reduce
+from io import BytesIO
 from operator import xor
 
 from construct import (Array, Bytes, Checksum, Const, Enum, FixedSized, Flag, Int8ub,
-                       Int16ul, RawCopy, Struct, Switch, this,)
+                       Int16ul, RawCopy, Struct, Subconstruct, Switch, this,)
 
 
 def xor8(data: bytes) -> int:
     chksum = reduce(xor, data)
-    if chksum == 0x5c:
-        chksum = 0xc5
+    if chksum == 0x5C:
+        chksum = 0xC5
     return chksum
 
 
+class Dedupe5C(Subconstruct):
+    def __init__(self, subcon):
+        super().__init__(subcon)
+        self.name = subcon.name
+
+    def _parse(self, stream, context, path):
+        unescaped = stream.getvalue().replace(b"\x5c\x5c", b"\x5c")
+        context.length = len(unescaped)
+        with BytesIO(unescaped) as stream2:
+            obj = self.subcon._parsereport(stream2, context, path)
+        return obj
+
+    def _build(self, obj, stream, context, path):
+        escaped = stream.getvalue().replace(b"\x5c", b"\x5c\x5c")
+        context.length = len(escaped)
+        with BytesIO(escaped) as stream2:
+            buildret = self.subcon._build(obj, stream2, context, path)
+        return obj
+
+
 # fmt: off
-Data = Switch(
+Data = Dedupe5C(Switch(
     this.cmd,
     {
         "MODBUS_READ_RESP": Struct("coil_address" / Int16ul, "value" / Bytes(4)),
@@ -23,7 +44,7 @@ Data = Switch(
         "MODBUS_WRITE_RESP": Struct("result" / Flag),
     },
     default=Bytes(this.length),
-)
+))
 
 Command = Enum(
     Int8ub,

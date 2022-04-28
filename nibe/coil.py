@@ -1,4 +1,4 @@
-from typing import Dict, Union, Optional
+from typing import Dict, Optional, Union
 
 from construct import (ConstructError, Int8sl, Int8ul, Int16sl, Int16ul, Int32sl,
                        Int32ul, Padded,)
@@ -22,7 +22,7 @@ def is_coil_boolean(coil):
     if coil.min == 0 and coil.max == 1:
         return True
 
-    if coil.mappings and all(k in ['0', '1'] for k in coil.mappings):
+    if coil.mappings and all(k in ["0", "1"] for k in coil.mappings):
         return True
 
     return False
@@ -104,7 +104,9 @@ class Coil:
             self._value = value
             return
 
-        assert isinstance(value, (int, float)), f"Provided value '{value}' is invalid type (int and float are supported) for {self.name}"
+        assert isinstance(
+            value, (int, float)
+        ), f"Provided value '{value}' is invalid type (int and float are supported) for {self.name}"
 
         self.check_value_bounds(value)
 
