@@ -1,21 +1,7 @@
 # Nibe library
 Library for communication with Nibe heatpumps.
 
-Initially supports only RS485 communication via NibeGW developed by Pauli Anttila for [Openhab's integration](https://www.openhab.org/addons/bindings/nibeheatpump/).
-
-## Connection methods
-Currently, only NibeGW is supported
-
-### NibeGW
-For this connection method to work you will need to connect an Arduino with special firmware that will act as a proxy between Heatpump RS485 and this library. Some details regarding how this method works can be found [here](https://www.openhab.org/addons/bindings/nibeheatpump/#prerequisites).
-
-NibeGW firmware for Arduino or RPi can be [download here](https://github.com/openhab/openhab-addons/tree/3.2.x/bundles/org.openhab.binding.nibeheatpump/contrib/NibeGW).
-
-- Library will open 9999 UDP listening port to receive packets from NibeGW. 
-- For read commands library will send UDP packets to NibeGW port 9999.
-- For write commands library will send UDP packets to NibeGW port 10000.
-
-#### Supported heatpump models
+### Supported heatpump models
  - F1145
  - F1155
  - F1245
@@ -34,7 +20,21 @@ NibeGW firmware for Arduino or RPi can be [download here](https://github.com/ope
  - VVM325
  - VVM500
 
-#### Python code
+## Connection methods
+- RS485 hardwired using NibeGW on Arduino or RPi. NibeGW was developed by Pauli Anttila for [Openhab's integration](https://www.openhab.org/addons/bindings/nibeheatpump/).
+- **(Not yet tesed)** TCP Modbus for S Models
+- **(Not yet tesed)** Serial Modbus for Nibe Modbus 40)
+
+### NibeGW
+For this connection method to work you will need to connect an Arduino with special firmware that will act as a proxy between Heatpump RS485 and this library. Some details regarding how this method works can be found [here](https://www.openhab.org/addons/bindings/nibeheatpump/#prerequisites).
+
+NibeGW firmware for Arduino or RPi can be [download here](https://github.com/openhab/openhab-addons/tree/3.2.x/bundles/org.openhab.binding.nibeheatpump/contrib/NibeGW).
+
+- Library will open 9999 UDP listening port to receive packets from NibeGW. 
+- For read commands library will send UDP packets to NibeGW port 9999.
+- For write commands library will send UDP packets to NibeGW port 10000.
+
+Ports are configurable
 
 ```python3
 import asyncio
@@ -66,6 +66,87 @@ if __name__ == '__main__':
     loop.run_forever()
 ```
 
+### TCP Modbus
+With S series heatpumps
+
+```python3
+import asyncio
+import logging
+
+from nibe.coil import Coil
+from nibe.connection.modbus import Modbus
+from nibe.heatpump import HeatPump, Model
+
+logger = logging.getLogger("nibe").getChild(__name__)
+
+def on_coil_update(coil: Coil):
+    logger.debug(f"on_coil_update: {coil.name}: {coil.value}")
+
+async def main():
+    heatpump = HeatPump(Model.F1255)
+    heatpump.initialize()
+
+    heatpump.subscribe(HeatPump.COIL_UPDATE_EVENT, on_coil_update)
+
+    connection = Modbus(heatpump=heatpump, url="tcp://192.168.1.2:502", slave_id=1)
+    
+    coil = heatpump.get_coil_by_name('bt50-room-temp-s1-40033')
+    await connection.read_coil(coil)
+    
+    logger.debug(f"main: {coil.name}: {coil.value}")
+
+if __name__ == '__main__':
+    logging.basicConfig(level=logging.DEBUG)
+
+    loop = asyncio.get_event_loop()
+    loop.run_until_complete(main())
+    loop.run_forever()
+```
+
+### Serial Modbus
+With NIBE MODBUS 40
+
+```python3
+import asyncio
+import logging
+
+from nibe.coil import Coil
+from nibe.connection.modbus import Modbus
+from nibe.heatpump import HeatPump, Model
+
+logger = logging.getLogger("nibe").getChild(__name__)
+
+def on_coil_update(coil: Coil):
+    logger.debug(f"on_coil_update: {coil.name}: {coil.value}")
+
+async def main():
+    heatpump = HeatPump(Model.F1255)
+    heatpump.initialize()
+
+    heatpump.subscribe(HeatPump.COIL_UPDATE_EVENT, on_coil_update)
+
+    connection = Modbus(heatpump=heatpump, url="serial:///dev/ttyS0", slave_id=1, conn_options={"baudrate": 9600})
+    
+    coil = heatpump.get_coil_by_name('bt50-room-temp-s1-40033')
+    await connection.read_coil(coil)
+    
+    logger.debug(f"main: {coil.name}: {coil.value}")
+
+if __name__ == '__main__':
+    logging.basicConfig(level=logging.DEBUG)
+
+    loop = asyncio.get_event_loop()
+    loop.run_until_complete(main())
+    loop.run_forever()
+```
+
+## Disclaimer
+Nibe is registered mark of NIBE Energy Systems.
+
+The code was developed as a way of integrating personally owned Nibe heatpump, and it cannot be used for other purposes. It is not affiliated with any company and it doesn't have have commercial intent.
+
+The code is provided AS IS and the developers will not be held responsible for failures in the heatpump operation or any other malfunction.
+
 ## HOWTOs for developers
 ### How to capture and replay traffic from NibeGW
 ### Requirements
@@ -83,12 +164,3 @@ sudo tcpreplay --intf1=eth0 nibe-9999rw.pcap
 ```
 
 You will need to replace IP addresses for rewrite and Mac address of new recipient device
-
-## Scratchpad
-
-```bash
-sudo iptables -t mangle -A PREROUTING -i eth0 -m udp -p udp --dport 9999 -j TEE --gateway 127.0.0.2
-???
-sudo iptables -t nat -A PREROUTING -p udp -i lo0 --dport 9999 -j DNAT --to 192.168.5.197:9999
-
-```

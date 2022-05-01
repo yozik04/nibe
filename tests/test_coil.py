@@ -139,10 +139,7 @@ class TestBooleanCoilWithMapping(TestCase):
             "Status Cooling",
             "u8",
             factor=1,
-            mappings={
-                "0": "Off",
-                "1": "On"
-            }
+            mappings={"0": "Off", "1": "On"},
         )
 
     def test_attributes(self):
@@ -166,7 +163,7 @@ class TestBooleanCoilWithBounds(TestCase):
             factor=1,
             min=0,
             max=1,
-            write=True
+            write=True,
         )
 
     def test_attributes(self):

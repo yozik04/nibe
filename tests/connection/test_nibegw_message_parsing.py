@@ -3,7 +3,7 @@ import unittest
 
 from construct import ChecksumError, Int16sl, Int32ul
 
-from nibe.parsers import ReadRequest, Response, WriteRequest
+from nibe.connection.nibegw import ReadRequest, Response, WriteRequest
 
 
 class MessageResponseParsingTestCase(unittest.TestCase):
