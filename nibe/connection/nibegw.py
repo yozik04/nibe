@@ -1,19 +1,19 @@
 import asyncio
 import logging
 import socket
+from binascii import hexlify
 from functools import reduce
 from io import BytesIO
 from operator import xor
 
-from binascii import hexlify
-
-from construct import ChecksumError, Subconstruct, Switch, this, Struct, Int16ul, Bytes, Array, Flag, Enum, Int8ub, \
-    Const, RawCopy, FixedSized, Checksum
+from construct import (Array, Bytes, Checksum, ChecksumError, Const, Enum, FixedSized,
+                       Flag, Int8ub, Int16ul, RawCopy, Struct, Subconstruct, Switch,
+                       this,)
 
 from nibe.coil import Coil
 from nibe.connection import Connection
 from nibe.exceptions import (CoilReadException, CoilWriteException, DecodeException,
-                             NibeException)
+                             NibeException,)
 from nibe.heatpump import HeatPump
 
 logger = logging.getLogger("nibe").getChild(__name__)
@@ -85,7 +85,7 @@ class NibeGW(asyncio.DatagramProtocol, Connection):
         except Exception as e:
             logger.exception(
                 f"Unexpected exception during parsing packet data '{hexlify(data)}' from {addr}",
-                e
+                e,
             )
 
     async def read_coil(self, coil: Coil, timeout: int = DEFAULT_TIMEOUT) -> Coil:
@@ -198,17 +198,20 @@ class Dedupe5C(Subconstruct):
         return obj
 
 
-Data = Dedupe5C(Switch(
-    this.cmd,
-    {
-        "MODBUS_READ_RESP": Struct("coil_address" / Int16ul, "value" / Bytes(4)),
-        "MODBUS_DATA_MSG": Array(
-            lambda this: this.length // 4, Struct("coil_address" / Int16ul, "value" / Bytes(2))
-        ),
-        "MODBUS_WRITE_RESP": Struct("result" / Flag),
-    },
-    default=Bytes(this.length),
-))
+Data = Dedupe5C(
+    Switch(
+        this.cmd,
+        {
+            "MODBUS_READ_RESP": Struct("coil_address" / Int16ul, "value" / Bytes(4)),
+            "MODBUS_DATA_MSG": Array(
+                lambda this: this.length // 4,
+                Struct("coil_address" / Int16ul, "value" / Bytes(2)),
+            ),
+            "MODBUS_WRITE_RESP": Struct("result" / Flag),
+        },
+        default=Bytes(this.length),
+    )
+)
 
 
 Command = Enum(
