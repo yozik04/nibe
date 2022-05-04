@@ -19,7 +19,7 @@ class Modbus(Connection):
         self._heatpump = heatpump
         self._client = modbus_for_url(url, conn_options)
 
-    async def read_coil(self, coil: Coil, timeout: int = DEFAULT_TIMEOUT) -> Coil:
+    async def read_coil(self, coil: Coil, timeout: float = DEFAULT_TIMEOUT) -> Coil:
         logger.debug(f"Sending read request")
         try:
             result = await asyncio.wait_for(
@@ -38,7 +38,7 @@ class Modbus(Connection):
 
         return coil
 
-    async def write_coil(self, coil: Coil, timeout: int = DEFAULT_TIMEOUT) -> Coil:
+    async def write_coil(self, coil: Coil, timeout: float = DEFAULT_TIMEOUT) -> Coil:
         assert coil.is_writable, f"{coil.name} is not writable"
         assert coil.value is not None
 
