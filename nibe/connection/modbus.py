@@ -23,7 +23,7 @@ class Modbus(Connection):
         logger.debug(f"Sending read request")
         try:
             result = await asyncio.wait_for(
-                self._client.read_coils(
+                self._client.read_input_registers(
                     slave_id=self._slave_id, starting_address=coil.address, quantity=1
                 ),
                 timeout,
@@ -45,7 +45,7 @@ class Modbus(Connection):
         logger.debug(f"Sending write request")
         try:
             result = await asyncio.wait_for(
-                self._client.write_coil(
+                self._client.write_register(
                     slave_id=self._slave_id, address=coil.address, value=coil.raw_value
                 ),
                 timeout,
