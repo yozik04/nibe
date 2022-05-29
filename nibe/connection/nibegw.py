@@ -167,6 +167,8 @@ class NibeGW(asyncio.DatagramProtocol, Connection):
     def _on_raw_coil_value(self, coil_address: int, raw_value: bytes):
         coil = self._heatpump.get_coil_by_address(coil_address)
         if not coil:
+            if coil_address == 65535:
+                return
             raise DecodeException(f"Unable to decode: {coil_address} not found")
 
         coil.raw_value = raw_value
