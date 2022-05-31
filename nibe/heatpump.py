@@ -6,6 +6,7 @@ from importlib.resources import files
 from typing import Any, Callable, Dict, Union
 
 from nibe.coil import Coil
+from nibe.exceptions import CoilNotFoundException
 
 logger = logging.getLogger("nibe").getChild(__name__)
 
@@ -58,7 +59,6 @@ class HeatPump:
         self._listeners = defaultdict(list)
 
     def _load_coils(self):
-        # with open(self.model.get_data_file(), "r") as fh:
         data = self.model.get_coil_data()
 
         self._address_to_coil = {k: Coil(address=int(k), **v) for k, v in data.items()}
@@ -67,11 +67,17 @@ class HeatPump:
     def initialize(self):
         self._load_coils()
 
-    def get_coil_by_address(self, id: Union[int, str]) -> Coil:
-        return self._address_to_coil.get(str(id))
+    def get_coil_by_address(self, address: Union[int, str]) -> Coil:
+        try:
+            return self._address_to_coil[str(address)]
+        except KeyError:
+            raise CoilNotFoundException(f"Coil with address {address} not found")
 
     def get_coil_by_name(self, name: str) -> Coil:
-        return self._name_to_coil.get(str(name))
+        try:
+            return self._name_to_coil[str(name)]
+        except KeyError:
+            raise CoilNotFoundException(f"Coil with name '{name}' not found")
 
     def notify_coil_update(self, coil: Coil):
         for listener in self._listeners[self.COIL_UPDATE_EVENT]:

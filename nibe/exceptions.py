@@ -2,6 +2,10 @@ class NibeException(Exception):
     pass
 
 
+class CoilNotFoundException(NibeException):
+    pass
+
+
 class DecodeException(NibeException):
     pass
 

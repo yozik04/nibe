@@ -1,6 +1,7 @@
 import unittest
 from unittest.mock import Mock
 
+from nibe.exceptions import CoilNotFoundException
 from nibe.heatpump import HeatPump, Model
 
 
@@ -24,6 +25,13 @@ class HeatpumpTestCase(unittest.TestCase):
         c = self.heat_pump.get_coil_by_name("bt1-outdoor-temperature-40004")
 
         self.assertIs(a, c)
+
+    def test_get_missing_coil_raises_exception(self):
+        with self.assertRaises(CoilNotFoundException):
+            self.heat_pump.get_coil_by_address(0xFFFF)
+
+        with self.assertRaises(CoilNotFoundException):
+            self.heat_pump.get_coil_by_name("no-beer-today")
 
     def test_listener(self):
         mock = Mock()

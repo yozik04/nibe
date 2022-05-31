@@ -14,9 +14,9 @@ from construct import (Array, Bytes, Checksum, ChecksumError, Const, Enum, Fixed
 
 from nibe.coil import Coil
 from nibe.connection import Connection
-from nibe.exceptions import (CoilReadException, CoilReadTimeoutException,
-                             CoilWriteException, CoilWriteTimeoutException,
-                             DecodeException, NibeException,)
+from nibe.exceptions import (CoilNotFoundException, CoilReadException,
+                             CoilReadTimeoutException, CoilWriteException,
+                             CoilWriteTimeoutException, DecodeException, NibeException,)
 from nibe.heatpump import HeatPump
 
 logger = logging.getLogger("nibe").getChild(__name__)
@@ -62,9 +62,7 @@ class NibeGW(asyncio.DatagramProtocol, Connection):
 
     def datagram_received(self, data, addr):
         if addr[0] != self._remote_ip:
-            logger.warning(
-                f"Ignoring packet from unknown host: {addr}"
-            )
+            logger.warning(f"Ignoring packet from unknown host: {addr}")
             return
 
         logger.debug(f"Received {hexlify(data)} from {addr}")
@@ -76,7 +74,7 @@ class NibeGW(asyncio.DatagramProtocol, Connection):
                 for row in msg.fields.value.data:
                     try:
                         self._on_raw_coil_value(row.coil_address, row.value)
-                    except DecodeException as e:
+                    except NibeException as e:
                         logger.error(str(e))
             elif cmd == "MODBUS_READ_RESP":
                 row = msg.fields.value.data
@@ -84,7 +82,7 @@ class NibeGW(asyncio.DatagramProtocol, Connection):
                     self._on_raw_coil_value(row.coil_address, row.value)
                     with suppress(InvalidStateError, CancelledError, AttributeError):
                         self._read_future.set_result(None)
-                except DecodeException as e:
+                except NibeException as e:
                     with suppress(InvalidStateError, CancelledError, AttributeError):
                         self._read_future.set_exception(CoilReadException(str(e), e))
                     raise
@@ -171,11 +169,12 @@ class NibeGW(asyncio.DatagramProtocol, Connection):
         logger.error(exc)
 
     def _on_raw_coil_value(self, coil_address: int, raw_value: bytes):
-        coil = self._heatpump.get_coil_by_address(coil_address)
-        if not coil:
+        try:
+            coil = self._heatpump.get_coil_by_address(coil_address)
+        except CoilNotFoundException:
             if coil_address == 65535:  # 0xffff
                 return
-            raise DecodeException(f"Unable to decode: {coil_address} not found")
+            raise
 
         coil.raw_value = raw_value
         logger.info(f"{coil.name}: {coil.value}")
