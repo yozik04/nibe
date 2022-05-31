@@ -180,7 +180,7 @@ class NibeGW(asyncio.DatagramProtocol, Connection):
         logger.info(f"{coil.name}: {coil.value}")
         self._heatpump.notify_coil_update(coil)
 
-    def stop(self):
+    async def stop(self):
         self._transport.close()
         self._transport = None
 
