@@ -61,10 +61,6 @@ class NibeGW(asyncio.DatagramProtocol, Connection):
         self._transport = transport
 
     def datagram_received(self, data, addr):
-        if addr[0] != self._remote_ip:
-            logger.warning(f"Ignoring packet from unknown host: {addr}")
-            return
-
         logger.debug(f"Received {hexlify(data)} from {addr}")
         try:
             msg = Response.parse(data)
