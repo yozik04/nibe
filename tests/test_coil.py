@@ -17,6 +17,27 @@ class TestCoil(TestCase):
         self.assertEqual(coil.other["unknown"], "some other")
 
 
+class TestCoilSigned8(TestCase):
+    def setUp(self) -> None:
+        self.coil = Coil(48739, "cool-offset-s1-48739", "Cool offset S1", "s8")
+
+    def test_decode(self):
+        self.coil.raw_value = b"\xfc\x00\x00\x00"
+        self.assertEqual(-4, self.coil.value)
+        self.coil.raw_value = b"\xfc\x00"
+        self.assertEqual(-4, self.coil.value)
+        self.coil.raw_value = b"\xfc"
+        self.assertEqual(-4, self.coil.value)
+
+    def test_encode(self):
+        self.coil.value = -4
+        self.assertEqual(b"\xfc\x00\x00\x00", self.coil.raw_value)
+
+        with self.assertRaises(EncodeException):
+            self.coil.value = 256
+            _ = self.coil.raw_value
+
+
 class TestCoilUnsigned8(TestCase):
     def setUp(self) -> None:
         self.coil = Coil(123, "test", "test", "u8")
@@ -84,6 +105,47 @@ class TestCoilSigned16(TestCase):
 
         with self.assertRaises(AssertionError):
             self.coil.value = 30.1
+
+
+class TestCoilUnsigned16(TestCase):
+    def setUp(self) -> None:
+        self.coil = Coil(
+            123,
+            "compressor-frequency-actual-43136",
+            "Compressor Frequency, Actual",
+            "u16",
+            factor=10,
+        )
+
+    def test_decode(self):
+        self.coil.raw_value = b"\x01\x00\x00\x00"
+        self.assertEqual(0.1, self.coil.value)
+        self.coil.raw_value = b"\x01\x00"
+        self.assertEqual(0.1, self.coil.value)
+
+    def test_encode(self):
+        self.coil.value = 0.1
+        self.assertEqual(b"\x01\x00\x00\x00", self.coil.raw_value)
+        self.coil.value = 25.5
+        self.assertEqual(b"\xff\x00\x00\x00", self.coil.raw_value)
+
+
+class TestCoilSigned32(TestCase):
+    def setUp(self) -> None:
+        self.coil = Coil(
+            43420,
+            "tot-op-time-compr-eb100-ep14-43420",
+            "Total compressorer operation time",
+            "s32",
+        )
+
+    def test_decode(self):
+        self.coil.raw_value = b"2T\x00\x00"
+        self.assertEqual(21554, self.coil.value)
+
+    def test_encode(self):
+        self.coil.value = 21554
+        self.assertEqual(b"2T\x00\x00", self.coil.raw_value)
 
 
 class TestCoilWithMapping(TestCase):

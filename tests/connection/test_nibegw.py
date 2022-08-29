@@ -19,7 +19,7 @@ class TestNibeGW(TestCase):
         self.transport = Mock()
         self.nibegw.connection_made(self.transport)
 
-    def test_read_coil(self):
+    def test_read_s32_coil(self):
         coil = self.heatpump.get_coil_by_address(43424)
 
         async def send_receive():
