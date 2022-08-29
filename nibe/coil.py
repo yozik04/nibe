@@ -170,23 +170,23 @@ class Coil:
         if self.min is not None:
             assert (
                 value >= self.min
-            ), f"{self.name} coil value is smaller than min({self.min}) allowed"
+            ), f"{self.name} coil value ({value}) is smaller than min allowed ({self.min})"
 
         if self.max is not None:
             assert (
                 value <= self.max
-            ), f"{self.name} coil value is larger than max({self.max}) allowed"
+            ), f"{self.name} coil value ({value}) is larger than max allowed ({self.max})"
 
     def _check_raw_value_bounds(self, value):
         if self.raw_min is not None:
             assert (
                 value >= self.raw_min
-            ), f"{self.name} coil raw value is smaller than min({self.raw_min}) allowed"
+            ), f"{self.name} coil raw value ({value}) is smaller than min allowed({self.raw_min})"
 
         if self.raw_max is not None:
             assert (
                 value <= self.raw_max
-            ), f"{self.name} coil raw value is larger than max({self.raw_max}) allowed"
+            ), f"{self.name} coil raw value ({value}) is larger than max allowed ({self.raw_max})"
 
     def __repr__(self):
         return f"Coil {self.address}, name: {self.name}, title: {self.title}, value: {self.value}"
