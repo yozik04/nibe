@@ -123,6 +123,7 @@ def on_coil_update(coil: Coil):
 
 async def main():
     heatpump = HeatPump(Model.F1255)
+    # heatpump.word_swap = False  # uncomment if you have word swap disabled in 5.3.11 service menu
     heatpump.initialize()
 
     heatpump.subscribe(HeatPump.COIL_UPDATE_EVENT, on_coil_update)
