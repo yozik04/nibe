@@ -1,9 +1,18 @@
 from typing import Dict, Optional, Union
 
-from construct import (ConstructError, Int8sl, Int8ul, Int16sl, Int16ul, Int32sl,
-                       Int32ul, Padded, Transformed,)
+from construct import (
+    ConstructError,
+    Int8sl,
+    Int8ul,
+    Int16sl,
+    Int16ul,
+    Int32sl,
+    Int32ul,
+    Padded,
+)
 
 from nibe.exceptions import DecodeException, EncodeException
+from nibe.parsers import WordSwapped
 
 parser_map = {
     "u8": Int8ul,
@@ -14,40 +23,13 @@ parser_map = {
     "s32": Int32sl,
 }
 
-
-def swapwords(data):
-    r"""
-    Performs a 2 byte word swap on byte-string.
-
-    Example:
-
-        >>> swapwords(b'abcd')
-        b'cdab'
-    """
-    if len(data) % 2:
-        raise ValueError(f"data length {len(data)} must be a multiple of 2")
-
-    return b"".join(data[p : p + 2] for p in range(len(data) - 2, -1, -2))
-
-
-def WordSwapped(subcon):
-    r"""
-    Swaps the 2-byte word order within boundaries of given subcon. Requires a fixed sized subcon.
-
-    :param subcon: Construct instance
-
-    :raises SizeofError: ctor or compiler could not compute subcon size
-    :raises ValueError: subcon size is not multiple of 2
-
-    See :class:`~construct.core.Transformed` and :class:`~construct.core.Restreamed` for raisable exceptions.
-
-    Example::
-
-        Int24ul <--> ByteSwapped(Int24ub) <--> BytesInteger(3, swapped=True) <--> ByteSwapped(BytesInteger(3))
-    """
-
-    size = subcon.sizeof()
-    return Transformed(subcon, swapwords, size, swapwords, size)
+parser_map_word_swaped = parser_map.copy()
+parser_map_word_swaped.update(
+    {
+        "u32": WordSwapped(Int32ul),
+        "s32": WordSwapped(Int32sl),
+    }
+)
 
 
 def is_coil_boolean(coil):
@@ -89,12 +71,12 @@ class Coil:
             mappings is not None and factor != 1
         ), "When mapping is used factor needs to be 1"
 
-        self.parser = parser_map.get(size)
+        if word_swap:
+            self.parser = parser_map.get(size)
+        else:
+            self.parser = parser_map_word_swaped.get(size)
+
         assert self.parser is not None
-        if (
-            not word_swap
-        ):  # word order is opposite if word_swap is not set. Should match setting in 5.3.11 of service menu
-            self.parser = WordSwapped(self.parser)
 
         self.address = address
         self.name = name

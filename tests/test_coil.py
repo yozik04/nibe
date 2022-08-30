@@ -2,8 +2,9 @@ from unittest import TestCase
 
 from construct import Int8ul
 
-from nibe.coil import Coil, swapwords
+from nibe.coil import Coil
 from nibe.exceptions import DecodeException, EncodeException
+from nibe.parsers import swapwords
 
 
 class TestWordSwap(TestCase):
@@ -47,6 +48,29 @@ class TestCoilSigned8(TestCase):
 class TestCoilUnsigned8(TestCase):
     def setUp(self) -> None:
         self.coil = Coil(123, "test", "test", "u8")
+
+    def test_decode(self):
+        self.coil.raw_value = b"\x01\x00\x00\x00"
+        self.assertEqual(1, self.coil.value)
+        self.coil.raw_value = b"\x01\x00"
+        self.assertEqual(1, self.coil.value)
+        self.coil.raw_value = b"\x01"
+        self.assertEqual(1, self.coil.value)
+
+    def test_encode(self):
+        self.coil.value = 1
+        self.assertEqual(b"\x01\x00\x00\x00", self.coil.raw_value)
+        self.coil.value = 255
+        self.assertEqual(b"\xff\x00\x00\x00", self.coil.raw_value)
+
+        with self.assertRaises(EncodeException):
+            self.coil.value = 256
+            _ = self.coil.raw_value
+
+
+class TestCoilUnsigned8WordSwap(TestCase):
+    def setUp(self) -> None:
+        self.coil = Coil(123, "test", "test", "u8", word_swap=False)
 
     def test_decode(self):
         self.coil.raw_value = b"\x01\x00\x00\x00"
@@ -121,6 +145,30 @@ class TestCoilUnsigned16(TestCase):
             "Compressor Frequency, Actual",
             "u16",
             factor=10,
+        )
+
+    def test_decode(self):
+        self.coil.raw_value = b"\x01\x00\x00\x00"
+        self.assertEqual(0.1, self.coil.value)
+        self.coil.raw_value = b"\x01\x00"
+        self.assertEqual(0.1, self.coil.value)
+
+    def test_encode(self):
+        self.coil.value = 0.1
+        self.assertEqual(b"\x01\x00\x00\x00", self.coil.raw_value)
+        self.coil.value = 25.5
+        self.assertEqual(b"\xff\x00\x00\x00", self.coil.raw_value)
+
+
+class TestCoilUnsigned16WordSwap(TestCase):
+    def setUp(self) -> None:
+        self.coil = Coil(
+            123,
+            "compressor-frequency-actual-43136",
+            "Compressor Frequency, Actual",
+            "u16",
+            factor=10,
+            word_swap=False,
         )
 
     def test_decode(self):
