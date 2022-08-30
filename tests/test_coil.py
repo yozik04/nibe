@@ -2,8 +2,14 @@ from unittest import TestCase
 
 from construct import Int8ul
 
-from nibe.coil import Coil
+from nibe.coil import Coil, swapwords
 from nibe.exceptions import DecodeException, EncodeException
+
+
+class TestWordSwap(TestCase):
+    def test_swapwords(self):
+        self.assertEqual(swapwords(b"abcd"), b"cdab")
+        self.assertEqual(swapwords(b"ab"), b"ab")
 
 
 class TestCoil(TestCase):
@@ -146,6 +152,25 @@ class TestCoilSigned32(TestCase):
     def test_encode(self):
         self.coil.value = 21554
         self.assertEqual(b"2T\x00\x00", self.coil.raw_value)
+
+
+class TestCoilSigned32WordSwap(TestCase):
+    def setUp(self) -> None:
+        self.coil = Coil(
+            43420,
+            "tot-op-time-compr-eb100-ep14-43420",
+            "Total compressorer operation time",
+            "s32",
+            word_swap=False,
+        )
+
+    def test_decode(self):
+        self.coil.raw_value = b"\x00\x00(\x06"
+        self.assertEqual(1576, self.coil.value)
+
+    def test_encode(self):
+        self.coil.value = 1576
+        self.assertEqual(b"\x00\x00(\x06", self.coil.raw_value)
 
 
 class TestCoilWithMapping(TestCase):

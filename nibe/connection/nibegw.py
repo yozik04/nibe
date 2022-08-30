@@ -8,15 +8,34 @@ from functools import reduce
 from io import BytesIO
 from operator import xor
 
-from construct import (Array, Bytes, Checksum, ChecksumError, Const, Enum, FixedSized,
-                       Flag, Int8ub, Int16ul, RawCopy, Struct, Subconstruct, Switch,
-                       this,)
+from construct import (
+    Array,
+    Bytes,
+    Checksum,
+    ChecksumError,
+    Const,
+    Enum,
+    FixedSized,
+    Flag,
+    Int8ub,
+    Int16ul,
+    RawCopy,
+    Struct,
+    Subconstruct,
+    Switch,
+    this,
+)
 
 from nibe.coil import Coil
 from nibe.connection import Connection
-from nibe.exceptions import (CoilNotFoundException, CoilReadException,
-                             CoilReadTimeoutException, CoilWriteException,
-                             CoilWriteTimeoutException, DecodeException, NibeException,)
+from nibe.exceptions import (
+    CoilNotFoundException,
+    CoilReadException,
+    CoilReadTimeoutException,
+    CoilWriteException,
+    CoilWriteTimeoutException,
+    NibeException,
+)
 from nibe.heatpump import HeatPump
 
 logger = logging.getLogger("nibe").getChild(__name__)

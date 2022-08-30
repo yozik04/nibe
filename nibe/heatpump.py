@@ -51,6 +51,7 @@ class HeatPump:
     _listeners: defaultdict[Any, list[Callable[..., None]]]
     _address_to_coil: Dict[str, Coil]
     _name_to_coil: Dict[str, Coil]
+    word_swap: bool = True
 
     def __init__(self, model: Model):
         assert isinstance(model, Model)
@@ -61,8 +62,14 @@ class HeatPump:
     def _load_coils(self):
         data = self.model.get_coil_data()
 
-        self._address_to_coil = {k: Coil(address=int(k), **v) for k, v in data.items()}
+        self._address_to_coil = {
+            k: self._make_coil(address=int(k), **v) for k, v in data.items()
+        }
         self._name_to_coil = {c.name: c for _, c in self._address_to_coil.items()}
+
+    def _make_coil(self, address: int, **kwargs):
+        kwargs["word_swap"] = self.word_swap
+        return Coil(address, **kwargs)
 
     def initialize(self):
         self._load_coils()

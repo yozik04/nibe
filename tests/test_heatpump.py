@@ -53,6 +53,23 @@ class HeatpumpTestCase(unittest.TestCase):
             coil
         )  # Error should be logged but not thrown out
 
+    def test_word_swap_is_true(self):
+        coil = self.heat_pump.get_coil_by_address(43420)
+        coil.raw_value = b"(\x06\x00\x00"
+        self.assertEqual(1576, coil.value)
+
+
+class HeatpumpWordSwapTestCase(unittest.TestCase):
+    def setUp(self) -> None:
+        self.heat_pump = HeatPump(Model.F1255)
+        self.heat_pump.word_swap = False
+        self.heat_pump.initialize()
+
+    def test_word_swap_is_false(self):
+        coil = self.heat_pump.get_coil_by_address(43420)
+        coil.raw_value = b"\x00\x00(\x06"
+        self.assertEqual(1576, coil.value)
+
 
 if __name__ == "__main__":
     unittest.main()
