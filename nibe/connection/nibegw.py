@@ -253,6 +253,16 @@ Command = Enum(
     MODBUS_WRITE_RESP=0x6C,
 )
 
+Address = Enum(
+    Int8ub,
+    # 0x13 = 19, ?
+    SMS40=0x16,
+    RMU40_S1=0x19,
+    RMU40_S2=0x1A,
+    RMU40_S3=0x1B,
+    RMU40_S4=0x1C,
+    MODBUS40=0x20,
+)
 
 # fmt: off
 Response = Struct(
@@ -260,13 +270,7 @@ Response = Struct(
     "empty_byte" / Const(0x00, Int8ub),
     "fields" / RawCopy(
         Struct(
-            "address" / Enum(
-                Int8ub,
-                # 0x13 = 19, ?
-                SMS40=0x16,
-                RMU40=0x19,
-                MODBUS40=0x20,
-            ),
+            "address" / Address,
             "cmd" / Command,
             "length" / Int8ub,
             "data" / FixedSized(this.length, Data),
