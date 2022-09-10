@@ -113,6 +113,13 @@ class MessageResponseParsingTestCase(unittest.TestCase):
 
         self.assertFalse(data.data.result)
 
+
+    def test_parse_product_data(self):
+        data = self._parse_hexlified_raw_message("5c00206d0b0124e346313135352d3136ec")
+        self.assertEqual(data.data.unknown, b"\x01")
+        self.assertEqual(data.data.product, "F1155-16")
+        self.assertEqual(data.data.version, 9443)
+
     @staticmethod
     def _parse_hexlified_raw_message(txt_raw):
         raw = binascii.unhexlify(txt_raw)

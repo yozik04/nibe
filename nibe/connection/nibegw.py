@@ -17,7 +17,9 @@ from construct import (
     Enum,
     FixedSized,
     Flag,
+    GreedyString,
     Int8ub,
+    Int16ub,
     Int16ul,
     RawCopy,
     Struct,
@@ -227,6 +229,13 @@ class Dedupe5C(Subconstruct):
         return obj
 
 
+
+ProductData = Struct(
+    "unknown" / Bytes(1),
+    "version" / Int16ub,
+    "product" / GreedyString("ASCII")
+)
+
 Data = Dedupe5C(
     Switch(
         this.cmd,
@@ -237,6 +246,7 @@ Data = Dedupe5C(
                 Struct("coil_address" / Int16ul, "value" / Bytes(2)),
             ),
             "MODBUS_WRITE_RESP": Struct("result" / Flag),
+            "PRODUCT_DATA_MSG": ProductData,
         },
         default=Bytes(this.length),
     )
@@ -251,6 +261,7 @@ Command = Enum(
     MODBUS_READ_RESP=0x6A,
     MODBUS_WRITE_REQ=0x6B,
     MODBUS_WRITE_RESP=0x6C,
+    PRODUCT_DATA_MSG=0x6D,
 )
 
 
