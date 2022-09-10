@@ -120,6 +120,12 @@ class MessageResponseParsingTestCase(unittest.TestCase):
         self.assertEqual(data.data.model, "F1155-16")
         self.assertEqual(data.data.version, 9443)
 
+        data = self._parse_hexlified_raw_message("5c00206d100724575465686f7761747469204169721a")
+        self.assertEqual(data.data.unknown, b"\x07")
+        self.assertEqual(data.data.model, "Tehowatti Air")
+        self.assertEqual(data.data.version, 9303)
+
+
     @staticmethod
     def _parse_hexlified_raw_message(txt_raw):
         raw = binascii.unhexlify(txt_raw)
