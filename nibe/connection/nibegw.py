@@ -29,7 +29,7 @@ from construct import (
 )
 
 from nibe.coil import Coil
-from nibe.connection import Connection
+from nibe.connection import DEFAULT_TIMEOUT, READ_PRODUCT_TIMEOUT, Connection, Product
 from nibe.exceptions import (
     CoilNotFoundException,
     CoilReadException,
@@ -44,8 +44,6 @@ logger = logging.getLogger("nibe").getChild(__name__)
 
 
 class NibeGW(asyncio.DatagramProtocol, Connection):
-    DEFAULT_TIMEOUT = 5
-
     def __init__(
         self,
         heatpump: HeatPump,
@@ -66,8 +64,7 @@ class NibeGW(asyncio.DatagramProtocol, Connection):
         self._transport = None
 
         self._send_lock = asyncio.Lock()
-        self._write_future = None
-        self._read_future = None
+        self._futures = {}
 
     async def start(self):
         logger.info(f"Starting UDP server on port {self._listening_port}")
@@ -97,15 +94,20 @@ class NibeGW(asyncio.DatagramProtocol, Connection):
                 row = msg.fields.value.data
                 try:
                     self._on_raw_coil_value(row.coil_address, row.value)
-                    with suppress(InvalidStateError, CancelledError, AttributeError):
-                        self._read_future.set_result(None)
+                    with suppress(InvalidStateError, CancelledError, KeyError):
+                        self._futures["read"].set_result(None)
                 except NibeException as e:
-                    with suppress(InvalidStateError, CancelledError, AttributeError):
-                        self._read_future.set_exception(CoilReadException(str(e), e))
+                    with suppress(InvalidStateError, CancelledError, KeyError):
+                        self._futures["read"].set_exception(
+                            CoilReadException(str(e), e)
+                        )
                     raise
             elif cmd == "MODBUS_WRITE_RESP":
-                with suppress(InvalidStateError, CancelledError, AttributeError):
-                    self._write_future.set_result(msg.fields.value.data.result)
+                with suppress(InvalidStateError, CancelledError, KeyError):
+                    self._futures["write"].set_result(msg.fields.value.data.result)
+            elif cmd == "PRODUCT_DATA_MSG":
+                with suppress(InvalidStateError, CancelledError, KeyError):
+                    self._futures["product"].set_result(msg.fields.value.data)
             else:
                 logger.debug(f"Unknown command {cmd}")
         except ChecksumError:
@@ -120,13 +122,23 @@ class NibeGW(asyncio.DatagramProtocol, Connection):
                 e,
             )
 
+    async def read_product(self, timeout: float = READ_PRODUCT_TIMEOUT) -> Product:
+        self._futures["product"] = asyncio.get_event_loop().create_future()
+        try:
+            result = await asyncio.wait_for(self._futures["product"], timeout)
+            return Product(result["model"], result["version"])
+        except asyncio.TimeoutError:
+            raise CoilReadTimeoutException(f"Timeout waiting for product message")
+        finally:
+            del self._futures["product"]
+
     async def read_coil(self, coil: Coil, timeout: float = DEFAULT_TIMEOUT) -> Coil:
         async with self._send_lock:
             data = ReadRequest.build(
                 dict(fields=dict(value=dict(coil_address=coil.address)))
             )
 
-            self._read_future = asyncio.get_event_loop().create_future()
+            self._futures["read"] = asyncio.get_event_loop().create_future()
 
             logger.debug(
                 f"Sending {hexlify(data)} (read request) to {self._remote_ip}:{self._remote_write_port}"
@@ -135,13 +147,13 @@ class NibeGW(asyncio.DatagramProtocol, Connection):
             logger.debug(f"Waiting for read response for {coil.name}")
 
             try:
-                await asyncio.wait_for(self._read_future, timeout)
+                await asyncio.wait_for(self._futures["read"], timeout)
             except asyncio.TimeoutError:
                 raise CoilReadTimeoutException(
                     f"Timeout waiting for read response for {coil.name}"
                 )
             finally:
-                self._read_future = None
+                del self._futures["read"]
 
             return coil
 
@@ -157,7 +169,7 @@ class NibeGW(asyncio.DatagramProtocol, Connection):
                 )
             )
 
-            self._write_future = asyncio.get_event_loop().create_future()
+            self._futures["write"] = asyncio.get_event_loop().create_future()
 
             logger.debug(
                 f"Sending {hexlify(data)} (write request) to {self._remote_ip}:{self._remote_write_port}"
@@ -165,9 +177,9 @@ class NibeGW(asyncio.DatagramProtocol, Connection):
             self._transport.sendto(data, (self._remote_ip, self._remote_write_port))
 
             try:
-                await asyncio.wait_for(self._write_future, timeout)
+                await asyncio.wait_for(self._futures["write"], timeout)
 
-                result = self._write_future.result()
+                result = self._futures["write"].result()
 
                 if not result:
                     raise CoilWriteException(f"Heatpump denied writing {coil.name}")
@@ -178,7 +190,7 @@ class NibeGW(asyncio.DatagramProtocol, Connection):
                     f"Timeout waiting for write feedback for {coil.name}"
                 )
             finally:
-                self._write_future = None
+                del self._futures["write"]
 
             return coil
 
@@ -229,12 +241,10 @@ class Dedupe5C(Subconstruct):
         return obj
 
 
-
 ProductData = Struct(
-    "unknown" / Bytes(1),
-    "version" / Int16ub,
-    "model" / GreedyString("ASCII")
+    "_unknown" / Bytes(1), "version" / Int16ub, "model" / GreedyString("ASCII")
 )
+
 
 Data = Dedupe5C(
     Switch(

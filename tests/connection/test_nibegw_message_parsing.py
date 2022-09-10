@@ -113,18 +113,25 @@ class MessageResponseParsingTestCase(unittest.TestCase):
 
         self.assertFalse(data.data.result)
 
-
     def test_parse_product_data(self):
         data = self._parse_hexlified_raw_message("5c00206d0b0124e346313135352d3136ec")
-        self.assertEqual(data.data.unknown, b"\x01")
+        self.assertEqual(data.data._unknown, b"\x01")
         self.assertEqual(data.data.model, "F1155-16")
         self.assertEqual(data.data.version, 9443)
 
-        data = self._parse_hexlified_raw_message("5c00206d100724575465686f7761747469204169721a")
-        self.assertEqual(data.data.unknown, b"\x07")
+        data = self._parse_hexlified_raw_message(
+            "5c00206d100724575465686f7761747469204169721a"
+        )
+        self.assertEqual(data.data._unknown, b"\x07")
         self.assertEqual(data.data.model, "Tehowatti Air")
         self.assertEqual(data.data.version, 9303)
 
+        data = self._parse_hexlified_raw_message(
+            "5c00206d0d0124e346313235352d313220529f"
+        )
+        self.assertEqual(data.data._unknown, b"\x01")
+        self.assertEqual(data.data.model, "F1255-12 R")
+        self.assertEqual(data.data.version, 9443)
 
     @staticmethod
     def _parse_hexlified_raw_message(txt_raw):

@@ -4,16 +4,14 @@ import logging
 from async_modbus import modbus_for_url
 
 from nibe.coil import Coil
-from nibe.connection import Connection
-from nibe.exceptions import CoilReadException, CoilWriteException, DecodeException
+from nibe.connection import DEFAULT_TIMEOUT, Connection
+from nibe.exceptions import CoilReadException, CoilWriteException
 from nibe.heatpump import HeatPump
 
 logger = logging.getLogger("nibe").getChild(__name__)
 
 
 class Modbus(Connection):
-    DEFAULT_TIMEOUT = 5
-
     def __init__(self, heatpump: HeatPump, url, slave_id, conn_options=None):
         self._slave_id = slave_id
         self._heatpump = heatpump
