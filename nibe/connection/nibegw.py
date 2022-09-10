@@ -233,7 +233,7 @@ class Dedupe5C(Subconstruct):
 ProductData = Struct(
     "unknown" / Bytes(1),
     "version" / Int16ub,
-    "product" / GreedyString("ASCII")
+    "model" / GreedyString("ASCII")
 )
 
 Data = Dedupe5C(
