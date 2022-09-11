@@ -52,9 +52,9 @@ class ProductInfo:
     firmware_version: int
 
     def infer_model(self) -> Model:
-        for m in Model.keys():
-            if m.lower() in self.model.lower():
-                return getattr(Model, m)
+        for key in Model.keys():
+            if key in self.model.upper():
+                return getattr(Model, key)
 
         raise ModelIdentificationFailed(f'Unable to identify model from "{self.model}"')
 
@@ -70,8 +70,8 @@ class HeatPump:
     _model: Union[Model, None] = None
 
     def __init__(self, model: Model = None):
-        if isinstance(model, Model):
-            self._model = model
+        if model is not None:
+            self.model = model
 
         self._listeners = defaultdict(list)
 
@@ -81,7 +81,7 @@ class HeatPump:
 
     @model.setter
     def model(self, model: Model):
-        assert isinstance(model, Model)
+        assert isinstance(model, Model), "Passed argument is not of a Model type"
 
         self._model = model
 
@@ -91,7 +91,9 @@ class HeatPump:
 
     @product_info.setter
     def product_info(self, product_info: ProductInfo):
-        assert isinstance(product_info, ProductInfo)
+        assert isinstance(
+            product_info, ProductInfo
+        ), "Passed argument is not of a ProductInfo type"
 
         self._product_info = product_info
 
@@ -108,7 +110,15 @@ class HeatPump:
         return Coil(address, **kwargs)
 
     def initialize(self):
-        assert isinstance(self._model, Model)
+        if not isinstance(self._model, Model) and isinstance(
+            self._product_info, ProductInfo
+        ):
+            self.model = self._product_info.infer_model()
+
+        assert isinstance(
+            self._model, Model
+        ), "Model is not set and product info is not available"
+
         self._load_coils()
 
     def get_coil_by_address(self, address: Union[int, str]) -> Coil:
@@ -124,9 +134,12 @@ class HeatPump:
             raise CoilNotFoundException(f"Coil with name '{name}' not found")
 
     def notify_coil_update(self, coil: Coil):
-        for listener in self._listeners[self.COIL_UPDATE_EVENT]:
+        self.notify_event_listeners(self.COIL_UPDATE_EVENT, coil)
+
+    def notify_event_listeners(self, event_name: str, *args, **kwargs):
+        for listener in self._listeners[event_name]:
             try:
-                listener(coil)
+                listener(*args, **kwargs)
             except Exception as e:
                 logger.exception(e)
 

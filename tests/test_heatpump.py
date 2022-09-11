@@ -71,6 +71,25 @@ class HeatpumpWordSwapTestCase(unittest.TestCase):
         self.assertEqual(1576, coil.value)
 
 
+class HeatpumpIntialization(unittest.TestCase):
+    def setUp(self) -> None:
+        self.heat_pump = HeatPump()
+
+    def test_initalize_with_model(self):
+        self.heat_pump.model = Model.F1255
+        self.heat_pump.initialize()
+        self.heat_pump.get_coil_by_address(43420)
+
+    def test_initalize_with_product_info(self):
+        self.heat_pump.product_info = ProductInfo("F1255-12 R", 0)
+        self.heat_pump.initialize()
+        self.heat_pump.get_coil_by_address(43420)
+
+    def test_initalization_failed(self):
+        with self.assertRaises(AssertionError):
+            self.heat_pump.initialize()
+
+
 class ProductInfoTestCase(unittest.TestCase):
     def test_infer_model(self):
         product_info = ProductInfo("F1255-12 R", 0)

@@ -164,7 +164,7 @@ class NibeGW(asyncio.DatagramProtocol, Connection):
 
     async def write_coil(self, coil: Coil, timeout: float = DEFAULT_TIMEOUT) -> Coil:
         assert coil.is_writable, f"{coil.name} is not writable"
-        assert coil.value is not None
+        assert coil.value is not None, f"{coil.name} value must be set"
         async with self._send_lock:
             data = WriteRequest.build(
                 dict(
