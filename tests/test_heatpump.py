@@ -1,8 +1,8 @@
 import unittest
 from unittest.mock import Mock
 
-from nibe.exceptions import CoilNotFoundException
-from nibe.heatpump import HeatPump, Model
+from nibe.exceptions import CoilNotFoundException, ModelIdentificationFailed
+from nibe.heatpump import HeatPump, Model, ProductInfo
 
 
 class HeatpumpTestCase(unittest.TestCase):
@@ -69,6 +69,23 @@ class HeatpumpWordSwapTestCase(unittest.TestCase):
         coil = self.heat_pump.get_coil_by_address(43420)
         coil.raw_value = b"\x00\x00(\x06"
         self.assertEqual(1576, coil.value)
+
+
+class ProductInfoTestCase(unittest.TestCase):
+    def test_infer_model(self):
+        product_info = ProductInfo("F1255-12 R", 0)
+
+        assert product_info.infer_model() == Model.F1255
+
+        product_info = ProductInfo("F1155-16", 0)
+
+        assert product_info.infer_model() == Model.F1155
+
+    def test_infer_model_error(self):
+        product_info = ProductInfo("Tehowatti Air", 0)
+
+        with self.assertRaises(ModelIdentificationFailed):
+            product_info.infer_model()
 
 
 if __name__ == "__main__":

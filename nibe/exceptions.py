@@ -44,3 +44,7 @@ class ProductInfoReadException(ReadException):
 
 class ProductInfoReadTimeoutException(ProductInfoReadException):
     pass
+
+
+class ModelIdentificationFailed(NibeException):
+    pass

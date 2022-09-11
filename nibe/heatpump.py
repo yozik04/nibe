@@ -7,15 +7,9 @@ from importlib.resources import files
 from typing import Any, Callable, Dict, Union
 
 from nibe.coil import Coil
-from nibe.exceptions import CoilNotFoundException
+from nibe.exceptions import CoilNotFoundException, ModelIdentificationFailed
 
 logger = logging.getLogger("nibe").getChild(__name__)
-
-
-@dataclass
-class ProductInfo:
-    model: str
-    firmware_version: int
 
 
 class Model(Enum):
@@ -52,6 +46,19 @@ class Model(Enum):
         return cls.__members__.keys()
 
 
+@dataclass
+class ProductInfo:
+    model: str
+    firmware_version: int
+
+    def infer_model(self) -> Model:
+        for m in Model.keys():
+            if m.lower() in self.model.lower():
+                return getattr(Model, m)
+
+        raise ModelIdentificationFailed(f'Unable to identify model from "{self.model}"')
+
+
 class HeatPump:
     COIL_UPDATE_EVENT = "coil_update"
 
@@ -59,17 +66,37 @@ class HeatPump:
     _address_to_coil: Dict[str, Coil]
     _name_to_coil: Dict[str, Coil]
     word_swap: bool = True
+    _product_info: Union[ProductInfo, None] = None
+    _model: Union[Model, None] = None
 
     def __init__(self, model: Model = None):
-        self.model = model
+        if model:
+            self.model = model
 
         self._listeners = defaultdict(list)
 
+    @property
+    def model(self) -> Union[Model, None]:
+        return self._model
+
+    @model.setter
     def set_model(self, model: Model):
-        self.model = model
+        assert isinstance(model, Model)
+
+        self._model = model
+
+    @property
+    def product_info(self) -> Union[ProductInfo, None]:
+        return self._product_info
+
+    @product_info.setter
+    def set_product_info(self, product_info: ProductInfo):
+        assert isinstance(product_info, ProductInfo)
+
+        self._product_info = product_info
 
     def _load_coils(self):
-        data = self.model.get_coil_data()
+        data = self._model.get_coil_data()
 
         self._address_to_coil = {
             k: self._make_coil(address=int(k), **v) for k, v in data.items()
@@ -81,7 +108,7 @@ class HeatPump:
         return Coil(address, **kwargs)
 
     def initialize(self):
-        assert isinstance(self.model, Model)
+        assert isinstance(self._model, Model)
         self._load_coils()
 
     def get_coil_by_address(self, address: Union[int, str]) -> Coil:
