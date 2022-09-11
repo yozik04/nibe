@@ -70,8 +70,8 @@ class HeatPump:
     _model: Union[Model, None] = None
 
     def __init__(self, model: Model = None):
-        if model:
-            self.model = model
+        if isinstance(model, Model):
+            self._model = model
 
         self._listeners = defaultdict(list)
 
