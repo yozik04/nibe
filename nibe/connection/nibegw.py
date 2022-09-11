@@ -108,7 +108,7 @@ class NibeGW(asyncio.DatagramProtocol, Connection):
                     self._futures["write"].set_result(msg.fields.value.data.result)
             elif cmd == "PRODUCT_INFO_MSG":
                 with suppress(InvalidStateError, CancelledError, KeyError):
-                    self._futures["product"].set_result(msg.fields.value.data)
+                    self._futures["product_info"].set_result(msg.fields.value.data)
             else:
                 logger.debug(f"Unknown command {cmd}")
         except ChecksumError:
@@ -126,16 +126,16 @@ class NibeGW(asyncio.DatagramProtocol, Connection):
     async def read_product_info(
         self, timeout: float = READ_PRODUCT_INFO_TIMEOUT
     ) -> ProductInfo:
-        self._futures["product"] = asyncio.get_event_loop().create_future()
+        self._futures["product_info"] = asyncio.get_event_loop().create_future()
         try:
-            result = await asyncio.wait_for(self._futures["product"], timeout)
+            result = await asyncio.wait_for(self._futures["product_info"], timeout)
             return ProductInfo(result["model"], result["version"])
         except asyncio.TimeoutError:
             raise ProductInfoReadTimeoutException(
                 f"Timeout waiting for product message"
             )
         finally:
-            del self._futures["product"]
+            del self._futures["product_info"]
 
     async def read_coil(self, coil: Coil, timeout: float = DEFAULT_TIMEOUT) -> Coil:
         async with self._send_lock:
