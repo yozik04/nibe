@@ -29,7 +29,7 @@ from construct import (
 )
 
 from nibe.coil import Coil
-from nibe.connection import DEFAULT_TIMEOUT, READ_PRODUCT_TIMEOUT, Connection, Product
+from nibe.connection import DEFAULT_TIMEOUT, READ_PRODUCT_INFO_TIMEOUT, Connection
 from nibe.exceptions import (
     CoilNotFoundException,
     CoilReadException,
@@ -37,8 +37,9 @@ from nibe.exceptions import (
     CoilWriteException,
     CoilWriteTimeoutException,
     NibeException,
+    ProductInfoReadTimeoutException,
 )
-from nibe.heatpump import HeatPump
+from nibe.heatpump import HeatPump, ProductInfo
 
 logger = logging.getLogger("nibe").getChild(__name__)
 
@@ -105,7 +106,7 @@ class NibeGW(asyncio.DatagramProtocol, Connection):
             elif cmd == "MODBUS_WRITE_RESP":
                 with suppress(InvalidStateError, CancelledError, KeyError):
                     self._futures["write"].set_result(msg.fields.value.data.result)
-            elif cmd == "PRODUCT_DATA_MSG":
+            elif cmd == "PRODUCT_INFO_MSG":
                 with suppress(InvalidStateError, CancelledError, KeyError):
                     self._futures["product"].set_result(msg.fields.value.data)
             else:
@@ -122,13 +123,17 @@ class NibeGW(asyncio.DatagramProtocol, Connection):
                 e,
             )
 
-    async def read_product(self, timeout: float = READ_PRODUCT_TIMEOUT) -> Product:
+    async def read_product_info(
+        self, timeout: float = READ_PRODUCT_INFO_TIMEOUT
+    ) -> ProductInfo:
         self._futures["product"] = asyncio.get_event_loop().create_future()
         try:
             result = await asyncio.wait_for(self._futures["product"], timeout)
-            return Product(result["model"], result["version"])
+            return ProductInfo(result["model"], result["version"])
         except asyncio.TimeoutError:
-            raise CoilReadTimeoutException(f"Timeout waiting for product message")
+            raise ProductInfoReadTimeoutException(
+                f"Timeout waiting for product message"
+            )
         finally:
             del self._futures["product"]
 
@@ -241,7 +246,7 @@ class Dedupe5C(Subconstruct):
         return obj
 
 
-ProductData = Struct(
+ProductInfoData = Struct(
     "_unknown" / Bytes(1), "version" / Int16ub, "model" / GreedyString("ASCII")
 )
 
@@ -256,7 +261,7 @@ Data = Dedupe5C(
                 Struct("coil_address" / Int16ul, "value" / Bytes(2)),
             ),
             "MODBUS_WRITE_RESP": Struct("result" / Flag),
-            "PRODUCT_DATA_MSG": ProductData,
+            "PRODUCT_INFO_MSG": ProductInfoData,
         },
         default=Bytes(this.length),
     )
@@ -271,7 +276,7 @@ Command = Enum(
     MODBUS_READ_RESP=0x6A,
     MODBUS_WRITE_REQ=0x6B,
     MODBUS_WRITE_RESP=0x6C,
-    PRODUCT_DATA_MSG=0x6D,
+    PRODUCT_INFO_MSG=0x6D,
 )
 
 

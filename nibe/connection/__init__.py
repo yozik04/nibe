@@ -1,16 +1,10 @@
 from abc import ABC, abstractmethod
-from dataclasses import dataclass
 
 from nibe.coil import Coil
+from nibe.heatpump import ProductInfo
 
 DEFAULT_TIMEOUT: float = 5
-READ_PRODUCT_TIMEOUT: float = 20  # Product message is sent every 15 seconds
-
-
-@dataclass
-class Product:
-    model: str
-    version: int
+READ_PRODUCT_INFO_TIMEOUT: float = 20  # Product info message is sent every 15 seconds
 
 
 class Connection(ABC):
@@ -28,7 +22,9 @@ class Connection(ABC):
     async def write_coil(self, coil: Coil, timeout: float = DEFAULT_TIMEOUT) -> Coil:
         pass
 
-    async def read_product(self, timeout: float = READ_PRODUCT_TIMEOUT) -> Product:
+    async def read_product_info(
+        self, timeout: float = READ_PRODUCT_INFO_TIMEOUT
+    ) -> ProductInfo:
         raise NotImplemented(
-            "read_product method is not implemented for this connection method"
+            "read_product_info method is not implemented for this connection method"
         )

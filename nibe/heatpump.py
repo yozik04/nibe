@@ -1,6 +1,7 @@
 import json
 import logging
 from collections import defaultdict
+from dataclasses import dataclass
 from enum import Enum
 from importlib.resources import files
 from typing import Any, Callable, Dict, Union
@@ -9,6 +10,12 @@ from nibe.coil import Coil
 from nibe.exceptions import CoilNotFoundException
 
 logger = logging.getLogger("nibe").getChild(__name__)
+
+
+@dataclass
+class ProductInfo:
+    model: str
+    firmware_version: int
 
 
 class Model(Enum):

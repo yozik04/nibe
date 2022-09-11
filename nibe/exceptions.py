@@ -38,9 +38,9 @@ class CoilReadTimeoutException(CoilReadException):
     pass
 
 
-class ModelReadException(ReadException):
+class ProductInfoReadException(ReadException):
     pass
 
 
-class ModelReadTimeoutException(ModelReadException):
+class ProductInfoReadTimeoutException(ProductInfoReadException):
     pass
