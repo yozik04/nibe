@@ -91,20 +91,20 @@ class HeatpumpIntialization(unittest.TestCase):
 
 
 class ProductInfoTestCase(unittest.TestCase):
-    def test_infer_model(self):
+    def test_identify_model(self):
         product_info = ProductInfo("F1255-12 R", 0)
 
-        assert product_info.infer_model() == Model.F1255
+        assert product_info.identify_model() == Model.F1255
 
         product_info = ProductInfo("F1155-16", 0)
 
-        assert product_info.infer_model() == Model.F1155
+        assert product_info.identify_model() == Model.F1155
 
-    def test_infer_model_error(self):
+    def test_identify_model_error(self):
         product_info = ProductInfo("Tehowatti Air", 0)
 
         with self.assertRaises(ModelIdentificationFailed):
-            product_info.infer_model()
+            product_info.identify_model()
 
 
 if __name__ == "__main__":

@@ -51,7 +51,7 @@ class ProductInfo:
     model: str
     firmware_version: int
 
-    def infer_model(self) -> Model:
+    def identify_model(self) -> Model:
         for key in Model.keys():
             if key in self.model.upper():
                 return getattr(Model, key)
@@ -113,7 +113,7 @@ class HeatPump:
         if not isinstance(self._model, Model) and isinstance(
             self._product_info, ProductInfo
         ):
-            self.model = self._product_info.infer_model()
+            self.model = self._product_info.identify_model()
 
         assert isinstance(
             self._model, Model
