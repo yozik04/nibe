@@ -80,7 +80,7 @@ class HeatPump:
         return self._model
 
     @model.setter
-    def set_model(self, model: Model):
+    def model(self, model: Model):
         assert isinstance(model, Model)
 
         self._model = model
@@ -90,7 +90,7 @@ class HeatPump:
         return self._product_info
 
     @product_info.setter
-    def set_product_info(self, product_info: ProductInfo):
+    def product_info(self, product_info: ProductInfo):
         assert isinstance(product_info, ProductInfo)
 
         self._product_info = product_info
