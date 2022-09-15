@@ -121,6 +121,9 @@ class HeatPump:
 
         self._load_coils()
 
+    def get_coils(self) -> list[Coil]:
+        return list(self._address_to_coil.values())
+
     def get_coil_by_address(self, address: Union[int, str]) -> Coil:
         try:
             return self._address_to_coil[str(address)]
