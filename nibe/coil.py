@@ -148,7 +148,7 @@ class Coil:
 
     def _decode(self, raw: bytes) -> Union[int, float, str]:
         value = self.parser.parse(raw)
-        if self._is_undefined(value):
+        if self._is_hitting_integer_limit(value):
             return None
         try:
             self._check_raw_value_bounds(value)
@@ -169,7 +169,7 @@ class Coil:
 
         return mapped_value
 
-    def _is_undefined(self, value: bytes):
+    def _is_hitting_integer_limit(self, value: int):
         if self.parser is Int8ul and value == 0xFF:
             return True
         if self.parser is Int16ul and value == 0xFFFF:
