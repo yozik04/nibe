@@ -30,6 +30,7 @@ from construct import (
 
 from nibe.coil import Coil
 from nibe.connection import DEFAULT_TIMEOUT, READ_PRODUCT_INFO_TIMEOUT, Connection
+from nibe.event_server import EventServer
 from nibe.exceptions import (
     CoilNotFoundException,
     CoilReadException,
@@ -44,7 +45,9 @@ from nibe.heatpump import HeatPump, ProductInfo
 logger = logging.getLogger("nibe").getChild(__name__)
 
 
-class NibeGW(asyncio.DatagramProtocol, Connection):
+class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
+    CONNECTION_STATUS_EVENT = "connection_status"
+
     def __init__(
         self,
         heatpump: HeatPump,
@@ -54,6 +57,8 @@ class NibeGW(asyncio.DatagramProtocol, Connection):
         listening_ip: str = "0.0.0.0",
         listening_port: int = 9999,
     ) -> None:
+        super().__init__()
+
         self._heatpump = heatpump
         self._listening_ip = listening_ip
         self._listening_port = listening_port
@@ -77,6 +82,7 @@ class NibeGW(asyncio.DatagramProtocol, Connection):
         )
 
     def connection_made(self, transport):
+        self.notify_event_listeners(self.CONNECTION_STATUS_EVENT, status="connected")
         self._transport = transport
 
     def datagram_received(self, data, addr):
@@ -217,6 +223,9 @@ class NibeGW(asyncio.DatagramProtocol, Connection):
     async def stop(self):
         self._transport.close()
         self._transport = None
+        self._heatpump.notify_event_listeners(
+            self.CONNECTION_STATUS_EVENT, status="disconnected"
+        )
 
 
 def xor8(data: bytes) -> int:

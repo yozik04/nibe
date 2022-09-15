@@ -7,6 +7,7 @@ from importlib.resources import files
 from typing import Any, Callable, Dict, Union
 
 from nibe.coil import Coil
+from nibe.event_server import EventServer
 from nibe.exceptions import CoilNotFoundException, ModelIdentificationFailed
 
 logger = logging.getLogger("nibe").getChild(__name__)
@@ -59,10 +60,9 @@ class ProductInfo:
         raise ModelIdentificationFailed(f'Unable to identify model from "{self.model}"')
 
 
-class HeatPump:
+class HeatPump(EventServer):
     COIL_UPDATE_EVENT = "coil_update"
 
-    _listeners: defaultdict[Any, list[Callable[..., None]]]
     _address_to_coil: Dict[str, Coil]
     _name_to_coil: Dict[str, Coil]
     word_swap: bool = True
@@ -70,10 +70,10 @@ class HeatPump:
     _model: Union[Model, None] = None
 
     def __init__(self, model: Model = None):
+        super().__init__()
+
         if model is not None:
             self.model = model
-
-        self._listeners = defaultdict(list)
 
     @property
     def model(self) -> Union[Model, None]:
@@ -138,13 +138,3 @@ class HeatPump:
 
     def notify_coil_update(self, coil: Coil):
         self.notify_event_listeners(self.COIL_UPDATE_EVENT, coil)
-
-    def notify_event_listeners(self, event_name: str, *args, **kwargs):
-        for listener in self._listeners[event_name]:
-            try:
-                listener(*args, **kwargs)
-            except Exception as e:
-                logger.exception(e)
-
-    def subscribe(self, event_name: str, callback: Callable[..., None]):
-        self._listeners[event_name].append(callback)
