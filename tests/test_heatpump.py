@@ -12,6 +12,10 @@ class HeatpumpTestCase(unittest.TestCase):
 
         self.assertGreater(len(self.heat_pump._address_to_coil), 100)
 
+    def test_get_coils(self):
+        coils = self.heat_pump.get_coils()
+        self.assertIsInstance(coils, list)
+
     def test_get_coil_by_returns_same(self):
         coil_address = 40004
 
