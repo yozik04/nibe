@@ -4,16 +4,14 @@ import logging
 from async_modbus import modbus_for_url
 
 from nibe.coil import Coil
-from nibe.connection import Connection
-from nibe.exceptions import CoilReadException, CoilWriteException, DecodeException
+from nibe.connection import DEFAULT_TIMEOUT, Connection
+from nibe.exceptions import CoilReadException, CoilWriteException
 from nibe.heatpump import HeatPump
 
 logger = logging.getLogger("nibe").getChild(__name__)
 
 
 class Modbus(Connection):
-    DEFAULT_TIMEOUT = 5
-
     def __init__(self, heatpump: HeatPump, url, slave_id, conn_options=None):
         self._slave_id = slave_id
         self._heatpump = heatpump
@@ -40,7 +38,7 @@ class Modbus(Connection):
 
     async def write_coil(self, coil: Coil, timeout: float = DEFAULT_TIMEOUT) -> Coil:
         assert coil.is_writable, f"{coil.name} is not writable"
-        assert coil.value is not None
+        assert coil.value is not None, f"{coil.name} value must be set"
 
         logger.debug(f"Sending write request")
         try:

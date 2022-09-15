@@ -5,7 +5,7 @@ from unittest.mock import Mock
 
 from nibe.connection.nibegw import NibeGW
 from nibe.exceptions import CoilReadException, CoilReadTimeoutException
-from nibe.heatpump import HeatPump, Model
+from nibe.heatpump import HeatPump, Model, ProductInfo
 
 
 class TestNibeGW(TestCase):
@@ -77,3 +77,19 @@ class TestNibeGW(TestCase):
         self.transport.sendto.assert_called_with(
             binascii.unhexlify("c06b0604bc0400000011"), ("127.0.0.1", 10000)
         )
+
+    def test_read_product_info(self):
+        async def read_product_info():
+            task = self.loop.create_task(self.nibegw.read_product_info())
+            await asyncio.sleep(0)
+            self.nibegw.datagram_received(
+                binascii.unhexlify("5c00206d0d0124e346313235352d313220529f"),
+                ("127.0.0.1", 12345),
+            )
+
+            return await task
+
+        product = self.loop.run_until_complete(read_product_info())
+
+        assert isinstance(product, ProductInfo)
+        assert product.model == "F1255-12 R"

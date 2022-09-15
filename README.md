@@ -143,6 +143,20 @@ if __name__ == '__main__':
     loop.run_forever()
 ```
 
+### Model auto detection
+With NibeGW it is possible to auto identify heatpump model.
+Heatpump sends information about model every 15 seconds.
+```
+heatpump = HeatPump()  # Note that we do not specify model here
+
+# ...
+
+connection = NibeGW(heatpump=heatpump, remote_ip="192.168.1.2")
+await connection.start()
+heatpump.product_info = await connection.read_product_info()
+heatpump.initialize()
+```
+
 ## Disclaimer
 Nibe is registered mark of NIBE Energy Systems.
 

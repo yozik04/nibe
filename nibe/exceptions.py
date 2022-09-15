@@ -14,7 +14,11 @@ class EncodeException(NibeException):
     pass
 
 
-class CoilWriteException(NibeException):
+class WriteException(NibeException):
+    pass
+
+
+class CoilWriteException(WriteException):
     pass
 
 
@@ -22,9 +26,25 @@ class CoilWriteTimeoutException(CoilWriteException):
     pass
 
 
-class CoilReadException(NibeException):
+class ReadException(NibeException):
+    pass
+
+
+class CoilReadException(ReadException):
     pass
 
 
 class CoilReadTimeoutException(CoilReadException):
+    pass
+
+
+class ProductInfoReadException(ReadException):
+    pass
+
+
+class ProductInfoReadTimeoutException(ProductInfoReadException):
+    pass
+
+
+class ModelIdentificationFailed(NibeException):
     pass
