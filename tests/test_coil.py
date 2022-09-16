@@ -36,6 +36,10 @@ class TestCoilSigned8(TestCase):
         self.coil.raw_value = b"\xfc"
         self.assertEqual(-4, self.coil.value)
 
+    def test_decode_unavailable(self):
+        self.coil.raw_value = b"\x80"
+        self.assertEqual(None, self.coil.value)
+
     def test_encode(self):
         self.coil.value = -4
         self.assertEqual(b"\xfc\x00\x00\x00", self.coil.raw_value)
@@ -43,6 +47,11 @@ class TestCoilSigned8(TestCase):
         with self.assertRaises(EncodeException):
             self.coil.value = 256
             _ = self.coil.raw_value
+
+    def test_encode_unavailable(self):
+        self.coil.value = None
+        with self.assertRaises(EncodeException):
+            self.coil.raw_value
 
 
 class TestCoilUnsigned8(TestCase):
@@ -56,6 +65,12 @@ class TestCoilUnsigned8(TestCase):
         self.assertEqual(1, self.coil.value)
         self.coil.raw_value = b"\x01"
         self.assertEqual(1, self.coil.value)
+
+    def test_decode_unavailable(self):
+        self.coil.raw_value = b"\xff"
+        self.assertEqual(None, self.coil.value)
+        self.coil.raw_value = b"\xff\xff"
+        self.assertEqual(None, self.coil.value)
 
     def test_encode(self):
         self.coil.value = 1
@@ -79,6 +94,12 @@ class TestCoilUnsigned8WordSwap(TestCase):
         self.assertEqual(1, self.coil.value)
         self.coil.raw_value = b"\x01"
         self.assertEqual(1, self.coil.value)
+
+    def test_decode_unavailable(self):
+        self.coil.raw_value = b"\xff"
+        self.assertEqual(None, self.coil.value)
+        self.coil.raw_value = b"\xff\xff"
+        self.assertEqual(None, self.coil.value)
 
     def test_encode(self):
         self.coil.value = 1
@@ -125,6 +146,10 @@ class TestCoilSigned16(TestCase):
         with self.assertRaises(DecodeException):
             self.coil.raw_value = b"\x2d\x10"
 
+    def test_decode_unavailable(self):
+        self.coil.raw_value = b"\x00\x80"
+        self.assertEqual(None, self.coil.value)
+
     def test_encode(self):
         self.coil.value = 15.1
         self.assertEqual(b"\x97\x00\x00\x00", self.coil.raw_value)
@@ -153,6 +178,10 @@ class TestCoilUnsigned16(TestCase):
         self.coil.raw_value = b"\x01\x00"
         self.assertEqual(0.1, self.coil.value)
 
+    def test_decode_unavailable(self):
+        self.coil.raw_value = b"\xff\xff"
+        self.assertEqual(None, self.coil.value)
+
     def test_encode(self):
         self.coil.value = 0.1
         self.assertEqual(b"\x01\x00\x00\x00", self.coil.raw_value)
@@ -177,6 +206,10 @@ class TestCoilUnsigned16WordSwap(TestCase):
         self.coil.raw_value = b"\x01\x00"
         self.assertEqual(0.1, self.coil.value)
 
+    def test_decode_unavailable(self):
+        self.coil.raw_value = b"\xff\xff"
+        self.assertEqual(None, self.coil.value)
+
     def test_encode(self):
         self.coil.value = 0.1
         self.assertEqual(b"\x01\x00\x00\x00", self.coil.raw_value)
@@ -197,6 +230,10 @@ class TestCoilSigned32(TestCase):
         self.coil.raw_value = b"2T\x00\x00"
         self.assertEqual(21554, self.coil.value)
 
+    def test_decode_unavailable(self):
+        self.coil.raw_value = b'\x00\x00\x00\x80'
+        self.assertEqual(None, self.coil.value)
+
     def test_encode(self):
         self.coil.value = 21554
         self.assertEqual(b"2T\x00\x00", self.coil.raw_value)
@@ -215,6 +252,10 @@ class TestCoilSigned32WordSwap(TestCase):
     def test_decode(self):
         self.coil.raw_value = b"\x00\x00(\x06"
         self.assertEqual(1576, self.coil.value)
+
+    def test_decode_unavailable(self):
+        self.coil.raw_value = b"\x00\x80\x00\x00"
+        self.assertEqual(None, self.coil.value)
 
     def test_encode(self):
         self.coil.value = 1576
@@ -252,6 +293,10 @@ class TestCoilWithMapping(TestCase):
     def test_decode_mapping(self):
         self.coil.raw_value = b"\x0a"
         self.assertEqual("OFF", self.coil.value)
+
+    def test_decode_unavailable(self):
+        self.coil.raw_value = b"\xff\xff"
+        self.assertEqual(None, self.coil.value)
 
     def test_encode_mapping(self):
         self.coil.value = "off"

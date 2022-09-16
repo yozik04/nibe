@@ -16,10 +16,10 @@ from nibe.parsers import WordSwapped
 
 parser_map = {
     "u8": Int8ul,
-    "u16": Int16ul,
-    "u32": Int32ul,
     "s8": Int8sl,
+    "u16": Int16ul,
     "s16": Int16sl,
+    "u32": Int32ul,
     "s32": Int32sl,
 }
 
@@ -71,6 +71,7 @@ class Coil:
             mappings is not None and factor != 1
         ), "When mapping is used factor needs to be 1"
 
+        self.size = size
         if word_swap:
             self.parser = parser_map.get(size)
         else:
@@ -112,11 +113,15 @@ class Coil:
             self.reverse_mappings = None
 
     @property
-    def value(self) -> Union[int, float, str]:
+    def value(self) -> Union[int, float, str, None]:
         return self._value
 
     @value.setter
-    def value(self, value: Union[int, float, str]):
+    def value(self, value: Union[int, float, str, None]):
+        if value is None:
+            self._value = None
+            return
+
         if self.mappings:
             value = value.upper()
             assert (
@@ -144,10 +149,14 @@ class Coil:
 
     def _decode(self, raw: bytes) -> Union[int, float, str]:
         value = self.parser.parse(raw)
+        if self._is_hitting_integer_limit(value):
+            return None
         try:
             self._check_raw_value_bounds(value)
         except AssertionError as e:
-            raise DecodeException(e)
+            raise DecodeException(
+                f"Failed to decode {self.name} coil from raw: {raw}, exception: {e}"
+            )
         if self.factor != 1:
             value /= self.factor
         if self.mappings is None:
@@ -161,28 +170,40 @@ class Coil:
 
         return mapped_value
 
-    def _encode(self, val: Union[int, float, str]) -> bytes:
+    def _is_hitting_integer_limit(self, int_value: int):
+        if self.size == 'u8' and int_value == 0xFF:
+            return True
+        if self.size == 's8' and int_value == -0x80:
+            return True
+        if self.size == 'u16' and int_value == 0xFFFF:
+            return True
+        if self.size == 's16' and int_value == -0x8000:
+            return True
+        if self.size == 'u32' and int_value == 0xFFFFFFFF:
+            return True
+        if self.size == 's32' and int_value == -0x80000000:
+            return True
+
+        return False
+
+    def _encode(self, value: Union[int, float, str, None]) -> bytes:
         try:
+            assert value is not None, "Unable to encode None value"
             if self.reverse_mappings is not None:
-                mapped_value = self.reverse_mappings.get(str(val))
-                if mapped_value is None:
-                    raise EncodeException(
-                        f"Mapping not found for {self.name} coil for value: {val}"
-                    )
+                mapped_value = self.reverse_mappings.get(str(value))
+                assert mapped_value is not None, "Mapping not found"
 
                 return self._pad(mapped_value)
 
             if self.factor != 1:
-                val *= self.factor
+                value *= self.factor
 
-            self._check_raw_value_bounds(val)
+            self._check_raw_value_bounds(value)
 
-            return self._pad(val)
-        except AssertionError as e:
-            raise EncodeException(e)
-        except ConstructError as e:
+            return self._pad(value)
+        except (ConstructError, AssertionError) as e:
             raise EncodeException(
-                f"Failed to encode {self.name} coil for value: {val}, exception: {e}"
+                f"Failed to encode {self.name} coil for value: {value}, exception: {e}"
             )
 
     def _pad(self, value) -> bytes:
@@ -203,12 +224,12 @@ class Coil:
         if self.raw_min is not None:
             assert (
                 value >= self.raw_min
-            ), f"{self.name} coil raw value ({value}) is smaller than min allowed({self.raw_min})"
+            ), f"value ({value}) is smaller than min allowed ({self.raw_min})"
 
         if self.raw_max is not None:
             assert (
                 value <= self.raw_max
-            ), f"{self.name} coil raw value ({value}) is larger than max allowed ({self.raw_max})"
+            ), f"value ({value}) is larger than max allowed ({self.raw_max})"
 
     def __repr__(self):
         return f"Coil {self.address}, name: {self.name}, title: {self.title}, value: {self.value}"
