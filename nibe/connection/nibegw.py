@@ -28,6 +28,9 @@ from construct import (
     Subconstruct,
     Switch,
     this,
+    BitStruct,
+    GreedyBytes,
+    Bitwise,
 )
 
 from nibe.coil import Coil
@@ -305,6 +308,37 @@ ProductInfoData = Struct(
     "_unknown" / Bytes(1), "version" / Int16ub, "model" / GreedyString("ASCII")
 )
 
+RmuData = Struct(
+    "bt1-outdoor-temperature" / Int16ul,
+    "bt7-hw-top" / Int16ul,
+    "room-sensor-setpoint-or-curve-offset-s1" / Int8ub,
+    "room-sensor-setpoint-or-curve-offset-s2" / Int8ub,
+    "room-sensor-setpoint-or-curve-offset-s3" / Int8ub,
+    "room-sensor-setpoint-or-curve-offset-s4" / Int8ub,
+    "bt50-room-temp-sX" / Int16ul,
+    "temporary-lux" / Int8ub,
+    "hw-time-hour" / Int8ub,
+    "hw-time-min" / Int8ub,
+    "fan-mode" / Int8ub,
+    "unknown2" / Bytes(2),
+    "flags"
+    / BitStruct(
+        "use-room-sensor-s4" / Flag,
+        "use-room-sensor-s3" / Flag,
+        "use-room-sensor-s2" / Flag,
+        "use-room-sensor-s1" / Flag,
+        "unknown_1" / Flag,
+        "unknown_2" / Flag,
+        "unknown_3" / Flag,
+        "unknown_4" / Flag,
+    ),
+    "unknown3" / Bytes(2),
+    "alarm" / Int8ub,
+    "unknown4" / Bytes(1),
+    "fan-time-hour" / Int8ub,
+    "fan-time-min" / Int8ub,
+    "unknown5" / GreedyBytes,
+)
 
 Data = Dedupe5C(
     Switch(
@@ -317,6 +351,7 @@ Data = Dedupe5C(
             ),
             "MODBUS_WRITE_RESP": Struct("result" / Flag),
             "PRODUCT_INFO_MSG": ProductInfoData,
+            "RMU_DATA_MSG": RmuData,
         },
         default=Bytes(this.length),
     )

@@ -133,6 +133,13 @@ class MessageResponseParsingTestCase(unittest.TestCase):
         self.assertEqual(data.data.model, "F1255-12 R")
         self.assertEqual(data.data.version, 9443)
 
+    def test_parse_rmu_data(self):
+        data = self._parse_hexlified_raw_message("5c001a62199b0029029ba00000e20000000000000239001f0003000001002e")
+        print(data)
+
+        data = self._parse_hexlified_raw_message("5c001962199b0028029ba00000e20000000000000239002100030000010012")
+        print(data)
+
     @staticmethod
     def _parse_hexlified_raw_message(txt_raw):
         raw = binascii.unhexlify(txt_raw)
