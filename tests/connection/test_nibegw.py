@@ -3,7 +3,7 @@ import binascii
 from unittest import TestCase
 from unittest.mock import Mock
 
-from nibe.connection.nibegw import NibeGW
+from nibe.connection.nibegw import ConnectionStatus, NibeGW
 from nibe.exceptions import CoilReadException, CoilReadTimeoutException
 from nibe.heatpump import HeatPump, Model, ProductInfo
 
@@ -23,6 +23,11 @@ class TestNibeGW(TestCase):
     def test_status(self):
         self.assertEqual("listening", self.nibegw.status)
 
+        connection_status_handler_mock = Mock()
+        self.nibegw.subscribe(
+            NibeGW.CONNECTION_STATUS_EVENT, connection_status_handler_mock
+        )
+
         coil = self.heatpump.get_coil_by_address(43424)
 
         async def send_receive():
@@ -37,6 +42,13 @@ class TestNibeGW(TestCase):
         self.loop.run_until_complete(send_receive())
 
         self.assertEqual("connected", self.nibegw.status)
+        connection_status_handler_mock.assert_called_once_with(
+            status=ConnectionStatus.CONNECTED
+        )
+
+        connection_status_handler_mock.reset_mock()
+        self.loop.run_until_complete(send_receive())
+        connection_status_handler_mock.assert_not_called()
 
     def test_read_s32_coil(self):
         coil = self.heatpump.get_coil_by_address(43424)
