@@ -36,6 +36,10 @@ class TestCoilSigned8(TestCase):
         self.coil.raw_value = b"\xfc"
         self.assertEqual(-4, self.coil.value)
 
+    def test_decode_unavailable(self):
+        self.coil.raw_value = b"\x80"
+        self.assertEqual(None, self.coil.value)
+
     def test_encode(self):
         self.coil.value = -4
         self.assertEqual(b"\xfc\x00\x00\x00", self.coil.raw_value)
@@ -44,7 +48,7 @@ class TestCoilSigned8(TestCase):
             self.coil.value = 256
             _ = self.coil.raw_value
 
-    def test_encode_undefined(self):
+    def test_encode_unavailable(self):
         self.coil.value = None
         with self.assertRaises(EncodeException):
             self.coil.raw_value
@@ -142,6 +146,10 @@ class TestCoilSigned16(TestCase):
         with self.assertRaises(DecodeException):
             self.coil.raw_value = b"\x2d\x10"
 
+    def test_decode_unavailable(self):
+        self.coil.raw_value = b"\x00\x80"
+        self.assertEqual(None, self.coil.value)
+
     def test_encode(self):
         self.coil.value = 15.1
         self.assertEqual(b"\x97\x00\x00\x00", self.coil.raw_value)
@@ -222,6 +230,10 @@ class TestCoilSigned32(TestCase):
         self.coil.raw_value = b"2T\x00\x00"
         self.assertEqual(21554, self.coil.value)
 
+    def test_decode_unavailable(self):
+        self.coil.raw_value = b'\x00\x00\x00\x80'
+        self.assertEqual(None, self.coil.value)
+
     def test_encode(self):
         self.coil.value = 21554
         self.assertEqual(b"2T\x00\x00", self.coil.raw_value)
@@ -240,6 +252,10 @@ class TestCoilSigned32WordSwap(TestCase):
     def test_decode(self):
         self.coil.raw_value = b"\x00\x00(\x06"
         self.assertEqual(1576, self.coil.value)
+
+    def test_decode_unavailable(self):
+        self.coil.raw_value = b"\x00\x80\x00\x00"
+        self.assertEqual(None, self.coil.value)
 
     def test_encode(self):
         self.coil.value = 1576

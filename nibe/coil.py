@@ -16,10 +16,10 @@ from nibe.parsers import WordSwapped
 
 parser_map = {
     "u8": Int8ul,
-    "u16": Int16ul,
-    "u32": Int32ul,
     "s8": Int8sl,
+    "u16": Int16ul,
     "s16": Int16sl,
+    "u32": Int32ul,
     "s32": Int32sl,
 }
 
@@ -71,6 +71,7 @@ class Coil:
             mappings is not None and factor != 1
         ), "When mapping is used factor needs to be 1"
 
+        self.size = size
         if word_swap:
             self.parser = parser_map.get(size)
         else:
@@ -169,12 +170,18 @@ class Coil:
 
         return mapped_value
 
-    def _is_hitting_integer_limit(self, value: int):
-        if self.parser is Int8ul and value == 0xFF:
+    def _is_hitting_integer_limit(self, int_value: int):
+        if self.size == 'u8' and int_value == 0xFF:
             return True
-        if self.parser is Int16ul and value == 0xFFFF:
+        if self.size == 's8' and int_value == -0x80:
             return True
-        if self.parser is Int32ul and value == 0xFFFFFFFF:
+        if self.size == 'u16' and int_value == 0xFFFF:
+            return True
+        if self.size == 's16' and int_value == -0x8000:
+            return True
+        if self.size == 'u32' and int_value == 0xFFFFFFFF:
+            return True
+        if self.size == 's32' and int_value == -0x80000000:
             return True
 
         return False
