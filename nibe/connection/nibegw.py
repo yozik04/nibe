@@ -217,6 +217,7 @@ class NibeGW(asyncio.DatagramProtocol, Connection):
     async def stop(self):
         self._transport.close()
         self._transport = None
+        await asyncio.sleep(0)
 
 
 def xor8(data: bytes) -> int:
