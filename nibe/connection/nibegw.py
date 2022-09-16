@@ -45,6 +45,14 @@ from nibe.heatpump import HeatPump, ProductInfo
 logger = logging.getLogger("nibe").getChild(__name__)
 
 
+class ConnectionStatus(Enum):
+    UNKNOWN = None
+    INITIALIZING = "initializing"
+    LISTENING = "listening"
+    CONNECTED = "connected"
+    DISCONNECTED = "disconnected"
+
+
 class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
     CONNECTION_STATUS_EVENT = "connection_status"
 
@@ -68,12 +76,15 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
         self._remote_write_port = remote_write_port
 
         self._transport = None
+        self._status = ConnectionStatus.UNKNOWN
 
         self._send_lock = asyncio.Lock()
         self._futures = {}
 
     async def start(self):
         logger.info(f"Starting UDP server on port {self._listening_port}")
+
+        self._set_status(ConnectionStatus.INITIALIZING)
 
         await asyncio.get_event_loop().create_datagram_endpoint(
             lambda: self,
@@ -82,11 +93,12 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
         )
 
     def connection_made(self, transport):
-        self.notify_event_listeners(self.CONNECTION_STATUS_EVENT, status="connected")
+        self._set_status(ConnectionStatus.LISTENING)
         self._transport = transport
 
     def datagram_received(self, data, addr):
         logger.debug(f"Received {hexlify(data)} from {addr}")
+        self._set_status(ConnectionStatus.CONNECTED)
         try:
             msg = Response.parse(data)
             logger.debug(msg)
@@ -208,6 +220,15 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
     def error_received(self, exc):
         logger.error(exc)
 
+    @property
+    def status(self) -> ConnectionStatus:
+        return self._status
+
+    def _set_status(self, status: ConnectionStatus):
+        if status != self._status:
+            self._status = status
+            self.notify_event_listeners(self.CONNECTION_STATUS_EVENT, status=status)
+
     def _on_raw_coil_value(self, coil_address: int, raw_value: bytes):
         try:
             coil = self._heatpump.get_coil_by_address(coil_address)
@@ -223,9 +244,7 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
     async def stop(self):
         self._transport.close()
         self._transport = None
-        self._heatpump.notify_event_listeners(
-            self.CONNECTION_STATUS_EVENT, status="disconnected"
-        )
+        self._set_status(ConnectionStatus.DISCONNECTED)
 
 
 def xor8(data: bytes) -> int:

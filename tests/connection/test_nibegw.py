@@ -17,7 +17,26 @@ class TestNibeGW(TestCase):
         self.nibegw = NibeGW(self.heatpump, "127.0.0.1")
 
         self.transport = Mock()
+        self.assertEqual(None, self.nibegw.status)
         self.nibegw.connection_made(self.transport)
+
+    def test_status(self):
+        self.assertEqual("listening", self.nibegw.status)
+
+        coil = self.heatpump.get_coil_by_address(43424)
+
+        async def send_receive():
+            task = self.loop.create_task(self.nibegw.read_coil(coil))
+            await asyncio.sleep(0)
+            self.nibegw.datagram_received(
+                binascii.unhexlify("5c00206a06a0a9f5120000a2"), ("127.0.0.1", 12345)
+            )
+
+            return await task
+
+        self.loop.run_until_complete(send_receive())
+
+        self.assertEqual("connected", self.nibegw.status)
 
     def test_read_s32_coil(self):
         coil = self.heatpump.get_coil_by_address(43424)
