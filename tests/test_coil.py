@@ -231,7 +231,7 @@ class TestCoilSigned32(TestCase):
         self.assertEqual(21554, self.coil.value)
 
     def test_decode_unavailable(self):
-        self.coil.raw_value = b'\x00\x00\x00\x80'
+        self.coil.raw_value = b"\x00\x00\x00\x80"
         self.assertEqual(None, self.coil.value)
 
     def test_encode(self):

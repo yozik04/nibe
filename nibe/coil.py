@@ -171,17 +171,17 @@ class Coil:
         return mapped_value
 
     def _is_hitting_integer_limit(self, int_value: int):
-        if self.size == 'u8' and int_value == 0xFF:
+        if self.size == "u8" and int_value == 0xFF:
             return True
-        if self.size == 's8' and int_value == -0x80:
+        if self.size == "s8" and int_value == -0x80:
             return True
-        if self.size == 'u16' and int_value == 0xFFFF:
+        if self.size == "u16" and int_value == 0xFFFF:
             return True
-        if self.size == 's16' and int_value == -0x8000:
+        if self.size == "s16" and int_value == -0x8000:
             return True
-        if self.size == 'u32' and int_value == 0xFFFFFFFF:
+        if self.size == "u32" and int_value == 0xFFFFFFFF:
             return True
-        if self.size == 's32' and int_value == -0x80000000:
+        if self.size == "s32" and int_value == -0x80000000:
             return True
 
         return False

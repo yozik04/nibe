@@ -244,6 +244,7 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
     async def stop(self):
         self._transport.close()
         self._transport = None
+        await asyncio.sleep(0)
         self._set_status(ConnectionStatus.DISCONNECTED)
 
 
