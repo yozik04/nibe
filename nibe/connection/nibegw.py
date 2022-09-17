@@ -109,6 +109,8 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
                         self._on_raw_coil_value(row.coil_address, row.value)
                     except NibeException as e:
                         logger.error(str(e))
+            elif cmd == "MODBUS_READ_REQ":
+                pass
             elif cmd == "MODBUS_READ_RESP":
                 row = msg.fields.value.data
                 try:
@@ -124,6 +126,8 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
             elif cmd == "MODBUS_WRITE_RESP":
                 with suppress(InvalidStateError, CancelledError, KeyError):
                     self._futures["write"].set_result(msg.fields.value.data.result)
+            elif cmd == "MODBUS_WRITE_REQ":
+                pass
             elif cmd == "PRODUCT_INFO_MSG":
                 with suppress(InvalidStateError, CancelledError, KeyError):
                     self._futures["product_info"].set_result(msg.fields.value.data)
