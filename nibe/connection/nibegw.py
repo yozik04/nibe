@@ -7,8 +7,8 @@ from binascii import hexlify
 from contextlib import suppress
 from functools import reduce
 from io import BytesIO
-from operator import xor
 from ipaddress import ip_address
+from operator import xor
 
 from construct import (
     Array,
@@ -88,26 +88,28 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
 
         self._set_status(ConnectionStatus.INITIALIZING)
 
-        addrinfo = socket.getaddrinfo(self._listening_ip, self._listening_port)[0]
-        sock = socket.socket(addrinfo[0], socket.SOCK_DGRAM)
+        family, type, proto, _, sockaddr = socket.getaddrinfo(
+            self._listening_ip,
+            self._listening_port,
+            type=socket.SOCK_DGRAM,
+            proto=socket.IPPROTO_UDP,
+        )[0]
+        sock = socket.socket(family, type, proto)
         sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEPORT, 1)
-        if ip_address(addrinfo[4][0]).is_multicast:
-            group_bin = socket.inet_pton(addrinfo[0], addrinfo[4][0])
-            if addrinfo[0] == socket.AF_INET: # IPv4
-                sock.bind(('', addrinfo[4][1]))
-                mreq = group_bin + struct.pack('=I', socket.INADDR_ANY)
+        if ip_address(sockaddr[0]).is_multicast:
+            group_bin = socket.inet_pton(family, sockaddr[0])
+            if family == socket.AF_INET:  # IPv4
+                sock.bind(("", sockaddr[1]))
+                mreq = group_bin + struct.pack("=I", socket.INADDR_ANY)
                 sock.setsockopt(socket.IPPROTO_IP, socket.IP_ADD_MEMBERSHIP, mreq)
             else:
-                sock.bind(('', addrinfo[4][1]))
-                mreq = group_bin + struct.pack('@I', 0)
+                sock.bind(("", sockaddr[1]))
+                mreq = group_bin + struct.pack("@I", 0)
                 sock.setsockopt(socket.IPPROTO_IPV6, socket.IPV6_JOIN_GROUP, mreq)
         else:
-            sock.bind((addrinfo[4][0], addrinfo[4][1]))
+            sock.bind(sockaddr)
 
-        await asyncio.get_event_loop().create_datagram_endpoint(
-            lambda: self,
-            sock=sock
-        )
+        await asyncio.get_event_loop().create_datagram_endpoint(lambda: self, sock=sock)
 
     def connection_made(self, transport):
         self._set_status(ConnectionStatus.LISTENING)
