@@ -93,6 +93,7 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
             self._listening_port,
             type=socket.SOCK_DGRAM,
             proto=socket.IPPROTO_UDP,
+            family=socket.AddressFamily.AF_INET
         )[0]
         sock = socket.socket(family, type, proto)
         sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEPORT, 1)
@@ -106,8 +107,10 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
                 sock.bind(("", sockaddr[1]))
                 mreq = group_bin + struct.pack("@I", 0)
                 sock.setsockopt(socket.IPPROTO_IPV6, socket.IPV6_JOIN_GROUP, mreq)
-        else:
+        elif self._listening_ip:
             sock.bind(sockaddr)
+        else:
+            sock.bind(("", sockaddr[1]) )
 
         await asyncio.get_event_loop().create_datagram_endpoint(lambda: self, sock=sock)
 
