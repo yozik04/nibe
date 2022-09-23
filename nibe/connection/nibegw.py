@@ -192,6 +192,7 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
                 self._on_coil_value(48132, data.temporary_lux)
                 self._on_coil_value(45001, data.alarm)
                 self._on_coil_value(47137, data.operational_mode)
+                self._on_coil_value(47387, 1 if data.flags.hw_production else 0)
 
                 address_to_room_temp_coil = {
                     Address.RMU40_S1: 40033,
@@ -402,7 +403,7 @@ RmuData = Struct(
             "unknown_0008" / Flag,
             "unknown_0004" / Flag,
             "unknown_0002" / Flag,
-            "unknown_0001" / Flag,
+            "hw_production" / Flag,
         ),
     ),
     "bt1_outdoor_temperature" / FixedPoint(Int16sl, 0.1, -0.5),
