@@ -368,13 +368,14 @@ ProductInfoData = Struct(
     "_unknown" / Bytes(1), "version" / Int16ub, "model" / GreedyString("ASCII")
 )
 class FixedPoint(Adapter):
-    def __init__(self, subcon, scale, offset) -> None:
+    def __init__(self, subcon, scale, offset, ndigits=1) -> None:
         super().__init__(subcon)
         self._offset = offset
         self._scale = scale
+        self._ndigits = ndigits
 
     def _decode(self, obj, context, path):
-        return obj * self._scale + self._offset
+        return round(obj * self._scale + self._offset, self._ndigits)
 
     def _encode(self, obj, context, path):
         return (obj - self._offset) / self._scale
