@@ -36,7 +36,9 @@ from construct import (
     Bitwise,
     Adapter,
     Pointer,
-    IfThenElse
+    IfThenElse,
+    FlagsEnum,
+    Byte
 )
 
 from nibe.coil import Coil
@@ -189,6 +191,7 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
 
                 self._on_coil_value(48132, data.temporary_lux)
                 self._on_coil_value(45001, data.alarm)
+                self._on_coil_value(47137, data.operational_mode)
 
                 address_to_room_temp_coil = {
                     Address.RMU40_S1: 40033,
@@ -382,16 +385,24 @@ class FixedPoint(Adapter):
         return (obj - self._offset) / self._scale
 
 RmuData = Struct(
-    "flags" / Pointer(16,
+    "flags" / Pointer(15,
         BitStruct(
+            "unknown_8000" / Flag,
+            "unknown_4000" / Flag,
+            "unknown_2000" / Flag,
+            "unknown_1000" / Flag,
+            "unknown_0800" / Flag,
+            "unknown_0400" / Flag,
+            "unknown_0200" / Flag,
+            "unknown_0100" / Flag,
             "use_room_sensor_s4" / Flag,
             "use_room_sensor_s3" / Flag,
             "use_room_sensor_s2" / Flag,
             "use_room_sensor_s1" / Flag,
-            "unknown_1" / Flag,
-            "unknown_2" / Flag,
-            "unknown_3" / Flag,
-            "unknown_4" / Flag,
+            "unknown_0008" / Flag,
+            "unknown_0004" / Flag,
+            "unknown_0002" / Flag,
+            "unknown_0001" / Flag,
         ),
     ),
     "bt1_outdoor_temperature" / FixedPoint(Int16sl, 0.1, -0.5),
@@ -421,9 +432,10 @@ RmuData = Struct(
     "hw_time_hour" / Int8ub,
     "hw_time_min" / Int8ub,
     "fan_mode" / Int8ub,
-    "unknown2" / Bytes(2),
-    "_flags" / Bytes(1),
-    "unknown3" / Bytes(2),
+    "operational_mode" / Int8ub,
+    "_flags" / Bytes(2),
+    "clock_time_hour" / Int8ub,
+    "clock_time_min" / Int8ub,
     "alarm" / Int8ub,
     "unknown4" / Bytes(1),
     "fan_time_hour" / Int8ub,
