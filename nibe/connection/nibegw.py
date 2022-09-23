@@ -9,7 +9,7 @@ from functools import reduce
 from io import BytesIO
 from ipaddress import ip_address
 from operator import xor
-from typing import Union as UnionType
+from typing import Union as Union
 
 from construct import (
     Array,
@@ -35,7 +35,8 @@ from construct import (
     GreedyBytes,
     Bitwise,
     Adapter,
-    Union
+    Pointer,
+    IfThenElse
 )
 
 from nibe.coil import Coil
@@ -167,24 +168,24 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
                 self._on_coil_value(40013, data.bt7_hw_top)
 
                 if data.flags.use_room_sensor_s1:
-                    self._on_coil_value(47398, data.s1.room_sensor_setpoint)
+                    self._on_coil_value(47398, data.setpoint_or_offset_s1)
                 else:
-                    self._on_coil_value(47011, data.s1.curve_offset)
+                    self._on_coil_value(47011, data.setpoint_or_offset_s1)
 
                 if data.flags.use_room_sensor_s2:
-                    self._on_coil_value(47397, data.s2.room_sensor_setpoint)
+                    self._on_coil_value(47397, data.setpoint_or_offset_s2)
                 else:
-                    self._on_coil_value(47010, data.s2.curve_offset)
+                    self._on_coil_value(47010, data.setpoint_or_offset_s2)
 
                 if data.flags.use_room_sensor_s3:
-                    self._on_coil_value(47396, data.s3.room_sensor_setpoint)
+                    self._on_coil_value(47396, data.setpoint_or_offset_s3)
                 else:
-                    self._on_coil_value(47009, data.s3.curve_offset)
+                    self._on_coil_value(47009, data.setpoint_or_offset_s3)
 
                 if data.flags.use_room_sensor_s4:
-                    self._on_coil_value(47395, data.s4.room_sensor_setpoint)
+                    self._on_coil_value(47395, data.setpoint_or_offset_s4)
                 else:
-                    self._on_coil_value(47008, data.s4.curve_offset)
+                    self._on_coil_value(47008, data.setpoint_or_offset_s4)
 
                 self._on_coil_value(48132, data.temporary_lux)
                 self._on_coil_value(45001, data.alarm)
@@ -315,7 +316,7 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
         logger.info(f"{coil.name}: {coil.value}")
         self._heatpump.notify_coil_update(coil)
 
-    def _on_coil_value(self, coil_address: int, value: UnionType[float, int, str]):
+    def _on_coil_value(self, coil_address: int, value: Union[float, int, str]):
         try:
             coil = self._heatpump.get_coil_by_address(coil_address)
         except CoilNotFoundException:
@@ -380,35 +381,48 @@ class FixedPoint(Adapter):
     def _encode(self, obj, context, path):
         return (obj - self._offset) / self._scale
 
-RmuDataSetPoint = Union(0,
-    "room_sensor_setpoint" / FixedPoint(Int8ub, 0.1, 5.0),
-    "curve_offset" / FixedPoint(Int8sb, 0.1, 0)
-)
-
 RmuData = Struct(
+    "flags" / Pointer(16,
+        BitStruct(
+            "use_room_sensor_s4" / Flag,
+            "use_room_sensor_s3" / Flag,
+            "use_room_sensor_s2" / Flag,
+            "use_room_sensor_s1" / Flag,
+            "unknown_1" / Flag,
+            "unknown_2" / Flag,
+            "unknown_3" / Flag,
+            "unknown_4" / Flag,
+        ),
+    ),
     "bt1_outdoor_temperature" / FixedPoint(Int16sl, 0.1, -0.5),
     "bt7_hw_top" / FixedPoint(Int16sl, 0.1, -0.5),
-    "s1" / RmuDataSetPoint,
-    "s2" / RmuDataSetPoint,
-    "s3" / RmuDataSetPoint,
-    "s4" / RmuDataSetPoint,
+    "setpoint_or_offset_s1" / IfThenElse(
+        lambda this: this.flags.use_room_sensor_s1,
+        FixedPoint(Int8ub, 0.1, 5.0),
+        FixedPoint(Int8sb, 0.1, 0)
+    ),
+    "setpoint_or_offset_s2" / IfThenElse(
+        lambda this: this.flags.use_room_sensor_s2,
+        FixedPoint(Int8ub, 0.1, 5.0),
+        FixedPoint(Int8sb, 0.1, 0)
+    ),
+    "setpoint_or_offset_s3" / IfThenElse(
+        lambda this: this.flags.use_room_sensor_s3,
+        FixedPoint(Int8ub, 0.1, 5.0),
+        FixedPoint(Int8sb, 0.1, 0)
+    ),
+    "setpoint_or_offset_s4" / IfThenElse(
+        lambda this: this.flags.use_room_sensor_s4,
+        FixedPoint(Int8ub, 0.1, 5.0),
+        FixedPoint(Int8sb, 0.1, 0)
+    ),
     "bt50_room_temp_sX" / FixedPoint(Int16sl, 0.1, -0.5),
     "temporary_lux" / Int8ub,
     "hw_time_hour" / Int8ub,
     "hw_time_min" / Int8ub,
     "fan_mode" / Int8ub,
     "unknown2" / Bytes(2),
-    "flags"
-    / BitStruct(
-        "use_room_sensor_s4" / Flag,
-        "use_room_sensor_s3" / Flag,
-        "use_room_sensor_s2" / Flag,
-        "use_room_sensor_s1" / Flag,
-        "unknown_1" / Flag,
-        "unknown_2" / Flag,
-        "unknown_3" / Flag,
-        "unknown_4" / Flag,
-    ),
+    "_flags" / Bytes(1),
     "unknown3" / Bytes(2),
     "alarm" / Int8ub,
     "unknown4" / Bytes(1),
