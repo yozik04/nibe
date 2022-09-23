@@ -9,7 +9,7 @@ from functools import reduce
 from io import BytesIO
 from ipaddress import ip_address
 from operator import xor
-from typing import Union
+from typing import Union as UnionType
 
 from construct import (
     Array,
@@ -22,6 +22,7 @@ from construct import (
     Flag,
     GreedyString,
     Int8ub,
+    Int8sb,
     Int16ub,
     Int16ul,
     Int16sl,
@@ -33,6 +34,8 @@ from construct import (
     BitStruct,
     GreedyBytes,
     Bitwise,
+    Adapter,
+    Union
 )
 
 from nibe.coil import Coil
@@ -160,44 +163,28 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
                     self._futures["product_info"].set_result(msg.fields.value.data)
             elif cmd == "RMU_DATA_MSG":
                 data = msg.fields.value.data
-                self._on_coil_value(40004, (data.bt1_outdoor_temperature - 5) / 10)
-                self._on_coil_value(40013, (data.bt7_hw_top - 5) / 10)
+                self._on_coil_value(40004, data.bt1_outdoor_temperature)
+                self._on_coil_value(40013, data.bt7_hw_top)
 
-                def on_set_point(
-                    use_room_sensor: bool,
-                    value: int,
-                    room_address: int,
-                    offset_address: int,
-                ):
-                    if use_room_sensor:
-                        self._on_coil_value(room_address, (value + 50) / 10)
-                    else:
-                        self._on_coil_value(offset_address, value / 10)
+                if data.flags.use_room_sensor_s1:
+                    self._on_coil_value(47398, data.s1.room_sensor_setpoint)
+                else:
+                    self._on_coil_value(47011, data.s1.curve_offset)
 
-                on_set_point(
-                    data.flags.use_room_sensor_s1,
-                    data.room_sensor_setpoint_or_curve_offset_s1,
-                    47398,
-                    47011,
-                )
-                on_set_point(
-                    data.flags.use_room_sensor_s2,
-                    data.room_sensor_setpoint_or_curve_offset_s2,
-                    47397,
-                    47010,
-                )
-                on_set_point(
-                    data.flags.use_room_sensor_s3,
-                    data.room_sensor_setpoint_or_curve_offset_s3,
-                    47396,
-                    47009,
-                )
-                on_set_point(
-                    data.flags.use_room_sensor_s4,
-                    data.room_sensor_setpoint_or_curve_offset_s4,
-                    47395,
-                    47008,
-                )
+                if data.flags.use_room_sensor_s2:
+                    self._on_coil_value(47397, data.s2.room_sensor_setpoint)
+                else:
+                    self._on_coil_value(47010, data.s2.curve_offset)
+
+                if data.flags.use_room_sensor_s3:
+                    self._on_coil_value(47396, data.s3.room_sensor_setpoint)
+                else:
+                    self._on_coil_value(47009, data.s3.curve_offset)
+
+                if data.flags.use_room_sensor_s4:
+                    self._on_coil_value(47395, data.s4.room_sensor_setpoint)
+                else:
+                    self._on_coil_value(47008, data.s4.curve_offset)
 
                 self._on_coil_value(48132, data.temporary_lux)
                 self._on_coil_value(45001, data.alarm)
@@ -212,7 +199,7 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
                 if coil_address := address_to_room_temp_coil.get(
                     msg.fields.value.address
                 ):
-                    self._on_coil_value(coil_address, (data.bt50_room_temp_sX - 5) / 10)
+                    self._on_coil_value(coil_address, data.bt50_room_temp_sX)
 
             else:
                 logger.debug(f"Unknown command {cmd}")
@@ -328,7 +315,7 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
         logger.info(f"{coil.name}: {coil.value}")
         self._heatpump.notify_coil_update(coil)
 
-    def _on_coil_value(self, coil_address: int, value: Union[float, int, str]):
+    def _on_coil_value(self, coil_address: int, value: UnionType[float, int, str]):
         try:
             coil = self._heatpump.get_coil_by_address(coil_address)
         except CoilNotFoundException:
@@ -380,15 +367,31 @@ class Dedupe5C(Subconstruct):
 ProductInfoData = Struct(
     "_unknown" / Bytes(1), "version" / Int16ub, "model" / GreedyString("ASCII")
 )
+class FixedPoint(Adapter):
+    def __init__(self, subcon, scale, offset) -> None:
+        super().__init__(subcon)
+        self._offset = offset
+        self._scale = scale
+
+    def _decode(self, obj, context, path):
+        return obj * self._scale + self._offset
+
+    def _encode(self, obj, context, path):
+        return (obj - self._offset) / self._scale
+
+RmuDataSetPoint = Union(0,
+    "room_sensor_setpoint" / FixedPoint(Int8ub, 0.1, 5.0),
+    "curve_offset" / FixedPoint(Int8sb, 0.1, 0)
+)
 
 RmuData = Struct(
-    "bt1_outdoor_temperature" / Int16sl,
-    "bt7_hw_top" / Int16ul,
-    "room_sensor_setpoint_or_curve_offset_s1" / Int8ub,
-    "room_sensor_setpoint_or_curve_offset_s2" / Int8ub,
-    "room_sensor_setpoint_or_curve_offset_s3" / Int8ub,
-    "room_sensor_setpoint_or_curve_offset_s4" / Int8ub,
-    "bt50_room_temp_sX" / Int16sl,
+    "bt1_outdoor_temperature" / FixedPoint(Int16sl, 0.1, -0.5),
+    "bt7_hw_top" / FixedPoint(Int16sl, 0.1, -0.5),
+    "s1" / RmuDataSetPoint,
+    "s2" / RmuDataSetPoint,
+    "s3" / RmuDataSetPoint,
+    "s4" / RmuDataSetPoint,
+    "bt50_room_temp_sX" / FixedPoint(Int16sl, 0.1, -0.5),
     "temporary_lux" / Int8ub,
     "hw_time_hour" / Int8ub,
     "hw_time_min" / Int8ub,
