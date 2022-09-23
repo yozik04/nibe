@@ -9,6 +9,7 @@ from functools import reduce
 from io import BytesIO
 from ipaddress import ip_address
 from operator import xor
+from typing import Union
 
 from construct import (
     Array,
@@ -23,6 +24,7 @@ from construct import (
     Int8ub,
     Int16ub,
     Int16ul,
+    Int16sl,
     RawCopy,
     Struct,
     Subconstruct,
@@ -96,7 +98,7 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
             self._listening_port,
             type=socket.SOCK_DGRAM,
             proto=socket.IPPROTO_UDP,
-            family=socket.AddressFamily.AF_INET
+            family=socket.AddressFamily.AF_INET,
         )[0]
         sock = socket.socket(family, type, proto)
         sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEPORT, 1)
@@ -113,7 +115,7 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
         elif self._listening_ip:
             sock.bind(sockaddr)
         else:
-            sock.bind(("", sockaddr[1]) )
+            sock.bind(("", sockaddr[1]))
 
         await asyncio.get_event_loop().create_datagram_endpoint(lambda: self, sock=sock)
 
@@ -156,6 +158,62 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
             elif cmd == "PRODUCT_INFO_MSG":
                 with suppress(InvalidStateError, CancelledError, KeyError):
                     self._futures["product_info"].set_result(msg.fields.value.data)
+            elif cmd == "RMU_DATA_MSG":
+                data = msg.fields.value.data
+                self._on_coil_value(40004, (data.bt1_outdoor_temperature - 5) / 10)
+                self._on_coil_value(40013, (data.bt7_hw_top - 5) / 10)
+
+                def on_set_point(
+                    use_room_sensor: bool,
+                    value: int,
+                    room_address: int,
+                    offset_address: int,
+                ):
+                    if use_room_sensor:
+                        self._on_coil_value(room_address, (value + 50) / 10)
+                    else:
+                        self._on_coil_value(offset_address, value / 10)
+
+                on_set_point(
+                    data.flags.use_room_sensor_s1,
+                    data.room_sensor_setpoint_or_curve_offset_s1,
+                    47398,
+                    47011,
+                )
+                on_set_point(
+                    data.flags.use_room_sensor_s2,
+                    data.room_sensor_setpoint_or_curve_offset_s2,
+                    47397,
+                    47010,
+                )
+                on_set_point(
+                    data.flags.use_room_sensor_s3,
+                    data.room_sensor_setpoint_or_curve_offset_s3,
+                    47396,
+                    47009,
+                )
+                on_set_point(
+                    data.flags.use_room_sensor_s4,
+                    data.room_sensor_setpoint_or_curve_offset_s4,
+                    47395,
+                    47008,
+                )
+
+                self._on_coil_value(48132, data.temporary_lux)
+                self._on_coil_value(45001, data.alarm)
+
+                address_to_room_temp_coil = {
+                    Address.RMU40_S1: 40033,
+                    Address.RMU40_S2: 40032,
+                    Address.RMU40_S3: 40031,
+                    Address.RMU40_S4: 40030,
+                }
+
+                if coil_address := address_to_room_temp_coil.get(
+                    msg.fields.value.address
+                ):
+                    self._on_coil_value(coil_address, (data.bt50_room_temp_sX - 5) / 10)
+
             else:
                 logger.debug(f"Unknown command {cmd}")
         except ChecksumError:
@@ -270,6 +328,21 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
         logger.info(f"{coil.name}: {coil.value}")
         self._heatpump.notify_coil_update(coil)
 
+    def _on_coil_value(self, coil_address: int, value: Union[float, int, str]):
+        try:
+            coil = self._heatpump.get_coil_by_address(coil_address)
+        except CoilNotFoundException:
+            if coil_address == 65535:  # 0xffff
+                return
+            raise
+
+        if coil.mappings and isinstance(value, int):
+            value = coil.mappings[str(value)]
+
+        coil.value = value
+        logger.info(f"{coil.name}: {coil.value}")
+        self._heatpump.notify_coil_update(coil)
+
     async def stop(self):
         self._transport.close()
         self._transport = None
@@ -309,24 +382,24 @@ ProductInfoData = Struct(
 )
 
 RmuData = Struct(
-    "bt1-outdoor-temperature" / Int16ul,
-    "bt7-hw-top" / Int16ul,
-    "room-sensor-setpoint-or-curve-offset-s1" / Int8ub,
-    "room-sensor-setpoint-or-curve-offset-s2" / Int8ub,
-    "room-sensor-setpoint-or-curve-offset-s3" / Int8ub,
-    "room-sensor-setpoint-or-curve-offset-s4" / Int8ub,
-    "bt50-room-temp-sX" / Int16ul,
-    "temporary-lux" / Int8ub,
-    "hw-time-hour" / Int8ub,
-    "hw-time-min" / Int8ub,
-    "fan-mode" / Int8ub,
+    "bt1_outdoor_temperature" / Int16sl,
+    "bt7_hw_top" / Int16ul,
+    "room_sensor_setpoint_or_curve_offset_s1" / Int8ub,
+    "room_sensor_setpoint_or_curve_offset_s2" / Int8ub,
+    "room_sensor_setpoint_or_curve_offset_s3" / Int8ub,
+    "room_sensor_setpoint_or_curve_offset_s4" / Int8ub,
+    "bt50_room_temp_sX" / Int16sl,
+    "temporary_lux" / Int8ub,
+    "hw_time_hour" / Int8ub,
+    "hw_time_min" / Int8ub,
+    "fan_mode" / Int8ub,
     "unknown2" / Bytes(2),
     "flags"
     / BitStruct(
-        "use-room-sensor-s4" / Flag,
-        "use-room-sensor-s3" / Flag,
-        "use-room-sensor-s2" / Flag,
-        "use-room-sensor-s1" / Flag,
+        "use_room_sensor_s4" / Flag,
+        "use_room_sensor_s3" / Flag,
+        "use_room_sensor_s2" / Flag,
+        "use_room_sensor_s1" / Flag,
         "unknown_1" / Flag,
         "unknown_2" / Flag,
         "unknown_3" / Flag,
@@ -335,8 +408,8 @@ RmuData = Struct(
     "unknown3" / Bytes(2),
     "alarm" / Int8ub,
     "unknown4" / Bytes(1),
-    "fan-time-hour" / Int8ub,
-    "fan-time-min" / Int8ub,
+    "fan_time_hour" / Int8ub,
+    "fan_time_min" / Int8ub,
     "unknown5" / GreedyBytes,
 )
 
