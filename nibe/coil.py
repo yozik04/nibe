@@ -11,7 +11,7 @@ from construct import (
     Padded,
 )
 
-from nibe.exceptions import DecodeException, EncodeException
+from nibe.exceptions import DecodeException, EncodeException, NoMappingException
 from nibe.parsers import WordSwapped
 
 parser_map = {
@@ -162,13 +162,15 @@ class Coil:
         if self.mappings is None:
             return value
 
-        mapped_value = self.mappings.get(str(value))
-        if mapped_value is None:
-            raise DecodeException(
+        return self.get_mapping_for(value)
+
+    def get_mapping_for(self, value: int):
+        try:
+            return self.mappings[str(value)]
+        except KeyError:
+            raise NoMappingException(
                 f"Mapping not found for {self.name} coil for value: {value}"
             )
-
-        return mapped_value
 
     def _is_hitting_integer_limit(self, int_value: int):
         if self.size == "u8" and int_value == 0xFF:

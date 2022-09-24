@@ -330,7 +330,7 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
             raise
 
         if coil.mappings and isinstance(value, int):
-            value = coil.mappings[str(value)]
+            value = coil.get_mapping_for(value)
 
         coil.value = value
         logger.info(f"{coil.name}: {coil.value}")
