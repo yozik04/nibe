@@ -166,7 +166,7 @@ class MessageWriteRequestParsingTestCase(unittest.TestCase):
         self.assertEqual(binascii.hexlify(raw), b"c06b06393006120f00bf")
 
 
-class MessageGenerigRequestParsingTestCase(unittest.TestCase):
+class MessageGenericRequestParsingTestCase(unittest.TestCase):
 
     @staticmethod
     def _parse_hexlified_raw_message(txt_raw):
