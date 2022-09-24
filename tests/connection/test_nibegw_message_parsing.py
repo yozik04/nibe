@@ -3,7 +3,7 @@ import unittest
 
 from construct import ChecksumError, Int16sl, Int32ul
 
-from nibe.connection.nibegw import ReadRequest, Response, WriteRequest
+from nibe.connection.nibegw import ReadRequest, Response, WriteRequest, GenericRequest
 
 
 class MessageResponseParsingTestCase(unittest.TestCase):
@@ -164,6 +164,49 @@ class MessageWriteRequestParsingTestCase(unittest.TestCase):
         )
 
         self.assertEqual(binascii.hexlify(raw), b"c06b06393006120f00bf")
+
+
+class MessageGenerigRequestParsingTestCase(unittest.TestCase):
+
+    @staticmethod
+    def _parse_hexlified_raw_message(txt_raw):
+        raw = binascii.unhexlify(txt_raw)
+        data = GenericRequest.parse(raw)
+        value = data.fields.value
+        print(value)
+        return value
+
+    def test_parse_write_request(self):
+        hex = bytes([192,107,6,115,176,1,0,0,0,111]).hex()
+        data = self._parse_hexlified_raw_message(hex)
+
+
+    def test_parse_version_request(self):
+        hex = bytes([192,238,3,238,3,1,193]).hex()
+        data = self._parse_hexlified_raw_message(hex)
+        self.assertEqual(data.cmd, "ACCESSORY_VERSION_REQ")
+        self.assertEqual(data.modbus.version, 1006)
+        self.assertEqual(data.modbus.unknown, 1)
+
+        hex = bytes([192,238,3,238,3,1,193]).hex()
+        data = self._parse_hexlified_raw_message(hex)
+        self.assertEqual(data.cmd, "ACCESSORY_VERSION_REQ")
+        self.assertEqual(data.rum.version, 259)
+        self.assertEqual(data.rmu.unknown, 238)
+
+
+    def test_parse_write_request(self):
+        hex = bytes([192,96,2,99,2,195]).hex()
+        data = self._parse_hexlified_raw_message(hex)
+        self.assertEqual(data.cmd, "RMU_WRITE_REQ")
+        self.assertEqual(data.data.index, 99)
+        self.assertEqual(data.data.value, b"\x02")
+
+        hex = bytes([192,96,3,6,217,0,124]).hex()
+        data = self._parse_hexlified_raw_message(hex)
+        self.assertEqual(data.cmd, "RMU_WRITE_REQ")
+        self.assertEqual(data.data.index, 6)
+        self.assertEqual(data.data.value, b'\xd9\x00')
 
 
 if __name__ == "__main__":

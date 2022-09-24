@@ -9,7 +9,7 @@ from functools import reduce
 from io import BytesIO
 from ipaddress import ip_address
 from operator import xor
-from typing import Union as Union
+from typing import Union
 
 from construct import (
     Array,
@@ -37,8 +37,8 @@ from construct import (
     Adapter,
     Pointer,
     IfThenElse,
-    FlagsEnum,
-    Byte
+    Select,
+    Union as UnionConstruct
 )
 
 from nibe.coil import Coil
@@ -205,7 +205,8 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
                     msg.fields.value.address
                 ):
                     self._on_coil_value(coil_address, data.bt50_room_temp_sX)
-
+            elif cmd == "ACCESSORY_VERSION_REQ":
+                pass
             else:
                 logger.debug(f"Unknown command {cmd}")
         except ChecksumError:
@@ -464,13 +465,16 @@ Data = Dedupe5C(
 
 Command = Enum(
     Int8ub,
+    RMU_WRITE_REQ=0x60,
     RMU_DATA_MSG=0x62,
+    RMU_DATA_REQ=0x63,
     MODBUS_DATA_MSG=0x68,
     MODBUS_READ_REQ=0x69,
     MODBUS_READ_RESP=0x6A,
     MODBUS_WRITE_REQ=0x6B,
     MODBUS_WRITE_RESP=0x6C,
     PRODUCT_INFO_MSG=0x6D,
+    ACCESSORY_VERSION_REQ=0xEE,
 )
 
 Address = Enum(
@@ -521,6 +525,51 @@ WriteRequest = Struct(
             "length" / Const(0x06, Int8ub),
             "coil_address" / Int16ul,
             "value" / Bytes(4),
+        )
+    ),
+    "checksum" / Checksum(Int8ub, xor8, this.fields.data),
+).compile()
+# fmt: on
+
+GenericRequestData = Switch(
+    this.cmd,
+    {
+        "ACCESSORY_VERSION_REQ": UnionConstruct(None,
+            # Modbus and RMU seem to disagree on how to interpret this
+            # data, at least from how it looks in the service info screen
+            # on the pump.
+            "modbus" / Struct(
+                "version" / Int16ul,
+                "unknown" / Int8ub,
+            ),
+            "rmu" / Struct(
+                "unknown" / Int8ub,
+                "version" / Int16ul,
+            ),
+        ),
+        "RMU_WRITE_REQ": Struct(
+            "index" / Int8ub,
+            "value" / GreedyBytes
+        ),
+        "MODBUS_READ_REQ": Struct(
+            "coil_address" / Int16ul,
+        ),
+        "MODBUS_WRITE_REQ": Struct(
+            "coil_address" / Int16ul,
+            "value" / Bytes(4),
+        )
+    },
+    default=Bytes(this.length),
+)
+
+
+GenericRequest = Struct(
+    "fields" / RawCopy(
+        Struct(
+            "start_byte" / Const(0xC0, Int8ub),
+            "cmd" / Command,
+            "length" / Int8ub,
+            "data" / FixedSized(this.length, Dedupe5C(GenericRequestData))
         )
     ),
     "checksum" / Checksum(Int8ub, xor8, this.fields.data),
