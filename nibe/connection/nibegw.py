@@ -38,7 +38,8 @@ from construct import (
     Pointer,
     IfThenElse,
     Select,
-    Union as UnionConstruct
+    Union as UnionConstruct,
+    Prefixed
 )
 
 from nibe.coil import Coil
@@ -566,14 +567,12 @@ GenericRequestData = Switch(
     default=Bytes(this.length),
 )
 
-
 GenericRequest = Struct(
     "fields" / RawCopy(
         Struct(
             "start_byte" / Const(0xC0, Int8ub),
             "cmd" / Command,
-            "length" / Int8ub,
-            "data" / FixedSized(this.length, Dedupe5C(GenericRequestData))
+            "data" / Prefixed(Int8ub, GenericRequestData)
         )
     ),
     "checksum" / Checksum(Int8ub, xor8, this.fields.data),
