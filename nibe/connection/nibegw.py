@@ -9,7 +9,7 @@ from functools import reduce
 from io import BytesIO
 from ipaddress import ip_address
 from operator import xor
-from typing import Union
+from typing import Container, Union
 
 from construct import (
     Array,
@@ -165,46 +165,7 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
                 with suppress(InvalidStateError, CancelledError, KeyError):
                     self._futures["product_info"].set_result(msg.fields.value.data)
             elif cmd == "RMU_DATA_MSG":
-                data = msg.fields.value.data
-                self._on_coil_value(40004, data.bt1_outdoor_temperature)
-                self._on_coil_value(40013, data.bt7_hw_top)
-
-                if data.flags.use_room_sensor_s1:
-                    self._on_coil_value(47398, data.setpoint_or_offset_s1)
-                else:
-                    self._on_coil_value(47011, data.setpoint_or_offset_s1)
-
-                if data.flags.use_room_sensor_s2:
-                    self._on_coil_value(47397, data.setpoint_or_offset_s2)
-                else:
-                    self._on_coil_value(47010, data.setpoint_or_offset_s2)
-
-                if data.flags.use_room_sensor_s3:
-                    self._on_coil_value(47396, data.setpoint_or_offset_s3)
-                else:
-                    self._on_coil_value(47009, data.setpoint_or_offset_s3)
-
-                if data.flags.use_room_sensor_s4:
-                    self._on_coil_value(47395, data.setpoint_or_offset_s4)
-                else:
-                    self._on_coil_value(47008, data.setpoint_or_offset_s4)
-
-                self._on_coil_value(48132, data.temporary_lux)
-                self._on_coil_value(45001, data.alarm)
-                self._on_coil_value(47137, data.operational_mode)
-                self._on_coil_value(47387, 1 if data.flags.hw_production else 0)
-
-                address_to_room_temp_coil = {
-                    Address.RMU40_S1: 40033,
-                    Address.RMU40_S2: 40032,
-                    Address.RMU40_S3: 40031,
-                    Address.RMU40_S4: 40030,
-                }
-
-                if coil_address := address_to_room_temp_coil.get(
-                    msg.fields.value.address
-                ):
-                    self._on_coil_value(coil_address, data.bt50_room_temp_sX)
+                self._on_rmu_data(msg.fields.value)
             elif cmd == "ACCESSORY_VERSION_REQ":
                 pass
             else:
@@ -308,6 +269,41 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
         if status != self._status:
             self._status = status
             self.notify_event_listeners(self.CONNECTION_STATUS_EVENT, status=status)
+
+    def _on_rmu_data(self, value: Container):
+        data = value.data
+        self._on_coil_value(40004, data.bt1_outdoor_temperature)
+        self._on_coil_value(40013, data.bt7_hw_top)
+
+        if data.flags.use_room_sensor_s1:
+            self._on_coil_value(47398, data.setpoint_or_offset_s1)
+        else:
+            self._on_coil_value(47011, data.setpoint_or_offset_s1)
+
+        if data.flags.use_room_sensor_s2:
+            self._on_coil_value(47397, data.setpoint_or_offset_s2)
+        else:
+            self._on_coil_value(47010, data.setpoint_or_offset_s2)
+
+        if data.flags.use_room_sensor_s3:
+            self._on_coil_value(47396, data.setpoint_or_offset_s3)
+        else:
+            self._on_coil_value(47009, data.setpoint_or_offset_s3)
+
+        if data.flags.use_room_sensor_s4:
+            self._on_coil_value(47395, data.setpoint_or_offset_s4)
+        else:
+            self._on_coil_value(47008, data.setpoint_or_offset_s4)
+
+        self._on_coil_value(48132, data.temporary_lux)
+        self._on_coil_value(45001, data.alarm)
+        self._on_coil_value(47137, data.operational_mode)
+        self._on_coil_value(47387, 1 if data.flags.hw_production else 0)
+
+        if coil_address := ADDRESS_TO_ROOM_TEMP_COIL.get(
+            value.address
+        ):
+            self._on_coil_value(coil_address, data.bt50_room_temp_sX)
 
     def _on_raw_coil_value(self, coil_address: int, raw_value: bytes):
         try:
@@ -487,6 +483,14 @@ Address = Enum(
     RMU40_S4=0x1C,
     MODBUS40=0x20,
 )
+
+ADDRESS_TO_ROOM_TEMP_COIL = {
+    Address.RMU40_S1: 40033,
+    Address.RMU40_S2: 40032,
+    Address.RMU40_S3: 40031,
+    Address.RMU40_S4: 40030,
+}
+
 
 # fmt: off
 Response = Struct(
