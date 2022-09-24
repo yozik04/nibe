@@ -39,7 +39,7 @@ from construct import (
     IfThenElse,
     Select,
     Union as UnionConstruct,
-    Prefixed
+    Prefixed,
 )
 
 from nibe.coil import Coil
@@ -199,8 +199,14 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
 
     async def read_coil(self, coil: Coil, timeout: float = DEFAULT_TIMEOUT) -> Coil:
         async with self._send_lock:
-            data = ReadRequest.build(
-                dict(fields=dict(value=dict(coil_address=coil.address)))
+            data = Request.build(
+                dict(
+                    fields=dict(
+                        value=dict(
+                            cmd="MODBUS_READ_REQ", data=dict(coil_address=coil.address)
+                        )
+                    )
+                )
             )
 
             self._futures["read"] = asyncio.get_event_loop().create_future()
@@ -226,10 +232,13 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
         assert coil.is_writable, f"{coil.name} is not writable"
         assert coil.value is not None, f"{coil.name} value must be set"
         async with self._send_lock:
-            data = WriteRequest.build(
+            data = Request.build(
                 dict(
                     fields=dict(
-                        value=dict(coil_address=coil.address, value=coil.raw_value)
+                        value=dict(
+                            cmd="MODBUS_WRITE_REQ",
+                            data=dict(coil_address=coil.address, value=coil.raw_value),
+                        )
                     )
                 )
             )
@@ -301,9 +310,7 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
         self._on_coil_value(47137, data.operational_mode)
         self._on_coil_value(47387, 1 if data.flags.hw_production else 0)
 
-        if coil_address := ADDRESS_TO_ROOM_TEMP_COIL.get(
-            value.address
-        ):
+        if coil_address := ADDRESS_TO_ROOM_TEMP_COIL.get(value.address):
             self._on_coil_value(coil_address, data.bt50_room_temp_sX)
 
     def _on_raw_coil_value(self, coil_address: int, raw_value: bytes):
@@ -370,6 +377,8 @@ class Dedupe5C(Subconstruct):
 ProductInfoData = Struct(
     "_unknown" / Bytes(1), "version" / Int16ub, "model" / GreedyString("ASCII")
 )
+
+
 class FixedPoint(Adapter):
     def __init__(self, subcon, scale, offset, ndigits=1) -> None:
         super().__init__(subcon)
@@ -383,8 +392,11 @@ class FixedPoint(Adapter):
     def _encode(self, obj, context, path):
         return (obj - self._offset) / self._scale
 
+
 RmuData = Struct(
-    "flags" / Pointer(15,
+    "flags"
+    / Pointer(
+        15,
         BitStruct(
             "unknown_8000" / Flag,
             "unknown_4000" / Flag,
@@ -406,25 +418,29 @@ RmuData = Struct(
     ),
     "bt1_outdoor_temperature" / FixedPoint(Int16sl, 0.1, -0.5),
     "bt7_hw_top" / FixedPoint(Int16sl, 0.1, -0.5),
-    "setpoint_or_offset_s1" / IfThenElse(
+    "setpoint_or_offset_s1"
+    / IfThenElse(
         lambda this: this.flags.use_room_sensor_s1,
         FixedPoint(Int8ub, 0.1, 5.0),
-        FixedPoint(Int8sb, 0.1, 0)
+        FixedPoint(Int8sb, 0.1, 0),
     ),
-    "setpoint_or_offset_s2" / IfThenElse(
+    "setpoint_or_offset_s2"
+    / IfThenElse(
         lambda this: this.flags.use_room_sensor_s2,
         FixedPoint(Int8ub, 0.1, 5.0),
-        FixedPoint(Int8sb, 0.1, 0)
+        FixedPoint(Int8sb, 0.1, 0),
     ),
-    "setpoint_or_offset_s3" / IfThenElse(
+    "setpoint_or_offset_s3"
+    / IfThenElse(
         lambda this: this.flags.use_room_sensor_s3,
         FixedPoint(Int8ub, 0.1, 5.0),
-        FixedPoint(Int8sb, 0.1, 0)
+        FixedPoint(Int8sb, 0.1, 0),
     ),
-    "setpoint_or_offset_s4" / IfThenElse(
+    "setpoint_or_offset_s4"
+    / IfThenElse(
         lambda this: this.flags.use_room_sensor_s4,
         FixedPoint(Int8ub, 0.1, 5.0),
-        FixedPoint(Int8sb, 0.1, 0)
+        FixedPoint(Int8sb, 0.1, 0),
     ),
     "bt50_room_temp_sX" / FixedPoint(Int16sl, 0.1, -0.5),
     "temporary_lux" / Int8ub,
@@ -509,34 +525,7 @@ Response = Struct(
 ).compile()
 
 
-ReadRequest = Struct(
-    "fields" / RawCopy(
-        Struct(
-            "start_byte" / Const(0xC0, Int8ub),
-            "cmd" / Const(Command.MODBUS_READ_REQ, Command),
-            "length" / Const(0x02, Int8ub),
-            "coil_address" / Int16ul,
-        )
-    ),
-    "checksum" / Checksum(Int8ub, xor8, this.fields.data),
-).compile()
-
-
-WriteRequest = Struct(
-    "fields" / RawCopy(
-        Struct(
-            "start_byte" / Const(0xC0, Int8ub),
-            "cmd" / Const(Command.MODBUS_WRITE_REQ, Command),
-            "length" / Const(0x06, Int8ub),
-            "coil_address" / Int16ul,
-            "value" / Bytes(4),
-        )
-    ),
-    "checksum" / Checksum(Int8ub, xor8, this.fields.data),
-).compile()
-# fmt: on
-
-GenericRequestData = Switch(
+RequestData = Switch(
     this.cmd,
     {
         "ACCESSORY_VERSION_REQ": UnionConstruct(None,
@@ -567,12 +556,12 @@ GenericRequestData = Switch(
     default=Bytes(this.length),
 )
 
-GenericRequest = Struct(
+Request = Struct(
     "fields" / RawCopy(
         Struct(
             "start_byte" / Const(0xC0, Int8ub),
             "cmd" / Command,
-            "data" / Prefixed(Int8ub, GenericRequestData)
+            "data" / Prefixed(Int8ub, RequestData)
         )
     ),
     "checksum" / Checksum(Int8ub, xor8, this.fields.data),

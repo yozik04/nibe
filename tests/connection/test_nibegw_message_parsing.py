@@ -3,7 +3,10 @@ import unittest
 
 from construct import ChecksumError, Int16sl, Int32ul
 
-from nibe.connection.nibegw import ReadRequest, Response, WriteRequest, GenericRequest
+from nibe.connection.nibegw import (
+    Response,
+    Request,
+)
 
 
 class MessageResponseParsingTestCase(unittest.TestCase):
@@ -134,10 +137,14 @@ class MessageResponseParsingTestCase(unittest.TestCase):
         self.assertEqual(data.data.version, 9443)
 
     def test_parse_rmu_data(self):
-        data = self._parse_hexlified_raw_message("5c001a62199b0029029ba00000e20000000000000239001f0003000001002e")
+        data = self._parse_hexlified_raw_message(
+            "5c001a62199b0029029ba00000e20000000000000239001f0003000001002e"
+        )
         print(data)
 
-        data = self._parse_hexlified_raw_message("5c001962199b0028029ba00000e20000000000000239002100030000010012")
+        data = self._parse_hexlified_raw_message(
+            "5c001962199b0028029ba00000e20000000000000239002100030000010012"
+        )
         print(data)
 
     @staticmethod
@@ -148,65 +155,72 @@ class MessageResponseParsingTestCase(unittest.TestCase):
         return value
 
 
-class MessageReadRequestParsingTestCase(unittest.TestCase):
+class MessageRequestParsingTestCase(unittest.TestCase):
+    @staticmethod
+    def _parse_hexlified_raw_message(txt_raw):
+        raw = binascii.unhexlify(txt_raw)
+        data = Request.parse(raw)
+        value = data.fields.value
+        print(value)
+        return value
+
     def test_parse_read_request(self):
-        raw = ReadRequest.build(dict(fields=dict(value=dict(coil_address=12345))))
+        raw = Request.build(
+            dict(
+                fields=dict(
+                    value=dict(
+                        cmd="MODBUS_READ_REQ",
+                        data=dict(coil_address=12345),
+                    )
+                )
+            )
+        )
 
         self.assertEqual(binascii.hexlify(raw), b"c069023930a2")
 
-
-class MessageWriteRequestParsingTestCase(unittest.TestCase):
     def test_parse_read_request(self):
-        raw = WriteRequest.build(
+        raw = Request.build(
             dict(
-                fields=dict(value=dict(coil_address=12345, value=Int32ul.build(987654)))
+                fields=dict(
+                    value=dict(
+                        cmd="MODBUS_WRITE_REQ",
+                        data=dict(coil_address=12345, value=Int32ul.build(987654)),
+                    )
+                )
             )
         )
 
         self.assertEqual(binascii.hexlify(raw), b"c06b06393006120f00bf")
 
-
-class MessageGenericRequestParsingTestCase(unittest.TestCase):
-
-    @staticmethod
-    def _parse_hexlified_raw_message(txt_raw):
-        raw = binascii.unhexlify(txt_raw)
-        data = GenericRequest.parse(raw)
-        value = data.fields.value
-        print(value)
-        return value
-
     def test_parse_write_request(self):
-        hex = bytes([192,107,6,115,176,1,0,0,0,111]).hex()
+        hex = bytes([192, 107, 6, 115, 176, 1, 0, 0, 0, 111]).hex()
         data = self._parse_hexlified_raw_message(hex)
 
-
     def test_parse_version_request(self):
-        hex = bytes([192,238,3,238,3,1,193]).hex()
+        hex = bytes([192, 238, 3, 238, 3, 1, 193]).hex()
         data = self._parse_hexlified_raw_message(hex)
         self.assertEqual(data.cmd, "ACCESSORY_VERSION_REQ")
         self.assertEqual(data.data.modbus.version, 1006)
         self.assertEqual(data.data.modbus.unknown, 1)
 
-        hex = bytes([192,238,3,238,3,1,193]).hex()
+        hex = bytes([192, 238, 3, 238, 3, 1, 193]).hex()
         data = self._parse_hexlified_raw_message(hex)
         self.assertEqual(data.cmd, "ACCESSORY_VERSION_REQ")
         self.assertEqual(data.data.rmu.version, 259)
         self.assertEqual(data.data.rmu.unknown, 238)
 
-
     def test_parse_write_request(self):
-        hex = bytes([192,96,2,99,2,195]).hex()
+        hex = bytes([192, 96, 2, 99, 2, 195]).hex()
         data = self._parse_hexlified_raw_message(hex)
         self.assertEqual(data.cmd, "RMU_WRITE_REQ")
         self.assertEqual(data.data.index, 99)
         self.assertEqual(data.data.value, b"\x02")
 
-        hex = bytes([192,96,3,6,217,0,124]).hex()
+        hex = bytes([192, 96, 3, 6, 217, 0, 124]).hex()
         data = self._parse_hexlified_raw_message(hex)
         self.assertEqual(data.cmd, "RMU_WRITE_REQ")
         self.assertEqual(data.data.index, 6)
-        self.assertEqual(data.data.value, b'\xd9\x00')
+        self.assertEqual(data.data.value, b"\xd9\x00")
 
 
 if __name__ == "__main__":
