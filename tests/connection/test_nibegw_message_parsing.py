@@ -185,14 +185,14 @@ class MessageGenerigRequestParsingTestCase(unittest.TestCase):
         hex = bytes([192,238,3,238,3,1,193]).hex()
         data = self._parse_hexlified_raw_message(hex)
         self.assertEqual(data.cmd, "ACCESSORY_VERSION_REQ")
-        self.assertEqual(data.modbus.version, 1006)
-        self.assertEqual(data.modbus.unknown, 1)
+        self.assertEqual(data.data.modbus.version, 1006)
+        self.assertEqual(data.data.modbus.unknown, 1)
 
         hex = bytes([192,238,3,238,3,1,193]).hex()
         data = self._parse_hexlified_raw_message(hex)
         self.assertEqual(data.cmd, "ACCESSORY_VERSION_REQ")
-        self.assertEqual(data.rum.version, 259)
-        self.assertEqual(data.rmu.unknown, 238)
+        self.assertEqual(data.data.rmu.version, 259)
+        self.assertEqual(data.data.rmu.unknown, 238)
 
 
     def test_parse_write_request(self):
