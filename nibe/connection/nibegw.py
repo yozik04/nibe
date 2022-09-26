@@ -1,5 +1,5 @@
 import asyncio
-from asyncio import CancelledError, InvalidStateError
+from asyncio import CancelledError, Future, InvalidStateError
 from binascii import hexlify
 from contextlib import suppress
 from functools import reduce
@@ -9,7 +9,7 @@ import logging
 from operator import xor
 import socket
 import struct
-from typing import Container, Union
+from typing import Container, Dict, Union
 
 from construct import (
     Adapter,
@@ -60,15 +60,20 @@ logger = logging.getLogger("nibe").getChild(__name__)
 
 
 class ConnectionStatus(Enum):
-    UNKNOWN = None
+    UNKNOWN = "unknown"
     INITIALIZING = "initializing"
     LISTENING = "listening"
     CONNECTED = "connected"
     DISCONNECTED = "disconnected"
 
+    def __str__(self):
+        return self.value
+
 
 class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
     CONNECTION_STATUS_EVENT = "connection_status"
+    _futures: Dict[str, Future]
+    _status: ConnectionStatus
 
     def __init__(
         self,
@@ -130,8 +135,8 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
         self._set_status(ConnectionStatus.LISTENING)
         self._transport = transport
 
-    def datagram_received(self, data, addr):
-        logger.debug(f"Received {hexlify(data)} from {addr}")
+    def datagram_received(self, data: bytes, addr):
+        logger.debug(f"Received {hexlify(data).decode('utf-8')} from {addr}")
         self._set_status(ConnectionStatus.CONNECTED)
         try:
             msg = Response.parse(data)
@@ -165,13 +170,13 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
                 logger.debug(f"Unknown command {cmd}")
         except ChecksumError:
             logger.warning(
-                f"Ignoring packet from {addr} due to checksum error: {hexlify(data)}"
+                f"Ignoring packet from {addr} due to checksum error: {hexlify(data).decode('utf-8')}"
             )
         except NibeException as e:
             logger.error(f"Failed handling packet from {addr}: {e}")
         except Exception as e:
             logger.exception(
-                f"Unexpected exception during parsing packet data '{hexlify(data)}' from {addr}",
+                f"Unexpected exception during parsing packet data '{hexlify(data).decode('utf-8')}' from {addr}",
                 e,
             )
 
@@ -189,6 +194,7 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
 
     async def read_coil(self, coil: Coil, timeout: float = DEFAULT_TIMEOUT) -> Coil:
         async with self._send_lock:
+            assert self._transport, "Transport is closed"
             data = Request.build(
                 dict(
                     fields=dict(
@@ -202,7 +208,7 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
             self._futures["read"] = asyncio.get_event_loop().create_future()
 
             logger.debug(
-                f"Sending {hexlify(data)} (read request) to {self._remote_ip}:{self._remote_write_port}"
+                f"Sending {hexlify(data).decode('utf-8')} (read request) to {self._remote_ip}:{self._remote_write_port}"
             )
             self._transport.sendto(data, (self._remote_ip, self._remote_read_port))
             logger.debug(f"Waiting for read response for {coil.name}")
@@ -222,6 +228,7 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
         assert coil.is_writable, f"{coil.name} is not writable"
         assert coil.value is not None, f"{coil.name} value must be set"
         async with self._send_lock:
+            assert self._transport, "Transport is closed"
             data = Request.build(
                 dict(
                     fields=dict(
@@ -236,7 +243,7 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
             self._futures["write"] = asyncio.get_event_loop().create_future()
 
             logger.debug(
-                f"Sending {hexlify(data)} (write request) to {self._remote_ip}:{self._remote_write_port}"
+                f"Sending {hexlify(data).decode('utf-8')} (write request) to {self._remote_ip}:{self._remote_write_port}"
             )
             self._transport.sendto(data, (self._remote_ip, self._remote_write_port))
 
@@ -320,7 +327,7 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
             return
         except DecodeException:
             logger.warning(
-                f"Ignoring coil {coil_address} value - failed to decode raw value: {raw_value}"
+                f"Ignoring coil {coil_address} value - failed to decode raw value: {hexlify(raw_value).decode('utf-8')}"
             )
             return
 

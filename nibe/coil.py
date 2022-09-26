@@ -1,6 +1,8 @@
+from binascii import hexlify
 from typing import Dict, Optional, Union
 
 from construct import (
+    Construct,
     ConstructError,
     Int8sl,
     Int8ul,
@@ -48,6 +50,8 @@ def is_coil_boolean(coil):
 class Coil:
     mappings: Optional[Dict[str, str]]
     reverse_mappings: Optional[Dict[str, str]]
+    _value: Union[int, float, str, None]
+    parser: Construct
 
     def __init__(
         self,
@@ -122,7 +126,11 @@ class Coil:
             self._value = None
             return
 
-        if self.mappings:
+        if self.reverse_mappings:
+            assert isinstance(
+                value, str
+            ), f"Provided value '{value}' is invalid type (str is supported) for {self.name}"
+
             value = value.upper()
             assert (
                 value in self.reverse_mappings
@@ -147,7 +155,7 @@ class Coil:
     def raw_value(self, raw_value: bytes):
         self.value = self._decode(raw_value)
 
-    def _decode(self, raw: bytes) -> Union[int, float, str]:
+    def _decode(self, raw: bytes) -> Union[int, float, str, None]:
         value = self.parser.parse(raw)
         if self._is_hitting_integer_limit(value):
             return None
@@ -155,7 +163,7 @@ class Coil:
             self._check_raw_value_bounds(value)
         except AssertionError as e:
             raise DecodeException(
-                f"Failed to decode {self.name} coil from raw: {raw}, exception: {e}"
+                f"Failed to decode {self.name} coil from raw: {hexlify(raw).decode('utf-8')}, exception: {e}"
             )
         if self.factor != 1:
             value /= self.factor
@@ -165,6 +173,9 @@ class Coil:
         return self.get_mapping_for(value)
 
     def get_mapping_for(self, value: int):
+        if not self.mappings:
+            raise NoMappingException(f"No mappings defined for {self.name}")
+
         try:
             return self.mappings[str(value)]
         except KeyError:
