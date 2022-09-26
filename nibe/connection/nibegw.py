@@ -332,10 +332,14 @@ Command = Enum(
     MODBUS_WRITE_REQ=0x6B,
     MODBUS_WRITE_RESP=0x6C,
     PRODUCT_INFO_MSG=0x6D,
+    ECS_DATA_REQ=0x90,
+    ECS_DATA_MSG_1=0x55,
+    ECS_DATA_MSG_2=0xA0,
 )
 
 Address = Enum(
     Int8ub,
+    ECS_S2=0x02,
     # 0x13 = 19, ?
     SMS40=0x16,
     RMU40_S1=0x19,
