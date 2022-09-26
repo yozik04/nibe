@@ -30,7 +30,7 @@ For this connection method to work you will need to connect an Arduino with spec
 
 NibeGW firmware for Arduino or RPi can be [download here](https://github.com/openhab/openhab-addons/tree/3.2.x/bundles/org.openhab.binding.nibeheatpump/contrib/NibeGW).
 
-- Library will open 9999 UDP listening port to receive packets from NibeGW. 
+- Library will open 9999 UDP listening port to receive packets from NibeGW.
 - For read commands library will send UDP packets to NibeGW port 9999.
 - For write commands library will send UDP packets to NibeGW port 10000.
 
@@ -91,10 +91,10 @@ async def main():
     heatpump.subscribe(HeatPump.COIL_UPDATE_EVENT, on_coil_update)
 
     connection = Modbus(heatpump=heatpump, url="tcp://192.168.1.2:502", slave_id=1)
-    
+
     coil = heatpump.get_coil_by_name('bt50-room-temp-s1-40033')
     await connection.read_coil(coil)
-    
+
     logger.debug(f"main: {coil.name}: {coil.value}")
 
 if __name__ == '__main__':
@@ -129,10 +129,10 @@ async def main():
     heatpump.subscribe(HeatPump.COIL_UPDATE_EVENT, on_coil_update)
 
     connection = Modbus(heatpump=heatpump, url="serial:///dev/ttyS0", slave_id=1, conn_options={"baudrate": 9600})
-    
+
     coil = heatpump.get_coil_by_name('bt50-room-temp-s1-40033')
     await connection.read_coil(coil)
-    
+
     logger.debug(f"main: {coil.name}: {coil.value}")
 
 if __name__ == '__main__':

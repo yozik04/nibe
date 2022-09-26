@@ -106,8 +106,8 @@ class Coil:
 
     def set_mappings(self, mappings):
         if mappings:
-            self.mappings = dict((k, v.upper()) for k, v in mappings.items())
-            self.reverse_mappings = dict((v.upper(), k) for k, v in mappings.items())
+            self.mappings = {k: v.upper() for k, v in mappings.items()}
+            self.reverse_mappings = {v.upper(): k for k, v in mappings.items()}
         else:
             self.mappings = None
             self.reverse_mappings = None

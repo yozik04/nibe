@@ -1,10 +1,10 @@
 import json
 import logging
 import re
+from importlib.resources import files
 
 import pandas
 from slugify import slugify
-from importlib.resources import files
 
 from nibe.heatpump import Model
 

@@ -1,12 +1,9 @@
 import binascii
 import unittest
 
-from construct import ChecksumError, Int16sl, Int32ul, Container
+from construct import ChecksumError, Container, Int16sl, Int32ul
 
-from nibe.connection.nibegw import (
-    Response,
-    Request,
-)
+from nibe.connection.nibegw import Request, Response
 
 
 class MessageResponseParsingTestCase(unittest.TestCase):

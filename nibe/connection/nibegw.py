@@ -12,7 +12,9 @@ from operator import xor
 from typing import Container, Union
 
 from construct import (
+    Adapter,
     Array,
+    BitStruct,
     Bytes,
     Checksum,
     ChecksumError,
@@ -21,27 +23,23 @@ from construct import (
     EnumIntegerString,
     FixedSized,
     Flag,
+    GreedyBytes,
     GreedyString,
-    Int8ub,
+    IfThenElse,
     Int8sb,
+    Int8ub,
+    Int16sl,
     Int16ub,
     Int16ul,
-    Int16sl,
+    Pointer,
+    Prefixed,
     RawCopy,
     Struct,
     Subconstruct,
     Switch,
-    this,
-    BitStruct,
-    GreedyBytes,
-    Bitwise,
-    Adapter,
-    Pointer,
-    IfThenElse,
-    Select,
-    Union as UnionConstruct,
-    Prefixed,
 )
+from construct import Union as UnionConstruct
+from construct import this
 
 from nibe.coil import Coil
 from nibe.connection import DEFAULT_TIMEOUT, READ_PRODUCT_INFO_TIMEOUT, Connection
@@ -52,9 +50,9 @@ from nibe.exceptions import (
     CoilReadTimeoutException,
     CoilWriteException,
     CoilWriteTimeoutException,
+    DecodeException,
     NibeException,
     ProductInfoReadTimeoutException,
-    DecodeException,
 )
 from nibe.heatpump import HeatPump, ProductInfo
 
@@ -317,7 +315,7 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
         except CoilNotFoundException:
             if coil_address == 65535:  # 0xffff
                 return
-                
+
             logger.warning(
                 f"Ignoring coil {coil_address} value - coil definition not found"
             )
@@ -342,7 +340,7 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
         except CoilNotFoundException:
             if coil_address == 65535:  # 0xffff
                 return
-                
+
             logger.warning(
                 f"Ignoring coil {coil_address} value - coil definition not found"
             )
