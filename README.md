@@ -22,8 +22,8 @@ Library for communication with Nibe heatpumps.
 
 ## Connection methods
 - RS485 hardwired using NibeGW on Arduino or RPi. NibeGW was developed by Pauli Anttila for [Openhab's integration](https://www.openhab.org/addons/bindings/nibeheatpump/).
-- **(Not yet tesed)** TCP Modbus for S Models
-- **(Not yet tesed)** Serial Modbus for Nibe Modbus 40)
+- **(Not yet tested)** TCP Modbus for S Models
+- **(Not yet tested)** Serial Modbus for Nibe Modbus 40)
 
 ### NibeGW
 For this connection method to work you will need to connect an Arduino with special firmware that will act as a proxy between Heatpump RS485 and this library. Some details regarding how this method works can be found [here](https://www.openhab.org/addons/bindings/nibeheatpump/#prerequisites).
