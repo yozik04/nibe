@@ -10,6 +10,10 @@ class DecodeException(NibeException):
     pass
 
 
+class NoMappingException(DecodeException):
+    pass
+
+
 class EncodeException(NibeException):
     pass
 

@@ -1,9 +1,12 @@
 import binascii
 import unittest
 
-from construct import ChecksumError, Int16sl, Int32ul
+from construct import ChecksumError, Int16sl, Int32ul, Container
 
-from nibe.connection.nibegw import ReadRequest, Response, WriteRequest
+from nibe.connection.nibegw import (
+    Response,
+    Request,
+)
 
 
 class MessageResponseParsingTestCase(unittest.TestCase):
@@ -133,6 +136,102 @@ class MessageResponseParsingTestCase(unittest.TestCase):
         self.assertEqual(data.data.model, "F1255-12 R")
         self.assertEqual(data.data.version, 9443)
 
+    def test_parse_rmu_data(self):
+        self.maxDiff = None
+
+        data = self._parse_hexlified_raw_message(
+            "5c001a62199b0029029ba00000e20000000000000239001f0003000001002e"
+        )
+        self.assertDictEqual(
+            data.data,
+            Container(
+                alarm=0,
+                bt1_outdoor_temperature=15.0,
+                bt50_room_temp_sX=22.1,
+                bt7_hw_top=54.8,
+                clock_time_hour=0,
+                clock_time_min=31,
+                fan_mode=0,
+                fan_time_hour=0,
+                fan_time_min=0,
+                flags=Container(
+                    unknown_8000=False,
+                    unknown_4000=False,
+                    unknown_2000=False,
+                    unknown_1000=False,
+                    unknown_0800=False,
+                    unknown_0400=False,
+                    unknown_0200=True,
+                    unknown_0100=False,
+                    use_room_sensor_s4=False,
+                    use_room_sensor_s3=False,
+                    use_room_sensor_s2=True,
+                    use_room_sensor_s1=True,
+                    unknown_0008=True,
+                    unknown_0004=False,
+                    unknown_0002=False,
+                    hw_production=True,
+                ),
+                hw_time_hour=0,
+                hw_time_min=0,
+                operational_mode=0,
+                setpoint_or_offset_s1=20.5,
+                setpoint_or_offset_s2=21.0,
+                setpoint_or_offset_s3=0.0,
+                setpoint_or_offset_s4=0.0,
+                temporary_lux=0,
+                unknown4=b"\x03",
+                unknown5=b"\x01\x00",
+            ),
+        )
+
+        data = self._parse_hexlified_raw_message(
+            "5c001962199b0028029ba00000e20000000000000239002100030000010012"
+        )
+
+        self.assertDictEqual(
+            data.data,
+            Container(
+                alarm=0,
+                bt1_outdoor_temperature=15.0,
+                bt50_room_temp_sX=22.1,
+                bt7_hw_top=54.7,
+                clock_time_hour=0,
+                clock_time_min=33,
+                fan_mode=0,
+                fan_time_hour=0,
+                fan_time_min=0,
+                flags=Container(
+                    unknown_8000=False,
+                    unknown_4000=False,
+                    unknown_2000=False,
+                    unknown_1000=False,
+                    unknown_0800=False,
+                    unknown_0400=False,
+                    unknown_0200=True,
+                    unknown_0100=False,
+                    use_room_sensor_s4=False,
+                    use_room_sensor_s3=False,
+                    use_room_sensor_s2=True,
+                    use_room_sensor_s1=True,
+                    unknown_0008=True,
+                    unknown_0004=False,
+                    unknown_0002=False,
+                    hw_production=True,
+                ),
+                hw_time_hour=0,
+                hw_time_min=0,
+                operational_mode=0,
+                setpoint_or_offset_s1=20.5,
+                setpoint_or_offset_s2=21.0,
+                setpoint_or_offset_s3=0.0,
+                setpoint_or_offset_s4=0.0,
+                temporary_lux=0,
+                unknown4=b"\x03",
+                unknown5=b"\x01\x00",
+            ),
+        )
+
     @staticmethod
     def _parse_hexlified_raw_message(txt_raw):
         raw = binascii.unhexlify(txt_raw)
@@ -141,22 +240,71 @@ class MessageResponseParsingTestCase(unittest.TestCase):
         return value
 
 
-class MessageReadRequestParsingTestCase(unittest.TestCase):
-    def test_parse_read_request(self):
-        raw = ReadRequest.build(dict(fields=dict(value=dict(coil_address=12345))))
+class MessageRequestParsingTestCase(unittest.TestCase):
+    @staticmethod
+    def _parse_hexlified_raw_message(txt_raw):
+        raw = binascii.unhexlify(txt_raw)
+        data = Request.parse(raw)
+        value = data.fields.value
+        return value
+
+    def test_build_read_request(self):
+        raw = Request.build(
+            dict(
+                fields=dict(
+                    value=dict(
+                        cmd="MODBUS_READ_REQ",
+                        data=dict(coil_address=12345),
+                    )
+                )
+            )
+        )
 
         self.assertEqual(binascii.hexlify(raw), b"c069023930a2")
 
-
-class MessageWriteRequestParsingTestCase(unittest.TestCase):
-    def test_parse_read_request(self):
-        raw = WriteRequest.build(
+    def test_build_write_request(self):
+        raw = Request.build(
             dict(
-                fields=dict(value=dict(coil_address=12345, value=Int32ul.build(987654)))
+                fields=dict(
+                    value=dict(
+                        cmd="MODBUS_WRITE_REQ",
+                        data=dict(coil_address=12345, value=Int32ul.build(987654)),
+                    )
+                )
             )
         )
 
         self.assertEqual(binascii.hexlify(raw), b"c06b06393006120f00bf")
+
+    def test_parse_write_request(self):
+        hex = bytes([192, 107, 6, 115, 176, 1, 0, 0, 0, 111]).hex()
+        data = self._parse_hexlified_raw_message(hex)
+
+    def test_parse_version_request(self):
+        hex = bytes([192, 238, 3, 238, 3, 1, 193]).hex()
+        data = self._parse_hexlified_raw_message(hex)
+        self.assertEqual(data.cmd, "ACCESSORY_VERSION_REQ")
+        self.assertEqual(data.data.modbus.version, 1006)
+        self.assertEqual(data.data.modbus.unknown, 1)
+
+        hex = bytes([192, 238, 3, 238, 3, 1, 193]).hex()
+        data = self._parse_hexlified_raw_message(hex)
+        self.assertEqual(data.cmd, "ACCESSORY_VERSION_REQ")
+        self.assertEqual(data.data.rmu.version, 259)
+        self.assertEqual(data.data.rmu.unknown, 238)
+
+    def test_parse_write_request(self):
+        hex = bytes([192, 96, 2, 99, 2, 195]).hex()
+        data = self._parse_hexlified_raw_message(hex)
+        self.assertEqual(data.cmd, "RMU_WRITE_REQ")
+        self.assertEqual(data.data.index, 99)
+        self.assertEqual(data.data.value, b"\x02")
+
+        hex = bytes([192, 96, 3, 6, 217, 0, 124]).hex()
+        data = self._parse_hexlified_raw_message(hex)
+        self.assertEqual(data.cmd, "RMU_WRITE_REQ")
+        self.assertEqual(data.data.index, 6)
+        self.assertEqual(data.data.value, b"\xd9\x00")
 
 
 if __name__ == "__main__":

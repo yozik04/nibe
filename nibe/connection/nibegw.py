@@ -9,6 +9,7 @@ from functools import reduce
 from io import BytesIO
 from ipaddress import ip_address
 from operator import xor
+from typing import Container, Union
 
 from construct import (
     Array,
@@ -22,13 +23,24 @@ from construct import (
     Flag,
     GreedyString,
     Int8ub,
+    Int8sb,
     Int16ub,
     Int16ul,
+    Int16sl,
     RawCopy,
     Struct,
     Subconstruct,
     Switch,
     this,
+    BitStruct,
+    GreedyBytes,
+    Bitwise,
+    Adapter,
+    Pointer,
+    IfThenElse,
+    Select,
+    Union as UnionConstruct,
+    Prefixed,
 )
 
 from nibe.coil import Coil
@@ -42,6 +54,7 @@ from nibe.exceptions import (
     CoilWriteTimeoutException,
     NibeException,
     ProductInfoReadTimeoutException,
+    DecodeException,
 )
 from nibe.heatpump import HeatPump, ProductInfo
 
@@ -94,7 +107,7 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
             self._listening_port,
             type=socket.SOCK_DGRAM,
             proto=socket.IPPROTO_UDP,
-            family=socket.AddressFamily.AF_INET
+            family=socket.AddressFamily.AF_INET,
         )[0]
         sock = socket.socket(family, type, proto)
         sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEPORT, 1)
@@ -111,7 +124,7 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
         elif self._listening_ip:
             sock.bind(sockaddr)
         else:
-            sock.bind(("", sockaddr[1]) )
+            sock.bind(("", sockaddr[1]))
 
         await asyncio.get_event_loop().create_datagram_endpoint(lambda: self, sock=sock)
 
@@ -180,8 +193,14 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
 
     async def read_coil(self, coil: Coil, timeout: float = DEFAULT_TIMEOUT) -> Coil:
         async with self._send_lock:
-            data = ReadRequest.build(
-                dict(fields=dict(value=dict(coil_address=coil.address)))
+            data = Request.build(
+                dict(
+                    fields=dict(
+                        value=dict(
+                            cmd="MODBUS_READ_REQ", data=dict(coil_address=coil.address)
+                        )
+                    )
+                )
             )
 
             self._futures["read"] = asyncio.get_event_loop().create_future()
@@ -207,10 +226,13 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
         assert coil.is_writable, f"{coil.name} is not writable"
         assert coil.value is not None, f"{coil.name} value must be set"
         async with self._send_lock:
-            data = WriteRequest.build(
+            data = Request.build(
                 dict(
                     fields=dict(
-                        value=dict(coil_address=coil.address, value=coil.raw_value)
+                        value=dict(
+                            cmd="MODBUS_WRITE_REQ",
+                            data=dict(coil_address=coil.address, value=coil.raw_value),
+                        )
                     )
                 )
             )
@@ -252,17 +274,84 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
             self._status = status
             self.notify_event_listeners(self.CONNECTION_STATUS_EVENT, status=status)
 
+    def _on_rmu_data(self, value: Container):
+        data = value.data
+        self._on_coil_value(40004, data.bt1_outdoor_temperature)
+        self._on_coil_value(40013, data.bt7_hw_top)
+
+        if data.flags.use_room_sensor_s1:
+            self._on_coil_value(47398, data.setpoint_or_offset_s1)
+        else:
+            self._on_coil_value(47011, data.setpoint_or_offset_s1)
+
+        if data.flags.use_room_sensor_s2:
+            self._on_coil_value(47397, data.setpoint_or_offset_s2)
+        else:
+            self._on_coil_value(47010, data.setpoint_or_offset_s2)
+
+        if data.flags.use_room_sensor_s3:
+            self._on_coil_value(47396, data.setpoint_or_offset_s3)
+        else:
+            self._on_coil_value(47009, data.setpoint_or_offset_s3)
+
+        if data.flags.use_room_sensor_s4:
+            self._on_coil_value(47395, data.setpoint_or_offset_s4)
+        else:
+            self._on_coil_value(47008, data.setpoint_or_offset_s4)
+
+        self._on_coil_value(48132, data.temporary_lux)
+        self._on_coil_value(45001, data.alarm)
+        self._on_coil_value(47137, data.operational_mode)
+        self._on_coil_value(47387, 1 if data.flags.hw_production else 0)
+
+        if coil_address := ADDRESS_TO_ROOM_TEMP_COIL.get(value.address):
+            self._on_coil_value(coil_address, data.bt50_room_temp_sX)
+
     def _on_raw_coil_value(self, coil_address: int, raw_value: bytes):
         try:
             coil = self._heatpump.get_coil_by_address(coil_address)
+
+            coil.raw_value = raw_value
+            logger.info(f"{coil.name}: {coil.value}")
+            self._heatpump.notify_coil_update(coil)
         except CoilNotFoundException:
             if coil_address == 65535:  # 0xffff
                 return
-            raise
+                
+            logger.warning(
+                f"Ignoring coil {coil_address} value - coil definition not found"
+            )
+            return
+        except DecodeException:
+            logger.warning(
+                f"Ignoring coil {coil_address} value - failed to decode raw value: {raw_value}"
+            )
+            return
 
-        coil.raw_value = raw_value
-        logger.info(f"{coil.name}: {coil.value}")
-        self._heatpump.notify_coil_update(coil)
+    def _on_coil_value(self, coil_address: int, value: Union[float, int, str]):
+        try:
+            coil = self._heatpump.get_coil_by_address(coil_address)
+
+            if coil.mappings and isinstance(value, int):
+                value = coil.get_mapping_for(value)
+
+            coil.value = value
+            logger.info(f"{coil.name}: {coil.value}")
+            self._heatpump.notify_coil_update(coil)
+
+        except CoilNotFoundException:
+            if coil_address == 65535:  # 0xffff
+                return
+                
+            logger.warning(
+                f"Ignoring coil {coil_address} value - coil definition not found"
+            )
+            return
+        except DecodeException:
+            logger.warning(
+                f"Ignoring coil {coil_address} value - failed to decode value: {value}"
+            )
+            return
 
     async def stop(self):
         self._transport.close()
@@ -303,6 +392,85 @@ ProductInfoData = Struct(
 )
 
 
+class FixedPoint(Adapter):
+    def __init__(self, subcon, scale, offset, ndigits=1) -> None:
+        super().__init__(subcon)
+        self._offset = offset
+        self._scale = scale
+        self._ndigits = ndigits
+
+    def _decode(self, obj, context, path):
+        return round(obj * self._scale + self._offset, self._ndigits)
+
+    def _encode(self, obj, context, path):
+        return (obj - self._offset) / self._scale
+
+
+RmuData = Struct(
+    "flags"
+    / Pointer(
+        15,
+        BitStruct(
+            "unknown_8000" / Flag,
+            "unknown_4000" / Flag,
+            "unknown_2000" / Flag,
+            "unknown_1000" / Flag,
+            "unknown_0800" / Flag,
+            "unknown_0400" / Flag,
+            "unknown_0200" / Flag,
+            "unknown_0100" / Flag,
+            "use_room_sensor_s4" / Flag,
+            "use_room_sensor_s3" / Flag,
+            "use_room_sensor_s2" / Flag,
+            "use_room_sensor_s1" / Flag,
+            "unknown_0008" / Flag,
+            "unknown_0004" / Flag,
+            "unknown_0002" / Flag,
+            "hw_production" / Flag,
+        ),
+    ),
+    "bt1_outdoor_temperature" / FixedPoint(Int16sl, 0.1, -0.5),
+    "bt7_hw_top" / FixedPoint(Int16sl, 0.1, -0.5),
+    "setpoint_or_offset_s1"
+    / IfThenElse(
+        lambda this: this.flags.use_room_sensor_s1,
+        FixedPoint(Int8ub, 0.1, 5.0),
+        FixedPoint(Int8sb, 0.1, 0),
+    ),
+    "setpoint_or_offset_s2"
+    / IfThenElse(
+        lambda this: this.flags.use_room_sensor_s2,
+        FixedPoint(Int8ub, 0.1, 5.0),
+        FixedPoint(Int8sb, 0.1, 0),
+    ),
+    "setpoint_or_offset_s3"
+    / IfThenElse(
+        lambda this: this.flags.use_room_sensor_s3,
+        FixedPoint(Int8ub, 0.1, 5.0),
+        FixedPoint(Int8sb, 0.1, 0),
+    ),
+    "setpoint_or_offset_s4"
+    / IfThenElse(
+        lambda this: this.flags.use_room_sensor_s4,
+        FixedPoint(Int8ub, 0.1, 5.0),
+        FixedPoint(Int8sb, 0.1, 0),
+    ),
+    "bt50_room_temp_sX" / FixedPoint(Int16sl, 0.1, -0.5),
+    "temporary_lux" / Int8ub,
+    "hw_time_hour" / Int8ub,
+    "hw_time_min" / Int8ub,
+    "fan_mode" / Int8ub,
+    "operational_mode" / Int8ub,
+    "_flags" / Bytes(2),
+    "clock_time_hour" / Int8ub,
+    "clock_time_min" / Int8ub,
+    "alarm" / Int8ub,
+    "unknown4" / Bytes(1),
+    "fan_time_hour" / Int8ub,
+    "fan_time_min" / Int8ub,
+    "unknown5" / GreedyBytes,
+)
+
 Data = Dedupe5C(
     Switch(
         this.cmd,
@@ -315,6 +483,7 @@ Data = Dedupe5C(
             "MODBUS_WRITE_RESP": Struct("result" / Flag),
             "MODBUS_ADDRESS_MSG": Struct("address" / Int8ub),
             "PRODUCT_INFO_MSG": ProductInfoData,
+            "RMU_DATA_MSG": RmuData,
         },
         default=Bytes(this.length),
     )
@@ -323,7 +492,9 @@ Data = Dedupe5C(
 
 Command = Enum(
     Int8ub,
+    RMU_WRITE_REQ=0x60,
     RMU_DATA_MSG=0x62,
+    RMU_DATA_REQ=0x63,
     MODBUS_DATA_MSG=0x68,
     MODBUS_READ_REQ=0x69,
     MODBUS_READ_RESP=0x6A,
@@ -331,6 +502,7 @@ Command = Enum(
     MODBUS_WRITE_RESP=0x6C,
     MODBUS_ADDRESS_MSG=0x6E,
     PRODUCT_INFO_MSG=0x6D,
+    ACCESSORY_VERSION_REQ=0xEE,
     ECS_DATA_REQ=0x90,
     ECS_DATA_MSG_1=0x55,
     ECS_DATA_MSG_2=0xA0,
@@ -348,6 +520,14 @@ Address = Enum(
     MODBUS40=0x20,
 )
 
+ADDRESS_TO_ROOM_TEMP_COIL = {
+    Address.RMU40_S1: 40033,
+    Address.RMU40_S2: 40032,
+    Address.RMU40_S3: 40031,
+    Address.RMU40_S4: 40030,
+}
+
+
 # fmt: off
 Response = Struct(
     "start_byte" / Const(0x5C, Int8ub),
@@ -364,27 +544,43 @@ Response = Struct(
 ).compile()
 
 
-ReadRequest = Struct(
-    "fields" / RawCopy(
-        Struct(
-            "start_byte" / Const(0xC0, Int8ub),
-            "cmd" / Const(Command.MODBUS_READ_REQ, Command),
-            "length" / Const(0x02, Int8ub),
+RequestData = Switch(
+    this.cmd,
+    {
+        "ACCESSORY_VERSION_REQ": UnionConstruct(None,
+            # Modbus and RMU seem to disagree on how to interpret this
+            # data, at least from how it looks in the service info screen
+            # on the pump.
+            "modbus" / Struct(
+                "version" / Int16ul,
+                "unknown" / Int8ub,
+            ),
+            "rmu" / Struct(
+                "unknown" / Int8ub,
+                "version" / Int16ul,
+            ),
+        ),
+        "RMU_WRITE_REQ": Struct(
+            "index" / Int8ub,
+            "value" / GreedyBytes
+        ),
+        "MODBUS_READ_REQ": Struct(
             "coil_address" / Int16ul,
-        )
-    ),
-    "checksum" / Checksum(Int8ub, xor8, this.fields.data),
-).compile()
-
-
-WriteRequest = Struct(
-    "fields" / RawCopy(
-        Struct(
-            "start_byte" / Const(0xC0, Int8ub),
-            "cmd" / Const(Command.MODBUS_WRITE_REQ, Command),
-            "length" / Const(0x06, Int8ub),
+        ),
+        "MODBUS_WRITE_REQ": Struct(
             "coil_address" / Int16ul,
             "value" / Bytes(4),
+        )
+    },
+    default=Bytes(this.length),
+)
+
+Request = Struct(
+    "fields" / RawCopy(
+        Struct(
+            "start_byte" / Const(0xC0, Int8ub),
+            "cmd" / Command,
+            "data" / Prefixed(Int8ub, RequestData)
         )
     ),
     "checksum" / Checksum(Int8ub, xor8, this.fields.data),
