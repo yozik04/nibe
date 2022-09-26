@@ -124,7 +124,7 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
         self._set_status(ConnectionStatus.CONNECTED)
         try:
             msg = Response.parse(data)
-            logger.debug(msg)
+            logger.debug(msg.fields.value)
             cmd = msg.fields.value.cmd
             if cmd == "MODBUS_DATA_MSG":
                 for row in msg.fields.value.data:
