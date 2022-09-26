@@ -164,7 +164,7 @@ class MessageRequestParsingTestCase(unittest.TestCase):
         print(value)
         return value
 
-    def test_parse_read_request(self):
+    def test_build_read_request(self):
         raw = Request.build(
             dict(
                 fields=dict(
@@ -178,7 +178,7 @@ class MessageRequestParsingTestCase(unittest.TestCase):
 
         self.assertEqual(binascii.hexlify(raw), b"c069023930a2")
 
-    def test_parse_read_request(self):
+    def test_build_write_request(self):
         raw = Request.build(
             dict(
                 fields=dict(
