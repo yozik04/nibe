@@ -1,7 +1,7 @@
 import binascii
 import unittest
 
-from construct import ChecksumError, Int16sl, Int32ul
+from construct import ChecksumError, Int16sl, Int32ul, Container
 
 from nibe.connection.nibegw import (
     Response,
@@ -137,15 +137,100 @@ class MessageResponseParsingTestCase(unittest.TestCase):
         self.assertEqual(data.data.version, 9443)
 
     def test_parse_rmu_data(self):
+        self.maxDiff = None
+
         data = self._parse_hexlified_raw_message(
             "5c001a62199b0029029ba00000e20000000000000239001f0003000001002e"
         )
-        print(data)
+        self.assertDictEqual(
+            data.data,
+            Container(
+                alarm=0,
+                bt1_outdoor_temperature=15.0,
+                bt50_room_temp_sX=22.1,
+                bt7_hw_top=54.8,
+                clock_time_hour=0,
+                clock_time_min=31,
+                fan_mode=0,
+                fan_time_hour=0,
+                fan_time_min=0,
+                flags=Container(
+                    unknown_8000=False,
+                    unknown_4000=False,
+                    unknown_2000=False,
+                    unknown_1000=False,
+                    unknown_0800=False,
+                    unknown_0400=False,
+                    unknown_0200=True,
+                    unknown_0100=False,
+                    use_room_sensor_s4=False,
+                    use_room_sensor_s3=False,
+                    use_room_sensor_s2=True,
+                    use_room_sensor_s1=True,
+                    unknown_0008=True,
+                    unknown_0004=False,
+                    unknown_0002=False,
+                    hw_production=True,
+                ),
+                hw_time_hour=0,
+                hw_time_min=0,
+                operational_mode=0,
+                setpoint_or_offset_s1=20.5,
+                setpoint_or_offset_s2=21.0,
+                setpoint_or_offset_s3=0.0,
+                setpoint_or_offset_s4=0.0,
+                temporary_lux=0,
+                unknown4=b"\x03",
+                unknown5=b"\x01\x00",
+            ),
+        )
 
         data = self._parse_hexlified_raw_message(
             "5c001962199b0028029ba00000e20000000000000239002100030000010012"
         )
-        print(data)
+
+        self.assertDictEqual(
+            data.data,
+            Container(
+                alarm=0,
+                bt1_outdoor_temperature=15.0,
+                bt50_room_temp_sX=22.1,
+                bt7_hw_top=54.7,
+                clock_time_hour=0,
+                clock_time_min=33,
+                fan_mode=0,
+                fan_time_hour=0,
+                fan_time_min=0,
+                flags=Container(
+                    unknown_8000=False,
+                    unknown_4000=False,
+                    unknown_2000=False,
+                    unknown_1000=False,
+                    unknown_0800=False,
+                    unknown_0400=False,
+                    unknown_0200=True,
+                    unknown_0100=False,
+                    use_room_sensor_s4=False,
+                    use_room_sensor_s3=False,
+                    use_room_sensor_s2=True,
+                    use_room_sensor_s1=True,
+                    unknown_0008=True,
+                    unknown_0004=False,
+                    unknown_0002=False,
+                    hw_production=True,
+                ),
+                hw_time_hour=0,
+                hw_time_min=0,
+                operational_mode=0,
+                setpoint_or_offset_s1=20.5,
+                setpoint_or_offset_s2=21.0,
+                setpoint_or_offset_s3=0.0,
+                setpoint_or_offset_s4=0.0,
+                temporary_lux=0,
+                unknown4=b"\x03",
+                unknown5=b"\x01\x00",
+            ),
+        )
 
     @staticmethod
     def _parse_hexlified_raw_message(txt_raw):
@@ -161,7 +246,6 @@ class MessageRequestParsingTestCase(unittest.TestCase):
         raw = binascii.unhexlify(txt_raw)
         data = Request.parse(raw)
         value = data.fields.value
-        print(value)
         return value
 
     def test_build_read_request(self):
