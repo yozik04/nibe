@@ -17,6 +17,7 @@ from construct import (
     ChecksumError,
     Const,
     Enum,
+    EnumIntegerString,
     FixedSized,
     Flag,
     GreedyString,
@@ -123,7 +124,7 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
         self._set_status(ConnectionStatus.CONNECTED)
         try:
             msg = Response.parse(data)
-            logger.debug(msg)
+            logger.debug(msg.fields.value)
             cmd = msg.fields.value.cmd
             if cmd == "MODBUS_DATA_MSG":
                 for row in msg.fields.value.data:
@@ -131,8 +132,6 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
                         self._on_raw_coil_value(row.coil_address, row.value)
                     except NibeException as e:
                         logger.error(str(e))
-            elif cmd == "MODBUS_READ_REQ":
-                pass
             elif cmd == "MODBUS_READ_RESP":
                 row = msg.fields.value.data
                 try:
@@ -148,12 +147,10 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
             elif cmd == "MODBUS_WRITE_RESP":
                 with suppress(InvalidStateError, CancelledError, KeyError):
                     self._futures["write"].set_result(msg.fields.value.data.result)
-            elif cmd == "MODBUS_WRITE_REQ":
-                pass
             elif cmd == "PRODUCT_INFO_MSG":
                 with suppress(InvalidStateError, CancelledError, KeyError):
                     self._futures["product_info"].set_result(msg.fields.value.data)
-            else:
+            elif not isinstance(cmd, EnumIntegerString):
                 logger.debug(f"Unknown command {cmd}")
         except ChecksumError:
             logger.warning(
@@ -316,6 +313,7 @@ Data = Dedupe5C(
                 Struct("coil_address" / Int16ul, "value" / Bytes(2)),
             ),
             "MODBUS_WRITE_RESP": Struct("result" / Flag),
+            "MODBUS_ADDRESS_MSG": Struct("address" / Int8ub),
             "PRODUCT_INFO_MSG": ProductInfoData,
         },
         default=Bytes(this.length),
@@ -331,11 +329,16 @@ Command = Enum(
     MODBUS_READ_RESP=0x6A,
     MODBUS_WRITE_REQ=0x6B,
     MODBUS_WRITE_RESP=0x6C,
+    MODBUS_ADDRESS_MSG=0x6E,
     PRODUCT_INFO_MSG=0x6D,
+    ECS_DATA_REQ=0x90,
+    ECS_DATA_MSG_1=0x55,
+    ECS_DATA_MSG_2=0xA0,
 )
 
 Address = Enum(
     Int8ub,
+    ECS_S2=0x02,
     # 0x13 = 19, ?
     SMS40=0x16,
     RMU40_S1=0x19,
