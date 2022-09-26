@@ -25,6 +25,6 @@ class Connection(ABC):
     async def read_product_info(
         self, timeout: float = READ_PRODUCT_INFO_TIMEOUT
     ) -> ProductInfo:
-        raise NotImplemented(
+        raise NotImplementedError(
             "read_product_info method is not implemented for this connection method"
         )

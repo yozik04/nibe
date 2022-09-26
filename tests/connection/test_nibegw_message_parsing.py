@@ -275,7 +275,7 @@ class MessageRequestParsingTestCase(unittest.TestCase):
 
     def test_parse_write_request(self):
         hex = bytes([192, 107, 6, 115, 176, 1, 0, 0, 0, 111]).hex()
-        data = self._parse_hexlified_raw_message(hex)
+        self._parse_hexlified_raw_message(hex)
 
     def test_parse_version_request(self):
         hex = bytes([192, 238, 3, 238, 3, 1, 193]).hex()
@@ -290,7 +290,7 @@ class MessageRequestParsingTestCase(unittest.TestCase):
         self.assertEqual(data.data.rmu.version, 259)
         self.assertEqual(data.data.rmu.unknown, 238)
 
-    def test_parse_write_request(self):
+    def test_parse_rmu_write_request(self):
         hex = bytes([192, 96, 2, 99, 2, 195]).hex()
         data = self._parse_hexlified_raw_message(hex)
         self.assertEqual(data.cmd, "RMU_WRITE_REQ")

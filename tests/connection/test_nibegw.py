@@ -4,7 +4,7 @@ from unittest import TestCase
 from unittest.mock import Mock
 
 from nibe.connection.nibegw import ConnectionStatus, NibeGW
-from nibe.exceptions import CoilReadException, CoilReadTimeoutException
+from nibe.exceptions import CoilReadTimeoutException
 from nibe.heatpump import HeatPump, Model, ProductInfo
 
 

@@ -1,10 +1,9 @@
 import json
 import logging
-from collections import defaultdict
 from dataclasses import dataclass
 from enum import Enum
 from importlib.resources import files
-from typing import Any, Callable, Dict, Union
+from typing import Dict, Union
 
 from nibe.coil import Coil
 from nibe.event_server import EventServer

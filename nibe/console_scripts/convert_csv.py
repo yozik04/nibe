@@ -6,8 +6,6 @@ from importlib.resources import files
 import pandas
 from slugify import slugify
 
-from nibe.heatpump import Model
-
 logger = logging.getLogger("nibe").getChild(__name__)
 
 
