@@ -317,35 +317,48 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
     def _on_raw_coil_value(self, coil_address: int, raw_value: bytes):
         try:
             coil = self._heatpump.get_coil_by_address(coil_address)
+
+            coil.raw_value = raw_value
+            logger.info(f"{coil.name}: {coil.value}")
+            self._heatpump.notify_coil_update(coil)
         except CoilNotFoundException:
             if coil_address == 65535:  # 0xffff
                 return
-            raise
-
-        coil.raw_value = raw_value
-        logger.info(f"{coil.name}: {coil.value}")
-        self._heatpump.notify_coil_update(coil)
+                
+            logger.warning(
+                f"Ignoring coil {coil_address} value - coil definition not found"
+            )
+            return
+        except DecodeException:
+            logger.warning(
+                f"Ignoring coil {coil_address} value - failed to decode raw value: {raw_value}"
+            )
+            return
 
     def _on_coil_value(self, coil_address: int, value: Union[float, int, str]):
         try:
             coil = self._heatpump.get_coil_by_address(coil_address)
+
+            if coil.mappings and isinstance(value, int):
+                value = coil.get_mapping_for(value)
+
+            coil.value = value
+            logger.info(f"{coil.name}: {coil.value}")
+            self._heatpump.notify_coil_update(coil)
+
         except CoilNotFoundException:
             if coil_address == 65535:  # 0xffff
                 return
-            raise
-
-        if coil.mappings and isinstance(value, int):
-            try:
-                value = coil.get_mapping_for(value)
-            except DecodeException:
-                logger.warning(
-                    f"Ignoring coil value {coil_address} due failure to decode: {value}"
-                )
-                return
-
-        coil.value = value
-        logger.info(f"{coil.name}: {coil.value}")
-        self._heatpump.notify_coil_update(coil)
+                
+            logger.warning(
+                f"Ignoring coil {coil_address} value - coil definition not found"
+            )
+            return
+        except DecodeException:
+            logger.warning(
+                f"Ignoring coil {coil_address} value - failed to decode value: {value}"
+            )
+            return
 
     async def stop(self):
         self._transport.close()

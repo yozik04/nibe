@@ -69,8 +69,9 @@ class TestNibeGW(TestCase):
             binascii.unhexlify("c06902a0a9a2"), ("127.0.0.1", 9999)
         )
 
-    def test_read_coil_decode_exception(self):
+    def test_read_coil_decode_ignored(self):
         coil = self.heatpump.get_coil_by_address(43086)
+        coil.value = "HEAT"
 
         async def send_receive():
             task = self.loop.create_task(self.nibegw.read_coil(coil))
@@ -81,8 +82,8 @@ class TestNibeGW(TestCase):
 
             return await task
 
-        with self.assertRaises(CoilReadException):
-            self.loop.run_until_complete(send_receive())
+        self.loop.run_until_complete(send_receive())
+        assert coil.value == "HEAT"
 
     def test_read_coil_timeout_exception(self):
         coil = self.heatpump.get_coil_by_address(43086)
