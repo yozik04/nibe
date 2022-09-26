@@ -4,6 +4,7 @@ import re
 
 import pandas
 from slugify import slugify
+from importlib.resources import files
 
 from nibe.heatpump import Model
 
@@ -113,7 +114,7 @@ class CSVConverter:
 
 
 def run():
-    for in_file in Model.get_data_path().glob("*.csv"):
+    for in_file in files("nibe.data").glob("*.csv"):
         out_file = in_file.with_suffix(".json")
         logger.info(f"Converting {in_file} to {out_file}")
         CSVConverter(in_file, out_file).convert()
