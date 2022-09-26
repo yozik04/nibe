@@ -1,15 +1,7 @@
 from typing import Dict, Optional, Union
 
-from construct import (
-    ConstructError,
-    Int8sl,
-    Int8ul,
-    Int16sl,
-    Int16ul,
-    Int32sl,
-    Int32ul,
-    Padded,
-)
+from construct import (ConstructError, Int8sl, Int8ul, Int16sl, Int16ul, Int32sl,
+                       Int32ul, Padded,)
 
 from nibe.exceptions import DecodeException, EncodeException, NoMappingException
 from nibe.parsers import WordSwapped
