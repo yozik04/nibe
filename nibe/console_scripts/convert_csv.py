@@ -1,7 +1,7 @@
+from importlib.resources import files
 import json
 import logging
 import re
-from importlib.resources import files
 
 import pandas
 from slugify import slugify

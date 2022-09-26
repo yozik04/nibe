@@ -1,31 +1,59 @@
 import asyncio
-import logging
-import socket
-import struct
 from asyncio import CancelledError, InvalidStateError
 from binascii import hexlify
 from contextlib import suppress
 from functools import reduce
 from io import BytesIO
 from ipaddress import ip_address
+import logging
 from operator import xor
+import socket
+import struct
 from typing import Container, Union
 
-from construct import (Adapter, Array, BitStruct, Bytes, Checksum, ChecksumError, Const,
-                       Enum, EnumIntegerString, FixedSized, Flag, GreedyBytes,
-                       GreedyString, IfThenElse, Int8sb, Int8ub, Int16sl, Int16ub,
-                       Int16ul, Pointer, Prefixed, RawCopy, Struct, Subconstruct,
-                       Switch,)
-from construct import Union as UnionConstruct
-from construct import this
+from construct import (
+    Adapter,
+    Array,
+    BitStruct,
+    Bytes,
+    Checksum,
+    ChecksumError,
+    Const,
+    Enum,
+    EnumIntegerString,
+    FixedSized,
+    Flag,
+    GreedyBytes,
+    GreedyString,
+    IfThenElse,
+    Int8sb,
+    Int8ub,
+    Int16sl,
+    Int16ub,
+    Int16ul,
+    Pointer,
+    Prefixed,
+    RawCopy,
+    Struct,
+    Subconstruct,
+    Switch,
+    Union as UnionConstruct,
+    this,
+)
 
 from nibe.coil import Coil
 from nibe.connection import DEFAULT_TIMEOUT, READ_PRODUCT_INFO_TIMEOUT, Connection
 from nibe.event_server import EventServer
-from nibe.exceptions import (CoilNotFoundException, CoilReadException,
-                             CoilReadTimeoutException, CoilWriteException,
-                             CoilWriteTimeoutException, DecodeException, NibeException,
-                             ProductInfoReadTimeoutException,)
+from nibe.exceptions import (
+    CoilNotFoundException,
+    CoilReadException,
+    CoilReadTimeoutException,
+    CoilWriteException,
+    CoilWriteTimeoutException,
+    DecodeException,
+    NibeException,
+    ProductInfoReadTimeoutException,
+)
 from nibe.heatpump import HeatPump, ProductInfo
 
 logger = logging.getLogger("nibe").getChild(__name__)

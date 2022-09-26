@@ -1,5 +1,5 @@
-import logging
 from collections import defaultdict
+import logging
 from typing import Callable
 
 logger = logging.getLogger("nibe").getChild(__name__)

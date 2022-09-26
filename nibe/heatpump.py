@@ -1,8 +1,8 @@
-import json
-import logging
 from dataclasses import dataclass
 from enum import Enum
 from importlib.resources import files
+import json
+import logging
 from typing import Dict, Union
 
 from nibe.coil import Coil
