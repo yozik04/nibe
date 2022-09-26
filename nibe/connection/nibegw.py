@@ -53,6 +53,7 @@ from nibe.exceptions import (
     CoilWriteTimeoutException,
     NibeException,
     ProductInfoReadTimeoutException,
+    DecodeException,
 )
 from nibe.heatpump import HeatPump, ProductInfo
 
@@ -334,7 +335,13 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
             raise
 
         if coil.mappings and isinstance(value, int):
-            value = coil.get_mapping_for(value)
+            try:
+                value = coil.get_mapping_for(value)
+            except DecodeException:
+                logger.warning(
+                    f"Ignoring coil value {coil_address} due failure to decode: {value}"
+                )
+                return
 
         coil.value = value
         logger.info(f"{coil.name}: {coil.value}")
