@@ -18,7 +18,7 @@ class Modbus(Connection):
         self._client = modbus_for_url(url, conn_options)
 
     async def read_coil(self, coil: Coil, timeout: float = DEFAULT_TIMEOUT) -> Coil:
-        logger.debug(f"Sending read request")
+        logger.debug("Sending read request")
         try:
             result = await asyncio.wait_for(
                 self._client.read_input_registers(
@@ -40,7 +40,7 @@ class Modbus(Connection):
         assert coil.is_writable, f"{coil.name} is not writable"
         assert coil.value is not None, f"{coil.name} value must be set"
 
-        logger.debug(f"Sending write request")
+        logger.debug("Sending write request")
         try:
             result = await asyncio.wait_for(
                 self._client.write_register(

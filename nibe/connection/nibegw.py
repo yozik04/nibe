@@ -183,9 +183,7 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
             result = await asyncio.wait_for(self._futures["product_info"], timeout)
             return ProductInfo(result["model"], result["version"])
         except asyncio.TimeoutError:
-            raise ProductInfoReadTimeoutException(
-                f"Timeout waiting for product message"
-            )
+            raise ProductInfoReadTimeoutException("Timeout waiting for product message")
         finally:
             del self._futures["product_info"]
 
@@ -381,7 +379,7 @@ class Dedupe5C(Subconstruct):
         escaped = stream.getvalue().replace(b"\x5c", b"\x5c\x5c")
         context.length = len(escaped)
         with BytesIO(escaped) as stream2:
-            buildret = self.subcon._build(obj, stream2, context, path)
+            self.subcon._build(obj, stream2, context, path)
         return obj
 
 
