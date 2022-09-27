@@ -1,6 +1,8 @@
 import unittest
 from unittest.mock import Mock
 
+import pytest
+
 from nibe.exceptions import CoilNotFoundException, ModelIdentificationFailed
 from nibe.heatpump import HeatPump, Model, ProductInfo
 
@@ -10,11 +12,11 @@ class HeatpumpTestCase(unittest.TestCase):
         self.heat_pump = HeatPump(Model.F1255)
         self.heat_pump.initialize()
 
-        self.assertGreater(len(self.heat_pump._address_to_coil), 100)
+        assert len(self.heat_pump._address_to_coil) > 100
 
     def test_get_coils(self):
         coils = self.heat_pump.get_coils()
-        self.assertIsInstance(coils, list)
+        assert isinstance(coils, list)
 
     def test_get_coil_by_returns_same(self):
         coil_address = 40004
@@ -22,19 +24,19 @@ class HeatpumpTestCase(unittest.TestCase):
         a = self.heat_pump.get_coil_by_address(coil_address)
         b = self.heat_pump.get_coil_by_address(str(coil_address))
 
-        self.assertEqual(coil_address, a.address)
+        assert coil_address == a.address
 
-        self.assertIs(a, b)
+        assert a is b
 
         c = self.heat_pump.get_coil_by_name("bt1-outdoor-temperature-40004")
 
-        self.assertIs(a, c)
+        assert a is c
 
     def test_get_missing_coil_raises_exception(self):
-        with self.assertRaises(CoilNotFoundException):
+        with pytest.raises(CoilNotFoundException):
             self.heat_pump.get_coil_by_address(0xFFFF)
 
-        with self.assertRaises(CoilNotFoundException):
+        with pytest.raises(CoilNotFoundException):
             self.heat_pump.get_coil_by_name("no-beer-today")
 
     def test_listener(self):
@@ -60,7 +62,7 @@ class HeatpumpTestCase(unittest.TestCase):
     def test_word_swap_is_true(self):
         coil = self.heat_pump.get_coil_by_address(43420)
         coil.raw_value = b"(\x06\x00\x00"
-        self.assertEqual(1576, coil.value)
+        assert 1576 == coil.value
 
 
 class HeatpumpWordSwapTestCase(unittest.TestCase):
@@ -72,7 +74,7 @@ class HeatpumpWordSwapTestCase(unittest.TestCase):
     def test_word_swap_is_false(self):
         coil = self.heat_pump.get_coil_by_address(43420)
         coil.raw_value = b"\x00\x00(\x06"
-        self.assertEqual(1576, coil.value)
+        assert 1576 == coil.value
 
 
 class HeatpumpIntialization(unittest.TestCase):
@@ -90,7 +92,7 @@ class HeatpumpIntialization(unittest.TestCase):
         self.heat_pump.get_coil_by_address(43420)
 
     def test_initalization_failed(self):
-        with self.assertRaises(AssertionError):
+        with pytest.raises(AssertionError):
             self.heat_pump.initialize()
 
 
@@ -107,7 +109,7 @@ class ProductInfoTestCase(unittest.TestCase):
     def test_identify_model_error(self):
         product_info = ProductInfo("Tehowatti Air", 0)
 
-        with self.assertRaises(ModelIdentificationFailed):
+        with pytest.raises(ModelIdentificationFailed):
             product_info.identify_model()
 
 

@@ -3,6 +3,8 @@ import binascii
 from unittest import TestCase
 from unittest.mock import Mock
 
+import pytest
+
 from nibe.connection.nibegw import ConnectionStatus, NibeGW
 from nibe.exceptions import CoilReadTimeoutException
 from nibe.heatpump import HeatPump, Model, ProductInfo
@@ -17,11 +19,11 @@ class TestNibeGW(TestCase):
         self.nibegw = NibeGW(self.heatpump, "127.0.0.1")
 
         self.transport = Mock()
-        self.assertEqual(None, self.nibegw.status)
+        assert "unknown" == self.nibegw.status
         self.nibegw.connection_made(self.transport)
 
     def test_status(self):
-        self.assertEqual("listening", self.nibegw.status)
+        assert "listening" == self.nibegw.status
 
         connection_status_handler_mock = Mock()
         self.nibegw.subscribe(
@@ -41,7 +43,7 @@ class TestNibeGW(TestCase):
 
         self.loop.run_until_complete(send_receive())
 
-        self.assertEqual("connected", self.nibegw.status)
+        assert "connected" == self.nibegw.status
         connection_status_handler_mock.assert_called_once_with(
             status=ConnectionStatus.CONNECTED
         )
@@ -63,7 +65,7 @@ class TestNibeGW(TestCase):
             return await task
 
         coil = self.loop.run_until_complete(send_receive())
-        self.assertEqual(4853, coil.value)
+        assert 4853 == coil.value
 
         self.transport.sendto.assert_called_with(
             binascii.unhexlify("c06902a0a9a2"), ("127.0.0.1", 9999)
@@ -88,7 +90,7 @@ class TestNibeGW(TestCase):
     def test_read_coil_timeout_exception(self):
         coil = self.heatpump.get_coil_by_address(43086)
 
-        with self.assertRaises(CoilReadTimeoutException):
+        with pytest.raises(CoilReadTimeoutException):
             self.loop.run_until_complete(self.nibegw.read_coil(coil, 0.1))
 
     def test_write_coil(self):
