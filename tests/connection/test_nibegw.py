@@ -1,6 +1,6 @@
 import asyncio
 import binascii
-from unittest import TestCase
+from unittest import IsolatedAsyncioTestCase
 from unittest.mock import Mock
 
 import pytest
@@ -10,20 +10,20 @@ from nibe.exceptions import CoilReadTimeoutException
 from nibe.heatpump import HeatPump, Model, ProductInfo
 
 
-class TestNibeGW(TestCase):
-    def setUp(self) -> None:
-        self.loop = asyncio.get_event_loop_policy().get_event_loop()
+class TestNibeGW(IsolatedAsyncioTestCase):
+    async def asyncSetUp(self) -> None:
+        self.loop = asyncio.get_running_loop()
 
         self.heatpump = HeatPump(Model.F1255)
         self.heatpump.initialize()
         self.nibegw = NibeGW(self.heatpump, "127.0.0.1")
 
         self.transport = Mock()
-        assert "unknown" == self.nibegw.status
+        assert self.nibegw.status == "unknown"
         self.nibegw.connection_made(self.transport)
 
-    def test_status(self):
-        assert "listening" == self.nibegw.status
+    async def test_status(self):
+        assert self.nibegw.status == "listening"
 
         connection_status_handler_mock = Mock()
         self.nibegw.subscribe(
@@ -41,18 +41,18 @@ class TestNibeGW(TestCase):
 
             return await task
 
-        self.loop.run_until_complete(send_receive())
+        await send_receive()
 
-        assert "connected" == self.nibegw.status
+        assert self.nibegw.status == "connected"
         connection_status_handler_mock.assert_called_once_with(
             status=ConnectionStatus.CONNECTED
         )
 
         connection_status_handler_mock.reset_mock()
-        self.loop.run_until_complete(send_receive())
+        await send_receive()
         connection_status_handler_mock.assert_not_called()
 
-    def test_read_s32_coil(self):
+    async def test_read_s32_coil(self):
         coil = self.heatpump.get_coil_by_address(43424)
 
         async def send_receive():
@@ -64,14 +64,14 @@ class TestNibeGW(TestCase):
 
             return await task
 
-        coil = self.loop.run_until_complete(send_receive())
-        assert 4853 == coil.value
+        coil = await send_receive()
+        assert coil.value == 4853
 
         self.transport.sendto.assert_called_with(
             binascii.unhexlify("c06902a0a9a2"), ("127.0.0.1", 9999)
         )
 
-    def test_read_coil_decode_ignored(self):
+    async def test_read_coil_decode_ignored(self):
         coil = self.heatpump.get_coil_by_address(43086)
         coil.value = "HEAT"
 
@@ -84,16 +84,16 @@ class TestNibeGW(TestCase):
 
             return await task
 
-        self.loop.run_until_complete(send_receive())
-        assert coil.value == "HEAT"
+        await send_receive()
+        assert "HEAT" == coil.value
 
-    def test_read_coil_timeout_exception(self):
+    async def test_read_coil_timeout_exception(self):
         coil = self.heatpump.get_coil_by_address(43086)
 
         with pytest.raises(CoilReadTimeoutException):
-            self.loop.run_until_complete(self.nibegw.read_coil(coil, 0.1))
+            await self.nibegw.read_coil(coil, 0.1)
 
-    def test_write_coil(self):
+    async def test_write_coil(self):
         coil = self.heatpump.get_coil_by_address(48132)
         coil.value = "One time increase"
 
@@ -106,13 +106,13 @@ class TestNibeGW(TestCase):
 
             return await task
 
-        coil = self.loop.run_until_complete(send_receive())
+        coil = await send_receive()
 
         self.transport.sendto.assert_called_with(
             binascii.unhexlify("c06b0604bc0400000011"), ("127.0.0.1", 10000)
         )
 
-    def test_read_product_info(self):
+    async def test_read_product_info(self):
         async def read_product_info():
             task = self.loop.create_task(self.nibegw.read_product_info())
             await asyncio.sleep(0)
@@ -123,7 +123,7 @@ class TestNibeGW(TestCase):
 
             return await task
 
-        product = self.loop.run_until_complete(read_product_info())
+        product = await read_product_info()
 
         assert isinstance(product, ProductInfo)
-        assert product.model == "F1255-12 R"
+        assert "F1255-12 R" == product.model

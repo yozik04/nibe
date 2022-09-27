@@ -62,7 +62,7 @@ class HeatpumpTestCase(unittest.TestCase):
     def test_word_swap_is_true(self):
         coil = self.heat_pump.get_coil_by_address(43420)
         coil.raw_value = b"(\x06\x00\x00"
-        assert 1576 == coil.value
+        assert coil.value == 1576
 
 
 class HeatpumpWordSwapTestCase(unittest.TestCase):
@@ -74,7 +74,7 @@ class HeatpumpWordSwapTestCase(unittest.TestCase):
     def test_word_swap_is_false(self):
         coil = self.heat_pump.get_coil_by_address(43420)
         coil.raw_value = b"\x00\x00(\x06"
-        assert 1576 == coil.value
+        assert coil.value == 1576
 
 
 class HeatpumpIntialization(unittest.TestCase):

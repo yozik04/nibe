@@ -76,13 +76,13 @@ class MessageResponseParsingTestCase(unittest.TestCase):
         assert data.cmd == "MODBUS_DATA_MSG"
         assert isinstance(data.data, list)
 
-        assert b"\xc4\x01" == data.data[4].value
-        assert 40015 == data.data[5].coil_address
-        assert b"\x5c\x00" == data.data[5].value
-        assert 40016 == data.data[6].coil_address
+        assert data.data[4].value == b"\xc4\x01"
+        assert data.data[5].coil_address == 40015
+        assert data.data[5].value == b"\x5c\x00"
+        assert data.data[6].coil_address == 40016
 
-        assert 44270 == data.data[19].coil_address
-        assert b"\xc8\x00" == data.data[19].value
+        assert data.data[19].coil_address == 44270
+        assert data.data[19].value == b"\xc8\x00"
 
     def test_parse_multiple_heavily_escaped_value(self):
         data = self._parse_hexlified_raw_message(
