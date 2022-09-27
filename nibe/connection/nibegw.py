@@ -426,8 +426,6 @@ class FixedPoint(Adapter):
         return (obj - self._offset) / self._scale
 
 
-RmuOperationalMode = Enum(Int8ub, AUTO=0, MANUAL=1, ADD_HEAT_ONLY=2)
-
 StringData = Struct(
     "unknown" / Int8ub,
     "id" / Int16ul,
@@ -488,7 +486,7 @@ RmuData = Struct(
     "hw_time_hour" / Int8ub,
     "hw_time_min" / Int8ub,
     "fan_mode" / Int8ub,
-    "operational_mode" / RmuOperationalMode,
+    "operational_mode" / Int8ub,
     "_flags" / Bytes(2),
     "clock_time_hour" / Int8ub,
     "clock_time_min" / Int8ub,
@@ -550,22 +548,12 @@ Address = Enum(
     MODBUS40=0x20,
 )
 
-
 RmuWriteIndex = Enum(
     Int8ub,
     TEMPORARY_LUX=0x02,
     OPERATIONAL_MODE=0x04,
     FUNCTIONS=0x05,
     TEMPERATURE=0x06,
-)
-
-RmuTemporaryLux = Enum(
-    Int8ub,
-    OFF=0x00,
-    THREE_HOURS=0x01,
-    SIX_HOURS=0x02,
-    TWELVE_HOURS=0x03,
-    ONE_TIME_INCREASE=0x04,
 )
 
 ADDRESS_TO_ROOM_TEMP_COIL = {
@@ -613,7 +601,7 @@ RequestData = Switch(
             "value" / Switch(
                 lambda this: this.index,
                 {
-                    "TEMPORARY_LUX": RmuTemporaryLux,
+                    "TEMPORARY_LUX": Int8ub,
                     "TEMPERATURE": FixedPoint(Int16ul, 0.1, -0.7),
                     "FUNCTIONS": FlagsEnum(
                         Int8ub,
@@ -621,7 +609,7 @@ RequestData = Switch(
                         allow_heating=0x02,
                         allow_cooling=0x04,
                     ),
-                    "OPERATIONAL_MODE": RmuOperationalMode,
+                    "OPERATIONAL_MODE": Int8ub,
                 },
                 default=Select(
                     Int16ul,
