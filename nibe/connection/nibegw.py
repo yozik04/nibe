@@ -23,6 +23,7 @@ from construct import (
     EnumIntegerString,
     FixedSized,
     Flag,
+    FlagsEnum,
     GreedyBytes,
     GreedyString,
     IfThenElse,
@@ -31,9 +32,12 @@ from construct import (
     Int16sl,
     Int16ub,
     Int16ul,
+    NullTerminated,
     Pointer,
     Prefixed,
     RawCopy,
+    Select,
+    StringEncoded,
     Struct,
     Subconstruct,
     Switch,
@@ -163,6 +167,8 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
             elif cmd == "MODBUS_WRITE_RESP":
                 with suppress(InvalidStateError, CancelledError, KeyError):
                     self._futures["write"].set_result(msg.fields.value.data.result)
+            elif cmd == "RMU_DATA_MSG":
+                self._on_rmu_data(msg.fields.value)
             elif cmd == "PRODUCT_INFO_MSG":
                 with suppress(InvalidStateError, CancelledError, KeyError):
                     self._futures["product_info"].set_result(msg.fields.value.data)
@@ -302,10 +308,15 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
         else:
             self._on_coil_value(47008, data.setpoint_or_offset_s4)
 
+        if data.operational_mode == "MANUAL":
+            self._on_coil_value(47370, data.flags.allow_additive_heating)
+            self._on_coil_value(47371, data.flags.allow_heating)
+            self._on_coil_value(47372, data.flags.allow_cooling)
+
         self._on_coil_value(48132, data.temporary_lux)
         self._on_coil_value(45001, data.alarm)
         self._on_coil_value(47137, data.operational_mode)
-        self._on_coil_value(47387, 1 if data.flags.hw_production else 0)
+        self._on_coil_value(47387, data.flags.hw_production)
 
         if coil_address := ADDRESS_TO_ROOM_TEMP_COIL.get(value.address):
             self._on_coil_value(coil_address, data.bt50_room_temp_sX)
@@ -334,6 +345,12 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
     def _on_coil_value(self, coil_address: int, value: Union[float, int, str]):
         try:
             coil = self._heatpump.get_coil_by_address(coil_address)
+
+            if isinstance(value, bool):
+                value = 1 if value else 0
+
+            if isinstance(value, EnumIntegerString):
+                value = int(value)
 
             if coil.mappings and isinstance(value, int):
                 value = coil.get_mapping_for(value)
@@ -409,6 +426,14 @@ class FixedPoint(Adapter):
         return (obj - self._offset) / self._scale
 
 
+RmuOperationalMode = Enum(Int8ub, AUTO=0, MANUAL=1, ADD_HEAT_ONLY=2)
+
+StringData = Struct(
+    "unknown" / Int8ub,
+    "id" / Int16ul,
+    "string" / StringEncoded(NullTerminated(GreedyBytes), "ISO-8859-1"),
+)
+
 RmuData = Struct(
     "flags"
     / Pointer(
@@ -419,9 +444,9 @@ RmuData = Struct(
             "unknown_2000" / Flag,
             "unknown_1000" / Flag,
             "unknown_0800" / Flag,
-            "unknown_0400" / Flag,
-            "unknown_0200" / Flag,
-            "unknown_0100" / Flag,
+            "allow_cooling" / Flag,
+            "allow_heating" / Flag,
+            "allow_additive_heating" / Flag,
             "use_room_sensor_s4" / Flag,
             "use_room_sensor_s3" / Flag,
             "use_room_sensor_s2" / Flag,
@@ -463,7 +488,7 @@ RmuData = Struct(
     "hw_time_hour" / Int8ub,
     "hw_time_min" / Int8ub,
     "fan_mode" / Int8ub,
-    "operational_mode" / Int8ub,
+    "operational_mode" / RmuOperationalMode,
     "_flags" / Bytes(2),
     "clock_time_hour" / Int8ub,
     "clock_time_min" / Int8ub,
@@ -487,6 +512,7 @@ Data = Dedupe5C(
             "MODBUS_ADDRESS_MSG": Struct("address" / Int8ub),
             "PRODUCT_INFO_MSG": ProductInfoData,
             "RMU_DATA_MSG": RmuData,
+            "STRING_MSG": StringData,
         },
         default=Bytes(this.length),
     )
@@ -509,6 +535,7 @@ Command = Enum(
     ECS_DATA_REQ=0x90,
     ECS_DATA_MSG_1=0x55,
     ECS_DATA_MSG_2=0xA0,
+    STRING_MSG=0xB1,
 )
 
 Address = Enum(
@@ -521,6 +548,24 @@ Address = Enum(
     RMU40_S3=0x1B,
     RMU40_S4=0x1C,
     MODBUS40=0x20,
+)
+
+
+RmuWriteIndex = Enum(
+    Int8ub,
+    TEMPORARY_LUX=0x02,
+    OPERATIONAL_MODE=0x04,
+    FUNCTIONS=0x05,
+    TEMPERATURE=0x06,
+)
+
+RmuTemporaryLux = Enum(
+    Int8ub,
+    OFF=0x00,
+    THREE_HOURS=0x01,
+    SIX_HOURS=0x02,
+    TWELVE_HOURS=0x03,
+    ONE_TIME_INCREASE=0x04,
 )
 
 ADDRESS_TO_ROOM_TEMP_COIL = {
@@ -564,8 +609,25 @@ RequestData = Switch(
             ),
         ),
         "RMU_WRITE_REQ": Struct(
-            "index" / Int8ub,
-            "value" / GreedyBytes
+            "index" / RmuWriteIndex,
+            "value" / Switch(
+                lambda this: this.index,
+                {
+                    "TEMPORARY_LUX": RmuTemporaryLux,
+                    "TEMPERATURE": FixedPoint(Int16ul, 0.1, -0.7),
+                    "FUNCTIONS": FlagsEnum(
+                        Int8ub,
+                        allow_additive_heating=0x01,
+                        allow_heating=0x02,
+                        allow_cooling=0x04,
+                    ),
+                    "OPERATIONAL_MODE": RmuOperationalMode,
+                },
+                default=Select(
+                    Int16ul,
+                    Int8ub,
+                )
+            )
         ),
         "MODBUS_READ_REQ": Struct(
             "coil_address" / Int16ul,

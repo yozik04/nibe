@@ -152,9 +152,9 @@ class MessageResponseParsingTestCase(unittest.TestCase):
                 unknown_2000=False,
                 unknown_1000=False,
                 unknown_0800=False,
-                unknown_0400=False,
-                unknown_0200=True,
-                unknown_0100=False,
+                allow_cooling=False,
+                allow_heating=True,
+                allow_additive_heating=False,
                 use_room_sensor_s4=False,
                 use_room_sensor_s3=False,
                 use_room_sensor_s2=True,
@@ -166,7 +166,7 @@ class MessageResponseParsingTestCase(unittest.TestCase):
             ),
             hw_time_hour=0,
             hw_time_min=0,
-            operational_mode=0,
+            operational_mode="AUTO",
             setpoint_or_offset_s1=20.5,
             setpoint_or_offset_s2=21.0,
             setpoint_or_offset_s3=0.0,
@@ -196,9 +196,9 @@ class MessageResponseParsingTestCase(unittest.TestCase):
                 unknown_2000=False,
                 unknown_1000=False,
                 unknown_0800=False,
-                unknown_0400=False,
-                unknown_0200=True,
-                unknown_0100=False,
+                allow_cooling=False,
+                allow_heating=True,
+                allow_additive_heating=False,
                 use_room_sensor_s4=False,
                 use_room_sensor_s3=False,
                 use_room_sensor_s2=True,
@@ -210,7 +210,7 @@ class MessageResponseParsingTestCase(unittest.TestCase):
             ),
             hw_time_hour=0,
             hw_time_min=0,
-            operational_mode=0,
+            operational_mode="AUTO",
             setpoint_or_offset_s1=20.5,
             setpoint_or_offset_s2=21.0,
             setpoint_or_offset_s3=0.0,
@@ -219,6 +219,13 @@ class MessageResponseParsingTestCase(unittest.TestCase):
             unknown4=b"\x03",
             unknown5=b"\x01\x00",
         )
+
+    def test_parse_strings(self):
+        data = self._parse_hexlified_raw_message("5c0019b10901382776e4726d650057")
+        self.assertEqual(data.cmd, "STRING_MSG")
+        self.assertEqual(data.data.unknown, 1)
+        self.assertEqual(data.data.id, 10040)
+        self.assertEqual(data.data.string, "värme")
 
     @staticmethod
     def _parse_hexlified_raw_message(txt_raw):
@@ -286,13 +293,13 @@ class MessageRequestParsingTestCase(unittest.TestCase):
         data = self._parse_hexlified_raw_message(hex)
         assert data.cmd == "RMU_WRITE_REQ"
         assert data.data.index == 99
-        assert data.data.value == b"\x02"
+        assert data.data.value == 2
 
         hex = bytes([192, 96, 3, 6, 217, 0, 124]).hex()
         data = self._parse_hexlified_raw_message(hex)
         assert data.cmd == "RMU_WRITE_REQ"
-        assert data.data.index == 6
-        assert data.data.value == b"\xd9\x00"
+        assert data.data.index == "TEMPERATURE"
+        assert data.data.value == 21.0
 
 
 if __name__ == "__main__":
