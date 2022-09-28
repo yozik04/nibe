@@ -19,11 +19,11 @@ Nak = Struct("fields" / RawCopy(Struct("Nak" / Const(0x15, Int8ul))))
 
 
 Block = Select(
+    Terminated,
     Response,
     Request,
     Ack,
     Nak,
-    Terminated,
 )
 
 Stream = GreedyRange(Block)
