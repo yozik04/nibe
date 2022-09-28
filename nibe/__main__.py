@@ -7,7 +7,7 @@ import logging
 from typing import IO
 
 import asyncclick as click
-from construct import Const, GreedyRange, Int8ul, RawCopy, Select, Struct
+from construct import Const, GreedyRange, Int8ul, RawCopy, Select, Struct, Terminated
 
 from .coil import Coil
 from .connection.nibegw import NibeGW, Request, Response
@@ -23,6 +23,7 @@ Block = Select(
     Request,
     Ack,
     Nak,
+    Terminated,
 )
 
 Stream = GreedyRange(Block)
@@ -151,15 +152,19 @@ def read_bytes_socat(file: IO):
         yield from bytes.fromhex(line)
 
 
+def parse_stream(stream: io.RawIOBase):
+    while block := Block.parse_stream(stream):
+        yield block
+
+
 @cli.command()
 @click.argument("file", type=click.File())
 def parse_file(file: IO):
 
     with io.BytesIO(bytes(read_bytes_socat(file))) as stream:
-        everything = Stream.parse_stream(stream)
 
         def values():
-            for packet in everything:
+            for packet in parse_stream(stream):
                 yield str(packet.fields.value) + "\n"
 
         click.echo_via_pager(values())
