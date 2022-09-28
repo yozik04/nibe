@@ -1,35 +1,21 @@
 from __future__ import annotations
 
-import asyncclick as click
-import logging
-import asyncio
 from ast import literal_eval
-from typing import IO
+import asyncio
 import io
+import logging
+from typing import IO
 
-from construct import Struct, Const, Int8ul, RawCopy, Select, GreedyRange
-from .heatpump import HeatPump, Model
-from .connection.nibegw import NibeGW
-from .connection.nibegw import Request, Response
+import asyncclick as click
+from construct import Const, GreedyRange, Int8ul, RawCopy, Select, Struct
 
 from .coil import Coil
+from .connection.nibegw import NibeGW, Request, Response
+from .heatpump import HeatPump, Model
 
+Ack = Struct("fields" / RawCopy(Struct("Ack" / Const(0x06, Int8ul))))
 
-Ack = Struct(
-    "fields" / RawCopy(
-        Struct(
-            "Ack" / Const(0x06, Int8ul)
-        )
-    )
-)
-
-Nak = Struct(
-    "fields" / RawCopy(
-        Struct(
-            "Ack" / Const(0x15, Int8ul)
-        )
-    )
-)
+Nak = Struct("fields" / RawCopy(Struct("Nak" / Const(0x15, Int8ul))))
 
 
 Block = Select(
@@ -42,10 +28,10 @@ Block = Select(
 Stream = GreedyRange(Block)
 
 
-
 @click.group()
 async def cli():
     pass
+
 
 _global_options = [
     click.argument("remote_ip", type=str),
@@ -58,8 +44,7 @@ _global_options = [
         type=click.Choice([model.name for model in Model]),
         default=Model.F1155.name,
     ),
-    click.option("-v", "--verbose", count=True)
-
+    click.option("-v", "--verbose", count=True),
 ]
 
 
@@ -76,7 +61,7 @@ async def global_setup(
     remote_read_port: int,
     remote_write_port: int,
     model: str,
-    verbose: int
+    verbose: int,
 ):
     if verbose == 0:
         log_level = logging.WARNING
@@ -90,7 +75,6 @@ async def global_setup(
         level=log_level,
     )
     logging.log(logging.INFO, "Log level set to %r", log_level)
-
 
     heatpump = HeatPump(Model[model])
     heatpump.initialize()
@@ -173,14 +157,18 @@ def parse_file(file: IO):
 
     with io.BytesIO(bytes(read_bytes_socat(file))) as stream:
         everything = Stream.parse_stream(stream)
+
         def values():
             for packet in everything:
                 yield str(packet.fields.value) + "\n"
+
         click.echo_via_pager(values())
 
         remaining = stream.read()
         if remaining:
-            click.echo(f"Remaining: {stream.read()}") 
+            click.echo(f"Remaining: {stream.read()}")
+
+
 try:
     cli()
 except (KeyboardInterrupt, SystemExit):
