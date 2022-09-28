@@ -163,11 +163,8 @@ def parse_file(file: IO):
 
     with io.BytesIO(bytes(read_bytes_socat(file))) as stream:
 
-        def values():
-            for packet in parse_stream(stream):
-                yield str(packet.fields.value) + "\n"
-
-        click.echo_via_pager(values())
+        for packet in parse_stream(stream):
+            click.echo(packet.fields.value)
 
         remaining = stream.read()
         if remaining:
