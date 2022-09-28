@@ -134,12 +134,12 @@ async def write(parameter: int, value: str, **kwargs):
 @cli.command()
 @click.argument("data", type=str)
 @click.option("--type", type=click.Choice(["hex", "bytes"]), default="hex")
-async def parse_request(data: str, type: str):
+async def parse_data(data: str, type: str):
     if type == "hex":
         raw = bytes.fromhex(data)
     elif type == "bytes":
         raw = bytes(literal_eval(data))
-    request = Request.parse(raw)
+    request = Block.parse(raw)
     click.echo(request)
 
 
