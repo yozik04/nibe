@@ -29,6 +29,8 @@ class CSVConverter:
 
         self._fix_data_types()
 
+        self._fix_data_size_column()
+
         self._replace_mode_with_boolean_write_parameter()
 
         self._unset_equal_min_max_default_values()
@@ -73,6 +75,24 @@ class CSVConverter:
             self.data["info"] = self.data["info"].astype("string")
         self.data["size"] = self.data["size"].astype("string")
         self.data["name"] = self.data["name"].astype("string")
+
+    def _fix_data_size_column(self):
+        mapping = {
+            "1": "s8",
+            "2": "s16",
+            "3": "s32",
+            "4": "u8",
+            "5": "u16",
+            "6": "u32",
+            "s8": "s8",
+            "s16": "s16",
+            "s32": "s32",
+            "u8": "u8",
+            "u16": "u16",
+            "u32": "u32",
+        }
+
+        self.data["size"] = self.data["size"].map(mapping)
 
     def _fix_data_unit_column(self):
         self.data["unit"] = (
