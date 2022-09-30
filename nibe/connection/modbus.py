@@ -2,6 +2,7 @@ import asyncio
 import logging
 
 from async_modbus import modbus_for_url
+import async_timeout
 
 from nibe.coil import Coil
 from nibe.connection import DEFAULT_TIMEOUT, Connection
@@ -9,6 +10,18 @@ from nibe.exceptions import CoilReadException, CoilWriteException
 from nibe.heatpump import HeatPump
 
 logger = logging.getLogger("nibe").getChild(__name__)
+
+
+def split_modbus_data(coil: Coil):
+    entity_type = (coil.address / 10000) - 1
+    entity_address = (coil.address % 10000) - 1
+
+    if coil.size in ("s32", "u32"):
+        entity_count = 2
+    else:
+        entity_count = 1
+
+    return entity_type, entity_address, entity_count
 
 
 class Modbus(Connection):
@@ -20,13 +33,39 @@ class Modbus(Connection):
     async def read_coil(self, coil: Coil, timeout: float = DEFAULT_TIMEOUT) -> Coil:
         logger.debug("Sending read request")
         try:
-            result = await asyncio.wait_for(
-                self._client.read_input_registers(
-                    slave_id=self._slave_id, starting_address=coil.address, quantity=1
-                ),
-                timeout,
-            )
+
+            entity_type, entity_number, entity_count = split_modbus_data(coil)
+
+            with async_timeout.timeout(timeout):
+                if entity_type == 4:
+                    result = await self._client.read_input_registers(
+                        slave_id=self._slave_id,
+                        starting_address=entity_number,
+                        quantity=entity_count,
+                    )
+                elif entity_type == 3:
+                    result = await self._client.read_holding_registers(
+                        slave_id=self._slave_id,
+                        starting_address=entity_number,
+                        quantity=entity_count,
+                    )
+                elif entity_type == 2:
+                    result = await self._client.read_discrete_inputs(
+                        slave_id=self._slave_id,
+                        starting_address=entity_number,
+                        quantity=entity_count,
+                    )
+                elif entity_type == 1:
+                    result = await self._client.read_coils(
+                        slave_id=self._slave_id,
+                        starting_address=entity_number,
+                        quantity=entity_count,
+                    )
+                else:
+                    raise CoilReadException(f"Unsupported entity type {entity_type}")
+
             coil.raw_value = result[0]
+
             logger.info(f"{coil.name}: {coil.value}")
             self._heatpump.notify_coil_update(coil)
         except asyncio.TimeoutError:
@@ -42,12 +81,23 @@ class Modbus(Connection):
 
         logger.debug("Sending write request")
         try:
-            result = await asyncio.wait_for(
-                self._client.write_register(
-                    slave_id=self._slave_id, address=coil.address, value=coil.raw_value
-                ),
-                timeout,
-            )
+            entity_type, entity_number, entity_count = split_modbus_data(coil)
+
+            with async_timeout.timeout(timeout):
+                if entity_type == 3:
+                    result = await self._client.write_register(
+                        slave_id=self._slave_id,
+                        address=entity_number,
+                        value=coil.raw_value,
+                    )
+                elif entity_type == 1:
+                    result = await self._client.write_coil(
+                        slave_id=self._slave_id,
+                        address=entity_number,
+                        value=coil.raw_value,
+                    )
+                else:
+                    raise CoilReadException(f"Unsupported entity type {entity_type}")
 
             if not result:
                 raise CoilWriteException(f"Heatpump denied writing {coil.name}")
