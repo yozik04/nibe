@@ -147,10 +147,14 @@ class CSVConverter:
 
     def _update_index(self):
         def calculate_number(register_type: str, register: str):
+            if register_type == "MODBUS_COIL":
+                return str(10000 + int(register))
+            if register_type == "MODBUS_DISCRETE_INPUT":
+                return str(20000 + int(register))
             if register_type == "MODBUS_INPUT_REGISTER":
-                return str(30001 + int(register))
+                return str(30000 + int(register))
             if register_type == "MODBUS_HOLDING_REGISTER":
-                return str(40001 + int(register))
+                return str(40000 + int(register))
             return None
 
         if "id" not in self.data:
