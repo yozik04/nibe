@@ -10,6 +10,7 @@ import asyncclick as click
 from construct import Const, GreedyRange, Int8ul, RawCopy, Select, Struct, Terminated
 
 from .coil import Coil
+from .connection.modbus import Modbus
 from .connection.nibegw import NibeGW, Request, Response
 from .heatpump import HeatPump, Model
 
@@ -36,10 +37,14 @@ async def cli():
 
 _global_options = [
     click.argument("remote_ip", type=str),
+    click.option(
+        "--remote_type", type=click.Choice(["nibegw", "modbus"]), default="nibegw"
+    ),
     click.option("--listening_ip", type=str),
     click.option("--listening_port", type=int, default=10090),
     click.option("--remote_read_port", type=int, default=10091),
     click.option("--remote_write_port", type=int, default=10092),
+    click.option("--slave_id", type=int, default=1),
     click.option(
         "--model",
         type=click.Choice([model.name for model in Model]),
@@ -57,12 +62,14 @@ def global_options(func):
 
 async def global_setup(
     remote_ip: str,
+    remote_type: str,
     listening_port: int,
     listening_ip: str | None,
     remote_read_port: int,
     remote_write_port: int,
     model: str,
     verbose: int,
+    slave_id: int,
 ):
     if verbose == 0:
         log_level = logging.WARNING
@@ -79,14 +86,22 @@ async def global_setup(
 
     heatpump = HeatPump(Model[model])
     heatpump.initialize()
-    connection = NibeGW(
-        heatpump=heatpump,
-        remote_ip=remote_ip,
-        listening_port=listening_port,
-        listening_ip=listening_ip,
-        remote_read_port=remote_read_port,
-        remote_write_port=remote_write_port,
-    )
+    if remote_type == "nibegw":
+        connection = NibeGW(
+            heatpump=heatpump,
+            remote_ip=remote_ip,
+            listening_port=listening_port,
+            listening_ip=listening_ip,
+            remote_read_port=remote_read_port,
+            remote_write_port=remote_write_port,
+        )
+    elif remote_type == "modbus":
+        connection = Modbus(
+            heatpump=heatpump,
+            url=f"tcp://{remote_ip}:{remote_read_port}",
+            slave_id=slave_id,
+        )
+
     await connection.start()
 
     return heatpump, connection
