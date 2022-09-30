@@ -23,6 +23,8 @@ class CSVConverter:
 
         self._update_index()
 
+        self._fix_data_soft_hyphens()
+
         self._make_name_using_slugify()
 
         self._fix_data_unit_column()
@@ -98,6 +100,9 @@ class CSVConverter:
         self.data["unit"] = (
             self.data["unit"].replace(r"^\s*$", pandas.NA, regex=True).str.strip()
         )
+
+    def _fix_data_soft_hyphens(self):
+        self.data["title"] = self.data["title"].str.replace("\xad", "")
 
     def _make_name_using_slugify(self):
         ids = pandas.Series(self.data.index, index=self.data.index)

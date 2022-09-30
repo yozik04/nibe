@@ -1,69 +1,69 @@
 {
   "30002": {
-    "title": "Aktuell ute\u00adtemperatur (BT1)",
+    "title": "Aktuell utetemperatur (BT1)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
     "name": "aktuell-utetemperatur-bt1-30002"
   },
   "30003": {
-    "title": "Fram\u00adledning (EP23-BT2)",
+    "title": "Framledning (EP23-BT2)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
     "name": "framledning-ep23-bt2-30003"
   },
   "30004": {
-    "title": "Fram\u00adledning (EP22-BT2)",
+    "title": "Framledning (EP22-BT2)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
     "name": "framledning-ep22-bt2-30004"
   },
   "30005": {
-    "title": "Fram\u00adledning (EP21-BT2)",
+    "title": "Framledning (EP21-BT2)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
     "name": "framledning-ep21-bt2-30005"
   },
   "30006": {
-    "title": "Fram\u00adledning (BT2)",
+    "title": "Framledning (BT2)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
     "name": "framledning-bt2-30006"
   },
   "30008": {
-    "title": "Retur\u00adledning (BT3)",
+    "title": "Returledning (BT3)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
     "name": "returledning-bt3-30008"
   },
   "30009": {
-    "title": "Varm\u00advatten topp (BT7)",
+    "title": "Varmvatten topp (BT7)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
     "name": "varmvatten-topp-bt7-30009"
   },
   "30010": {
-    "title": "Varm\u00advatten laddning (BT6)",
+    "title": "Varmvatten laddning (BT6)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
     "name": "varmvatten-laddning-bt6-30010"
   },
   "30011": {
-    "title": "K\u00f6ld\u00adb\u00e4rare in (BT10)",
+    "title": "K\u00f6ldb\u00e4rare in (BT10)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
     "name": "koldbarare-in-bt10-30011"
   },
   "30012": {
-    "title": "K\u00f6ld\u00adb\u00e4rare ut (BT11)",
+    "title": "K\u00f6ldb\u00e4rare ut (BT11)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
@@ -84,7 +84,7 @@
     "name": "hetgas-bt14-30014"
   },
   "30015": {
-    "title": "V\u00e4tske\u00adledning (BT15)",
+    "title": "V\u00e4tskeledning (BT15)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
@@ -119,34 +119,34 @@
     "name": "roomsensor-1-1-30027"
   },
   "30032": {
-    "title": "Retur\u00adledning (EQ1-BT65)",
+    "title": "Returledning (EQ1-BT65)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
     "name": "returledning-eq1-bt65-30032"
   },
   "30037": {
-    "title": "Temperatur\u00adbegr\u00e4nsare (EB100-FD1)",
+    "title": "Temperaturbegr\u00e4nsare (EB100-FD1)",
     "factor": 1,
     "size": "s16",
     "name": "temperaturbegransare-eb100-fd1-30037"
   },
   "30038": {
-    "title": "Medel\u00adtemperatur (BT1)",
+    "title": "Medeltemperatur (BT1)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
     "name": "medeltemperatur-bt1-30038"
   },
   "30039": {
-    "title": "Pann\u00adtemperatur (BT52)",
+    "title": "Panntemperatur (BT52)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
     "name": "panntemperatur-bt52-30039"
   },
   "30041": {
-    "title": "Fl\u00f6des\u00adgivare (BF1)",
+    "title": "Fl\u00f6desgivare (BF1)",
     "factor": 10,
     "unit": "l/m",
     "size": "s16",
@@ -229,42 +229,42 @@
     "name": "kollektor-ut-az11-bt27-30072"
   },
   "30076": {
-    "title": "Retur\u00adledning (EP23-BT3)",
+    "title": "Returledning (EP23-BT3)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
     "name": "returledning-ep23-bt3-30076"
   },
   "30077": {
-    "title": "Retur\u00adledning (EP22-BT3)",
+    "title": "Returledning (EP22-BT3)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
     "name": "returledning-ep22-bt3-30077"
   },
   "30078": {
-    "title": "Retur\u00adledning (EP21-BT3)",
+    "title": "Returledning (EP21-BT3)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
     "name": "returledning-ep21-bt3-30078"
   },
   "30079": {
-    "title": "Retur\u00adledning (EP15-BT3)",
+    "title": "Returledning (EP15-BT3)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
     "name": "returledning-ep15-bt3-30079"
   },
   "30087": {
-    "title": "Olje\u00adtemperatur (BT29)",
+    "title": "Oljetemperatur (BT29)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
     "name": "oljetemperatur-bt29-30087"
   },
   "30088": {
-    "title": "Utg\u00e5ende varm\u00advatten (BT70)",
+    "title": "Utg\u00e5ende varmvatten (BT70)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
@@ -278,63 +278,63 @@
     "name": "kollektor-eq1-bt57-30091"
   },
   "30092": {
-    "title": "V\u00e4rme\u00addump (EQ1-BT75)",
+    "title": "V\u00e4rmedump (EQ1-BT75)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
     "name": "varmedump-eq1-bt75-30092"
   },
   "30095": {
-    "title": "Fram\u00adledning (EP47-BT2)",
+    "title": "Framledning (EP47-BT2)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
     "name": "framledning-ep47-bt2-30095"
   },
   "30096": {
-    "title": "Fram\u00adledning (EP46-BT2)",
+    "title": "Framledning (EP46-BT2)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
     "name": "framledning-ep46-bt2-30096"
   },
   "30097": {
-    "title": "Fram\u00adledning (EP45-BT2)",
+    "title": "Framledning (EP45-BT2)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
     "name": "framledning-ep45-bt2-30097"
   },
   "30098": {
-    "title": "Fram\u00adledning (EP44-BT2)",
+    "title": "Framledning (EP44-BT2)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
     "name": "framledning-ep44-bt2-30098"
   },
   "30099": {
-    "title": "Retur\u00adledning (EP47-BT3)",
+    "title": "Returledning (EP47-BT3)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
     "name": "returledning-ep47-bt3-30099"
   },
   "30100": {
-    "title": "Retur\u00adledning (EP46-BT3)",
+    "title": "Returledning (EP46-BT3)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
     "name": "returledning-ep46-bt3-30100"
   },
   "30101": {
-    "title": "Retur\u00adledning (EP45-BT3)",
+    "title": "Returledning (EP45-BT3)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
     "name": "returledning-ep45-bt3-30101"
   },
   "30102": {
-    "title": "Retur\u00adledning (EP44-BT3)",
+    "title": "Returledning (EP44-BT3)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
@@ -355,88 +355,88 @@
     "name": "id-149-30109"
   },
   "30110": {
-    "title": "Rums\u00admedel\u00adtemperatur klimat\u00adsystem 8 (BT50)",
+    "title": "Rumsmedeltemperatur klimatsystem 8 (BT50)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
     "name": "rumsmedeltemperatur-klimatsystem-8-bt50-30110"
   },
   "30111": {
-    "title": "Rums\u00admedel\u00adtemperatur klimat\u00adsystem 7 (BT50)",
+    "title": "Rumsmedeltemperatur klimatsystem 7 (BT50)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
     "name": "rumsmedeltemperatur-klimatsystem-7-bt50-30111"
   },
   "30112": {
-    "title": "Rums\u00admedel\u00adtemperatur klimat\u00adsystem 6 (BT50)",
+    "title": "Rumsmedeltemperatur klimatsystem 6 (BT50)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
     "name": "rumsmedeltemperatur-klimatsystem-6-bt50-30112"
   },
   "30113": {
-    "title": "Rums\u00admedel\u00adtemperatur klimat\u00adsystem 5 (BT50)",
+    "title": "Rumsmedeltemperatur klimatsystem 5 (BT50)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
     "name": "rumsmedeltemperatur-klimatsystem-5-bt50-30113"
   },
   "30114": {
-    "title": "Rums\u00admedel\u00adtemperatur klimat\u00adsystem 4 (BT50)",
+    "title": "Rumsmedeltemperatur klimatsystem 4 (BT50)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
     "name": "rumsmedeltemperatur-klimatsystem-4-bt50-30114"
   },
   "30115": {
-    "title": "Rums\u00admedel\u00adtemperatur klimat\u00adsystem 3 (BT50)",
+    "title": "Rumsmedeltemperatur klimatsystem 3 (BT50)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
     "name": "rumsmedeltemperatur-klimatsystem-3-bt50-30115"
   },
   "30116": {
-    "title": "Rums\u00admedel\u00adtemperatur klimat\u00adsystem 2 (BT50)",
+    "title": "Rumsmedeltemperatur klimatsystem 2 (BT50)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
     "name": "rumsmedeltemperatur-klimatsystem-2-bt50-30116"
   },
   "30117": {
-    "title": "Rums\u00admedel\u00adtemperatur klimat\u00adsystem 1 (BT50)",
+    "title": "Rumsmedeltemperatur klimatsystem 1 (BT50)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
     "name": "rumsmedeltemperatur-klimatsystem-1-bt50-30117"
   },
   "30120": {
-    "title": "Extern kyl\u00adfram\u00adlednings\u00adtemperatur (BT25)",
+    "title": "Extern kylframledningstemperatur (BT25)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
     "name": "extern-kylframledningstemperatur-bt25-30120"
   },
   "30130": {
-    "title": "Drift\u00adl\u00e4ge shunt klimat\u00adsystem 8",
+    "title": "Driftl\u00e4ge shunt klimatsystem 8",
     "factor": 1,
     "size": "u8",
     "name": "driftlage-shunt-klimatsystem-8-30130"
   },
   "30131": {
-    "title": "Drift\u00adl\u00e4ge shunt klimat\u00adsystem 7",
+    "title": "Driftl\u00e4ge shunt klimatsystem 7",
     "factor": 1,
     "size": "u8",
     "name": "driftlage-shunt-klimatsystem-7-30131"
   },
   "30132": {
-    "title": "Drift\u00adl\u00e4ge shunt klimat\u00adsystem 6",
+    "title": "Driftl\u00e4ge shunt klimatsystem 6",
     "factor": 1,
     "size": "u8",
     "name": "driftlage-shunt-klimatsystem-6-30132"
   },
   "30133": {
-    "title": "Drift\u00adl\u00e4ge shunt klimat\u00adsystem 5",
+    "title": "Driftl\u00e4ge shunt klimatsystem 5",
     "factor": 1,
     "size": "u8",
     "name": "driftlage-shunt-klimatsystem-5-30133"
@@ -448,33 +448,33 @@
     "name": "id-246-30134"
   },
   "30135": {
-    "title": "Rel\u00e4\u00adstatus (ERS 1)",
+    "title": "Rel\u00e4status (ERS 1)",
     "factor": 1,
     "size": "u8",
     "name": "relastatus-ers-1-30135"
   },
   "30136": {
-    "title": "Fl\u00e4kt\u00adhastighet (AZ30-GQ2)",
+    "title": "Fl\u00e4kthastighet (AZ30-GQ2)",
     "factor": 1,
     "unit": "%",
     "size": "u8",
     "name": "flakthastighet-az30-gq2-30136"
   },
   "30137": {
-    "title": "Fl\u00e4kt\u00adhastighet (AZ30-GQ3)",
+    "title": "Fl\u00e4kthastighet (AZ30-GQ3)",
     "factor": 1,
     "unit": "%",
     "size": "u8",
     "name": "flakthastighet-az30-gq3-30137"
   },
   "30138": {
-    "title": "Aktuell varm\u00advatten\u00adl\u00e4ge kontrolleras av",
+    "title": "Aktuell varmvattenl\u00e4ge kontrolleras av",
     "factor": 1,
     "size": "s8",
     "name": "aktuell-varmvattenlage-kontrolleras-av-30138"
   },
   "30139": {
-    "title": "Inverter\u00adbegr\u00e4nsnings\u00adstatus",
+    "title": "Inverterbegr\u00e4nsningsstatus",
     "factor": 1,
     "size": "u8",
     "name": "inverterbegransningsstatus-30139"
@@ -492,33 +492,33 @@
     "name": "inverterfel-nollstallt-42756"
   },
   "30141": {
-    "title": "Beg\u00e4rd kompressor\u00adfrekvens",
+    "title": "Beg\u00e4rd kompressorfrekvens",
     "factor": 1,
     "unit": "Hz",
     "size": "u16",
     "name": "begard-kompressorfrekvens-30141"
   },
   "30142": {
-    "title": "Max kompressor\u00adfrekvens, upp\u00adv\u00e4rmning",
+    "title": "Max kompressorfrekvens, uppv\u00e4rmning",
     "factor": 100,
     "unit": "Hz",
     "size": "u16",
     "name": "max-kompressorfrekvens-uppvarmning-30142"
   },
   "30143": {
-    "title": "Inverter larm\u00adkod",
+    "title": "Inverter larmkod",
     "factor": 1,
     "size": "u16",
     "name": "inverter-larmkod-30143"
   },
   "30144": {
-    "title": "Inverter larm\u00adkod",
+    "title": "Inverter larmkod",
     "factor": 1,
     "size": "u16",
     "name": "inverter-larmkod-30144"
   },
   "30145": {
-    "title": "Inverter k\u00f6r\u00adkommando",
+    "title": "Inverter k\u00f6rkommando",
     "factor": 1,
     "size": "u16",
     "name": "inverter-korkommando-30145"
@@ -560,49 +560,49 @@
     "name": "inverter-hw-typ-30151"
   },
   "30152": {
-    "title": "Extern justering klimat\u00adsystem 8",
+    "title": "Extern justering klimatsystem 8",
     "factor": 1,
     "size": "u8",
     "name": "extern-justering-klimatsystem-8-30152"
   },
   "30153": {
-    "title": "Extern justering klimat\u00adsystem 7",
+    "title": "Extern justering klimatsystem 7",
     "factor": 1,
     "size": "u8",
     "name": "extern-justering-klimatsystem-7-30153"
   },
   "30154": {
-    "title": "Extern justering klimat\u00adsystem 6",
+    "title": "Extern justering klimatsystem 6",
     "factor": 1,
     "size": "u8",
     "name": "extern-justering-klimatsystem-6-30154"
   },
   "30155": {
-    "title": "Extern justering klimat\u00adsystem 5",
+    "title": "Extern justering klimatsystem 5",
     "factor": 1,
     "size": "u8",
     "name": "extern-justering-klimatsystem-5-30155"
   },
   "30157": {
-    "title": "Klimat\u00adsystem 8",
+    "title": "Klimatsystem 8",
     "factor": 1,
     "size": "u8",
     "name": "klimatsystem-8-30157"
   },
   "30158": {
-    "title": "Klimat\u00adsystem 7",
+    "title": "Klimatsystem 7",
     "factor": 1,
     "size": "u8",
     "name": "klimatsystem-7-30158"
   },
   "30159": {
-    "title": "Klima\u00adtsystem 6",
+    "title": "Klimatsystem 6",
     "factor": 1,
     "size": "u8",
     "name": "klimatsystem-6-30159"
   },
   "30160": {
-    "title": "Klimat\u00adsystem 5",
+    "title": "Klimatsystem 5",
     "factor": 1,
     "size": "u8",
     "name": "klimatsystem-5-30160"
@@ -614,14 +614,14 @@
     "name": "extra-kyla-30161"
   },
   "30175": {
-    "title": "Varm\u00advatten\u00adkomfort retur (BT82)",
+    "title": "Varmvattenkomfort retur (BT82)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
     "name": "varmvattenkomfort-retur-bt82-30175"
   },
   "30176": {
-    "title": "Varm\u00advatten\u00adkomfort beredare (BT83)",
+    "title": "Varmvattenkomfort beredare (BT83)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
@@ -1066,99 +1066,99 @@
     "name": "kompressor-total-tid-pool-2-huvudenhet-ep14-30284"
   },
   "30295": {
-    "title": "V\u00e4rme\u00adpump 8 beg\u00e4rd kompressor\u00adfrekvens",
+    "title": "V\u00e4rmepump 8 beg\u00e4rd kompressorfrekvens",
     "factor": 1,
     "unit": "Hz",
     "size": "u8",
     "name": "varmepump-8-begard-kompressorfrekvens-30295"
   },
   "30296": {
-    "title": "V\u00e4rme\u00adpump 7 beg\u00e4rd kompressor\u00adfrekvens",
+    "title": "V\u00e4rmepump 7 beg\u00e4rd kompressorfrekvens",
     "factor": 1,
     "unit": "Hz",
     "size": "u8",
     "name": "varmepump-7-begard-kompressorfrekvens-30296"
   },
   "30297": {
-    "title": "V\u00e4rme\u00adpump 6 beg\u00e4rd kompressor\u00adfrekvens",
+    "title": "V\u00e4rmepump 6 beg\u00e4rd kompressorfrekvens",
     "factor": 1,
     "unit": "Hz",
     "size": "u8",
     "name": "varmepump-6-begard-kompressorfrekvens-30297"
   },
   "30298": {
-    "title": "V\u00e4rme\u00adpump 5 beg\u00e4rd kompressor\u00adfrekvens",
+    "title": "V\u00e4rmepump 5 beg\u00e4rd kompressorfrekvens",
     "factor": 1,
     "unit": "Hz",
     "size": "u8",
     "name": "varmepump-5-begard-kompressorfrekvens-30298"
   },
   "30299": {
-    "title": "V\u00e4rme\u00adpump 4 beg\u00e4rd kompressor\u00adfrekvens",
+    "title": "V\u00e4rmepump 4 beg\u00e4rd kompressorfrekvens",
     "factor": 1,
     "unit": "Hz",
     "size": "u8",
     "name": "varmepump-4-begard-kompressorfrekvens-30299"
   },
   "30300": {
-    "title": "V\u00e4rme\u00adpump 3 beg\u00e4rd kompressor\u00adfrekvens",
+    "title": "V\u00e4rmepump 3 beg\u00e4rd kompressorfrekvens",
     "factor": 1,
     "unit": "Hz",
     "size": "u8",
     "name": "varmepump-3-begard-kompressorfrekvens-30300"
   },
   "30301": {
-    "title": "V\u00e4rme\u00adpump 2 beg\u00e4rd kompressor\u00adfrekvens",
+    "title": "V\u00e4rmepump 2 beg\u00e4rd kompressorfrekvens",
     "factor": 1,
     "unit": "Hz",
     "size": "u8",
     "name": "varmepump-2-begard-kompressorfrekvens-30301"
   },
   "30302": {
-    "title": "V\u00e4rme\u00adpump 1 beg\u00e4rd kompressor\u00adfrekvens",
+    "title": "V\u00e4rmepump 1 beg\u00e4rd kompressorfrekvens",
     "factor": 1,
     "unit": "Hz",
     "size": "u8",
     "name": "varmepump-1-begard-kompressorfrekvens-30302"
   },
   "30304": {
-    "title": "Frys\u00adskydd v\u00e4rme\u00adv\u00e4xlare v\u00e4rme\u00adpump 8",
+    "title": "Frysskydd v\u00e4rmev\u00e4xlare v\u00e4rmepump 8",
     "factor": 1,
     "size": "u8",
     "name": "frysskydd-varmevaxlare-varmepump-8-30304"
   },
   "30305": {
-    "title": "Frys\u00adskydd v\u00e4rme\u00adv\u00e4xlare v\u00e4rme\u00adpump 7",
+    "title": "Frysskydd v\u00e4rmev\u00e4xlare v\u00e4rmepump 7",
     "factor": 1,
     "size": "u8",
     "name": "frysskydd-varmevaxlare-varmepump-7-30305"
   },
   "30306": {
-    "title": "Frys\u00adskydd v\u00e4rme\u00adv\u00e4xlare v\u00e4rme\u00adpump 6",
+    "title": "Frysskydd v\u00e4rmev\u00e4xlare v\u00e4rmepump 6",
     "factor": 1,
     "size": "u8",
     "name": "frysskydd-varmevaxlare-varmepump-6-30306"
   },
   "30307": {
-    "title": "Frys\u00adskydd v\u00e4rme\u00adv\u00e4xlare v\u00e4rme\u00adpump 5",
+    "title": "Frysskydd v\u00e4rmev\u00e4xlare v\u00e4rmepump 5",
     "factor": 1,
     "size": "u8",
     "name": "frysskydd-varmevaxlare-varmepump-5-30307"
   },
   "30308": {
-    "title": "Frys\u00adskydd v\u00e4rme\u00adv\u00e4xlare v\u00e4rme\u00adpump 4",
+    "title": "Frysskydd v\u00e4rmev\u00e4xlare v\u00e4rmepump 4",
     "factor": 1,
     "size": "u8",
     "name": "frysskydd-varmevaxlare-varmepump-4-30308"
   },
   "30309": {
-    "title": "Frys\u00adskydd v\u00e4rme\u00adv\u00e4xlare v\u00e4rme\u00adpump 3",
+    "title": "Frysskydd v\u00e4rmev\u00e4xlare v\u00e4rmepump 3",
     "factor": 1,
     "size": "u8",
     "name": "frysskydd-varmevaxlare-varmepump-3-30309"
   },
   "30310": {
-    "title": "Frys\u00adskydd v\u00e4rme\u00adv\u00e4xlare v\u00e4rme\u00adpump 2",
+    "title": "Frysskydd v\u00e4rmev\u00e4xlare v\u00e4rmepump 2",
     "factor": 1,
     "size": "u8",
     "name": "frysskydd-varmevaxlare-varmepump-2-30310"
@@ -1190,43 +1190,43 @@
     "name": "opt-drifttid-30316"
   },
   "32022": {
-    "title": "Kompressor\u00adbegr\u00e4nsningar",
+    "title": "Kompressorbegr\u00e4nsningar",
     "factor": 1,
     "size": "u32",
     "name": "kompressorbegransningar-32022"
   },
   "30318": {
-    "title": "Till\u00adg\u00e4ngliga kompressorer v\u00e4rme",
+    "title": "Tillg\u00e4ngliga kompressorer v\u00e4rme",
     "factor": 1,
     "size": "u8",
     "name": "tillgangliga-kompressorer-varme-30318"
   },
   "30319": {
-    "title": "Till\u00adg\u00e4ngliga kompressorer varm\u00advatten",
+    "title": "Tillg\u00e4ngliga kompressorer varmvatten",
     "factor": 1,
     "size": "u8",
     "name": "tillgangliga-kompressorer-varmvatten-30319"
   },
   "30320": {
-    "title": "Till\u00adg\u00e4ngliga kompressorer pool 1",
+    "title": "Tillg\u00e4ngliga kompressorer pool 1",
     "factor": 1,
     "size": "u8",
     "name": "tillgangliga-kompressorer-pool-1-30320"
   },
   "30321": {
-    "title": "Till\u00adg\u00e4ngliga kompressorer pool 2",
+    "title": "Tillg\u00e4ngliga kompressorer pool 2",
     "factor": 1,
     "size": "u8",
     "name": "tillgangliga-kompressorer-pool-2-30321"
   },
   "30322": {
-    "title": "Till\u00adg\u00e4ngliga kompressorer kyla",
+    "title": "Tillg\u00e4ngliga kompressorer kyla",
     "factor": 1,
     "size": "u8",
     "name": "tillgangliga-kompressorer-kyla-30322"
   },
   "30323": {
-    "title": "Till\u00adg\u00e4ngliga kompressorer extern styrning",
+    "title": "Tillg\u00e4ngliga kompressorer extern styrning",
     "factor": 1,
     "size": "u8",
     "name": "tillgangliga-kompressorer-extern-styrning-30323"
@@ -1313,7 +1313,7 @@
     "name": "adjust-parallell-minsta-hogsta-40003"
   },
   "30338": {
-    "title": "Fram\u00adlednings\u00adtemperatur (BT64)",
+    "title": "Framledningstemperatur (BT64)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
@@ -1338,7 +1338,7 @@
     "name": "status-varmedumpshunt-eq1-30342"
   },
   "40012": {
-    "title": "Grad\u00adminuter",
+    "title": "Gradminuter",
     "factor": 10,
     "unit": "GM",
     "size": "s32",
@@ -1627,14 +1627,14 @@
     "name": "hogtryck-eb108-bp9-dew-30440"
   },
   "30441": {
-    "title": "In\u00adsprutning (EB108-BT81)",
+    "title": "Insprutning (EB108-BT81)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
     "name": "insprutning-eb108-bt81-30441"
   },
   "30442": {
-    "title": "Tryck\u00adgivare, in\u00adsprutning (EB108-BP11)",
+    "title": "Tryckgivare, insprutning (EB108-BP11)",
     "factor": 10,
     "size": "s16",
     "name": "tryckgivare-insprutning-eb108-bp11-30442"
@@ -1674,14 +1674,14 @@
     "name": "hogtryck-eb107-bp9-dew-30456"
   },
   "30457": {
-    "title": "In\u00adsprutning (EB107-BT81)",
+    "title": "Insprutning (EB107-BT81)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
     "name": "insprutning-eb107-bt81-30457"
   },
   "30458": {
-    "title": "Tryck\u00adgivare, in\u00adsprutning (EB107-BP11)",
+    "title": "Tryckgivare, insprutning (EB107-BP11)",
     "factor": 10,
     "size": "s16",
     "name": "tryckgivare-insprutning-eb107-bp11-30458"
@@ -1721,14 +1721,14 @@
     "name": "hogtryck-eb106-bp9-dew-30472"
   },
   "30473": {
-    "title": "In\u00adsprutning (EB106-BT81)",
+    "title": "Insprutning (EB106-BT81)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
     "name": "insprutning-eb106-bt81-30473"
   },
   "30474": {
-    "title": "Tryck\u00adgivare, in\u00adsprutning (EB106-BP11)",
+    "title": "Tryckgivare, insprutning (EB106-BP11)",
     "factor": 10,
     "size": "s16",
     "name": "tryckgivare-insprutning-eb106-bp11-30474"
@@ -1768,14 +1768,14 @@
     "name": "hogtryck-eb105-bp9-dew-30488"
   },
   "30489": {
-    "title": "In\u00adsprutning (EB105-BT81)",
+    "title": "Insprutning (EB105-BT81)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
     "name": "insprutning-eb105-bt81-30489"
   },
   "30490": {
-    "title": "Tryck\u00adgivare, in\u00adsprutning (EB105-BP11)",
+    "title": "Tryckgivare, insprutning (EB105-BP11)",
     "factor": 10,
     "size": "s16",
     "name": "tryckgivare-insprutning-eb105-bp11-30490"
@@ -1815,14 +1815,14 @@
     "name": "hogtryck-eb104-bp9-dew-30504"
   },
   "30505": {
-    "title": "In\u00adsprutning (EB104-BT81)",
+    "title": "Insprutning (EB104-BT81)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
     "name": "insprutning-eb104-bt81-30505"
   },
   "30506": {
-    "title": "Tryck\u00adgivare, in\u00adsprutning (EB104-BP11)",
+    "title": "Tryckgivare, insprutning (EB104-BP11)",
     "factor": 10,
     "size": "s16",
     "name": "tryckgivare-insprutning-eb104-bp11-30506"
@@ -1862,14 +1862,14 @@
     "name": "hogtryck-eb103-bp9-dew-30520"
   },
   "30521": {
-    "title": "In\u00adsprutning (EB103-BT81)",
+    "title": "Insprutning (EB103-BT81)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
     "name": "insprutning-eb103-bt81-30521"
   },
   "30522": {
-    "title": "Tryck\u00adgivare, in\u00adsprutning (EB103-BP11)",
+    "title": "Tryckgivare, insprutning (EB103-BP11)",
     "factor": 10,
     "size": "s16",
     "name": "tryckgivare-insprutning-eb103-bp11-30522"
@@ -1909,14 +1909,14 @@
     "name": "hogtryck-eb102-bp9-dew-30536"
   },
   "30537": {
-    "title": "In\u00adsprutning (EB102-BT81)",
+    "title": "Insprutning (EB102-BT81)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
     "name": "insprutning-eb102-bt81-30537"
   },
   "30538": {
-    "title": "Tryck\u00adgivare, in\u00adsprutning (EB102-EP14-BP11)",
+    "title": "Tryckgivare, insprutning (EB102-EP14-BP11)",
     "factor": 10,
     "size": "s16",
     "name": "tryckgivare-insprutning-eb102-ep14-bp11-30538"
@@ -1956,14 +1956,14 @@
     "name": "hogtryck-eb101-bp9-dew-30552"
   },
   "30553": {
-    "title": "In\u00adsprutning (EB101-BT81)",
+    "title": "Insprutning (EB101-BT81)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
     "name": "insprutning-eb101-bt81-30553"
   },
   "30554": {
-    "title": "Tryck\u00adgivare, in\u00adsprutning (EB101-BP11)",
+    "title": "Tryckgivare, insprutning (EB101-BP11)",
     "factor": 10,
     "size": "s16",
     "name": "tryckgivare-insprutning-eb101-bp11-30554"
@@ -1989,14 +1989,14 @@
     "name": "flakt-varv-min-eb101-ep14-30558"
   },
   "30579": {
-    "title": "Snitt\u00adstr\u00f6m (EME 10)",
+    "title": "Snittstr\u00f6m (EME 10)",
     "factor": 10,
     "unit": "A",
     "size": "s16",
     "name": "snittstrom-eme-10-30579"
   },
   "30580": {
-    "title": "Drift\u00adl\u00e4ge PV paneler",
+    "title": "Driftl\u00e4ge PV paneler",
     "factor": 1,
     "size": "u8",
     "name": "driftlage-pv-paneler-30580"
@@ -2015,21 +2015,21 @@
     "name": "timer-eme-30583"
   },
   "30591": {
-    "title": "Fl\u00e4kt\u00adl\u00e4ge 4",
+    "title": "Fl\u00e4ktl\u00e4ge 4",
     "factor": 1,
     "unit": "%",
     "size": "u8",
     "name": "flaktlage-4-30591"
   },
   "30592": {
-    "title": "Fl\u00e4kt\u00adl\u00e4ge 3",
+    "title": "Fl\u00e4ktl\u00e4ge 3",
     "factor": 1,
     "unit": "%",
     "size": "u8",
     "name": "flaktlage-3-30592"
   },
   "30593": {
-    "title": "Fl\u00e4kt\u00adl\u00e4ge 2",
+    "title": "Fl\u00e4ktl\u00e4ge 2",
     "factor": 1,
     "unit": "%",
     "size": "u8",
@@ -3342,7 +3342,7 @@
     "name": "begransning-gm-40019"
   },
   "31018": {
-    "title": "Ber\u00e4knad fram\u00adledning klimat\u00adsystem 1",
+    "title": "Ber\u00e4knad framledning klimatsystem 1",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
@@ -3355,7 +3355,7 @@
     "name": "klass-1-larm-32196"
   },
   "31019": {
-    "title": "Frys\u00adskydd status",
+    "title": "Frysskydd status",
     "factor": 1,
     "size": "u16",
     "name": "frysskydd-status-31019"
@@ -3376,7 +3376,7 @@
     "name": "id-1726-42758"
   },
   "31026": {
-    "title": "Total drift\u00adtid till\u00adsats",
+    "title": "Total drifttid tillsats",
     "factor": 10,
     "unit": "h",
     "size": "s32",
@@ -3386,7 +3386,7 @@
     "name": "total-drifttid-tillsats-31026"
   },
   "31028": {
-    "title": "Effekt intern till\u00adsats",
+    "title": "Effekt intern tillsats",
     "factor": 100,
     "unit": "kW",
     "size": "s16",
@@ -3408,50 +3408,50 @@
     "name": "prio-31029"
   },
   "31030": {
-    "title": "Drift\u00adl\u00e4ge intern tillsats",
+    "title": "Driftl\u00e4ge intern tillsats",
     "factor": 1,
     "size": "u8",
     "name": "driftlage-intern-tillsats-31030"
   },
   "31031": {
-    "title": "Drift\u00adl\u00e4ge shunt klimat\u00adsystem 4",
+    "title": "Driftl\u00e4ge shunt klimatsystem 4",
     "factor": 1,
     "size": "u8",
     "name": "driftlage-shunt-klimatsystem-4-31031"
   },
   "31032": {
-    "title": "Drift\u00adl\u00e4ge shunt klima\u00adtsystem 3",
+    "title": "Driftl\u00e4ge shunt klimatsystem 3",
     "factor": 1,
     "size": "u8",
     "name": "driftlage-shunt-klimatsystem-3-31032"
   },
   "31033": {
-    "title": "Drift\u00adl\u00e4ge shunt klimat\u00adsystem 2",
+    "title": "Driftl\u00e4ge shunt klimatsystem 2",
     "factor": 1,
     "size": "u8",
     "name": "driftlage-shunt-klimatsystem-2-31033"
   },
   "31034": {
-    "title": "Drift\u00adl\u00e4ge shunt klimat\u00adsystem 1",
+    "title": "Driftl\u00e4ge shunt klimatsystem 1",
     "factor": 1,
     "size": "u8",
     "name": "driftlage-shunt-klimatsystem-1-31034"
   },
   "31035": {
-    "title": "Drift\u00adl\u00e4ge shunt\u00adstyrd till\u00adsats",
+    "title": "Driftl\u00e4ge shuntstyrd tillsats",
     "factor": 1,
     "size": "u8",
     "name": "driftlage-shuntstyrd-tillsats-31035"
   },
   "31038": {
-    "title": "Fl\u00e4kt\u00adl\u00e4ge 1",
+    "title": "Fl\u00e4ktl\u00e4ge 1",
     "factor": 1,
     "unit": "%",
     "size": "u8",
     "name": "flaktlage-1-31038"
   },
   "31039": {
-    "title": "Aktuellt varm\u00advatten\u00adl\u00e4ge",
+    "title": "Aktuellt varmvattenl\u00e4ge",
     "factor": 1,
     "size": "s8",
     "name": "aktuellt-varmvattenlage-31039"
@@ -3471,21 +3471,21 @@
     "name": "max-frekvens-kompressor-31043"
   },
   "31047": {
-    "title": "Kompressor\u00adfrekvens, aktuell",
+    "title": "Kompressorfrekvens, aktuell",
     "factor": 10,
     "unit": "Hz",
     "size": "u16",
     "name": "kompressorfrekvens-aktuell-31047"
   },
   "31048": {
-    "title": "Inverter\u00adtemperatur",
+    "title": "Invertertemperatur",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
     "name": "invertertemperatur-31048"
   },
   "31049": {
-    "title": "Kompressor till\u00adf\u00f6rd effekt",
+    "title": "Kompressor tillf\u00f6rd effekt",
     "factor": 1,
     "unit": "W",
     "size": "u16",
@@ -3505,25 +3505,25 @@
     "name": "blockering-kyla-31054"
   },
   "31055": {
-    "title": "Extern justering klimat\u00adsystem 4",
+    "title": "Extern justering klimatsystem 4",
     "factor": 1,
     "size": "u8",
     "name": "extern-justering-klimatsystem-4-31055"
   },
   "31056": {
-    "title": "Extern justering klimat\u00adsystem 3",
+    "title": "Extern justering klimatsystem 3",
     "factor": 1,
     "size": "u8",
     "name": "extern-justering-klimatsystem-3-31056"
   },
   "31057": {
-    "title": "Extern justering klimat\u00adsystem 2",
+    "title": "Extern justering klimatsystem 2",
     "factor": 1,
     "size": "u8",
     "name": "extern-justering-klimatsystem-2-31057"
   },
   "31058": {
-    "title": "Extern justering klimat\u00adsystem 1",
+    "title": "Extern justering klimatsystem 1",
     "factor": 1,
     "size": "u8",
     "name": "extern-justering-klimatsystem-1-31058"
@@ -3559,7 +3559,7 @@
     "name": "stegstyrd-tillsats-blockering-31063"
   },
   "31064": {
-    "title": "Varm\u00advatten\u00adcirkulation (GP11)",
+    "title": "Varmvattencirkulation (GP11)",
     "factor": 1,
     "size": "u8",
     "name": "varmvattencirkulation-gp11-31064"
@@ -3572,7 +3572,7 @@
     "name": "kompressorfrekvens-31066"
   },
   "31070": {
-    "title": "Total varm\u00advatten drift\u00adtid till\u00adsats",
+    "title": "Total varmvatten drifttid tillsats",
     "factor": 10,
     "unit": "h",
     "size": "s32",
@@ -3582,7 +3582,7 @@
     "name": "total-varmvatten-drifttid-tillsats-31070"
   },
   "31079": {
-    "title": "Mera varm\u00advatten status",
+    "title": "Mera varmvatten status",
     "factor": 1,
     "size": "u8",
     "name": "mera-varmvatten-status-31079"
@@ -3594,13 +3594,13 @@
     "name": "relastatus-hpac-31080"
   },
   "40020": {
-    "title": "Semester\u00adfunktion status",
+    "title": "Semesterfunktion status",
     "factor": 1,
     "size": "s8",
     "name": "semesterfunktion-status-40020"
   },
   "31084": {
-    "title": "Kompressor\u00adstarter",
+    "title": "Kompressorstarter",
     "factor": 1,
     "size": "s32",
     "min": "-2147483648",
@@ -3609,7 +3609,7 @@
     "name": "kompressorstarter-31084"
   },
   "31088": {
-    "title": "Total drift\u00adtid kompressor",
+    "title": "Total drifttid kompressor",
     "factor": 1,
     "unit": "h",
     "size": "s32",
@@ -3619,7 +3619,7 @@
     "name": "total-drifttid-kompressor-31088"
   },
   "31092": {
-    "title": "Total drift\u00adtid kompressor varm\u00advatten",
+    "title": "Total drifttid kompressor varmvatten",
     "factor": 1,
     "unit": "h",
     "size": "s32",
@@ -3629,19 +3629,19 @@
     "name": "total-drifttid-kompressor-varmvatten-31092"
   },
   "31095": {
-    "title": "Drift\u00adl\u00e4ge kompressor",
+    "title": "Driftl\u00e4ge kompressor",
     "factor": 1,
     "size": "u8",
     "name": "driftlage-kompressor-31095"
   },
   "31097": {
-    "title": "Drift\u00adl\u00e4ge v\u00e4rmeb\u00e4rarpump",
+    "title": "Driftl\u00e4ge v\u00e4rmeb\u00e4rarpump",
     "factor": 1,
     "size": "u8",
     "name": "driftlage-varmebararpump-31097"
   },
   "31099": {
-    "title": "Drift\u00adl\u00e4ge k\u00f6ldb\u00e4rarpump",
+    "title": "Driftl\u00e4ge k\u00f6ldb\u00e4rarpump",
     "factor": 1,
     "size": "u8",
     "name": "driftlage-koldbararpump-31099"
@@ -3653,14 +3653,14 @@
     "name": "kompressor-status-31101"
   },
   "31103": {
-    "title": "V\u00e4rme\u00adb\u00e4rar\u00adpump\u00adhastighet (GP1)",
+    "title": "V\u00e4rmeb\u00e4rarpumphastighet (GP1)",
     "factor": 1,
     "unit": "%",
     "size": "u8",
     "name": "varmebararpumphastighet-gp1-31103"
   },
   "31105": {
-    "title": "K\u00f6ld\u00adb\u00e4rar\u00adpump\u00adhastighet (GP2)",
+    "title": "K\u00f6ldb\u00e4rarpumphastighet (GP2)",
     "factor": 1,
     "unit": "%",
     "size": "u8",
@@ -3673,7 +3673,7 @@
     "name": "dockade-kompressorer-varme-31109"
   },
   "31110": {
-    "title": "Dockade kompressorer varm\u00advatten",
+    "title": "Dockade kompressorer varmvatten",
     "factor": 1,
     "size": "u8",
     "name": "dockade-kompressorer-varmvatten-31110"
@@ -3685,7 +3685,7 @@
     "name": "dockade-kompressorer-pool-1-31111"
   },
   "32197": {
-    "title": "V\u00e4xel\u00adventil varm\u00advatten (QN10)",
+    "title": "V\u00e4xelventil varmvatten (QN10)",
     "factor": 1,
     "size": "u8",
     "name": "vaxelventil-varmvatten-qn10-32197"
@@ -3751,13 +3751,13 @@
     "name": "funktionalitet-varmepump-ep15-31126"
   },
   "31130": {
-    "title": "Drift\u00adl\u00e4ge varm\u00advatten-komfort",
+    "title": "Driftl\u00e4ge varmvatten-komfort",
     "factor": 1,
     "size": "u8",
     "name": "driftlage-varmvatten-komfort-31130"
   },
   "31131": {
-    "title": "Drift\u00adl\u00e4ge varm\u00advatten-komfort till\u00adsats",
+    "title": "Driftl\u00e4ge varmvatten-komfort tillsats",
     "factor": 1,
     "size": "u8",
     "name": "driftlage-varmvatten-komfort-tillsats-31131"
@@ -3825,21 +3825,21 @@
     "name": "kompressor-drifttid-varmvatten-eb100-ep15-31518"
   },
   "31521": {
-    "title": "Returl\u00adedning (EB100-BT3)",
+    "title": "Returledning (EB100-BT3)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
     "name": "returledning-eb100-bt3-31521"
   },
   "31522": {
-    "title": "K\u00f6ld\u00adb\u00e4rar\u00adgivare in (EB100-BT10)",
+    "title": "K\u00f6ldb\u00e4rargivare in (EB100-BT10)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
     "name": "koldbarargivare-in-eb100-bt10-31522"
   },
   "31523": {
-    "title": "K\u00f6ld\u00adb\u00e4rar\u00adgivare ut (EB100-BT11)",
+    "title": "K\u00f6ldb\u00e4rargivare ut (EB100-BT11)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
@@ -3853,42 +3853,42 @@
     "name": "kondensor-eb100-bt2-31524"
   },
   "31525": {
-    "title": "Het\u00adgas\u00adgivare (EB100-BT14)",
+    "title": "Hetgasgivare (EB100-BT14)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
     "name": "hetgasgivare-eb100-bt14-31525"
   },
   "31526": {
-    "title": "V\u00e4tske\u00adlednings\u00adgivare (EB100-BT15)",
+    "title": "V\u00e4tskeledningsgivare (EB100-BT15)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
     "name": "vatskeledningsgivare-eb100-bt15-31526"
   },
   "31527": {
-    "title": "Suggas\u00adgivare (EB100-BT17)",
+    "title": "Suggasgivare (EB100-BT17)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
     "name": "suggasgivare-eb100-bt17-31527"
   },
   "31528": {
-    "title": "Kompressor\u00adgivare (EB100-BT29)",
+    "title": "Kompressorgivare (EB100-BT29)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
     "name": "kompressorgivare-eb100-bt29-31528"
   },
   "31529": {
-    "title": "L\u00e5g\u00adtryck (EB100-BP8)",
+    "title": "L\u00e5gtryck (EB100-BP8)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
     "name": "lagtryck-eb100-bp8-31529"
   },
   "31530": {
-    "title": "Kompressor\u00adstatus (EB100)",
+    "title": "Kompressorstatus (EB100)",
     "factor": 1,
     "size": "u8",
     "name": "kompressorstatus-eb100-31530"
@@ -3907,14 +3907,14 @@
     "name": "relastatus-eb100-ep14-31532"
   },
   "31533": {
-    "title": "V\u00e4rme\u00adb\u00e4rar\u00adpump (EB100)",
+    "title": "V\u00e4rmeb\u00e4rarpump (EB100)",
     "factor": 1,
     "unit": "%",
     "size": "u8",
     "name": "varmebararpump-eb100-31533"
   },
   "31534": {
-    "title": "K\u00f6ld\u00adb\u00e4rar\u00adpump (EB100)",
+    "title": "K\u00f6ldb\u00e4rarpump (EB100)",
     "factor": 1,
     "unit": "%",
     "size": "u8",
@@ -4048,7 +4048,7 @@
     "name": "blockerade-kompressorer-32175"
   },
   "40021": {
-    "title": "Kyl\u00adgrad\u00adminuter",
+    "title": "Kylgradminuter",
     "factor": 10,
     "unit": "GM",
     "size": "s16",
@@ -4076,7 +4076,7 @@
     "name": "status-kyldumpning-acs-31571"
   },
   "31572": {
-    "title": "Anv\u00e4nda kompressorer varm\u00advatten",
+    "title": "Anv\u00e4nda kompressorer varmvatten",
     "factor": 1,
     "size": "u8",
     "name": "anvanda-kompressorer-varmvatten-31572"
@@ -4100,7 +4100,7 @@
     "name": "anvanda-kompressorer-pool-2-31575"
   },
   "31576": {
-    "title": "Varm\u00advatten, inkl\u00adusive intern till\u00adsats",
+    "title": "Varmvatten, inklusive intern tillsats",
     "factor": 10,
     "unit": "kWh",
     "size": "u32",
@@ -4110,7 +4110,7 @@
     "name": "varmvatten-inklusive-intern-tillsats-31576"
   },
   "31578": {
-    "title": "V\u00e4rme, inkl\u00adusive intern till\u00adsats",
+    "title": "V\u00e4rme, inklusive intern tillsats",
     "factor": 10,
     "unit": "kWh",
     "size": "u32",
@@ -4120,7 +4120,7 @@
     "name": "varme-inklusive-intern-tillsats-31578"
   },
   "31584": {
-    "title": "Varmvatten, endast kompr\u00adessor",
+    "title": "Varmvatten, endast kompressor",
     "factor": 10,
     "unit": "kWh",
     "size": "u32",
@@ -4130,7 +4130,7 @@
     "name": "varmvatten-endast-kompressor-31584"
   },
   "31586": {
-    "title": "V\u00e4rme, endast kompr\u00adessor",
+    "title": "V\u00e4rme, endast kompressor",
     "factor": 10,
     "unit": "kWh",
     "size": "u32",
@@ -4195,21 +4195,21 @@
     "name": "bitregister-eb100-31688"
   },
   "31689": {
-    "title": "Styrande varm\u00advatten\u00adgivare (EB100-BT6)",
+    "title": "Styrande varmvattengivare (EB100-BT6)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
     "name": "styrande-varmvattengivare-eb100-bt6-31689"
   },
   "31690": {
-    "title": "Visande varm\u00advatten\u00adgivare (EB100-BT7)",
+    "title": "Visande varmvattengivare (EB100-BT7)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
     "name": "visande-varmvattengivare-eb100-bt7-31690"
   },
   "31691": {
-    "title": "Fram\u00adlednings\u00adgivare (EB100-BT2)",
+    "title": "Framledningsgivare (EB100-BT2)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
@@ -4577,7 +4577,7 @@
     "name": "bp4-obearbetad-eb100-ep15-31808"
   },
   "31809": {
-    "title": "Tryck\u00adgivare, kondensor (EB100-EP15-BP4)",
+    "title": "Tryckgivare, kondensor (EB100-EP15-BP4)",
     "factor": 10,
     "unit": "bar",
     "size": "s16",
@@ -4616,7 +4616,7 @@
     "name": "bp4-obearbetad-eb100-ep14-31815"
   },
   "31816": {
-    "title": "Tryck\u00adgivare, kondensor (EB100-EP14-BP4)",
+    "title": "Tryckgivare, kondensor (EB100-EP14-BP4)",
     "factor": 10,
     "unit": "bar",
     "size": "s16",
@@ -4649,19 +4649,19 @@
     "name": "effekt-eb100-ep14-31821"
   },
   "31824": {
-    "title": "Klimat\u00adsystem 4",
+    "title": "Klimatsystem 4",
     "factor": 1,
     "size": "u8",
     "name": "klimatsystem-4-31824"
   },
   "31825": {
-    "title": "Klimat\u00adsystem 3",
+    "title": "Klimatsystem 3",
     "factor": 1,
     "size": "u8",
     "name": "klimatsystem-3-31825"
   },
   "31826": {
-    "title": "Klimat\u00adsystem 2",
+    "title": "Klimatsystem 2",
     "factor": 1,
     "size": "u8",
     "name": "klimatsystem-2-31826"
@@ -4727,70 +4727,70 @@
     "name": "alarmnummer-eb100-ep14-31839"
   },
   "31840": {
-    "title": "Beg\u00e4rd kompressor\u00adfrekvens (EB108-EP15)",
+    "title": "Beg\u00e4rd kompressorfrekvens (EB108-EP15)",
     "factor": 1,
     "unit": "Hz",
     "size": "u8",
     "name": "begard-kompressorfrekvens-eb108-ep15-31840"
   },
   "31842": {
-    "title": "Beg\u00e4rd kompressor\u00adfrekvens (EB107-EP15)",
+    "title": "Beg\u00e4rd kompressorfrekvens (EB107-EP15)",
     "factor": 1,
     "unit": "Hz",
     "size": "u8",
     "name": "begard-kompressorfrekvens-eb107-ep15-31842"
   },
   "31844": {
-    "title": "Beg\u00e4rd kompressor\u00adfrekvens (EB106-EP15)",
+    "title": "Beg\u00e4rd kompressorfrekvens (EB106-EP15)",
     "factor": 1,
     "unit": "Hz",
     "size": "u8",
     "name": "begard-kompressorfrekvens-eb106-ep15-31844"
   },
   "31846": {
-    "title": "Beg\u00e4rd kompressor\u00adfrekvens (EB105-EP15)",
+    "title": "Beg\u00e4rd kompressorfrekvens (EB105-EP15)",
     "factor": 1,
     "unit": "Hz",
     "size": "u8",
     "name": "begard-kompressorfrekvens-eb105-ep15-31846"
   },
   "31848": {
-    "title": "Beg\u00e4rd kompressor\u00adfrekvens (EB104-EP15)",
+    "title": "Beg\u00e4rd kompressorfrekvens (EB104-EP15)",
     "factor": 1,
     "unit": "Hz",
     "size": "u8",
     "name": "begard-kompressorfrekvens-eb104-ep15-31848"
   },
   "31850": {
-    "title": "Beg\u00e4rd kompressor\u00adfrekvens (EB103-EP15)",
+    "title": "Beg\u00e4rd kompressorfrekvens (EB103-EP15)",
     "factor": 1,
     "unit": "Hz",
     "size": "u8",
     "name": "begard-kompressorfrekvens-eb103-ep15-31850"
   },
   "31852": {
-    "title": "Beg\u00e4rd kompressor\u00adfrekvens (EB102-EP15)",
+    "title": "Beg\u00e4rd kompressorfrekvens (EB102-EP15)",
     "factor": 1,
     "unit": "Hz",
     "size": "u8",
     "name": "begard-kompressorfrekvens-eb102-ep15-31852"
   },
   "31854": {
-    "title": "Beg\u00e4rd kompressor\u00adfrekvens (EB101-EP15)",
+    "title": "Beg\u00e4rd kompressorfrekvens (EB101-EP15)",
     "factor": 1,
     "unit": "Hz",
     "size": "u8",
     "name": "begard-kompressorfrekvens-eb101-ep15-31854"
   },
   "31856": {
-    "title": "Beg\u00e4rd kompressor\u00adfrekvens (EP15)",
+    "title": "Beg\u00e4rd kompressorfrekvens (EP15)",
     "factor": 1,
     "unit": "Hz",
     "size": "u8",
     "name": "begard-kompressorfrekvens-ep15-31856"
   },
   "31857": {
-    "title": "Beg\u00e4rd kompressor\u00adfrekvens",
+    "title": "Beg\u00e4rd kompressorfrekvens",
     "factor": 1,
     "unit": "Hz",
     "size": "u8",
@@ -4823,7 +4823,7 @@
     "name": "nuvarande-sensor-eb100-ep14-31910"
   },
   "31912": {
-    "title": "Drift\u00adl\u00e4ge (SG Ready)",
+    "title": "Driftl\u00e4ge (SG Ready)",
     "factor": 1,
     "size": "u8",
     "name": "driftlage-sg-ready-31912"
@@ -4841,43 +4841,43 @@
     "name": "sg-ready-ingang-b-31914"
   },
   "31915": {
-    "title": "V\u00e4rme\u00adf\u00f6rskjutning (SPA)",
+    "title": "V\u00e4rmef\u00f6rskjutning (SPA)",
     "factor": 10,
     "size": "s8",
     "name": "varmeforskjutning-spa-31915"
   },
   "31916": {
-    "title": "Varm\u00advatten konfort\u00adl\u00e4ge (SPA)",
+    "title": "Varmvatten konfortl\u00e4ge (SPA)",
     "factor": 1,
     "size": "s8",
     "name": "varmvatten-konfortlage-spa-31916"
   },
   "31917": {
-    "title": "Pool f\u00f6r\u00adskjutning (SPA)",
+    "title": "Pool f\u00f6rskjutning (SPA)",
     "factor": 1,
     "size": "s8",
     "name": "pool-forskjutning-spa-31917"
   },
   "31918": {
-    "title": "Kyl\u00adf\u00f6r\u00adskjutning (SPA)",
+    "title": "Kylf\u00f6rskjutning (SPA)",
     "factor": 1,
     "size": "s8",
     "name": "kylforskjutning-spa-31918"
   },
   "31919": {
-    "title": "Drift\u00adl\u00e4ge (Smart Price Adaption)",
+    "title": "Driftl\u00e4ge (Smart Price Adaption)",
     "factor": 1,
     "size": "u8",
     "name": "driftlage-smart-price-adaption-31919"
   },
   "31920": {
-    "title": "K\u00f6ld\u00adb\u00e4rar\u00adpump dT aktuellt",
+    "title": "K\u00f6ldb\u00e4rarpump dT aktuellt",
     "factor": 10,
     "size": "s16",
     "name": "koldbararpump-dt-aktuellt-31920"
   },
   "31921": {
-    "title": "K\u00f6ld\u00adb\u00e4rar\u00adpump dT b\u00f6r\u00adv\u00e4rde",
+    "title": "K\u00f6ldb\u00e4rarpump dT b\u00f6rv\u00e4rde",
     "factor": 10,
     "size": "s16",
     "name": "koldbararpump-dt-borvarde-31921"
@@ -4923,7 +4923,7 @@
     "name": "flakthastighet-eb100-ep14-31975"
   },
   "31976": {
-    "title": "Larm\u00adnummer",
+    "title": "Larmnummer",
     "factor": 1,
     "size": "s16",
     "name": "larmnummer-31976"
@@ -4941,7 +4941,7 @@
     "name": "icke-modul-specifika-alarmnummer-31977"
   },
   "40027": {
-    "title": "V\u00e4rme\u00adkurva klimat\u00adsystem 1",
+    "title": "V\u00e4rmekurva klimatsystem 1",
     "factor": 1,
     "size": "s8",
     "min": "0",
@@ -4950,7 +4950,7 @@
     "name": "varmekurva-klimatsystem-1-40027"
   },
   "40031": {
-    "title": "V\u00e4rme\u00adf\u00f6r\u00adskjutning klimat\u00adsystem 1",
+    "title": "V\u00e4rmef\u00f6rskjutning klimatsystem 1",
     "factor": 1,
     "size": "s8",
     "min": "-10",
@@ -4959,7 +4959,7 @@
     "name": "varmeforskjutning-klimatsystem-1-40031"
   },
   "40035": {
-    "title": "L\u00e4gsta fram\u00adledning klimat\u00adsystem 1",
+    "title": "L\u00e4gsta framledning klimatsystem 1",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
@@ -4969,7 +4969,7 @@
     "name": "lagsta-framledning-klimatsystem-1-40035"
   },
   "40039": {
-    "title": "H\u00f6gsta fram\u00adledning klimat\u00adsystem 1",
+    "title": "H\u00f6gsta framledning klimatsystem 1",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
@@ -5049,7 +5049,7 @@
     "name": "egen-kurva-varme-p1-40046"
   },
   "40047": {
-    "title": "Punkt\u00adf\u00f6r\u00adskjutning utomhus\u00adtemperatur",
+    "title": "Punktf\u00f6rskjutning utomhustemperatur",
     "factor": 1,
     "unit": "\u00b0C",
     "size": "s8",
@@ -5059,7 +5059,7 @@
     "name": "punktforskjutning-utomhustemperatur-40047"
   },
   "40048": {
-    "title": "Punkt\u00adf\u00f6r\u00adskjutning",
+    "title": "Punktf\u00f6rskjutning",
     "factor": 1,
     "unit": "\u00b0C",
     "size": "s8",
@@ -5069,7 +5069,7 @@
     "name": "punktforskjutning-40048"
   },
   "40052": {
-    "title": "Extern justering klimat\u00adsystem 1",
+    "title": "Extern justering klimatsystem 1",
     "factor": 1,
     "size": "s8",
     "min": "-10",
@@ -5078,7 +5078,7 @@
     "name": "extern-justering-klimatsystem-1-40052"
   },
   "40056": {
-    "title": "Extern justering med rums\u00adgivare klimat\u00adsystem 1",
+    "title": "Extern justering med rumsgivare klimatsystem 1",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
@@ -5088,7 +5088,7 @@
     "name": "extern-justering-med-rumsgivare-klimatsystem-1-40056"
   },
   "40057": {
-    "title": "Varm\u00advatten behovs\u00adl\u00e4ge",
+    "title": "Varmvatten behovsl\u00e4ge",
     "factor": 1,
     "size": "s8",
     "min": "0",
@@ -5097,7 +5097,7 @@
     "name": "varmvatten-behovslage-40057"
   },
   "40059": {
-    "title": "Start\u00adtemperatur varm\u00advatten h\u00f6g temperatur",
+    "title": "Starttemperatur varmvatten h\u00f6g temperatur",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
@@ -5107,7 +5107,7 @@
     "name": "starttemperatur-varmvatten-hog-temperatur-40059"
   },
   "40060": {
-    "title": "Start\u00adtemperatur varm\u00advatten normal temperatur",
+    "title": "Starttemperatur varmvatten normal temperatur",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
@@ -5117,7 +5117,7 @@
     "name": "starttemperatur-varmvatten-normal-temperatur-40060"
   },
   "40061": {
-    "title": "Start\u00adtemperatur varm\u00advatten l\u00e5g temperatur",
+    "title": "Starttemperatur varmvatten l\u00e5g temperatur",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
@@ -5127,7 +5127,7 @@
     "name": "starttemperatur-varmvatten-lag-temperatur-40061"
   },
   "40062": {
-    "title": "Stopp\u00adtemperatur varm\u00advatten periodisk h\u00f6jning",
+    "title": "Stopptemperatur varmvatten periodisk h\u00f6jning",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
@@ -5137,7 +5137,7 @@
     "name": "stopptemperatur-varmvatten-periodisk-hojning-40062"
   },
   "40063": {
-    "title": "Stopp\u00adtemperatur varm\u00advatten h\u00f6g temperatur",
+    "title": "Stopptemperatur varmvatten h\u00f6g temperatur",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
@@ -5147,7 +5147,7 @@
     "name": "stopptemperatur-varmvatten-hog-temperatur-40063"
   },
   "40064": {
-    "title": "Stopp\u00adtemperatur varm\u00advatten normal temperatur",
+    "title": "Stopptemperatur varmvatten normal temperatur",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
@@ -5157,7 +5157,7 @@
     "name": "stopptemperatur-varmvatten-normal-temperatur-40064"
   },
   "40065": {
-    "title": "Stopp\u00adtemperatur varm\u00advatten l\u00e5g temperatur",
+    "title": "Stopptemperatur varmvatten l\u00e5g temperatur",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
@@ -5167,7 +5167,7 @@
     "name": "stopptemperatur-varmvatten-lag-temperatur-40065"
   },
   "40066": {
-    "title": "Periodisk varm\u00advatten",
+    "title": "Periodisk varmvatten",
     "factor": 1,
     "size": "s8",
     "min": "0",
@@ -5176,7 +5176,7 @@
     "name": "periodisk-varmvatten-40066"
   },
   "40067": {
-    "title": "Periodiskt varm\u00advatten intervall",
+    "title": "Periodiskt varmvatten intervall",
     "factor": 1,
     "unit": "dagar",
     "size": "s8",
@@ -5186,7 +5186,7 @@
     "name": "periodiskt-varmvatten-intervall-40067"
   },
   "40068": {
-    "title": "Start\u00adtid periodisk varm\u00advatten",
+    "title": "Starttid periodisk varmvatten",
     "factor": 1,
     "name": "starttid-periodisk-varmvatten-40068"
   },
@@ -5209,7 +5209,7 @@
     "name": "sprak-40092"
   },
   "40093": {
-    "title": "Period\u00adtid varm\u00advatten",
+    "title": "Periodtid varmvatten",
     "factor": 1,
     "unit": "min",
     "size": "u8",
@@ -5219,7 +5219,7 @@
     "name": "periodtid-varmvatten-40093"
   },
   "40094": {
-    "title": "Period\u00adtid v\u00e4rme",
+    "title": "Periodtid v\u00e4rme",
     "factor": 1,
     "unit": "min",
     "size": "u8",
@@ -5229,7 +5229,7 @@
     "name": "periodtid-varme-40094"
   },
   "42744": {
-    "title": "Drift\u00adl\u00e4ge",
+    "title": "Driftl\u00e4ge",
     "factor": 1,
     "size": "u8",
     "min": "0",
@@ -5238,7 +5238,7 @@
     "name": "driftlage-42744"
   },
   "40096": {
-    "title": "Drift\u00adl\u00e4ge v\u00e4rme\u00adb\u00e4rar\u00adpump",
+    "title": "Driftl\u00e4ge v\u00e4rmeb\u00e4rarpump",
     "factor": 1,
     "size": "u8",
     "min": "10",
@@ -5247,7 +5247,7 @@
     "name": "driftlage-varmebararpump-40096"
   },
   "40097": {
-    "title": "Drift\u00adl\u00e4ge k\u00f6ld\u00adb\u00e4rar\u00adpump",
+    "title": "Driftl\u00e4ge k\u00f6ldb\u00e4rarpump",
     "factor": 1,
     "size": "u8",
     "min": "10",
@@ -5256,7 +5256,7 @@
     "name": "driftlage-koldbararpump-40097"
   },
   "40103": {
-    "title": "Max intern till\u00adsats",
+    "title": "Max intern tillsats",
     "factor": 100,
     "unit": "kW",
     "size": "s16",
@@ -5303,7 +5303,7 @@
     "name": "id-3828-42746"
   },
   "40121": {
-    "title": "Golv\u00adtorkning",
+    "title": "Golvtorkning",
     "factor": 1,
     "size": "u8",
     "min": "0",
@@ -5312,7 +5312,7 @@
     "name": "golvtorkning-40121"
   },
   "40122": {
-    "title": "Golv\u00adtorkning period 7",
+    "title": "Golvtorkning period 7",
     "factor": 1,
     "unit": "dagar",
     "size": "u8",
@@ -5322,7 +5322,7 @@
     "name": "golvtorkning-period-7-40122"
   },
   "40123": {
-    "title": "Golv\u00adtorkning period 6",
+    "title": "Golvtorkning period 6",
     "factor": 1,
     "unit": "dagar",
     "size": "u8",
@@ -5332,7 +5332,7 @@
     "name": "golvtorkning-period-6-40123"
   },
   "40124": {
-    "title": "Golv\u00adtorkning period 5",
+    "title": "Golvtorkning period 5",
     "factor": 1,
     "unit": "dagar",
     "size": "u8",
@@ -5342,7 +5342,7 @@
     "name": "golvtorkning-period-5-40124"
   },
   "40125": {
-    "title": "Golv\u00adtorkning period 4",
+    "title": "Golvtorkning period 4",
     "factor": 1,
     "unit": "dagar",
     "size": "u8",
@@ -5352,7 +5352,7 @@
     "name": "golvtorkning-period-4-40125"
   },
   "40126": {
-    "title": "Golv\u00adtorkning period 3",
+    "title": "Golvtorkning period 3",
     "factor": 1,
     "unit": "dagar",
     "size": "u8",
@@ -5362,7 +5362,7 @@
     "name": "golvtorkning-period-3-40126"
   },
   "40127": {
-    "title": "Golv\u00adtorkning period 2",
+    "title": "Golvtorkning period 2",
     "factor": 1,
     "unit": "dagar",
     "size": "u8",
@@ -5372,7 +5372,7 @@
     "name": "golvtorkning-period-2-40127"
   },
   "40128": {
-    "title": "Golv\u00adtorkning period 1",
+    "title": "Golvtorkning period 1",
     "factor": 1,
     "unit": "dagar",
     "size": "u8",
@@ -5382,7 +5382,7 @@
     "name": "golvtorkning-period-1-40128"
   },
   "40129": {
-    "title": "Golv\u00adtorkning temp. 7",
+    "title": "Golvtorkning temp. 7",
     "factor": 1,
     "unit": "\u00b0C",
     "size": "u8",
@@ -5392,7 +5392,7 @@
     "name": "golvtorkning-temp-7-40129"
   },
   "40130": {
-    "title": "Golv\u00adtorkning temp. 6",
+    "title": "Golvtorkning temp. 6",
     "factor": 1,
     "unit": "\u00b0C",
     "size": "u8",
@@ -5402,7 +5402,7 @@
     "name": "golvtorkning-temp-6-40130"
   },
   "40131": {
-    "title": "Golvt\u00adorkning temp. 5",
+    "title": "Golvtorkning temp. 5",
     "factor": 1,
     "unit": "\u00b0C",
     "size": "u8",
@@ -5412,7 +5412,7 @@
     "name": "golvtorkning-temp-5-40131"
   },
   "40132": {
-    "title": "Golv\u00adtorkning temp. 4",
+    "title": "Golvtorkning temp. 4",
     "factor": 1,
     "unit": "\u00b0C",
     "size": "u8",
@@ -5422,7 +5422,7 @@
     "name": "golvtorkning-temp-4-40132"
   },
   "40133": {
-    "title": "Golv\u00adtorkning temp. 3",
+    "title": "Golvtorkning temp. 3",
     "factor": 1,
     "unit": "\u00b0C",
     "size": "u8",
@@ -5432,7 +5432,7 @@
     "name": "golvtorkning-temp-3-40133"
   },
   "40134": {
-    "title": "Golv\u00adtorkning temp. 2",
+    "title": "Golvtorkning temp. 2",
     "factor": 1,
     "unit": "\u00b0C",
     "size": "u8",
@@ -5442,7 +5442,7 @@
     "name": "golvtorkning-temp-2-40134"
   },
   "40135": {
-    "title": "Golv\u00adtorkning temp. 1",
+    "title": "Golvtorkning temp. 1",
     "factor": 1,
     "unit": "\u00b0C",
     "size": "u8",
@@ -5452,7 +5452,7 @@
     "name": "golvtorkning-temp-1-40135"
   },
   "31978": {
-    "title": "Golv\u00adtorkning p\u00e5g\u00e5ende tid.",
+    "title": "Golvtorkning p\u00e5g\u00e5ende tid.",
     "factor": 1,
     "size": "u16",
     "min": "0",
@@ -5461,7 +5461,7 @@
     "name": "golvtorkning-pagaende-tid-31978"
   },
   "40141": {
-    "title": "Dimensionerad utomhus\u00adtemperatur",
+    "title": "Dimensionerad utomhustemperatur",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
@@ -5481,7 +5481,7 @@
     "name": "delta-t-for-dut-40142"
   },
   "40143": {
-    "title": "Klimat\u00adsystem 2",
+    "title": "Klimatsystem 2",
     "factor": 1,
     "size": "u8",
     "min": "0",
@@ -5490,7 +5490,7 @@
     "name": "klimatsystem-2-40143"
   },
   "40144": {
-    "title": "Klimat\u00adsystem 3",
+    "title": "Klimatsystem 3",
     "factor": 1,
     "size": "u8",
     "min": "0",
@@ -5499,7 +5499,7 @@
     "name": "klimatsystem-3-40144"
   },
   "40145": {
-    "title": "Klimat\u00adsystem 4",
+    "title": "Klimatsystem 4",
     "factor": 1,
     "size": "u8",
     "min": "0",
@@ -5508,7 +5508,7 @@
     "name": "klimatsystem-4-40145"
   },
   "40154": {
-    "title": "Shunt\u00adstyrd till\u00adsats",
+    "title": "Shuntstyrd tillsats",
     "factor": 1,
     "size": "u8",
     "min": "0",
@@ -5517,7 +5517,7 @@
     "name": "shuntstyrd-tillsats-40154"
   },
   "40158": {
-    "title": "V\u00e4nte\u00adtid shunt, shunt\u00adstyrd till\u00adsats",
+    "title": "V\u00e4ntetid shunt, shuntstyrd tillsats",
     "factor": 1,
     "unit": "s",
     "size": "s16",
@@ -5527,7 +5527,7 @@
     "name": "vantetid-shunt-shuntstyrd-tillsats-40158"
   },
   "40159": {
-    "title": "Steg\u00adstyrd till\u00adsats tillbeh\u00f6r",
+    "title": "Stegstyrd tillsats tillbeh\u00f6r",
     "factor": 1,
     "size": "u8",
     "min": "0",
@@ -5536,7 +5536,7 @@
     "name": "stegstyrd-tillsats-tillbehor-40159"
   },
   "40160": {
-    "title": "GM start steg\u00adstyrd till\u00adsats",
+    "title": "GM start stegstyrd tillsats",
     "factor": 1,
     "unit": "GM",
     "size": "s16",
@@ -5546,7 +5546,7 @@
     "name": "gm-start-stegstyrd-tillsats-40160"
   },
   "40163": {
-    "title": "Grund\u00advatten\u00adpump tillbeh\u00f6r",
+    "title": "Grundvattenpump tillbeh\u00f6r",
     "factor": 1,
     "size": "u8",
     "min": "0",
@@ -5582,7 +5582,7 @@
     "name": "kyla-4-ror-40165"
   },
   "40166": {
-    "title": "V\u00e4nte\u00adtid kyla/v\u00e4rme",
+    "title": "V\u00e4ntetid kyla/v\u00e4rme",
     "factor": 1,
     "unit": "h",
     "size": "s8",
@@ -5612,7 +5612,7 @@
     "name": "kyla-start-vid-over-temp-40168"
   },
   "40169": {
-    "title": "Kyl\u00adshunt f\u00f6r\u00adst\u00e4rkning",
+    "title": "Kylshunt f\u00f6rst\u00e4rkning",
     "factor": 10,
     "size": "s8",
     "min": "1",
@@ -5621,7 +5621,7 @@
     "name": "kylshunt-forstarkning-40169"
   },
   "40170": {
-    "title": "Kyl\u00adshunt v\u00e4nte\u00adtid",
+    "title": "Kylshunt v\u00e4ntetid",
     "factor": 1,
     "unit": "s",
     "size": "s16",
@@ -5631,7 +5631,7 @@
     "name": "kylshunt-vantetid-40170"
   },
   "40171": {
-    "title": "Kyla med rums\u00adgivare",
+    "title": "Kyla med rumsgivare",
     "factor": 10,
     "size": "u8",
     "min": "0",
@@ -5678,7 +5678,7 @@
     "name": "andringar-har-gjorts-42745"
   },
   "40181": {
-    "title": "Till\u00e5t till\u00adsats, v\u00e4rme",
+    "title": "Till\u00e5t tillsats, v\u00e4rme",
     "factor": 1,
     "size": "u8",
     "min": "0",
@@ -5705,7 +5705,7 @@
     "name": "tillat-kyla-40183"
   },
   "40184": {
-    "title": "Auto\u00adl\u00e4ge, start temperatur f\u00f6r kyla",
+    "title": "Autol\u00e4ge, start temperatur f\u00f6r kyla",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
@@ -5715,7 +5715,7 @@
     "name": "autolage-start-temperatur-for-kyla-40184"
   },
   "40185": {
-    "title": "Auto\u00adl\u00e4ge, stopp temperatur f\u00f6r v\u00e4rme",
+    "title": "Autol\u00e4ge, stopp temperatur f\u00f6r v\u00e4rme",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
@@ -5725,7 +5725,7 @@
     "name": "autolage-stopp-temperatur-for-varme-40185"
   },
   "40186": {
-    "title": "Auto\u00adl\u00e4ge, till\u00adsats stopp\u00adtemperatur",
+    "title": "Autol\u00e4ge, tillsats stopptemperatur",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
@@ -5735,7 +5735,7 @@
     "name": "autolage-tillsats-stopptemperatur-40186"
   },
   "40187": {
-    "title": "Auto\u00adl\u00e4ge filter\u00adtid",
+    "title": "Autol\u00e4ge filtertid",
     "factor": 1,
     "unit": "h",
     "size": "u8",
@@ -5745,7 +5745,7 @@
     "name": "autolage-filtertid-40187"
   },
   "40188": {
-    "title": "Max differens framl\u00adedning, kompressor",
+    "title": "Max differens framledning, kompressor",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
@@ -5755,7 +5755,7 @@
     "name": "max-differens-framledning-kompressor-40188"
   },
   "40189": {
-    "title": "Max differens fram\u00adledning, till\u00adsats",
+    "title": "Max differens framledning, tillsats",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
@@ -5765,7 +5765,7 @@
     "name": "max-differens-framledning-tillsats-40189"
   },
   "40190": {
-    "title": "L\u00e5g k\u00f6ld\u00adb\u00e4rare larm auto \u00e5ter\u00adst\u00e4llning",
+    "title": "L\u00e5g k\u00f6ldb\u00e4rare larm auto \u00e5terst\u00e4llning",
     "factor": 1,
     "size": "u8",
     "min": "0",
@@ -5774,7 +5774,7 @@
     "name": "lag-koldbarare-larm-auto-aterstallning-40190"
   },
   "40191": {
-    "title": "L\u00e5g k\u00f6ld\u00adb\u00e4rare ut larm temperatur (EP14)",
+    "title": "L\u00e5g k\u00f6ldb\u00e4rare ut larm temperatur (EP14)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
@@ -5784,13 +5784,13 @@
     "name": "lag-koldbarare-ut-larm-temperatur-ep14-40191"
   },
   "40192": {
-    "title": "H\u00f6g k\u00f6ld\u00adb\u00e4rare in larm aktivt",
+    "title": "H\u00f6g k\u00f6ldb\u00e4rare in larm aktivt",
     "factor": 1,
     "size": "u8",
     "name": "hog-koldbarare-in-larm-aktivt-40192"
   },
   "40193": {
-    "title": "H\u00f6g k\u00f6ld\u00adb\u00e4rare in larm\u00adtemperatur",
+    "title": "H\u00f6g k\u00f6ldb\u00e4rare in larmtemperatur",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
@@ -5800,7 +5800,7 @@
     "name": "hog-koldbarare-in-larmtemperatur-40193"
   },
   "40195": {
-    "title": "Tid\u00adformat",
+    "title": "Tidformat",
     "factor": 1,
     "size": "u8",
     "min": "0",
@@ -5809,7 +5809,7 @@
     "name": "tidformat-40195"
   },
   "40197": {
-    "title": "Larm\u00ad\u00e5tg\u00e4rd, s\u00e4nk rums\u00adtemperatur",
+    "title": "Larm\u00e5tg\u00e4rd, s\u00e4nk rumstemperatur",
     "factor": 1,
     "size": "u8",
     "min": "0",
@@ -5818,7 +5818,7 @@
     "name": "larmatgard-sank-rumstemperatur-40197"
   },
   "40198": {
-    "title": "Larm\u00ad\u00e5tg\u00e4rd s\u00e4nk varm\u00advatten temperatur",
+    "title": "Larm\u00e5tg\u00e4rd s\u00e4nk varmvatten temperatur",
     "factor": 1,
     "size": "u8",
     "min": "0",
@@ -5827,13 +5827,13 @@
     "name": "larmatgard-sank-varmvatten-temperatur-40198"
   },
   "40199": {
-    "title": "Hj\u00e4lp\u00addrift vid larm",
+    "title": "Hj\u00e4lpdrift vid larm",
     "factor": 1,
     "size": "u8",
     "name": "hjalpdrift-vid-larm-40199"
   },
   "40200": {
-    "title": "Anv\u00e4nd rums\u00adgivare klimat\u00adsystem 4",
+    "title": "Anv\u00e4nd rumsgivare klimatsystem 4",
     "factor": 1,
     "size": "u8",
     "min": "0",
@@ -5842,7 +5842,7 @@
     "name": "anvand-rumsgivare-klimatsystem-4-40200"
   },
   "40201": {
-    "title": "Anv\u00e4nd rums\u00adgivare klimat\u00adsystem 3",
+    "title": "Anv\u00e4nd rumsgivare klimatsystem 3",
     "factor": 1,
     "size": "u8",
     "min": "0",
@@ -5851,7 +5851,7 @@
     "name": "anvand-rumsgivare-klimatsystem-3-40201"
   },
   "40202": {
-    "title": "Anv\u00e4nd rums\u00adgivare klimat\u00adsystem 2",
+    "title": "Anv\u00e4nd rumsgivare klimatsystem 2",
     "factor": 1,
     "size": "u8",
     "min": "0",
@@ -5860,7 +5860,7 @@
     "name": "anvand-rumsgivare-klimatsystem-2-40202"
   },
   "40203": {
-    "title": "Anv\u00e4nd rums\u00adgivare klimat\u00adsystem 1",
+    "title": "Anv\u00e4nd rumsgivare klimatsystem 1",
     "factor": 1,
     "size": "u8",
     "min": "0",
@@ -5869,7 +5869,7 @@
     "name": "anvand-rumsgivare-klimatsystem-1-40203"
   },
   "40204": {
-    "title": "Rums\u00adgivare b\u00f6r\u00adv\u00e4rde klimat\u00adsystem 4",
+    "title": "Rumsgivare b\u00f6rv\u00e4rde klimatsystem 4",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
@@ -5879,7 +5879,7 @@
     "name": "rumsgivare-borvarde-klimatsystem-4-40204"
   },
   "40205": {
-    "title": "Rums\u00adgivare b\u00f6r\u00adv\u00e4rde klimat\u00adsystem 3",
+    "title": "Rumsgivare b\u00f6rv\u00e4rde klimatsystem 3",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
@@ -5889,7 +5889,7 @@
     "name": "rumsgivare-borvarde-klimatsystem-3-40205"
   },
   "40206": {
-    "title": "Rums\u00adgivare b\u00f6r\u00adv\u00e4rde klimat\u00adsystem 2",
+    "title": "Rumsgivare b\u00f6rv\u00e4rde klimatsystem 2",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
@@ -5899,7 +5899,7 @@
     "name": "rumsgivare-borvarde-klimatsystem-2-40206"
   },
   "40207": {
-    "title": "Rums\u00adgivare b\u00f6r\u00adv\u00e4rde klimat\u00adsystem 1",
+    "title": "Rumsgivare b\u00f6rv\u00e4rde klimatsystem 1",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
@@ -5909,7 +5909,7 @@
     "name": "rumsgivare-borvarde-klimatsystem-1-40207"
   },
   "40208": {
-    "title": "Rums\u00adgivare faktor klimat\u00adsystem 4",
+    "title": "Rumsgivare faktor klimatsystem 4",
     "factor": 10,
     "size": "u8",
     "min": "0",
@@ -5918,7 +5918,7 @@
     "name": "rumsgivare-faktor-klimatsystem-4-40208"
   },
   "40209": {
-    "title": "Rums\u00adgivare faktor klimat\u00adsystem 3",
+    "title": "Rumsgivare faktor klimatsystem 3",
     "factor": 10,
     "size": "u8",
     "min": "0",
@@ -5927,7 +5927,7 @@
     "name": "rumsgivare-faktor-klimatsystem-3-40209"
   },
   "40210": {
-    "title": "Rums\u00adgivare faktor klimat\u00adsystem 2",
+    "title": "Rumsgivare faktor klimatsystem 2",
     "factor": 10,
     "size": "u8",
     "min": "0",
@@ -5936,7 +5936,7 @@
     "name": "rumsgivare-faktor-klimatsystem-2-40210"
   },
   "40211": {
-    "title": "Rums\u00adgivare faktor klimat\u00adsystem 1",
+    "title": "Rumsgivare faktor klimatsystem 1",
     "factor": 10,
     "size": "u8",
     "min": "0",
@@ -5999,7 +5999,7 @@
     "name": "utgang-aux1-40217"
   },
   "40218": {
-    "title": "Hastighet av cirkulations\u00adpump f\u00f6r varm\u00advatten",
+    "title": "Hastighet av cirkulationspump f\u00f6r varmvatten",
     "factor": 1,
     "unit": "%",
     "size": "u8",
@@ -6009,7 +6009,7 @@
     "name": "hastighet-av-cirkulationspump-for-varmvatten-40218"
   },
   "40219": {
-    "title": "Hastighet av cirkulations\u00adpump f\u00f6r v\u00e4rme",
+    "title": "Hastighet av cirkulationspump f\u00f6r v\u00e4rme",
     "factor": 1,
     "unit": "%",
     "size": "u8",
@@ -6029,7 +6029,7 @@
     "name": "hastighet-varmebararpump-for-pool-40220"
   },
   "40221": {
-    "title": "Hastighet v\u00e4rme\u00adb\u00e4rar\u00adpump v\u00e4nte\u00adl\u00e4ge",
+    "title": "Hastighet v\u00e4rmeb\u00e4rarpump v\u00e4ntel\u00e4ge",
     "factor": 1,
     "unit": "%",
     "size": "u8",
@@ -6039,7 +6039,7 @@
     "name": "hastighet-varmebararpump-vantelage-40221"
   },
   "40222": {
-    "title": "Hastighet av cirkulations\u00adpump passiv kyla (EP14)",
+    "title": "Hastighet av cirkulationspump passiv kyla (EP14)",
     "factor": 1,
     "unit": "%",
     "size": "u8",
@@ -6068,7 +6068,7 @@
     "name": "id-3968-42753"
   },
   "40224": {
-    "title": "F\u00f6r\u00adinst\u00e4lld fl\u00f6des\u00adinst\u00e4llning f\u00f6r klimat\u00adsystemet",
+    "title": "F\u00f6rinst\u00e4lld fl\u00f6desinst\u00e4llning f\u00f6r klimatsystemet",
     "factor": 1,
     "size": "u8",
     "min": "0",
@@ -6086,7 +6086,7 @@
     "name": "id-3977-42754"
   },
   "40226": {
-    "title": "Mer varm\u00advatten",
+    "title": "Mer varmvatten",
     "factor": 10,
     "name": "mer-varmvatten-40226"
   },
@@ -6100,7 +6100,7 @@
     "name": "id-4050-44047"
   },
   "40238": {
-    "title": "Drift\u00adl\u00e4ge",
+    "title": "Driftl\u00e4ge",
     "factor": 1,
     "size": "u8",
     "name": "driftlage-40238"
@@ -6142,7 +6142,7 @@
     "name": "flm-1-40679"
   },
   "40682": {
-    "title": "Kyl- v\u00e4rme\u00adsensor b\u00f6r\u00adv\u00e4rde",
+    "title": "Kyl- v\u00e4rmesensor b\u00f6rv\u00e4rde",
     "factor": 10,
     "size": "s16",
     "min": "50",
@@ -6169,7 +6169,7 @@
     "name": "pool-1-tillbehor-40686"
   },
   "40695": {
-    "title": "Varm\u00advatten\u00adkomfort",
+    "title": "Varmvattenkomfort",
     "factor": 1,
     "size": "u8",
     "min": "0",
@@ -6178,7 +6178,7 @@
     "name": "varmvattenkomfort-40695"
   },
   "40696": {
-    "title": "Manuell v\u00e4rme\u00adb\u00e4rar\u00adpump\u00adhastighet",
+    "title": "Manuell v\u00e4rmeb\u00e4rarpumphastighet",
     "factor": 1,
     "unit": "%",
     "size": "s8",
@@ -6188,13 +6188,13 @@
     "name": "manuell-varmebararpumphastighet-40696"
   },
   "40698": {
-    "title": "Mer varm\u00advatten",
+    "title": "Mer varmvatten",
     "factor": 1,
     "size": "s8",
     "name": "mer-varmvatten-40698"
   },
   "40704": {
-    "title": "Start\u00adskillnad GM, steg\u00adkontrollerad tillsats",
+    "title": "Startskillnad GM, stegkontrollerad tillsats",
     "factor": 1,
     "unit": "GM",
     "size": "s16",
@@ -6204,7 +6204,7 @@
     "name": "startskillnad-gm-stegkontrollerad-tillsats-40704"
   },
   "40706": {
-    "title": "Varm\u00advatten-komfort shunt p\u00e5/av",
+    "title": "Varmvatten-komfort shunt p\u00e5/av",
     "factor": 1,
     "size": "u8",
     "min": "0",
@@ -6213,7 +6213,7 @@
     "name": "varmvatten-komfort-shunt-pa-av-40706"
   },
   "40712": {
-    "title": "Tillufts\u00adkurva SAM, ute\u00adtemperatur (T3)",
+    "title": "Tilluftskurva SAM, utetemperatur (T3)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
@@ -6223,7 +6223,7 @@
     "name": "tilluftskurva-sam-utetemperatur-t3-40712"
   },
   "40713": {
-    "title": "Tillufts\u00adkurva SAM, ute\u00adtemperatur (T2)",
+    "title": "Tilluftskurva SAM, utetemperatur (T2)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
@@ -6233,7 +6233,7 @@
     "name": "tilluftskurva-sam-utetemperatur-t2-40713"
   },
   "40714": {
-    "title": "Tillufts\u00adkurva SAM, ute\u00adtemperatur (T1)",
+    "title": "Tilluftskurva SAM, utetemperatur (T1)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
@@ -6243,7 +6243,7 @@
     "name": "tilluftskurva-sam-utetemperatur-t1-40714"
   },
   "40715": {
-    "title": "Tillufts\u00adkurva SAM, \u00f6nskad tillufts\u00adtemperatur vid given ute\u00adtemperatur (T3)",
+    "title": "Tilluftskurva SAM, \u00f6nskad tilluftstemperatur vid given utetemperatur (T3)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
@@ -6253,7 +6253,7 @@
     "name": "tilluftskurva-sam-onskad-tilluftstemperatur-vid-given-utetemperatur-t3-40715"
   },
   "40716": {
-    "title": "Tillufts\u00adkurva SAM, \u00f6nskad tillufts\u00adtemperatur vid given ute\u00adtemperatur (T2)",
+    "title": "Tilluftskurva SAM, \u00f6nskad tilluftstemperatur vid given utetemperatur (T2)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
@@ -6263,7 +6263,7 @@
     "name": "tilluftskurva-sam-onskad-tilluftstemperatur-vid-given-utetemperatur-t2-40716"
   },
   "40717": {
-    "title": "Tillufts\u00adkurva SAM, \u00f6nskad tillufts\u00adtemperatur vid given ute\u00adtemperatur (T1)",
+    "title": "Tilluftskurva SAM, \u00f6nskad tilluftstemperatur vid given utetemperatur (T1)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
@@ -6273,7 +6273,7 @@
     "name": "tilluftskurva-sam-onskad-tilluftstemperatur-vid-given-utetemperatur-t1-40717"
   },
   "40727": {
-    "title": "Kyla inkopplad, klimat\u00adsystem 1",
+    "title": "Kyla inkopplad, klimatsystem 1",
     "factor": 1,
     "size": "u8",
     "name": "kyla-inkopplad-klimatsystem-1-40727"
@@ -6297,7 +6297,7 @@
     "name": "id-4617-44054"
   },
   "40741": {
-    "title": "H\u00f6gsta hastighet regulatorn ladd-/v\u00e4rme\u00adb\u00e4rar\u00adpumpen (EB100)",
+    "title": "H\u00f6gsta hastighet regulatorn ladd-/v\u00e4rmeb\u00e4rarpumpen (EB100)",
     "factor": 1,
     "unit": "%",
     "size": "u8",
@@ -6313,13 +6313,13 @@
     "name": "id-4660-44064"
   },
   "44065": {
-    "title": "Shuntad k\u00f6ld\u00adb\u00e4rare, tillbeh\u00f6r",
+    "title": "Shuntad k\u00f6ldb\u00e4rare, tillbeh\u00f6r",
     "factor": 1,
     "size": "u8",
     "name": "shuntad-koldbarare-tillbehor-44065"
   },
   "44068": {
-    "title": "Shuntad k\u00f6ld\u00adb\u00e4rare max temp.",
+    "title": "Shuntad k\u00f6ldb\u00e4rare max temp.",
     "factor": 1,
     "unit": "\u00b0C",
     "size": "u8",
@@ -6329,7 +6329,7 @@
     "name": "shuntad-koldbarare-max-temp-44068"
   },
   "40761": {
-    "title": "Upp\u00adv\u00e4rmning (SG Ready)",
+    "title": "Uppv\u00e4rmning (SG Ready)",
     "factor": 1,
     "size": "u8",
     "min": "0",
@@ -6338,7 +6338,7 @@
     "name": "uppvarmning-sg-ready-40761"
   },
   "40767": {
-    "title": "Inst\u00e4lld kompressor\u00adfrekvens, kyla",
+    "title": "Inst\u00e4lld kompressorfrekvens, kyla",
     "factor": 1,
     "unit": "%",
     "size": "u8",
@@ -6439,7 +6439,7 @@
     "name": "ingang-aux5-40768"
   },
   "40843": {
-    "title": "Hastighet cirkulations\u00adpump, v\u00e4nte\u00adl\u00e4ge (EB100)",
+    "title": "Hastighet cirkulationspump, v\u00e4ntel\u00e4ge (EB100)",
     "factor": 1,
     "unit": "%",
     "size": "u8",
@@ -6464,7 +6464,7 @@
     "name": "spa-varme-aktiverad-spa-40845"
   },
   "40847": {
-    "title": "(SPA), varm\u00advatten aktiverad",
+    "title": "(SPA), varmvatten aktiverad",
     "factor": 1,
     "size": "u8",
     "min": "0",
@@ -6491,7 +6491,7 @@
     "name": "spa-omrade-40852"
   },
   "40853": {
-    "title": "Automatisk hastighet v\u00e4rme\u00adb\u00e4rar\u00adpump, varmvatten",
+    "title": "Automatisk hastighet v\u00e4rmeb\u00e4rarpump, varmvatten",
     "factor": 1,
     "unit": "%",
     "size": "s8",
@@ -6501,7 +6501,7 @@
     "name": "automatisk-hastighet-varmebararpump-varmvatten-40853"
   },
   "40854": {
-    "title": "Automatisk hastighet v\u00e4rme\u00adb\u00e4rar\u00adpump, v\u00e4rme",
+    "title": "Automatisk hastighet v\u00e4rmeb\u00e4rarpump, v\u00e4rme",
     "factor": 1,
     "unit": "%",
     "size": "s8",
@@ -6511,7 +6511,7 @@
     "name": "automatisk-hastighet-varmebararpump-varme-40854"
   },
   "40859": {
-    "title": "Maximal hastighet av cirkulations\u00adpump f\u00f6r v\u00e4rme",
+    "title": "Maximal hastighet av cirkulationspump f\u00f6r v\u00e4rme",
     "factor": 1,
     "unit": "%",
     "size": "u8",
@@ -6521,7 +6521,7 @@
     "name": "maximal-hastighet-av-cirkulationspump-for-varme-40859"
   },
   "40894": {
-    "title": "Extern justering klimat\u00adsystem 8",
+    "title": "Extern justering klimatsystem 8",
     "factor": 1,
     "size": "s8",
     "min": "-10",
@@ -6530,7 +6530,7 @@
     "name": "extern-justering-klimatsystem-8-40894"
   },
   "40895": {
-    "title": "Extern justering klimat\u00adsystem 7",
+    "title": "Extern justering klimatsystem 7",
     "factor": 1,
     "size": "s8",
     "min": "-10",
@@ -6539,7 +6539,7 @@
     "name": "extern-justering-klimatsystem-7-40895"
   },
   "40896": {
-    "title": "Extern justering klimat\u00adsystem 6",
+    "title": "Extern justering klimatsystem 6",
     "factor": 1,
     "size": "s8",
     "min": "-10",
@@ -6548,7 +6548,7 @@
     "name": "extern-justering-klimatsystem-6-40896"
   },
   "40897": {
-    "title": "Extern justering klimat\u00adsystem 5",
+    "title": "Extern justering klimatsystem 5",
     "factor": 1,
     "size": "s8",
     "min": "-10",
@@ -6557,7 +6557,7 @@
     "name": "extern-justering-klimatsystem-5-40897"
   },
   "40898": {
-    "title": "Extern justering med rums\u00adgivare klimat\u00adsystem 8",
+    "title": "Extern justering med rumsgivare klimatsystem 8",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
@@ -6567,7 +6567,7 @@
     "name": "extern-justering-med-rumsgivare-klimatsystem-8-40898"
   },
   "40899": {
-    "title": "Extern justering med rums\u00adgivare klimat\u00adsystem 7",
+    "title": "Extern justering med rumsgivare klimatsystem 7",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
@@ -6577,7 +6577,7 @@
     "name": "extern-justering-med-rumsgivare-klimatsystem-7-40899"
   },
   "40900": {
-    "title": "Extern justering med rums\u00adgivare klimat\u00adsystem 6",
+    "title": "Extern justering med rumsgivare klimatsystem 6",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
@@ -6587,7 +6587,7 @@
     "name": "extern-justering-med-rumsgivare-klimatsystem-6-40900"
   },
   "40901": {
-    "title": "Extern justering med rums\u00adgivare klimat\u00adsystem 5",
+    "title": "Extern justering med rumsgivare klimatsystem 5",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
@@ -6597,7 +6597,7 @@
     "name": "extern-justering-med-rumsgivare-klimatsystem-5-40901"
   },
   "40903": {
-    "title": "(SPA), varm\u00advatten p\u00e5verkan",
+    "title": "(SPA), varmvatten p\u00e5verkan",
     "factor": 1,
     "size": "s8",
     "min": "1",
@@ -6618,7 +6618,7 @@
     "name": "tvinga-initiera-inverter-40905"
   },
   "40906": {
-    "title": "Klimat\u00adsystem 5",
+    "title": "Klimatsystem 5",
     "factor": 1,
     "size": "u8",
     "min": "0",
@@ -6627,7 +6627,7 @@
     "name": "klimatsystem-5-40906"
   },
   "40907": {
-    "title": "Klimat\u00adsystem 6",
+    "title": "Klimatsystem 6",
     "factor": 1,
     "size": "u8",
     "min": "0",
@@ -6636,7 +6636,7 @@
     "name": "klimatsystem-6-40907"
   },
   "40908": {
-    "title": "Klimat\u00adsystem 7",
+    "title": "Klimatsystem 7",
     "factor": 1,
     "size": "u8",
     "min": "0",
@@ -6645,7 +6645,7 @@
     "name": "klimatsystem-7-40908"
   },
   "40909": {
-    "title": "Klimat\u00adsystem 8",
+    "title": "Klimatsystem 8",
     "factor": 1,
     "size": "u8",
     "min": "0",
@@ -6654,7 +6654,7 @@
     "name": "klimatsystem-8-40909"
   },
   "40933": {
-    "title": "V\u00e4rme inkopplad, klimat\u00adsystem 1",
+    "title": "V\u00e4rme inkopplad, klimatsystem 1",
     "factor": 1,
     "size": "u8",
     "min": "0",
@@ -6699,7 +6699,7 @@
     "name": "eb107-108-gp12-40942"
   },
   "40943": {
-    "title": "Sp\u00e4rr\u00adband 2 aktiveras",
+    "title": "Sp\u00e4rrband 2 aktiveras",
     "factor": 1,
     "size": "s8",
     "min": "0",
@@ -6708,7 +6708,7 @@
     "name": "sparrband-2-aktiveras-40943"
   },
   "40944": {
-    "title": "Sp\u00e4rr\u00adband 1 aktiveras",
+    "title": "Sp\u00e4rrband 1 aktiveras",
     "factor": 1,
     "size": "s8",
     "min": "0",
@@ -6775,7 +6775,7 @@
     "name": "id-4974-44097"
   },
   "40949": {
-    "title": "Anv\u00e4nd rums\u00adgivare klimat\u00adsystem 8",
+    "title": "Anv\u00e4nd rumsgivare klimatsystem 8",
     "factor": 1,
     "size": "u8",
     "min": "0",
@@ -6784,7 +6784,7 @@
     "name": "anvand-rumsgivare-klimatsystem-8-40949"
   },
   "40950": {
-    "title": "Anv\u00e4nd rums\u00adgivare klimat\u00adsystem 7",
+    "title": "Anv\u00e4nd rumsgivare klimatsystem 7",
     "factor": 1,
     "size": "u8",
     "min": "0",
@@ -6793,7 +6793,7 @@
     "name": "anvand-rumsgivare-klimatsystem-7-40950"
   },
   "40951": {
-    "title": "Anv\u00e4nd rums\u00adgivare klimat\u00adsystem 6",
+    "title": "Anv\u00e4nd rumsgivare klimatsystem 6",
     "factor": 1,
     "size": "u8",
     "min": "0",
@@ -6802,7 +6802,7 @@
     "name": "anvand-rumsgivare-klimatsystem-6-40951"
   },
   "40952": {
-    "title": "Anv\u00e4nd rums\u00adgivare klimat\u00adsystem 5",
+    "title": "Anv\u00e4nd rumsgivare klimatsystem 5",
     "factor": 1,
     "size": "u8",
     "min": "0",
@@ -6811,7 +6811,7 @@
     "name": "anvand-rumsgivare-klimatsystem-5-40952"
   },
   "40953": {
-    "title": "Rums\u00adgivare b\u00f6r\u00adv\u00e4rde klimat\u00adsystem 8",
+    "title": "Rumsgivare b\u00f6rv\u00e4rde klimatsystem 8",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
@@ -6821,7 +6821,7 @@
     "name": "rumsgivare-borvarde-klimatsystem-8-40953"
   },
   "40954": {
-    "title": "Rums\u00adgivare b\u00f6r\u00adv\u00e4rde klima\u00adtsystem 7",
+    "title": "Rumsgivare b\u00f6rv\u00e4rde klimatsystem 7",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
@@ -6831,7 +6831,7 @@
     "name": "rumsgivare-borvarde-klimatsystem-7-40954"
   },
   "40955": {
-    "title": "Rums\u00adgivare b\u00f6r\u00adv\u00e4rde klimat\u00adsystem 6",
+    "title": "Rumsgivare b\u00f6rv\u00e4rde klimatsystem 6",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
@@ -6841,7 +6841,7 @@
     "name": "rumsgivare-borvarde-klimatsystem-6-40955"
   },
   "40956": {
-    "title": "Rums\u00adgivare b\u00f6r\u00adv\u00e4rde klimat\u00adsystem 5",
+    "title": "Rumsgivare b\u00f6rv\u00e4rde klimatsystem 5",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
@@ -6851,7 +6851,7 @@
     "name": "rumsgivare-borvarde-klimatsystem-5-40956"
   },
   "40957": {
-    "title": "Rums\u00adgivare faktor klimat\u00adsystem 8",
+    "title": "Rumsgivare faktor klimatsystem 8",
     "factor": 10,
     "size": "u8",
     "min": "0",
@@ -6860,7 +6860,7 @@
     "name": "rumsgivare-faktor-klimatsystem-8-40957"
   },
   "40958": {
-    "title": "Rums\u00adgivare faktor klima\u00adtsystem 7",
+    "title": "Rumsgivare faktor klimatsystem 7",
     "factor": 10,
     "size": "u8",
     "min": "0",
@@ -6869,7 +6869,7 @@
     "name": "rumsgivare-faktor-klimatsystem-7-40958"
   },
   "40959": {
-    "title": "Rums\u00adgivare faktor klimat\u00adsystem 6",
+    "title": "Rumsgivare faktor klimatsystem 6",
     "factor": 10,
     "size": "u8",
     "min": "0",
@@ -6878,7 +6878,7 @@
     "name": "rumsgivare-faktor-klimatsystem-6-40959"
   },
   "40960": {
-    "title": "Rums\u00adgivare faktor klimat\u00adsystem 5",
+    "title": "Rumsgivare faktor klimatsystem 5",
     "factor": 10,
     "size": "u8",
     "min": "0",
@@ -6941,7 +6941,7 @@
     "name": "id-4997-44103"
   },
   "40980": {
-    "title": "Varm\u00advatten h\u00f6geffekt\u00adl\u00e4ge",
+    "title": "Varmvatten h\u00f6geffektl\u00e4ge",
     "factor": 1,
     "size": "s8",
     "min": "0",
@@ -6959,7 +6959,7 @@
     "name": "stromtrafo-ratio-40981"
   },
   "40982": {
-    "title": "Rums\u00adgivare b\u00f6r\u00adv\u00e4rde klimat\u00adsystem 8, kyla",
+    "title": "Rumsgivare b\u00f6rv\u00e4rde klimatsystem 8, kyla",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
@@ -6969,7 +6969,7 @@
     "name": "rumsgivare-borvarde-klimatsystem-8-kyla-40982"
   },
   "40983": {
-    "title": "Rums\u00adgivare b\u00f6r\u00adv\u00e4rde klimat\u00adsystem 7, kyla",
+    "title": "Rumsgivare b\u00f6rv\u00e4rde klimatsystem 7, kyla",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
@@ -6979,7 +6979,7 @@
     "name": "rumsgivare-borvarde-klimatsystem-7-kyla-40983"
   },
   "40984": {
-    "title": "Rums\u00adgivare b\u00f6r\u00adv\u00e4rde klimat\u00adsystem 6, kyla",
+    "title": "Rumsgivare b\u00f6rv\u00e4rde klimatsystem 6, kyla",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
@@ -6989,7 +6989,7 @@
     "name": "rumsgivare-borvarde-klimatsystem-6-kyla-40984"
   },
   "40985": {
-    "title": "Rums\u00adgivare b\u00f6r\u00adv\u00e4rde klima\u00adtsystem 5, kyla",
+    "title": "Rumsgivare b\u00f6rv\u00e4rde klimatsystem 5, kyla",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
@@ -6999,7 +6999,7 @@
     "name": "rumsgivare-borvarde-klimatsystem-5-kyla-40985"
   },
   "40986": {
-    "title": "Rums\u00adgivare b\u00f6r\u00adv\u00e4rde klimat\u00adsystem 4, kyla",
+    "title": "Rumsgivare b\u00f6rv\u00e4rde klimatsystem 4, kyla",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
@@ -7009,7 +7009,7 @@
     "name": "rumsgivare-borvarde-klimatsystem-4-kyla-40986"
   },
   "40987": {
-    "title": "Rums\u00adgivare b\u00f6r\u00adv\u00e4rde klimat\u00adsystem 3, kyla",
+    "title": "Rumsgivare b\u00f6rv\u00e4rde klimatsystem 3, kyla",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
@@ -7019,7 +7019,7 @@
     "name": "rumsgivare-borvarde-klimatsystem-3-kyla-40987"
   },
   "40988": {
-    "title": "Rums\u00adgivare b\u00f6r\u00adv\u00e4rde klimat\u00adsystem 2, kyla",
+    "title": "Rumsgivare b\u00f6rv\u00e4rde klimatsystem 2, kyla",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
@@ -7029,7 +7029,7 @@
     "name": "rumsgivare-borvarde-klimatsystem-2-kyla-40988"
   },
   "40989": {
-    "title": "Rums\u00adgivare b\u00f6r\u00adv\u00e4rde klimat\u00adsystem 1, kyla",
+    "title": "Rumsgivare b\u00f6rv\u00e4rde klimatsystem 1, kyla",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
@@ -7039,7 +7039,7 @@
     "name": "rumsgivare-borvarde-klimatsystem-1-kyla-40989"
   },
   "40990": {
-    "title": "Rums\u00adgivare faktor klimat\u00adsystem 8, kyla",
+    "title": "Rumsgivare faktor klimatsystem 8, kyla",
     "factor": 10,
     "size": "u8",
     "min": "0",
@@ -7048,7 +7048,7 @@
     "name": "rumsgivare-faktor-klimatsystem-8-kyla-40990"
   },
   "40991": {
-    "title": "Rums\u00adgivare faktor klimat\u00adsystem 7, kyla",
+    "title": "Rumsgivare faktor klimatsystem 7, kyla",
     "factor": 10,
     "size": "u8",
     "min": "0",
@@ -7057,7 +7057,7 @@
     "name": "rumsgivare-faktor-klimatsystem-7-kyla-40991"
   },
   "40992": {
-    "title": "Rums\u00adgivare faktor klimat\u00adsystem 6, kyla",
+    "title": "Rumsgivare faktor klimatsystem 6, kyla",
     "factor": 10,
     "size": "u8",
     "min": "0",
@@ -7066,7 +7066,7 @@
     "name": "rumsgivare-faktor-klimatsystem-6-kyla-40992"
   },
   "40993": {
-    "title": "Rums\u00adgivare faktor klimat\u00adsystem 5, kyla",
+    "title": "Rumsgivare faktor klimatsystem 5, kyla",
     "factor": 10,
     "size": "u8",
     "min": "0",
@@ -7075,7 +7075,7 @@
     "name": "rumsgivare-faktor-klimatsystem-5-kyla-40993"
   },
   "40994": {
-    "title": "Rums\u00adgivare faktor klimat\u00adsystem 4, kyla",
+    "title": "Rumsgivare faktor klimatsystem 4, kyla",
     "factor": 10,
     "size": "u8",
     "min": "0",
@@ -7084,7 +7084,7 @@
     "name": "rumsgivare-faktor-klimatsystem-4-kyla-40994"
   },
   "40995": {
-    "title": "Rums\u00adgivare faktor klimat\u00adsystem 3, kyla",
+    "title": "Rumsgivare faktor klimatsystem 3, kyla",
     "factor": 10,
     "size": "u8",
     "min": "0",
@@ -7093,7 +7093,7 @@
     "name": "rumsgivare-faktor-klimatsystem-3-kyla-40995"
   },
   "40996": {
-    "title": "Rums\u00adgivare faktor klimat\u00adsystem 2, kyla",
+    "title": "Rumsgivare faktor klimatsystem 2, kyla",
     "factor": 10,
     "size": "u8",
     "min": "0",
@@ -7102,7 +7102,7 @@
     "name": "rumsgivare-faktor-klimatsystem-2-kyla-40996"
   },
   "40997": {
-    "title": "Rums\u00adgivare faktor klimat\u00adsystem 1, kyla",
+    "title": "Rumsgivare faktor klimatsystem 1, kyla",
     "factor": 10,
     "size": "u8",
     "min": "0",
@@ -7111,7 +7111,7 @@
     "name": "rumsgivare-faktor-klimatsystem-1-kyla-40997"
   },
   "40998": {
-    "title": "B\u00f6r\u00adv\u00e4rde (RH)",
+    "title": "B\u00f6rv\u00e4rde (RH)",
     "factor": 1,
     "unit": "%",
     "size": "s8",
@@ -7149,7 +7149,7 @@
     "name": "gm-start-differens-opt-41017"
   },
   "41022": {
-    "title": "Fr\u00e5n\u00adlufts\u00adfl\u00e4kt hastighet 4 (ERS 1)",
+    "title": "Fr\u00e5nluftsfl\u00e4kt hastighet 4 (ERS 1)",
     "factor": 1,
     "unit": "%",
     "size": "u8",
@@ -7159,7 +7159,7 @@
     "name": "franluftsflakt-hastighet-4-ers-1-41022"
   },
   "41023": {
-    "title": "Fr\u00e5n\u00adlufts\u00adfl\u00e4kt hastighet 3 (ERS 1)",
+    "title": "Fr\u00e5nluftsfl\u00e4kt hastighet 3 (ERS 1)",
     "factor": 1,
     "unit": "%",
     "size": "u8",
@@ -7169,7 +7169,7 @@
     "name": "franluftsflakt-hastighet-3-ers-1-41023"
   },
   "41024": {
-    "title": "Fr\u00e5n\u00adlufts\u00adfl\u00e4kt hastighet 2 (ERS 1)",
+    "title": "Fr\u00e5nluftsfl\u00e4kt hastighet 2 (ERS 1)",
     "factor": 1,
     "unit": "%",
     "size": "u8",
@@ -7179,7 +7179,7 @@
     "name": "franluftsflakt-hastighet-2-ers-1-41024"
   },
   "41025": {
-    "title": "Fr\u00e5n\u00adlufts\u00adfl\u00e4kt hastighet 1 (ERS 1)",
+    "title": "Fr\u00e5nluftsfl\u00e4kt hastighet 1 (ERS 1)",
     "factor": 1,
     "unit": "%",
     "size": "u8",
@@ -7189,7 +7189,7 @@
     "name": "franluftsflakt-hastighet-1-ers-1-41025"
   },
   "41026": {
-    "title": "Fr\u00e5n\u00adlufts\u00adfl\u00e4kt hastighet normal (ERS 1)",
+    "title": "Fr\u00e5nluftsfl\u00e4kt hastighet normal (ERS 1)",
     "factor": 1,
     "unit": "%",
     "size": "u8",
@@ -7208,7 +7208,7 @@
     "name": "termostat-acs-41027"
   },
   "41028": {
-    "title": "Filtrerings\u00adtid (BT64)",
+    "title": "Filtreringstid (BT64)",
     "factor": 1,
     "unit": "min",
     "size": "u8",
@@ -7238,7 +7238,7 @@
     "name": "start-temperatur-bt64-41030"
   },
   "41031": {
-    "title": "Temperatur att \u00f6verg\u00e5 till borr\u00adh\u00e5l",
+    "title": "Temperatur att \u00f6verg\u00e5 till borrh\u00e5l",
     "factor": 1,
     "unit": "\u00b0C",
     "size": "s8",
@@ -7248,7 +7248,7 @@
     "name": "temperatur-att-overga-till-borrhal-41031"
   },
   "41032": {
-    "title": "Fl\u00f6des\u00adsensor aktiverad X21",
+    "title": "Fl\u00f6dessensor aktiverad X21",
     "factor": 1,
     "size": "u8",
     "min": "0",
@@ -7267,7 +7267,7 @@
     "name": "bypass-temp-ers-1-41045"
   },
   "41050": {
-    "title": "Fl\u00f6des\u00adsensor aktiverad X22",
+    "title": "Fl\u00f6dessensor aktiverad X22",
     "factor": 1,
     "size": "u8",
     "min": "0",
@@ -7276,7 +7276,7 @@
     "name": "flodessensor-aktiverad-x22-41050"
   },
   "41053": {
-    "title": "Max intern till\u00adsats SG Ready",
+    "title": "Max intern tillsats SG Ready",
     "factor": 100,
     "unit": "kW",
     "size": "s16",
@@ -7304,7 +7304,7 @@
     "name": "aktiverad-eme10-41069"
   },
   "41070": {
-    "title": "PV panel p\u00e5verkar upp\u00adv\u00e4rmning (EME)",
+    "title": "PV panel p\u00e5verkar uppv\u00e4rmning (EME)",
     "factor": 1,
     "size": "u8",
     "min": "0",
@@ -7313,7 +7313,7 @@
     "name": "pv-panel-paverkar-uppvarmning-eme-41070"
   },
   "41071": {
-    "title": "PV panel p\u00e5verkar varm\u00advatten (EME)",
+    "title": "PV panel p\u00e5verkar varmvatten (EME)",
     "factor": 1,
     "size": "u8",
     "min": "0",
@@ -7328,7 +7328,7 @@
     "name": "fordrojning-eme-41072"
   },
   "41073": {
-    "title": "L\u00e5g k\u00f6ld\u00adb\u00e4rare ut larm temperatur (EP15)",
+    "title": "L\u00e5g k\u00f6ldb\u00e4rare ut larm temperatur (EP15)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
@@ -7365,7 +7365,7 @@
     "name": "pump-2-flm-41077"
   },
   "41078": {
-    "title": "Av\u00adfrostnings\u00adtid (FLM 4)",
+    "title": "Avfrostningstid (FLM 4)",
     "factor": 1,
     "unit": "h",
     "size": "u8",
@@ -7375,7 +7375,7 @@
     "name": "avfrostningstid-flm-4-41078"
   },
   "41079": {
-    "title": "Av\u00adfrostnings\u00adtid (FLM 3)",
+    "title": "Avfrostningstid (FLM 3)",
     "factor": 1,
     "unit": "h",
     "size": "u8",
@@ -7385,7 +7385,7 @@
     "name": "avfrostningstid-flm-3-41079"
   },
   "41080": {
-    "title": "Av\u00adfrostnings\u00adtid (FLM 2)",
+    "title": "Avfrostningstid (FLM 2)",
     "factor": 1,
     "unit": "h",
     "size": "u8",
@@ -7462,7 +7462,7 @@
     "name": "pump-hastighet-flm-1-41087"
   },
   "41088": {
-    "title": "\u00d6ver\u00adtemperatur (FLM 4)",
+    "title": "\u00d6vertemperatur (FLM 4)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "u8",
@@ -7472,7 +7472,7 @@
     "name": "overtemperatur-flm-4-41088"
   },
   "41089": {
-    "title": "\u00d6ver\u00adtemperatur (FLM 3)",
+    "title": "\u00d6vertemperatur (FLM 3)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "u8",
@@ -7482,7 +7482,7 @@
     "name": "overtemperatur-flm-3-41089"
   },
   "41090": {
-    "title": "\u00d6ver\u00adtemperatur (FLM 2)",
+    "title": "\u00d6vertemperatur (FLM 2)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "u8",
@@ -7492,7 +7492,7 @@
     "name": "overtemperatur-flm-2-41090"
   },
   "41091": {
-    "title": "\u00d6ver\u00adtemperatur (FLM 1)",
+    "title": "\u00d6vertemperatur (FLM 1)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "u8",
@@ -7502,7 +7502,7 @@
     "name": "overtemperatur-flm-1-41091"
   },
   "41092": {
-    "title": "B\u00f6r\u00adv\u00e4rde, kyla (FLM 4)",
+    "title": "B\u00f6rv\u00e4rde, kyla (FLM 4)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
@@ -7512,7 +7512,7 @@
     "name": "borvarde-kyla-flm-4-41092"
   },
   "41093": {
-    "title": "B\u00f6r\u00adv\u00e4rde, kyla (FLM 3)",
+    "title": "B\u00f6rv\u00e4rde, kyla (FLM 3)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
@@ -7522,7 +7522,7 @@
     "name": "borvarde-kyla-flm-3-41093"
   },
   "41094": {
-    "title": "B\u00f6r\u00adv\u00e4rde, kyla (FLM 2)",
+    "title": "B\u00f6rv\u00e4rde, kyla (FLM 2)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
@@ -7532,7 +7532,7 @@
     "name": "borvarde-kyla-flm-2-41094"
   },
   "41095": {
-    "title": "B\u00f6r\u00adv\u00e4rde, kyla (FLM 1)",
+    "title": "B\u00f6rv\u00e4rde, kyla (FLM 1)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
@@ -7548,7 +7548,7 @@
     "name": "aux-blockering-opt-41096"
   },
   "41097": {
-    "title": "Ute\u00adlufts\u00adinblandning",
+    "title": "Uteluftsinblandning",
     "factor": 1,
     "size": "u8",
     "min": "0",
@@ -7557,7 +7557,7 @@
     "name": "uteluftsinblandning-41097"
   },
   "41103": {
-    "title": "Smarta hem rums\u00adstyrning",
+    "title": "Smarta hem rumsstyrning",
     "factor": 1,
     "size": "u8",
     "min": "0",
@@ -7566,7 +7566,7 @@
     "name": "smarta-hem-rumsstyrning-41103"
   },
   "41104": {
-    "title": "Hastighet k\u00f6ldb\u00e4rar\u00adpump, v\u00e4nte\u00adl\u00e4ge (EP14)",
+    "title": "Hastighet k\u00f6ldb\u00e4rarpump, v\u00e4ntel\u00e4ge (EP14)",
     "factor": 1,
     "unit": "%",
     "size": "u8",
@@ -7585,7 +7585,7 @@
     "name": "smart-energy-source-41106"
   },
   "41107": {
-    "title": "Kontroll\u00admetod, smart energy source",
+    "title": "Kontrollmetod, smart energy source",
     "factor": 1,
     "size": "u8",
     "min": "0",
@@ -7693,7 +7693,7 @@
     "name": "primar-faktor-smart-energy-source-41118"
   },
   "41119": {
-    "title": "Prim\u00e4r faktor, shunt\u00adtillsats smart energy source",
+    "title": "Prim\u00e4r faktor, shunttillsats smart energy source",
     "factor": 10,
     "size": "u8",
     "min": "0",
@@ -7702,7 +7702,7 @@
     "name": "primar-faktor-shunttillsats-smart-energy-source-41119"
   },
   "41120": {
-    "title": "Prim\u00e4r faktor, extern steg\u00adtillsats smart energy source",
+    "title": "Prim\u00e4r faktor, extern stegtillsats smart energy source",
     "factor": 10,
     "size": "u8",
     "min": "0",
@@ -7720,7 +7720,7 @@
     "name": "primar-faktor-opt10-smart-energy-source-41121"
   },
   "41122": {
-    "title": "OPT10, h\u00f6gt tariff\u00adpris smart energy source",
+    "title": "OPT10, h\u00f6gt tariffpris smart energy source",
     "factor": 1,
     "size": "u16",
     "min": "1",
@@ -7729,7 +7729,7 @@
     "name": "opt10-hogt-tariffpris-smart-energy-source-41122"
   },
   "41123": {
-    "title": "OPT10, L\u00e5gt tariff\u00adpris smart energy source",
+    "title": "OPT10, L\u00e5gt tariffpris smart energy source",
     "factor": 1,
     "size": "u16",
     "min": "1",
@@ -7738,7 +7738,7 @@
     "name": "opt10-lagt-tariffpris-smart-energy-source-41123"
   },
   "41124": {
-    "title": "extern steg\u00adtillsats, h\u00f6gt tariff\u00adpris smart energy source",
+    "title": "extern stegtillsats, h\u00f6gt tariffpris smart energy source",
     "factor": 1,
     "size": "u16",
     "min": "1",
@@ -7747,7 +7747,7 @@
     "name": "extern-stegtillsats-hogt-tariffpris-smart-energy-source-41124"
   },
   "41125": {
-    "title": "extern steg\u00adtillsats, L\u00e5gt tariff\u00adpris smart energy source",
+    "title": "extern stegtillsats, L\u00e5gt tariffpris smart energy source",
     "factor": 1,
     "size": "u16",
     "min": "1",
@@ -7756,7 +7756,7 @@
     "name": "extern-stegtillsats-lagt-tariffpris-smart-energy-source-41125"
   },
   "41126": {
-    "title": "Shunt\u00adtillsats, h\u00f6gt tariff\u00adpris smart energy source",
+    "title": "Shunttillsats, h\u00f6gt tariffpris smart energy source",
     "factor": 1,
     "size": "u16",
     "min": "1",
@@ -7765,7 +7765,7 @@
     "name": "shunttillsats-hogt-tariffpris-smart-energy-source-41126"
   },
   "41127": {
-    "title": "Shunt\u00adtillsats, L\u00e5gt tariff\u00adpris smart energy source",
+    "title": "Shunttillsats, L\u00e5gt tariffpris smart energy source",
     "factor": 1,
     "size": "u16",
     "min": "1",
@@ -7810,7 +7810,7 @@
     "name": "elpris-rorlig-lag-tariff-smart-energy-source-41131"
   },
   "41132": {
-    "title": "GM start\u00adk\u00e4lla, prioritet 5 smart energy source",
+    "title": "GM startk\u00e4lla, prioritet 5 smart energy source",
     "factor": 1,
     "size": "s16",
     "min": "100",
@@ -7819,7 +7819,7 @@
     "name": "gm-startkalla-prioritet-5-smart-energy-source-41132"
   },
   "41133": {
-    "title": "GM start\u00adk\u00e4lla, prioritet 4 smart energy source",
+    "title": "GM startk\u00e4lla, prioritet 4 smart energy source",
     "factor": 1,
     "size": "s16",
     "min": "100",
@@ -7828,7 +7828,7 @@
     "name": "gm-startkalla-prioritet-4-smart-energy-source-41133"
   },
   "41134": {
-    "title": "GM start\u00adk\u00e4lla, prioritet 3 smart energy source",
+    "title": "GM startk\u00e4lla, prioritet 3 smart energy source",
     "factor": 1,
     "size": "s16",
     "min": "100",
@@ -7837,7 +7837,7 @@
     "name": "gm-startkalla-prioritet-3-smart-energy-source-41134"
   },
   "41135": {
-    "title": "GM start\u00adk\u00e4lla, prioritet 2 smart energy source",
+    "title": "GM startk\u00e4lla, prioritet 2 smart energy source",
     "factor": 1,
     "size": "s16",
     "min": "100",
@@ -7846,7 +7846,7 @@
     "name": "gm-startkalla-prioritet-2-smart-energy-source-41135"
   },
   "41136": {
-    "title": "GM start\u00adk\u00e4lla, prioritet 1 smart energy source",
+    "title": "GM startk\u00e4lla, prioritet 1 smart energy source",
     "factor": 1,
     "size": "s16",
     "min": "-2000",
@@ -7855,7 +7855,7 @@
     "name": "gm-startkalla-prioritet-1-smart-energy-source-41136"
   },
   "41137": {
-    "title": "Start\u00addag, tariff smart energy source",
+    "title": "Startdag, tariff smart energy source",
     "factor": 1,
     "size": "u8",
     "min": "1",
@@ -7864,7 +7864,7 @@
     "name": "startdag-tariff-smart-energy-source-41137"
   },
   "41138": {
-    "title": "Slut\u00addag, tariff smart energy source",
+    "title": "Slutdag, tariff smart energy source",
     "factor": 1,
     "size": "u8",
     "min": "1",
@@ -7873,7 +7873,7 @@
     "name": "slutdag-tariff-smart-energy-source-41138"
   },
   "41139": {
-    "title": "Start\u00adm\u00e5nad, tariff smart energy source",
+    "title": "Startm\u00e5nad, tariff smart energy source",
     "factor": 1,
     "size": "u8",
     "min": "1",
@@ -7882,7 +7882,7 @@
     "name": "startmanad-tariff-smart-energy-source-41139"
   },
   "41140": {
-    "title": "Slut\u00adm\u00e5nad, tariff smart energy source",
+    "title": "Slutm\u00e5nad, tariff smart energy source",
     "factor": 1,
     "size": "u8",
     "min": "1",
@@ -7891,7 +7891,7 @@
     "name": "slutmanad-tariff-smart-energy-source-41140"
   },
   "41173": {
-    "title": "Start\u00addag, fast tariff smart energy source",
+    "title": "Startdag, fast tariff smart energy source",
     "factor": 1,
     "size": "u8",
     "min": "1",
@@ -7900,7 +7900,7 @@
     "name": "startdag-fast-tariff-smart-energy-source-41173"
   },
   "41174": {
-    "title": "Slut\u00addag, fast tariff smart energy source",
+    "title": "Slutdag, fast tariff smart energy source",
     "factor": 1,
     "size": "u8",
     "min": "1",
@@ -7909,7 +7909,7 @@
     "name": "slutdag-fast-tariff-smart-energy-source-41174"
   },
   "41175": {
-    "title": "Start\u00adm\u00e5nad, fast tariff smart energy source",
+    "title": "Startm\u00e5nad, fast tariff smart energy source",
     "factor": 1,
     "size": "u8",
     "min": "1",
@@ -7918,7 +7918,7 @@
     "name": "startmanad-fast-tariff-smart-energy-source-41175"
   },
   "41176": {
-    "title": "Slut\u00adm\u00e5nad, fast tariff smart energy source",
+    "title": "Slutm\u00e5nad, fast tariff smart energy source",
     "factor": 1,
     "size": "u8",
     "min": "1",
@@ -7927,7 +7927,7 @@
     "name": "slutmanad-fast-tariff-smart-energy-source-41176"
   },
   "41209": {
-    "title": "Start\u00addag, tariff OPT10 smart energy source",
+    "title": "Startdag, tariff OPT10 smart energy source",
     "factor": 1,
     "size": "u8",
     "min": "1",
@@ -7936,7 +7936,7 @@
     "name": "startdag-tariff-opt10-smart-energy-source-41209"
   },
   "41210": {
-    "title": "Slut\u00addag, tariff OPT10 smart energy source",
+    "title": "Slutdag, tariff OPT10 smart energy source",
     "factor": 1,
     "size": "u8",
     "min": "1",
@@ -7945,7 +7945,7 @@
     "name": "slutdag-tariff-opt10-smart-energy-source-41210"
   },
   "41211": {
-    "title": "Start\u00adm\u00e5nad, tariff OPT10 smart energy source",
+    "title": "Startm\u00e5nad, tariff OPT10 smart energy source",
     "factor": 1,
     "size": "u8",
     "min": "1",
@@ -7954,7 +7954,7 @@
     "name": "startmanad-tariff-opt10-smart-energy-source-41211"
   },
   "41212": {
-    "title": "Slut\u00adm\u00e5nad, tariff OPT10 smart energy source",
+    "title": "Slutm\u00e5nad, tariff OPT10 smart energy source",
     "factor": 1,
     "size": "u8",
     "min": "1",
@@ -7963,7 +7963,7 @@
     "name": "slutmanad-tariff-opt10-smart-energy-source-41212"
   },
   "41245": {
-    "title": "Start\u00addag tariff, shunttillsats smart energy source",
+    "title": "Startdag tariff, shunttillsats smart energy source",
     "factor": 1,
     "size": "u8",
     "min": "1",
@@ -7972,7 +7972,7 @@
     "name": "startdag-tariff-shunttillsats-smart-energy-source-41245"
   },
   "41246": {
-    "title": "Slut\u00addag tariff, shunttillsats  smart energy source",
+    "title": "Slutdag tariff, shunttillsats  smart energy source",
     "factor": 1,
     "size": "u8",
     "min": "1",
@@ -7981,7 +7981,7 @@
     "name": "slutdag-tariff-shunttillsats-smart-energy-source-41246"
   },
   "41247": {
-    "title": "Start\u00adm\u00e5nad tariff, shunttillsats smart energy source",
+    "title": "Startm\u00e5nad tariff, shunttillsats smart energy source",
     "factor": 1,
     "size": "u8",
     "min": "1",
@@ -7990,7 +7990,7 @@
     "name": "startmanad-tariff-shunttillsats-smart-energy-source-41247"
   },
   "41248": {
-    "title": "Slut\u00adm\u00e5nad tariff, shunttillsats smart energy source",
+    "title": "Slutm\u00e5nad tariff, shunttillsats smart energy source",
     "factor": 1,
     "size": "u8",
     "min": "1",
@@ -7999,7 +7999,7 @@
     "name": "slutmanad-tariff-shunttillsats-smart-energy-source-41248"
   },
   "41281": {
-    "title": "Start\u00addag tariff, extern stegtillsats smart energy source",
+    "title": "Startdag tariff, extern stegtillsats smart energy source",
     "factor": 1,
     "size": "u8",
     "min": "1",
@@ -8008,7 +8008,7 @@
     "name": "startdag-tariff-extern-stegtillsats-smart-energy-source-41281"
   },
   "41282": {
-    "title": "Slut\u00addag tariff, extern stegtillsats  smart energy source",
+    "title": "Slutdag tariff, extern stegtillsats  smart energy source",
     "factor": 1,
     "size": "u8",
     "min": "1",
@@ -8017,7 +8017,7 @@
     "name": "slutdag-tariff-extern-stegtillsats-smart-energy-source-41282"
   },
   "41283": {
-    "title": "Start\u00adm\u00e5nad tariff, extern stegtillsats smart energy source",
+    "title": "Startm\u00e5nad tariff, extern stegtillsats smart energy source",
     "factor": 1,
     "size": "u8",
     "min": "1",
@@ -8026,7 +8026,7 @@
     "name": "startmanad-tariff-extern-stegtillsats-smart-energy-source-41283"
   },
   "41284": {
-    "title": "Slut\u00adm\u00e5nad tariff, extern stegtillsats smart energy source",
+    "title": "Slutm\u00e5nad tariff, extern stegtillsats smart energy source",
     "factor": 1,
     "size": "u8",
     "min": "1",
@@ -8035,7 +8035,7 @@
     "name": "slutmanad-tariff-extern-stegtillsats-smart-energy-source-41284"
   },
   "41317": {
-    "title": "Grund\u00advatten\u00adpump temperatur larm",
+    "title": "Grundvattenpump temperatur larm",
     "factor": 1,
     "size": "u8",
     "min": "0",
@@ -8044,7 +8044,7 @@
     "name": "grundvattenpump-temperatur-larm-41317"
   },
   "41318": {
-    "title": "Grund\u00advatten\u00adpumpen temperatur\u00adlarm\u00adniv\u00e5",
+    "title": "Grundvattenpumpen temperaturlarmniv\u00e5",
     "factor": 1,
     "unit": "\u00b0C",
     "size": "s8",
@@ -8054,7 +8054,7 @@
     "name": "grundvattenpumpen-temperaturlarmniva-41318"
   },
   "41319": {
-    "title": "Konstant delta T, k\u00f6ld\u00adb\u00e4rar\u00adpump",
+    "title": "Konstant delta T, k\u00f6ldb\u00e4rarpump",
     "factor": 1,
     "unit": "\u00b0C",
     "size": "u8",
@@ -8064,7 +8064,7 @@
     "name": "konstant-delta-t-koldbararpump-41319"
   },
   "41320": {
-    "title": "K\u00f6ld\u00adb\u00e4rar\u00adpump autol\u00e4ge",
+    "title": "K\u00f6ldb\u00e4rarpump autol\u00e4ge",
     "factor": 1,
     "size": "s8",
     "min": "0",
@@ -8073,7 +8073,7 @@
     "name": "koldbararpump-autolage-41320"
   },
   "41329": {
-    "title": "Delta k\u00f6ld\u00adb\u00e4rar\u00adpump passiv kylning",
+    "title": "Delta k\u00f6ldb\u00e4rarpump passiv kylning",
     "factor": 1,
     "unit": "\u00b0C",
     "size": "u8",
@@ -8108,7 +8108,7 @@
     "name": "aktuell-effekt-eme-20-32177"
   },
   "44007": {
-    "title": "Hastighet av cirkulations\u00adpump passiv kyla (EP15)",
+    "title": "Hastighet av cirkulationspump passiv kyla (EP15)",
     "factor": 1,
     "unit": "%",
     "size": "u8",
@@ -8118,7 +8118,7 @@
     "name": "hastighet-av-cirkulationspump-passiv-kyla-ep15-44007"
   },
   "44008": {
-    "title": "Hastighet av cirkulations\u00adpump aktiv kyla (EP15)",
+    "title": "Hastighet av cirkulationspump aktiv kyla (EP15)",
     "factor": 1,
     "unit": "%",
     "size": "u8",
@@ -8147,7 +8147,7 @@
     "name": "id-44015-bt12-offset-44015-id-7143-name-title-dtype-object-id-44015-44015-44015-44015-name-id-dtype-object"
   },
   "32179": {
-    "title": "Total medel\u00adeffekt (EME 20)",
+    "title": "Total medeleffekt (EME 20)",
     "factor": 1,
     "unit": "W",
     "size": "u32",
@@ -8245,7 +8245,7 @@
     "name": "hts-4-41984"
   },
   "44139": {
-    "title": "Extern justering, kyla klimat\u00adsystem 8",
+    "title": "Extern justering, kyla klimatsystem 8",
     "factor": 1,
     "size": "s8",
     "min": "-10",
@@ -8254,7 +8254,7 @@
     "name": "extern-justering-kyla-klimatsystem-8-44139"
   },
   "44140": {
-    "title": "Extern justering, kyla klimat\u00adsystem 7",
+    "title": "Extern justering, kyla klimatsystem 7",
     "factor": 1,
     "size": "s8",
     "min": "-10",
@@ -8263,7 +8263,7 @@
     "name": "extern-justering-kyla-klimatsystem-7-44140"
   },
   "44141": {
-    "title": "Extern justering, kyla klimat\u00adsystem 6",
+    "title": "Extern justering, kyla klimatsystem 6",
     "factor": 1,
     "size": "s8",
     "min": "-10",
@@ -8272,7 +8272,7 @@
     "name": "extern-justering-kyla-klimatsystem-6-44141"
   },
   "44142": {
-    "title": "Extern justering, kyla klimat\u00adsystem 5",
+    "title": "Extern justering, kyla klimatsystem 5",
     "factor": 1,
     "size": "s8",
     "min": "-10",
@@ -8281,7 +8281,7 @@
     "name": "extern-justering-kyla-klimatsystem-5-44142"
   },
   "44143": {
-    "title": "Extern justering, kyla klimat\u00adsystem 4",
+    "title": "Extern justering, kyla klimatsystem 4",
     "factor": 1,
     "size": "s8",
     "min": "-10",
@@ -8290,7 +8290,7 @@
     "name": "extern-justering-kyla-klimatsystem-4-44143"
   },
   "44144": {
-    "title": "Extern justering, kyla klimat\u00adsystem 3",
+    "title": "Extern justering, kyla klimatsystem 3",
     "factor": 1,
     "size": "s8",
     "min": "-10",
@@ -8299,7 +8299,7 @@
     "name": "extern-justering-kyla-klimatsystem-3-44144"
   },
   "44145": {
-    "title": "Extern justering, kyla klimat\u00adsystem 2",
+    "title": "Extern justering, kyla klimatsystem 2",
     "factor": 1,
     "size": "s8",
     "min": "-10",
@@ -8308,7 +8308,7 @@
     "name": "extern-justering-kyla-klimatsystem-2-44145"
   },
   "44146": {
-    "title": "Extern justering, kyla klimat\u00adsystem 1",
+    "title": "Extern justering, kyla klimatsystem 1",
     "factor": 1,
     "size": "s8",
     "min": "-10",
@@ -8317,7 +8317,7 @@
     "name": "extern-justering-kyla-klimatsystem-1-44146"
   },
   "44147": {
-    "title": "Extern justering med rums\u00adgivare, kyla klimat\u00adsystem 8",
+    "title": "Extern justering med rumsgivare, kyla klimatsystem 8",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
@@ -8327,7 +8327,7 @@
     "name": "extern-justering-med-rumsgivare-kyla-klimatsystem-8-44147"
   },
   "44148": {
-    "title": "Extern justering med rums\u00adgivare, kyla klimat\u00adsystem 7",
+    "title": "Extern justering med rumsgivare, kyla klimatsystem 7",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
@@ -8337,7 +8337,7 @@
     "name": "extern-justering-med-rumsgivare-kyla-klimatsystem-7-44148"
   },
   "44149": {
-    "title": "Extern justering med rums\u00adgivare, kyla klimat\u00adsystem 6",
+    "title": "Extern justering med rumsgivare, kyla klimatsystem 6",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
@@ -8347,7 +8347,7 @@
     "name": "extern-justering-med-rumsgivare-kyla-klimatsystem-6-44149"
   },
   "44150": {
-    "title": "Extern justering med rums\u00adgivare, kyla klimat\u00adsystem 5",
+    "title": "Extern justering med rumsgivare, kyla klimatsystem 5",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
@@ -8357,7 +8357,7 @@
     "name": "extern-justering-med-rumsgivare-kyla-klimatsystem-5-44150"
   },
   "44151": {
-    "title": "Extern justering med rums\u00adgivare, kyla klimat\u00adsystem 4",
+    "title": "Extern justering med rumsgivare, kyla klimatsystem 4",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
@@ -8367,7 +8367,7 @@
     "name": "extern-justering-med-rumsgivare-kyla-klimatsystem-4-44151"
   },
   "44152": {
-    "title": "Extern justering med rums\u00adgivare, kyla klimat\u00adsystem 3",
+    "title": "Extern justering med rumsgivare, kyla klimatsystem 3",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
@@ -8377,7 +8377,7 @@
     "name": "extern-justering-med-rumsgivare-kyla-klimatsystem-3-44152"
   },
   "44153": {
-    "title": "Extern justering med rums\u00adgivare, kyla klimat\u00adsystem 2",
+    "title": "Extern justering med rumsgivare, kyla klimatsystem 2",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
@@ -8387,7 +8387,7 @@
     "name": "extern-justering-med-rumsgivare-kyla-klimatsystem-2-44153"
   },
   "44154": {
-    "title": "Extern justering med rums\u00adgivare, kyla klimat\u00adsystem 1",
+    "title": "Extern justering med rumsgivare, kyla klimatsystem 1",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
@@ -8821,7 +8821,7 @@
     "name": "startguiden-har-korts-42743"
   },
   "43233": {
-    "title": "Ljud\u00adsignal vid alarm",
+    "title": "Ljudsignal vid alarm",
     "factor": 1,
     "size": "u8",
     "min": "0",
@@ -8830,7 +8830,7 @@
     "name": "ljudsignal-vid-alarm-43233"
   },
   "43234": {
-    "title": "Ljud vid knapp\u00adtryck",
+    "title": "Ljud vid knapptryck",
     "factor": 1,
     "size": "u8",
     "min": "0",
@@ -11448,7 +11448,7 @@
     "name": "eme20-api-42108"
   },
   "42109": {
-    "title": "EME20 API Inkludera egen\u00adf\u00f6rbrukning",
+    "title": "EME20 API Inkludera egenf\u00f6rbrukning",
     "factor": 1,
     "size": "u8",
     "min": "0",
@@ -11979,7 +11979,7 @@
     "name": "extern-installning-for-justering-migrerad-42504"
   },
   "42677": {
-    "title": "Tid mellan filter\u00adbyte",
+    "title": "Tid mellan filterbyte",
     "factor": 1,
     "size": "u8",
     "min": "1",
@@ -11988,7 +11988,7 @@
     "name": "tid-mellan-filterbyte-42677"
   },
   "42678": {
-    "title": "Tid mellan filter\u00adbyte",
+    "title": "Tid mellan filterbyte",
     "factor": 1,
     "size": "u8",
     "min": "1",
@@ -11997,7 +11997,7 @@
     "name": "tid-mellan-filterbyte-42678"
   },
   "42679": {
-    "title": "Tid mellan filter\u00adbyte",
+    "title": "Tid mellan filterbyte",
     "factor": 1,
     "size": "u8",
     "min": "1",
@@ -12006,7 +12006,7 @@
     "name": "tid-mellan-filterbyte-42679"
   },
   "42680": {
-    "title": "Tid mellan filter\u00adbyte",
+    "title": "Tid mellan filterbyte",
     "factor": 1,
     "size": "u8",
     "min": "1",
@@ -12063,7 +12063,7 @@
     "name": "id-21084-43028"
   },
   "42701": {
-    "title": "\u00c5ter\u00adg\u00e5ngs\u00adtid fl\u00e4kt 4",
+    "title": "\u00c5terg\u00e5ngstid fl\u00e4kt 4",
     "factor": 1,
     "unit": "h",
     "size": "u8",
@@ -12073,7 +12073,7 @@
     "name": "atergangstid-flakt-4-42701"
   },
   "42702": {
-    "title": "\u00c5ter\u00adg\u00e5ngs\u00adtid fl\u00e4kt 4",
+    "title": "\u00c5terg\u00e5ngstid fl\u00e4kt 4",
     "factor": 1,
     "unit": "h",
     "size": "u8",
@@ -12083,7 +12083,7 @@
     "name": "atergangstid-flakt-4-42702"
   },
   "42703": {
-    "title": "\u00c5ter\u00adg\u00e5ngs\u00adtid fl\u00e4kt 4",
+    "title": "\u00c5terg\u00e5ngstid fl\u00e4kt 4",
     "factor": 1,
     "unit": "h",
     "size": "u8",
@@ -12093,7 +12093,7 @@
     "name": "atergangstid-flakt-4-42703"
   },
   "42704": {
-    "title": "\u00c5ter\u00adg\u00e5ngs\u00adtid fl\u00e4kt 4",
+    "title": "\u00c5terg\u00e5ngstid fl\u00e4kt 4",
     "factor": 1,
     "unit": "h",
     "size": "u8",
@@ -12103,7 +12103,7 @@
     "name": "atergangstid-flakt-4-42704"
   },
   "42705": {
-    "title": "\u00c5ter\u00adg\u00e5ngs\u00adtid fl\u00e4kt 4",
+    "title": "\u00c5terg\u00e5ngstid fl\u00e4kt 4",
     "factor": 1,
     "unit": "h",
     "size": "u8",
@@ -12113,7 +12113,7 @@
     "name": "atergangstid-flakt-4-42705"
   },
   "42706": {
-    "title": "\u00c5ter\u00adg\u00e5ngs\u00adtid fl\u00e4kt 4",
+    "title": "\u00c5terg\u00e5ngstid fl\u00e4kt 4",
     "factor": 1,
     "unit": "h",
     "size": "u8",
@@ -12123,7 +12123,7 @@
     "name": "atergangstid-flakt-4-42706"
   },
   "42707": {
-    "title": "\u00c5ter\u00adg\u00e5ngs\u00adtid fl\u00e4kt 4",
+    "title": "\u00c5terg\u00e5ngstid fl\u00e4kt 4",
     "factor": 1,
     "unit": "h",
     "size": "u8",
@@ -12133,7 +12133,7 @@
     "name": "atergangstid-flakt-4-42707"
   },
   "42708": {
-    "title": "\u00c5ter\u00adg\u00e5ngs\u00adtid fl\u00e4kt 4",
+    "title": "\u00c5terg\u00e5ngstid fl\u00e4kt 4",
     "factor": 1,
     "unit": "h",
     "size": "u8",
@@ -12143,7 +12143,7 @@
     "name": "atergangstid-flakt-4-42708"
   },
   "42709": {
-    "title": "\u00c5ter\u00adg\u00e5ngs\u00adtid fl\u00e4kt 4",
+    "title": "\u00c5terg\u00e5ngstid fl\u00e4kt 4",
     "factor": 1,
     "unit": "h",
     "size": "u8",
@@ -12153,7 +12153,7 @@
     "name": "atergangstid-flakt-4-42709"
   },
   "42710": {
-    "title": "\u00c5ter\u00adg\u00e5ngs\u00adtid fl\u00e4kt 4",
+    "title": "\u00c5terg\u00e5ngstid fl\u00e4kt 4",
     "factor": 1,
     "unit": "h",
     "size": "u8",
@@ -12163,7 +12163,7 @@
     "name": "atergangstid-flakt-4-42710"
   },
   "42711": {
-    "title": "\u00c5ter\u00adg\u00e5ngs\u00adtid fl\u00e4kt 4",
+    "title": "\u00c5terg\u00e5ngstid fl\u00e4kt 4",
     "factor": 1,
     "unit": "h",
     "size": "u8",
@@ -12173,7 +12173,7 @@
     "name": "atergangstid-flakt-4-42711"
   },
   "42712": {
-    "title": "\u00c5ter\u00adg\u00e5ngs\u00adtid fl\u00e4kt 4",
+    "title": "\u00c5terg\u00e5ngstid fl\u00e4kt 4",
     "factor": 1,
     "unit": "h",
     "size": "u8",
@@ -12183,7 +12183,7 @@
     "name": "atergangstid-flakt-4-42712"
   },
   "42713": {
-    "title": "\u00c5ter\u00adg\u00e5ngs\u00adtid fl\u00e4kt 4",
+    "title": "\u00c5terg\u00e5ngstid fl\u00e4kt 4",
     "factor": 1,
     "unit": "h",
     "size": "u8",
@@ -12193,7 +12193,7 @@
     "name": "atergangstid-flakt-4-42713"
   },
   "42714": {
-    "title": "\u00c5ter\u00adg\u00e5ngs\u00adtid fl\u00e4kt 4",
+    "title": "\u00c5terg\u00e5ngstid fl\u00e4kt 4",
     "factor": 1,
     "unit": "h",
     "size": "u8",
@@ -12203,7 +12203,7 @@
     "name": "atergangstid-flakt-4-42714"
   },
   "42715": {
-    "title": "\u00c5ter\u00adg\u00e5ngs\u00adtid fl\u00e4kt 4",
+    "title": "\u00c5terg\u00e5ngstid fl\u00e4kt 4",
     "factor": 1,
     "unit": "h",
     "size": "u8",
@@ -12213,7 +12213,7 @@
     "name": "atergangstid-flakt-4-42715"
   },
   "42716": {
-    "title": "\u00c5ter\u00adg\u00e5ngs\u00adtid fl\u00e4kt 4",
+    "title": "\u00c5terg\u00e5ngstid fl\u00e4kt 4",
     "factor": 1,
     "unit": "h",
     "size": "u8",
@@ -12223,7 +12223,7 @@
     "name": "atergangstid-flakt-4-42716"
   },
   "42729": {
-    "title": "Tid mellan filter\u00adbyte",
+    "title": "Tid mellan filterbyte",
     "factor": 1,
     "size": "u8",
     "min": "1",
@@ -12232,7 +12232,7 @@
     "name": "tid-mellan-filterbyte-42729"
   },
   "42730": {
-    "title": "Tid mellan filter\u00adbyte",
+    "title": "Tid mellan filterbyte",
     "factor": 1,
     "size": "u8",
     "min": "1",
@@ -12241,7 +12241,7 @@
     "name": "tid-mellan-filterbyte-42730"
   },
   "42731": {
-    "title": "Tid mellan filter\u00adbyte",
+    "title": "Tid mellan filterbyte",
     "factor": 1,
     "size": "u8",
     "min": "1",
@@ -12250,7 +12250,7 @@
     "name": "tid-mellan-filterbyte-42731"
   },
   "42732": {
-    "title": "Tid mellan filter\u00adbyte",
+    "title": "Tid mellan filterbyte",
     "factor": 1,
     "size": "u8",
     "min": "1",
@@ -12694,14 +12694,14 @@
     "name": "disable-emergency-restart-gp1-43987"
   },
   "32191": {
-    "title": "Retur\u00adledning (AZ2-BT69)",
+    "title": "Returledning (AZ2-BT69)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
     "name": "returledning-az2-bt69-32191"
   },
   "32192": {
-    "title": "Fram\u00adledning (AZ2-BT68)",
+    "title": "Framledning (AZ2-BT68)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
