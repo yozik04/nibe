@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from typing import AsyncGenerator, Iterable
+from collections.abc import AsyncIterator, Iterable
 
 from nibe.coil import Coil
 from nibe.heatpump import ProductInfo
@@ -21,7 +21,7 @@ class Connection(ABC):
 
     async def read_coils(
         self, coils: Iterable[Coil], timeout: float = DEFAULT_TIMEOUT
-    ) -> AsyncGenerator[Coil]:
+    ) -> AsyncIterator[Coil]:
         for coil in coils:
             yield await self.read_coil(coil, timeout)
 
