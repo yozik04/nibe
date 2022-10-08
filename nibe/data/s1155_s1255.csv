@@ -1,4 +1,4 @@
-Title	RegisterType	Register	Factor	Unit	Size	Min	Max	Default
+Title	Register type	Register	Division factor	Unit	Size of variable	Min value	Max value	Default value
 Aktuell ute­temperatur (BT1)	MODBUS_INPUT_REGISTER	1	10	°C	2	0	0	0
 Fram­ledning (EP23-BT2)	MODBUS_INPUT_REGISTER	2	10	°C	2	0	0	0
 Fram­ledning (EP22-BT2)	MODBUS_INPUT_REGISTER	3	10	°C	2	0	0	0

@@ -10,16 +10,16 @@ logger = logging.getLogger("nibe").getChild(__name__)
 
 
 class CSVConverter:
+    data: pandas.DataFrame
+
     def __init__(self, in_file, out_file):
         self.in_file = in_file
         self.out_file = out_file
 
-        self.data = None
-
     def convert(self):
         self._read_csv()
 
-        self._lowercase_column_names()
+        self._unifi_column_names()
 
         self._update_index()
 
@@ -119,8 +119,18 @@ class CSVConverter:
             )
             del self.data["mode"]
 
-    def _lowercase_column_names(self):
+    def _unifi_column_names(self):
         self.data.columns = map(str.lower, self.data.columns)
+        self.data.rename(
+            columns={
+                "division factor": "factor",
+                "size of variable": "size",
+                "min value": "min",
+                "max value": "max",
+                "default value": "default",
+            },
+            inplace=True,
+        )
 
     def _read_csv(self):
         with open(self.in_file, encoding="latin1") as f:
@@ -146,7 +156,9 @@ class CSVConverter:
             )
 
     def _update_index(self):
-        def calculate_number(register_type: str, register: str):
+        def calculate_number(row):
+            register_type: str = row["register type"]
+            register: str = row["register"]
             if register_type == "MODBUS_COIL":
                 return str(10000 + int(register))
             if register_type == "MODBUS_DISCRETE_INPUT":
@@ -158,10 +170,17 @@ class CSVConverter:
             return None
 
         if "id" not in self.data:
-            self.data["id"] = self.data["registertype"].combine(
-                self.data["register"], calculate_number
+            id_prefixed = (self.data["title"].str.startswith("id:")) | (
+                self.data["title"] == "-"
             )
-            del self.data["registertype"]
+            logger.warning(
+                "Ignoring unnamed and often duplicated rows:\n%s",
+                self.data.loc[id_prefixed],
+            )
+            self.data = self.data.loc[~id_prefixed]
+
+            self.data["id"] = self.data.apply(calculate_number, axis=1)
+            del self.data["register type"]
             del self.data["register"]
         self.data = self.data.set_index("id")
 
@@ -169,6 +188,7 @@ class CSVConverter:
         o = self._make_dict()
         with open(self.out_file, "w") as fh:
             json.dump(o, fh, indent=2)
+            fh.write("\n")
 
 
 def run():
