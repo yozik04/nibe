@@ -111,6 +111,13 @@
     "size": "s16",
     "name": "collector-out-az10-bt27-30022"
   },
+  "30026": {
+    "title": "Roomsensor 1-1",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "roomsensor-1-1-30026"
+  },
   "30031": {
     "title": "Return line (EQ1-BT65)",
     "factor": 10,
@@ -4970,7 +4977,7 @@
     "size": "s16",
     "min": "50",
     "max": "700",
-    "default": "470",
+    "default": "500",
     "name": "start-temperature-hw-high-temperature-40058"
   },
   "40059": {
@@ -4980,7 +4987,7 @@
     "size": "s16",
     "min": "50",
     "max": "600",
-    "default": "440",
+    "default": "470",
     "name": "start-temperature-hw-normal-temperature-40059"
   },
   "40060": {
@@ -4990,7 +4997,7 @@
     "size": "s16",
     "min": "50",
     "max": "550",
-    "default": "400",
+    "default": "430",
     "name": "start-temperature-hw-low-temperature-40060"
   },
   "40061": {
@@ -5010,7 +5017,7 @@
     "size": "s16",
     "min": "50",
     "max": "700",
-    "default": "510",
+    "default": "540",
     "name": "stop-temperature-hw-high-temperature-40062"
   },
   "40063": {
@@ -5020,7 +5027,7 @@
     "size": "s16",
     "min": "50",
     "max": "650",
-    "default": "480",
+    "default": "510",
     "name": "stop-temperature-hw-normal-temperature-40063"
   },
   "40064": {
@@ -5030,7 +5037,7 @@
     "size": "s16",
     "min": "50",
     "max": "600",
-    "default": "440",
+    "default": "470",
     "name": "stop-temperature-hw-low-temperature-40064"
   },
   "40065": {
@@ -6176,6 +6183,33 @@
     "default": "0",
     "name": "activated-smart-price-adaption-40843"
   },
+  "40844": {
+    "title": "(SPA), heating activated (SPA)",
+    "factor": 1,
+    "size": "u8",
+    "min": "0",
+    "max": "1",
+    "default": "1",
+    "name": "spa-heating-activated-spa-40844"
+  },
+  "40845": {
+    "title": "(SPA), heating influence",
+    "factor": 1,
+    "size": "s8",
+    "min": "1",
+    "max": "10",
+    "default": "5",
+    "name": "spa-heating-influence-40845"
+  },
+  "40846": {
+    "title": "(SPA), hot water activated",
+    "factor": 1,
+    "size": "u8",
+    "min": "0",
+    "max": "1",
+    "default": "1",
+    "name": "spa-hot-water-activated-40846"
+  },
   "40849": {
     "title": "(SPA), cooling activated",
     "factor": 1,
@@ -6300,6 +6334,15 @@
     "default": "200",
     "name": "external-adjustment-with-room-sensor-climate-system-5-40900"
   },
+  "40902": {
+    "title": "(SPA), hot water influence",
+    "factor": 1,
+    "size": "s8",
+    "min": "1",
+    "max": "4",
+    "default": "2",
+    "name": "spa-hot-water-influence-40902"
+  },
   "40903": {
     "title": "Initiate inverter",
     "factor": 1,
@@ -6408,7 +6451,7 @@
     "size": "s8",
     "min": "0",
     "max": "1",
-    "default": "1",
+    "default": "0",
     "name": "blockfreq-1-activated-40943"
   },
   "40945": {

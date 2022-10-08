@@ -15,6 +15,7 @@ Liquid line (BT15)	MODBUS_INPUT_REGISTER	14	10	°C	2	0	0	0
 Suction gas (BT17)	MODBUS_INPUT_REGISTER	16	10	°C	2	0	0	0
 Collector in (AZ10-BT26)	MODBUS_INPUT_REGISTER	21	10	°C	2	0	0	0
 Collector out (AZ10-BT27)	MODBUS_INPUT_REGISTER	22	10	°C	2	0	0	0
+Roomsensor 1-1	MODBUS_INPUT_REGISTER	26	10	°C	2	0	0	0
 Return line (EQ1-BT65)	MODBUS_INPUT_REGISTER	31	10	°C	2	0	0	0
 Temperature limiter (EB100-FD1)	MODBUS_INPUT_REGISTER	36	1		2	0	0	0
 Average temperature (BT1)	MODBUS_INPUT_REGISTER	37	10	°C	2	0	0	0
@@ -753,13 +754,13 @@ Point offset	MODBUS_HOLDING_REGISTER	47	1	°C	1	-10	10	0
 External adjustment climate system 1	MODBUS_HOLDING_REGISTER	51	1		1	-10	10	0
 External adjustment with room sensor climate system 1	MODBUS_HOLDING_REGISTER	55	10	°C	2	50	300	200
 Hot water demand mode	MODBUS_HOLDING_REGISTER	56	1		1	0	4	1
-Start temperature HW high temperature	MODBUS_HOLDING_REGISTER	58	10	°C	2	50	700	470
-Start temperature HW normal temperature	MODBUS_HOLDING_REGISTER	59	10	°C	2	50	600	440
-Start temperature HW low temperature	MODBUS_HOLDING_REGISTER	60	10	°C	2	50	550	400
+Start temperature HW high temperature	MODBUS_HOLDING_REGISTER	58	10	°C	2	50	700	500
+Start temperature HW normal temperature	MODBUS_HOLDING_REGISTER	59	10	°C	2	50	600	470
+Start temperature HW low temperature	MODBUS_HOLDING_REGISTER	60	10	°C	2	50	550	430
 Stop temperature HW periodic increase	MODBUS_HOLDING_REGISTER	61	10	°C	2	550	700	550
-Stop temperature HW high temperature	MODBUS_HOLDING_REGISTER	62	10	°C	2	50	700	510
-Stop temperature HW normal temperature	MODBUS_HOLDING_REGISTER	63	10	°C	2	50	650	480
-Stop temperature HW low temperature	MODBUS_HOLDING_REGISTER	64	10	°C	2	50	600	440
+Stop temperature HW high temperature	MODBUS_HOLDING_REGISTER	62	10	°C	2	50	700	540
+Stop temperature HW normal temperature	MODBUS_HOLDING_REGISTER	63	10	°C	2	50	650	510
+Stop temperature HW low temperature	MODBUS_HOLDING_REGISTER	64	10	°C	2	50	600	470
 Periodic hot water	MODBUS_HOLDING_REGISTER	65	1		1	0	1	1
 Periodic hot water interval	MODBUS_HOLDING_REGISTER	66	1	days	1	1	90	7
 Start time periodic hot water	MODBUS_HOLDING_REGISTER	67	1		-	-	-	-
@@ -901,6 +902,9 @@ id:4711	MODBUS_HOLDING_REGISTER	0	1		4	0	0	0
 Input AUX5	MODBUS_HOLDING_REGISTER	767	1		4	0	59	0
 Speed, circulation pump, standby mode (EB100)	MODBUS_HOLDING_REGISTER	842	1	%	4	0	0	0
 Activated (Smart Price Adaption)	MODBUS_HOLDING_REGISTER	843	1		4	0	1	0
+(SPA), heating activated (SPA)	MODBUS_HOLDING_REGISTER	844	1		4	0	1	1
+(SPA), heating influence	MODBUS_HOLDING_REGISTER	845	1		1	1	10	5
+(SPA), hot water activated	MODBUS_HOLDING_REGISTER	846	1		4	0	1	1
 (SPA), cooling activated	MODBUS_HOLDING_REGISTER	849	1		4	0	1	1
 (SPA), area	MODBUS_HOLDING_REGISTER	851	1		4	0	254	23
 Automatic speed heating medium pump, hot water	MODBUS_HOLDING_REGISTER	852	1	%	1	0	1	1
@@ -914,6 +918,7 @@ External adjustment with room sensor climate system 8	MODBUS_HOLDING_REGISTER	89
 External adjustment with room sensor climate system 7	MODBUS_HOLDING_REGISTER	898	10	°C	2	50	300	200
 External adjustment with room sensor climate system 6	MODBUS_HOLDING_REGISTER	899	10	°C	2	50	300	200
 External adjustment with room sensor climate system 5	MODBUS_HOLDING_REGISTER	900	10	°C	2	50	300	200
+(SPA), hot water influence	MODBUS_HOLDING_REGISTER	902	1		1	1	4	2
 Initiate inverter	MODBUS_HOLDING_REGISTER	903	1		4	0	0	0
 Force initiated inverter	MODBUS_HOLDING_REGISTER	904	1		4	0	0	0
 Climate system 5	MODBUS_HOLDING_REGISTER	905	1		4	0	1	0
@@ -926,7 +931,7 @@ EB103/104-GP12	MODBUS_HOLDING_REGISTER	939	1		4	0	1	0
 EB105/106-GP12	MODBUS_HOLDING_REGISTER	940	1		4	0	1	0
 EB107/108-GP12	MODBUS_HOLDING_REGISTER	941	1		4	0	1	0
 BlockFreq 2 activated	MODBUS_HOLDING_REGISTER	942	1		1	0	1	0
-BlockFreq 1 activated	MODBUS_HOLDING_REGISTER	943	1		1	0	1	1
+BlockFreq 1 activated	MODBUS_HOLDING_REGISTER	943	1		1	0	1	0
 BlockFreq 1 start	MODBUS_HOLDING_REGISTER	945	1	Hz	4	20	113	91
 BlockFreq 1 stop	MODBUS_HOLDING_REGISTER	947	1	Hz	4	25	118	120
 id:4969	MODBUS_HOLDING_REGISTER	4091	1		4	0	1	0
