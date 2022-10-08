@@ -16,6 +16,9 @@ class Model(Enum):
     F1155 = "f1155_f1255"
     F1255 = "f1155_f1255"
 
+    S1155 = "s1155_s1255"
+    S1255 = "s1155_s1255"
+
     F1145 = "f1145_f1245"
     F1245 = "f1145_f1245"
 
@@ -30,6 +33,8 @@ class Model(Enum):
 
     SMO20 = "smo20"
     SMO40 = "smo40"
+
+    SMOS40 = "smos40"
 
     VVM225 = "vvm225_vvm320_vvm325"
     VVM320 = "vvm225_vvm320_vvm325"
