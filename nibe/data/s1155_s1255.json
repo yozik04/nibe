@@ -476,7 +476,8 @@
     "title": "Inverter fault reset",
     "factor": 1,
     "size": "u16",
-    "name": "inverter-fault-reset-42755"
+    "name": "inverter-fault-reset-42755",
+    "write": true
   },
   "30140": {
     "title": "Requested compressor frequency",
@@ -1258,7 +1259,8 @@
     "min": "1",
     "max": "10",
     "default": "5",
-    "name": "adjust-parallel-factor-40001"
+    "name": "adjust-parallel-factor-40001",
+    "write": true
   },
   "40002": {
     "title": "+Adjust, Parallel (min-max)",
@@ -1267,7 +1269,8 @@
     "min": "1",
     "max": "100",
     "default": "100",
-    "name": "adjust-parallel-min-max-40002"
+    "name": "adjust-parallel-min-max-40002",
+    "write": true
   },
   "30337": {
     "title": "Supply temperature (BT64)",
@@ -1302,7 +1305,8 @@
     "min": "-30000",
     "max": "30000",
     "default": "0",
-    "name": "degree-minutes-40011"
+    "name": "degree-minutes-40011",
+    "write": true
   },
   "30358": {
     "title": "Blocking (ERS 1)",
@@ -3240,7 +3244,8 @@
     "min": "-30000",
     "max": "30000",
     "default": "0",
-    "name": "limit-dm-40018"
+    "name": "limit-dm-40018",
+    "write": true
   },
   "31017": {
     "title": "Calculated supply climate system 1",
@@ -3480,7 +3485,8 @@
     "title": "Holiday function status",
     "factor": 1,
     "size": "s8",
-    "name": "holiday-function-status-40019"
+    "name": "holiday-function-status-40019",
+    "write": true
   },
   "31083": {
     "title": "Compressor starter",
@@ -3938,7 +3944,8 @@
     "min": "-30000",
     "max": "30000",
     "default": "0",
-    "name": "cooling-degree-minutes-40020"
+    "name": "cooling-degree-minutes-40020",
+    "write": true
   },
   "31568": {
     "title": "Status (ACS)",
@@ -4806,7 +4813,8 @@
     "title": "Reset alarm",
     "factor": 1,
     "size": "u8",
-    "name": "reset-alarm-40022"
+    "name": "reset-alarm-40022",
+    "write": true
   },
   "31976": {
     "title": "Non module-specific alarm numbers",
@@ -4821,7 +4829,8 @@
     "min": "0",
     "max": "15",
     "default": "9",
-    "name": "heating-curve-climate-system-1-40026"
+    "name": "heating-curve-climate-system-1-40026",
+    "write": true
   },
   "40030": {
     "title": "Heating offset climate system 1",
@@ -4830,7 +4839,8 @@
     "min": "-10",
     "max": "10",
     "default": "0",
-    "name": "heating-offset-climate-system-1-40030"
+    "name": "heating-offset-climate-system-1-40030",
+    "write": true
   },
   "40034": {
     "title": "Min supply climate system 1",
@@ -4840,7 +4850,8 @@
     "min": "50",
     "max": "800",
     "default": "200",
-    "name": "min-supply-climate-system-1-40034"
+    "name": "min-supply-climate-system-1-40034",
+    "write": true
   },
   "40038": {
     "title": "Max supply climate system 1",
@@ -4850,7 +4861,8 @@
     "min": "50",
     "max": "800",
     "default": "600",
-    "name": "max-supply-climate-system-1-40038"
+    "name": "max-supply-climate-system-1-40038",
+    "write": true
   },
   "40039": {
     "title": "Own curve, heating P7",
@@ -4860,7 +4872,8 @@
     "min": "5",
     "max": "80",
     "default": "15",
-    "name": "own-curve-heating-p7-40039"
+    "name": "own-curve-heating-p7-40039",
+    "write": true
   },
   "40040": {
     "title": "Own curve, heating P6",
@@ -4870,7 +4883,8 @@
     "min": "5",
     "max": "80",
     "default": "15",
-    "name": "own-curve-heating-p6-40040"
+    "name": "own-curve-heating-p6-40040",
+    "write": true
   },
   "40041": {
     "title": "Own curve, heating P5",
@@ -4880,7 +4894,8 @@
     "min": "5",
     "max": "80",
     "default": "26",
-    "name": "own-curve-heating-p5-40041"
+    "name": "own-curve-heating-p5-40041",
+    "write": true
   },
   "40042": {
     "title": "Own curve, heating P4",
@@ -4890,7 +4905,8 @@
     "min": "5",
     "max": "80",
     "default": "32",
-    "name": "own-curve-heating-p4-40042"
+    "name": "own-curve-heating-p4-40042",
+    "write": true
   },
   "40043": {
     "title": "Own curve, heating P3",
@@ -4900,7 +4916,8 @@
     "min": "5",
     "max": "80",
     "default": "35",
-    "name": "own-curve-heating-p3-40043"
+    "name": "own-curve-heating-p3-40043",
+    "write": true
   },
   "40044": {
     "title": "Own curve, heating P2",
@@ -4910,7 +4927,8 @@
     "min": "5",
     "max": "80",
     "default": "40",
-    "name": "own-curve-heating-p2-40044"
+    "name": "own-curve-heating-p2-40044",
+    "write": true
   },
   "40045": {
     "title": "Own curve, heating P1",
@@ -4920,7 +4938,8 @@
     "min": "5",
     "max": "80",
     "default": "45",
-    "name": "own-curve-heating-p1-40045"
+    "name": "own-curve-heating-p1-40045",
+    "write": true
   },
   "40046": {
     "title": "Point offset outdoor temperature",
@@ -4930,7 +4949,8 @@
     "min": "-40",
     "max": "30",
     "default": "0",
-    "name": "point-offset-outdoor-temperature-40046"
+    "name": "point-offset-outdoor-temperature-40046",
+    "write": true
   },
   "40047": {
     "title": "Point offset",
@@ -4940,7 +4960,8 @@
     "min": "-10",
     "max": "10",
     "default": "0",
-    "name": "point-offset-40047"
+    "name": "point-offset-40047",
+    "write": true
   },
   "40051": {
     "title": "External adjustment climate system 1",
@@ -4949,7 +4970,8 @@
     "min": "-10",
     "max": "10",
     "default": "0",
-    "name": "external-adjustment-climate-system-1-40051"
+    "name": "external-adjustment-climate-system-1-40051",
+    "write": true
   },
   "40055": {
     "title": "External adjustment with room sensor climate system 1",
@@ -4959,7 +4981,8 @@
     "min": "50",
     "max": "300",
     "default": "200",
-    "name": "external-adjustment-with-room-sensor-climate-system-1-40055"
+    "name": "external-adjustment-with-room-sensor-climate-system-1-40055",
+    "write": true
   },
   "40056": {
     "title": "Hot water demand mode",
@@ -4968,7 +4991,8 @@
     "min": "0",
     "max": "4",
     "default": "1",
-    "name": "hot-water-demand-mode-40056"
+    "name": "hot-water-demand-mode-40056",
+    "write": true
   },
   "40058": {
     "title": "Start temperature HW high temperature",
@@ -4978,7 +5002,8 @@
     "min": "50",
     "max": "700",
     "default": "500",
-    "name": "start-temperature-hw-high-temperature-40058"
+    "name": "start-temperature-hw-high-temperature-40058",
+    "write": true
   },
   "40059": {
     "title": "Start temperature HW normal temperature",
@@ -4988,7 +5013,8 @@
     "min": "50",
     "max": "600",
     "default": "470",
-    "name": "start-temperature-hw-normal-temperature-40059"
+    "name": "start-temperature-hw-normal-temperature-40059",
+    "write": true
   },
   "40060": {
     "title": "Start temperature HW low temperature",
@@ -4998,7 +5024,8 @@
     "min": "50",
     "max": "550",
     "default": "430",
-    "name": "start-temperature-hw-low-temperature-40060"
+    "name": "start-temperature-hw-low-temperature-40060",
+    "write": true
   },
   "40061": {
     "title": "Stop temperature HW periodic increase",
@@ -5008,7 +5035,8 @@
     "min": "550",
     "max": "700",
     "default": "550",
-    "name": "stop-temperature-hw-periodic-increase-40061"
+    "name": "stop-temperature-hw-periodic-increase-40061",
+    "write": true
   },
   "40062": {
     "title": "Stop temperature HW high temperature",
@@ -5018,7 +5046,8 @@
     "min": "50",
     "max": "700",
     "default": "540",
-    "name": "stop-temperature-hw-high-temperature-40062"
+    "name": "stop-temperature-hw-high-temperature-40062",
+    "write": true
   },
   "40063": {
     "title": "Stop temperature HW normal temperature",
@@ -5028,7 +5057,8 @@
     "min": "50",
     "max": "650",
     "default": "510",
-    "name": "stop-temperature-hw-normal-temperature-40063"
+    "name": "stop-temperature-hw-normal-temperature-40063",
+    "write": true
   },
   "40064": {
     "title": "Stop temperature HW low temperature",
@@ -5038,7 +5068,8 @@
     "min": "50",
     "max": "600",
     "default": "470",
-    "name": "stop-temperature-hw-low-temperature-40064"
+    "name": "stop-temperature-hw-low-temperature-40064",
+    "write": true
   },
   "40065": {
     "title": "Periodic hot water",
@@ -5047,7 +5078,8 @@
     "min": "0",
     "max": "1",
     "default": "1",
-    "name": "periodic-hot-water-40065"
+    "name": "periodic-hot-water-40065",
+    "write": true
   },
   "40066": {
     "title": "Periodic hot water interval",
@@ -5057,12 +5089,14 @@
     "min": "1",
     "max": "90",
     "default": "7",
-    "name": "periodic-hot-water-interval-40066"
+    "name": "periodic-hot-water-interval-40066",
+    "write": true
   },
   "40067": {
     "title": "Start time periodic hot water",
     "factor": 1,
-    "name": "start-time-periodic-hot-water-40067"
+    "name": "start-time-periodic-hot-water-40067",
+    "write": true
   },
   "42754": {
     "title": "Hot water circulation",
@@ -5071,7 +5105,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "hot-water-circulation-42754"
+    "name": "hot-water-circulation-42754",
+    "write": true
   },
   "40091": {
     "title": "Language",
@@ -5080,7 +5115,8 @@
     "min": "0",
     "max": "22",
     "default": "0",
-    "name": "language-40091"
+    "name": "language-40091",
+    "write": true
   },
   "40092": {
     "title": "Period time hot water",
@@ -5090,7 +5126,8 @@
     "min": "0",
     "max": "180",
     "default": "30",
-    "name": "period-time-hot-water-40092"
+    "name": "period-time-hot-water-40092",
+    "write": true
   },
   "40093": {
     "title": "Period time heating",
@@ -5100,7 +5137,8 @@
     "min": "0",
     "max": "180",
     "default": "30",
-    "name": "period-time-heating-40093"
+    "name": "period-time-heating-40093",
+    "write": true
   },
   "42743": {
     "title": "Operating mode",
@@ -5109,7 +5147,8 @@
     "min": "0",
     "max": "2",
     "default": "0",
-    "name": "operating-mode-42743"
+    "name": "operating-mode-42743",
+    "write": true
   },
   "40095": {
     "title": "Operating mode heating medium pump",
@@ -5118,7 +5157,8 @@
     "min": "10",
     "max": "40",
     "default": "40",
-    "name": "operating-mode-heating-medium-pump-40095"
+    "name": "operating-mode-heating-medium-pump-40095",
+    "write": true
   },
   "40096": {
     "title": "Operating mode brine pump",
@@ -5127,13 +5167,15 @@
     "min": "10",
     "max": "30",
     "default": "10",
-    "name": "operating-mode-brine-pump-40096"
+    "name": "operating-mode-brine-pump-40096",
+    "write": true
   },
   "45000": {
     "title": "Activate force control",
     "factor": 1,
     "size": "u8",
-    "name": "activate-force-control-45000"
+    "name": "activate-force-control-45000",
+    "write": true
   },
   "40102": {
     "title": "Max. internal additional heat",
@@ -5143,7 +5185,8 @@
     "min": "0",
     "max": "4500",
     "default": "700",
-    "name": "max-internal-additional-heat-40102"
+    "name": "max-internal-additional-heat-40102",
+    "write": true
   },
   "40103": {
     "title": "Fuse",
@@ -5153,7 +5196,8 @@
     "min": "1",
     "max": "400",
     "default": "16",
-    "name": "fuse-40103"
+    "name": "fuse-40103",
+    "write": true
   },
   "40120": {
     "title": "Floor drying",
@@ -5162,7 +5206,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "floor-drying-40120"
+    "name": "floor-drying-40120",
+    "write": true
   },
   "40121": {
     "title": "Floor drying period 7",
@@ -5172,7 +5217,8 @@
     "min": "0",
     "max": "30",
     "default": "2",
-    "name": "floor-drying-period-7-40121"
+    "name": "floor-drying-period-7-40121",
+    "write": true
   },
   "40122": {
     "title": "Floor drying period 6",
@@ -5182,7 +5228,8 @@
     "min": "0",
     "max": "30",
     "default": "2",
-    "name": "floor-drying-period-6-40122"
+    "name": "floor-drying-period-6-40122",
+    "write": true
   },
   "40123": {
     "title": "Floor drying period 5",
@@ -5192,7 +5239,8 @@
     "min": "0",
     "max": "30",
     "default": "2",
-    "name": "floor-drying-period-5-40123"
+    "name": "floor-drying-period-5-40123",
+    "write": true
   },
   "40124": {
     "title": "Floor drying period 4",
@@ -5202,7 +5250,8 @@
     "min": "0",
     "max": "30",
     "default": "3",
-    "name": "floor-drying-period-4-40124"
+    "name": "floor-drying-period-4-40124",
+    "write": true
   },
   "40125": {
     "title": "Floor drying period 3",
@@ -5212,7 +5261,8 @@
     "min": "0",
     "max": "30",
     "default": "2",
-    "name": "floor-drying-period-3-40125"
+    "name": "floor-drying-period-3-40125",
+    "write": true
   },
   "40126": {
     "title": "Floor drying period 2",
@@ -5222,7 +5272,8 @@
     "min": "0",
     "max": "30",
     "default": "2",
-    "name": "floor-drying-period-2-40126"
+    "name": "floor-drying-period-2-40126",
+    "write": true
   },
   "40127": {
     "title": "Floor drying period 1",
@@ -5232,7 +5283,8 @@
     "min": "0",
     "max": "30",
     "default": "2",
-    "name": "floor-drying-period-1-40127"
+    "name": "floor-drying-period-1-40127",
+    "write": true
   },
   "40128": {
     "title": "Floor drying temp. 7",
@@ -5242,7 +5294,8 @@
     "min": "15",
     "max": "70",
     "default": "20",
-    "name": "floor-drying-temp-7-40128"
+    "name": "floor-drying-temp-7-40128",
+    "write": true
   },
   "40129": {
     "title": "Floor drying temp. 6",
@@ -5252,7 +5305,8 @@
     "min": "15",
     "max": "70",
     "default": "30",
-    "name": "floor-drying-temp-6-40129"
+    "name": "floor-drying-temp-6-40129",
+    "write": true
   },
   "40130": {
     "title": "Floor drying temp. 5",
@@ -5262,7 +5316,8 @@
     "min": "15",
     "max": "70",
     "default": "40",
-    "name": "floor-drying-temp-5-40130"
+    "name": "floor-drying-temp-5-40130",
+    "write": true
   },
   "40131": {
     "title": "Floor drying temp. 4",
@@ -5272,7 +5327,8 @@
     "min": "15",
     "max": "70",
     "default": "45",
-    "name": "floor-drying-temp-4-40131"
+    "name": "floor-drying-temp-4-40131",
+    "write": true
   },
   "40132": {
     "title": "Floor drying temp. 3",
@@ -5282,7 +5338,8 @@
     "min": "15",
     "max": "70",
     "default": "40",
-    "name": "floor-drying-temp-3-40132"
+    "name": "floor-drying-temp-3-40132",
+    "write": true
   },
   "40133": {
     "title": "Floor drying temp. 2",
@@ -5292,7 +5349,8 @@
     "min": "15",
     "max": "70",
     "default": "30",
-    "name": "floor-drying-temp-2-40133"
+    "name": "floor-drying-temp-2-40133",
+    "write": true
   },
   "40134": {
     "title": "Floor drying temp. 1",
@@ -5302,7 +5360,8 @@
     "min": "15",
     "max": "70",
     "default": "20",
-    "name": "floor-drying-temp-1-40134"
+    "name": "floor-drying-temp-1-40134",
+    "write": true
   },
   "31977": {
     "title": "Floor drying ongoing time.",
@@ -5321,7 +5380,8 @@
     "min": "-400",
     "max": "200",
     "default": "-180",
-    "name": "dimensioned-outdoor-temperature-40140"
+    "name": "dimensioned-outdoor-temperature-40140",
+    "write": true
   },
   "40141": {
     "title": "Delta T for DOT",
@@ -5331,7 +5391,8 @@
     "min": "10",
     "max": "250",
     "default": "100",
-    "name": "delta-t-for-dot-40141"
+    "name": "delta-t-for-dot-40141",
+    "write": true
   },
   "40142": {
     "title": "Climate system 2",
@@ -5340,7 +5401,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "climate-system-2-40142"
+    "name": "climate-system-2-40142",
+    "write": true
   },
   "40143": {
     "title": "Climate system 3",
@@ -5349,7 +5411,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "climate-system-3-40143"
+    "name": "climate-system-3-40143",
+    "write": true
   },
   "40144": {
     "title": "Climate system 4",
@@ -5358,7 +5421,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "climate-system-4-40144"
+    "name": "climate-system-4-40144",
+    "write": true
   },
   "40153": {
     "title": "Shunt controlled additional heat",
@@ -5367,7 +5431,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "shunt-controlled-additional-heat-40153"
+    "name": "shunt-controlled-additional-heat-40153",
+    "write": true
   },
   "40157": {
     "title": "Wait time shunt, shunt controlled additional heat",
@@ -5377,7 +5442,8 @@
     "min": "10",
     "max": "300",
     "default": "30",
-    "name": "wait-time-shunt-shunt-controlled-additional-heat-40157"
+    "name": "wait-time-shunt-shunt-controlled-additional-heat-40157",
+    "write": true
   },
   "40158": {
     "title": "Step controlled additional heat accessory",
@@ -5386,7 +5452,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "step-controlled-additional-heat-accessory-40158"
+    "name": "step-controlled-additional-heat-accessory-40158",
+    "write": true
   },
   "40159": {
     "title": "DM start step controlled additional heat",
@@ -5396,7 +5463,8 @@
     "min": "-2000",
     "max": "-30",
     "default": "-400",
-    "name": "dm-start-step-controlled-additional-heat-40159"
+    "name": "dm-start-step-controlled-additional-heat-40159",
+    "write": true
   },
   "40162": {
     "title": "Ground water pump accessory",
@@ -5405,7 +5473,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "ground-water-pump-accessory-40162"
+    "name": "ground-water-pump-accessory-40162",
+    "write": true
   },
   "41980": {
     "title": "PCI accessories",
@@ -5414,7 +5483,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "pci-accessories-41980"
+    "name": "pci-accessories-41980",
+    "write": true
   },
   "40163": {
     "title": "Cooling 2-pipe",
@@ -5423,7 +5493,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "cooling-2-pipe-40163"
+    "name": "cooling-2-pipe-40163",
+    "write": true
   },
   "40164": {
     "title": "Cooling 4-pipe",
@@ -5432,7 +5503,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "cooling-4-pipe-40164"
+    "name": "cooling-4-pipe-40164",
+    "write": true
   },
   "40165": {
     "title": "Waiting time cooling/heating",
@@ -5442,7 +5514,8 @@
     "min": "0",
     "max": "48",
     "default": "2",
-    "name": "waiting-time-cooling-heating-40165"
+    "name": "waiting-time-cooling-heating-40165",
+    "write": true
   },
   "40166": {
     "title": "Heating start at under temp.",
@@ -5452,7 +5525,8 @@
     "min": "5",
     "max": "100",
     "default": "10",
-    "name": "heating-start-at-under-temp-40166"
+    "name": "heating-start-at-under-temp-40166",
+    "write": true
   },
   "40167": {
     "title": "Cooling start at over temp.",
@@ -5462,7 +5536,8 @@
     "min": "5",
     "max": "100",
     "default": "30",
-    "name": "cooling-start-at-over-temp-40167"
+    "name": "cooling-start-at-over-temp-40167",
+    "write": true
   },
   "40168": {
     "title": "Cooling shunt amplification",
@@ -5471,7 +5546,8 @@
     "min": "1",
     "max": "100",
     "default": "10",
-    "name": "cooling-shunt-amplification-40168"
+    "name": "cooling-shunt-amplification-40168",
+    "write": true
   },
   "40169": {
     "title": "Cooling shunt waiting time",
@@ -5481,7 +5557,8 @@
     "min": "10",
     "max": "300",
     "default": "30",
-    "name": "cooling-shunt-waiting-time-40169"
+    "name": "cooling-shunt-waiting-time-40169",
+    "write": true
   },
   "40170": {
     "title": "Cooling with room sensors",
@@ -5490,7 +5567,8 @@
     "min": "0",
     "max": "41",
     "default": "0",
-    "name": "cooling-with-room-sensors-40170"
+    "name": "cooling-with-room-sensors-40170",
+    "write": true
   },
   "40171": {
     "title": "HPAC",
@@ -5499,7 +5577,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "hpac-40171"
+    "name": "hpac-40171",
+    "write": true
   },
   "40172": {
     "title": "Start passive cooling DM",
@@ -5509,7 +5588,8 @@
     "min": "10",
     "max": "500",
     "default": "30",
-    "name": "start-passive-cooling-dm-40172"
+    "name": "start-passive-cooling-dm-40172",
+    "write": true
   },
   "40173": {
     "title": "Start active cooling DM",
@@ -5519,7 +5599,8 @@
     "min": "10",
     "max": "300",
     "default": "90",
-    "name": "start-active-cooling-dm-40173"
+    "name": "start-active-cooling-dm-40173",
+    "write": true
   },
   "42744": {
     "title": "Changes have been made",
@@ -5528,7 +5609,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "changes-have-been-made-42744"
+    "name": "changes-have-been-made-42744",
+    "write": true
   },
   "40180": {
     "title": "Permit additional heat, heating",
@@ -5537,7 +5619,8 @@
     "min": "0",
     "max": "1",
     "default": "1",
-    "name": "permit-additional-heat-heating-40180"
+    "name": "permit-additional-heat-heating-40180",
+    "write": true
   },
   "40181": {
     "title": "Permit heating",
@@ -5546,7 +5629,8 @@
     "min": "0",
     "max": "1",
     "default": "1",
-    "name": "permit-heating-40181"
+    "name": "permit-heating-40181",
+    "write": true
   },
   "40182": {
     "title": "Permit cooling",
@@ -5555,7 +5639,8 @@
     "min": "0",
     "max": "1",
     "default": "1",
-    "name": "permit-cooling-40182"
+    "name": "permit-cooling-40182",
+    "write": true
   },
   "40183": {
     "title": "Auto mode, start temperature for cooling",
@@ -5565,7 +5650,8 @@
     "min": "-200",
     "max": "400",
     "default": "250",
-    "name": "auto-mode-start-temperature-for-cooling-40183"
+    "name": "auto-mode-start-temperature-for-cooling-40183",
+    "write": true
   },
   "40184": {
     "title": "Auto mode, stop temperature for heating",
@@ -5575,7 +5661,8 @@
     "min": "-200",
     "max": "400",
     "default": "170",
-    "name": "auto-mode-stop-temperature-for-heating-40184"
+    "name": "auto-mode-stop-temperature-for-heating-40184",
+    "write": true
   },
   "40185": {
     "title": "Auto mode, additional heat stop temperature",
@@ -5585,7 +5672,8 @@
     "min": "-250",
     "max": "400",
     "default": "50",
-    "name": "auto-mode-additional-heat-stop-temperature-40185"
+    "name": "auto-mode-additional-heat-stop-temperature-40185",
+    "write": true
   },
   "40186": {
     "title": "Auto mode filter time",
@@ -5595,7 +5683,8 @@
     "min": "0",
     "max": "48",
     "default": "24",
-    "name": "auto-mode-filter-time-40186"
+    "name": "auto-mode-filter-time-40186",
+    "write": true
   },
   "40187": {
     "title": "Max difference supply, compressor",
@@ -5605,7 +5694,8 @@
     "min": "10",
     "max": "250",
     "default": "100",
-    "name": "max-difference-supply-compressor-40187"
+    "name": "max-difference-supply-compressor-40187",
+    "write": true
   },
   "40188": {
     "title": "Max difference supply, additional heat",
@@ -5615,7 +5705,8 @@
     "min": "10",
     "max": "240",
     "default": "30",
-    "name": "max-difference-supply-additional-heat-40188"
+    "name": "max-difference-supply-additional-heat-40188",
+    "write": true
   },
   "40189": {
     "title": "Low brine alarm auto reset",
@@ -5624,7 +5715,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "low-brine-alarm-auto-reset-40189"
+    "name": "low-brine-alarm-auto-reset-40189",
+    "write": true
   },
   "40190": {
     "title": "Low brine out alarm temperature (EP14)",
@@ -5634,13 +5726,15 @@
     "min": "-120",
     "max": "150",
     "default": "-80",
-    "name": "low-brine-out-alarm-temperature-ep14-40190"
+    "name": "low-brine-out-alarm-temperature-ep14-40190",
+    "write": true
   },
   "40191": {
     "title": "High brine in alarm active",
     "factor": 1,
     "size": "u8",
-    "name": "high-brine-in-alarm-active-40191"
+    "name": "high-brine-in-alarm-active-40191",
+    "write": true
   },
   "40192": {
     "title": "High brine in alarm temperature",
@@ -5650,7 +5744,8 @@
     "min": "100",
     "max": "300",
     "default": "300",
-    "name": "high-brine-in-alarm-temperature-40192"
+    "name": "high-brine-in-alarm-temperature-40192",
+    "write": true
   },
   "40194": {
     "title": "Time format",
@@ -5659,7 +5754,8 @@
     "min": "0",
     "max": "1",
     "default": "1",
-    "name": "time-format-40194"
+    "name": "time-format-40194",
+    "write": true
   },
   "40196": {
     "title": "Alarm action, lower room temperature",
@@ -5668,7 +5764,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "alarm-action-lower-room-temperature-40196"
+    "name": "alarm-action-lower-room-temperature-40196",
+    "write": true
   },
   "40197": {
     "title": "Alarm action lower HW temperature",
@@ -5677,13 +5774,15 @@
     "min": "0",
     "max": "1",
     "default": "1",
-    "name": "alarm-action-lower-hw-temperature-40197"
+    "name": "alarm-action-lower-hw-temperature-40197",
+    "write": true
   },
   "40198": {
     "title": "Auxiliary operation on alarm",
     "factor": 1,
     "size": "u8",
-    "name": "auxiliary-operation-on-alarm-40198"
+    "name": "auxiliary-operation-on-alarm-40198",
+    "write": true
   },
   "40199": {
     "title": "Use room sensor climate system 4",
@@ -5692,7 +5791,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "use-room-sensor-climate-system-4-40199"
+    "name": "use-room-sensor-climate-system-4-40199",
+    "write": true
   },
   "40200": {
     "title": "Use room sensor climate system 3",
@@ -5701,7 +5801,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "use-room-sensor-climate-system-3-40200"
+    "name": "use-room-sensor-climate-system-3-40200",
+    "write": true
   },
   "40201": {
     "title": "Use room sensor climate system 2",
@@ -5710,7 +5811,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "use-room-sensor-climate-system-2-40201"
+    "name": "use-room-sensor-climate-system-2-40201",
+    "write": true
   },
   "40202": {
     "title": "Use room sensor climate system 1",
@@ -5719,7 +5821,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "use-room-sensor-climate-system-1-40202"
+    "name": "use-room-sensor-climate-system-1-40202",
+    "write": true
   },
   "40203": {
     "title": "Room sensor set point value climate system 4",
@@ -5729,7 +5832,8 @@
     "min": "50",
     "max": "300",
     "default": "200",
-    "name": "room-sensor-set-point-value-climate-system-4-40203"
+    "name": "room-sensor-set-point-value-climate-system-4-40203",
+    "write": true
   },
   "40204": {
     "title": "Room sensor set point value climate system 3",
@@ -5739,7 +5843,8 @@
     "min": "50",
     "max": "300",
     "default": "200",
-    "name": "room-sensor-set-point-value-climate-system-3-40204"
+    "name": "room-sensor-set-point-value-climate-system-3-40204",
+    "write": true
   },
   "40205": {
     "title": "Room sensor set point value climate system 2",
@@ -5749,7 +5854,8 @@
     "min": "50",
     "max": "300",
     "default": "200",
-    "name": "room-sensor-set-point-value-climate-system-2-40205"
+    "name": "room-sensor-set-point-value-climate-system-2-40205",
+    "write": true
   },
   "40206": {
     "title": "Room sensor set point value climate system 1",
@@ -5759,7 +5865,8 @@
     "min": "50",
     "max": "300",
     "default": "200",
-    "name": "room-sensor-set-point-value-climate-system-1-40206"
+    "name": "room-sensor-set-point-value-climate-system-1-40206",
+    "write": true
   },
   "40207": {
     "title": "Room sensor factor climate system 4",
@@ -5768,7 +5875,8 @@
     "min": "0",
     "max": "60",
     "default": "20",
-    "name": "room-sensor-factor-climate-system-4-40207"
+    "name": "room-sensor-factor-climate-system-4-40207",
+    "write": true
   },
   "40208": {
     "title": "Room sensor factor climate system 3",
@@ -5777,7 +5885,8 @@
     "min": "0",
     "max": "60",
     "default": "20",
-    "name": "room-sensor-factor-climate-system-3-40208"
+    "name": "room-sensor-factor-climate-system-3-40208",
+    "write": true
   },
   "40209": {
     "title": "Room sensor factor climate system 2",
@@ -5786,7 +5895,8 @@
     "min": "0",
     "max": "60",
     "default": "20",
-    "name": "room-sensor-factor-climate-system-2-40209"
+    "name": "room-sensor-factor-climate-system-2-40209",
+    "write": true
   },
   "40210": {
     "title": "Room sensor factor climate system 1",
@@ -5795,7 +5905,8 @@
     "min": "0",
     "max": "60",
     "default": "20",
-    "name": "room-sensor-factor-climate-system-1-40210"
+    "name": "room-sensor-factor-climate-system-1-40210",
+    "write": true
   },
   "40211": {
     "title": "Input AUX5",
@@ -5804,7 +5915,8 @@
     "min": "0",
     "max": "59",
     "default": "0",
-    "name": "input-aux5-40211"
+    "name": "input-aux5-40211",
+    "write": true
   },
   "40212": {
     "title": "Input AUX4",
@@ -5813,7 +5925,8 @@
     "min": "0",
     "max": "59",
     "default": "0",
-    "name": "input-aux4-40212"
+    "name": "input-aux4-40212",
+    "write": true
   },
   "40213": {
     "title": "Input AUX3",
@@ -5822,7 +5935,8 @@
     "min": "0",
     "max": "59",
     "default": "0",
-    "name": "input-aux3-40213"
+    "name": "input-aux3-40213",
+    "write": true
   },
   "40214": {
     "title": "Input AUX2",
@@ -5831,7 +5945,8 @@
     "min": "0",
     "max": "59",
     "default": "0",
-    "name": "input-aux2-40214"
+    "name": "input-aux2-40214",
+    "write": true
   },
   "40215": {
     "title": "Input AUX1",
@@ -5840,7 +5955,8 @@
     "min": "0",
     "max": "59",
     "default": "0",
-    "name": "input-aux1-40215"
+    "name": "input-aux1-40215",
+    "write": true
   },
   "40216": {
     "title": "Output AUX1",
@@ -5849,7 +5965,8 @@
     "min": "0",
     "max": "25",
     "default": "0",
-    "name": "output-aux1-40216"
+    "name": "output-aux1-40216",
+    "write": true
   },
   "40217": {
     "title": "Speed of circulation pump for hot water",
@@ -5859,7 +5976,8 @@
     "min": "1",
     "max": "100",
     "default": "70",
-    "name": "speed-of-circulation-pump-for-hot-water-40217"
+    "name": "speed-of-circulation-pump-for-hot-water-40217",
+    "write": true
   },
   "40218": {
     "title": "Speed of circulation pump for heating",
@@ -5869,7 +5987,8 @@
     "min": "1",
     "max": "100",
     "default": "70",
-    "name": "speed-of-circulation-pump-for-heating-40218"
+    "name": "speed-of-circulation-pump-for-heating-40218",
+    "write": true
   },
   "40219": {
     "title": "Speed, heating medium pump for pool",
@@ -5879,7 +5998,8 @@
     "min": "1",
     "max": "100",
     "default": "70",
-    "name": "speed-heating-medium-pump-for-pool-40219"
+    "name": "speed-heating-medium-pump-for-pool-40219",
+    "write": true
   },
   "40220": {
     "title": "Speed heating medium pump waiting mode",
@@ -5889,7 +6009,8 @@
     "min": "1",
     "max": "100",
     "default": "30",
-    "name": "speed-heating-medium-pump-waiting-mode-40220"
+    "name": "speed-heating-medium-pump-waiting-mode-40220",
+    "write": true
   },
   "40221": {
     "title": "Speed of circulation pump passive cooling (EP14)",
@@ -5899,7 +6020,8 @@
     "min": "1",
     "max": "100",
     "default": "70",
-    "name": "speed-of-circulation-pump-passive-cooling-ep14-40221"
+    "name": "speed-of-circulation-pump-passive-cooling-ep14-40221",
+    "write": true
   },
   "40222": {
     "title": "Speed, brine pump",
@@ -5909,7 +6031,8 @@
     "min": "1",
     "max": "100",
     "default": "100",
-    "name": "speed-brine-pump-40222"
+    "name": "speed-brine-pump-40222",
+    "write": true
   },
   "40223": {
     "title": "Preset flow setting for climate system",
@@ -5918,18 +6041,21 @@
     "min": "0",
     "max": "3",
     "default": "1",
-    "name": "preset-flow-setting-for-climate-system-40223"
+    "name": "preset-flow-setting-for-climate-system-40223",
+    "write": true
   },
   "40225": {
     "title": "More hot water",
     "factor": 10,
-    "name": "more-hot-water-40225"
+    "name": "more-hot-water-40225",
+    "write": true
   },
   "40237": {
     "title": "Oper. mode",
     "factor": 1,
     "size": "u8",
-    "name": "oper-mode-40237"
+    "name": "oper-mode-40237",
+    "write": true
   },
   "40675": {
     "title": "FLM 4",
@@ -5938,7 +6064,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "flm-4-40675"
+    "name": "flm-4-40675",
+    "write": true
   },
   "40676": {
     "title": "FLM 3",
@@ -5947,7 +6074,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "flm-3-40676"
+    "name": "flm-3-40676",
+    "write": true
   },
   "40677": {
     "title": "FLM 2",
@@ -5956,7 +6084,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "flm-2-40677"
+    "name": "flm-2-40677",
+    "write": true
   },
   "40678": {
     "title": "FLM 1",
@@ -5965,7 +6094,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "flm-1-40678"
+    "name": "flm-1-40678",
+    "write": true
   },
   "40681": {
     "title": "Cooling heat sensor set point value",
@@ -5974,7 +6104,8 @@
     "min": "50",
     "max": "400",
     "default": "210",
-    "name": "cooling-heat-sensor-set-point-value-40681"
+    "name": "cooling-heat-sensor-set-point-value-40681",
+    "write": true
   },
   "40684": {
     "title": "Pool 2 accessory",
@@ -5983,7 +6114,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "pool-2-accessory-40684"
+    "name": "pool-2-accessory-40684",
+    "write": true
   },
   "40685": {
     "title": "Pool 1 accessory",
@@ -5992,7 +6124,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "pool-1-accessory-40685"
+    "name": "pool-1-accessory-40685",
+    "write": true
   },
   "40694": {
     "title": "Hot water comfort",
@@ -6001,7 +6134,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "hot-water-comfort-40694"
+    "name": "hot-water-comfort-40694",
+    "write": true
   },
   "40695": {
     "title": "Manual heating medium pump speed",
@@ -6011,13 +6145,15 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "manual-heating-medium-pump-speed-40695"
+    "name": "manual-heating-medium-pump-speed-40695",
+    "write": true
   },
   "40697": {
     "title": "More hot water",
     "factor": 1,
     "size": "s8",
-    "name": "more-hot-water-40697"
+    "name": "more-hot-water-40697",
+    "write": true
   },
   "40703": {
     "title": "Start diff. DM, step-controlled add. heat",
@@ -6027,7 +6163,8 @@
     "min": "0",
     "max": "2000",
     "default": "400",
-    "name": "start-diff-dm-step-controlled-add-heat-40703"
+    "name": "start-diff-dm-step-controlled-add-heat-40703",
+    "write": true
   },
   "40705": {
     "title": "HW comfort shunt on/off",
@@ -6036,7 +6173,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "hw-comfort-shunt-on-off-40705"
+    "name": "hw-comfort-shunt-on-off-40705",
+    "write": true
   },
   "40711": {
     "title": "Supp. air curve SAM, outd. temp. (T3)",
@@ -6046,7 +6184,8 @@
     "min": "-400",
     "max": "200",
     "default": "150",
-    "name": "supp-air-curve-sam-outd-temp-t3-40711"
+    "name": "supp-air-curve-sam-outd-temp-t3-40711",
+    "write": true
   },
   "40712": {
     "title": "Supp. air curve SAM, outd. temp. (T2)",
@@ -6056,7 +6195,8 @@
     "min": "-390",
     "max": "190",
     "default": "0",
-    "name": "supp-air-curve-sam-outd-temp-t2-40712"
+    "name": "supp-air-curve-sam-outd-temp-t2-40712",
+    "write": true
   },
   "40713": {
     "title": "Supp. air curve SAM, outd. temp. (T1)",
@@ -6066,7 +6206,8 @@
     "min": "-400",
     "max": "200",
     "default": "-150",
-    "name": "supp-air-curve-sam-outd-temp-t1-40713"
+    "name": "supp-air-curve-sam-outd-temp-t1-40713",
+    "write": true
   },
   "40714": {
     "title": "Supp. air curve SAM, desired supp. air temp. at given outd. temp. (T3)",
@@ -6076,7 +6217,8 @@
     "min": "160",
     "max": "220",
     "default": "180",
-    "name": "supp-air-curve-sam-desired-supp-air-temp-at-given-outd-temp-t3-40714"
+    "name": "supp-air-curve-sam-desired-supp-air-temp-at-given-outd-temp-t3-40714",
+    "write": true
   },
   "40715": {
     "title": "Supp. air curve SAM, desired supp. air temp. at given outd. temp. (T2)",
@@ -6086,7 +6228,8 @@
     "min": "160",
     "max": "220",
     "default": "180",
-    "name": "supp-air-curve-sam-desired-supp-air-temp-at-given-outd-temp-t2-40715"
+    "name": "supp-air-curve-sam-desired-supp-air-temp-at-given-outd-temp-t2-40715",
+    "write": true
   },
   "40716": {
     "title": "Supp. air curve SAM, desired supp. air temp. at given outd. temp. (T1)",
@@ -6096,13 +6239,15 @@
     "min": "160",
     "max": "220",
     "default": "180",
-    "name": "supp-air-curve-sam-desired-supp-air-temp-at-given-outd-temp-t1-40716"
+    "name": "supp-air-curve-sam-desired-supp-air-temp-at-given-outd-temp-t1-40716",
+    "write": true
   },
   "40726": {
     "title": "Cooling connected, climate system 1",
     "factor": 1,
     "size": "u8",
-    "name": "cooling-connected-climate-system-1-40726"
+    "name": "cooling-connected-climate-system-1-40726",
+    "write": true
   },
   "40731": {
     "title": "ACS",
@@ -6111,7 +6256,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "acs-40731"
+    "name": "acs-40731",
+    "write": true
   },
   "40740": {
     "title": "Max speed, regulator, charge/heating medium pump (EB100)",
@@ -6121,13 +6267,15 @@
     "min": "50",
     "max": "100",
     "default": "100",
-    "name": "max-speed-regulator-charge-heating-medium-pump-eb100-40740"
+    "name": "max-speed-regulator-charge-heating-medium-pump-eb100-40740",
+    "write": true
   },
   "44064": {
     "title": "Shunted brine, accessory",
     "factor": 1,
     "size": "u8",
-    "name": "shunted-brine-accessory-44064"
+    "name": "shunted-brine-accessory-44064",
+    "write": true
   },
   "44067": {
     "title": "Shunted brine max. temp.",
@@ -6137,7 +6285,8 @@
     "min": "0",
     "max": "30",
     "default": "20",
-    "name": "shunted-brine-max-temp-44067"
+    "name": "shunted-brine-max-temp-44067",
+    "write": true
   },
   "40760": {
     "title": "Heating (SG Ready)",
@@ -6146,7 +6295,8 @@
     "min": "0",
     "max": "1",
     "default": "1",
-    "name": "heating-sg-ready-40760"
+    "name": "heating-sg-ready-40760",
+    "write": true
   },
   "40766": {
     "title": "Set compressor frequency, cooling",
@@ -6156,7 +6306,8 @@
     "min": "1",
     "max": "100",
     "default": "1",
-    "name": "set-compressor-frequency-cooling-40766"
+    "name": "set-compressor-frequency-cooling-40766",
+    "write": true
   },
   "40767": {
     "title": "Input AUX5",
@@ -6165,14 +6316,16 @@
     "min": "0",
     "max": "59",
     "default": "0",
-    "name": "input-aux5-40767"
+    "name": "input-aux5-40767",
+    "write": true
   },
   "40842": {
     "title": "Speed, circulation pump, standby mode (EB100)",
     "factor": 1,
     "unit": "%",
     "size": "u8",
-    "name": "speed-circulation-pump-standby-mode-eb100-40842"
+    "name": "speed-circulation-pump-standby-mode-eb100-40842",
+    "write": true
   },
   "40843": {
     "title": "Activated (Smart Price Adaption)",
@@ -6181,7 +6334,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "activated-smart-price-adaption-40843"
+    "name": "activated-smart-price-adaption-40843",
+    "write": true
   },
   "40844": {
     "title": "(SPA), heating activated (SPA)",
@@ -6190,7 +6344,8 @@
     "min": "0",
     "max": "1",
     "default": "1",
-    "name": "spa-heating-activated-spa-40844"
+    "name": "spa-heating-activated-spa-40844",
+    "write": true
   },
   "40845": {
     "title": "(SPA), heating influence",
@@ -6199,7 +6354,8 @@
     "min": "1",
     "max": "10",
     "default": "5",
-    "name": "spa-heating-influence-40845"
+    "name": "spa-heating-influence-40845",
+    "write": true
   },
   "40846": {
     "title": "(SPA), hot water activated",
@@ -6208,7 +6364,8 @@
     "min": "0",
     "max": "1",
     "default": "1",
-    "name": "spa-hot-water-activated-40846"
+    "name": "spa-hot-water-activated-40846",
+    "write": true
   },
   "40849": {
     "title": "(SPA), cooling activated",
@@ -6217,7 +6374,8 @@
     "min": "0",
     "max": "1",
     "default": "1",
-    "name": "spa-cooling-activated-40849"
+    "name": "spa-cooling-activated-40849",
+    "write": true
   },
   "40851": {
     "title": "(SPA), area",
@@ -6226,7 +6384,8 @@
     "min": "0",
     "max": "254",
     "default": "23",
-    "name": "spa-area-40851"
+    "name": "spa-area-40851",
+    "write": true
   },
   "40852": {
     "title": "Automatic speed heating medium pump, hot water",
@@ -6236,7 +6395,8 @@
     "min": "0",
     "max": "1",
     "default": "1",
-    "name": "automatic-speed-heating-medium-pump-hot-water-40852"
+    "name": "automatic-speed-heating-medium-pump-hot-water-40852",
+    "write": true
   },
   "40853": {
     "title": "Automatic speed heating medium pump, heating",
@@ -6246,7 +6406,8 @@
     "min": "0",
     "max": "1",
     "default": "1",
-    "name": "automatic-speed-heating-medium-pump-heating-40853"
+    "name": "automatic-speed-heating-medium-pump-heating-40853",
+    "write": true
   },
   "40858": {
     "title": "Maximum speed of circulation pump for heating",
@@ -6256,7 +6417,8 @@
     "min": "50",
     "max": "100",
     "default": "100",
-    "name": "maximum-speed-of-circulation-pump-for-heating-40858"
+    "name": "maximum-speed-of-circulation-pump-for-heating-40858",
+    "write": true
   },
   "40893": {
     "title": "External adjustment climate system 8",
@@ -6265,7 +6427,8 @@
     "min": "-10",
     "max": "10",
     "default": "0",
-    "name": "external-adjustment-climate-system-8-40893"
+    "name": "external-adjustment-climate-system-8-40893",
+    "write": true
   },
   "40894": {
     "title": "External adjustment climate system 7",
@@ -6274,7 +6437,8 @@
     "min": "-10",
     "max": "10",
     "default": "0",
-    "name": "external-adjustment-climate-system-7-40894"
+    "name": "external-adjustment-climate-system-7-40894",
+    "write": true
   },
   "40895": {
     "title": "External adjustment climate system 6",
@@ -6283,7 +6447,8 @@
     "min": "-10",
     "max": "10",
     "default": "0",
-    "name": "external-adjustment-climate-system-6-40895"
+    "name": "external-adjustment-climate-system-6-40895",
+    "write": true
   },
   "40896": {
     "title": "External adjustment climate system 5",
@@ -6292,7 +6457,8 @@
     "min": "-10",
     "max": "10",
     "default": "0",
-    "name": "external-adjustment-climate-system-5-40896"
+    "name": "external-adjustment-climate-system-5-40896",
+    "write": true
   },
   "40897": {
     "title": "External adjustment with room sensor climate system 8",
@@ -6302,7 +6468,8 @@
     "min": "50",
     "max": "300",
     "default": "200",
-    "name": "external-adjustment-with-room-sensor-climate-system-8-40897"
+    "name": "external-adjustment-with-room-sensor-climate-system-8-40897",
+    "write": true
   },
   "40898": {
     "title": "External adjustment with room sensor climate system 7",
@@ -6312,7 +6479,8 @@
     "min": "50",
     "max": "300",
     "default": "200",
-    "name": "external-adjustment-with-room-sensor-climate-system-7-40898"
+    "name": "external-adjustment-with-room-sensor-climate-system-7-40898",
+    "write": true
   },
   "40899": {
     "title": "External adjustment with room sensor climate system 6",
@@ -6322,7 +6490,8 @@
     "min": "50",
     "max": "300",
     "default": "200",
-    "name": "external-adjustment-with-room-sensor-climate-system-6-40899"
+    "name": "external-adjustment-with-room-sensor-climate-system-6-40899",
+    "write": true
   },
   "40900": {
     "title": "External adjustment with room sensor climate system 5",
@@ -6332,7 +6501,8 @@
     "min": "50",
     "max": "300",
     "default": "200",
-    "name": "external-adjustment-with-room-sensor-climate-system-5-40900"
+    "name": "external-adjustment-with-room-sensor-climate-system-5-40900",
+    "write": true
   },
   "40902": {
     "title": "(SPA), hot water influence",
@@ -6341,19 +6511,22 @@
     "min": "1",
     "max": "4",
     "default": "2",
-    "name": "spa-hot-water-influence-40902"
+    "name": "spa-hot-water-influence-40902",
+    "write": true
   },
   "40903": {
     "title": "Initiate inverter",
     "factor": 1,
     "size": "u8",
-    "name": "initiate-inverter-40903"
+    "name": "initiate-inverter-40903",
+    "write": true
   },
   "40904": {
     "title": "Force initiated inverter",
     "factor": 1,
     "size": "u8",
-    "name": "force-initiated-inverter-40904"
+    "name": "force-initiated-inverter-40904",
+    "write": true
   },
   "40905": {
     "title": "Climate system 5",
@@ -6362,7 +6535,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "climate-system-5-40905"
+    "name": "climate-system-5-40905",
+    "write": true
   },
   "40906": {
     "title": "Climate system 6",
@@ -6371,7 +6545,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "climate-system-6-40906"
+    "name": "climate-system-6-40906",
+    "write": true
   },
   "40907": {
     "title": "Climate system 7",
@@ -6380,7 +6555,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "climate-system-7-40907"
+    "name": "climate-system-7-40907",
+    "write": true
   },
   "40908": {
     "title": "Climate system 8",
@@ -6389,7 +6565,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "climate-system-8-40908"
+    "name": "climate-system-8-40908",
+    "write": true
   },
   "40932": {
     "title": "Heating connected, climate system 1",
@@ -6398,7 +6575,8 @@
     "min": "0",
     "max": "1",
     "default": "1",
-    "name": "heating-connected-climate-system-1-40932"
+    "name": "heating-connected-climate-system-1-40932",
+    "write": true
   },
   "40933": {
     "title": "ERS 1",
@@ -6407,7 +6585,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "ers-1-40933"
+    "name": "ers-1-40933",
+    "write": true
   },
   "40939": {
     "title": "EB103/104-GP12",
@@ -6416,7 +6595,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "eb103-104-gp12-40939"
+    "name": "eb103-104-gp12-40939",
+    "write": true
   },
   "40940": {
     "title": "EB105/106-GP12",
@@ -6425,7 +6605,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "eb105-106-gp12-40940"
+    "name": "eb105-106-gp12-40940",
+    "write": true
   },
   "40941": {
     "title": "EB107/108-GP12",
@@ -6434,7 +6615,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "eb107-108-gp12-40941"
+    "name": "eb107-108-gp12-40941",
+    "write": true
   },
   "40942": {
     "title": "BlockFreq 2 activated",
@@ -6443,7 +6625,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "blockfreq-2-activated-40942"
+    "name": "blockfreq-2-activated-40942",
+    "write": true
   },
   "40943": {
     "title": "BlockFreq 1 activated",
@@ -6452,7 +6635,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "blockfreq-1-activated-40943"
+    "name": "blockfreq-1-activated-40943",
+    "write": true
   },
   "40945": {
     "title": "BlockFreq 1 start",
@@ -6462,7 +6646,8 @@
     "min": "20",
     "max": "113",
     "default": "91",
-    "name": "blockfreq-1-start-40945"
+    "name": "blockfreq-1-start-40945",
+    "write": true
   },
   "40947": {
     "title": "BlockFreq 1 stop",
@@ -6472,7 +6657,8 @@
     "min": "25",
     "max": "118",
     "default": "120",
-    "name": "blockfreq-1-stop-40947"
+    "name": "blockfreq-1-stop-40947",
+    "write": true
   },
   "40948": {
     "title": "Use room sensor climate system 8",
@@ -6481,7 +6667,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "use-room-sensor-climate-system-8-40948"
+    "name": "use-room-sensor-climate-system-8-40948",
+    "write": true
   },
   "40949": {
     "title": "Use room sensor climate system 7",
@@ -6490,7 +6677,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "use-room-sensor-climate-system-7-40949"
+    "name": "use-room-sensor-climate-system-7-40949",
+    "write": true
   },
   "40950": {
     "title": "Use room sensor climate system 6",
@@ -6499,7 +6687,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "use-room-sensor-climate-system-6-40950"
+    "name": "use-room-sensor-climate-system-6-40950",
+    "write": true
   },
   "40951": {
     "title": "Use room sensor climate system 5",
@@ -6508,7 +6697,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "use-room-sensor-climate-system-5-40951"
+    "name": "use-room-sensor-climate-system-5-40951",
+    "write": true
   },
   "40952": {
     "title": "Room sensor set point value climate system 8",
@@ -6518,7 +6708,8 @@
     "min": "50",
     "max": "300",
     "default": "200",
-    "name": "room-sensor-set-point-value-climate-system-8-40952"
+    "name": "room-sensor-set-point-value-climate-system-8-40952",
+    "write": true
   },
   "40953": {
     "title": "Room sensor set point value climate system 7",
@@ -6528,7 +6719,8 @@
     "min": "50",
     "max": "300",
     "default": "200",
-    "name": "room-sensor-set-point-value-climate-system-7-40953"
+    "name": "room-sensor-set-point-value-climate-system-7-40953",
+    "write": true
   },
   "40954": {
     "title": "Room sensor set point value climate system 6",
@@ -6538,7 +6730,8 @@
     "min": "50",
     "max": "300",
     "default": "200",
-    "name": "room-sensor-set-point-value-climate-system-6-40954"
+    "name": "room-sensor-set-point-value-climate-system-6-40954",
+    "write": true
   },
   "40955": {
     "title": "Room sensor set point value climate system 5",
@@ -6548,7 +6741,8 @@
     "min": "50",
     "max": "300",
     "default": "200",
-    "name": "room-sensor-set-point-value-climate-system-5-40955"
+    "name": "room-sensor-set-point-value-climate-system-5-40955",
+    "write": true
   },
   "40956": {
     "title": "Room sensor factor climate system 8",
@@ -6557,7 +6751,8 @@
     "min": "0",
     "max": "60",
     "default": "20",
-    "name": "room-sensor-factor-climate-system-8-40956"
+    "name": "room-sensor-factor-climate-system-8-40956",
+    "write": true
   },
   "40957": {
     "title": "Room sensor factor climate system 7",
@@ -6566,7 +6761,8 @@
     "min": "0",
     "max": "60",
     "default": "20",
-    "name": "room-sensor-factor-climate-system-7-40957"
+    "name": "room-sensor-factor-climate-system-7-40957",
+    "write": true
   },
   "40958": {
     "title": "Room sensor factor climate system 6",
@@ -6575,7 +6771,8 @@
     "min": "0",
     "max": "60",
     "default": "20",
-    "name": "room-sensor-factor-climate-system-6-40958"
+    "name": "room-sensor-factor-climate-system-6-40958",
+    "write": true
   },
   "40959": {
     "title": "Room sensor factor climate system 5",
@@ -6584,7 +6781,8 @@
     "min": "0",
     "max": "60",
     "default": "20",
-    "name": "room-sensor-factor-climate-system-5-40959"
+    "name": "room-sensor-factor-climate-system-5-40959",
+    "write": true
   },
   "40980": {
     "title": "Current transformer ratio",
@@ -6593,7 +6791,8 @@
     "min": "300",
     "max": "3000",
     "default": "300",
-    "name": "current-transformer-ratio-40980"
+    "name": "current-transformer-ratio-40980",
+    "write": true
   },
   "40981": {
     "title": "Room sensor set point value climate system 8, cooling",
@@ -6603,7 +6802,8 @@
     "min": "50",
     "max": "350",
     "default": "250",
-    "name": "room-sensor-set-point-value-climate-system-8-cooling-40981"
+    "name": "room-sensor-set-point-value-climate-system-8-cooling-40981",
+    "write": true
   },
   "40982": {
     "title": "Room sensor set point value climate system 7, cooling",
@@ -6613,7 +6813,8 @@
     "min": "50",
     "max": "350",
     "default": "250",
-    "name": "room-sensor-set-point-value-climate-system-7-cooling-40982"
+    "name": "room-sensor-set-point-value-climate-system-7-cooling-40982",
+    "write": true
   },
   "40983": {
     "title": "Room sensor set point value climate system 6, cooling",
@@ -6623,7 +6824,8 @@
     "min": "50",
     "max": "350",
     "default": "250",
-    "name": "room-sensor-set-point-value-climate-system-6-cooling-40983"
+    "name": "room-sensor-set-point-value-climate-system-6-cooling-40983",
+    "write": true
   },
   "40984": {
     "title": "Room sensor set point value climate system 5, cooling",
@@ -6633,7 +6835,8 @@
     "min": "50",
     "max": "350",
     "default": "250",
-    "name": "room-sensor-set-point-value-climate-system-5-cooling-40984"
+    "name": "room-sensor-set-point-value-climate-system-5-cooling-40984",
+    "write": true
   },
   "40985": {
     "title": "Room sensor set point value climate system 4, cooling",
@@ -6643,7 +6846,8 @@
     "min": "50",
     "max": "350",
     "default": "250",
-    "name": "room-sensor-set-point-value-climate-system-4-cooling-40985"
+    "name": "room-sensor-set-point-value-climate-system-4-cooling-40985",
+    "write": true
   },
   "40986": {
     "title": "Room sensor set point value climate system 3, cooling",
@@ -6653,7 +6857,8 @@
     "min": "50",
     "max": "350",
     "default": "250",
-    "name": "room-sensor-set-point-value-climate-system-3-cooling-40986"
+    "name": "room-sensor-set-point-value-climate-system-3-cooling-40986",
+    "write": true
   },
   "40987": {
     "title": "Room sensor set point value climate system 2, cooling",
@@ -6663,7 +6868,8 @@
     "min": "50",
     "max": "350",
     "default": "250",
-    "name": "room-sensor-set-point-value-climate-system-2-cooling-40987"
+    "name": "room-sensor-set-point-value-climate-system-2-cooling-40987",
+    "write": true
   },
   "40988": {
     "title": "Room sensor set point value climate system 1, cooling",
@@ -6673,7 +6879,8 @@
     "min": "50",
     "max": "350",
     "default": "250",
-    "name": "room-sensor-set-point-value-climate-system-1-cooling-40988"
+    "name": "room-sensor-set-point-value-climate-system-1-cooling-40988",
+    "write": true
   },
   "40989": {
     "title": "Room sensor factor climate system 8, cooling",
@@ -6682,7 +6889,8 @@
     "min": "0",
     "max": "60",
     "default": "10",
-    "name": "room-sensor-factor-climate-system-8-cooling-40989"
+    "name": "room-sensor-factor-climate-system-8-cooling-40989",
+    "write": true
   },
   "40990": {
     "title": "Room sensor factor climate system 7, cooling",
@@ -6691,7 +6899,8 @@
     "min": "0",
     "max": "60",
     "default": "10",
-    "name": "room-sensor-factor-climate-system-7-cooling-40990"
+    "name": "room-sensor-factor-climate-system-7-cooling-40990",
+    "write": true
   },
   "40991": {
     "title": "Room sensor factor climate system 6, cooling",
@@ -6700,7 +6909,8 @@
     "min": "0",
     "max": "60",
     "default": "10",
-    "name": "room-sensor-factor-climate-system-6-cooling-40991"
+    "name": "room-sensor-factor-climate-system-6-cooling-40991",
+    "write": true
   },
   "40992": {
     "title": "Room sensor factor climate system 5, cooling",
@@ -6709,7 +6919,8 @@
     "min": "0",
     "max": "60",
     "default": "10",
-    "name": "room-sensor-factor-climate-system-5-cooling-40992"
+    "name": "room-sensor-factor-climate-system-5-cooling-40992",
+    "write": true
   },
   "40993": {
     "title": "Room sensor factor climate system 4, cooling",
@@ -6718,7 +6929,8 @@
     "min": "0",
     "max": "60",
     "default": "10",
-    "name": "room-sensor-factor-climate-system-4-cooling-40993"
+    "name": "room-sensor-factor-climate-system-4-cooling-40993",
+    "write": true
   },
   "40994": {
     "title": "Room sensor factor climate system 3, cooling",
@@ -6727,7 +6939,8 @@
     "min": "0",
     "max": "60",
     "default": "10",
-    "name": "room-sensor-factor-climate-system-3-cooling-40994"
+    "name": "room-sensor-factor-climate-system-3-cooling-40994",
+    "write": true
   },
   "40995": {
     "title": "Room sensor factor climate system 2, cooling",
@@ -6736,7 +6949,8 @@
     "min": "0",
     "max": "60",
     "default": "10",
-    "name": "room-sensor-factor-climate-system-2-cooling-40995"
+    "name": "room-sensor-factor-climate-system-2-cooling-40995",
+    "write": true
   },
   "40996": {
     "title": "Room sensor factor climate system 1, cooling",
@@ -6745,7 +6959,8 @@
     "min": "0",
     "max": "60",
     "default": "10",
-    "name": "room-sensor-factor-climate-system-1-cooling-40996"
+    "name": "room-sensor-factor-climate-system-1-cooling-40996",
+    "write": true
   },
   "40997": {
     "title": "Set point value (RH)",
@@ -6755,7 +6970,8 @@
     "min": "30",
     "max": "90",
     "default": "60",
-    "name": "set-point-value-rh-40997"
+    "name": "set-point-value-rh-40997",
+    "write": true
   },
   "40998": {
     "title": "HTS 1",
@@ -6764,7 +6980,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "hts-1-40998"
+    "name": "hts-1-40998",
+    "write": true
   },
   "41015": {
     "title": "OPT",
@@ -6773,7 +6990,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "opt-41015"
+    "name": "opt-41015",
+    "write": true
   },
   "41016": {
     "title": "DM start difference (OPT)",
@@ -6783,7 +7001,8 @@
     "min": "10",
     "max": "2000",
     "default": "700",
-    "name": "dm-start-difference-opt-41016"
+    "name": "dm-start-difference-opt-41016",
+    "write": true
   },
   "41021": {
     "title": "Exhaust air fan speed 4 (ERS 1)",
@@ -6793,7 +7012,8 @@
     "min": "0",
     "max": "100",
     "default": "100",
-    "name": "exhaust-air-fan-speed-4-ers-1-41021"
+    "name": "exhaust-air-fan-speed-4-ers-1-41021",
+    "write": true
   },
   "41022": {
     "title": "Exhaust air fan speed 3 (ERS 1)",
@@ -6803,7 +7023,8 @@
     "min": "0",
     "max": "100",
     "default": "80",
-    "name": "exhaust-air-fan-speed-3-ers-1-41022"
+    "name": "exhaust-air-fan-speed-3-ers-1-41022",
+    "write": true
   },
   "41023": {
     "title": "Exhaust air fan speed 2 (ERS 1)",
@@ -6813,7 +7034,8 @@
     "min": "0",
     "max": "100",
     "default": "30",
-    "name": "exhaust-air-fan-speed-2-ers-1-41023"
+    "name": "exhaust-air-fan-speed-2-ers-1-41023",
+    "write": true
   },
   "41024": {
     "title": "Exhaust air fan speed 1 (ERS 1)",
@@ -6823,7 +7045,8 @@
     "min": "0",
     "max": "100",
     "default": "0",
-    "name": "exhaust-air-fan-speed-1-ers-1-41024"
+    "name": "exhaust-air-fan-speed-1-ers-1-41024",
+    "write": true
   },
   "41025": {
     "title": "Exhaust air fan speed normal (ERS 1)",
@@ -6833,7 +7056,8 @@
     "min": "1",
     "max": "100",
     "default": "75",
-    "name": "exhaust-air-fan-speed-normal-ers-1-41025"
+    "name": "exhaust-air-fan-speed-normal-ers-1-41025",
+    "write": true
   },
   "41026": {
     "title": "Thermostat (ACS)",
@@ -6842,7 +7066,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "thermostat-acs-41026"
+    "name": "thermostat-acs-41026",
+    "write": true
   },
   "41027": {
     "title": "Filtering time (BT64)",
@@ -6852,7 +7077,8 @@
     "min": "5",
     "max": "30",
     "default": "5",
-    "name": "filtering-time-bt64-41027"
+    "name": "filtering-time-bt64-41027",
+    "write": true
   },
   "41028": {
     "title": "(ACS) - Thermostat, hysteresis between compressors",
@@ -6862,7 +7088,8 @@
     "min": "1",
     "max": "10",
     "default": "2",
-    "name": "acs-thermostat-hysteresis-between-compressors-41028"
+    "name": "acs-thermostat-hysteresis-between-compressors-41028",
+    "write": true
   },
   "41029": {
     "title": "Start temperature (BT64)",
@@ -6872,7 +7099,8 @@
     "min": "-8",
     "max": "30",
     "default": "10",
-    "name": "start-temperature-bt64-41029"
+    "name": "start-temperature-bt64-41029",
+    "write": true
   },
   "41030": {
     "title": "Temperature to transfer to borehole",
@@ -6882,7 +7110,8 @@
     "min": "-8",
     "max": "30",
     "default": "0",
-    "name": "temperature-to-transfer-to-borehole-41030"
+    "name": "temperature-to-transfer-to-borehole-41030",
+    "write": true
   },
   "41031": {
     "title": "Flow sensor activated X21",
@@ -6891,7 +7120,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "flow-sensor-activated-x21-41031"
+    "name": "flow-sensor-activated-x21-41031",
+    "write": true
   },
   "41044": {
     "title": "Bypass temp. (ERS 1)",
@@ -6901,7 +7131,8 @@
     "min": "2",
     "max": "10",
     "default": "4",
-    "name": "bypass-temp-ers-1-41044"
+    "name": "bypass-temp-ers-1-41044",
+    "write": true
   },
   "41049": {
     "title": "Flow sensor activated X22",
@@ -6910,7 +7141,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "flow-sensor-activated-x22-41049"
+    "name": "flow-sensor-activated-x22-41049",
+    "write": true
   },
   "41052": {
     "title": "Max. internal additional heat SG Ready",
@@ -6920,7 +7152,8 @@
     "min": "0",
     "max": "900",
     "default": "700",
-    "name": "max-internal-additional-heat-sg-ready-41052"
+    "name": "max-internal-additional-heat-sg-ready-41052",
+    "write": true
   },
   "41066": {
     "title": "Hysteresis (OPT)",
@@ -6929,7 +7162,8 @@
     "min": "10",
     "max": "2000",
     "default": "100",
-    "name": "hysteresis-opt-41066"
+    "name": "hysteresis-opt-41066",
+    "write": true
   },
   "41068": {
     "title": "Activated (EME10)",
@@ -6938,7 +7172,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "activated-eme10-41068"
+    "name": "activated-eme10-41068",
+    "write": true
   },
   "41069": {
     "title": "PV panel affects heating (EME)",
@@ -6947,7 +7182,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "pv-panel-affects-heating-eme-41069"
+    "name": "pv-panel-affects-heating-eme-41069",
+    "write": true
   },
   "41070": {
     "title": "PV panel affects hot water (EME)",
@@ -6956,13 +7192,15 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "pv-panel-affects-hot-water-eme-41070"
+    "name": "pv-panel-affects-hot-water-eme-41070",
+    "write": true
   },
   "41071": {
     "title": "Delay timer EME",
     "factor": 1,
     "size": "u16",
-    "name": "delay-timer-eme-41071"
+    "name": "delay-timer-eme-41071",
+    "write": true
   },
   "41072": {
     "title": "Low brine out alarm temperature (EP15)",
@@ -6972,7 +7210,8 @@
     "min": "-120",
     "max": "150",
     "default": "-80",
-    "name": "low-brine-out-alarm-temperature-ep15-41072"
+    "name": "low-brine-out-alarm-temperature-ep15-41072",
+    "write": true
   },
   "41074": {
     "title": "Pump 4 (FLM)",
@@ -6981,7 +7220,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "pump-4-flm-41074"
+    "name": "pump-4-flm-41074",
+    "write": true
   },
   "41075": {
     "title": "Pump 3 (FLM)",
@@ -6990,7 +7230,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "pump-3-flm-41075"
+    "name": "pump-3-flm-41075",
+    "write": true
   },
   "41076": {
     "title": "Pump 2 (FLM)",
@@ -6999,7 +7240,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "pump-2-flm-41076"
+    "name": "pump-2-flm-41076",
+    "write": true
   },
   "41077": {
     "title": "Defrosting time (FLM 4)",
@@ -7009,7 +7251,8 @@
     "min": "1",
     "max": "30",
     "default": "10",
-    "name": "defrosting-time-flm-4-41077"
+    "name": "defrosting-time-flm-4-41077",
+    "write": true
   },
   "41078": {
     "title": "Defrosting time (FLM 3)",
@@ -7019,7 +7262,8 @@
     "min": "1",
     "max": "30",
     "default": "10",
-    "name": "defrosting-time-flm-3-41078"
+    "name": "defrosting-time-flm-3-41078",
+    "write": true
   },
   "41079": {
     "title": "Defrosting time (FLM 2)",
@@ -7029,7 +7273,8 @@
     "min": "1",
     "max": "30",
     "default": "10",
-    "name": "defrosting-time-flm-2-41079"
+    "name": "defrosting-time-flm-2-41079",
+    "write": true
   },
   "41080": {
     "title": "Cooling (FLM 4)",
@@ -7038,7 +7283,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "cooling-flm-4-41080"
+    "name": "cooling-flm-4-41080",
+    "write": true
   },
   "41081": {
     "title": "Cooling (FLM 3)",
@@ -7047,7 +7293,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "cooling-flm-3-41081"
+    "name": "cooling-flm-3-41081",
+    "write": true
   },
   "41082": {
     "title": "Cooling (FLM 2)",
@@ -7056,7 +7303,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "cooling-flm-2-41082"
+    "name": "cooling-flm-2-41082",
+    "write": true
   },
   "41083": {
     "title": "Pump speed (FLM 4)",
@@ -7066,7 +7314,8 @@
     "min": "1",
     "max": "100",
     "default": "100",
-    "name": "pump-speed-flm-4-41083"
+    "name": "pump-speed-flm-4-41083",
+    "write": true
   },
   "41084": {
     "title": "Pump speed (FLM 3)",
@@ -7076,7 +7325,8 @@
     "min": "1",
     "max": "100",
     "default": "100",
-    "name": "pump-speed-flm-3-41084"
+    "name": "pump-speed-flm-3-41084",
+    "write": true
   },
   "41085": {
     "title": "Pump speed (FLM 2)",
@@ -7086,7 +7336,8 @@
     "min": "1",
     "max": "100",
     "default": "100",
-    "name": "pump-speed-flm-2-41085"
+    "name": "pump-speed-flm-2-41085",
+    "write": true
   },
   "41086": {
     "title": "Pump speed (FLM 1)",
@@ -7096,7 +7347,8 @@
     "min": "1",
     "max": "100",
     "default": "100",
-    "name": "pump-speed-flm-1-41086"
+    "name": "pump-speed-flm-1-41086",
+    "write": true
   },
   "41087": {
     "title": "Excess temperature (FLM 4)",
@@ -7106,7 +7358,8 @@
     "min": "10",
     "max": "100",
     "default": "30",
-    "name": "excess-temperature-flm-4-41087"
+    "name": "excess-temperature-flm-4-41087",
+    "write": true
   },
   "41088": {
     "title": "Excess temperature (FLM 3)",
@@ -7116,7 +7369,8 @@
     "min": "10",
     "max": "100",
     "default": "30",
-    "name": "excess-temperature-flm-3-41088"
+    "name": "excess-temperature-flm-3-41088",
+    "write": true
   },
   "41089": {
     "title": "Excess temperature (FLM 2)",
@@ -7126,7 +7380,8 @@
     "min": "10",
     "max": "100",
     "default": "30",
-    "name": "excess-temperature-flm-2-41089"
+    "name": "excess-temperature-flm-2-41089",
+    "write": true
   },
   "41090": {
     "title": "Excess temperature (FLM 1)",
@@ -7136,7 +7391,8 @@
     "min": "10",
     "max": "100",
     "default": "30",
-    "name": "excess-temperature-flm-1-41090"
+    "name": "excess-temperature-flm-1-41090",
+    "write": true
   },
   "41091": {
     "title": "Set point value, cooling (FLM 4)",
@@ -7146,7 +7402,8 @@
     "min": "50",
     "max": "400",
     "default": "210",
-    "name": "set-point-value-cooling-flm-4-41091"
+    "name": "set-point-value-cooling-flm-4-41091",
+    "write": true
   },
   "41092": {
     "title": "Set point value, cooling (FLM 3)",
@@ -7156,7 +7413,8 @@
     "min": "50",
     "max": "400",
     "default": "210",
-    "name": "set-point-value-cooling-flm-3-41092"
+    "name": "set-point-value-cooling-flm-3-41092",
+    "write": true
   },
   "41093": {
     "title": "Set point value, cooling (FLM 2)",
@@ -7166,7 +7424,8 @@
     "min": "50",
     "max": "400",
     "default": "210",
-    "name": "set-point-value-cooling-flm-2-41093"
+    "name": "set-point-value-cooling-flm-2-41093",
+    "write": true
   },
   "41094": {
     "title": "Set point value, cooling (FLM 1)",
@@ -7176,13 +7435,15 @@
     "min": "50",
     "max": "400",
     "default": "210",
-    "name": "set-point-value-cooling-flm-1-41094"
+    "name": "set-point-value-cooling-flm-1-41094",
+    "write": true
   },
   "41095": {
     "title": "AUX blocking (OPT)",
     "factor": 1,
     "size": "u8",
-    "name": "aux-blocking-opt-41095"
+    "name": "aux-blocking-opt-41095",
+    "write": true
   },
   "41096": {
     "title": "Outdoor air mixing",
@@ -7191,7 +7452,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "outdoor-air-mixing-41096"
+    "name": "outdoor-air-mixing-41096",
+    "write": true
   },
   "41102": {
     "title": "Smart home room control",
@@ -7200,7 +7462,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "smart-home-room-control-41102"
+    "name": "smart-home-room-control-41102",
+    "write": true
   },
   "41103": {
     "title": "Speed, brine pump, standby mode (EP14)",
@@ -7210,7 +7473,8 @@
     "min": "0",
     "max": "100",
     "default": "30",
-    "name": "speed-brine-pump-standby-mode-ep14-41103"
+    "name": "speed-brine-pump-standby-mode-ep14-41103",
+    "write": true
   },
   "41105": {
     "title": "Smart Energy Source",
@@ -7219,7 +7483,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "smart-energy-source-41105"
+    "name": "smart-energy-source-41105",
+    "write": true
   },
   "41106": {
     "title": "Control method, smart energy source",
@@ -7228,7 +7493,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "control-method-smart-energy-source-41106"
+    "name": "control-method-smart-energy-source-41106",
+    "write": true
   },
   "41107": {
     "title": "El. price, special, smart energy source",
@@ -7237,7 +7503,8 @@
     "min": "0",
     "max": "2",
     "default": "0",
-    "name": "el-price-special-smart-energy-source-41107"
+    "name": "el-price-special-smart-energy-source-41107",
+    "write": true
   },
   "41108": {
     "title": "El. price, fixed, smart energy source",
@@ -7246,7 +7513,8 @@
     "min": "0",
     "max": "10000",
     "default": "100",
-    "name": "el-price-fixed-smart-energy-source-41108"
+    "name": "el-price-fixed-smart-energy-source-41108",
+    "write": true
   },
   "41109": {
     "title": "El. price, smart energy source",
@@ -7255,7 +7523,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "el-price-smart-energy-source-41109"
+    "name": "el-price-smart-energy-source-41109",
+    "write": true
   },
   "41110": {
     "title": "El. price, fixed, smart energy source",
@@ -7264,7 +7533,8 @@
     "min": "0",
     "max": "10000",
     "default": "100",
-    "name": "el-price-fixed-smart-energy-source-41110"
+    "name": "el-price-fixed-smart-energy-source-41110",
+    "write": true
   },
   "41111": {
     "title": "El. price, smart energy source",
@@ -7273,7 +7543,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "el-price-smart-energy-source-41111"
+    "name": "el-price-smart-energy-source-41111",
+    "write": true
   },
   "41112": {
     "title": "El. price, fixed, smart energy source",
@@ -7282,7 +7553,8 @@
     "min": "0",
     "max": "10000",
     "default": "100",
-    "name": "el-price-fixed-smart-energy-source-41112"
+    "name": "el-price-fixed-smart-energy-source-41112",
+    "write": true
   },
   "41113": {
     "title": "El. price, smart energy source",
@@ -7291,7 +7563,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "el-price-smart-energy-source-41113"
+    "name": "el-price-smart-energy-source-41113",
+    "write": true
   },
   "41114": {
     "title": "El. price, fixed, smart energy source",
@@ -7300,7 +7573,8 @@
     "min": "0",
     "max": "10000",
     "default": "100",
-    "name": "el-price-fixed-smart-energy-source-41114"
+    "name": "el-price-fixed-smart-energy-source-41114",
+    "write": true
   },
   "41115": {
     "title": "El. price, smart energy source",
@@ -7309,7 +7583,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "el-price-smart-energy-source-41115"
+    "name": "el-price-smart-energy-source-41115",
+    "write": true
   },
   "41116": {
     "title": "El. price, fixed, smart energy source",
@@ -7318,7 +7593,8 @@
     "min": "0",
     "max": "10000",
     "default": "100",
-    "name": "el-price-fixed-smart-energy-source-41116"
+    "name": "el-price-fixed-smart-energy-source-41116",
+    "write": true
   },
   "41117": {
     "title": "Prim. factor, smart energy source",
@@ -7327,7 +7603,8 @@
     "min": "0",
     "max": "50",
     "default": "25",
-    "name": "prim-factor-smart-energy-source-41117"
+    "name": "prim-factor-smart-energy-source-41117",
+    "write": true
   },
   "41118": {
     "title": "Prim. factor, shunt add. heat smart energy source",
@@ -7336,7 +7613,8 @@
     "min": "0",
     "max": "50",
     "default": "10",
-    "name": "prim-factor-shunt-add-heat-smart-energy-source-41118"
+    "name": "prim-factor-shunt-add-heat-smart-energy-source-41118",
+    "write": true
   },
   "41119": {
     "title": "Prim. factor, ext. step add. heat smart energy source",
@@ -7345,7 +7623,8 @@
     "min": "0",
     "max": "50",
     "default": "10",
-    "name": "prim-factor-ext-step-add-heat-smart-energy-source-41119"
+    "name": "prim-factor-ext-step-add-heat-smart-energy-source-41119",
+    "write": true
   },
   "41120": {
     "title": "Prim. factor, OPT10 smart energy source",
@@ -7354,7 +7633,8 @@
     "min": "0",
     "max": "50",
     "default": "10",
-    "name": "prim-factor-opt10-smart-energy-source-41120"
+    "name": "prim-factor-opt10-smart-energy-source-41120",
+    "write": true
   },
   "41121": {
     "title": "OPT10, high tariff price smart energy source",
@@ -7363,7 +7643,8 @@
     "min": "1",
     "max": "10000",
     "default": "100",
-    "name": "opt10-high-tariff-price-smart-energy-source-41121"
+    "name": "opt10-high-tariff-price-smart-energy-source-41121",
+    "write": true
   },
   "41122": {
     "title": "OPT10, low tariff price smart energy source",
@@ -7372,7 +7653,8 @@
     "min": "1",
     "max": "10000",
     "default": "100",
-    "name": "opt10-low-tariff-price-smart-energy-source-41122"
+    "name": "opt10-low-tariff-price-smart-energy-source-41122",
+    "write": true
   },
   "41123": {
     "title": "ext. step add. heat, high tariff price smart energy source",
@@ -7381,7 +7663,8 @@
     "min": "1",
     "max": "10000",
     "default": "100",
-    "name": "ext-step-add-heat-high-tariff-price-smart-energy-source-41123"
+    "name": "ext-step-add-heat-high-tariff-price-smart-energy-source-41123",
+    "write": true
   },
   "41124": {
     "title": "ext. step add. heat, low tariff price smart energy source",
@@ -7390,7 +7673,8 @@
     "min": "1",
     "max": "10000",
     "default": "100",
-    "name": "ext-step-add-heat-low-tariff-price-smart-energy-source-41124"
+    "name": "ext-step-add-heat-low-tariff-price-smart-energy-source-41124",
+    "write": true
   },
   "41125": {
     "title": "Shunt add. heat, high tariff price smart energy source",
@@ -7399,7 +7683,8 @@
     "min": "1",
     "max": "10000",
     "default": "100",
-    "name": "shunt-add-heat-high-tariff-price-smart-energy-source-41125"
+    "name": "shunt-add-heat-high-tariff-price-smart-energy-source-41125",
+    "write": true
   },
   "41126": {
     "title": "Shunt add. heat, low tariff price smart energy source",
@@ -7408,7 +7693,8 @@
     "min": "1",
     "max": "10000",
     "default": "100",
-    "name": "shunt-add-heat-low-tariff-price-smart-energy-source-41126"
+    "name": "shunt-add-heat-low-tariff-price-smart-energy-source-41126",
+    "write": true
   },
   "41127": {
     "title": "El. price, fixed, high tariff smart energy source",
@@ -7417,7 +7703,8 @@
     "min": "1",
     "max": "10000",
     "default": "100",
-    "name": "el-price-fixed-high-tariff-smart-energy-source-41127"
+    "name": "el-price-fixed-high-tariff-smart-energy-source-41127",
+    "write": true
   },
   "41128": {
     "title": "El. price, fixed, low tariff smart energy source",
@@ -7426,7 +7713,8 @@
     "min": "1",
     "max": "10000",
     "default": "100",
-    "name": "el-price-fixed-low-tariff-smart-energy-source-41128"
+    "name": "el-price-fixed-low-tariff-smart-energy-source-41128",
+    "write": true
   },
   "41129": {
     "title": "El. price, variable, high tariff smart energy source",
@@ -7435,7 +7723,8 @@
     "min": "1",
     "max": "10000",
     "default": "100",
-    "name": "el-price-variable-high-tariff-smart-energy-source-41129"
+    "name": "el-price-variable-high-tariff-smart-energy-source-41129",
+    "write": true
   },
   "41130": {
     "title": "El. price, variable, low tariff smart energy source",
@@ -7444,7 +7733,8 @@
     "min": "1",
     "max": "10000",
     "default": "100",
-    "name": "el-price-variable-low-tariff-smart-energy-source-41130"
+    "name": "el-price-variable-low-tariff-smart-energy-source-41130",
+    "write": true
   },
   "41131": {
     "title": "DM start source, priority 5 smart energy source",
@@ -7453,7 +7743,8 @@
     "min": "100",
     "max": "2000",
     "default": "400",
-    "name": "dm-start-source-priority-5-smart-energy-source-41131"
+    "name": "dm-start-source-priority-5-smart-energy-source-41131",
+    "write": true
   },
   "41132": {
     "title": "DM start source, priority 4 smart energy source",
@@ -7462,7 +7753,8 @@
     "min": "100",
     "max": "2000",
     "default": "400",
-    "name": "dm-start-source-priority-4-smart-energy-source-41132"
+    "name": "dm-start-source-priority-4-smart-energy-source-41132",
+    "write": true
   },
   "41133": {
     "title": "DM start source, priority 3 smart energy source",
@@ -7471,7 +7763,8 @@
     "min": "100",
     "max": "2000",
     "default": "400",
-    "name": "dm-start-source-priority-3-smart-energy-source-41133"
+    "name": "dm-start-source-priority-3-smart-energy-source-41133",
+    "write": true
   },
   "41134": {
     "title": "DM start source, priority 2 smart energy source",
@@ -7480,7 +7773,8 @@
     "min": "100",
     "max": "2000",
     "default": "400",
-    "name": "dm-start-source-priority-2-smart-energy-source-41134"
+    "name": "dm-start-source-priority-2-smart-energy-source-41134",
+    "write": true
   },
   "41135": {
     "title": "DM start source, priority 1 smart energy source",
@@ -7489,7 +7783,8 @@
     "min": "-2000",
     "max": "-10",
     "default": "-60",
-    "name": "dm-start-source-priority-1-smart-energy-source-41135"
+    "name": "dm-start-source-priority-1-smart-energy-source-41135",
+    "write": true
   },
   "41136": {
     "title": "Start day, tariff smart energy source",
@@ -7498,7 +7793,8 @@
     "min": "1",
     "max": "31",
     "default": "1",
-    "name": "start-day-tariff-smart-energy-source-41136"
+    "name": "start-day-tariff-smart-energy-source-41136",
+    "write": true
   },
   "41137": {
     "title": "End day, tariff smart energy source",
@@ -7507,7 +7803,8 @@
     "min": "1",
     "max": "31",
     "default": "31",
-    "name": "end-day-tariff-smart-energy-source-41137"
+    "name": "end-day-tariff-smart-energy-source-41137",
+    "write": true
   },
   "41138": {
     "title": "Start month, tariff smart energy source",
@@ -7516,7 +7813,8 @@
     "min": "1",
     "max": "12",
     "default": "1",
-    "name": "start-month-tariff-smart-energy-source-41138"
+    "name": "start-month-tariff-smart-energy-source-41138",
+    "write": true
   },
   "41139": {
     "title": "End month, tariff smart energy source",
@@ -7525,7 +7823,8 @@
     "min": "1",
     "max": "12",
     "default": "12",
-    "name": "end-month-tariff-smart-energy-source-41139"
+    "name": "end-month-tariff-smart-energy-source-41139",
+    "write": true
   },
   "41172": {
     "title": "Start day, fixed tariff smart energy source",
@@ -7534,7 +7833,8 @@
     "min": "1",
     "max": "31",
     "default": "1",
-    "name": "start-day-fixed-tariff-smart-energy-source-41172"
+    "name": "start-day-fixed-tariff-smart-energy-source-41172",
+    "write": true
   },
   "41173": {
     "title": "End day, fixed tariff smart energy source",
@@ -7543,7 +7843,8 @@
     "min": "1",
     "max": "31",
     "default": "31",
-    "name": "end-day-fixed-tariff-smart-energy-source-41173"
+    "name": "end-day-fixed-tariff-smart-energy-source-41173",
+    "write": true
   },
   "41174": {
     "title": "Start month, fixed tariff smart energy source",
@@ -7552,7 +7853,8 @@
     "min": "1",
     "max": "12",
     "default": "1",
-    "name": "start-month-fixed-tariff-smart-energy-source-41174"
+    "name": "start-month-fixed-tariff-smart-energy-source-41174",
+    "write": true
   },
   "41175": {
     "title": "End month, fixed tariff smart energy source",
@@ -7561,7 +7863,8 @@
     "min": "1",
     "max": "12",
     "default": "12",
-    "name": "end-month-fixed-tariff-smart-energy-source-41175"
+    "name": "end-month-fixed-tariff-smart-energy-source-41175",
+    "write": true
   },
   "41208": {
     "title": "Start day, tariff OPT10 smart energy source",
@@ -7570,7 +7873,8 @@
     "min": "1",
     "max": "31",
     "default": "1",
-    "name": "start-day-tariff-opt10-smart-energy-source-41208"
+    "name": "start-day-tariff-opt10-smart-energy-source-41208",
+    "write": true
   },
   "41209": {
     "title": "End day, tariff OPT10 smart energy source",
@@ -7579,7 +7883,8 @@
     "min": "1",
     "max": "31",
     "default": "31",
-    "name": "end-day-tariff-opt10-smart-energy-source-41209"
+    "name": "end-day-tariff-opt10-smart-energy-source-41209",
+    "write": true
   },
   "41210": {
     "title": "Start month, tariff OPT10 smart energy source",
@@ -7588,7 +7893,8 @@
     "min": "1",
     "max": "12",
     "default": "1",
-    "name": "start-month-tariff-opt10-smart-energy-source-41210"
+    "name": "start-month-tariff-opt10-smart-energy-source-41210",
+    "write": true
   },
   "41211": {
     "title": "End month, tariff OPT10 smart energy source",
@@ -7597,7 +7903,8 @@
     "min": "1",
     "max": "12",
     "default": "12",
-    "name": "end-month-tariff-opt10-smart-energy-source-41211"
+    "name": "end-month-tariff-opt10-smart-energy-source-41211",
+    "write": true
   },
   "41244": {
     "title": "Start day tariff, shunt additional heat smart energy source",
@@ -7606,7 +7913,8 @@
     "min": "1",
     "max": "31",
     "default": "1",
-    "name": "start-day-tariff-shunt-additional-heat-smart-energy-source-41244"
+    "name": "start-day-tariff-shunt-additional-heat-smart-energy-source-41244",
+    "write": true
   },
   "41245": {
     "title": "End day tariff, shunt additional heat  smart energy source",
@@ -7615,7 +7923,8 @@
     "min": "1",
     "max": "31",
     "default": "31",
-    "name": "end-day-tariff-shunt-additional-heat-smart-energy-source-41245"
+    "name": "end-day-tariff-shunt-additional-heat-smart-energy-source-41245",
+    "write": true
   },
   "41246": {
     "title": "Start month tariff, shunt additional heat smart energy source",
@@ -7624,7 +7933,8 @@
     "min": "1",
     "max": "12",
     "default": "1",
-    "name": "start-month-tariff-shunt-additional-heat-smart-energy-source-41246"
+    "name": "start-month-tariff-shunt-additional-heat-smart-energy-source-41246",
+    "write": true
   },
   "41247": {
     "title": "End month tariff, shunt additional heat smart energy source",
@@ -7633,7 +7943,8 @@
     "min": "1",
     "max": "12",
     "default": "12",
-    "name": "end-month-tariff-shunt-additional-heat-smart-energy-source-41247"
+    "name": "end-month-tariff-shunt-additional-heat-smart-energy-source-41247",
+    "write": true
   },
   "41280": {
     "title": "Start day tariff, ext. step add. heat smart energy source",
@@ -7642,7 +7953,8 @@
     "min": "1",
     "max": "31",
     "default": "1",
-    "name": "start-day-tariff-ext-step-add-heat-smart-energy-source-41280"
+    "name": "start-day-tariff-ext-step-add-heat-smart-energy-source-41280",
+    "write": true
   },
   "41281": {
     "title": "End day tariff, ext. step add. heat  smart energy source",
@@ -7651,7 +7963,8 @@
     "min": "1",
     "max": "31",
     "default": "31",
-    "name": "end-day-tariff-ext-step-add-heat-smart-energy-source-41281"
+    "name": "end-day-tariff-ext-step-add-heat-smart-energy-source-41281",
+    "write": true
   },
   "41282": {
     "title": "Start month tariff, ext. step add. heat smart energy source",
@@ -7660,7 +7973,8 @@
     "min": "1",
     "max": "12",
     "default": "1",
-    "name": "start-month-tariff-ext-step-add-heat-smart-energy-source-41282"
+    "name": "start-month-tariff-ext-step-add-heat-smart-energy-source-41282",
+    "write": true
   },
   "41283": {
     "title": "End month tariff, ext. step add. heat smart energy source",
@@ -7669,7 +7983,8 @@
     "min": "1",
     "max": "12",
     "default": "12",
-    "name": "end-month-tariff-ext-step-add-heat-smart-energy-source-41283"
+    "name": "end-month-tariff-ext-step-add-heat-smart-energy-source-41283",
+    "write": true
   },
   "41316": {
     "title": "Ground water pump temperature alarm",
@@ -7678,7 +7993,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "ground-water-pump-temperature-alarm-41316"
+    "name": "ground-water-pump-temperature-alarm-41316",
+    "write": true
   },
   "41317": {
     "title": "Ground water pump temperature alarm level",
@@ -7688,7 +8004,8 @@
     "min": "-15",
     "max": "20",
     "default": "3",
-    "name": "ground-water-pump-temperature-alarm-level-41317"
+    "name": "ground-water-pump-temperature-alarm-level-41317",
+    "write": true
   },
   "41318": {
     "title": "Constant delta T, brine pump",
@@ -7698,7 +8015,8 @@
     "min": "2",
     "max": "10",
     "default": "4",
-    "name": "constant-delta-t-brine-pump-41318"
+    "name": "constant-delta-t-brine-pump-41318",
+    "write": true
   },
   "41319": {
     "title": "Brine pump auto mode",
@@ -7707,7 +8025,8 @@
     "min": "0",
     "max": "2",
     "default": "1",
-    "name": "brine-pump-auto-mode-41319"
+    "name": "brine-pump-auto-mode-41319",
+    "write": true
   },
   "41326": {
     "title": "Max difference, SES priority 1 energy source",
@@ -7717,7 +8036,8 @@
     "min": "10",
     "max": "250",
     "default": "100",
-    "name": "max-difference-ses-priority-1-energy-source-41326"
+    "name": "max-difference-ses-priority-1-energy-source-41326",
+    "write": true
   },
   "41327": {
     "title": "Max difference, SES lower priority energy source",
@@ -7727,7 +8047,8 @@
     "min": "10",
     "max": "250",
     "default": "70",
-    "name": "max-difference-ses-lower-priority-energy-source-41327"
+    "name": "max-difference-ses-lower-priority-energy-source-41327",
+    "write": true
   },
   "41328": {
     "title": "Delta brine pump passive cooling",
@@ -7737,7 +8058,8 @@
     "min": "1",
     "max": "15",
     "default": "4",
-    "name": "delta-brine-pump-passive-cooling-41328"
+    "name": "delta-brine-pump-passive-cooling-41328",
+    "write": true
   },
   "41550": {
     "title": "Installed (EB101)",
@@ -7746,7 +8068,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "installed-eb101-41550"
+    "name": "installed-eb101-41550",
+    "write": true
   },
   "44000": {
     "title": "EME20",
@@ -7755,7 +8078,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "eme20-44000"
+    "name": "eme20-44000",
+    "write": true
   },
   "32176": {
     "title": "Current power (EME 20)",
@@ -7772,7 +8096,8 @@
     "min": "1",
     "max": "100",
     "default": "70",
-    "name": "speed-of-circulation-pump-passive-cooling-ep15-44006"
+    "name": "speed-of-circulation-pump-passive-cooling-ep15-44006",
+    "write": true
   },
   "44007": {
     "title": "Speed of circulation pump active cooling (EP15)",
@@ -7782,13 +8107,15 @@
     "min": "1",
     "max": "100",
     "default": "70",
-    "name": "speed-of-circulation-pump-active-cooling-ep15-44007"
+    "name": "speed-of-circulation-pump-active-cooling-ep15-44007",
+    "write": true
   },
   "44012": {
     "title": "Ground water pump's control signal",
     "factor": 1,
     "size": "s8",
-    "name": "ground-water-pump-s-control-signal-44012"
+    "name": "ground-water-pump-s-control-signal-44012",
+    "write": true
   },
   "44014": {
     "title": "BT12 offset",
@@ -7798,7 +8125,8 @@
     "min": "-50",
     "max": "50",
     "default": "0",
-    "name": "bt12-offset-44014"
+    "name": "bt12-offset-44014",
+    "write": true
   },
   "32178": {
     "title": "Total average power (EME 20)",
@@ -7821,7 +8149,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "ers-2-44076"
+    "name": "ers-2-44076",
+    "write": true
   },
   "44077": {
     "title": "ERS 3",
@@ -7830,7 +8159,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "ers-3-44077"
+    "name": "ers-3-44077",
+    "write": true
   },
   "44078": {
     "title": "ERS 4",
@@ -7839,7 +8169,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "ers-4-44078"
+    "name": "ers-4-44078",
+    "write": true
   },
   "41981": {
     "title": "HTS 2",
@@ -7848,7 +8179,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "hts-2-41981"
+    "name": "hts-2-41981",
+    "write": true
   },
   "41982": {
     "title": "HTS 3",
@@ -7857,7 +8189,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "hts-3-41982"
+    "name": "hts-3-41982",
+    "write": true
   },
   "41983": {
     "title": "HTS 4",
@@ -7866,7 +8199,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "hts-4-41983"
+    "name": "hts-4-41983",
+    "write": true
   },
   "44138": {
     "title": "External adjustment, cooling climate system 8",
@@ -7875,7 +8209,8 @@
     "min": "-10",
     "max": "10",
     "default": "0",
-    "name": "external-adjustment-cooling-climate-system-8-44138"
+    "name": "external-adjustment-cooling-climate-system-8-44138",
+    "write": true
   },
   "44139": {
     "title": "External adjustment, cooling climate system 7",
@@ -7884,7 +8219,8 @@
     "min": "-10",
     "max": "10",
     "default": "0",
-    "name": "external-adjustment-cooling-climate-system-7-44139"
+    "name": "external-adjustment-cooling-climate-system-7-44139",
+    "write": true
   },
   "44140": {
     "title": "External adjustment, cooling climate system 6",
@@ -7893,7 +8229,8 @@
     "min": "-10",
     "max": "10",
     "default": "0",
-    "name": "external-adjustment-cooling-climate-system-6-44140"
+    "name": "external-adjustment-cooling-climate-system-6-44140",
+    "write": true
   },
   "44141": {
     "title": "External adjustment, cooling climate system 5",
@@ -7902,7 +8239,8 @@
     "min": "-10",
     "max": "10",
     "default": "0",
-    "name": "external-adjustment-cooling-climate-system-5-44141"
+    "name": "external-adjustment-cooling-climate-system-5-44141",
+    "write": true
   },
   "44142": {
     "title": "External adjustment, cooling climate system 4",
@@ -7911,7 +8249,8 @@
     "min": "-10",
     "max": "10",
     "default": "0",
-    "name": "external-adjustment-cooling-climate-system-4-44142"
+    "name": "external-adjustment-cooling-climate-system-4-44142",
+    "write": true
   },
   "44143": {
     "title": "External adjustment, cooling climate system 3",
@@ -7920,7 +8259,8 @@
     "min": "-10",
     "max": "10",
     "default": "0",
-    "name": "external-adjustment-cooling-climate-system-3-44143"
+    "name": "external-adjustment-cooling-climate-system-3-44143",
+    "write": true
   },
   "44144": {
     "title": "External adjustment, cooling climate system 2",
@@ -7929,7 +8269,8 @@
     "min": "-10",
     "max": "10",
     "default": "0",
-    "name": "external-adjustment-cooling-climate-system-2-44144"
+    "name": "external-adjustment-cooling-climate-system-2-44144",
+    "write": true
   },
   "44145": {
     "title": "External adjustment, cooling climate system 1",
@@ -7938,7 +8279,8 @@
     "min": "-10",
     "max": "10",
     "default": "0",
-    "name": "external-adjustment-cooling-climate-system-1-44145"
+    "name": "external-adjustment-cooling-climate-system-1-44145",
+    "write": true
   },
   "44146": {
     "title": "External adjustment with room sensor, cooling climate system 8",
@@ -7948,7 +8290,8 @@
     "min": "50",
     "max": "300",
     "default": "200",
-    "name": "external-adjustment-with-room-sensor-cooling-climate-system-8-44146"
+    "name": "external-adjustment-with-room-sensor-cooling-climate-system-8-44146",
+    "write": true
   },
   "44147": {
     "title": "External adjustment with room sensor, cooling climate system 7",
@@ -7958,7 +8301,8 @@
     "min": "50",
     "max": "300",
     "default": "200",
-    "name": "external-adjustment-with-room-sensor-cooling-climate-system-7-44147"
+    "name": "external-adjustment-with-room-sensor-cooling-climate-system-7-44147",
+    "write": true
   },
   "44148": {
     "title": "External adjustment with room sensor, cooling climate system 6",
@@ -7968,7 +8312,8 @@
     "min": "50",
     "max": "300",
     "default": "200",
-    "name": "external-adjustment-with-room-sensor-cooling-climate-system-6-44148"
+    "name": "external-adjustment-with-room-sensor-cooling-climate-system-6-44148",
+    "write": true
   },
   "44149": {
     "title": "External adjustment with room sensor, cooling climate system 5",
@@ -7978,7 +8323,8 @@
     "min": "50",
     "max": "300",
     "default": "200",
-    "name": "external-adjustment-with-room-sensor-cooling-climate-system-5-44149"
+    "name": "external-adjustment-with-room-sensor-cooling-climate-system-5-44149",
+    "write": true
   },
   "44150": {
     "title": "External adjustment with room sensor, cooling climate system 4",
@@ -7988,7 +8334,8 @@
     "min": "50",
     "max": "300",
     "default": "200",
-    "name": "external-adjustment-with-room-sensor-cooling-climate-system-4-44150"
+    "name": "external-adjustment-with-room-sensor-cooling-climate-system-4-44150",
+    "write": true
   },
   "44151": {
     "title": "External adjustment with room sensor, cooling climate system 3",
@@ -7998,7 +8345,8 @@
     "min": "50",
     "max": "300",
     "default": "200",
-    "name": "external-adjustment-with-room-sensor-cooling-climate-system-3-44151"
+    "name": "external-adjustment-with-room-sensor-cooling-climate-system-3-44151",
+    "write": true
   },
   "44152": {
     "title": "External adjustment with room sensor, cooling climate system 2",
@@ -8008,7 +8356,8 @@
     "min": "50",
     "max": "300",
     "default": "200",
-    "name": "external-adjustment-with-room-sensor-cooling-climate-system-2-44152"
+    "name": "external-adjustment-with-room-sensor-cooling-climate-system-2-44152",
+    "write": true
   },
   "44153": {
     "title": "External adjustment with room sensor, cooling climate system 1",
@@ -8018,7 +8367,8 @@
     "min": "50",
     "max": "300",
     "default": "200",
-    "name": "external-adjustment-with-room-sensor-cooling-climate-system-1-44153"
+    "name": "external-adjustment-with-room-sensor-cooling-climate-system-1-44153",
+    "write": true
   },
   "44164": {
     "title": "BlockFreq 1 (EB102)",
@@ -8027,7 +8377,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "blockfreq-1-eb102-44164"
+    "name": "blockfreq-1-eb102-44164",
+    "write": true
   },
   "44165": {
     "title": "BlockFreq 1 (EB103)",
@@ -8036,7 +8387,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "blockfreq-1-eb103-44165"
+    "name": "blockfreq-1-eb103-44165",
+    "write": true
   },
   "44166": {
     "title": "BlockFreq 1 (EB104)",
@@ -8045,7 +8397,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "blockfreq-1-eb104-44166"
+    "name": "blockfreq-1-eb104-44166",
+    "write": true
   },
   "44167": {
     "title": "BlockFreq 1 (EB105)",
@@ -8054,7 +8407,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "blockfreq-1-eb105-44167"
+    "name": "blockfreq-1-eb105-44167",
+    "write": true
   },
   "44168": {
     "title": "BlockFreq 1 (EB106)",
@@ -8063,7 +8417,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "blockfreq-1-eb106-44168"
+    "name": "blockfreq-1-eb106-44168",
+    "write": true
   },
   "44169": {
     "title": "BlockFreq 1 (EB107)",
@@ -8072,7 +8427,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "blockfreq-1-eb107-44169"
+    "name": "blockfreq-1-eb107-44169",
+    "write": true
   },
   "44170": {
     "title": "BlockFreq 1 (EB108)",
@@ -8081,7 +8437,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "blockfreq-1-eb108-44170"
+    "name": "blockfreq-1-eb108-44170",
+    "write": true
   },
   "44200": {
     "title": "Power at DOT, manual value",
@@ -8091,7 +8448,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "power-at-dot-manual-value-44200"
+    "name": "power-at-dot-manual-value-44200",
+    "write": true
   },
   "44100": {
     "title": "Blocking actions (ERS 3)",
@@ -8100,7 +8458,8 @@
     "min": "0",
     "max": "2",
     "default": "2",
-    "name": "blocking-actions-ers-3-44100"
+    "name": "blocking-actions-ers-3-44100",
+    "write": true
   },
   "44101": {
     "title": "Blocking actions (ERS 4)",
@@ -8109,7 +8468,8 @@
     "min": "0",
     "max": "2",
     "default": "2",
-    "name": "blocking-actions-ers-4-44101"
+    "name": "blocking-actions-ers-4-44101",
+    "write": true
   },
   "44022": {
     "title": "EB103/104-GP12",
@@ -8118,7 +8478,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "eb103-104-gp12-44022"
+    "name": "eb103-104-gp12-44022",
+    "write": true
   },
   "43242": {
     "title": "Minimum permitted speed (EB100 GP1)",
@@ -8128,7 +8489,8 @@
     "min": "1",
     "max": "50",
     "default": "1",
-    "name": "minimum-permitted-speed-eb100-gp1-43242"
+    "name": "minimum-permitted-speed-eb100-gp1-43242",
+    "write": true
   },
   "40176": {
     "title": "System 1 (RMU)",
@@ -8137,7 +8499,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "system-1-rmu-40176"
+    "name": "system-1-rmu-40176",
+    "write": true
   },
   "40177": {
     "title": "System 2 (RMU)",
@@ -8146,7 +8509,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "system-2-rmu-40177"
+    "name": "system-2-rmu-40177",
+    "write": true
   },
   "40178": {
     "title": "System 3 (RMU)",
@@ -8155,7 +8519,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "system-3-rmu-40178"
+    "name": "system-3-rmu-40178",
+    "write": true
   },
   "40179": {
     "title": "System 4 (RMU)",
@@ -8164,7 +8529,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "system-4-rmu-40179"
+    "name": "system-4-rmu-40179",
+    "write": true
   },
   "41998": {
     "title": "System 4 (RMU)",
@@ -8173,7 +8539,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "system-4-rmu-41998"
+    "name": "system-4-rmu-41998",
+    "write": true
   },
   "41999": {
     "title": "System 4 (RMU)",
@@ -8182,7 +8549,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "system-4-rmu-41999"
+    "name": "system-4-rmu-41999",
+    "write": true
   },
   "42000": {
     "title": "System 4 (RMU)",
@@ -8191,7 +8559,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "system-4-rmu-42000"
+    "name": "system-4-rmu-42000",
+    "write": true
   },
   "42001": {
     "title": "System 4 (RMU)",
@@ -8200,7 +8569,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "system-4-rmu-42001"
+    "name": "system-4-rmu-42001",
+    "write": true
   },
   "42742": {
     "title": "The start guide has been run",
@@ -8209,7 +8579,8 @@
     "min": "0",
     "max": "1",
     "default": "1",
-    "name": "the-start-guide-has-been-run-42742"
+    "name": "the-start-guide-has-been-run-42742",
+    "write": true
   },
   "43232": {
     "title": "Audio signal on alarm",
@@ -8218,7 +8589,8 @@
     "min": "0",
     "max": "1",
     "default": "1",
-    "name": "audio-signal-on-alarm-43232"
+    "name": "audio-signal-on-alarm-43232",
+    "write": true
   },
   "43233": {
     "title": "Sound when pressing button",
@@ -8227,7 +8599,8 @@
     "min": "0",
     "max": "1",
     "default": "1",
-    "name": "sound-when-pressing-button-43233"
+    "name": "sound-when-pressing-button-43233",
+    "write": true
   },
   "43057": {
     "title": "ERS S40 7",
@@ -8236,7 +8609,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "ers-s40-7-43057"
+    "name": "ers-s40-7-43057",
+    "write": true
   },
   "43059": {
     "title": "Heating, auto",
@@ -8245,7 +8619,8 @@
     "min": "0",
     "max": "1",
     "default": "1",
-    "name": "heating-auto-43059"
+    "name": "heating-auto-43059",
+    "write": true
   },
   "43033": {
     "title": "Factor",
@@ -8254,7 +8629,8 @@
     "min": "1",
     "max": "10",
     "default": "5",
-    "name": "factor-43033"
+    "name": "factor-43033",
+    "write": true
   },
   "43088": {
     "title": "Period",
@@ -8263,7 +8639,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "period-43088"
+    "name": "period-43088",
+    "write": true
   },
   "43089": {
     "title": "Number of years",
@@ -8272,7 +8649,8 @@
     "min": "1",
     "max": "5",
     "default": "1",
-    "name": "number-of-years-43089"
+    "name": "number-of-years-43089",
+    "write": true
   },
   "43090": {
     "title": "Months",
@@ -8281,19 +8659,22 @@
     "min": "0",
     "max": "4095",
     "default": "4095",
-    "name": "months-43090"
+    "name": "months-43090",
+    "write": true
   },
   "43096": {
     "title": "Show outdoor temperature",
     "factor": 1,
     "size": "u8",
-    "name": "show-outdoor-temperature-43096"
+    "name": "show-outdoor-temperature-43096",
+    "write": true
   },
   "43097": {
     "title": "Show indoor temperature",
     "factor": 1,
     "size": "u8",
-    "name": "show-indoor-temperature-43097"
+    "name": "show-indoor-temperature-43097",
+    "write": true
   },
   "43066": {
     "title": "Active days",
@@ -8302,7 +8683,8 @@
     "min": "0",
     "max": "127",
     "default": "0",
-    "name": "active-days-43066"
+    "name": "active-days-43066",
+    "write": true
   },
   "43067": {
     "title": "Active days",
@@ -8311,7 +8693,8 @@
     "min": "0",
     "max": "127",
     "default": "0",
-    "name": "active-days-43067"
+    "name": "active-days-43067",
+    "write": true
   },
   "43068": {
     "title": "Active days",
@@ -8320,7 +8703,8 @@
     "min": "0",
     "max": "127",
     "default": "0",
-    "name": "active-days-43068"
+    "name": "active-days-43068",
+    "write": true
   },
   "43069": {
     "title": "Active days",
@@ -8329,7 +8713,8 @@
     "min": "0",
     "max": "127",
     "default": "0",
-    "name": "active-days-43069"
+    "name": "active-days-43069",
+    "write": true
   },
   "43070": {
     "title": "Active days",
@@ -8338,22 +8723,26 @@
     "min": "0",
     "max": "127",
     "default": "0",
-    "name": "active-days-43070"
+    "name": "active-days-43070",
+    "write": true
   },
   "43071": {
     "title": "Start time",
     "factor": 1,
-    "name": "start-time-43071"
+    "name": "start-time-43071",
+    "write": true
   },
   "43073": {
     "title": "Start time",
     "factor": 1,
-    "name": "start-time-43073"
+    "name": "start-time-43073",
+    "write": true
   },
   "43075": {
     "title": "Stop time",
     "factor": 1,
-    "name": "stop-time-43075"
+    "name": "stop-time-43075",
+    "write": true
   },
   "42667": {
     "title": "Offset cooling (EME20)",
@@ -8362,7 +8751,8 @@
     "min": "-10",
     "max": "0",
     "default": "-1",
-    "name": "offset-cooling-eme20-42667"
+    "name": "offset-cooling-eme20-42667",
+    "write": true
   },
   "42668": {
     "title": "Offset heating (EME20)",
@@ -8371,7 +8761,8 @@
     "min": "0",
     "max": "10",
     "default": "1",
-    "name": "offset-heating-eme20-42668"
+    "name": "offset-heating-eme20-42668",
+    "write": true
   },
   "42669": {
     "title": "Offset pool (EME20)",
@@ -8381,7 +8772,8 @@
     "min": "0",
     "max": "10",
     "default": "10",
-    "name": "offset-pool-eme20-42669"
+    "name": "offset-pool-eme20-42669",
+    "write": true
   },
   "42666": {
     "title": "Cooling (EME20)",
@@ -8390,7 +8782,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "cooling-eme20-42666"
+    "name": "cooling-eme20-42666",
+    "write": true
   },
   "42675": {
     "title": "AUX (EME20)",
@@ -8399,7 +8792,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "aux-eme20-42675"
+    "name": "aux-eme20-42675",
+    "write": true
   },
   "40000": {
     "title": "Temperature, Overload, pool",
@@ -8409,7 +8803,8 @@
     "min": "1",
     "max": "50",
     "default": "1",
-    "name": "temperature-overload-pool-40000"
+    "name": "temperature-overload-pool-40000",
+    "write": true
   },
   "42107": {
     "title": "EME20 API",
@@ -8418,7 +8813,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "eme20-api-42107"
+    "name": "eme20-api-42107",
+    "write": true
   },
   "42108": {
     "title": "EME20 API Include own consumption",
@@ -8427,7 +8823,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "eme20-api-include-own-consumption-42108"
+    "name": "eme20-api-include-own-consumption-42108",
+    "write": true
   },
   "42109": {
     "title": "EME20 API Available power",
@@ -8436,7 +8833,8 @@
     "min": "0",
     "max": "65535",
     "default": "0",
-    "name": "eme20-api-available-power-42109"
+    "name": "eme20-api-available-power-42109",
+    "write": true
   },
   "42111": {
     "title": "External adjustment input, main unit (ECS1)",
@@ -8445,7 +8843,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "external-adjustment-input-main-unit-ecs1-42111"
+    "name": "external-adjustment-input-main-unit-ecs1-42111",
+    "write": true
   },
   "42112": {
     "title": "External adjustment input (ECS2)",
@@ -8454,7 +8853,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "external-adjustment-input-ecs2-42112"
+    "name": "external-adjustment-input-ecs2-42112",
+    "write": true
   },
   "42113": {
     "title": "External adjustment input (ECS3)",
@@ -8463,7 +8863,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "external-adjustment-input-ecs3-42113"
+    "name": "external-adjustment-input-ecs3-42113",
+    "write": true
   },
   "42114": {
     "title": "External adjustment input (ECS4)",
@@ -8472,7 +8873,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "external-adjustment-input-ecs4-42114"
+    "name": "external-adjustment-input-ecs4-42114",
+    "write": true
   },
   "42115": {
     "title": "External adjustment input (ECS5)",
@@ -8481,7 +8883,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "external-adjustment-input-ecs5-42115"
+    "name": "external-adjustment-input-ecs5-42115",
+    "write": true
   },
   "42116": {
     "title": "External adjustment input (ECS6)",
@@ -8490,7 +8893,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "external-adjustment-input-ecs6-42116"
+    "name": "external-adjustment-input-ecs6-42116",
+    "write": true
   },
   "42117": {
     "title": "External adjustment input (ECS7)",
@@ -8499,7 +8903,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "external-adjustment-input-ecs7-42117"
+    "name": "external-adjustment-input-ecs7-42117",
+    "write": true
   },
   "42118": {
     "title": "External adjustment input (ECS8)",
@@ -8508,7 +8913,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "external-adjustment-input-ecs8-42118"
+    "name": "external-adjustment-input-ecs8-42118",
+    "write": true
   },
   "42119": {
     "title": "Zone 1 affected by ECS1",
@@ -8517,7 +8923,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "zone-1-affected-by-ecs1-42119"
+    "name": "zone-1-affected-by-ecs1-42119",
+    "write": true
   },
   "42120": {
     "title": "Zone 2 affected by ECS1",
@@ -8526,7 +8933,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "zone-2-affected-by-ecs1-42120"
+    "name": "zone-2-affected-by-ecs1-42120",
+    "write": true
   },
   "42121": {
     "title": "Zone 3 affected by ECS1",
@@ -8535,7 +8943,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "zone-3-affected-by-ecs1-42121"
+    "name": "zone-3-affected-by-ecs1-42121",
+    "write": true
   },
   "42122": {
     "title": "Zone 4 affected by ECS1",
@@ -8544,7 +8953,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "zone-4-affected-by-ecs1-42122"
+    "name": "zone-4-affected-by-ecs1-42122",
+    "write": true
   },
   "42123": {
     "title": "Zone 5 affected by ECS1",
@@ -8553,7 +8963,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "zone-5-affected-by-ecs1-42123"
+    "name": "zone-5-affected-by-ecs1-42123",
+    "write": true
   },
   "42124": {
     "title": "Zone 6 affected by ECS1",
@@ -8562,7 +8973,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "zone-6-affected-by-ecs1-42124"
+    "name": "zone-6-affected-by-ecs1-42124",
+    "write": true
   },
   "42125": {
     "title": "Zone 7 affected by ECS1",
@@ -8571,7 +8983,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "zone-7-affected-by-ecs1-42125"
+    "name": "zone-7-affected-by-ecs1-42125",
+    "write": true
   },
   "42126": {
     "title": "Zone 8 affected by ECS1",
@@ -8580,7 +8993,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "zone-8-affected-by-ecs1-42126"
+    "name": "zone-8-affected-by-ecs1-42126",
+    "write": true
   },
   "42127": {
     "title": "Zone 9 affected by ECS1",
@@ -8589,7 +9003,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "zone-9-affected-by-ecs1-42127"
+    "name": "zone-9-affected-by-ecs1-42127",
+    "write": true
   },
   "42128": {
     "title": "Zone 10 affected by ECS1",
@@ -8598,7 +9013,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "zone-10-affected-by-ecs1-42128"
+    "name": "zone-10-affected-by-ecs1-42128",
+    "write": true
   },
   "42129": {
     "title": "Zone 11 affected by ECS1",
@@ -8607,7 +9023,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "zone-11-affected-by-ecs1-42129"
+    "name": "zone-11-affected-by-ecs1-42129",
+    "write": true
   },
   "42130": {
     "title": "Zone 12 affected by ECS1",
@@ -8616,7 +9033,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "zone-12-affected-by-ecs1-42130"
+    "name": "zone-12-affected-by-ecs1-42130",
+    "write": true
   },
   "42131": {
     "title": "Zone 13 affected by ECS1",
@@ -8625,7 +9043,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "zone-13-affected-by-ecs1-42131"
+    "name": "zone-13-affected-by-ecs1-42131",
+    "write": true
   },
   "42132": {
     "title": "Zone 14 affected by ECS1",
@@ -8634,7 +9053,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "zone-14-affected-by-ecs1-42132"
+    "name": "zone-14-affected-by-ecs1-42132",
+    "write": true
   },
   "42133": {
     "title": "Zone 15 affected by ECS1",
@@ -8643,7 +9063,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "zone-15-affected-by-ecs1-42133"
+    "name": "zone-15-affected-by-ecs1-42133",
+    "write": true
   },
   "42134": {
     "title": "Zone 16 affected by ECS1",
@@ -8652,7 +9073,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "zone-16-affected-by-ecs1-42134"
+    "name": "zone-16-affected-by-ecs1-42134",
+    "write": true
   },
   "42135": {
     "title": "Zone 17 affected by ECS1",
@@ -8661,7 +9083,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "zone-17-affected-by-ecs1-42135"
+    "name": "zone-17-affected-by-ecs1-42135",
+    "write": true
   },
   "42136": {
     "title": "Zone 18 affected by ECS1",
@@ -8670,7 +9093,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "zone-18-affected-by-ecs1-42136"
+    "name": "zone-18-affected-by-ecs1-42136",
+    "write": true
   },
   "42137": {
     "title": "Zone 19 affected by ECS1",
@@ -8679,7 +9103,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "zone-19-affected-by-ecs1-42137"
+    "name": "zone-19-affected-by-ecs1-42137",
+    "write": true
   },
   "42138": {
     "title": "Zone 20 affected by ECS1",
@@ -8688,7 +9113,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "zone-20-affected-by-ecs1-42138"
+    "name": "zone-20-affected-by-ecs1-42138",
+    "write": true
   },
   "42139": {
     "title": "Zone 21 affected by ECS1",
@@ -8697,7 +9123,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "zone-21-affected-by-ecs1-42139"
+    "name": "zone-21-affected-by-ecs1-42139",
+    "write": true
   },
   "42140": {
     "title": "Zone 22 affected by ECS1",
@@ -8706,7 +9133,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "zone-22-affected-by-ecs1-42140"
+    "name": "zone-22-affected-by-ecs1-42140",
+    "write": true
   },
   "42141": {
     "title": "Zone 23 affected by ECS1",
@@ -8715,7 +9143,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "zone-23-affected-by-ecs1-42141"
+    "name": "zone-23-affected-by-ecs1-42141",
+    "write": true
   },
   "42142": {
     "title": "Zone 24 affected by ECS1",
@@ -8724,7 +9153,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "zone-24-affected-by-ecs1-42142"
+    "name": "zone-24-affected-by-ecs1-42142",
+    "write": true
   },
   "42143": {
     "title": "Zone 25 affected by ECS1",
@@ -8733,7 +9163,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "zone-25-affected-by-ecs1-42143"
+    "name": "zone-25-affected-by-ecs1-42143",
+    "write": true
   },
   "42144": {
     "title": "Zone 26 affected by ECS1",
@@ -8742,7 +9173,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "zone-26-affected-by-ecs1-42144"
+    "name": "zone-26-affected-by-ecs1-42144",
+    "write": true
   },
   "42145": {
     "title": "Zone 27 affected by ECS1",
@@ -8751,7 +9183,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "zone-27-affected-by-ecs1-42145"
+    "name": "zone-27-affected-by-ecs1-42145",
+    "write": true
   },
   "42146": {
     "title": "Zone 28 affected by ECS1",
@@ -8760,7 +9193,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "zone-28-affected-by-ecs1-42146"
+    "name": "zone-28-affected-by-ecs1-42146",
+    "write": true
   },
   "42147": {
     "title": "Zone 29 affected by ECS1",
@@ -8769,7 +9203,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "zone-29-affected-by-ecs1-42147"
+    "name": "zone-29-affected-by-ecs1-42147",
+    "write": true
   },
   "42148": {
     "title": "Zone 30 affected by ECS1",
@@ -8778,7 +9213,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "zone-30-affected-by-ecs1-42148"
+    "name": "zone-30-affected-by-ecs1-42148",
+    "write": true
   },
   "42149": {
     "title": "Zone 31 affected by ECS1",
@@ -8787,7 +9223,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "zone-31-affected-by-ecs1-42149"
+    "name": "zone-31-affected-by-ecs1-42149",
+    "write": true
   },
   "42150": {
     "title": "Zone 32 affected by ECS1",
@@ -8796,7 +9233,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "zone-32-affected-by-ecs1-42150"
+    "name": "zone-32-affected-by-ecs1-42150",
+    "write": true
   },
   "42151": {
     "title": "Zone 33 affected by ECS1",
@@ -8805,7 +9243,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "zone-33-affected-by-ecs1-42151"
+    "name": "zone-33-affected-by-ecs1-42151",
+    "write": true
   },
   "42152": {
     "title": "Zone 34 affected by ECS1",
@@ -8814,7 +9253,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "zone-34-affected-by-ecs1-42152"
+    "name": "zone-34-affected-by-ecs1-42152",
+    "write": true
   },
   "42153": {
     "title": "Zone 35 affected by ECS1",
@@ -8823,7 +9263,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "zone-35-affected-by-ecs1-42153"
+    "name": "zone-35-affected-by-ecs1-42153",
+    "write": true
   },
   "42154": {
     "title": "Zone 36 affected by ECS1",
@@ -8832,7 +9273,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "zone-36-affected-by-ecs1-42154"
+    "name": "zone-36-affected-by-ecs1-42154",
+    "write": true
   },
   "42155": {
     "title": "Zone 37 affected by ECS1",
@@ -8841,7 +9283,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "zone-37-affected-by-ecs1-42155"
+    "name": "zone-37-affected-by-ecs1-42155",
+    "write": true
   },
   "42156": {
     "title": "Zone 38 affected by ECS1",
@@ -8850,7 +9293,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "zone-38-affected-by-ecs1-42156"
+    "name": "zone-38-affected-by-ecs1-42156",
+    "write": true
   },
   "42157": {
     "title": "Zone 39 affected by ECS1",
@@ -8859,7 +9303,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "zone-39-affected-by-ecs1-42157"
+    "name": "zone-39-affected-by-ecs1-42157",
+    "write": true
   },
   "42158": {
     "title": "Zone 40 affected by ECS1",
@@ -8868,7 +9313,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "zone-40-affected-by-ecs1-42158"
+    "name": "zone-40-affected-by-ecs1-42158",
+    "write": true
   },
   "42439": {
     "title": "Input on ECS1 affects ECS1",
@@ -8877,7 +9323,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "input-on-ecs1-affects-ecs1-42439"
+    "name": "input-on-ecs1-affects-ecs1-42439",
+    "write": true
   },
   "42440": {
     "title": "Input on ECS1 affects ECS2",
@@ -8886,7 +9333,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "input-on-ecs1-affects-ecs2-42440"
+    "name": "input-on-ecs1-affects-ecs2-42440",
+    "write": true
   },
   "42441": {
     "title": "Input on ECS1 affects ECS3",
@@ -8895,7 +9343,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "input-on-ecs1-affects-ecs3-42441"
+    "name": "input-on-ecs1-affects-ecs3-42441",
+    "write": true
   },
   "42442": {
     "title": "Input on ECS1 affects ECS4",
@@ -8904,7 +9353,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "input-on-ecs1-affects-ecs4-42442"
+    "name": "input-on-ecs1-affects-ecs4-42442",
+    "write": true
   },
   "42443": {
     "title": "Input on ECS1 affects ECS5",
@@ -8913,7 +9363,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "input-on-ecs1-affects-ecs5-42443"
+    "name": "input-on-ecs1-affects-ecs5-42443",
+    "write": true
   },
   "42444": {
     "title": "Input on ECS1 affects ECS6",
@@ -8922,7 +9373,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "input-on-ecs1-affects-ecs6-42444"
+    "name": "input-on-ecs1-affects-ecs6-42444",
+    "write": true
   },
   "42445": {
     "title": "Input on ECS1 affects ECS7",
@@ -8931,7 +9383,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "input-on-ecs1-affects-ecs7-42445"
+    "name": "input-on-ecs1-affects-ecs7-42445",
+    "write": true
   },
   "42446": {
     "title": "Input on ECS1 affects ECS8",
@@ -8940,7 +9393,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "input-on-ecs1-affects-ecs8-42446"
+    "name": "input-on-ecs1-affects-ecs8-42446",
+    "write": true
   },
   "42503": {
     "title": "External setting for adjustment migrated",
@@ -8949,7 +9403,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "external-setting-for-adjustment-migrated-42503"
+    "name": "external-setting-for-adjustment-migrated-42503",
+    "write": true
   },
   "42676": {
     "title": "Time between filter replacement",
@@ -8958,7 +9413,8 @@
     "min": "1",
     "max": "24",
     "default": "3",
-    "name": "time-between-filter-replacement-42676"
+    "name": "time-between-filter-replacement-42676",
+    "write": true
   },
   "42677": {
     "title": "Time between filter replacement",
@@ -8967,7 +9423,8 @@
     "min": "1",
     "max": "24",
     "default": "3",
-    "name": "time-between-filter-replacement-42677"
+    "name": "time-between-filter-replacement-42677",
+    "write": true
   },
   "42678": {
     "title": "Time between filter replacement",
@@ -8976,7 +9433,8 @@
     "min": "1",
     "max": "24",
     "default": "3",
-    "name": "time-between-filter-replacement-42678"
+    "name": "time-between-filter-replacement-42678",
+    "write": true
   },
   "42679": {
     "title": "Time between filter replacement",
@@ -8985,7 +9443,8 @@
     "min": "1",
     "max": "24",
     "default": "3",
-    "name": "time-between-filter-replacement-42679"
+    "name": "time-between-filter-replacement-42679",
+    "write": true
   },
   "42700": {
     "title": "Return time fan 4",
@@ -8995,7 +9454,8 @@
     "min": "1",
     "max": "24",
     "default": "4",
-    "name": "return-time-fan-4-42700"
+    "name": "return-time-fan-4-42700",
+    "write": true
   },
   "42701": {
     "title": "Return time fan 4",
@@ -9005,7 +9465,8 @@
     "min": "1",
     "max": "24",
     "default": "4",
-    "name": "return-time-fan-4-42701"
+    "name": "return-time-fan-4-42701",
+    "write": true
   },
   "42702": {
     "title": "Return time fan 4",
@@ -9015,7 +9476,8 @@
     "min": "1",
     "max": "24",
     "default": "4",
-    "name": "return-time-fan-4-42702"
+    "name": "return-time-fan-4-42702",
+    "write": true
   },
   "42703": {
     "title": "Return time fan 4",
@@ -9025,7 +9487,8 @@
     "min": "1",
     "max": "24",
     "default": "4",
-    "name": "return-time-fan-4-42703"
+    "name": "return-time-fan-4-42703",
+    "write": true
   },
   "42704": {
     "title": "Return time fan 4",
@@ -9035,7 +9498,8 @@
     "min": "1",
     "max": "24",
     "default": "4",
-    "name": "return-time-fan-4-42704"
+    "name": "return-time-fan-4-42704",
+    "write": true
   },
   "42705": {
     "title": "Return time fan 4",
@@ -9045,7 +9509,8 @@
     "min": "1",
     "max": "24",
     "default": "4",
-    "name": "return-time-fan-4-42705"
+    "name": "return-time-fan-4-42705",
+    "write": true
   },
   "42706": {
     "title": "Return time fan 4",
@@ -9055,7 +9520,8 @@
     "min": "1",
     "max": "24",
     "default": "4",
-    "name": "return-time-fan-4-42706"
+    "name": "return-time-fan-4-42706",
+    "write": true
   },
   "42707": {
     "title": "Return time fan 4",
@@ -9065,7 +9531,8 @@
     "min": "1",
     "max": "24",
     "default": "4",
-    "name": "return-time-fan-4-42707"
+    "name": "return-time-fan-4-42707",
+    "write": true
   },
   "42708": {
     "title": "Return time fan 4",
@@ -9075,7 +9542,8 @@
     "min": "1",
     "max": "24",
     "default": "4",
-    "name": "return-time-fan-4-42708"
+    "name": "return-time-fan-4-42708",
+    "write": true
   },
   "42709": {
     "title": "Return time fan 4",
@@ -9085,7 +9553,8 @@
     "min": "1",
     "max": "24",
     "default": "4",
-    "name": "return-time-fan-4-42709"
+    "name": "return-time-fan-4-42709",
+    "write": true
   },
   "42710": {
     "title": "Return time fan 4",
@@ -9095,7 +9564,8 @@
     "min": "1",
     "max": "24",
     "default": "4",
-    "name": "return-time-fan-4-42710"
+    "name": "return-time-fan-4-42710",
+    "write": true
   },
   "42711": {
     "title": "Return time fan 4",
@@ -9105,7 +9575,8 @@
     "min": "1",
     "max": "24",
     "default": "4",
-    "name": "return-time-fan-4-42711"
+    "name": "return-time-fan-4-42711",
+    "write": true
   },
   "42712": {
     "title": "Return time fan 4",
@@ -9115,7 +9586,8 @@
     "min": "1",
     "max": "24",
     "default": "4",
-    "name": "return-time-fan-4-42712"
+    "name": "return-time-fan-4-42712",
+    "write": true
   },
   "42713": {
     "title": "Return time fan 4",
@@ -9125,7 +9597,8 @@
     "min": "1",
     "max": "24",
     "default": "4",
-    "name": "return-time-fan-4-42713"
+    "name": "return-time-fan-4-42713",
+    "write": true
   },
   "42714": {
     "title": "Return time fan 4",
@@ -9135,7 +9608,8 @@
     "min": "1",
     "max": "24",
     "default": "4",
-    "name": "return-time-fan-4-42714"
+    "name": "return-time-fan-4-42714",
+    "write": true
   },
   "42715": {
     "title": "Return time fan 4",
@@ -9145,7 +9619,8 @@
     "min": "1",
     "max": "24",
     "default": "4",
-    "name": "return-time-fan-4-42715"
+    "name": "return-time-fan-4-42715",
+    "write": true
   },
   "42728": {
     "title": "Time between filter replacement",
@@ -9154,7 +9629,8 @@
     "min": "1",
     "max": "24",
     "default": "3",
-    "name": "time-between-filter-replacement-42728"
+    "name": "time-between-filter-replacement-42728",
+    "write": true
   },
   "42729": {
     "title": "Time between filter replacement",
@@ -9163,7 +9639,8 @@
     "min": "1",
     "max": "24",
     "default": "3",
-    "name": "time-between-filter-replacement-42729"
+    "name": "time-between-filter-replacement-42729",
+    "write": true
   },
   "42730": {
     "title": "Time between filter replacement",
@@ -9172,7 +9649,8 @@
     "min": "1",
     "max": "24",
     "default": "3",
-    "name": "time-between-filter-replacement-42730"
+    "name": "time-between-filter-replacement-42730",
+    "write": true
   },
   "42731": {
     "title": "Time between filter replacement",
@@ -9181,7 +9659,8 @@
     "min": "1",
     "max": "24",
     "default": "3",
-    "name": "time-between-filter-replacement-42731"
+    "name": "time-between-filter-replacement-42731",
+    "write": true
   },
   "42740": {
     "title": "AUX from Modbus",
@@ -9190,13 +9669,15 @@
     "min": "0",
     "max": "59",
     "default": "0",
-    "name": "aux-from-modbus-42740"
+    "name": "aux-from-modbus-42740",
+    "write": true
   },
   "42741": {
     "title": "AUX from Modbus",
     "factor": 1,
     "size": "s16",
-    "name": "aux-from-modbus-42741"
+    "name": "aux-from-modbus-42741",
+    "write": true
   },
   "32166": {
     "title": "Instantaneous used power",
@@ -9215,7 +9696,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "ers-2-42820"
+    "name": "ers-2-42820",
+    "write": true
   },
   "42821": {
     "title": "ERS 3",
@@ -9224,7 +9706,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "ers-3-42821"
+    "name": "ers-3-42821",
+    "write": true
   },
   "42822": {
     "title": "ERS 4",
@@ -9233,7 +9716,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "ers-4-42822"
+    "name": "ers-4-42822",
+    "write": true
   },
   "42823": {
     "title": "ERS 4",
@@ -9242,7 +9726,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "ers-4-42823"
+    "name": "ers-4-42823",
+    "write": true
   },
   "42824": {
     "title": "ERS 4",
@@ -9251,7 +9736,8 @@
     "min": "0",
     "max": "1",
     "default": "1",
-    "name": "ers-4-42824"
+    "name": "ers-4-42824",
+    "write": true
   },
   "42825": {
     "title": "ERS 4",
@@ -9260,7 +9746,8 @@
     "min": "0",
     "max": "1",
     "default": "1",
-    "name": "ers-4-42825"
+    "name": "ers-4-42825",
+    "write": true
   },
   "42826": {
     "title": "ERS 4",
@@ -9269,7 +9756,8 @@
     "min": "0",
     "max": "1",
     "default": "1",
-    "name": "ers-4-42826"
+    "name": "ers-4-42826",
+    "write": true
   },
   "42827": {
     "title": "ERS 4",
@@ -9278,7 +9766,8 @@
     "min": "0",
     "max": "1",
     "default": "1",
-    "name": "ers-4-42827"
+    "name": "ers-4-42827",
+    "write": true
   },
   "42857": {
     "title": "Min. vent temp. (ERS 4)",
@@ -9288,7 +9777,8 @@
     "min": "0",
     "max": "10",
     "default": "3",
-    "name": "min-vent-temp-ers-4-42857"
+    "name": "min-vent-temp-ers-4-42857",
+    "write": true
   },
   "42858": {
     "title": "Min. vent temp. (ERS 4)",
@@ -9298,7 +9788,8 @@
     "min": "0",
     "max": "10",
     "default": "3",
-    "name": "min-vent-temp-ers-4-42858"
+    "name": "min-vent-temp-ers-4-42858",
+    "write": true
   },
   "42859": {
     "title": "Min. vent temp. (ERS 4)",
@@ -9308,7 +9799,8 @@
     "min": "0",
     "max": "10",
     "default": "3",
-    "name": "min-vent-temp-ers-4-42859"
+    "name": "min-vent-temp-ers-4-42859",
+    "write": true
   },
   "42860": {
     "title": "Min. vent temp. (ERS 4)",
@@ -9318,7 +9810,8 @@
     "min": "0",
     "max": "10",
     "default": "3",
-    "name": "min-vent-temp-ers-4-42860"
+    "name": "min-vent-temp-ers-4-42860",
+    "write": true
   },
   "42828": {
     "title": "Blocking actions (ERS 4)",
@@ -9327,7 +9820,8 @@
     "min": "0",
     "max": "2",
     "default": "2",
-    "name": "blocking-actions-ers-4-42828"
+    "name": "blocking-actions-ers-4-42828",
+    "write": true
   },
   "42829": {
     "title": "Blocking actions (ERS 4)",
@@ -9336,7 +9830,8 @@
     "min": "0",
     "max": "2",
     "default": "2",
-    "name": "blocking-actions-ers-4-42829"
+    "name": "blocking-actions-ers-4-42829",
+    "write": true
   },
   "42830": {
     "title": "Blocking actions (ERS 4)",
@@ -9345,7 +9840,8 @@
     "min": "0",
     "max": "2",
     "default": "2",
-    "name": "blocking-actions-ers-4-42830"
+    "name": "blocking-actions-ers-4-42830",
+    "write": true
   },
   "42831": {
     "title": "Blocking actions (ERS 4)",
@@ -9354,7 +9850,8 @@
     "min": "0",
     "max": "2",
     "default": "2",
-    "name": "blocking-actions-ers-4-42831"
+    "name": "blocking-actions-ers-4-42831",
+    "write": true
   },
   "32168": {
     "title": "Fan mode 5",
@@ -9392,7 +9889,8 @@
     "min": "0",
     "max": "4500",
     "default": "600",
-    "name": "immersion-heater-power-emergency-mode-43028"
+    "name": "immersion-heater-power-emergency-mode-43028",
+    "write": true
   },
   "43986": {
     "title": "Disable emergency restart GP1",
@@ -9401,7 +9899,8 @@
     "min": "0",
     "max": "1",
     "default": "0",
-    "name": "disable-emergency-restart-gp1-43986"
+    "name": "disable-emergency-restart-gp1-43986",
+    "write": true
   },
   "32190": {
     "title": "Return line (AZ2-BT69)",

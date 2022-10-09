@@ -169,7 +169,7 @@ class CSVConverter:
                 return str(40000 + int(register))
             return None
 
-        if "id" not in self.data:
+        if "register type" in self.data:
             id_prefixed = (self.data["title"].str.startswith("id:")) | (
                 self.data["title"] == "-"
             )
@@ -180,8 +180,16 @@ class CSVConverter:
             self.data = self.data.loc[~id_prefixed]
 
             self.data["id"] = self.data.apply(calculate_number, axis=1)
+
+            self.data["mode"] = self.data["register type"].map(
+                lambda x: "R/W"
+                if x in ("MODBUS_HOLDING_REGISTER", "MODBUS_COIL")
+                else "R"
+            )
+
             del self.data["register type"]
             del self.data["register"]
+
         self.data = self.data.set_index("id")
 
     def _export_to_file(self):
