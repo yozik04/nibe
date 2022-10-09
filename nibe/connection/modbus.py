@@ -33,6 +33,9 @@ class Modbus(Connection):
         except ValueError as exc:
             raise ModbusUrlException(str(exc)) from exc
 
+    async def stop(self) -> None:
+        await self._client.stream.close()
+
     async def read_coil(self, coil: Coil, timeout: float = DEFAULT_TIMEOUT) -> Coil:
         logger.debug("Sending read request")
         try:
