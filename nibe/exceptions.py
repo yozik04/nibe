@@ -52,3 +52,7 @@ class ProductInfoReadTimeoutException(ProductInfoReadException):
 
 class ModelIdentificationFailed(NibeException):
     pass
+
+
+class ModbusUrlException(NibeException, ValueError):
+    pass
