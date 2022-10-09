@@ -13,7 +13,7 @@ logger = logging.getLogger("nibe").getChild(__name__)
 
 
 def split_modbus_data(coil: Coil):
-    entity_type = (coil.address / 10000) - 1
+    entity_type = (coil.address // 10000) - 1
     entity_address = (coil.address % 10000) - 1
 
     if coil.size in ("s32", "u32"):
