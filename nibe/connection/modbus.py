@@ -36,7 +36,7 @@ class Modbus(Connection):
 
             entity_type, entity_number, entity_count = split_modbus_data(coil)
 
-            with async_timeout.timeout(timeout):
+            async with async_timeout.timeout(timeout):
                 if entity_type == 4:
                     result = await self._client.read_input_registers(
                         slave_id=self._slave_id,
@@ -64,7 +64,7 @@ class Modbus(Connection):
                 else:
                     raise CoilReadException(f"Unsupported entity type {entity_type}")
 
-            coil.raw_value = result[0]
+            coil.raw_value = b"".join(result)
 
             logger.info(f"{coil.name}: {coil.value}")
             self._heatpump.notify_coil_update(coil)
