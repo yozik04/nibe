@@ -98,7 +98,16 @@ class CSVConverter:
             "u32": "u32",
         }
 
-        self.data["size"] = self.data["size"].map(mapping)
+        size = self.data["size"].map(mapping)
+
+        invalid_size = size.isna()
+        if any(invalid_size):
+            logger.warning(
+                "Invalid size data replaced with u16:\n%s", self.data[invalid_size]
+            )
+            size[invalid_size] = "u16"
+
+        self.data["size"] = size
 
     def _fix_data_unit_column(self):
         self.data["unit"] = (
@@ -177,11 +186,12 @@ class CSVConverter:
             id_prefixed = (self.data["title"].str.startswith("id:")) | (
                 self.data["title"] == "-"
             )
-            logger.warning(
-                "Ignoring unnamed and often duplicated rows:\n%s",
-                self.data.loc[id_prefixed],
-            )
-            self.data = self.data.loc[~id_prefixed]
+            if any(id_prefixed):
+                logger.warning(
+                    "Ignoring unnamed and often duplicated rows:\n%s",
+                    self.data.loc[id_prefixed],
+                )
+                self.data = self.data.loc[~id_prefixed]
 
             self.data["id"] = self.data.apply(calculate_number, axis=1)
 

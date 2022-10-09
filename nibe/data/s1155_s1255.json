@@ -3928,6 +3928,7 @@
   "31561": {
     "title": "Date, periodic hot water",
     "factor": 1,
+    "size": "u16",
     "name": "date-periodic-hot-water-31561"
   },
   "32174": {
@@ -5095,6 +5096,7 @@
   "40067": {
     "title": "Start time periodic hot water",
     "factor": 1,
+    "size": "u16",
     "name": "start-time-periodic-hot-water-40067",
     "write": true
   },
@@ -6047,6 +6049,7 @@
   "40225": {
     "title": "More hot water",
     "factor": 10,
+    "size": "u16",
     "name": "more-hot-water-40225",
     "write": true
   },
@@ -8729,18 +8732,21 @@
   "43071": {
     "title": "Start time",
     "factor": 1,
+    "size": "u16",
     "name": "start-time-43071",
     "write": true
   },
   "43073": {
     "title": "Start time",
     "factor": 1,
+    "size": "u16",
     "name": "start-time-43073",
     "write": true
   },
   "43075": {
     "title": "Stop time",
     "factor": 1,
+    "size": "u16",
     "name": "stop-time-43075",
     "write": true
   },
