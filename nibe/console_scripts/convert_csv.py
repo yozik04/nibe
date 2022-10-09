@@ -77,6 +77,10 @@ class CSVConverter:
             self.data["info"] = self.data["info"].astype("string")
         self.data["size"] = self.data["size"].astype("string")
         self.data["name"] = self.data["name"].astype("string")
+        self.data["factor"] = self.data["factor"].replace("-", "0").astype("int")
+        self.data["min"] = self.data["min"].replace("-", "0").astype("int")
+        self.data["max"] = self.data["max"].replace("-", "0").astype("int")
+        self.data["default"] = self.data["default"].replace("-", "0").astype("int")
 
     def _fix_data_size_column(self):
         mapping = {
