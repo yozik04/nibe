@@ -54,5 +54,5 @@ class ModelIdentificationFailed(NibeException):
     pass
 
 
-class ModbusUrlException(NibeException):
+class ModbusUrlException(NibeException, ValueError):
     pass
