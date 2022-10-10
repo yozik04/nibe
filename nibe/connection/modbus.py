@@ -13,7 +13,7 @@ logger = logging.getLogger("nibe").getChild(__name__)
 
 
 def split_modbus_data(coil: Coil):
-    entity_type = (coil.address // 10000) - 1
+    entity_type = coil.address // 10000
     entity_address = (coil.address % 10000) - 1
 
     if coil.size in ("s32", "u32"):
@@ -37,25 +37,25 @@ class Modbus(Connection):
             entity_type, entity_number, entity_count = split_modbus_data(coil)
 
             async with async_timeout.timeout(timeout):
-                if entity_type == 4:
+                if entity_type == 3:
                     result = await self._client.read_input_registers(
                         slave_id=self._slave_id,
                         starting_address=entity_number,
                         quantity=entity_count,
                     )
-                elif entity_type == 3:
+                elif entity_type == 4:
                     result = await self._client.read_holding_registers(
                         slave_id=self._slave_id,
                         starting_address=entity_number,
                         quantity=entity_count,
                     )
-                elif entity_type == 2:
+                elif entity_type == 1:
                     result = await self._client.read_discrete_inputs(
                         slave_id=self._slave_id,
                         starting_address=entity_number,
                         quantity=entity_count,
                     )
-                elif entity_type == 1:
+                elif entity_type == 0:
                     result = await self._client.read_coils(
                         slave_id=self._slave_id,
                         starting_address=entity_number,
@@ -84,13 +84,13 @@ class Modbus(Connection):
             entity_type, entity_number, entity_count = split_modbus_data(coil)
 
             with async_timeout.timeout(timeout):
-                if entity_type == 3:
+                if entity_type == 4:
                     result = await self._client.write_register(
                         slave_id=self._slave_id,
                         address=entity_number,
                         value=coil.raw_value,
                     )
-                elif entity_type == 1:
+                elif entity_type == 0:
                     result = await self._client.write_coil(
                         slave_id=self._slave_id,
                         address=entity_number,

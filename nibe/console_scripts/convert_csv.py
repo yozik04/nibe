@@ -173,9 +173,9 @@ class CSVConverter:
             register_type: str = row["register type"]
             register: str = row["register"]
             if register_type == "MODBUS_COIL":
-                return str(10000 + int(register))
+                return str(int(register))
             if register_type == "MODBUS_DISCRETE_INPUT":
-                return str(20000 + int(register))
+                return str(10000 + int(register))
             if register_type == "MODBUS_INPUT_REGISTER":
                 return str(30000 + int(register))
             if register_type == "MODBUS_HOLDING_REGISTER":
