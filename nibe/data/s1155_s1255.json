@@ -3948,6 +3948,13 @@
     "name": "cooling-degree-minutes-40020",
     "write": true
   },
+  "31567": {
+    "title": "Calculated cooling supply climate system 1",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "calculated-cooling-supply-climate-system-1-31567"
+  },
   "31568": {
     "title": "Status (ACS)",
     "factor": 1,
@@ -5179,6 +5186,28 @@
     "name": "activate-force-control-45000",
     "write": true
   },
+  "40097": {
+    "title": "DM start heating",
+    "factor": 1,
+    "unit": "DM",
+    "size": "s16",
+    "min": -1000.0,
+    "max": -30.0,
+    "default": -60.0,
+    "name": "dm-start-heating-40097",
+    "write": true
+  },
+  "40100": {
+    "title": "DM between additional heat step",
+    "factor": 1,
+    "unit": "DM",
+    "size": "s16",
+    "min": 10.0,
+    "max": 1000.0,
+    "default": 100.0,
+    "name": "dm-between-additional-heat-step-40100",
+    "write": true
+  },
   "40102": {
     "title": "Max. internal additional heat",
     "factor": 100,
@@ -6100,6 +6129,17 @@
     "name": "flm-1-40678",
     "write": true
   },
+  "40679": {
+    "title": "DM diff. start additional heat",
+    "factor": 1,
+    "unit": "DM",
+    "size": "s16",
+    "min": 100.0,
+    "max": 2000.0,
+    "default": 400.0,
+    "name": "dm-diff-start-additional-heat-40679",
+    "write": true
+  },
   "40681": {
     "title": "Cooling heat sensor set point value",
     "factor": 10,
@@ -6243,6 +6283,39 @@
     "max": 220.0,
     "default": 180.0,
     "name": "supp-air-curve-sam-desired-supp-air-temp-at-given-outd-temp-t1-40716",
+    "write": true
+  },
+  "40720": {
+    "title": "Min. supply temp. cooling climate system 1",
+    "factor": 1,
+    "unit": "\u00b0C",
+    "size": "s8",
+    "min": -5.0,
+    "max": 30.0,
+    "default": 18.0,
+    "name": "min-supply-temp-cooling-climate-system-1-40720",
+    "write": true
+  },
+  "40721": {
+    "title": "Own curve, cooling P3",
+    "factor": 1,
+    "unit": "\u00b0C",
+    "size": "s8",
+    "min": -5.0,
+    "max": 40.0,
+    "default": 20.0,
+    "name": "own-curve-cooling-p3-40721",
+    "write": true
+  },
+  "40722": {
+    "title": "Own curve, cooling P5",
+    "factor": 1,
+    "unit": "\u00b0C",
+    "size": "s8",
+    "min": -5.0,
+    "max": 40.0,
+    "default": 20.0,
+    "name": "own-curve-cooling-p5-40722",
     "write": true
   },
   "40726": {
@@ -6421,6 +6494,17 @@
     "max": 100.0,
     "default": 100.0,
     "name": "maximum-speed-of-circulation-pump-for-heating-40858",
+    "write": true
+  },
+  "40859": {
+    "title": "Speed, brine pump, passive cooling mode",
+    "factor": 1,
+    "unit": "%",
+    "size": "u8",
+    "min": 0.0,
+    "max": 100.0,
+    "default": 75.0,
+    "name": "speed-brine-pump-passive-cooling-mode-40859",
     "write": true
   },
   "40893": {
@@ -6785,6 +6869,59 @@
     "max": 60.0,
     "default": 20.0,
     "name": "room-sensor-factor-climate-system-5-40959",
+    "write": true
+  },
+  "40967": {
+    "title": "Cooling curve climate system 1",
+    "factor": 1,
+    "size": "s8",
+    "min": 0.0,
+    "max": 9.0,
+    "default": 0.0,
+    "name": "cooling-curve-climate-system-1-40967",
+    "write": true
+  },
+  "40975": {
+    "title": "Cooling offset climate system 1",
+    "factor": 1,
+    "size": "s8",
+    "min": -10.0,
+    "max": 10.0,
+    "default": 0.0,
+    "name": "cooling-offset-climate-system-1-40975",
+    "write": true
+  },
+  "40976": {
+    "title": "Own curve, cooling P4",
+    "factor": 1,
+    "unit": "\u00b0C",
+    "size": "s8",
+    "min": -5.0,
+    "max": 40.0,
+    "default": 20.0,
+    "name": "own-curve-cooling-p4-40976",
+    "write": true
+  },
+  "40977": {
+    "title": "Own curve, cooling P2",
+    "factor": 1,
+    "unit": "\u00b0C",
+    "size": "s8",
+    "min": -5.0,
+    "max": 40.0,
+    "default": 20.0,
+    "name": "own-curve-cooling-p2-40977",
+    "write": true
+  },
+  "40978": {
+    "title": "Own curve, cooling P1",
+    "factor": 1,
+    "unit": "\u00b0C",
+    "size": "s8",
+    "min": -5.0,
+    "max": 40.0,
+    "default": 20.0,
+    "name": "own-curve-cooling-p1-40978",
     "write": true
   },
   "40980": {
@@ -8443,6 +8580,16 @@
     "name": "blockfreq-1-eb108-44170",
     "write": true
   },
+  "44199": {
+    "title": "Power [kW] required for dimensioned outdoor temperature",
+    "factor": 1,
+    "size": "u16",
+    "min": 1.0,
+    "max": 1000.0,
+    "default": 10.0,
+    "name": "power-kw-required-for-dimensioned-outdoor-temperature-44199",
+    "write": true
+  },
   "44200": {
     "title": "Power at DOT, manual value",
     "factor": 1,
@@ -8748,6 +8895,26 @@
     "factor": 1,
     "size": "u16",
     "name": "stop-time-43075",
+    "write": true
+  },
+  "42766": {
+    "title": "Allow add. heat during defrosting",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "allow-add-heat-during-defrosting-42766",
+    "write": true
+  },
+  "42764": {
+    "title": "K4 relay is Normally Closed",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "k4-relay-is-normally-closed-42764",
     "write": true
   },
   "42667": {
@@ -9451,6 +9618,16 @@
     "default": 3.0,
     "name": "time-between-filter-replacement-42679",
     "write": true
+  },
+  "32019": {
+    "title": "Cooling, passive",
+    "factor": 10,
+    "unit": "kWh",
+    "size": "u32",
+    "min": 0.0,
+    "max": 9999999.0,
+    "default": 0.0,
+    "name": "cooling-passive-32019"
   },
   "42700": {
     "title": "Return time fan 4",
