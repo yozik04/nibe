@@ -1,5 +1,6 @@
 import asyncio
 import logging
+from typing import List
 
 from async_modbus import modbus_for_url
 import async_timeout
@@ -22,6 +23,17 @@ def split_modbus_data(coil: Coil):
         entity_count = 1
 
     return entity_type, entity_address, entity_count
+
+
+def split_chunks(data, max_len, chunks) -> List[bytes]:
+    """Split data into chunks of a certain max length, cropping of trailing data."""
+    count = len(data) // chunks
+    res = []
+    for i in range(0, len(data), count):
+        chunk = data[i : i + count]
+        assert all(x == 0 for x in chunk[max_len:])
+        res.append(chunk[0:max_len])
+    return res
 
 
 class Modbus(Connection):
@@ -83,18 +95,18 @@ class Modbus(Connection):
         try:
             entity_type, entity_number, entity_count = split_modbus_data(coil)
 
-            with async_timeout.timeout(timeout):
+            async with async_timeout.timeout(timeout):
                 if entity_type == 4:
-                    result = await self._client.write_register(
+                    result = await self._client.write_registers(
                         slave_id=self._slave_id,
-                        address=entity_number,
-                        value=coil.raw_value,
+                        starting_address=entity_number,
+                        values=split_chunks(coil.raw_value, 2, entity_count),
                     )
                 elif entity_type == 0:
-                    result = await self._client.write_coil(
+                    result = await self._client.write_coils(
                         slave_id=self._slave_id,
-                        address=entity_number,
-                        value=coil.raw_value,
+                        starting_address=entity_number,
+                        values=split_chunks(coil.raw_value, 1, entity_count),
                     )
                 else:
                     raise CoilReadException(f"Unsupported entity type {entity_type}")
