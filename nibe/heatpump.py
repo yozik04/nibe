@@ -1,3 +1,4 @@
+import asyncio
 from dataclasses import dataclass
 from enum import Enum
 from importlib.resources import files
@@ -96,8 +97,10 @@ class HeatPump(EventServer):
 
         self._product_info = product_info
 
-    def _load_coils(self):
-        data = self._model.get_coil_data()
+    async def _load_coils(self):
+        data = await asyncio.get_running_loop().run_in_executor(
+            None, self._model.get_coil_data
+        )
 
         self._address_to_coil = {
             k: self._make_coil(address=int(k), **v) for k, v in data.items()
@@ -108,7 +111,7 @@ class HeatPump(EventServer):
         kwargs["word_swap"] = self.word_swap
         return Coil(address, **kwargs)
 
-    def initialize(self):
+    async def initialize(self):
         if not isinstance(self._model, Model) and isinstance(
             self._product_info, ProductInfo
         ):
@@ -118,7 +121,7 @@ class HeatPump(EventServer):
             self._model, Model
         ), "Model is not set and product info is not available"
 
-        self._load_coils()
+        await self._load_coils()
 
     def get_coils(self) -> list[Coil]:
         return list(self._address_to_coil.values())
