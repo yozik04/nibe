@@ -1,4 +1,5 @@
-from importlib.resources import files
+from collections.abc import Mapping, MutableMapping
+from importlib.resources import files, open_text
 import json
 import logging
 import re
@@ -9,10 +10,19 @@ from slugify import slugify
 logger = logging.getLogger("nibe").getChild(__name__)
 
 
+def update_dict(d: MutableMapping, u: Mapping) -> Mapping:
+    for k, v in u.items():
+        if isinstance(v, Mapping):
+            update_dict(d.setdefault(k, {}), v)
+        else:
+            d[k] = v
+
+
 class CSVConverter:
-    def __init__(self, in_file, out_file):
+    def __init__(self, in_file, out_file, extensions):
         self.in_file = in_file
         self.out_file = out_file
+        self.extensions = extensions
 
         self.data = None
 
@@ -57,11 +67,11 @@ class CSVConverter:
             .where(~self.data["info"].str.contains("encoded"))
             .str.extractall(re_mapping)
         )
-        mappings["value"] = mappings["value"].str.replace("I", "1").astype("int")
+        mappings["value"] = mappings["value"].str.replace("I", "1").astype("str")
         mappings = mappings.reset_index("match", drop=True)
         mappings = mappings.drop_duplicates()
         self.data["mappings"] = pandas.Series(
-            {k: dict(g.values) for k, g in mappings.groupby("value", level=0)}
+            {str(k): dict(g.values) for k, g in mappings.groupby("value", level=0)}
         )
 
     def _unset_equal_min_max_default_values(self):
@@ -157,7 +167,9 @@ class CSVConverter:
                 return str(40000 + int(register))
             return None
 
-        if "id" not in self.data:
+        if "id" in self.data:
+            self.data["id"] = self.data["id"].astype("string")
+        else:
             self.data["id"] = self.data["registertype"].combine(
                 self.data["register"], calculate_number
             )
@@ -167,16 +179,27 @@ class CSVConverter:
 
     def _export_to_file(self):
         o = self._make_dict()
+        update_dict(o, self.extensions)
         with open(self.out_file, "w") as fh:
             json.dump(o, fh, indent=2)
             fh.write("\n")
 
 
 def run():
+    with open_text("nibe.data", "extensions.json") as fp:
+        all_extensions = json.load(fp)
+
     for in_file in files("nibe.data").glob("*.csv"):
         out_file = in_file.with_suffix(".json")
+
+        extensions = {}
+        for extra in all_extensions:
+            if out_file.name not in extra["files"]:
+                continue
+            update_dict(extensions, extra["data"])
+
         logger.info(f"Converting {in_file} to {out_file}")
-        CSVConverter(in_file, out_file).convert()
+        CSVConverter(in_file, out_file, extensions).convert()
         logger.info(f"Converted {in_file} to {out_file}")
 
 
