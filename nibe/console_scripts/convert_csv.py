@@ -169,6 +169,7 @@ class CSVConverter:
         o = self._make_dict()
         with open(self.out_file, "w") as fh:
             json.dump(o, fh, indent=2)
+            fh.write("\n")
 
 
 def run():
