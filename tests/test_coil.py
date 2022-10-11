@@ -1,9 +1,9 @@
 from unittest import TestCase
 
-from construct import Int8ul
 import pytest
 
 from nibe.coil import Coil
+from nibe.connection.nibegw import CoilDataEncoder
 from nibe.exceptions import DecodeException, EncodeException
 from nibe.parsers import swapwords
 
@@ -21,101 +21,90 @@ class TestCoil(TestCase):
         assert coil.address == 123
         assert coil.name == "test_name"
         assert coil.title == "test_title"
-        assert coil.parser == Int8ul
         assert coil.other["unknown"] == "some other"
 
 
 class TestCoilSigned8(TestCase):
     def setUp(self) -> None:
         self.coil = Coil(48739, "cool-offset-s1-48739", "Cool offset S1", "s8")
+        self.encoder = CoilDataEncoder()
 
     def test_decode(self):
-        self.coil.raw_value = b"\xfc\x00\x00\x00"
-        assert self.coil.value == -4
-        self.coil.raw_value = b"\xfc\x00"
-        assert self.coil.value == -4
-        self.coil.raw_value = b"\xfc"
-        assert self.coil.value == -4
+        assert self.encoder.decode(self.coil, b"\xfc\x00\x00\x00") == -4
+        assert self.encoder.decode(self.coil, b"\xfc\x00") == -4
+        assert self.encoder.decode(self.coil, b"\xfc") == -4
 
     def test_decode_unavailable(self):
-        self.coil.raw_value = b"\x80"
-        assert self.coil.value is None
+        assert self.encoder.decode(self.coil, b"\x80") is None
 
     def test_encode(self):
         self.coil.value = -4
-        assert self.coil.raw_value == b"\xfc\x00\x00\x00"
+        assert self.encoder.encode(self.coil) == b"\xfc\x00\x00\x00"
 
         with pytest.raises(EncodeException):
             self.coil.value = 256
-            _ = self.coil.raw_value
+            self.encoder.encode(self.coil)
 
     def test_encode_unavailable(self):
         self.coil.value = None
         with pytest.raises(EncodeException):
-            self.coil.raw_value
+            self.encoder.encode(self.coil)
 
 
 class TestCoilUnsigned8(TestCase):
     def setUp(self) -> None:
         self.coil = Coil(123, "test", "test", "u8")
+        self.encoder = CoilDataEncoder()
 
     def test_decode(self):
-        self.coil.raw_value = b"\x01\x00\x00\x00"
-        assert self.coil.value == 1
-        self.coil.raw_value = b"\x01\x00"
-        assert self.coil.value == 1
-        self.coil.raw_value = b"\x01"
-        assert self.coil.value == 1
+        assert self.encoder.decode(self.coil, b"\x01\x00\x00\x00") == 1
+        assert self.encoder.decode(self.coil, b"\x01\x00") == 1
+        assert self.encoder.decode(self.coil, b"\x01") == 1
 
     def test_decode_unavailable(self):
-        self.coil.raw_value = b"\xff"
-        assert self.coil.value is None
-        self.coil.raw_value = b"\xff\xff"
-        assert self.coil.value is None
+        assert self.encoder.decode(self.coil, b"\xff") is None
+        assert self.encoder.decode(self.coil, b"\xff\xff") is None
 
     def test_encode(self):
         self.coil.value = 1
-        assert self.coil.raw_value == b"\x01\x00\x00\x00"
+        assert self.encoder.encode(self.coil) == b"\x01\x00\x00\x00"
         self.coil.value = 255
-        assert self.coil.raw_value == b"\xff\x00\x00\x00"
+        assert self.encoder.encode(self.coil) == b"\xff\x00\x00\x00"
 
         with pytest.raises(EncodeException):
             self.coil.value = 256
-            _ = self.coil.raw_value
+            self.encoder.encode(self.coil)
 
 
 class TestCoilUnsigned8WordSwap(TestCase):
     def setUp(self) -> None:
         self.coil = Coil(123, "test", "test", "u8", word_swap=False)
+        self.encoder = CoilDataEncoder(word_swap=False)
 
     def test_decode(self):
-        self.coil.raw_value = b"\x01\x00\x00\x00"
-        assert self.coil.value == 1
-        self.coil.raw_value = b"\x01\x00"
-        assert self.coil.value == 1
-        self.coil.raw_value = b"\x01"
-        assert self.coil.value == 1
+        assert self.encoder.decode(self.coil, b"\x01\x00\x00\x00") == 1
+        assert self.encoder.decode(self.coil, b"\x01\x00") == 1
+        assert self.encoder.decode(self.coil, b"\x01") == 1
 
     def test_decode_unavailable(self):
-        self.coil.raw_value = b"\xff"
-        assert self.coil.value is None
-        self.coil.raw_value = b"\xff\xff"
-        assert self.coil.value is None
+        assert self.encoder.decode(self.coil, b"\xff") is None
+        assert self.encoder.decode(self.coil, b"\xff\xff") is None
 
     def test_encode(self):
         self.coil.value = 1
-        assert self.coil.raw_value == b"\x01\x00\x00\x00"
+        assert self.encoder.encode(self.coil) == b"\x01\x00\x00\x00"
         self.coil.value = 255
-        assert self.coil.raw_value == b"\xff\x00\x00\x00"
+        assert self.encoder.encode(self.coil) == b"\xff\x00\x00\x00"
 
         with pytest.raises(EncodeException):
             self.coil.value = 256
-            _ = self.coil.raw_value
+            self.encoder.encode(self.coil)
 
 
 class TestCoilSigned16(TestCase):
     def setUp(self) -> None:
         self.coil = Coil(123, "test", "test", "s16", factor=10, min=50, max=300)
+        self.encoder = CoilDataEncoder()
 
     def test_attributes(self):
         assert self.coil.min == 5.0
@@ -138,22 +127,21 @@ class TestCoilSigned16(TestCase):
             self.coil.value = 30.1
 
     def test_decode(self):
-        self.coil.raw_value = b"\x97\x00"
+        assert self.encoder.decode(self.coil, b"\x97\x00") == 15.1
 
     def test_decode_out_of_bounds(self):
         with pytest.raises(DecodeException):
-            self.coil.raw_value = b"\x31\x00"
+            self.encoder.decode(self.coil, b"\x31\x00")
 
         with pytest.raises(DecodeException):
-            self.coil.raw_value = b"\x2d\x10"
+            self.encoder.decode(self.coil, b"\x2d\x10")
 
     def test_decode_unavailable(self):
-        self.coil.raw_value = b"\x00\x80"
-        assert self.coil.value is None
+        assert self.encoder.decode(self.coil, b"\x00\x80") is None
 
     def test_encode(self):
         self.coil.value = 15.1
-        assert self.coil.raw_value == b"\x97\x00\x00\x00"
+        assert self.encoder.encode(self.coil) == b"\x97\x00\x00\x00"
 
     def test_encode_out_of_bounds(self):
         with pytest.raises(AssertionError):
@@ -172,22 +160,20 @@ class TestCoilUnsigned16(TestCase):
             "u16",
             factor=10,
         )
+        self.encoder = CoilDataEncoder()
 
     def test_decode(self):
-        self.coil.raw_value = b"\x01\x00\x00\x00"
-        assert self.coil.value == 0.1
-        self.coil.raw_value = b"\x01\x00"
-        assert self.coil.value == 0.1
+        assert self.encoder.decode(self.coil, b"\x01\x00\x00\x00") == 0.1
+        assert self.encoder.decode(self.coil, b"\x01\x00") == 0.1
 
     def test_decode_unavailable(self):
-        self.coil.raw_value = b"\xff\xff"
-        assert self.coil.value is None
+        assert self.encoder.decode(self.coil, b"\xff\xff") is None
 
     def test_encode(self):
         self.coil.value = 0.1
-        assert self.coil.raw_value == b"\x01\x00\x00\x00"
+        assert self.encoder.encode(self.coil) == b"\x01\x00\x00\x00"
         self.coil.value = 25.5
-        assert self.coil.raw_value == b"\xff\x00\x00\x00"
+        assert self.encoder.encode(self.coil) == b"\xff\x00\x00\x00"
 
 
 class TestCoilUnsigned16WordSwap(TestCase):
@@ -200,22 +186,20 @@ class TestCoilUnsigned16WordSwap(TestCase):
             factor=10,
             word_swap=False,
         )
+        self.encoder = CoilDataEncoder(word_swap=False)
 
     def test_decode(self):
-        self.coil.raw_value = b"\x01\x00\x00\x00"
-        assert self.coil.value == 0.1
-        self.coil.raw_value = b"\x01\x00"
-        assert self.coil.value == 0.1
+        assert self.encoder.decode(self.coil, b"\x01\x00\x00\x00") == 0.1
+        assert self.encoder.decode(self.coil, b"\x01\x00") == 0.1
 
     def test_decode_unavailable(self):
-        self.coil.raw_value = b"\xff\xff"
-        assert self.coil.value is None
+        assert self.encoder.decode(self.coil, b"\xff\xff") is None
 
     def test_encode(self):
         self.coil.value = 0.1
-        assert self.coil.raw_value == b"\x01\x00\x00\x00"
+        assert self.encoder.encode(self.coil) == b"\x01\x00\x00\x00"
         self.coil.value = 25.5
-        assert self.coil.raw_value == b"\xff\x00\x00\x00"
+        assert self.encoder.encode(self.coil) == b"\xff\x00\x00\x00"
 
 
 class TestCoilSigned32(TestCase):
@@ -226,18 +210,17 @@ class TestCoilSigned32(TestCase):
             "Total compressorer operation time",
             "s32",
         )
+        self.encoder = CoilDataEncoder()
 
     def test_decode(self):
-        self.coil.raw_value = b"2T\x00\x00"
-        assert self.coil.value == 21554
+        assert self.encoder.decode(self.coil, b"2T\x00\x00") == 21554
 
     def test_decode_unavailable(self):
-        self.coil.raw_value = b"\x00\x00\x00\x80"
-        assert self.coil.value is None
+        assert self.encoder.decode(self.coil, b"\x00\x00\x00\x80") is None
 
     def test_encode(self):
         self.coil.value = 21554
-        assert self.coil.raw_value == b"2T\x00\x00"
+        assert self.encoder.encode(self.coil) == b"2T\x00\x00"
 
 
 class TestCoilSigned32WordSwap(TestCase):
@@ -249,18 +232,17 @@ class TestCoilSigned32WordSwap(TestCase):
             "s32",
             word_swap=False,
         )
+        self.encoder = CoilDataEncoder(word_swap=False)
 
     def test_decode(self):
-        self.coil.raw_value = b"\x00\x00(\x06"
-        assert self.coil.value == 1576
+        assert self.encoder.decode(self.coil, b"\x00\x00(\x06") == 1576
 
     def test_decode_unavailable(self):
-        self.coil.raw_value = b"\x00\x80\x00\x00"
-        assert self.coil.value is None
+        assert self.encoder.decode(self.coil, b"\x00\x80\x00\x00") is None
 
     def test_encode(self):
         self.coil.value = 1576
-        assert self.coil.raw_value == b"\x00\x00(\x06"
+        assert self.encoder.encode(self.coil) == b"\x00\x00(\x06"
 
 
 class TestCoilWithMapping(TestCase):
@@ -281,6 +263,7 @@ class TestCoilWithMapping(TestCase):
                 "60": "Cooling",
             },
         )
+        self.encoder = CoilDataEncoder()
 
     def test_set_valid_value(self):
         self.coil.value = "off"
@@ -292,20 +275,18 @@ class TestCoilWithMapping(TestCase):
             self.coil.value = "Beer"
 
     def test_decode_mapping(self):
-        self.coil.raw_value = b"\x0a"
-        assert self.coil.value == "OFF"
+        assert self.encoder.decode(self.coil, b"\x0a") == "OFF"
 
     def test_decode_unavailable(self):
-        self.coil.raw_value = b"\xff\xff"
-        assert self.coil.value is None
+        assert self.encoder.decode(self.coil, b"\xff\xff") is None
 
     def test_encode_mapping(self):
         self.coil.value = "off"
-        assert self.coil.raw_value == b"\x0a\x00\x00\x00"
+        assert self.encoder.encode(self.coil) == b"\x0a\x00\x00\x00"
 
     def test_decode_mapping_failure(self):
         with pytest.raises(DecodeException):
-            self.coil.raw_value = b"\x00"
+            assert self.encoder.decode(self.coil, b"\x00")
 
     def test_encode_mapping_failure(self):
         with pytest.raises(AssertionError):
@@ -322,6 +303,7 @@ class TestBooleanCoilWithMapping(TestCase):
             factor=1,
             mappings={"0": "Off", "1": "On"},
         )
+        self.encoder = CoilDataEncoder()
 
     def test_attributes(self):
         assert self.coil.is_boolean
@@ -346,6 +328,7 @@ class TestBooleanCoilWithBounds(TestCase):
             max=1,
             write=True,
         )
+        self.encoder = CoilDataEncoder()
 
     def test_attributes(self):
         assert self.coil.is_boolean
