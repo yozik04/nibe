@@ -9,3 +9,4 @@ coverage.xml
 /dist
 /nibe.egg-info
 /.tox
+/build

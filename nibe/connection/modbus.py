@@ -7,7 +7,7 @@ import async_timeout
 
 from nibe.coil import Coil
 from nibe.connection import DEFAULT_TIMEOUT, Connection
-from nibe.exceptions import CoilReadException, CoilWriteException
+from nibe.exceptions import CoilReadException, CoilWriteException, ModbusUrlException
 from nibe.heatpump import HeatPump
 
 logger = logging.getLogger("nibe").getChild(__name__)
@@ -40,7 +40,13 @@ class Modbus(Connection):
     def __init__(self, heatpump: HeatPump, url, slave_id, conn_options=None):
         self._slave_id = slave_id
         self._heatpump = heatpump
-        self._client = modbus_for_url(url, conn_options)
+        try:
+            self._client = modbus_for_url(url, conn_options)
+        except ValueError as exc:
+            raise ModbusUrlException(str(exc)) from exc
+
+    async def stop(self) -> None:
+        await self._client.stream.close()
 
     async def read_coil(self, coil: Coil, timeout: float = DEFAULT_TIMEOUT) -> Coil:
         logger.debug("Sending read request")

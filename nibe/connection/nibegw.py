@@ -51,6 +51,7 @@ from construct import (
     Union as UnionConstruct,
     this,
 )
+from tenacity import retry, retry_if_exception_type, stop_after_attempt
 
 from nibe.coil import Coil
 from nibe.connection import DEFAULT_TIMEOUT, READ_PRODUCT_INFO_TIMEOUT, Connection
@@ -180,6 +181,8 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
         remote_write_port: int = 10000,
         listening_ip: str = "0.0.0.0",
         listening_port: int = 9999,
+        read_retries: int = 3,
+        write_retries: int = 3,
     ) -> None:
         super().__init__()
 
@@ -198,6 +201,18 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
         self._futures = {}
 
         self.coil_encoder = CoilDataEncoder(heatpump.word_swap)
+        
+        self.read_coil = retry(
+            retry=retry_if_exception_type(CoilReadException),
+            stop=stop_after_attempt(read_retries),
+            reraise=True,
+        )(self.read_coil)
+
+        self.write_coil = retry(
+            retry=retry_if_exception_type(CoilWriteException),
+            stop=stop_after_attempt(write_retries),
+            reraise=True,
+        )(self.write_coil)
 
     async def start(self):
         logger.info(f"Starting UDP server on port {self._listening_port}")

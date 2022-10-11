@@ -2911,6 +2911,7 @@
     "factor": 1,
     "name": "eb101-ep14-defrosting-outdoor-unit-44703",
     "mappings": {
+      "0": "No",
       "1": "Active",
       "2": "Passive"
     }
