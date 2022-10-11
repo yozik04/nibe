@@ -7,6 +7,7 @@ import async_timeout
 
 from nibe.coil import Coil
 from nibe.connection import DEFAULT_TIMEOUT, Connection
+from nibe.connection.encoders import CoilDataEncoder
 from nibe.exceptions import CoilReadException, CoilWriteException, ModbusUrlException
 from nibe.heatpump import HeatPump
 
@@ -40,10 +41,13 @@ class Modbus(Connection):
     def __init__(self, heatpump: HeatPump, url, slave_id, conn_options=None):
         self._slave_id = slave_id
         self._heatpump = heatpump
+
         try:
             self._client = modbus_for_url(url, conn_options)
         except ValueError as exc:
             raise ModbusUrlException(str(exc)) from exc
+
+        self.coil_encoder = CoilDataEncoder(heatpump.word_swap)
 
     async def stop(self) -> None:
         await self._client.stream.close()
@@ -82,7 +86,7 @@ class Modbus(Connection):
                 else:
                     raise CoilReadException(f"Unsupported entity type {entity_type}")
 
-            coil.raw_value = b"".join(result)
+            coil.value = self.coil_encoder.decode(coil, b"".join(result))
 
             logger.info(f"{coil.name}: {coil.value}")
             self._heatpump.notify_coil_update(coil)
@@ -106,13 +110,17 @@ class Modbus(Connection):
                     result = await self._client.write_registers(
                         slave_id=self._slave_id,
                         starting_address=entity_number,
-                        values=split_chunks(coil.raw_value, 2, entity_count),
+                        values=split_chunks(
+                            self.coil_encoder.encode(coil), 2, entity_count
+                        ),
                     )
                 elif entity_type == 0:
                     result = await self._client.write_coils(
                         slave_id=self._slave_id,
                         starting_address=entity_number,
-                        values=split_chunks(coil.raw_value, 1, entity_count),
+                        values=split_chunks(
+                            self.coil_encoder.encode(coil), 1, entity_count
+                        ),
                     )
                 else:
                     raise CoilReadException(f"Unsupported entity type {entity_type}")
