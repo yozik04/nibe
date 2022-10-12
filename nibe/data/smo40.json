@@ -3615,9 +3615,9 @@
     "factor": 1,
     "name": "status-of-the-shunt-controlled-additional-heat-accessory-43097",
     "mappings": {
-      "10": "Off",
       "20": "Running",
-      "30": "Passive"
+      "30": "Passive",
+      "10": "Off"
     }
   },
   "43158": {
@@ -6271,9 +6271,9 @@
     "write": true,
     "mappings": {
       "0": "Economy",
+      "4": "Smart Control",
       "1": "Normal",
-      "2": "Luxury",
-      "4": "Smart Control"
+      "2": "Luxury"
     }
   },
   "47043": {
@@ -7704,11 +7704,11 @@
     "name": "temporary-lux-48132",
     "write": true,
     "mappings": {
-      "0": "Off",
       "1": "3h",
       "2": "6h",
       "3": "12h",
-      "4": "One time increase"
+      "4": "One time increase",
+      "0": "Off"
     }
   },
   "48133": {

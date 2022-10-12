@@ -3634,9 +3634,9 @@
     "write": true,
     "mappings": {
       "0": "Economy",
+      "4": "Smart Control",
       "1": "Normal",
-      "2": "Luxury",
-      "4": "Smart Control"
+      "2": "Luxury"
     }
   },
   "47043": {
@@ -5002,11 +5002,11 @@
     "name": "temporary-lux-48132",
     "write": true,
     "mappings": {
-      "0": "Off",
       "1": "3h",
       "2": "6h",
       "3": "12h",
-      "4": "One time increase"
+      "4": "One time increase",
+      "0": "Off"
     }
   },
   "48156": {
@@ -8124,5 +8124,10 @@
     "factor": 1,
     "name": "aux-ers-fire-place-guard-49430",
     "write": true
+  },
+  "43097": {
+    "mappings": {
+      "10": "Off"
+    }
   }
 }
