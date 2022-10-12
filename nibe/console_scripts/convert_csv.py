@@ -78,8 +78,7 @@ class CSVConverter:
         )
 
     def _make_mapping_series(self, g):
-        s = g.set_index("value", drop=True)["key"]
-        return s.sort_index(key=lambda i: i.astype(int))
+        return g.set_index("value", drop=True)["key"]
 
     def _unset_equal_min_max_default_values(self):
         valid_min_max = self.data["min"] != self.data["max"]
@@ -186,7 +185,7 @@ class CSVConverter:
 
     def prepare_for_json(self, o):
         if isinstance(o, pandas.Series):
-            return o.to_dict()
+            return o.sort_index(key=lambda i: i.astype(int)).to_dict()
 
         raise TypeError(f"Object of type {type(o)} is not JSON serializable")
 

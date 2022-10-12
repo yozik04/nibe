@@ -2487,9 +2487,9 @@
     "factor": 1,
     "name": "status-of-the-shunt-controlled-additional-heat-accessory-43097",
     "mappings": {
+      "10": "Off",
       "20": "Running",
-      "30": "Passive",
-      "10": "Off"
+      "30": "Passive"
     }
   },
   "43103": {
@@ -2715,11 +2715,11 @@
     "factor": 1,
     "name": "supply-pump-state-ep14-43431",
     "mappings": {
+      "10": "off",
       "15": "starting",
       "20": "on",
       "40": "10-day mode",
-      "80": "calibration",
-      "10": "off"
+      "80": "calibration"
     }
   },
   "43433": {
@@ -3010,8 +3010,8 @@
     "factor": 1,
     "name": "eq1-gp20-acs-dump-signal-44752",
     "mappings": {
-      "1": "running",
-      "0": "off"
+      "0": "off",
+      "1": "running"
     }
   },
   "44753": {
@@ -3649,9 +3649,9 @@
     "write": true,
     "mappings": {
       "0": "Economy",
-      "4": "Smart Control",
       "1": "Normal",
-      "2": "Luxury"
+      "2": "Luxury",
+      "4": "Smart Control"
     }
   },
   "47043": {
@@ -5575,11 +5575,11 @@
     "name": "temporary-lux-48132",
     "write": true,
     "mappings": {
+      "0": "Off",
       "1": "3h",
       "2": "6h",
       "3": "12h",
-      "4": "One time increase",
-      "0": "Off"
+      "4": "One time increase"
     }
   },
   "48133": {
