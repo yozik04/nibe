@@ -15,7 +15,7 @@ class TestNibeGW(IsolatedAsyncioTestCase):
         self.loop = asyncio.get_running_loop()
 
         self.heatpump = HeatPump(Model.F1255)
-        self.heatpump.initialize()
+        await self.heatpump.initialize()
         self.nibegw = NibeGW(self.heatpump, "127.0.0.1")
 
         self.transport = Mock()
