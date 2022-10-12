@@ -1603,8 +1603,8 @@
     "factor": 1,
     "name": "hwc-pump-status-gp11-43180",
     "mappings": {
-      "1": "on",
-      "0": "off"
+      "0": "off",
+      "1": "on"
     }
   },
   "43239": {
@@ -4343,8 +4343,8 @@
     "name": "modbus40-disable-log-set-48889",
     "write": true,
     "mappings": {
-      "1": "ignore LOG.SET",
-      "0": "use LOG.SET"
+      "0": "use LOG.SET",
+      "1": "ignore LOG.SET"
     }
   },
   "48926": {

@@ -2014,8 +2014,8 @@
     "factor": 1,
     "name": "gp10-ext-supply-pump-status-43189",
     "mappings": {
-      "1": "on",
-      "0": "off"
+      "0": "off",
+      "1": "on"
     }
   },
   "43239": {
@@ -2287,8 +2287,8 @@
     "factor": 1,
     "name": "silent-mode-status-48206",
     "mappings": {
-      "1": "active",
-      "0": "inactive"
+      "0": "inactive",
+      "1": "active"
     }
   },
   "40879": {

@@ -71,8 +71,15 @@ class CSVConverter:
         mappings = mappings.reset_index("match", drop=True)
         mappings = mappings.drop_duplicates()
         self.data["mappings"] = pandas.Series(
-            {str(k): dict(g.values) for k, g in mappings.groupby("value", level=0)}
+            {
+                str(k): self._make_mapping_series(g)
+                for k, g in mappings.groupby("value", level=0)
+            }
         )
+
+    def _make_mapping_series(self, g):
+        s = g.set_index("value", drop=True)["key"]
+        return s.sort_index(key=lambda i: i.astype(int))
 
     def _unset_equal_min_max_default_values(self):
         valid_min_max = self.data["min"] != self.data["max"]
@@ -177,11 +184,17 @@ class CSVConverter:
             del self.data["register"]
         self.data = self.data.set_index("id")
 
+    def prepare_for_json(self, o):
+        if isinstance(o, pandas.Series):
+            return o.to_dict()
+
+        raise TypeError(f"Object of type {type(o)} is not JSON serializable")
+
     def _export_to_file(self):
         o = self._make_dict()
         update_dict(o, self.extensions)
         with open(self.out_file, "w") as fh:
-            json.dump(o, fh, indent=2)
+            json.dump(o, fh, indent=2, default=self.prepare_for_json)
             fh.write("\n")
 
 
@@ -199,7 +212,10 @@ def run():
             update_dict(extensions, extra["data"])
 
         logger.info(f"Converting {in_file} to {out_file}")
-        CSVConverter(in_file, out_file, extensions).convert()
+        try:
+            CSVConverter(in_file, out_file, extensions).convert()
+        except Exception as e:
+            logger.error(f"Failed to convert: {e}")
         logger.info(f"Converted {in_file} to {out_file}")
 
 

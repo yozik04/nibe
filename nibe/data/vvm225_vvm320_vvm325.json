@@ -891,8 +891,8 @@
     "factor": 1,
     "name": "external-ers-1-accessory-eb17-40943",
     "mappings": {
-      "1": "closed",
-      "0": "open"
+      "0": "open",
+      "1": "closed"
     }
   },
   "40947": {
@@ -943,8 +943,8 @@
     "factor": 1,
     "name": "f135-az10-defrosting-40954",
     "mappings": {
-      "1": "Yes",
-      "0": "No"
+      "0": "No",
+      "1": "Yes"
     }
   },
   "40955": {
@@ -2632,8 +2632,8 @@
     "factor": 1,
     "name": "hw-comfort-add-status-43556",
     "mappings": {
-      "1": "on",
-      "0": "off"
+      "0": "off",
+      "1": "on"
     }
   },
   "43561": {
@@ -3111,8 +3111,8 @@
     "factor": 1,
     "name": "silent-mode-status-48206",
     "mappings": {
-      "1": "active",
-      "0": "inactive"
+      "0": "inactive",
+      "1": "active"
     }
   },
   "49239": {
@@ -6771,8 +6771,8 @@
     "name": "modbus40-disable-log-set-48889",
     "write": true,
     "mappings": {
-      "1": "ignore LOG.SET",
-      "0": "use LOG.SET"
+      "0": "use LOG.SET",
+      "1": "ignore LOG.SET"
     }
   },
   "48893": {

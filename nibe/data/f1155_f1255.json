@@ -1106,8 +1106,8 @@
     "factor": 1,
     "name": "external-ers-1-accessory-eb17-40943",
     "mappings": {
-      "1": "closed",
-      "0": "open"
+      "0": "open",
+      "1": "closed"
     }
   },
   "40993": {
@@ -2625,8 +2625,8 @@
     "factor": 1,
     "name": "hwc-pump-status-gp11-43180",
     "mappings": {
-      "1": "on",
-      "0": "off"
+      "0": "off",
+      "1": "on"
     }
   },
   "43182": {
@@ -2759,8 +2759,8 @@
     "factor": 1,
     "name": "flm-4-cooling-status-43484",
     "mappings": {
-      "1": "yes",
-      "0": "no"
+      "0": "no",
+      "1": "yes"
     }
   },
   "43485": {
@@ -2999,8 +2999,8 @@
     "factor": 1,
     "name": "eq1-qn12-acs-valve-44751",
     "mappings": {
-      "1": "open",
-      "0": "closed"
+      "0": "closed",
+      "1": "open"
     }
   },
   "44752": {
@@ -7637,8 +7637,8 @@
     "name": "modbus40-disable-log-set-48889",
     "write": true,
     "mappings": {
-      "1": "ignore LOG.SET",
-      "0": "use LOG.SET"
+      "0": "use LOG.SET",
+      "1": "ignore LOG.SET"
     }
   },
   "48896": {
