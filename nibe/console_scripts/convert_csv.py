@@ -69,7 +69,6 @@ class CSVConverter:
         )
         mappings["value"] = mappings["value"].str.replace("I", "1").astype("str")
         mappings = mappings.reset_index("match", drop=True)
-        mappings = mappings.drop_duplicates()
         self.data["mappings"] = pandas.Series(
             {
                 str(k): self._make_mapping_series(g)
@@ -78,7 +77,7 @@ class CSVConverter:
         )
 
     def _make_mapping_series(self, g):
-        return g.set_index("value", drop=True)["key"]
+        return g.set_index("value", drop=True)["key"].drop_duplicates()
 
     def _unset_equal_min_max_default_values(self):
         valid_min_max = self.data["min"] != self.data["max"]
@@ -183,7 +182,7 @@ class CSVConverter:
             del self.data["register"]
         self.data = self.data.set_index("id")
 
-    def prepare_for_json(self, o):
+    def _convert_series_to_dict(self, o):
         if isinstance(o, pandas.Series):
             return o.sort_index(key=lambda i: i.astype(int)).to_dict()
 
@@ -193,7 +192,7 @@ class CSVConverter:
         o = self._make_dict()
         update_dict(o, self.extensions)
         with open(self.out_file, "w") as fh:
-            json.dump(o, fh, indent=2, default=self.prepare_for_json)
+            json.dump(o, fh, indent=2, default=self._convert_series_to_dict)
             fh.write("\n")
 
 

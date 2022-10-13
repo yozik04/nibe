@@ -1528,7 +1528,11 @@
     "info": "0 = Off, 1 = On",
     "size": "u8",
     "factor": 1,
-    "name": "state-of-the-extra-additional-heat-in-series-44483"
+    "name": "state-of-the-extra-additional-heat-in-series-44483",
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
   },
   "44487": {
     "title": "Docked Cool Compressors",
@@ -1604,6 +1608,7 @@
     "factor": 1,
     "name": "eb101-ep14-hz-down-mode-outdoor-unit-44867",
     "mappings": {
+      "0": "No",
       "1": "Yes"
     }
   },
@@ -2114,7 +2119,11 @@
     "max": 1.0,
     "default": 0.0,
     "name": "floor-drying-47276",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
   },
   "47277": {
     "title": "Floor drying period 7",
@@ -2390,7 +2399,11 @@
     "max": 18.0,
     "default": 0.0,
     "name": "cooling-with-room-sensor-47340",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
   },
   "47343": {
     "title": "Start Active Cooling DM",
@@ -2446,7 +2459,11 @@
     "max": 400.0,
     "default": 250.0,
     "name": "start-temperature-cooling-47374",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
   },
   "47375": {
     "title": "Stop Temperature Heating",
@@ -2549,7 +2566,11 @@
     "max": 1.0,
     "default": 0.0,
     "name": "hw-production-47387",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
   },
   "47388": {
     "title": "Alarm lower room temp.",
@@ -2560,7 +2581,11 @@
     "max": 1.0,
     "default": 0.0,
     "name": "alarm-lower-room-temp-47388",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
   },
   "47389": {
     "title": "Alarm lower HW temp.",
@@ -2571,7 +2596,11 @@
     "max": 1.0,
     "default": 1.0,
     "name": "alarm-lower-hw-temp-47389",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
   },
   "47394": {
     "title": "Use room sensor S1",
@@ -2582,7 +2611,11 @@
     "max": 1.0,
     "default": 0.0,
     "name": "use-room-sensor-s1-47394",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
   },
   "47398": {
     "title": "Room sensor setpoint S1",
@@ -2644,7 +2677,11 @@
     "max": 1.0,
     "default": 0.0,
     "name": "int-connected-add-mode-47614",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "Linear",
+      "1": "Binary"
+    }
   },
   "48043": {
     "title": "Holiday - Activated",
@@ -2657,6 +2694,7 @@
     "name": "holiday-activated-48043",
     "write": true,
     "mappings": {
+      "0": "inactive",
       "10": "active"
     }
   },
@@ -3266,7 +3304,11 @@
     "max": 1.0,
     "default": 0.0,
     "name": "eme-pv-panel-affect-hot-water-48932",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "not affecting",
+      "1": "affecting"
+    }
   },
   "48968": {
     "title": "FLM 1 set point, cooling",

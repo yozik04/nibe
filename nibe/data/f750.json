@@ -1913,6 +1913,7 @@
     "factor": 1,
     "name": "prio-43086",
     "mappings": {
+      "10": "Off",
       "20": "Hot Water",
       "30": "Heat",
       "40": "Pool",
@@ -1964,6 +1965,7 @@
     "name": "status-of-the-shunt-controlled-additional-heat-accessory-43097",
     "mappings": {
       "10": "Off",
+      "20": "Running",
       "30": "Passive"
     }
   },
@@ -2213,6 +2215,7 @@
     "factor": 1,
     "name": "cpr-status-ep14-43435",
     "mappings": {
+      "0": "Off",
       "1": "On"
     }
   },
@@ -3516,7 +3519,11 @@
     "max": 1.0,
     "default": 0.0,
     "name": "floor-drying-47276",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
   },
   "47277": {
     "title": "Floor drying period 7",
@@ -3754,7 +3761,11 @@
     "max": 1.0,
     "default": 0.0,
     "name": "climate-system-2-accessory-47302",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
   },
   "47303": {
     "title": "Climate system 3 accessory",
@@ -3765,7 +3776,11 @@
     "max": 1.0,
     "default": 0.0,
     "name": "climate-system-3-accessory-47303",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
   },
   "47304": {
     "title": "Climate system 4 accessory",
@@ -3776,7 +3791,11 @@
     "max": 1.0,
     "default": 0.0,
     "name": "climate-system-4-accessory-47304",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
   },
   "47305": {
     "title": "Climate system 4 mixing valve amp.",
@@ -3856,7 +3875,11 @@
     "max": 1.0,
     "default": 0.0,
     "name": "shunt-controlled-add-accessory-47317",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
   },
   "47318": {
     "title": "Shunt controlled add. min. temp.",
@@ -3990,7 +4013,11 @@
     "max": 400.0,
     "default": 250.0,
     "name": "start-temperature-cooling-47374",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
   },
   "47375": {
     "title": "Stop Temperature Heating",
@@ -4093,7 +4120,11 @@
     "max": 1.0,
     "default": 0.0,
     "name": "hw-production-47387",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
   },
   "47388": {
     "title": "Alarm lower room temp.",
@@ -4104,7 +4135,11 @@
     "max": 1.0,
     "default": 0.0,
     "name": "alarm-lower-room-temp-47388",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
   },
   "47389": {
     "title": "Alarm lower HW temp.",
@@ -4115,7 +4150,11 @@
     "max": 1.0,
     "default": 1.0,
     "name": "alarm-lower-hw-temp-47389",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
   },
   "47391": {
     "title": "Use room sensor S4",
@@ -4126,7 +4165,11 @@
     "max": 1.0,
     "default": 0.0,
     "name": "use-room-sensor-s4-47391",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
   },
   "47392": {
     "title": "Use room sensor S3",
@@ -4137,7 +4180,11 @@
     "max": 1.0,
     "default": 0.0,
     "name": "use-room-sensor-s3-47392",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
   },
   "47393": {
     "title": "Use room sensor S2",
@@ -4148,7 +4195,11 @@
     "max": 1.0,
     "default": 0.0,
     "name": "use-room-sensor-s2-47393",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
   },
   "47394": {
     "title": "Use room sensor S1",
@@ -4159,7 +4210,11 @@
     "max": 1.0,
     "default": 0.0,
     "name": "use-room-sensor-s1-47394",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
   },
   "47395": {
     "title": "Room sensor setpoint S4",
@@ -4299,7 +4354,11 @@
     "max": 1.0,
     "default": 0.0,
     "name": "night-cooling-47537",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
   },
   "47538": {
     "title": "Start room temp. night cooling",
@@ -4357,6 +4416,7 @@
     "name": "holiday-activated-48043",
     "write": true,
     "mappings": {
+      "0": "inactive",
       "10": "active"
     }
   },
@@ -5002,7 +5062,11 @@
     "max": 1.0,
     "default": 0.0,
     "name": "ahps-docking-solar-heating-48638",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "not activated",
+      "1": "activated"
+    }
   },
   "48639": {
     "title": "AHPS docking: prioritized add.",
@@ -5013,7 +5077,11 @@
     "max": 1.0,
     "default": 0.0,
     "name": "ahps-docking-prioritized-add-48639",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "not activated",
+      "1": "activated"
+    }
   },
   "48640": {
     "title": "AHPS docking: ext. addition",
@@ -5024,7 +5092,11 @@
     "max": 1.0,
     "default": 0.0,
     "name": "ahps-docking-ext-addition-48640",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "not activated",
+      "1": "activated"
+    }
   },
   "48641": {
     "title": "AHPS docking: ext. hot water",
@@ -5035,7 +5107,11 @@
     "max": 1.0,
     "default": 0.0,
     "name": "ahps-docking-ext-hot-water-48641",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "not activated",
+      "1": "activated"
+    }
   },
   "48659": {
     "title": "Cut off frequency activated 2",
@@ -5582,7 +5658,11 @@
     "max": 1.0,
     "default": 0.0,
     "name": "eme10-activated-48930",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "not activated",
+      "1": "activated"
+    }
   },
   "48931": {
     "title": "EME PV Panel Affect Heating",
@@ -5608,7 +5688,11 @@
     "max": 1.0,
     "default": 0.0,
     "name": "eme-pv-panel-affect-hot-water-48932",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "not affecting",
+      "1": "affecting"
+    }
   },
   "48968": {
     "title": "FLM 1 set point, cooling",
@@ -5663,7 +5747,8 @@
     "name": "reduced-ventilation-48973",
     "write": true,
     "mappings": {
-      "0": "deactivated"
+      "0": "deactivated",
+      "1": "activated"
     }
   },
   "48975": {
@@ -5696,7 +5781,11 @@
     "max": 1.0,
     "default": 0.0,
     "name": "sca-solar-heating-49223",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "not activated",
+      "1": "activated"
+    }
   },
   "49224": {
     "title": "SCA ext. hot water",
@@ -5707,7 +5796,11 @@
     "max": 1.0,
     "default": 0.0,
     "name": "sca-ext-hot-water-49224",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "not activated",
+      "1": "activated"
+    }
   },
   "49227": {
     "title": "Block top frequencies",
@@ -5826,7 +5919,11 @@
     "max": 1.0,
     "default": 0.0,
     "name": "eme20-activated-49297",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "not activated",
+      "1": "activated"
+    }
   },
   "49298": {
     "title": "EME PV Panel Affect Pool",
@@ -5834,7 +5931,11 @@
     "size": "u8",
     "factor": 1,
     "name": "eme-pv-panel-affect-pool-49298",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "not affecting",
+      "1": "affecting"
+    }
   },
   "49358": {
     "title": "Night cooling",
