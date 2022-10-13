@@ -4742,11 +4742,7 @@
     "max": 18.0,
     "default": 0.0,
     "name": "cooling-with-room-sensor-47340",
-    "write": true,
-    "mappings": {
-      "0": "Off",
-      "1": "On"
-    }
+    "write": true
   },
   "47341": {
     "title": "HPAC accessory",
@@ -4879,11 +4875,7 @@
     "max": 400.0,
     "default": 250.0,
     "name": "start-temperature-cooling-47374",
-    "write": true,
-    "mappings": {
-      "0": "Off",
-      "1": "On"
-    }
+    "write": true
   },
   "47375": {
     "title": "Stop Temperature Heating",

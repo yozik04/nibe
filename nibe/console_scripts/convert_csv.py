@@ -77,7 +77,7 @@ class CSVConverter:
                 str(k): self._make_mapping_series(g)
                 for k, g in mappings.groupby("value", level=0)
             }
-        )
+        ).mask(self.data["factor"] != 1)
 
     def _make_mapping_series(self, g):
         return g.set_index("value", drop=True)["key"].drop_duplicates()
