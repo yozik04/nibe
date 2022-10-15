@@ -27,6 +27,13 @@
     "size": "s16",
     "name": "supply-line-ep21-bt2-30004"
   },
+  "30008": {
+    "title": "Hot water top (BT7)",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "hot-water-top-bt7-30008"
+  },
   "30009": {
     "title": "Hot water charging (BT6)",
     "factor": 10,
@@ -823,6 +830,16 @@
     "default": 0.0,
     "name": "compressor-total-time-pool-2-main-unit-ep14-30283"
   },
+  "30285": {
+    "title": "Total run time external HW additional heat",
+    "factor": 10,
+    "unit": "h",
+    "size": "s32",
+    "min": 0.0,
+    "max": 9999999.0,
+    "default": 0.0,
+    "name": "total-run-time-external-hw-additional-heat-30285"
+  },
   "30294": {
     "title": "Heat pump 8 requested compressor frequency",
     "factor": 1,
@@ -1301,6 +1318,16 @@
     "factor": 1,
     "size": "u8",
     "name": "seconds-of-blank-time-left-charge-pump-1-30392"
+  },
+  "30396": {
+    "title": "Pulse energy meter (BE6)",
+    "factor": 100,
+    "unit": "kWh",
+    "size": "u32",
+    "min": 0.0,
+    "max": 2147483647.0,
+    "default": 0.0,
+    "name": "pulse-energy-meter-be6-30396"
   },
   "30400": {
     "title": "Alarm number from outdoor air heat pump (EB101)",
@@ -5160,13 +5187,6 @@
     "name": "operating-mode-heating-medium-pump-40095",
     "write": true
   },
-  "45000": {
-    "title": "Activate force control",
-    "factor": 1,
-    "size": "u8",
-    "name": "activate-force-control-45000",
-    "write": true
-  },
   "40103": {
     "title": "Fuse",
     "factor": 1,
@@ -5813,7 +5833,7 @@
     "factor": 1,
     "size": "u8",
     "min": 0.0,
-    "max": 59.0,
+    "max": 57.0,
     "default": 0.0,
     "name": "input-aux5-40211",
     "write": true
@@ -5823,7 +5843,7 @@
     "factor": 1,
     "size": "u8",
     "min": 0.0,
-    "max": 59.0,
+    "max": 57.0,
     "default": 0.0,
     "name": "input-aux4-40212",
     "write": true
@@ -5833,7 +5853,7 @@
     "factor": 1,
     "size": "u8",
     "min": 0.0,
-    "max": 59.0,
+    "max": 57.0,
     "default": 0.0,
     "name": "input-aux3-40213",
     "write": true
@@ -5843,7 +5863,7 @@
     "factor": 1,
     "size": "u8",
     "min": 0.0,
-    "max": 59.0,
+    "max": 57.0,
     "default": 0.0,
     "name": "input-aux2-40214",
     "write": true
@@ -5853,7 +5873,7 @@
     "factor": 1,
     "size": "u8",
     "min": 0.0,
-    "max": 59.0,
+    "max": 57.0,
     "default": 0.0,
     "name": "input-aux1-40215",
     "write": true
@@ -6105,7 +6125,7 @@
     "factor": 1,
     "size": "u8",
     "min": 0.0,
-    "max": 59.0,
+    "max": 57.0,
     "default": 0.0,
     "name": "input-aux5-40767",
     "write": true
@@ -6118,6 +6138,86 @@
     "max": 1.0,
     "default": 1.0,
     "name": "operating-mode-circulation-pump-heating-heat-pump-1-40783",
+    "write": true
+  },
+  "40792": {
+    "title": "Operating mode circulation pump hot water heat pump 8",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 1.0,
+    "name": "operating-mode-circulation-pump-hot-water-heat-pump-8-40792",
+    "write": true
+  },
+  "40793": {
+    "title": "Operating mode circulation pump hot water heat pump 7",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 1.0,
+    "name": "operating-mode-circulation-pump-hot-water-heat-pump-7-40793",
+    "write": true
+  },
+  "40794": {
+    "title": "Operating mode circulation pump hot water heat pump 6",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 1.0,
+    "name": "operating-mode-circulation-pump-hot-water-heat-pump-6-40794",
+    "write": true
+  },
+  "40795": {
+    "title": "Operating mode circulation pump hot water heat pump 5",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 1.0,
+    "name": "operating-mode-circulation-pump-hot-water-heat-pump-5-40795",
+    "write": true
+  },
+  "40796": {
+    "title": "Operating mode circulation pump hot water heat pump 4",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 1.0,
+    "name": "operating-mode-circulation-pump-hot-water-heat-pump-4-40796",
+    "write": true
+  },
+  "40797": {
+    "title": "Operating mode circulation pump hot water heat pump 3",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 1.0,
+    "name": "operating-mode-circulation-pump-hot-water-heat-pump-3-40797",
+    "write": true
+  },
+  "40798": {
+    "title": "Operating mode circulation pump hot water heat pump 2",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 1.0,
+    "name": "operating-mode-circulation-pump-hot-water-heat-pump-2-40798",
+    "write": true
+  },
+  "40799": {
+    "title": "Operating mode circulation pump hot water heat pump 1",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 1.0,
+    "name": "operating-mode-circulation-pump-hot-water-heat-pump-1-40799",
     "write": true
   },
   "40841": {
@@ -7550,6 +7650,16 @@
     "size": "s32",
     "name": "total-energy-eme-20-32180"
   },
+  "44018": {
+    "title": "External energy meter 2 pulse per kWh",
+    "factor": 1,
+    "size": "u16",
+    "min": 1.0,
+    "max": 10000.0,
+    "default": 500.0,
+    "name": "external-energy-meter-2-pulse-per-kwh-44018",
+    "write": true
+  },
   "44076": {
     "title": "ERS 2",
     "factor": 1,
@@ -7578,6 +7688,16 @@
     "max": 1.0,
     "default": 0.0,
     "name": "ers-4-44078",
+    "write": true
+  },
+  "44203": {
+    "title": "Hot water additional heat used in heating mode",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "hot-water-additional-heat-used-in-heating-mode-44203",
     "write": true
   },
   "41981": {
@@ -9135,7 +9255,7 @@
     "factor": 1,
     "size": "u8",
     "min": 0.0,
-    "max": 59.0,
+    "max": 57.0,
     "default": 0.0,
     "name": "aux-from-modbus-42740",
     "write": true
