@@ -122,7 +122,7 @@ class HeatPump(EventServer):
         for k, v in data.items():
             try:
                 self._address_to_coil[k] = self._make_coil(address=int(k), **v)
-            except AssertionError as e:
+            except (AssertionError, TypeError) as e:
                 logger.warning(f"Failed to register coil {k}: {e}")
         self._name_to_coil = {c.name: c for _, c in self._address_to_coil.items()}
 

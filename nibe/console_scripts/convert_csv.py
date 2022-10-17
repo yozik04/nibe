@@ -98,10 +98,10 @@ class CSVConverter:
             self.data["info"] = self.data["info"].astype("string")
         self.data["size"] = self.data["size"].astype("string")
         self.data["name"] = self.data["name"].astype("string")
-        self.data["factor"] = self.data["factor"].replace("-", "0").astype("int")
-        self.data["min"] = self.data["min"].replace("-", "0").astype("int")
-        self.data["max"] = self.data["max"].replace("-", "0").astype("int")
-        self.data["default"] = self.data["default"].replace("-", "0").astype("int")
+        self.data["factor"] = self.data["factor"].astype("int")
+        self.data["min"] = self.data["min"].astype("float")
+        self.data["max"] = self.data["max"].astype("float")
+        self.data["default"] = self.data["default"].astype("float")
 
     def _fix_data_size_column(self):
         mapping = {
@@ -205,15 +205,15 @@ class CSVConverter:
             return None
 
         if "register type" in self.data:
-            id_prefixed = (self.data["title"].str.startswith("id:")) | (
-                self.data["title"] == "-"
-            )
-            if any(id_prefixed):
+            id_prefixed = self.data.loc[
+                self.data["title"].str.startswith("id:", na=True)
+            ]
+            if len(id_prefixed) > 0:
                 logger.warning(
                     "Ignoring unnamed and often duplicated rows:\n%s",
-                    self.data.loc[id_prefixed],
+                    id_prefixed,
                 )
-                self.data = self.data.loc[~id_prefixed]
+                self.data.drop(id_prefixed.index, inplace=True)
 
             self.data["id"] = self.data.apply(calculate_number, axis=1)
 
