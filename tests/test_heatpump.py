@@ -82,7 +82,7 @@ class HeatpumpWordSwapTestCase(unittest.IsolatedAsyncioTestCase):
         )
 
 
-class HeatpumpIntialization(unittest.TestCase):
+class HeatpumpIntialization(unittest.IsolatedAsyncioTestCase):
     def setUp(self) -> None:
         self.heat_pump = HeatPump()
 

@@ -1,4 +1,6 @@
-from importlib.resources import files
+import asyncio
+from collections.abc import Mapping, MutableMapping
+from importlib.resources import files, open_text
 import json
 import logging
 import re
@@ -6,15 +8,26 @@ import re
 import pandas
 from slugify import slugify
 
+from nibe.heatpump import HeatPump, Model
+
 logger = logging.getLogger("nibe").getChild(__name__)
+
+
+def update_dict(d: MutableMapping, u: Mapping) -> Mapping:
+    for k, v in u.items():
+        if isinstance(v, Mapping):
+            update_dict(d.setdefault(k, {}), v)
+        else:
+            d[k] = v
 
 
 class CSVConverter:
     data: pandas.DataFrame
 
-    def __init__(self, in_file, out_file):
+    def __init__(self, in_file, out_file, extensions):
         self.in_file = in_file
         self.out_file = out_file
+        self.extensions = extensions
 
     def convert(self):
         self._read_csv()
@@ -57,12 +70,20 @@ class CSVConverter:
             .where(~self.data["info"].str.contains("encoded"))
             .str.extractall(re_mapping)
         )
-        mappings["value"] = mappings["value"].str.replace("I", "1").astype("int")
+        mappings["value"] = mappings["value"].str.replace("I", "1").astype("str")
         mappings = mappings.reset_index("match", drop=True)
-        mappings = mappings.drop_duplicates()
         self.data["mappings"] = pandas.Series(
-            {k: dict(g.values) for k, g in mappings.groupby("value", level=0)}
-        )
+            {
+                str(k): self._make_mapping_series(g)
+                for k, g in mappings.groupby("value", level=0)
+            }
+        ).where(self._is_mapping_allowed)
+
+    def _is_mapping_allowed(self, s):
+        return self.data["factor"] == 1
+
+    def _make_mapping_series(self, g):
+        return g.set_index("value", drop=True)["key"].drop_duplicates()
 
     def _unset_equal_min_max_default_values(self):
         valid_min_max = self.data["min"] != self.data["max"]
@@ -84,12 +105,12 @@ class CSVConverter:
 
     def _fix_data_size_column(self):
         mapping = {
-            "1": "s8",
-            "2": "s16",
-            "3": "s32",
-            "4": "u8",
-            "5": "u16",
-            "6": "u32",
+            "1.0": "s8",
+            "2.0": "s16",
+            "3.0": "s32",
+            "4.0": "u8",
+            "5.0": "u16",
+            "6.0": "u32",
             "s8": "s8",
             "s16": "s16",
             "s32": "s32",
@@ -166,6 +187,7 @@ class CSVConverter:
                 encoding="utf8",
                 index_col=False,
                 skipinitialspace=True,
+                na_values="-",
             )
 
     def _update_index(self):
@@ -204,23 +226,55 @@ class CSVConverter:
             del self.data["register type"]
             del self.data["register"]
 
+        self.data["id"] = self.data["id"].astype("string")
+
         self.data = self.data.set_index("id")
+
+    def _convert_series_to_dict(self, o):
+        if isinstance(o, pandas.Series):
+            return o.sort_index(key=lambda i: i.astype(int)).to_dict()
+
+        raise TypeError(f"Object of type {type(o)} is not JSON serializable")
 
     def _export_to_file(self):
         o = self._make_dict()
+        update_dict(o, self.extensions)
         with open(self.out_file, "w") as fh:
-            json.dump(o, fh, indent=2)
+            json.dump(o, fh, indent=2, default=self._convert_series_to_dict)
             fh.write("\n")
 
 
-def run():
+async def run():
+    with open_text("nibe.data", "extensions.json") as fp:
+        all_extensions = json.load(fp)
+
     for in_file in files("nibe.data").glob("*.csv"):
         out_file = in_file.with_suffix(".json")
+
+        extensions = {}
+        for extra in all_extensions:
+            if out_file.name not in extra["files"]:
+                continue
+            update_dict(extensions, extra["data"])
+
         logger.info(f"Converting {in_file} to {out_file}")
-        CSVConverter(in_file, out_file).convert()
-        logger.info(f"Converted {in_file} to {out_file}")
+        try:
+            CSVConverter(in_file, out_file, extensions).convert()
+
+            await _validate(out_file)
+
+            logger.info(f"Converted {in_file} to {out_file}")
+        except Exception as e:
+            logger.exception(f"Failed to convert {in_file}: {e}", e)
+
+
+async def _validate(out_file):
+    model = Model.CUSTOM
+    model.data_file = out_file
+    hp = HeatPump(model)
+    await hp.initialize()
 
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
-    run()
+    asyncio.run(run())

@@ -4,6 +4,7 @@ from enum import Enum
 from importlib.resources import files
 import json
 import logging
+from os import PathLike
 from typing import Dict, Union
 
 from nibe.coil import Coil
@@ -44,8 +45,18 @@ class Model(Enum):
     VVM310 = "vvm310_vvm500"
     VVM500 = "vvm310_vvm500"
 
+    CUSTOM = "custom"
+
+    data_file: Union[str, bytes, PathLike[str], PathLike[bytes]]
+
     def get_coil_data(self):
-        return json.loads(files("nibe.data").joinpath(f"{self.value}.json").read_text())
+        if self.value == "custom":
+            with open(self.data_file) as fh:
+                return json.load(fh)
+        else:
+            return json.loads(
+                files("nibe.data").joinpath(f"{self.value}.json").read_text()
+            )
 
     @classmethod
     def keys(cls):
@@ -107,9 +118,12 @@ class HeatPump(EventServer):
             None, self._model.get_coil_data
         )
 
-        self._address_to_coil = {
-            k: self._make_coil(address=int(k), **v) for k, v in data.items()
-        }
+        self._address_to_coil = {}
+        for k, v in data.items():
+            try:
+                self._address_to_coil[k] = self._make_coil(address=int(k), **v)
+            except AssertionError as e:
+                logger.warning(f"Failed to register coil {k}: {e}")
         self._name_to_coil = {c.name: c for _, c in self._address_to_coil.items()}
 
     def _make_coil(self, address: int, **kwargs):

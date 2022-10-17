@@ -1,0 +1,109 @@
+[
+  {
+    "files": [
+      "f370_f470.json",
+      "f730.json",
+      "f750.json",
+      "f1145_f1245.json",
+      "f1155_f1255.json",
+      "f1345.json",
+      "f1355.json",
+      "smo20.json",
+      "smo40.json",
+      "vvm225_vvm320_vvm325.json",
+      "vvm310_vvm500.json"
+    ],
+    "data": {
+      "47041": {
+        "mappings": {
+          "1": "Normal",
+          "2": "Luxury"
+        }
+      },
+      "47385": {
+        "mappings": {
+          "24": "24 hours"
+        }
+      },
+      "48132": {
+        "mappings": {
+          "0": "Off"
+        }
+      }
+    }
+  },
+  {
+    "files": [
+      "f370_f470.json",
+      "f730.json",
+      "f750.json",
+      "f1145_f1245.json",
+      "f1155_f1255.json",
+      "f1345.json",
+      "f1355.json"
+    ],
+    "data": {
+      "43431": {
+        "mappings": {
+          "10": "off"
+        }
+      }
+    }
+  },
+  {
+    "files": [
+      "f1145_f1245.json",
+      "f1155_f1255.json",
+      "f1345.json",
+      "f1355.json"
+    ],
+    "data": {
+      "44752": {
+        "mappings": {
+          "0": "off"
+        }
+      }
+    }
+  },
+  {
+    "files": [
+      "f750.json",
+      "f1145_f1245.json",
+      "f1155_f1255.json",
+      "f1345.json",
+      "f1355.json",
+      "smo40.json",
+      "vvm225_vvm320_vvm325.json"
+    ],
+    "data": {
+      "43097": {
+        "mappings": {
+          "10": "Off"
+        }
+      }
+    }
+  },
+  {
+    "files": ["f370_f470.json"],
+    "data": {
+      "47260": {
+        "title": "Fan Mode",
+        "info": "0=Normal 1=Fan speed 1, 2=Fan speed 2, 3=Fan speed 3, 4=Fan speed 4",
+        "size": "u8",
+        "factor": 1,
+        "min": 0,
+        "max": 4,
+        "default": 0,
+        "name": "fan-mode-47260",
+        "write": true,
+        "mappings": {
+          "0": "Normal",
+          "1": "Fan mode 1",
+          "2": "Fan mode 2",
+          "3": "Fan mode 3",
+          "4": "Fan mode 4"
+        }
+      }
+    }
+  }
+]

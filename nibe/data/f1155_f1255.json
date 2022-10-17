@@ -1106,8 +1106,8 @@
     "factor": 1,
     "name": "external-ers-1-accessory-eb17-40943",
     "mappings": {
-      "1": "closed",
-      "0": "open"
+      "0": "open",
+      "1": "closed"
     }
   },
   "40993": {
@@ -2231,21 +2231,33 @@
     "info": "Indicates if the status of ERS accessory EB17. I = closed, 0 = open.",
     "size": "u8",
     "factor": 1,
-    "name": "external-ers-4-accessory-eb17-42162"
+    "name": "external-ers-4-accessory-eb17-42162",
+    "mappings": {
+      "0": "open",
+      "1": "closed"
+    }
   },
   "42163": {
     "title": "External ERS 3 accessory EB17",
     "info": "Indicates if the status of ERS accessory EB17. I = closed, 0 = open.",
     "size": "u8",
     "factor": 1,
-    "name": "external-ers-3-accessory-eb17-42163"
+    "name": "external-ers-3-accessory-eb17-42163",
+    "mappings": {
+      "0": "open",
+      "1": "closed"
+    }
   },
   "42164": {
     "title": "External ERS 2 accessory EB17",
     "info": "Indicates if the status of ERS accessory EB17. I = closed, 0 = open.",
     "size": "u8",
     "factor": 1,
-    "name": "external-ers-2-accessory-eb17-42164"
+    "name": "external-ers-2-accessory-eb17-42164",
+    "mappings": {
+      "0": "open",
+      "1": "closed"
+    }
   },
   "42437": {
     "title": "Heat Meter - HW Cpr and Add - Total system",
@@ -2487,6 +2499,7 @@
     "factor": 1,
     "name": "status-of-the-shunt-controlled-additional-heat-accessory-43097",
     "mappings": {
+      "10": "Off",
       "20": "Running",
       "30": "Passive"
     }
@@ -2615,7 +2628,11 @@
     "info": "0 = Unblocked, 1 = Blocked",
     "size": "u8",
     "factor": 1,
-    "name": "blocking-status-of-the-step-controlled-add-heat-acc-43171"
+    "name": "blocking-status-of-the-step-controlled-add-heat-acc-43171",
+    "mappings": {
+      "0": "Unblocked",
+      "1": "Blocked"
+    }
   },
   "43180": {
     "title": "HWC Pump Status GP11",
@@ -2624,8 +2641,8 @@
     "factor": 1,
     "name": "hwc-pump-status-gp11-43180",
     "mappings": {
-      "1": "on",
-      "0": "off"
+      "0": "off",
+      "1": "on"
     }
   },
   "43182": {
@@ -2714,6 +2731,7 @@
     "factor": 1,
     "name": "supply-pump-state-ep14-43431",
     "mappings": {
+      "10": "off",
       "15": "starting",
       "20": "on",
       "40": "10-day mode",
@@ -2725,14 +2743,25 @@
     "info": "10=off,15=starting,20=on,40=10-day mode,80=calibration",
     "size": "u8",
     "factor": 1,
-    "name": "brine-pump-state-ep14-43433"
+    "name": "brine-pump-state-ep14-43433",
+    "mappings": {
+      "10": "off",
+      "15": "starting",
+      "20": "on",
+      "40": "10-day mode",
+      "80": "calibration"
+    }
   },
   "43435": {
     "title": "Cpr Status EP14",
     "info": "Status of the compressor. 1=on,0=off 0=Off 1=On",
     "size": "u8",
     "factor": 1,
-    "name": "cpr-status-ep14-43435"
+    "name": "cpr-status-ep14-43435",
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
   },
   "43437": {
     "title": "Supply Pump Speed EP14",
@@ -2757,8 +2786,8 @@
     "factor": 1,
     "name": "flm-4-cooling-status-43484",
     "mappings": {
-      "1": "yes",
-      "0": "no"
+      "0": "no",
+      "1": "yes"
     }
   },
   "43485": {
@@ -2766,21 +2795,33 @@
     "info": "Whether FLM cooling is active, 1=yes, 0=no",
     "size": "u8",
     "factor": 1,
-    "name": "flm-3-cooling-status-43485"
+    "name": "flm-3-cooling-status-43485",
+    "mappings": {
+      "0": "no",
+      "1": "yes"
+    }
   },
   "43486": {
     "title": "FLM 2 Cooling Status",
     "info": "Whether FLM cooling is active, 1=yes, 0=no",
     "size": "u8",
     "factor": 1,
-    "name": "flm-2-cooling-status-43486"
+    "name": "flm-2-cooling-status-43486",
+    "mappings": {
+      "0": "no",
+      "1": "yes"
+    }
   },
   "43487": {
     "title": "FLM 1 Cooling Status",
     "info": "Whether FLM cooling is active, 1=yes, 0=no",
     "size": "u8",
     "factor": 1,
-    "name": "flm-1-cooling-status-43487"
+    "name": "flm-1-cooling-status-43487",
+    "mappings": {
+      "0": "no",
+      "1": "yes"
+    }
   },
   "43514": {
     "title": "EB100-EP14 PCA Base Relays",
@@ -2808,14 +2849,23 @@
     "info": "10=shunt off,20=shunt open,30=shunt closed",
     "size": "u8",
     "factor": 1,
-    "name": "hw-comfort-shunt-state-43555"
+    "name": "hw-comfort-shunt-state-43555",
+    "mappings": {
+      "10": "shunt off",
+      "20": "shunt open",
+      "30": "shunt closed"
+    }
   },
   "43556": {
     "title": "HW Comfort Add Status",
     "info": "1=on,0=off",
     "size": "u8",
     "factor": 1,
-    "name": "hw-comfort-add-status-43556"
+    "name": "hw-comfort-add-status-43556",
+    "mappings": {
+      "0": "off",
+      "1": "on"
+    }
   },
   "43560": {
     "title": "Pool 2 blocked",
@@ -2895,14 +2945,24 @@
     "info": "10=shunt off,20=shunt open,30=shunt closed",
     "size": "u8",
     "factor": 1,
-    "name": "eq1-qn25-state-acs-heat-dump-44277"
+    "name": "eq1-qn25-state-acs-heat-dump-44277",
+    "mappings": {
+      "10": "shunt off",
+      "20": "shunt open",
+      "30": "shunt closed"
+    }
   },
   "44278": {
     "title": "EQ1-QN18 State ACS Cool Dump",
     "info": "10=shunt off,20=shunt open,30=shunt closed",
     "size": "u8",
     "factor": 1,
-    "name": "eq1-qn18-state-acs-cool-dump-44278"
+    "name": "eq1-qn18-state-acs-cool-dump-44278",
+    "mappings": {
+      "10": "shunt off",
+      "20": "shunt open",
+      "30": "shunt closed"
+    }
   },
   "44298": {
     "title": "Heat Meter - HW Cpr and Add EP14",
@@ -2981,14 +3041,22 @@
     "info": "1=on,0=off",
     "size": "u8",
     "factor": 1,
-    "name": "pool-2-pump-status-44748"
+    "name": "pool-2-pump-status-44748",
+    "mappings": {
+      "0": "off",
+      "1": "on"
+    }
   },
   "44749": {
     "title": "Pool 1 Pump Status",
     "info": "1=on,0=off",
     "size": "u8",
     "factor": 1,
-    "name": "pool-1-pump-status-44749"
+    "name": "pool-1-pump-status-44749",
+    "mappings": {
+      "0": "off",
+      "1": "on"
+    }
   },
   "44751": {
     "title": "EQ1-QN12 ACS Valve",
@@ -2997,8 +3065,8 @@
     "factor": 1,
     "name": "eq1-qn12-acs-valve-44751",
     "mappings": {
-      "1": "open",
-      "0": "closed"
+      "0": "closed",
+      "1": "open"
     }
   },
   "44752": {
@@ -3008,6 +3076,7 @@
     "factor": 1,
     "name": "eq1-gp20-acs-dump-signal-44752",
     "mappings": {
+      "0": "off",
       "1": "running"
     }
   },
@@ -3646,6 +3715,8 @@
     "write": true,
     "mappings": {
       "0": "Economy",
+      "1": "Normal",
+      "2": "Luxury",
       "4": "Smart Control"
     }
   },
@@ -3937,7 +4008,10 @@
     "name": "operational-mode-brine-medium-pump-47139",
     "write": true,
     "mappings": {
-      "20": "Continuous"
+      "10": "Intermittent",
+      "20": "Continuous",
+      "30": "Economy",
+      "40": "Auto"
     }
   },
   "47206": {
@@ -4116,7 +4190,11 @@
     "max": 1.0,
     "default": 0.0,
     "name": "floor-drying-47276",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
   },
   "47277": {
     "title": "Floor drying period 7",
@@ -4319,7 +4397,11 @@
     "max": 1.0,
     "default": 0.0,
     "name": "climate-system-2-accessory-47302",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
   },
   "47303": {
     "title": "Climate system 3 accessory",
@@ -4330,7 +4412,11 @@
     "max": 1.0,
     "default": 0.0,
     "name": "climate-system-3-accessory-47303",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
   },
   "47304": {
     "title": "Climate system 4 accessory",
@@ -4341,7 +4427,11 @@
     "max": 1.0,
     "default": 0.0,
     "name": "climate-system-4-accessory-47304",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
   },
   "47305": {
     "title": "Climate system 4 mixing valve amp.",
@@ -4421,7 +4511,11 @@
     "max": 1.0,
     "default": 0.0,
     "name": "flm-pump-1-47312",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
   },
   "47313": {
     "title": "FLM 1 defrost",
@@ -4444,7 +4538,11 @@
     "max": 1.0,
     "default": 0.0,
     "name": "shunt-controlled-add-accessory-47317",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
   },
   "47318": {
     "title": "Shunt controlled add. min. temp.",
@@ -4500,7 +4598,11 @@
     "max": 1.0,
     "default": 0.0,
     "name": "step-controlled-add-accessory-47322",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
   },
   "47324": {
     "title": "Step controlled add. diff. DM",
@@ -4537,7 +4639,11 @@
     "max": 1.0,
     "default": 0.0,
     "name": "ground-water-pump-accessory-47327",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
   },
   "47329": {
     "title": "Cooling 2-pipe accessory",
@@ -4548,7 +4654,11 @@
     "max": 1.0,
     "default": 0.0,
     "name": "cooling-2-pipe-accessory-47329",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
   },
   "47330": {
     "title": "Cooling 4-pipe accessory",
@@ -4559,7 +4669,11 @@
     "max": 1.0,
     "default": 0.0,
     "name": "cooling-4-pipe-accessory-47330",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
   },
   "47335": {
     "title": "Time betw. switch heat/cool",
@@ -4834,7 +4948,11 @@
     "max": 1.0,
     "default": 0.0,
     "name": "low-brine-out-autoreset-47380",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
   },
   "47381": {
     "title": "Low brine out temp.EP14",
@@ -4853,7 +4971,11 @@
     "size": "u8",
     "factor": 1,
     "name": "high-brine-in-47382",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
   },
   "47383": {
     "title": "High brine in temp.",
@@ -4893,7 +5015,8 @@
     "name": "time-format-47385",
     "write": true,
     "mappings": {
-      "12": "12 hours"
+      "12": "12 hours",
+      "24": "24 hours"
     }
   },
   "47387": {
@@ -4905,7 +5028,11 @@
     "max": 1.0,
     "default": 0.0,
     "name": "hw-production-47387",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
   },
   "47388": {
     "title": "Alarm lower room temp.",
@@ -4916,7 +5043,11 @@
     "max": 1.0,
     "default": 0.0,
     "name": "alarm-lower-room-temp-47388",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
   },
   "47389": {
     "title": "Alarm lower HW temp.",
@@ -4927,7 +5058,11 @@
     "max": 1.0,
     "default": 1.0,
     "name": "alarm-lower-hw-temp-47389",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
   },
   "47391": {
     "title": "Use room sensor S4",
@@ -4938,7 +5073,11 @@
     "max": 1.0,
     "default": 0.0,
     "name": "use-room-sensor-s4-47391",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
   },
   "47392": {
     "title": "Use room sensor S3",
@@ -4949,7 +5088,11 @@
     "max": 1.0,
     "default": 0.0,
     "name": "use-room-sensor-s3-47392",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
   },
   "47393": {
     "title": "Use room sensor S2",
@@ -4960,7 +5103,11 @@
     "max": 1.0,
     "default": 0.0,
     "name": "use-room-sensor-s2-47393",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
   },
   "47394": {
     "title": "Use room sensor S1",
@@ -4971,7 +5118,11 @@
     "max": 1.0,
     "default": 0.0,
     "name": "use-room-sensor-s1-47394",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
   },
   "47395": {
     "title": "Room sensor setpoint S4",
@@ -5168,7 +5319,11 @@
     "max": 1.0,
     "default": 0.0,
     "name": "night-cooling-47537",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
   },
   "47538": {
     "title": "Start room temp. night cooling",
@@ -5569,6 +5724,7 @@
     "name": "temporary-lux-48132",
     "write": true,
     "mappings": {
+      "0": "Off",
       "1": "3h",
       "2": "6h",
       "3": "12h",
@@ -7630,8 +7786,8 @@
     "name": "modbus40-disable-log-set-48889",
     "write": true,
     "mappings": {
-      "1": "ignore LOG.SET",
-      "0": "use LOG.SET"
+      "0": "use LOG.SET",
+      "1": "ignore LOG.SET"
     }
   },
   "48896": {
@@ -7890,7 +8046,11 @@
     "max": 1.0,
     "default": 0.0,
     "name": "eme-pv-panel-affect-hot-water-48932",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "not affecting",
+      "1": "affecting"
+    }
   },
   "48948": {
     "title": "FLM pump 4",
@@ -8236,7 +8396,11 @@
     "max": 1.0,
     "default": 0.0,
     "name": "smart-energy-source-fixed-elec-price-from-48983",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "fixed price",
+      "1": "tariff"
+    }
   },
   "48984": {
     "title": "Smart energy source, fixed part electricity price",
@@ -8258,7 +8422,11 @@
     "max": 1.0,
     "default": 0.0,
     "name": "smart-energy-source-shunt-add-price-source-48985",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "fixed price",
+      "1": "tariff"
+    }
   },
   "48986": {
     "title": "Smart energy source, shunt add price",
@@ -8280,7 +8448,11 @@
     "max": 1.0,
     "default": 0.0,
     "name": "smart-energy-source-ext-step-add-price-from-48987",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "fixed price",
+      "1": "tariff"
+    }
   },
   "48988": {
     "title": "Smart energy source, ext step add price",
@@ -8302,7 +8474,11 @@
     "max": 1.0,
     "default": 0.0,
     "name": "smart-energy-source-opt10-price-source-48989",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "fixed price",
+      "1": "tariff"
+    }
   },
   "48990": {
     "title": "Smart energy source, OPT10 price",
@@ -8749,7 +8925,11 @@
     "max": 1.0,
     "default": 0.0,
     "name": "eme20-activated-49297",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "not activated",
+      "1": "activated"
+    }
   },
   "49298": {
     "title": "EME PV Panel Affect Pool",
@@ -8757,7 +8937,11 @@
     "size": "u8",
     "factor": 1,
     "name": "eme-pv-panel-affect-pool-49298",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "not affecting",
+      "1": "affecting"
+    }
   },
   "49328": {
     "title": "ERS 4 Exhaust Fan speed 4",
