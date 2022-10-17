@@ -8,10 +8,10 @@ from nibe.exceptions import CoilNotFoundException, ModelIdentificationFailed
 from nibe.heatpump import HeatPump, Model, ProductInfo
 
 
-class HeatpumpTestCase(unittest.TestCase):
-    def setUp(self) -> None:
+class HeatpumpTestCase(unittest.IsolatedAsyncioTestCase):
+    async def asyncSetUp(self) -> None:
         self.heat_pump = HeatPump(Model.F1255)
-        self.heat_pump.initialize()
+        await self.heat_pump.initialize()
 
         assert len(self.heat_pump._address_to_coil) > 100
 
@@ -68,11 +68,11 @@ class HeatpumpTestCase(unittest.TestCase):
         )
 
 
-class HeatpumpWordSwapTestCase(unittest.TestCase):
-    def setUp(self) -> None:
+class HeatpumpWordSwapTestCase(unittest.IsolatedAsyncioTestCase):
+    async def asyncSetUp(self) -> None:
         self.heat_pump = HeatPump(Model.F1255)
         self.heat_pump.word_swap = False
-        self.heat_pump.initialize()
+        await self.heat_pump.initialize()
 
     def test_word_swap_is_false(self):
         coil = self.heat_pump.get_coil_by_address(43420)
@@ -86,19 +86,19 @@ class HeatpumpIntialization(unittest.TestCase):
     def setUp(self) -> None:
         self.heat_pump = HeatPump()
 
-    def test_initalize_with_model(self):
+    async def test_initalize_with_model(self):
         self.heat_pump.model = Model.F1255
-        self.heat_pump.initialize()
+        await self.heat_pump.initialize()
         self.heat_pump.get_coil_by_address(43420)
 
-    def test_initalize_with_product_info(self):
+    async def test_initalize_with_product_info(self):
         self.heat_pump.product_info = ProductInfo("F1255-12 R", 0)
-        self.heat_pump.initialize()
+        await self.heat_pump.initialize()
         self.heat_pump.get_coil_by_address(43420)
 
-    def test_initalization_failed(self):
+    async def test_initalization_failed(self):
         with pytest.raises(AssertionError):
-            self.heat_pump.initialize()
+            await self.heat_pump.initialize()
 
 
 class ProductInfoTestCase(unittest.TestCase):
