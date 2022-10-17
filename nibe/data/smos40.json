@@ -5187,6 +5187,13 @@
     "name": "operating-mode-heating-medium-pump-40095",
     "write": true
   },
+  "45000": {
+    "title": "Activate force control",
+    "factor": 1,
+    "size": "u8",
+    "name": "activate-force-control-45000",
+    "write": true
+  },
   "40103": {
     "title": "Fuse",
     "factor": 1,

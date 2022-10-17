@@ -2487,7 +2487,6 @@
     "factor": 1,
     "name": "status-of-the-shunt-controlled-additional-heat-accessory-43097",
     "mappings": {
-      "10": "Off",
       "20": "Running",
       "30": "Passive"
     }
@@ -2715,7 +2714,6 @@
     "factor": 1,
     "name": "supply-pump-state-ep14-43431",
     "mappings": {
-      "10": "off",
       "15": "starting",
       "20": "on",
       "40": "10-day mode",
@@ -3010,7 +3008,6 @@
     "factor": 1,
     "name": "eq1-gp20-acs-dump-signal-44752",
     "mappings": {
-      "0": "off",
       "1": "running"
     }
   },
@@ -3649,8 +3646,6 @@
     "write": true,
     "mappings": {
       "0": "Economy",
-      "1": "Normal",
-      "2": "Luxury",
       "4": "Smart Control"
     }
   },
@@ -3942,10 +3937,7 @@
     "name": "operational-mode-brine-medium-pump-47139",
     "write": true,
     "mappings": {
-      "10": "Intermittent",
-      "20": "Continuous",
-      "30": "Economy",
-      "40": "Auto"
+      "20": "Continuous"
     }
   },
   "47206": {
@@ -4901,8 +4893,7 @@
     "name": "time-format-47385",
     "write": true,
     "mappings": {
-      "12": "12 hours",
-      "24": "24 hours"
+      "12": "12 hours"
     }
   },
   "47387": {
@@ -5578,7 +5569,6 @@
     "name": "temporary-lux-48132",
     "write": true,
     "mappings": {
-      "0": "Off",
       "1": "3h",
       "2": "6h",
       "3": "12h",
