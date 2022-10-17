@@ -77,7 +77,7 @@ class HeatpumpWordSwapTestCase(unittest.IsolatedAsyncioTestCase):
         assert coil.value == 1576
 
 
-class HeatpumpIntialization(unittest.TestCase):
+class HeatpumpIntialization(unittest.IsolatedAsyncioTestCase):
     def setUp(self) -> None:
         self.heat_pump = HeatPump()
 
