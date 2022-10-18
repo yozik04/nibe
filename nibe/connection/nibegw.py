@@ -48,6 +48,7 @@ from tenacity import retry, retry_if_exception_type, stop_after_attempt
 
 from nibe.coil import Coil
 from nibe.connection import DEFAULT_TIMEOUT, READ_PRODUCT_INFO_TIMEOUT, Connection
+from nibe.connection.encoders import CoilDataEncoder
 from nibe.event_server import EventServer
 from nibe.exceptions import (
     CoilNotFoundException,
@@ -106,6 +107,8 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
 
         self._send_lock = asyncio.Lock()
         self._futures = {}
+
+        self.coil_encoder = CoilDataEncoder(heatpump.word_swap)
 
         self.read_coil = retry(
             retry=retry_if_exception_type(CoilReadException),
@@ -255,7 +258,10 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
                     fields=dict(
                         value=dict(
                             cmd="MODBUS_WRITE_REQ",
-                            data=dict(coil_address=coil.address, value=coil.raw_value),
+                            data=dict(
+                                coil_address=coil.address,
+                                value=self.coil_encoder.encode(coil),
+                            ),
                         )
                     )
                 )
@@ -339,8 +345,9 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
     def _on_raw_coil_value(self, coil_address: int, raw_value: bytes):
         try:
             coil = self._heatpump.get_coil_by_address(coil_address)
+            coil.value = self.coil_encoder.decode(coil, raw_value)
 
-            coil.raw_value = raw_value
+            # coil.raw_value = raw_value
             logger.info(f"{coil.name}: {coil.value}")
             self._heatpump.notify_coil_update(coil)
         except CoilNotFoundException:
@@ -367,7 +374,7 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
             if isinstance(value, EnumIntegerString):
                 value = int(value)
 
-            if coil.mappings and isinstance(value, int):
+            if coil.has_mappings and isinstance(value, int):
                 value = coil.get_mapping_for(value)
 
             coil.value = value

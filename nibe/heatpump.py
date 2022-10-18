@@ -18,6 +18,9 @@ class Model(Enum):
     F1155 = "f1155_f1255"
     F1255 = "f1155_f1255"
 
+    S1155 = "s1155_s1255"
+    S1255 = "s1155_s1255"
+
     F1145 = "f1145_f1245"
     F1245 = "f1145_f1245"
 
@@ -32,6 +35,8 @@ class Model(Enum):
 
     SMO20 = "smo20"
     SMO40 = "smo40"
+
+    SMOS40 = "smos40"
 
     VVM225 = "vvm225_vvm320_vvm325"
     VVM320 = "vvm225_vvm320_vvm325"
@@ -117,7 +122,7 @@ class HeatPump(EventServer):
         for k, v in data.items():
             try:
                 self._address_to_coil[k] = self._make_coil(address=int(k), **v)
-            except AssertionError as e:
+            except (AssertionError, TypeError) as e:
                 logger.warning(f"Failed to register coil {k}: {e}")
         self._name_to_coil = {c.name: c for _, c in self._address_to_coil.items()}
 

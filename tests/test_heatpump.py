@@ -3,6 +3,7 @@ from unittest.mock import Mock
 
 import pytest
 
+from nibe.connection.nibegw import CoilDataEncoder
 from nibe.exceptions import CoilNotFoundException, ModelIdentificationFailed
 from nibe.heatpump import HeatPump, Model, ProductInfo
 
@@ -61,8 +62,10 @@ class HeatpumpTestCase(unittest.IsolatedAsyncioTestCase):
 
     def test_word_swap_is_true(self):
         coil = self.heat_pump.get_coil_by_address(43420)
-        coil.raw_value = b"(\x06\x00\x00"
-        assert coil.value == 1576
+        assert (
+            CoilDataEncoder(self.heat_pump.word_swap).decode(coil, b"(\x06\x00\x00")
+            == 1576
+        )
 
 
 class HeatpumpWordSwapTestCase(unittest.IsolatedAsyncioTestCase):
@@ -73,8 +76,10 @@ class HeatpumpWordSwapTestCase(unittest.IsolatedAsyncioTestCase):
 
     def test_word_swap_is_false(self):
         coil = self.heat_pump.get_coil_by_address(43420)
-        coil.raw_value = b"\x00\x00(\x06"
-        assert coil.value == 1576
+        assert (
+            CoilDataEncoder(self.heat_pump.word_swap).decode(coil, b"\x00\x00(\x06")
+            == 1576
+        )
 
 
 class HeatpumpIntialization(unittest.IsolatedAsyncioTestCase):

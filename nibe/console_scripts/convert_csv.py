@@ -22,17 +22,17 @@ def update_dict(d: MutableMapping, u: Mapping) -> Mapping:
 
 
 class CSVConverter:
+    data: pandas.DataFrame
+
     def __init__(self, in_file, out_file, extensions):
         self.in_file = in_file
         self.out_file = out_file
         self.extensions = extensions
 
-        self.data = None
-
     def convert(self):
         self._read_csv()
 
-        self._lowercase_column_names()
+        self._unifi_column_names()
 
         self._update_index()
 
@@ -98,6 +98,10 @@ class CSVConverter:
             self.data["info"] = self.data["info"].astype("string")
         self.data["size"] = self.data["size"].astype("string")
         self.data["name"] = self.data["name"].astype("string")
+        self.data["factor"] = self.data["factor"].astype("int")
+        self.data["min"] = self.data["min"].astype("float")
+        self.data["max"] = self.data["max"].astype("float")
+        self.data["default"] = self.data["default"].astype("float")
 
     def _fix_data_size_column(self):
         mapping = {
@@ -115,7 +119,16 @@ class CSVConverter:
             "u32": "u32",
         }
 
-        self.data["size"] = self.data["size"].map(mapping)
+        size = self.data["size"].map(mapping)
+
+        invalid_size = size.isna()
+        if any(invalid_size):
+            logger.warning(
+                "Invalid size data replaced with u16:\n%s", self.data[invalid_size]
+            )
+            size[invalid_size] = "u16"
+
+        self.data["size"] = size
 
     def _fix_data_unit_column(self):
         self.data["unit"] = (
@@ -140,8 +153,18 @@ class CSVConverter:
             )
             del self.data["mode"]
 
-    def _lowercase_column_names(self):
+    def _unifi_column_names(self):
         self.data.columns = map(str.lower, self.data.columns)
+        self.data.rename(
+            columns={
+                "division factor": "factor",
+                "size of variable": "size",
+                "min value": "min",
+                "max value": "max",
+                "default value": "default",
+            },
+            inplace=True,
+        )
 
     def _read_csv(self):
         with open(self.in_file, encoding="latin1") as f:
@@ -168,25 +191,43 @@ class CSVConverter:
             )
 
     def _update_index(self):
-        def calculate_number(register_type: str, register: str):
+        def calculate_number(row):
+            register_type: str = row["register type"]
+            register: str = row["register"]
             if register_type == "MODBUS_COIL":
-                return str(10000 + int(register))
+                return str(int(register))
             if register_type == "MODBUS_DISCRETE_INPUT":
-                return str(20000 + int(register))
+                return str(10000 + int(register))
             if register_type == "MODBUS_INPUT_REGISTER":
                 return str(30000 + int(register))
             if register_type == "MODBUS_HOLDING_REGISTER":
                 return str(40000 + int(register))
             return None
 
-        if "id" in self.data:
-            self.data["id"] = self.data["id"].astype("string")
-        else:
-            self.data["id"] = self.data["registertype"].combine(
-                self.data["register"], calculate_number
+        if "register type" in self.data:
+            id_prefixed = self.data.loc[
+                self.data["title"].str.startswith("id:", na=True)
+            ]
+            if len(id_prefixed) > 0:
+                logger.warning(
+                    "Ignoring unnamed and often duplicated rows:\n%s",
+                    id_prefixed,
+                )
+                self.data.drop(id_prefixed.index, inplace=True)
+
+            self.data["id"] = self.data.apply(calculate_number, axis=1)
+
+            self.data["mode"] = self.data["register type"].map(
+                lambda x: "R/W"
+                if x in ("MODBUS_HOLDING_REGISTER", "MODBUS_COIL")
+                else "R"
             )
-            del self.data["registertype"]
+
+            del self.data["register type"]
             del self.data["register"]
+
+        self.data["id"] = self.data["id"].astype("string")
+
         self.data = self.data.set_index("id")
 
     def _convert_series_to_dict(self, o):
