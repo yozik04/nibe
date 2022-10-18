@@ -5840,7 +5840,7 @@
     "factor": 1,
     "size": "u8",
     "min": 0.0,
-    "max": 57.0,
+    "max": 59.0,
     "default": 0.0,
     "name": "input-aux5-40211",
     "write": true
@@ -5850,7 +5850,7 @@
     "factor": 1,
     "size": "u8",
     "min": 0.0,
-    "max": 57.0,
+    "max": 59.0,
     "default": 0.0,
     "name": "input-aux4-40212",
     "write": true
@@ -5860,7 +5860,7 @@
     "factor": 1,
     "size": "u8",
     "min": 0.0,
-    "max": 57.0,
+    "max": 59.0,
     "default": 0.0,
     "name": "input-aux3-40213",
     "write": true
@@ -5870,7 +5870,7 @@
     "factor": 1,
     "size": "u8",
     "min": 0.0,
-    "max": 57.0,
+    "max": 59.0,
     "default": 0.0,
     "name": "input-aux2-40214",
     "write": true
@@ -5880,7 +5880,7 @@
     "factor": 1,
     "size": "u8",
     "min": 0.0,
-    "max": 57.0,
+    "max": 59.0,
     "default": 0.0,
     "name": "input-aux1-40215",
     "write": true
@@ -6132,7 +6132,7 @@
     "factor": 1,
     "size": "u8",
     "min": 0.0,
-    "max": 57.0,
+    "max": 59.0,
     "default": 0.0,
     "name": "input-aux5-40767",
     "write": true
@@ -7978,7 +7978,6 @@
   "44200": {
     "title": "Power at DOT, manual value",
     "factor": 1,
-    "unit": "kW",
     "size": "u8",
     "min": 0.0,
     "max": 1.0,
@@ -9262,7 +9261,7 @@
     "factor": 1,
     "size": "u8",
     "min": 0.0,
-    "max": 57.0,
+    "max": 59.0,
     "default": 0.0,
     "name": "aux-from-modbus-42740",
     "write": true
@@ -9474,6 +9473,26 @@
     "unit": "%",
     "size": "u8",
     "name": "fan-mode-8-32171"
+  },
+  "44204": {
+    "title": "Disable emergency restart GP1",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "disable-emergency-restart-gp1-44204",
+    "write": true
+  },
+  "45025": {
+    "title": "Disable emergency restart GP1",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "disable-emergency-restart-gp1-45025",
+    "write": true
   },
   "43028": {
     "title": "Immersion heater power, emergency mode",
