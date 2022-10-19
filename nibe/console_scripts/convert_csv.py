@@ -265,7 +265,7 @@ async def run():
 
             logger.info(f"Converted {in_file} to {out_file}")
         except Exception as e:
-            logger.exception(f"Failed to convert {in_file}: {e}", e)
+            logger.exception("Failed to convert %s: %s", in_file, e)
 
 
 async def _validate(out_file):

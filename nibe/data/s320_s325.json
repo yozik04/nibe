@@ -1675,7 +1675,14 @@
     "title": "Priority",
     "factor": 1,
     "size": "u8",
-    "name": "priority-31029"
+    "name": "priority-31029",
+    "mappings": {
+      "10": "Off",
+      "20": "Hot Water",
+      "30": "Heat",
+      "40": "Pool",
+      "60": "Cooling"
+    }
   },
   "31030": {
     "title": "Operating mode internal add. heat",
@@ -2342,7 +2349,13 @@
     "max": 4.0,
     "default": 1.0,
     "name": "hot-water-demand-mode-40057",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "Small",
+      "1": "Medium",
+      "2": "Large",
+      "3": "Smart Control"
+    }
   },
   "40059": {
     "title": "Start temperature HW high temperature",
@@ -3190,7 +3203,12 @@
     "factor": 1,
     "size": "u8",
     "name": "oper-mode-40238",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "Auto",
+      "1": "Manual",
+      "2": "Add. heat only"
+    }
   },
   "40682": {
     "title": "Cooling heat sensor set point value",

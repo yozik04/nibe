@@ -3332,7 +3332,14 @@
     "title": "Priority",
     "factor": 1,
     "size": "u8",
-    "name": "priority-31029"
+    "name": "priority-31029",
+    "mappings": {
+      "10": "Off",
+      "20": "Hot Water",
+      "30": "Heat",
+      "40": "Pool",
+      "60": "Cooling"
+    }
   },
   "31030": {
     "title": "Operating mode internal add. heat",
@@ -3447,7 +3454,11 @@
     "title": "External heating medium pump (GP10) status",
     "factor": 1,
     "size": "u8",
-    "name": "external-heating-medium-pump-gp10-status-31067"
+    "name": "external-heating-medium-pump-gp10-status-31067",
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
   },
   "31068": {
     "title": "Energy meter",
@@ -4346,7 +4357,12 @@
     "title": "Defrosting (EB103)",
     "factor": 1,
     "size": "u8",
-    "name": "defrosting-eb103-31778"
+    "name": "defrosting-eb103-31778",
+    "mappings": {
+      "0": "Off",
+      "1": "Active",
+      "2": "Passive"
+    }
   },
   "31779": {
     "title": "Power (EB103-EP14)",
@@ -4397,7 +4413,12 @@
     "title": "Defrosting (EB102)",
     "factor": 1,
     "size": "u8",
-    "name": "defrosting-eb102-31792"
+    "name": "defrosting-eb102-31792",
+    "mappings": {
+      "0": "Off",
+      "1": "Active",
+      "2": "Passive"
+    }
   },
   "31793": {
     "title": "Power (EB102-EP14)",
@@ -4468,7 +4489,12 @@
     "title": "Defrosting (EB101)",
     "factor": 1,
     "size": "u8",
-    "name": "defrosting-eb101-31806"
+    "name": "defrosting-eb101-31806",
+    "mappings": {
+      "0": "Off",
+      "1": "Active",
+      "2": "Passive"
+    }
   },
   "31807": {
     "title": "Power (EB101-EP14)",
@@ -5028,7 +5054,13 @@
     "max": 4.0,
     "default": 1.0,
     "name": "hot-water-demand-mode-40057",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "Small",
+      "1": "Medium",
+      "2": "Large",
+      "3": "Smart Control"
+    }
   },
   "40059": {
     "title": "Start temperature HW high temperature",
@@ -5917,7 +5949,12 @@
     "factor": 1,
     "size": "u8",
     "name": "oper-mode-40238",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "Auto",
+      "1": "Manual",
+      "2": "Add. heat only"
+    }
   },
   "40239": {
     "title": "Max. step internal additional heat",
