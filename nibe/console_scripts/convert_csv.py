@@ -193,15 +193,15 @@ class CSVConverter:
     def _update_index(self):
         def calculate_number(row):
             register_type: str = row["register type"]
-            register: str = row["register"]
+            location = 1 + int(row["register"])
             if register_type == "MODBUS_COIL":
-                return str(int(register))
+                return str(int(location))
             if register_type == "MODBUS_DISCRETE_INPUT":
-                return str(10000 + int(register))
+                return str(10000 + int(location))
             if register_type == "MODBUS_INPUT_REGISTER":
-                return str(30000 + int(register))
+                return str(30000 + int(location))
             if register_type == "MODBUS_HOLDING_REGISTER":
-                return str(40000 + int(register))
+                return str(40000 + int(location))
             return None
 
         if "register type" in self.data:
