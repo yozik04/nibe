@@ -33,6 +33,8 @@ class Model(Enum):
     F370 = "f370_f470"
     F470 = "f370_f470"
 
+    S320 = "s350"
+
     SMO20 = "smo20"
     SMO40 = "smo40"
 
