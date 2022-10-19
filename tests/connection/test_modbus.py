@@ -17,10 +17,10 @@ def fixture_modbus_client():
         yield client
 
 
-@pytest.fixture(name="heatpump", scope="module")
-def fixture_heatpump():
+@pytest.fixture(name="heatpump")
+async def fixture_heatpump():
     heatpump = HeatPump(Model.S1255)
-    heatpump.initialize()
+    await heatpump.initialize()
     yield heatpump
 
 
@@ -32,16 +32,19 @@ def fixture_connection(heatpump: HeatPump):
 @pytest.mark.parametrize(
     ("size", "raw", "value"),
     [
-        ("u32", [b"\x01\x00", b"\x00\x00"], 1),
-        ("u16", [b"\x01\x00"], 1),
-        ("u8", [b"\x01\x00"], 1),
+        ("u32", [1, 0], 0x00000001),
+        ("u32", [0, 32768], 0x80000000),
+        ("u16", [1], 0x0001),
+        ("u16", [32768], 0x8000),
+        ("u8", [1], 0x01),
+        ("u8", [128], 0x80),
     ],
 )
 async def test_read_holding_register_coil(
     connection: Modbus,
     modbus_client: AsyncMock,
     size: str,
-    raw: List[bytes],
+    raw: List[int],
     value: Union[int, float, str],
 ):
     coil = Coil(40001, "test", "test", size, 1)
@@ -54,9 +57,12 @@ async def test_read_holding_register_coil(
 @pytest.mark.parametrize(
     ("size", "raw", "value"),
     [
-        ("u32", [b"\x01\x00", b"\x00\x00"], 1),
-        ("u16", [b"\x01\x00"], 1),
-        ("u8", [b"\x01\x00"], 1),
+        ("u32", [1, 0], 0x00000001),
+        ("u32", [0, 32768], 0x80000000),
+        ("u16", [1], 0x0001),
+        ("u16", [32768], 0x8000),
+        ("u8", [1], 0x01),
+        ("u8", [128], 0x80),
     ],
 )
 async def test_write_holding_register(
@@ -77,9 +83,12 @@ async def test_write_holding_register(
 @pytest.mark.parametrize(
     ("size", "raw", "value"),
     [
-        ("u32", [b"\x01\x00", b"\x00\x00"], 1),
-        ("u16", [b"\x01\x00"], 1),
-        ("u8", [b"\x01\x00"], 1),
+        ("u32", [1, 0], 0x00000001),
+        ("u32", [0, 32768], 0x80000000),
+        ("u16", [1], 0x0001),
+        ("u16", [32768], 0x8000),
+        ("u8", [1], 0x01),
+        ("u8", [128], 0x80),
     ],
 )
 async def test_read_input_register_coil(
@@ -99,7 +108,8 @@ async def test_read_input_register_coil(
 @pytest.mark.parametrize(
     ("size", "raw", "value"),
     [
-        ("u8", [b"\x01"], 1),
+        ("u8", [1], 0x01),
+        ("u8", [0], 0x00),
     ],
 )
 async def test_read_discrete_input_coil(
@@ -119,7 +129,8 @@ async def test_read_discrete_input_coil(
 @pytest.mark.parametrize(
     ("size", "raw", "value"),
     [
-        ("u8", [b"\x01"], 1),
+        ("u8", [1], 0x01),
+        ("u8", [0], 0x00),
     ],
 )
 async def test_read_coil_coil(
@@ -139,7 +150,8 @@ async def test_read_coil_coil(
 @pytest.mark.parametrize(
     ("size", "raw", "value"),
     [
-        ("u8", [b"\x01"], 1),
+        ("u8", [1], 0x01),
+        ("u8", [0], 0x00),
     ],
 )
 async def test_write_coil_coil(
