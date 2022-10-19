@@ -4,11 +4,18 @@ from typing import List
 
 from async_modbus import modbus_for_url
 import async_timeout
+from umodbus.exceptions import ModbusError
 
 from nibe.coil import Coil
 from nibe.connection import DEFAULT_TIMEOUT, Connection
 from nibe.connection.encoders import CoilDataEncoder
-from nibe.exceptions import CoilReadException, CoilWriteException, ModbusUrlException
+from nibe.exceptions import (
+    CoilReadException,
+    CoilReadTimeoutException,
+    CoilWriteException,
+    CoilWriteTimeoutException,
+    ModbusUrlException,
+)
 from nibe.heatpump import HeatPump
 
 logger = logging.getLogger("nibe").getChild(__name__)
@@ -54,9 +61,9 @@ class Modbus(Connection):
 
     async def read_coil(self, coil: Coil, timeout: float = DEFAULT_TIMEOUT) -> Coil:
         logger.debug("Sending read request")
-        try:
+        entity_type, entity_number, entity_count = split_modbus_data(coil)
 
-            entity_type, entity_number, entity_count = split_modbus_data(coil)
+        try:
 
             async with async_timeout.timeout(timeout):
                 if entity_type == 3:
@@ -90,8 +97,12 @@ class Modbus(Connection):
 
             logger.info(f"{coil.name}: {coil.value}")
             self._heatpump.notify_coil_update(coil)
-        except asyncio.TimeoutError:
+        except ModbusError as exc:
             raise CoilReadException(
+                f"Error '{str(exc)}' reading {coil.name} starting: {entity_number} count: {entity_count} from: {self._slave_id}"
+            ) from exc
+        except asyncio.TimeoutError:
+            raise CoilReadTimeoutException(
                 f"Timeout waiting for read response for {coil.name}"
             )
 
@@ -102,8 +113,9 @@ class Modbus(Connection):
         assert coil.value is not None, f"{coil.name} value must be set"
 
         logger.debug("Sending write request")
+
+        entity_type, entity_number, entity_count = split_modbus_data(coil)
         try:
-            entity_type, entity_number, entity_count = split_modbus_data(coil)
 
             async with async_timeout.timeout(timeout):
                 if entity_type == 4:
@@ -129,8 +141,12 @@ class Modbus(Connection):
                 raise CoilWriteException(f"Heatpump denied writing {coil.name}")
             else:
                 logger.info(f"Write succeeded for {coil.name}")
-        except asyncio.TimeoutError:
+        except ModbusError as exc:
             raise CoilWriteException(
+                f"Error '{str(exc)}' writing {coil.name} starting: {entity_number} count: {entity_count} to: {self._slave_id}"
+            ) from exc
+        except asyncio.TimeoutError:
+            raise CoilWriteTimeoutException(
                 f"Timeout waiting for write feedback for {coil.name}"
             )
 
