@@ -2,6 +2,7 @@ from typing import List, Union
 from unittest.mock import AsyncMock, patch
 
 from async_modbus import AsyncClient
+import numpy
 import pytest
 
 from nibe.coil import Coil
@@ -48,7 +49,7 @@ async def test_read_holding_register_coil(
     value: Union[int, float, str],
 ):
     coil = Coil(40001, "test", "test", size, 1)
-    modbus_client.read_holding_registers.return_value = raw
+    modbus_client.read_holding_registers.return_value = [numpy.uint16(x) for x in raw]
     coil = await connection.read_coil(coil)
     assert coil.value == value
     modbus_client.read_holding_registers.assert_called()
@@ -99,7 +100,7 @@ async def test_read_input_register_coil(
     value: Union[int, float, str],
 ):
     coil = Coil(30001, "test", "test", size, 1)
-    modbus_client.read_input_registers.return_value = raw
+    modbus_client.read_input_registers.return_value = [numpy.uint16(x) for x in raw]
     coil = await connection.read_coil(coil)
     assert coil.value == value
     modbus_client.read_input_registers.assert_called()
@@ -120,7 +121,7 @@ async def test_read_discrete_input_coil(
     value: Union[int, float, str],
 ):
     coil = Coil(10001, "test", "test", size, 1)
-    modbus_client.read_discrete_inputs.return_value = raw
+    modbus_client.read_discrete_inputs.return_value = [numpy.uint16(x) for x in raw]
     coil = await connection.read_coil(coil)
     assert coil.value == value
     modbus_client.read_discrete_inputs.assert_called()
