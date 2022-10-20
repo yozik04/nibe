@@ -33,14 +33,28 @@ def split_modbus_data(coil: Coil):
     return entity_type, entity_address, entity_count
 
 
-def split_chunks(data, max_len, chunks) -> List[bytes]:
+def decode_u16_list(data: bytes, count: int) -> List[int]:
+    """Split data into chunks of a certain max length, cropping of trailing data."""
+    res = []
+    for i in range(0, count * 2, 2):
+        res.append(int.from_bytes(data[i : i + 2], "little", signed=False))
+    return res
+
+
+def encode_u16_list(data: List[int]) -> bytes:
+    return bytes(
+        byte for val in data for byte in val.to_bytes(2, "little", signed=False)
+    )
+
+
+def split_chunks(data, max_len, chunks) -> List[int]:
     """Split data into chunks of a certain max length, cropping of trailing data."""
     count = len(data) // chunks
     res = []
     for i in range(0, len(data), count):
         chunk = data[i : i + count]
         assert all(x == 0 for x in chunk[max_len:])
-        res.append(chunk[0:max_len])
+        res.append(int.from_bytes(chunk[0:max_len], "little"), signed=False)
     return res
 
 
@@ -93,7 +107,7 @@ class Modbus(Connection):
                 else:
                     raise CoilReadException(f"Unsupported entity type {entity_type}")
 
-            coil.value = self.coil_encoder.decode(coil, b"".join(result))
+            coil.value = self.coil_encoder.decode(coil, encode_u16_list(result))
 
             logger.info(f"{coil.name}: {coil.value}")
             self._heatpump.notify_coil_update(coil)
@@ -122,16 +136,16 @@ class Modbus(Connection):
                     result = await self._client.write_registers(
                         slave_id=self._slave_id,
                         starting_address=entity_number,
-                        values=split_chunks(
-                            self.coil_encoder.encode(coil), 2, entity_count
+                        values=decode_u16_list(
+                            self.coil_encoder.encode(coil), entity_count
                         ),
                     )
                 elif entity_type == 0:
                     result = await self._client.write_coils(
                         slave_id=self._slave_id,
                         starting_address=entity_number,
-                        values=split_chunks(
-                            self.coil_encoder.encode(coil), 1, entity_count
+                        values=decode_u16_list(
+                            self.coil_encoder.encode(coil), entity_count
                         ),
                     )
                 else:
