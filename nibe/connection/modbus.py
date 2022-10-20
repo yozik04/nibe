@@ -43,7 +43,7 @@ def decode_u16_list(data: bytes, count: int) -> List[int]:
 
 def encode_u16_list(data: List[int]) -> bytes:
     return bytes(
-        byte for val in data for byte in val.to_bytes(2, "little", signed=False)
+        byte for val in data for byte in int(val).to_bytes(2, "little", signed=False)
     )
 
 

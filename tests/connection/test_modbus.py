@@ -36,6 +36,7 @@ def fixture_connection(heatpump: HeatPump):
         ("u32", [0, 32768], 0x80000000),
         ("u16", [1], 0x0001),
         ("u16", [32768], 0x8000),
+        ("u16", ["32768"], 0x8000),
         ("u8", [1], 0x01),
         ("u8", [128], 0x80),
     ],
@@ -87,6 +88,7 @@ async def test_write_holding_register(
         ("u32", [0, 32768], 0x80000000),
         ("u16", [1], 0x0001),
         ("u16", [32768], 0x8000),
+        ("u16", ["32768"], 0x8000),
         ("u8", [1], 0x01),
         ("u8", [128], 0x80),
     ],
@@ -110,6 +112,7 @@ async def test_read_input_register_coil(
     [
         ("u8", [1], 0x01),
         ("u8", [0], 0x00),
+        ("u8", ["0"], 0x00),
     ],
 )
 async def test_read_discrete_input_coil(
@@ -131,6 +134,7 @@ async def test_read_discrete_input_coil(
     [
         ("u8", [1], 0x01),
         ("u8", [0], 0x00),
+        ("u8", ["0"], 0x00),
     ],
 )
 async def test_read_coil_coil(
