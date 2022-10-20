@@ -85,7 +85,7 @@ async def global_setup(
     logging.log(logging.INFO, "Log level set to %r", log_level)
 
     heatpump = HeatPump(Model[model])
-    heatpump.initialize()
+    await heatpump.initialize()
     if remote_type == "nibegw":
         connection = NibeGW(
             heatpump=heatpump,
