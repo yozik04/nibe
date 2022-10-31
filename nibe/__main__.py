@@ -123,6 +123,14 @@ async def monitor(**kwargs):
 
 @cli.command()
 @global_options
+async def product(**kwargs):
+    _, connection = await global_setup(**kwargs)
+    product_info = await connection.read_product_info()
+    click.echo(product_info)
+
+
+@cli.command()
+@global_options
 @click.argument("parameter", type=int)
 async def read(parameter: int, **kwargs):
     heatpump, connection = await global_setup(**kwargs)
