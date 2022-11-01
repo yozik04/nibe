@@ -159,9 +159,11 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
 
     def datagram_received(self, data: bytes, addr):
         logger.debug(f"Received {hexlify(data).decode('utf-8')} from {addr}")
-        self._set_status(ConnectionStatus.CONNECTED)
         try:
             msg = Response.parse(data)
+
+            self._set_status(ConnectionStatus.CONNECTED)
+
             logger.debug(msg.fields.value)
             cmd = msg.fields.value.cmd
             if cmd == "MODBUS_DATA_MSG":
@@ -298,6 +300,10 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
     @property
     def status(self) -> ConnectionStatus:
         return self._status
+
+    @property
+    def remote_ip(self) -> str:
+        return self._remote_ip
 
     def _set_status(self, status: ConnectionStatus):
         if status != self._status:
