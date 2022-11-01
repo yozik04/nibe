@@ -2,6 +2,7 @@ import asyncio
 from asyncio import CancelledError, Future, InvalidStateError
 from binascii import hexlify
 from contextlib import suppress
+import errno
 from functools import reduce
 from io import BytesIO
 from ipaddress import ip_address
@@ -51,6 +52,7 @@ from nibe.connection import DEFAULT_TIMEOUT, READ_PRODUCT_INFO_TIMEOUT, Connecti
 from nibe.connection.encoders import CoilDataEncoder
 from nibe.event_server import EventServer
 from nibe.exceptions import (
+    AddressInUseException,
     CoilNotFoundException,
     CoilReadException,
     CoilReadTimeoutException,
@@ -134,22 +136,28 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
             proto=socket.IPPROTO_UDP,
             family=socket.AddressFamily.AF_INET,
         )[0]
+
         sock = socket.socket(family, type, proto)
         sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEPORT, 1)
-        if ip_address(sockaddr[0]).is_multicast:
-            group_bin = socket.inet_pton(family, sockaddr[0])
-            if family == socket.AF_INET:  # IPv4
-                sock.bind(("", sockaddr[1]))
-                mreq = group_bin + struct.pack("=I", socket.INADDR_ANY)
-                sock.setsockopt(socket.IPPROTO_IP, socket.IP_ADD_MEMBERSHIP, mreq)
+        try:
+            if ip_address(sockaddr[0]).is_multicast:
+                group_bin = socket.inet_pton(family, sockaddr[0])
+                if family == socket.AF_INET:  # IPv4
+                    sock.bind(("", sockaddr[1]))
+                    mreq = group_bin + struct.pack("=I", socket.INADDR_ANY)
+                    sock.setsockopt(socket.IPPROTO_IP, socket.IP_ADD_MEMBERSHIP, mreq)
+                else:
+                    sock.bind(("", sockaddr[1]))
+                    mreq = group_bin + struct.pack("@I", 0)
+                    sock.setsockopt(socket.IPPROTO_IPV6, socket.IPV6_JOIN_GROUP, mreq)
+            elif self._listening_ip:
+                sock.bind(sockaddr)
             else:
                 sock.bind(("", sockaddr[1]))
-                mreq = group_bin + struct.pack("@I", 0)
-                sock.setsockopt(socket.IPPROTO_IPV6, socket.IPV6_JOIN_GROUP, mreq)
-        elif self._listening_ip:
-            sock.bind(sockaddr)
-        else:
-            sock.bind(("", sockaddr[1]))
+        except OSError as exception:
+            if exception.errno == errno.EADDRINUSE:
+                raise AddressInUseException(f"Address in use {sockaddr}")
+            raise
 
         await asyncio.get_event_loop().create_datagram_endpoint(lambda: self, sock=sock)
 
@@ -240,7 +248,12 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
             logger.debug(
                 f"Sending {hexlify(data).decode('utf-8')} (read request) to {self._remote_ip}:{self._remote_write_port}"
             )
-            self._transport.sendto(data, (self._remote_ip, self._remote_read_port))
+
+            try:
+                self._transport.sendto(data, (self._remote_ip, self._remote_read_port))
+            except socket.gaierror:
+                raise CoilReadException(f"Unable to lookup hostname: {self._remote_ip}")
+
             logger.debug(f"Waiting for read response for {coil.name}")
 
             try:
@@ -278,7 +291,13 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
             logger.debug(
                 f"Sending {hexlify(data).decode('utf-8')} (write request) to {self._remote_ip}:{self._remote_write_port}"
             )
-            self._transport.sendto(data, (self._remote_ip, self._remote_write_port))
+
+            try:
+                self._transport.sendto(data, (self._remote_ip, self._remote_write_port))
+            except socket.gaierror:
+                raise CoilWriteException(
+                    f"Unable to lookup hostname: {self._remote_ip}"
+                )
 
             try:
                 await asyncio.wait_for(self._futures["write"], timeout)

@@ -2,6 +2,10 @@ class NibeException(Exception):
     pass
 
 
+class AddressInUseException(NibeException):
+    pass
+
+
 class CoilNotFoundException(NibeException):
     pass
 
