@@ -16,7 +16,7 @@ class TestNibeGW(IsolatedAsyncioTestCase):
 
         self.heatpump = HeatPump(Model.F1255)
         await self.heatpump.initialize()
-        self.nibegw = NibeGW(self.heatpump, "127.0.0.1")
+        self.nibegw = NibeGW(self.heatpump, "127.0.0.1", rmu_write_ports={1: 10001})
 
         self.transport = Mock()
         assert self.nibegw.status == "unknown"
@@ -110,6 +110,13 @@ class TestNibeGW(IsolatedAsyncioTestCase):
 
         self.transport.sendto.assert_called_with(
             binascii.unhexlify("c06b0604bc0400000011"), ("127.0.0.1", 10000)
+        )
+
+    async def test_write_rmu_temperature(self):
+        await self.nibegw.write_rmu_temperature(1, 20.0)
+
+        self.transport.sendto.assert_called_with(
+            binascii.unhexlify("c0600306cf006a"), ("127.0.0.1", 10001)
         )
 
     async def test_read_product_info(self):
