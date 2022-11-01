@@ -26,6 +26,7 @@ from construct import (
     Flag,
     FlagsEnum,
     GreedyBytes,
+    GreedyRange,
     GreedyString,
     IfThenElse,
     Int8sb,
@@ -220,6 +221,11 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
             elif cmd == "PRODUCT_INFO_MSG":
                 with suppress(InvalidStateError, CancelledError, KeyError):
                     self._futures["product_info"].set_result(msg.fields.value.data)
+            elif cmd == "NIBEGW_PORTS":
+                request_ports = {}
+                for row in msg.fields.value.data:
+                    request_ports[(row.address, row.cmd)] = row.port
+                self._request_ports = request_ports
             elif not isinstance(cmd, EnumIntegerString):
                 logger.debug(f"Unknown command {cmd}")
         except ChecksumError:
@@ -603,6 +609,13 @@ Data = Dedupe5C(
             "PRODUCT_INFO_MSG": ProductInfoData,
             "RMU_DATA_MSG": RmuData,
             "STRING_MSG": StringData,
+            "NIBEGW_PORTS": GreedyRange(
+                Struct(
+                    "address" / Int8ub,
+                    "cmd" / Int8ub,
+                    "port" / Int16ul,
+                )
+            ),
         },
         default=Bytes(this.length),
     )
@@ -626,6 +639,7 @@ Command = Enum(
     ECS_DATA_MSG_1=0x55,
     ECS_DATA_MSG_2=0xA0,
     STRING_MSG=0xB1,
+    NIBEGW_PORTS=0xFF,  # Virtual messages used for discovery
 )
 
 Address = Enum(
