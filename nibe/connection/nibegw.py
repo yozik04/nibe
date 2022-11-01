@@ -9,7 +9,7 @@ import logging
 from operator import xor
 import socket
 import struct
-from typing import Container, Dict, Union
+from typing import Container, Dict, Optional, Union
 
 from construct import (
     Adapter,
@@ -84,7 +84,7 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
     def __init__(
         self,
         heatpump: HeatPump,
-        remote_ip: str,
+        remote_ip: Optional[str] = None,
         remote_read_port: int = 9999,
         remote_write_port: int = 10000,
         listening_ip: str = "0.0.0.0",
@@ -161,6 +161,10 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
         logger.debug(f"Received {hexlify(data).decode('utf-8')} from {addr}")
         try:
             msg = Response.parse(data)
+
+            if not self._remote_ip:
+                logger.debug("Pump discovered at %s", addr)
+                self._remote_ip = addr[0]
 
             self._set_status(ConnectionStatus.CONNECTED)
 
