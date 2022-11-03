@@ -91,6 +91,9 @@ class HeatPump(EventServer):
     def __init__(self, model: Model = None):
         super().__init__()
 
+        self._address_to_coil = {}
+        self._name_to_coil = {}
+
         if model is not None:
             self.model = model
 
