@@ -105,5 +105,36 @@
         }
       }
     }
+  },
+  {
+    "files": ["f730.json", "smo20.json"],
+    "data": {
+      "48852": {
+        "title": "Modbus40 Word Swap",
+        "info": "If set; swapping the words in 32-bit variables when value requested via ''read holding register'' commando.",
+        "size": "u8",
+        "factor": 1,
+        "min": 0.0,
+        "max": 1.0,
+        "default": 1.0,
+        "name": "modbus40-word-swap-48852",
+        "write": true
+      },
+      "48889": {
+        "title": "MODBUS40 Disable LOG.SET",
+        "info": "If set, the system will ignore the existing LOG.SET on the USB stick.1=ignore LOG.SET,0=use LOG.SET",
+        "size": "u8",
+        "factor": 1,
+        "min": 0.0,
+        "max": 1.0,
+        "default": 0.0,
+        "name": "modbus40-disable-log-set-48889",
+        "write": true,
+        "mappings": {
+          "0": "use LOG.SET",
+          "1": "ignore LOG.SET"
+        }
+      }
+    }
   }
 ]
