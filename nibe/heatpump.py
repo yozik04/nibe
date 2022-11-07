@@ -1,6 +1,6 @@
 import asyncio
 from dataclasses import dataclass
-from enum import Enum
+from enum import Enum, auto
 from importlib.resources import files
 import json
 import logging
@@ -12,6 +12,11 @@ from nibe.event_server import EventServer
 from nibe.exceptions import CoilNotFoundException, ModelIdentificationFailed
 
 logger = logging.getLogger("nibe").getChild(__name__)
+
+
+class Series(Enum):
+    F = auto()
+    S = auto()
 
 
 class Model(Enum):
@@ -106,6 +111,18 @@ class HeatPump(EventServer):
         assert isinstance(model, Model), "Passed argument is not of a Model type"
 
         self._model = model
+
+    @property
+    def series(self) -> Series:
+        if self._model in (
+            Model.S1155,
+            Model.S1255,
+            Model.S320,
+            Model.S325,
+            Model.SMOS40,
+        ):
+            return Series.S
+        return Series.F
 
     @property
     def product_info(self) -> Union[ProductInfo, None]:

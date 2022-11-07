@@ -5,7 +5,7 @@ import pytest
 
 from nibe.connection.nibegw import CoilDataEncoder
 from nibe.exceptions import CoilNotFoundException, ModelIdentificationFailed
-from nibe.heatpump import HeatPump, Model, ProductInfo
+from nibe.heatpump import HeatPump, Model, ProductInfo, Series
 
 
 class HeatpumpTestCase(unittest.IsolatedAsyncioTestCase):
@@ -99,6 +99,35 @@ class HeatpumpIntialization(unittest.IsolatedAsyncioTestCase):
     async def test_initalization_failed(self):
         with pytest.raises(AssertionError):
             await self.heat_pump.initialize()
+
+
+@pytest.mark.parametrize(
+    "model,series",
+    [
+        (Model.F370, Series.F),
+        (Model.F730, Series.F),
+        (Model.F1145, Series.F),
+        (Model.F1245, Series.F),
+        (Model.F1155, Series.F),
+        (Model.F1255, Series.F),
+        (Model.F1355, Series.F),
+        (Model.SMO20, Series.F),
+        (Model.SMO40, Series.F),
+        (Model.VVM225, Series.F),
+        (Model.VVM320, Series.F),
+        (Model.VVM325, Series.F),
+        (Model.VVM310, Series.F),
+        (Model.VVM500, Series.F),
+        (Model.SMOS40, Series.S),
+        (Model.S320, Series.S),
+        (Model.S325, Series.S),
+        (Model.S1155, Series.S),
+        (Model.S1255, Series.S),
+    ],
+)
+def test_series(model: Model, series: Series):
+    heat_pump = HeatPump(model)
+    assert heat_pump.series == series
 
 
 class ProductInfoTestCase(unittest.TestCase):
