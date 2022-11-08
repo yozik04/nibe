@@ -227,6 +227,17 @@ class MessageResponseParsingTestCase(unittest.TestCase):
         self.assertEqual(data.data.id, 10040)
         self.assertEqual(data.data.string, "värme")
 
+    def test_parse_nibegw_ports(self):
+        data = self._parse_hexlified_raw_message(
+            "5c0020ff08" "20690f27" "206b1027" "ca"
+        )
+        assert data.address == "MODBUS40"
+        assert data.cmd == "NIBEGW_PORTS"
+        assert data.data == [
+            dict(address=0x20, cmd=0x69, port=9999),
+            dict(address=0x20, cmd=0x6B, port=10000),
+        ]
+
     @staticmethod
     def _parse_hexlified_raw_message(txt_raw):
         raw = binascii.unhexlify(txt_raw)

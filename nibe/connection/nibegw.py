@@ -10,7 +10,7 @@ import logging
 from operator import xor
 import socket
 import struct
-from typing import Container, Dict, Optional, Union
+from typing import Any, Container, Dict, Optional, Union
 
 from construct import (
     Adapter,
@@ -26,6 +26,7 @@ from construct import (
     Flag,
     FlagsEnum,
     GreedyBytes,
+    GreedyRange,
     GreedyString,
     IfThenElse,
     Int8sb,
@@ -63,6 +64,7 @@ from nibe.exceptions import (
     DecodeException,
     NibeException,
     ProductInfoReadTimeoutException,
+    WriteException,
 )
 from nibe.heatpump import HeatPump, ProductInfo
 
@@ -97,6 +99,7 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
         listening_port: int = 9999,
         read_retries: int = 3,
         write_retries: int = 3,
+        rmu_write_ports: Optional[Dict[int, int]] = None,
     ) -> None:
         super().__init__()
 
@@ -105,8 +108,22 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
         self._listening_port = listening_port
 
         self._remote_ip = remote_ip
-        self._remote_read_port = remote_read_port
-        self._remote_write_port = remote_write_port
+        self._request_ports = {}
+
+        if remote_read_port:
+            self._request_ports[
+                (Address.MODBUS40, Command.MODBUS_READ_REQ)
+            ] = remote_read_port
+
+        if remote_write_port:
+            self._request_ports[
+                (Address.MODBUS40, Command.MODBUS_WRITE_REQ)
+            ] = remote_write_port
+
+        for rmu_index, rmu_write_port in (rmu_write_ports or {}).items():
+            self._request_ports[
+                (RMU_INDEX_TO_ADDRESS[rmu_index], Command.RMU_WRITE_REQ)
+            ] = rmu_write_port
 
         self._transport = None
         self._status = ConnectionStatus.UNKNOWN
@@ -208,6 +225,11 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
             elif cmd == "PRODUCT_INFO_MSG":
                 with suppress(InvalidStateError, CancelledError, KeyError):
                     self._futures["product_info"].set_result(msg.fields.value.data)
+            elif cmd == "NIBEGW_PORTS":
+                request_ports = {}
+                for row in msg.fields.value.data:
+                    request_ports[(row.address, row.cmd)] = row.port
+                self._request_ports = request_ports
             elif not isinstance(cmd, EnumIntegerString):
                 logger.debug(f"Unknown command {cmd}")
         except ChecksumError:
@@ -234,6 +256,15 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
         finally:
             del self._futures["product_info"]
 
+    def _send_request(self, address: int, command: int, data: bytes):
+        remote_port = self._request_ports[(address, command)]
+
+        logger.debug(
+            f"Sending {hexlify(data).decode('utf-8')} to {self._remote_ip}:{remote_port}"
+        )
+
+        self._transport.sendto(data, (self._remote_ip, remote_port))
+
     async def read_coil(self, coil: Coil, timeout: float = DEFAULT_TIMEOUT) -> Coil:
         async with self._send_lock:
             assert self._transport, "Transport is closed"
@@ -249,12 +280,8 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
 
             self._futures["read"] = asyncio.get_event_loop().create_future()
 
-            logger.debug(
-                f"Sending {hexlify(data).decode('utf-8')} (read request) to {self._remote_ip}:{self._remote_write_port}"
-            )
-
             try:
-                self._transport.sendto(data, (self._remote_ip, self._remote_read_port))
+                self._send_request(Address.MODBUS40, Command.MODBUS_READ_REQ, data)
             except socket.gaierror:
                 raise CoilReadSendException(
                     f"Unable to lookup hostname: {self._remote_ip}"
@@ -294,12 +321,8 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
 
             self._futures["write"] = asyncio.get_event_loop().create_future()
 
-            logger.debug(
-                f"Sending {hexlify(data).decode('utf-8')} (write request) to {self._remote_ip}:{self._remote_write_port}"
-            )
-
             try:
-                self._transport.sendto(data, (self._remote_ip, self._remote_write_port))
+                self._send_request(Address.MODBUS40, Command.MODBUS_WRITE_REQ, data)
             except socket.gaierror:
                 raise CoilWriteSendException(
                     f"Unable to lookup hostname: {self._remote_ip}"
@@ -322,6 +345,30 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
                 del self._futures["write"]
 
             return coil
+
+    async def _send_rmu_write_req(self, address: int, index: str, value: Any):
+        async with self._send_lock:
+            assert self._transport, "Transport is closed"
+            data = Request.build(
+                dict(
+                    fields=dict(
+                        value=dict(
+                            cmd="RMU_WRITE_REQ",
+                            data=dict(index=index, value=value),
+                        )
+                    )
+                )
+            )
+
+            try:
+                self._send_request(address, Command.RMU_WRITE_REQ, data)
+            except socket.gaierror:
+                raise WriteException(f"Unable to lookup hostname: {self._remote_ip}")
+
+    async def write_rmu_temperature(self, index: int, temperature: float):
+        await self._send_rmu_write_req(
+            RMU_INDEX_TO_ADDRESS[index], "TEMPERATURE", temperature
+        )
 
     def error_received(self, exc):
         logger.error(exc)
@@ -484,7 +531,7 @@ class FixedPoint(Adapter):
         return round(obj * self._scale + self._offset, self._ndigits)
 
     def _encode(self, obj, context, path):
-        return (obj - self._offset) / self._scale
+        return round((obj - self._offset) / self._scale)
 
 
 StringData = Struct(
@@ -572,6 +619,13 @@ Data = Dedupe5C(
             "PRODUCT_INFO_MSG": ProductInfoData,
             "RMU_DATA_MSG": RmuData,
             "STRING_MSG": StringData,
+            "NIBEGW_PORTS": GreedyRange(
+                Struct(
+                    "address" / Int8ub,
+                    "cmd" / Int8ub,
+                    "port" / Int16ul,
+                )
+            ),
         },
         default=Bytes(this.length),
     )
@@ -595,6 +649,7 @@ Command = Enum(
     ECS_DATA_MSG_1=0x55,
     ECS_DATA_MSG_2=0xA0,
     STRING_MSG=0xB1,
+    NIBEGW_PORTS=0xFF,  # Virtual messages used for discovery
 )
 
 Address = Enum(
@@ -624,6 +679,12 @@ ADDRESS_TO_ROOM_TEMP_COIL = {
     Address.RMU40_S4: 40030,
 }
 
+RMU_INDEX_TO_ADDRESS = {
+    1: Address.RMU40_S1,
+    2: Address.RMU40_S2,
+    3: Address.RMU40_S3,
+    4: Address.RMU40_S4,
+}
 
 # fmt: off
 Response = Struct(
