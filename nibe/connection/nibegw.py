@@ -64,6 +64,8 @@ from nibe.exceptions import (
 )
 from nibe.heatpump import HeatPump, ProductInfo
 
+from . import verify_connectivity_read_write_alarm
+
 logger = logging.getLogger("nibe").getChild(__name__)
 
 
@@ -423,6 +425,10 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
                 f"Ignoring coil {coil_address} value - failed to decode value: {value}"
             )
             return
+
+    async def verify_connectivity(self):
+        """Verify that we have functioning communication."""
+        await verify_connectivity_read_write_alarm(self, self._heatpump)
 
     async def stop(self):
         self._transport.close()

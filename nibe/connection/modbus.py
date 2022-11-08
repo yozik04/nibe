@@ -18,6 +18,8 @@ from nibe.exceptions import (
 )
 from nibe.heatpump import HeatPump
 
+from . import verify_connectivity_read_write_alarm
+
 logger = logging.getLogger("nibe").getChild(__name__)
 
 
@@ -165,3 +167,7 @@ class Modbus(Connection):
             )
 
         return coil
+
+    async def verify_connectivity(self):
+        """Verify that we have functioning communication."""
+        await verify_connectivity_read_write_alarm(self, self._heatpump)
