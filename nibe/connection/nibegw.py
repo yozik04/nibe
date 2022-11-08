@@ -55,8 +55,10 @@ from nibe.exceptions import (
     AddressInUseException,
     CoilNotFoundException,
     CoilReadException,
+    CoilReadSendException,
     CoilReadTimeoutException,
     CoilWriteException,
+    CoilWriteSendException,
     CoilWriteTimeoutException,
     DecodeException,
     NibeException,
@@ -254,7 +256,9 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
             try:
                 self._transport.sendto(data, (self._remote_ip, self._remote_read_port))
             except socket.gaierror:
-                raise CoilReadException(f"Unable to lookup hostname: {self._remote_ip}")
+                raise CoilReadSendException(
+                    f"Unable to lookup hostname: {self._remote_ip}"
+                )
 
             logger.debug(f"Waiting for read response for {coil.name}")
 
@@ -297,7 +301,7 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
             try:
                 self._transport.sendto(data, (self._remote_ip, self._remote_write_port))
             except socket.gaierror:
-                raise CoilWriteException(
+                raise CoilWriteSendException(
                     f"Unable to lookup hostname: {self._remote_ip}"
                 )
 
