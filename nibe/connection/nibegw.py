@@ -595,10 +595,11 @@ Command = Enum(
     ECS_DATA_MSG_1=0x55,
     ECS_DATA_MSG_2=0xA0,
     STRING_MSG=0xB1,
+    HEATPUMP_REQ=0xF7,
 )
 
 Address = Enum(
-    Int8ub,
+    Int16ub,
     ECS_S2=0x02,
     # 0x13 = 19, ?
     SMS40=0x16,
@@ -607,6 +608,14 @@ Address = Enum(
     RMU40_S3=0x1B,
     RMU40_S4=0x1C,
     MODBUS40=0x20,
+    HEATPUMP_1=0x41C9,
+    HEATPUMP_2=0x42C9,
+    HEATPUMP_3=0x43C9,
+    HEATPUMP_4=0x44C9,
+    HEATPUMP_5=0x45C9,
+    HEATPUMP_6=0x46C9,
+    HEATPUMP_7=0x47C9,
+    HEATPUMP_8=0x48C9,
 )
 
 RmuWriteIndex = Enum(
@@ -628,7 +637,6 @@ ADDRESS_TO_ROOM_TEMP_COIL = {
 # fmt: off
 Response = Struct(
     "start_byte" / Const(0x5C, Int8ub),
-    "empty_byte" / Const(0x00, Int8ub),
     "fields" / RawCopy(
         Struct(
             "address" / Address,
