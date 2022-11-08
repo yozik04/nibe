@@ -30,6 +30,10 @@ class CoilWriteException(WriteException):
     pass
 
 
+class CoilWriteSendException(CoilWriteException):
+    pass
+
+
 class CoilWriteTimeoutException(CoilWriteException):
     pass
 
@@ -39,6 +43,10 @@ class ReadException(NibeException):
 
 
 class CoilReadException(ReadException):
+    pass
+
+
+class CoilReadSendException(CoilReadException):
     pass
 
 
