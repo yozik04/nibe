@@ -4619,9 +4619,9 @@
   "43141": {
     "title": "compr. in power",
     "info": "The power delivered from the inverter to the compressor",
-    "unit": "W",
+    "unit": "kW",
     "size": "u16",
-    "factor": 1,
+    "factor": 100,
     "name": "compr-in-power-43141"
   },
   "43147": {
@@ -4721,9 +4721,9 @@
   "43375": {
     "title": "compr. in power mean",
     "info": "Mean power delivered from the inverter to the compressor. Mean is calculated every 10 seconds.",
-    "unit": "W",
+    "unit": "kW",
     "size": "s16",
-    "factor": 1,
+    "factor": 100,
     "name": "compr-in-power-mean-43375"
   },
   "43414": {
