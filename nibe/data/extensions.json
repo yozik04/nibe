@@ -136,5 +136,23 @@
         }
       }
     }
+  },
+  {
+    "description": "Corrections for compressor power units",
+    "files": [
+      "f750.json",
+      "f1155_f1255.json",
+      "f1355.json"
+    ],
+    "data": {
+      "43141": {
+        "factor": 100,
+        "unit": "kW"
+      },
+      "43375": {
+        "factor": 100,
+        "unit": "kW"
+      }
+    }
   }
 ]
