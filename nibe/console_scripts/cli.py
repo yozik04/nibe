@@ -9,10 +9,10 @@ from typing import IO
 import asyncclick as click
 from construct import Const, GreedyRange, Int8ul, RawCopy, Select, Struct, Terminated
 
-from .coil import Coil
-from .connection.modbus import Modbus
-from .connection.nibegw import NibeGW, Request, Response
-from .heatpump import HeatPump, Model
+from ..coil import Coil
+from ..connection.modbus import Modbus
+from ..connection.nibegw import NibeGW, Request, Response
+from ..heatpump import HeatPump, Model
 
 Ack = Struct("fields" / RawCopy(Struct("Ack" / Const(0x06, Int8ul))))
 
