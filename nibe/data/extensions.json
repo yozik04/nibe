@@ -84,7 +84,10 @@
     }
   },
   {
-    "files": ["f370_f470.json"],
+    "files": [
+      "f370_f470.json",
+      "vvm225_vvm320_vvm325.json"
+    ],
     "data": {
       "47260": {
         "title": "Fan Mode",
@@ -140,6 +143,7 @@
   {
     "description": "Corrections for compressor power units",
     "files": [
+      "f730.json",
       "f750.json",
       "f1155_f1255.json",
       "f1355.json"
