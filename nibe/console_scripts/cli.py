@@ -62,7 +62,7 @@ class ConnectionContext(AbstractAsyncContextManager):
         await self.connection.stop()
 
 
-@cli.group(chain=True)
+@cli.group(chain=True, help="Connect using nibegw protocol")
 @click.argument("remote_ip", type=str)
 @click.option("--listening_ip", type=str)
 @click.option("--listening_port", type=int, default=10090)
@@ -70,8 +70,8 @@ class ConnectionContext(AbstractAsyncContextManager):
 @click.option("--remote_write_port", type=int, default=10092)
 @click.option(
     "--model",
-    type=click.Choice([model.name for model in Model]),
-    default=Model.F1155.name,
+    type=click.Choice([model.name for model in Model.__members__.values()]),
+    default=None,
 )
 @click.pass_context
 async def nibegw(
@@ -81,11 +81,13 @@ async def nibegw(
     listening_ip: str | None,
     remote_read_port: int,
     remote_write_port: int,
-    model: str,
+    model: str | None,
 ):
+    heatpump = HeatPump()
+    if model:
+        heatpump.model = Model[model]
+        await heatpump.initialize()
 
-    heatpump = HeatPump(Model[model])
-    await heatpump.initialize()
     connection = NibeGW(
         heatpump=heatpump,
         remote_ip=remote_ip,
@@ -98,7 +100,7 @@ async def nibegw(
     ctx.obj = await ctx.with_async_resource(ConnectionContext(heatpump, connection))
 
 
-@cli.group(chain=True)
+@cli.group(chain=True, help="Connect using modbus protocol")
 @click.argument("remote_ip", type=str)
 @click.option("--remote_port", type=int, default=502)
 @click.option("--slave_id", type=int, default=1)
@@ -128,7 +130,7 @@ def add_connect_command(command: click.Command):
     modbus.add_command(command)
 
 
-@click.command()
+@click.command(help="Monitor data sent by pump out of band")
 @click.pass_obj
 async def monitor(obj: ConnectionContext):
     def on_coil_update(coil: Coil):
