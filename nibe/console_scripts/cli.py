@@ -10,9 +10,8 @@ from typing import IO
 import asyncclick as click
 from construct import Const, GreedyRange, Int8ul, RawCopy, Select, Struct, Terminated
 
-from nibe.connection import Connection
-
 from ..coil import Coil
+from ..connection import Connection
 from ..connection.modbus import Modbus
 from ..connection.nibegw import NibeGW, Request, Response
 from ..exceptions import NibeException
@@ -221,9 +220,14 @@ def parse_file(file: IO):
             click.echo(f"Remaining: {stream.read()}")
 
 
-try:
-    cli()
-except NibeException as exception:
-    click.echo(repr(exception))
-except (KeyboardInterrupt, SystemExit):
-    pass
+def main():
+    try:
+        cli()
+    except NibeException as exception:
+        click.echo(repr(exception))
+    except (KeyboardInterrupt, SystemExit):
+        pass
+
+
+if __name__ == "__main__":
+    main()
