@@ -1,20 +1,23 @@
 import unittest
 from unittest.mock import Mock
 
+import pytest
+
+from nibe.connection.nibegw import CoilDataEncoder
 from nibe.exceptions import CoilNotFoundException, ModelIdentificationFailed
-from nibe.heatpump import HeatPump, Model, ProductInfo
+from nibe.heatpump import HeatPump, Model, ProductInfo, Series
 
 
-class HeatpumpTestCase(unittest.TestCase):
-    def setUp(self) -> None:
+class HeatpumpTestCase(unittest.IsolatedAsyncioTestCase):
+    async def asyncSetUp(self) -> None:
         self.heat_pump = HeatPump(Model.F1255)
-        self.heat_pump.initialize()
+        await self.heat_pump.initialize()
 
-        self.assertGreater(len(self.heat_pump._address_to_coil), 100)
+        assert len(self.heat_pump._address_to_coil) > 100
 
     def test_get_coils(self):
         coils = self.heat_pump.get_coils()
-        self.assertIsInstance(coils, list)
+        assert isinstance(coils, list)
 
     def test_get_coil_by_returns_same(self):
         coil_address = 40004
@@ -22,19 +25,19 @@ class HeatpumpTestCase(unittest.TestCase):
         a = self.heat_pump.get_coil_by_address(coil_address)
         b = self.heat_pump.get_coil_by_address(str(coil_address))
 
-        self.assertEqual(coil_address, a.address)
+        assert coil_address == a.address
 
-        self.assertIs(a, b)
+        assert a is b
 
         c = self.heat_pump.get_coil_by_name("bt1-outdoor-temperature-40004")
 
-        self.assertIs(a, c)
+        assert a is c
 
     def test_get_missing_coil_raises_exception(self):
-        with self.assertRaises(CoilNotFoundException):
+        with pytest.raises(CoilNotFoundException):
             self.heat_pump.get_coil_by_address(0xFFFF)
 
-        with self.assertRaises(CoilNotFoundException):
+        with pytest.raises(CoilNotFoundException):
             self.heat_pump.get_coil_by_name("no-beer-today")
 
     def test_listener(self):
@@ -59,39 +62,72 @@ class HeatpumpTestCase(unittest.TestCase):
 
     def test_word_swap_is_true(self):
         coil = self.heat_pump.get_coil_by_address(43420)
-        coil.raw_value = b"(\x06\x00\x00"
-        self.assertEqual(1576, coil.value)
+        assert (
+            CoilDataEncoder(self.heat_pump.word_swap).decode(coil, b"(\x06\x00\x00")
+            == 1576
+        )
 
 
-class HeatpumpWordSwapTestCase(unittest.TestCase):
-    def setUp(self) -> None:
+class HeatpumpWordSwapTestCase(unittest.IsolatedAsyncioTestCase):
+    async def asyncSetUp(self) -> None:
         self.heat_pump = HeatPump(Model.F1255)
         self.heat_pump.word_swap = False
-        self.heat_pump.initialize()
+        await self.heat_pump.initialize()
 
     def test_word_swap_is_false(self):
         coil = self.heat_pump.get_coil_by_address(43420)
-        coil.raw_value = b"\x00\x00(\x06"
-        self.assertEqual(1576, coil.value)
+        assert (
+            CoilDataEncoder(self.heat_pump.word_swap).decode(coil, b"\x00\x00(\x06")
+            == 1576
+        )
 
 
-class HeatpumpIntialization(unittest.TestCase):
+class HeatpumpIntialization(unittest.IsolatedAsyncioTestCase):
     def setUp(self) -> None:
         self.heat_pump = HeatPump()
 
-    def test_initalize_with_model(self):
+    async def test_initalize_with_model(self):
         self.heat_pump.model = Model.F1255
-        self.heat_pump.initialize()
+        await self.heat_pump.initialize()
         self.heat_pump.get_coil_by_address(43420)
 
-    def test_initalize_with_product_info(self):
+    async def test_initalize_with_product_info(self):
         self.heat_pump.product_info = ProductInfo("F1255-12 R", 0)
-        self.heat_pump.initialize()
+        await self.heat_pump.initialize()
         self.heat_pump.get_coil_by_address(43420)
 
-    def test_initalization_failed(self):
-        with self.assertRaises(AssertionError):
-            self.heat_pump.initialize()
+    async def test_initalization_failed(self):
+        with pytest.raises(AssertionError):
+            await self.heat_pump.initialize()
+
+
+@pytest.mark.parametrize(
+    "model,series",
+    [
+        (Model.F370, Series.F),
+        (Model.F730, Series.F),
+        (Model.F1145, Series.F),
+        (Model.F1245, Series.F),
+        (Model.F1155, Series.F),
+        (Model.F1255, Series.F),
+        (Model.F1355, Series.F),
+        (Model.SMO20, Series.F),
+        (Model.SMO40, Series.F),
+        (Model.VVM225, Series.F),
+        (Model.VVM320, Series.F),
+        (Model.VVM325, Series.F),
+        (Model.VVM310, Series.F),
+        (Model.VVM500, Series.F),
+        (Model.SMOS40, Series.S),
+        (Model.S320, Series.S),
+        (Model.S325, Series.S),
+        (Model.S1155, Series.S),
+        (Model.S1255, Series.S),
+    ],
+)
+def test_series(model: Model, series: Series):
+    heat_pump = HeatPump(model)
+    assert heat_pump.series == series
 
 
 class ProductInfoTestCase(unittest.TestCase):
@@ -107,7 +143,7 @@ class ProductInfoTestCase(unittest.TestCase):
     def test_identify_model_error(self):
         product_info = ProductInfo("Tehowatti Air", 0)
 
-        with self.assertRaises(ModelIdentificationFailed):
+        with pytest.raises(ModelIdentificationFailed):
             product_info.identify_model()
 
 

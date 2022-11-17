@@ -1,35 +1,6 @@
 from typing import Dict, Optional, Union
 
-from construct import (
-    ConstructError,
-    Int8sl,
-    Int8ul,
-    Int16sl,
-    Int16ul,
-    Int32sl,
-    Int32ul,
-    Padded,
-)
-
-from nibe.exceptions import DecodeException, EncodeException, NoMappingException
-from nibe.parsers import WordSwapped
-
-parser_map = {
-    "u8": Int8ul,
-    "s8": Int8sl,
-    "u16": Int16ul,
-    "s16": Int16sl,
-    "u32": Int32ul,
-    "s32": Int32sl,
-}
-
-parser_map_word_swaped = parser_map.copy()
-parser_map_word_swaped.update(
-    {
-        "u32": WordSwapped(Int32ul),
-        "s32": WordSwapped(Int32sl),
-    }
-)
+from nibe.exceptions import NoMappingException
 
 
 def is_coil_boolean(coil):
@@ -48,6 +19,7 @@ def is_coil_boolean(coil):
 class Coil:
     mappings: Optional[Dict[str, str]]
     reverse_mappings: Optional[Dict[str, str]]
+    _value: Union[int, float, str, None]
 
     def __init__(
         self,
@@ -60,7 +32,6 @@ class Coil:
         unit: str = None,
         mappings: dict = None,
         write: bool = False,
-        word_swap: bool = True,
         **kwargs,
     ):
         assert isinstance(address, int), "Address must be defined"
@@ -72,12 +43,6 @@ class Coil:
         ), "When mapping is used factor needs to be 1"
 
         self.size = size
-        if word_swap:
-            self.parser = parser_map.get(size)
-        else:
-            self.parser = parser_map_word_swaped.get(size)
-
-        assert self.parser is not None
 
         self.address = address
         self.name = name
@@ -122,7 +87,11 @@ class Coil:
             self._value = None
             return
 
-        if self.mappings:
+        if self.reverse_mappings:
+            assert isinstance(
+                value, str
+            ), f"Provided value '{value}' is invalid type (str is supported) for {self.name}"
+
             value = value.upper()
             assert (
                 value in self.reverse_mappings
@@ -140,31 +109,13 @@ class Coil:
         self._value = value
 
     @property
-    def raw_value(self) -> bytes:
-        return self._encode(self.value)
-
-    @raw_value.setter
-    def raw_value(self, raw_value: bytes):
-        self.value = self._decode(raw_value)
-
-    def _decode(self, raw: bytes) -> Union[int, float, str]:
-        value = self.parser.parse(raw)
-        if self._is_hitting_integer_limit(value):
-            return None
-        try:
-            self._check_raw_value_bounds(value)
-        except AssertionError as e:
-            raise DecodeException(
-                f"Failed to decode {self.name} coil from raw: {raw}, exception: {e}"
-            )
-        if self.factor != 1:
-            value /= self.factor
-        if self.mappings is None:
-            return value
-
-        return self.get_mapping_for(value)
+    def has_mappings(self):
+        return self.mappings is not None
 
     def get_mapping_for(self, value: int):
+        if not self.mappings:
+            raise NoMappingException(f"No mappings defined for {self.name}")
+
         try:
             return self.mappings[str(value)]
         except KeyError:
@@ -172,44 +123,16 @@ class Coil:
                 f"Mapping not found for {self.name} coil for value: {value}"
             )
 
-    def _is_hitting_integer_limit(self, int_value: int):
-        if self.size == "u8" and int_value == 0xFF:
-            return True
-        if self.size == "s8" and int_value == -0x80:
-            return True
-        if self.size == "u16" and int_value == 0xFFFF:
-            return True
-        if self.size == "s16" and int_value == -0x8000:
-            return True
-        if self.size == "u32" and int_value == 0xFFFFFFFF:
-            return True
-        if self.size == "s32" and int_value == -0x80000000:
-            return True
+    def get_reverse_mapping_for(self, value: Union[int, float, str, None]):
+        if not self.reverse_mappings:
+            raise NoMappingException(f"No reverse mappings defined for {self.name}")
 
-        return False
-
-    def _encode(self, value: Union[int, float, str, None]) -> bytes:
         try:
-            assert value is not None, "Unable to encode None value"
-            if self.reverse_mappings is not None:
-                mapped_value = self.reverse_mappings.get(str(value))
-                assert mapped_value is not None, "Mapping not found"
-
-                return self._pad(mapped_value)
-
-            if self.factor != 1:
-                value *= self.factor
-
-            self._check_raw_value_bounds(value)
-
-            return self._pad(value)
-        except (ConstructError, AssertionError) as e:
-            raise EncodeException(
-                f"Failed to encode {self.name} coil for value: {value}, exception: {e}"
+            return self.reverse_mappings[str(value)]
+        except KeyError:
+            raise NoMappingException(
+                f"Reverse mapping not found for {self.name} coil for value: {value}"
             )
-
-    def _pad(self, value) -> bytes:
-        return Padded(4, self.parser).build(int(value))
 
     def check_value_bounds(self, value):
         if self.min is not None:
@@ -222,7 +145,7 @@ class Coil:
                 value <= self.max
             ), f"{self.name} coil value ({value}) is larger than max allowed ({self.max})"
 
-    def _check_raw_value_bounds(self, value):
+    def check_raw_value_bounds(self, value):
         if self.raw_min is not None:
             assert (
                 value >= self.raw_min

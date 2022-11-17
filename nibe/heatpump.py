@@ -1,8 +1,10 @@
+import asyncio
 from dataclasses import dataclass
-from enum import Enum
+from enum import Enum, auto
 from importlib.resources import files
 import json
 import logging
+from os import PathLike
 from typing import Dict, Union
 
 from nibe.coil import Coil
@@ -12,9 +14,17 @@ from nibe.exceptions import CoilNotFoundException, ModelIdentificationFailed
 logger = logging.getLogger("nibe").getChild(__name__)
 
 
+class Series(Enum):
+    F = auto()
+    S = auto()
+
+
 class Model(Enum):
     F1155 = "f1155_f1255"
     F1255 = "f1155_f1255"
+
+    S1155 = "s1155_s1255"
+    S1255 = "s1155_s1255"
 
     F1145 = "f1145_f1245"
     F1245 = "f1145_f1245"
@@ -28,8 +38,13 @@ class Model(Enum):
     F370 = "f370_f470"
     F470 = "f370_f470"
 
+    S320 = "s320_s325"
+    S325 = "s320_s325"
+
     SMO20 = "smo20"
     SMO40 = "smo40"
+
+    SMOS40 = "smos40"
 
     VVM225 = "vvm225_vvm320_vvm325"
     VVM320 = "vvm225_vvm320_vvm325"
@@ -38,8 +53,18 @@ class Model(Enum):
     VVM310 = "vvm310_vvm500"
     VVM500 = "vvm310_vvm500"
 
+    CUSTOM = "custom"
+
+    data_file: Union[str, bytes, PathLike[str], PathLike[bytes]]
+
     def get_coil_data(self):
-        return json.loads(files("nibe.data").joinpath(f"{self.value}.json").read_text())
+        if self.value == "custom":
+            with open(self.data_file) as fh:
+                return json.load(fh)
+        else:
+            return json.loads(
+                files("nibe.data").joinpath(f"{self.value}.json").read_text()
+            )
 
     @classmethod
     def keys(cls):
@@ -71,6 +96,9 @@ class HeatPump(EventServer):
     def __init__(self, model: Model = None):
         super().__init__()
 
+        self._address_to_coil = {}
+        self._name_to_coil = {}
+
         if model is not None:
             self.model = model
 
@@ -85,6 +113,18 @@ class HeatPump(EventServer):
         self._model = model
 
     @property
+    def series(self) -> Series:
+        if self._model in (
+            Model.S1155,
+            Model.S1255,
+            Model.S320,
+            Model.S325,
+            Model.SMOS40,
+        ):
+            return Series.S
+        return Series.F
+
+    @property
     def product_info(self) -> Union[ProductInfo, None]:
         return self._product_info
 
@@ -96,19 +136,24 @@ class HeatPump(EventServer):
 
         self._product_info = product_info
 
-    def _load_coils(self):
-        data = self._model.get_coil_data()
+    async def _load_coils(self):
+        data = await asyncio.get_running_loop().run_in_executor(
+            None, self._model.get_coil_data
+        )
 
-        self._address_to_coil = {
-            k: self._make_coil(address=int(k), **v) for k, v in data.items()
-        }
+        self._address_to_coil = {}
+        for k, v in data.items():
+            try:
+                self._address_to_coil[k] = self._make_coil(address=int(k), **v)
+            except (AssertionError, TypeError) as e:
+                logger.warning(f"Failed to register coil {k}: {e}")
         self._name_to_coil = {c.name: c for _, c in self._address_to_coil.items()}
 
     def _make_coil(self, address: int, **kwargs):
         kwargs["word_swap"] = self.word_swap
         return Coil(address, **kwargs)
 
-    def initialize(self):
+    async def initialize(self):
         if not isinstance(self._model, Model) and isinstance(
             self._product_info, ProductInfo
         ):
@@ -118,7 +163,7 @@ class HeatPump(EventServer):
             self._model, Model
         ), "Model is not set and product info is not available"
 
-        self._load_coils()
+        await self._load_coils()
 
     def get_coils(self) -> list[Coil]:
         return list(self._address_to_coil.values())

@@ -2,6 +2,10 @@ class NibeException(Exception):
     pass
 
 
+class AddressInUseException(NibeException):
+    pass
+
+
 class CoilNotFoundException(NibeException):
     pass
 
@@ -26,6 +30,10 @@ class CoilWriteException(WriteException):
     pass
 
 
+class CoilWriteSendException(CoilWriteException):
+    pass
+
+
 class CoilWriteTimeoutException(CoilWriteException):
     pass
 
@@ -35,6 +43,10 @@ class ReadException(NibeException):
 
 
 class CoilReadException(ReadException):
+    pass
+
+
+class CoilReadSendException(CoilReadException):
     pass
 
 
@@ -51,4 +63,8 @@ class ProductInfoReadTimeoutException(ProductInfoReadException):
 
 
 class ModelIdentificationFailed(NibeException):
+    pass
+
+
+class ModbusUrlException(NibeException, ValueError):
     pass
