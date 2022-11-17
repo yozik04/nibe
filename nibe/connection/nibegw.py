@@ -390,12 +390,12 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
                 return
 
             logger.warning(
-                f"Ignoring coil {coil_address} value - coil definition not found"
+                f"Ignoring coil {coil_address} value {hexlify(raw_value).decode('utf-8')} - coil definition not found"
             )
             return
         except DecodeException:
             logger.warning(
-                f"Ignoring coil {coil_address} value - failed to decode raw value: {hexlify(raw_value).decode('utf-8')}"
+                f"Ignoring coil {coil_address} value {hexlify(raw_value).decode('utf-8')} - failed to decode"
             )
             return
 
@@ -421,12 +421,12 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
                 return
 
             logger.warning(
-                f"Ignoring coil {coil_address} value - coil definition not found"
+                f"Ignoring coil {coil_address} value {value} - coil definition not found"
             )
             return
         except DecodeException:
             logger.warning(
-                f"Ignoring coil {coil_address} value - failed to decode value: {value}"
+                f"Ignoring coil {coil_address} value {value} - failed to decode value"
             )
             return
 
