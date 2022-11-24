@@ -1,3 +1,9 @@
+[![Test and Lint](https://github.com/yozik04/nibe/actions/workflows/test.yml/badge.svg)](https://github.com/yozik04/nibe/actions/workflows/test.yml)
+![PyPI - Status](https://img.shields.io/pypi/status/nibe)
+![PyPI - Downloads](https://img.shields.io/pypi/dm/nibe)
+![PyPI](https://img.shields.io/pypi/v/nibe)
+![PyPI - License](https://img.shields.io/pypi/l/nibe)
+
 # Nibe library
 Library for communication with Nibe heatpumps.
 
