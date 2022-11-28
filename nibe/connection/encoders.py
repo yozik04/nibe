@@ -59,10 +59,14 @@ class CoilDataEncoder:
             )
 
     def decode(self, coil: Coil, raw: bytes):
-        value = self._get_parser(coil).parse(raw)
-        if self._is_hitting_integer_limit(coil, value):
-            return None
         try:
+            parser = self._get_parser(coil)
+            assert parser.sizeof() <= len(
+                raw
+            ), f"Invalid raw data size: given {len(raw)}, expected at least {parser.sizeof()}"
+            value = parser.parse(raw)
+            if self._is_hitting_integer_limit(coil, value):
+                return None
             coil.check_raw_value_bounds(value)
         except AssertionError as e:
             raise DecodeException(

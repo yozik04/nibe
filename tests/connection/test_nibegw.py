@@ -127,3 +127,18 @@ class TestNibeGW(IsolatedAsyncioTestCase):
 
         assert isinstance(product, ProductInfo)
         assert "F1255-12 R" == product.model
+
+    async def test_read_multiple_with_u32(self):
+        on_coil_update_mock = Mock()
+        self.heatpump.subscribe("coil_update", on_coil_update_mock)
+        self.nibegw.datagram_received(
+            binascii.unhexlify(
+                "5c00206850c9af0000889c7100a9a90a00a3a91400aba90000939c0000949c0000919c0000929c00008f9c0000909c00003ab95000ada94600a7a91400faa90200ffff0000ffff0000ffff0000ffff0000ffff0000cc"
+            ),
+            ("127.0.0.1", 12345),
+        )
+
+        for address in [45001, 43514]:  # first and last in the payload
+            on_coil_update_mock.assert_any_call(
+                self.heatpump.get_coil_by_address(address)
+            )
