@@ -48,15 +48,11 @@ class FanCoilGroup(CoilGroup):
 
 
 _UNIT_COILGROUPS_F = {
-    "main": UnitCoilGroup(
-        key="main", name="Main", prio=43086, cooling_with_room_sensor=47340
-    ),
+    "main": UnitCoilGroup(name="Main", prio=43086, cooling_with_room_sensor=47340),
 }
 
 _UNIT_COILGROUPS_S = {
-    "main": UnitCoilGroup(
-        key="main", name="Main", prio=31029, cooling_with_room_sensor=40171
-    )
+    "main": UnitCoilGroup(name="Main", prio=31029, cooling_with_room_sensor=40171)
 }
 
 UNIT_COILGROUPS = {
@@ -66,7 +62,6 @@ UNIT_COILGROUPS = {
 
 _CLIMATE_COILGROUPS_F = {
     "s1": ClimateCoilGroup(
-        key="s1",
         name="Climate System S1",
         current=40033,
         setpoint_heat=47398,
@@ -150,7 +145,6 @@ CLIMATE_COILGROUPS = {
 
 _WATER_HEATER_COILGROUPS_F = {
     "hw1": WaterHeaterCoilGroup(
-        key="hw1",
         name="Hot Water",
         hot_water_load=40014,
         hot_water_comfort_mode=47041,
@@ -171,7 +165,6 @@ _WATER_HEATER_COILGROUPS_F = {
 
 _WATER_HEATER_COILGROUPS_S = {
     "hw1": WaterHeaterCoilGroup(
-        key="hw1",
         name="Hot Water",
         hot_water_load=30010,
         hot_water_comfort_mode=31039,
