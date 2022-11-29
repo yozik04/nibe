@@ -31,24 +31,40 @@ class ClimateCoilGroup(CoilGroup):
     use_room_sensor: int
 
 
-UNIT_COIL_GROUPS_F = {
+@dataclass
+class WaterHeaterCoilGroup(CoilGroup):
+    hot_water_load: int
+    hot_water_comfort_mode: int
+    start_temperature: dict[str, int]
+    stop_temperature: dict[str, int]
+    active_accessory: int | None
+    temporary_lux: int | None
+
+
+@dataclass
+class FanCoilGroup(CoilGroup):
+    speed: int | None
+    speeds: dict[str, int]
+
+
+UNITS_F = {
     "main": SystemCoilGroup(
         key="main", name="Main", prio=43086, cooling_with_room_sensor=47340
     ),
 }
 
-UNIT_COIL_GROUPS_S = {
+UNITS_S = {
     "main": SystemCoilGroup(
         key="main", name="Main", prio=31029, cooling_with_room_sensor=40171
     )
 }
 
-UNIT_COIL_GROUPS = {
-    Series.F: UNIT_COIL_GROUPS_F,
-    Series.S: UNIT_COIL_GROUPS_S,
+UNITS = {
+    Series.F: UNITS_F,
+    Series.S: UNITS_S,
 }
 
-CLIMATE_COIL_GROUPS_F = {
+CLIMATES_F = {
     "s1": ClimateCoilGroup(
         key="s1",
         name="Climate System S1",
@@ -88,7 +104,7 @@ CLIMATE_COIL_GROUPS_F = {
     ),
 }
 
-CLIMATE_COIL_GROUPS_S = {
+CLIMATES_S = {
     "s1": ClimateCoilGroup(
         name="Climate System S1",
         current=30027,
@@ -127,7 +143,86 @@ CLIMATE_COIL_GROUPS_S = {
     ),
 }
 
-CLIMATE_COIL_GROUPS = {
-    Series.F: CLIMATE_COIL_GROUPS_F,
-    Series.S: CLIMATE_COIL_GROUPS_S,
+CLIMATES = {
+    Series.F: CLIMATES_F,
+    Series.S: CLIMATES_S,
+}
+
+WATER_HEATERS_F = {
+    "hw1": WaterHeaterCoilGroup(
+        key="hw1",
+        name="Hot Water",
+        hot_water_load=40014,
+        hot_water_comfort_mode=47041,
+        start_temperature={
+            "ECONOMY": 47045,
+            "NORMAL": 47044,
+            "LUXURY": 47043,
+        },
+        stop_temperature={
+            "ECONOMY": 47049,
+            "NORMAL": 47048,
+            "LUXURY": 47047,
+        },
+        active_accessory=None,
+        temporary_lux=48132,
+    ),
+}
+
+WATER_HEATERS_S = {
+    "hw1": WaterHeaterCoilGroup(
+        key="hw1",
+        name="Hot Water",
+        hot_water_load=30010,
+        hot_water_comfort_mode=31039,
+        start_temperature={
+            "LOW": 40061,
+            "NORMAL": 40060,
+            "HIGH": 40059,
+        },
+        stop_temperature={
+            "LOW": 40065,
+            "NORMAL": 40064,
+            "HIGH": 40063,
+        },
+        active_accessory=None,
+        temporary_lux=None,
+    ),
+}
+
+WATER_HEATERS = {
+    Series.F: WATER_HEATERS_F,
+    Series.S: WATER_HEATERS_S,
+}
+
+FANS_F = {
+    "exhaust": FanCoilGroup(
+        name="Exhaust",
+        speed=47260,
+        speeds={
+            "0": 47265,
+            "1": 47264,
+            "2": 47263,
+            "3": 47262,
+            "4": 47261,
+        },
+    ),
+    "supply": FanCoilGroup(
+        name="Supply",
+        speed=47260,
+        speeds={
+            "0": 47270,
+            "1": 47269,
+            "2": 47268,
+            "3": 47267,
+            "4": 47266,
+        },
+    ),
+}
+
+FANS_S = {}
+
+FANS = {
+    Series.F: FANS_F,
+    Series.S: FANS_S,
 }
