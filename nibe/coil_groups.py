@@ -11,7 +11,7 @@ class CoilGroup:
 
 
 @dataclass
-class SystemCoilGroup(CoilGroup):
+class UnitCoilGroup(CoilGroup):
     prio: int
     cooling_with_room_sensor: int
 
@@ -48,13 +48,13 @@ class FanCoilGroup(CoilGroup):
 
 
 UNITS_F = {
-    "main": SystemCoilGroup(
+    "main": UnitCoilGroup(
         key="main", name="Main", prio=43086, cooling_with_room_sensor=47340
     ),
 }
 
 UNITS_S = {
-    "main": SystemCoilGroup(
+    "main": UnitCoilGroup(
         key="main", name="Main", prio=31029, cooling_with_room_sensor=40171
     )
 }
