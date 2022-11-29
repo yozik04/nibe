@@ -47,24 +47,24 @@ class FanCoilGroup(CoilGroup):
     speeds: dict[str, int]
 
 
-UNITS_F = {
+_UNIT_COILGROUPS_F = {
     "main": UnitCoilGroup(
         key="main", name="Main", prio=43086, cooling_with_room_sensor=47340
     ),
 }
 
-UNITS_S = {
+_UNIT_COILGROUPS_S = {
     "main": UnitCoilGroup(
         key="main", name="Main", prio=31029, cooling_with_room_sensor=40171
     )
 }
 
-UNITS = {
-    Series.F: UNITS_F,
-    Series.S: UNITS_S,
+UNIT_COILGROUPS = {
+    Series.F: _UNIT_COILGROUPS_F,
+    Series.S: _UNIT_COILGROUPS_S,
 }
 
-CLIMATES_F = {
+_CLIMATE_COILGROUPS_F = {
     "s1": ClimateCoilGroup(
         key="s1",
         name="Climate System S1",
@@ -104,7 +104,7 @@ CLIMATES_F = {
     ),
 }
 
-CLIMATES_S = {
+_CLIMATE_COILGROUPS_S = {
     "s1": ClimateCoilGroup(
         name="Climate System S1",
         current=30027,
@@ -143,12 +143,12 @@ CLIMATES_S = {
     ),
 }
 
-CLIMATES = {
-    Series.F: CLIMATES_F,
-    Series.S: CLIMATES_S,
+CLIMATE_COILGROUPS = {
+    Series.F: _CLIMATE_COILGROUPS_F,
+    Series.S: _CLIMATE_COILGROUPS_S,
 }
 
-WATER_HEATERS_F = {
+_WATER_HEATER_COILGROUPS_F = {
     "hw1": WaterHeaterCoilGroup(
         key="hw1",
         name="Hot Water",
@@ -169,7 +169,7 @@ WATER_HEATERS_F = {
     ),
 }
 
-WATER_HEATERS_S = {
+_WATER_HEATER_COILGROUPS_S = {
     "hw1": WaterHeaterCoilGroup(
         key="hw1",
         name="Hot Water",
@@ -190,12 +190,12 @@ WATER_HEATERS_S = {
     ),
 }
 
-WATER_HEATERS = {
-    Series.F: WATER_HEATERS_F,
-    Series.S: WATER_HEATERS_S,
+WATER_HEATER_COILGROUPS = {
+    Series.F: _WATER_HEATER_COILGROUPS_F,
+    Series.S: _WATER_HEATER_COILGROUPS_S,
 }
 
-FANS_F = {
+_FAN_COILGROUPS_F = {
     "exhaust": FanCoilGroup(
         name="Exhaust",
         speed=47260,
@@ -220,9 +220,9 @@ FANS_F = {
     ),
 }
 
-FANS_S = {}
+_FAN_COILGROUPS_S = {}
 
-FANS = {
-    Series.F: FANS_F,
-    Series.S: FANS_S,
+FAN_COILGROUPS = {
+    Series.F: _FAN_COILGROUPS_F,
+    Series.S: _FAN_COILGROUPS_S,
 }
