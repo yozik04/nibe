@@ -14,6 +14,8 @@ class CoilGroup:
 class UnitCoilGroup(CoilGroup):
     prio: int
     cooling_with_room_sensor: int
+    alarm: int
+    alarm_reset: int
 
 
 @dataclass
@@ -48,11 +50,23 @@ class FanCoilGroup(CoilGroup):
 
 
 _UNIT_COILGROUPS_F = {
-    "main": UnitCoilGroup(name="Main", prio=43086, cooling_with_room_sensor=47340),
+    "main": UnitCoilGroup(
+        name="Main",
+        prio=43086,
+        cooling_with_room_sensor=47340,
+        alarm=45001,
+        alarm_reset=45171,
+    ),
 }
 
 _UNIT_COILGROUPS_S = {
-    "main": UnitCoilGroup(name="Main", prio=31029, cooling_with_room_sensor=40171)
+    "main": UnitCoilGroup(
+        name="Main",
+        prio=31029,
+        cooling_with_room_sensor=40171,
+        alarm=31976,
+        alarm_reset=40023,
+    ),
 }
 
 UNIT_COILGROUPS = {
