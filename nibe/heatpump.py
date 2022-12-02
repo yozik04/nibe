@@ -41,6 +41,8 @@ class Model(Enum):
     S320 = "s320_s325"
     S325 = "s320_s325"
 
+    S2125 = "s2125"
+
     SMO20 = "smo20"
     SMO40 = "smo40"
 
