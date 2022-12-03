@@ -15,56 +15,67 @@ logger = logging.getLogger("nibe").getChild(__name__)
 
 
 class Series(Enum):
+    CUSTOM = auto()
     F = auto()
     S = auto()
 
 
 class Model(Enum):
-    F1155 = "f1155_f1255"
-    F1255 = "f1155_f1255"
+    F1155 = "f1155_f1255", Series.F
+    F1255 = "f1155_f1255", Series.F
 
-    S1155 = "s1155_s1255"
-    S1255 = "s1155_s1255"
+    S1155 = "s1155_s1255", Series.S
+    S1255 = "s1155_s1255", Series.S
 
-    F1145 = "f1145_f1245"
-    F1245 = "f1145_f1245"
+    F1145 = "f1145_f1245", Series.F
+    F1245 = "f1145_f1245", Series.F
 
-    F1345 = "f1345"
-    F1355 = "f1355"
+    F1345 = "f1345", Series.F
+    F1355 = "f1355", Series.F
 
-    F730 = "f730"
-    F750 = "f750"
+    F730 = "f730", Series.F
+    F750 = "f750", Series.F
 
-    F370 = "f370_f470"
-    F470 = "f370_f470"
+    F370 = "f370_f470", Series.F
+    F470 = "f370_f470", Series.F
 
-    S320 = "s320_s325"
-    S325 = "s320_s325"
+    S320 = "s320_s325", Series.S
+    S325 = "s320_s325", Series.S
 
-    SMO20 = "smo20"
-    SMO40 = "smo40"
+    S2125 = "s2125", Series.S
 
-    SMOS40 = "smos40"
+    SMO20 = "smo20", Series.F
+    SMO40 = "smo40", Series.F
 
-    VVM225 = "vvm225_vvm320_vvm325"
-    VVM320 = "vvm225_vvm320_vvm325"
-    VVM325 = "vvm225_vvm320_vvm325"
+    SMOS40 = "smos40", Series.S
 
-    VVM310 = "vvm310_vvm500"
-    VVM500 = "vvm310_vvm500"
+    VVM225 = "vvm225_vvm320_vvm325", Series.F
+    VVM320 = "vvm225_vvm320_vvm325", Series.F
+    VVM325 = "vvm225_vvm320_vvm325", Series.F
 
-    CUSTOM = "custom"
+    VVM310 = "vvm310_vvm500", Series.F
+    VVM500 = "vvm310_vvm500", Series.F
+
+    CUSTOM = "custom", Series.CUSTOM
 
     data_file: Union[str, bytes, PathLike[str], PathLike[bytes]]
+    series: Series
+
+    def __new__(cls, data_file: str, series: Series):
+        value = len(cls.__members__) + 1
+        obj = object.__new__(cls)
+        obj._value_ = value
+        obj.data_file = data_file
+        obj.series = series
+        return obj
 
     def get_coil_data(self):
-        if self.value == "custom":
+        if self == Model.CUSTOM:
             with open(self.data_file) as fh:
                 return json.load(fh)
         else:
-            return json.loads(
-                files("nibe.data").joinpath(f"{self.value}.json").read_text()
-            )
+            with files("nibe.data").joinpath(f"{self.data_file}.json").open("r") as fh:
+                return json.load(fh)
 
     @classmethod
     def keys(cls):
@@ -114,15 +125,8 @@ class HeatPump(EventServer):
 
     @property
     def series(self) -> Series:
-        if self._model in (
-            Model.S1155,
-            Model.S1255,
-            Model.S320,
-            Model.S325,
-            Model.SMOS40,
-        ):
-            return Series.S
-        return Series.F
+        assert self._model
+        return self._model.series
 
     @property
     def product_info(self) -> Union[ProductInfo, None]:

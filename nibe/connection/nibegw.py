@@ -84,6 +84,7 @@ class ConnectionStatus(Enum):
 
 class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
     CONNECTION_STATUS_EVENT = "connection_status"
+    PRODUCT_INFO_EVENT = "product_info"
     _futures: Dict[str, Future]
     _status: ConnectionStatus
 
@@ -206,8 +207,13 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
             elif cmd == "RMU_DATA_MSG":
                 self._on_rmu_data(msg.fields.value)
             elif cmd == "PRODUCT_INFO_MSG":
+                data = msg.fields.value.data
+                product_info = ProductInfo(data["model"], data["version"])
                 with suppress(InvalidStateError, CancelledError, KeyError):
-                    self._futures["product_info"].set_result(msg.fields.value.data)
+                    self._futures["product_info"].set_result(product_info)
+                self.notify_event_listeners(
+                    self.PRODUCT_INFO_EVENT, product_info=product_info
+                )
             elif not isinstance(cmd, EnumIntegerString):
                 logger.debug(f"Unknown command {cmd}")
         except ChecksumError:
@@ -227,8 +233,7 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
     ) -> ProductInfo:
         self._futures["product_info"] = asyncio.get_event_loop().create_future()
         try:
-            result = await asyncio.wait_for(self._futures["product_info"], timeout)
-            return ProductInfo(result["model"], result["version"])
+            return await asyncio.wait_for(self._futures["product_info"], timeout)
         except asyncio.TimeoutError:
             raise ProductInfoReadTimeoutException("Timeout waiting for product message")
         finally:
