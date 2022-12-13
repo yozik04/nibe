@@ -1,7 +1,10 @@
+from __future__ import annotations
+
 from abc import ABC, abstractmethod
 from collections.abc import AsyncIterator, Iterable
 
 from nibe.coil import Coil
+from nibe.exceptions import CoilReadException, CoilReadExceptionGroup
 from nibe.heatpump import HeatPump, ProductInfo, Series
 
 DEFAULT_TIMEOUT: float = 5
@@ -9,10 +12,10 @@ READ_PRODUCT_INFO_TIMEOUT: float = 20  # Product info message is sent every 15 s
 
 
 class Connection(ABC):
-    async def start(self):
+    async def start(self):  # noqa: B027
         pass
 
-    async def stop(self):
+    async def stop(self):  # noqa: B027
         pass
 
     @abstractmethod
@@ -22,8 +25,14 @@ class Connection(ABC):
     async def read_coils(
         self, coils: Iterable[Coil], timeout: float = DEFAULT_TIMEOUT
     ) -> AsyncIterator[Coil]:
+        exceptions = []
         for coil in coils:
-            yield await self.read_coil(coil, timeout)
+            try:
+                yield await self.read_coil(coil, timeout)
+            except CoilReadException as exception:
+                exceptions.append(exception)
+        if exceptions:
+            raise CoilReadExceptionGroup("Failed to read some or all coils", exceptions)
 
     @abstractmethod
     async def write_coil(self, coil: Coil, timeout: float = DEFAULT_TIMEOUT) -> Coil:
