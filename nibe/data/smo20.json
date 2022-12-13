@@ -1599,7 +1599,8 @@
     "title": "EB101-EP14 Current Sensor",
     "size": "s16",
     "factor": 10,
-    "name": "eb101-ep14-current-sensor-44866"
+    "name": "eb101-ep14-current-sensor-44866",
+    "unit": "A"
   },
   "44867": {
     "title": "EB101-EP14 Hz Down Mode Outdoor Unit",
