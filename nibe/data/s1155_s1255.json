@@ -9865,7 +9865,7 @@
   "32167": {
     "title": "Instantaneous used power",
     "factor": 1,
-    "unit": "Ws",
+    "unit": "W",
     "size": "u32",
     "min": 0.0,
     "max": 9999999.0,

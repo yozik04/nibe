@@ -158,5 +158,16 @@
         "unit": "kW"
       }
     }
+  },
+  {
+    "description": "Corrections for compressor power units - S series",
+    "files": [
+      "s1155_s1255.json"
+    ],
+    "data": {
+      "32167": {
+        "unit": "W"
+      }
+    }
   }
 ]
