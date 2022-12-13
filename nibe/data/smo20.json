@@ -76,7 +76,7 @@
   },
   "40121": {
     "title": "BT63 Add Supply Temp",
-    "unit": "\u00baC",
+    "unit": "\u00b0C",
     "size": "s16",
     "factor": 10,
     "name": "bt63-add-supply-temp-40121"
