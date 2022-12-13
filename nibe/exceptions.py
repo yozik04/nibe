@@ -1,3 +1,6 @@
+from exceptiongroup import ExceptionGroup
+
+
 class NibeException(Exception):
     pass
 
@@ -44,6 +47,12 @@ class ReadException(NibeException):
 
 class CoilReadException(ReadException):
     pass
+
+
+class CoilReadExceptionGroup(ExceptionGroup, CoilReadException):
+    def __str__(self) -> str:
+        messages = ", ".join(str(exception) for exception in self._exceptions)
+        return f"{self.message} ({messages})"
 
 
 class CoilReadSendException(CoilReadException):
