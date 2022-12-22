@@ -226,5 +226,17 @@
         "unit": "A"
       }
     }
+  },
+  {
+    "description": "Allow for numerical selection for Outdoor Filter Time",
+    "files": [
+      "smo40.json"
+    ],
+    "data": {
+     "47377": {
+        "size": "s16",
+        "mappings": null
+      }
+    }
   }
 ]
