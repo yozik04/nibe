@@ -222,10 +222,9 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
             )
         except NibeException as e:
             logger.error(f"Failed handling packet from {addr}: {e}")
-        except Exception as e:
+        except Exception:
             logger.exception(
-                f"Unexpected exception during parsing packet data '{hexlify(data).decode('utf-8')}' from {addr}",
-                e,
+                f"Unexpected exception during parsing packet data '{hexlify(data).decode('utf-8')}' from {addr}"
             )
 
     async def read_product_info(
