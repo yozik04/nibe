@@ -68,10 +68,10 @@ class CoilDataEncoder:
             if self._is_hitting_integer_limit(coil, value):
                 return None
             coil.check_raw_value_bounds(value)
-        except AssertionError as e:
+        except (ConstructError, AssertionError) as e:
             raise DecodeException(
                 f"Failed to decode {coil.name} coil from raw: {hexlify(raw).decode('utf-8')}, exception: {e}"
-            )
+            ) from e
         if coil.factor != 1:
             value /= coil.factor
         if not coil.has_mappings:
