@@ -10,3 +10,6 @@ coverage.xml
 /nibe.egg-info
 /.tox
 /build
+.ipynb_checkpoints
+.mypy_cache
+.pytest_cache
