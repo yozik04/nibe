@@ -118,6 +118,13 @@
     "size": "s16",
     "name": "roomsensor-1-1-30027"
   },
+  "30028": {
+    "title": "Pool (BT51)",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "pool-bt51-30028"
+  },
   "30032": {
     "title": "Return line (EQ1-BT65)",
     "factor": 10,
