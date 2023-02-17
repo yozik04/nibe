@@ -1,3 +1,4 @@
+from dataclasses import dataclass
 from typing import Dict, Optional, Union
 
 from nibe.exceptions import NoMappingException
@@ -19,7 +20,6 @@ def is_coil_boolean(coil):
 class Coil:
     mappings: Optional[Dict[str, str]]
     reverse_mappings: Optional[Dict[str, str]]
-    _value: Union[int, float, str, None]
 
     def __init__(
         self,
@@ -67,8 +67,6 @@ class Coil:
         if self.is_boolean and not mappings:
             self.set_mappings({"0": "OFF", "1": "ON"})
 
-        self._value = None
-
     def set_mappings(self, mappings):
         if mappings:
             self.mappings = {k: v.upper() for k, v in mappings.items()}
@@ -76,37 +74,6 @@ class Coil:
         else:
             self.mappings = None
             self.reverse_mappings = None
-
-    @property
-    def value(self) -> Union[int, float, str, None]:
-        return self._value
-
-    @value.setter
-    def value(self, value: Union[int, float, str, None]):
-        if value is None:
-            self._value = None
-            return
-
-        if self.reverse_mappings:
-            assert isinstance(
-                value, str
-            ), f"Provided value '{value}' is invalid type (str is supported) for {self.name}"
-
-            value = value.upper()
-            assert (
-                value in self.reverse_mappings
-            ), f"Provided value '{value}' is not in {self.reverse_mappings.keys()} for {self.name}"
-
-            self._value = value
-            return
-
-        assert isinstance(
-            value, (int, float)
-        ), f"Provided value '{value}' is invalid type (int and float are supported) for {self.name}"
-
-        self.check_value_bounds(value)
-
-        self._value = value
 
     @property
     def has_mappings(self):
@@ -123,38 +90,108 @@ class Coil:
                 f"Mapping not found for {self.name} coil for value: {value}"
             )
 
-    def get_reverse_mapping_for(self, value: Union[int, float, str, None]):
+    def get_reverse_mapping_for(self, value: Union[int, float, str, None]) -> int:
+        assert isinstance(
+            value, str
+        ), f"Provided value '{value}' is invalid type (str is supported) for {self.name}"
+
         if not self.reverse_mappings:
             raise NoMappingException(f"No reverse mappings defined for {self.name}")
 
         try:
-            return self.reverse_mappings[str(value)]
+            value = value.upper()
+            return int(self.reverse_mappings[str(value)])
         except KeyError:
             raise NoMappingException(
                 f"Reverse mapping not found for {self.name} coil for value: {value}"
             )
 
-    def check_value_bounds(self, value):
-        if self.min is not None:
-            assert (
-                value >= self.min
-            ), f"{self.name} coil value ({value}) is smaller than min allowed ({self.min})"
+    def is_raw_value_valid(self, value: int) -> bool:
+        if not isinstance(value, int):
+            return False
 
-        if self.max is not None:
-            assert (
-                value <= self.max
-            ), f"{self.name} coil value ({value}) is larger than max allowed ({self.max})"
+        if self.raw_min is not None and value < self.raw_min:
+            return False
 
-    def check_raw_value_bounds(self, value):
-        if self.raw_min is not None:
-            assert (
-                value >= self.raw_min
-            ), f"value ({value}) is smaller than min allowed ({self.raw_min})"
+        if self.raw_max is not None and value > self.raw_max:
+            return False
 
-        if self.raw_max is not None:
-            assert (
-                value <= self.raw_max
-            ), f"value ({value}) is larger than max allowed ({self.raw_max})"
+        return True
 
     def __repr__(self):
-        return f"Coil {self.address}, name: {self.name}, title: {self.title}, value: {self.value}"
+        return f"Coil {self.address}, name: {self.name}, title: {self.title}"
+
+
+@dataclass
+class CoilData:
+    coil: Coil
+    value: Union[int, float, str, None] = None
+
+    def __repr__(self) -> str:
+        return f"Coil {self.coil.name}, value: {self.value}"
+
+    @staticmethod
+    def from_mapping(coil: Coil, value: int) -> "CoilData":
+        return CoilData(coil, coil.get_mapping_for(value))
+
+    @staticmethod
+    def from_raw_value(coil: Coil, value: int) -> "CoilData":
+        assert coil.is_raw_value_valid(
+            value
+        ), f"Raw value {value} is out of range for coil {coil.name}"
+
+        if coil.has_mappings:
+            return CoilData.from_mapping(coil, value)
+
+        return CoilData(coil, value / coil.factor)
+
+    @property
+    def raw_value(self) -> int:
+        if self.coil.has_mappings:
+            return self.coil.get_reverse_mapping_for(self.value)
+
+        assert isinstance(
+            self.value, (int, float)
+        ), f"Provided value '{self.value}' is invalid type (int or float is supported) for {self.coil.name}"
+
+        raw_value = int(self.value * self.coil.factor)
+        assert self.coil.is_raw_value_valid(
+            raw_value
+        ), f"Value {self.value} is out of range for coil {self.coil.name}"
+
+        return raw_value
+
+    @property
+    def is_valid(self) -> bool:
+        if self.value is None:
+            return False
+
+        if self.coil.has_mappings:
+            try:
+                self.coil.get_reverse_mapping_for(self.value)
+                return True
+            except NoMappingException:
+                return False
+
+        try:
+            assert isinstance(
+                self.value, (int, float)
+            ), f"Provided value '{self.value}' is invalid type (int or float is supported) for {self.coil.name}"
+
+            self._check_value_bounds()
+
+        except AssertionError:
+            return False
+
+        return True
+
+    def _check_value_bounds(self):
+        if self.coil.min is not None:
+            assert (
+                self.value >= self.coil.min
+            ), f"{self.coil.name} coil value ({self.value}) is smaller than min allowed ({self.coil.min})"
+
+        if self.coil.max is not None:
+            assert (
+                self.value <= self.coil.max
+            ), f"{self.coil.name} coil value ({self.value}) is larger than max allowed ({self.coil.max})"

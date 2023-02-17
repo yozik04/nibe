@@ -5,8 +5,9 @@ from unittest.mock import Mock
 
 import pytest
 
+from nibe.coil import CoilData
 from nibe.connection.nibegw import ConnectionStatus, NibeGW
-from nibe.exceptions import CoilReadTimeoutException
+from nibe.exceptions import CoilReadTimeoutException, NoMappingException
 from nibe.heatpump import HeatPump, Model, ProductInfo
 
 
@@ -64,8 +65,8 @@ class TestNibeGW(IsolatedAsyncioTestCase):
 
             return await task
 
-        coil = await send_receive()
-        assert coil.value == 4853
+        coil_data = await send_receive()
+        assert coil_data.value == 4853
 
         self.transport.sendto.assert_called_with(
             binascii.unhexlify("c06902a0a9a2"), ("127.0.0.1", 9999)
@@ -73,7 +74,6 @@ class TestNibeGW(IsolatedAsyncioTestCase):
 
     async def test_read_coil_decode_ignored(self):
         coil = self.heatpump.get_coil_by_address(43086)
-        coil.value = "HEAT"
 
         async def send_receive():
             task = self.loop.create_task(self.nibegw.read_coil(coil))
@@ -84,8 +84,8 @@ class TestNibeGW(IsolatedAsyncioTestCase):
 
             return await task
 
-        await send_receive()
-        assert "HEAT" == coil.value
+        with pytest.raises(NoMappingException):
+            await send_receive()
 
     async def test_read_coil_timeout_exception(self):
         coil = self.heatpump.get_coil_by_address(43086)
@@ -95,10 +95,10 @@ class TestNibeGW(IsolatedAsyncioTestCase):
 
     async def test_write_coil(self):
         coil = self.heatpump.get_coil_by_address(48132)
-        coil.value = "One time increase"
+        coil_data = CoilData(coil, "One time increase")
 
         async def send_receive():
-            task = self.loop.create_task(self.nibegw.write_coil(coil))
+            task = self.loop.create_task(self.nibegw.write_coil(coil_data))
             await asyncio.sleep(0)
             self.nibegw.datagram_received(
                 binascii.unhexlify("5c00206c01014c"), ("127.0.0.1", 12345)
@@ -138,7 +138,9 @@ class TestNibeGW(IsolatedAsyncioTestCase):
             ("127.0.0.1", 12345),
         )
 
-        for address in [45001, 43514]:  # first and last in the payload
-            on_coil_update_mock.assert_any_call(
-                self.heatpump.get_coil_by_address(address)
-            )
+        on_coil_update_mock.assert_any_call(
+            CoilData(self.heatpump.get_coil_by_address(45001), 0.0)
+        )
+        on_coil_update_mock.assert_any_call(
+            CoilData(self.heatpump.get_coil_by_address(43514), 2.0)
+        )

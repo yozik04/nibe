@@ -3,6 +3,7 @@ from unittest.mock import Mock
 
 import pytest
 
+from nibe.coil import CoilData
 from nibe.connection.nibegw import CoilDataEncoder
 from nibe.exceptions import CoilNotFoundException, ModelIdentificationFailed
 from nibe.heatpump import HeatPump, Model, ProductInfo, Series
@@ -47,23 +48,27 @@ class HeatpumpTestCase(unittest.IsolatedAsyncioTestCase):
 
         mock.assert_not_called()
 
-        self.heat_pump.notify_coil_update(coil)
+        coil_data = CoilData(coil, 14)
+        self.heat_pump.notify_coil_update(coil_data)
 
-        mock.assert_called_with(coil)
+        mock.assert_called_with(coil_data)
 
     def test_listener_with_exception(self):
         mock = Mock(side_effect=Exception("Test exception that needs to be logged"))
         coil = self.heat_pump.get_coil_by_address(40004)
         self.heat_pump.subscribe(self.heat_pump.COIL_UPDATE_EVENT, mock)
 
+        coil_data = CoilData(coil, 14)
         self.heat_pump.notify_coil_update(
-            coil
+            coil_data
         )  # Error should be logged but not thrown out
 
     def test_word_swap_is_true(self):
         coil = self.heat_pump.get_coil_by_address(43420)
         assert (
-            CoilDataEncoder(self.heat_pump.word_swap).decode(coil, b"(\x06\x00\x00")
+            CoilDataEncoder(self.heat_pump.word_swap)
+            .decode(coil, b"(\x06\x00\x00")
+            .value
             == 1576
         )
 
@@ -77,7 +82,9 @@ class HeatpumpWordSwapTestCase(unittest.IsolatedAsyncioTestCase):
     def test_word_swap_is_false(self):
         coil = self.heat_pump.get_coil_by_address(43420)
         assert (
-            CoilDataEncoder(self.heat_pump.word_swap).decode(coil, b"\x00\x00(\x06")
+            CoilDataEncoder(self.heat_pump.word_swap)
+            .decode(coil, b"\x00\x00(\x06")
+            .value
             == 1576
         )
 

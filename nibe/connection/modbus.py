@@ -6,7 +6,7 @@ from async_modbus import modbus_for_url
 import async_timeout
 from umodbus.exceptions import ModbusError
 
-from nibe.coil import Coil
+from nibe.coil import Coil, CoilData
 from nibe.connection import DEFAULT_TIMEOUT, Connection
 from nibe.connection.encoders import CoilDataEncoder
 from nibe.exceptions import (
@@ -75,12 +75,11 @@ class Modbus(Connection):
     async def stop(self) -> None:
         await self._client.stream.close()
 
-    async def read_coil(self, coil: Coil, timeout: float = DEFAULT_TIMEOUT) -> Coil:
+    async def read_coil(self, coil: Coil, timeout: float = DEFAULT_TIMEOUT) -> CoilData:
         logger.debug("Sending read request")
         entity_type, entity_number, entity_count = split_modbus_data(coil)
 
         try:
-
             async with async_timeout.timeout(timeout):
                 if entity_type == 3:
                     result = await self._client.read_input_registers(
@@ -109,10 +108,10 @@ class Modbus(Connection):
                 else:
                     raise CoilReadException(f"Unsupported entity type {entity_type}")
 
-            coil.value = self.coil_encoder.decode(coil, encode_u16_list(result))
+            coil_data = self.coil_encoder.decode(coil, encode_u16_list(result))
 
-            logger.info(f"{coil.name}: {coil.value}")
-            self._heatpump.notify_coil_update(coil)
+            logger.info(coil_data)
+            self._heatpump.notify_coil_update(coil_data)
         except ModbusError as exc:
             raise CoilReadException(
                 f"Error '{str(exc)}' reading {coil.name} starting: {entity_number} count: {entity_count} from: {self._slave_id}"
@@ -122,24 +121,26 @@ class Modbus(Connection):
                 f"Timeout waiting for read response for {coil.name}"
             )
 
-        return coil
+        return coil_data
 
-    async def write_coil(self, coil: Coil, timeout: float = DEFAULT_TIMEOUT) -> Coil:
+    async def write_coil(
+        self, coil_data: CoilData, timeout: float = DEFAULT_TIMEOUT
+    ) -> None:
+        coil = coil_data.coil
         assert coil.is_writable, f"{coil.name} is not writable"
-        assert coil.value is not None, f"{coil.name} value must be set"
+        assert coil_data.is_valid, f"{coil.name} value should be valid"
 
         logger.debug("Sending write request")
 
         entity_type, entity_number, entity_count = split_modbus_data(coil)
         try:
-
             async with async_timeout.timeout(timeout):
                 if entity_type == 4:
                     result = await self._client.write_registers(
                         slave_id=self._slave_id,
                         starting_address=entity_number,
                         values=decode_u16_list(
-                            self.coil_encoder.encode(coil), entity_count
+                            self.coil_encoder.encode(coil_data), entity_count
                         ),
                     )
                 elif entity_type == 0:
@@ -147,7 +148,7 @@ class Modbus(Connection):
                         slave_id=self._slave_id,
                         starting_address=entity_number,
                         values=decode_u16_list(
-                            self.coil_encoder.encode(coil), entity_count
+                            self.coil_encoder.encode(coil_data), entity_count
                         ),
                     )
                 else:
@@ -165,8 +166,6 @@ class Modbus(Connection):
             raise CoilWriteTimeoutException(
                 f"Timeout waiting for write feedback for {coil.name}"
             )
-
-        return coil
 
     async def verify_connectivity(self):
         """Verify that we have functioning communication."""

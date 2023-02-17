@@ -22,6 +22,8 @@ def update_dict(d: MutableMapping, u: Mapping, removeExplicitNulls: bool) -> Map
         else:
             d[k] = v
 
+    return d
+
 
 class CSVConverter:
     data: pandas.DataFrame
@@ -262,7 +264,7 @@ async def run():
         logger.info(f"Converting {in_file} to {out_file}")
         try:
             CSVConverter(in_file, out_file, extensions).convert()
-            
+
             await _validate(out_file)
 
             logger.info(f"Converted {in_file} to {out_file}")

@@ -3,7 +3,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from collections.abc import AsyncIterator, Iterable
 
-from nibe.coil import Coil
+from nibe.coil import Coil, CoilData
 from nibe.exceptions import CoilReadException, CoilReadExceptionGroup
 from nibe.heatpump import HeatPump, ProductInfo, Series
 
@@ -19,12 +19,12 @@ class Connection(ABC):
         pass
 
     @abstractmethod
-    async def read_coil(self, coil: Coil, timeout: float = DEFAULT_TIMEOUT) -> Coil:
+    async def read_coil(self, coil: Coil, timeout: float = DEFAULT_TIMEOUT) -> CoilData:
         pass
 
     async def read_coils(
         self, coils: Iterable[Coil], timeout: float = DEFAULT_TIMEOUT
-    ) -> AsyncIterator[Coil]:
+    ) -> AsyncIterator[CoilData]:
         exceptions = []
         for coil in coils:
             try:
@@ -35,7 +35,9 @@ class Connection(ABC):
             raise CoilReadExceptionGroup("Failed to read some or all coils", exceptions)
 
     @abstractmethod
-    async def write_coil(self, coil: Coil, timeout: float = DEFAULT_TIMEOUT) -> Coil:
+    async def write_coil(
+        self, coil_data: CoilData, timeout: float = DEFAULT_TIMEOUT
+    ) -> None:
         pass
 
     async def read_product_info(
@@ -63,9 +65,9 @@ async def verify_connectivity_read_write_alarm(
     else:
         coil = heatpump.get_coil_by_name("alarm-reset-45171")
 
-    coil = await connection.read_coil(coil)
+    coil_data = await connection.read_coil(coil)
     value: str | int = 0
     if coil.mappings:
         value = coil.mappings[str(value)]
-    coil.value = value
-    coil = await connection.write_coil(coil)
+    coil_data.value = value
+    await connection.write_coil(coil_data)

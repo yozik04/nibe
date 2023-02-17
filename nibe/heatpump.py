@@ -7,7 +7,7 @@ import logging
 from os import PathLike
 from typing import Dict, Union
 
-from nibe.coil import Coil
+from nibe.coil import Coil, CoilData
 from nibe.event_server import EventServer
 from nibe.exceptions import CoilNotFoundException, ModelIdentificationFailed
 
@@ -184,5 +184,5 @@ class HeatPump(EventServer):
         except KeyError:
             raise CoilNotFoundException(f"Coil with name '{name}' not found")
 
-    def notify_coil_update(self, coil: Coil):
-        self.notify_event_listeners(self.COIL_UPDATE_EVENT, coil)
+    def notify_coil_update(self, coil_data: CoilData):
+        self.notify_event_listeners(self.COIL_UPDATE_EVENT, coil_data)
