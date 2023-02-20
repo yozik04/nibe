@@ -1,5 +1,6 @@
 import asyncio
 import binascii
+import time
 from unittest import IsolatedAsyncioTestCase
 from unittest.mock import Mock
 
@@ -7,7 +8,7 @@ import pytest
 
 from nibe.coil import CoilData
 from nibe.connection.nibegw import ConnectionStatus, NibeGW
-from nibe.exceptions import CoilReadTimeoutException, NoMappingException
+from nibe.exceptions import CoilReadException, CoilReadTimeoutException
 from nibe.heatpump import HeatPump, Model, ProductInfo
 
 
@@ -33,16 +34,9 @@ class TestNibeGW(IsolatedAsyncioTestCase):
 
         coil = self.heatpump.get_coil_by_address(43424)
 
-        async def send_receive():
-            task = self.loop.create_task(self.nibegw.read_coil(coil))
-            await asyncio.sleep(0)
-            self.nibegw.datagram_received(
-                binascii.unhexlify("5c00206a06a0a9f5120000a2"), ("127.0.0.1", 12345)
-            )
+        self._enqueue_datagram(binascii.unhexlify("5c00206a06a0a9f5120000a2"))
 
-            return await task
-
-        await send_receive()
+        await self.nibegw.read_coil(coil)
 
         assert self.nibegw.status == "connected"
         connection_status_handler_mock.assert_called_once_with(
@@ -50,42 +44,47 @@ class TestNibeGW(IsolatedAsyncioTestCase):
         )
 
         connection_status_handler_mock.reset_mock()
-        await send_receive()
+        self._enqueue_datagram(binascii.unhexlify("5c00206a06a0a9f5120000a2"))
+        await self.nibegw.read_coil(coil)
         connection_status_handler_mock.assert_not_called()
+
+    def _enqueue_datagram(self, data):
+        asyncio.get_event_loop().call_soon(
+            self.nibegw.datagram_received, data, ("127.0.0.1", 12345)
+        )
 
     async def test_read_s32_coil(self):
         coil = self.heatpump.get_coil_by_address(43424)
 
-        async def send_receive():
-            task = self.loop.create_task(self.nibegw.read_coil(coil))
-            await asyncio.sleep(0)
-            self.nibegw.datagram_received(
-                binascii.unhexlify("5c00206a06a0a9f5120000a2"), ("127.0.0.1", 12345)
-            )
+        self._enqueue_datagram(binascii.unhexlify("5c00206a06a0a9f5120000a2"))
 
-            return await task
-
-        coil_data = await send_receive()
+        coil_data = await self.nibegw.read_coil(coil)
         assert coil_data.value == 4853
 
         self.transport.sendto.assert_called_with(
             binascii.unhexlify("c06902a0a9a2"), ("127.0.0.1", 9999)
         )
 
-    async def test_read_coil_decode_ignored(self):
+    async def test_read_coil_decode_failed(self):
         coil = self.heatpump.get_coil_by_address(43086)
 
-        async def send_receive():
-            task = self.loop.create_task(self.nibegw.read_coil(coil))
-            await asyncio.sleep(0)
-            self.nibegw.datagram_received(
-                binascii.unhexlify("5c00206a064ea8f51200004d"), ("127.0.0.1", 12345)
-            )
+        self._enqueue_datagram(binascii.unhexlify("5c00206a064ea8f51200004d"))
 
-            return await task
+        start = time.time()
+        with pytest.raises(CoilReadException) as excinfo:
+            await self.nibegw.read_coil(coil, timeout=0.1)
+            assert "Decode failed" in str(excinfo.value)
+        duration = time.time() - start
+        assert duration <= 0.1
 
-        with pytest.raises(NoMappingException):
-            await send_receive()
+    async def test_read_coil_timeout(self):
+        coil = self.heatpump.get_coil_by_address(43086)
+
+        start = time.time()
+        with pytest.raises(CoilReadTimeoutException):
+            await self.nibegw.read_coil(coil, timeout=0.1)
+        duration = time.time() - start
+        assert 0.1 <= duration <= 0.2, "Timeout should be between 0.1 and 0.2 seconds"
 
     async def test_read_coil_timeout_exception(self):
         coil = self.heatpump.get_coil_by_address(43086)

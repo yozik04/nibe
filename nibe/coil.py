@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from typing import Dict, Optional, Union
 
-from nibe.exceptions import NoMappingException
+from nibe.exceptions import NoMappingException, ValidationError
 
 
 def is_coil_boolean(coil):
@@ -91,19 +91,22 @@ class Coil:
             )
 
     def get_reverse_mapping_for(self, value: Union[int, float, str, None]) -> int:
-        assert isinstance(
-            value, str
-        ), f"Provided value '{value}' is invalid type (str is supported) for {self.name}"
+        if not isinstance(value, str):
+            raise ValidationError(
+                f"{self.name} coil value ({value}) is invalid type (str is expected)"
+            )
 
         if not self.reverse_mappings:
-            raise NoMappingException(f"No reverse mappings defined for {self.name}")
+            raise NoMappingException(
+                f"{self.name} coil has no reverse mappings defined"
+            )
 
         try:
             value = value.upper()
             return int(self.reverse_mappings[str(value)])
         except KeyError:
             raise NoMappingException(
-                f"Reverse mapping not found for {self.name} coil for value: {value}"
+                f"{self.name} coil reverse mapping not found for value: {value}"
             )
 
     def is_raw_value_valid(self, value: int) -> bool:
@@ -161,37 +164,30 @@ class CoilData:
 
         return raw_value
 
-    @property
-    def is_valid(self) -> bool:
+    def validate(self) -> None:
         if self.value is None:
-            return False
+            raise ValidationError(f"Value for {self.coil.name} is not set")
 
         if self.coil.has_mappings:
-            try:
-                self.coil.get_reverse_mapping_for(self.value)
-                return True
-            except NoMappingException:
-                return False
+            self.coil.get_reverse_mapping_for(
+                self.value
+            )  # can throw NoMappingException(ValidationException) or AssertionError
+            return
 
-        try:
-            assert isinstance(
-                self.value, (int, float)
-            ), f"Provided value '{self.value}' is invalid type (int or float is supported) for {self.coil.name}"
+        if not isinstance(self.value, (int, float)):
+            raise ValidationError(
+                f"{self.coil.name} coil value ({self.value}) is invalid type (expected int or float)"
+            )
 
-            self._check_value_bounds()
-
-        except AssertionError:
-            return False
-
-        return True
+        self._check_value_bounds()
 
     def _check_value_bounds(self):
-        if self.coil.min is not None:
-            assert (
-                self.value >= self.coil.min
-            ), f"{self.coil.name} coil value ({self.value}) is smaller than min allowed ({self.coil.min})"
+        if self.coil.min is not None and self.value < self.coil.min:
+            raise ValidationError(
+                f"{self.coil.name} coil value ({self.value}) is smaller than min allowed ({self.coil.min})"
+            )
 
-        if self.coil.max is not None:
-            assert (
-                self.value <= self.coil.max
-            ), f"{self.coil.name} coil value ({self.value}) is larger than max allowed ({self.coil.max})"
+        if self.coil.max is not None and self.value > self.coil.max:
+            raise ValidationError(
+                f"{self.coil.name} coil value ({self.value}) is larger than max allowed ({self.coil.max})"
+            )

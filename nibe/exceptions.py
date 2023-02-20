@@ -17,7 +17,11 @@ class DecodeException(NibeException):
     pass
 
 
-class NoMappingException(DecodeException):
+class ValidationError(NibeException):
+    pass
+
+
+class NoMappingException(ValidationError):
     pass
 
 

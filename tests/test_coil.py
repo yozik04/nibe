@@ -1,8 +1,10 @@
+from contextlib import nullcontext
+
 import pytest
 
 from nibe.coil import Coil, CoilData
 from nibe.connection.nibegw import CoilDataEncoder
-from nibe.exceptions import DecodeException, EncodeException
+from nibe.exceptions import DecodeException, EncodeException, ValidationError
 from nibe.parsers import swapwords
 
 
@@ -168,17 +170,18 @@ def test_signed_s16_attributes(coil_signed_s16: Coil):
 
 
 @pytest.mark.parametrize(
-    "value, is_valid",
+    "value, expected_raises",
     [
-        (5.0, True),
-        (30.0, True),
-        (4.9, False),
-        (30.1, False),
+        (5.0, nullcontext()),
+        (30.0, nullcontext()),
+        (4.9, pytest.raises(ValidationError)),
+        (30.1, pytest.raises(ValidationError)),
     ],
 )
-def test_signed_s16_is_valid(value, is_valid, coil_signed_s16: Coil):
+def test_signed_s16_is_valid(value, expected_raises, coil_signed_s16: Coil):
     coil_data = CoilData(coil_signed_s16, value)
-    assert coil_data.is_valid == is_valid
+    with expected_raises:
+        coil_data.validate()
 
 
 @pytest.mark.parametrize(

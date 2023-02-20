@@ -15,6 +15,7 @@ from nibe.exceptions import (
     CoilWriteException,
     CoilWriteTimeoutException,
     ModbusUrlException,
+    ValidationError,
 )
 from nibe.heatpump import HeatPump
 
@@ -128,12 +129,12 @@ class Modbus(Connection):
     ) -> None:
         coil = coil_data.coil
         assert coil.is_writable, f"{coil.name} is not writable"
-        assert coil_data.is_valid, f"{coil.name} value should be valid"
-
-        logger.debug("Sending write request")
 
         entity_type, entity_number, entity_count = split_modbus_data(coil)
         try:
+            coil_data.validate()
+
+            logger.debug("Sending write request")
             async with async_timeout.timeout(timeout):
                 if entity_type == 4:
                     result = await self._client.write_registers(
@@ -158,6 +159,10 @@ class Modbus(Connection):
                 raise CoilWriteException(f"Heatpump denied writing {coil.name}")
             else:
                 logger.info(f"Write succeeded for {coil.name}")
+        except ValidationError as exc:
+            raise CoilWriteException(
+                f"Error validating {coil.name} coil value: {str(exc)}"
+            ) from exc
         except ModbusError as exc:
             raise CoilWriteException(
                 f"Error '{str(exc)}' writing {coil.name} starting: {entity_number} count: {entity_count} to: {self._slave_id}"

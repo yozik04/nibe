@@ -13,7 +13,7 @@ from construct import (
 )
 
 from nibe.coil import Coil, CoilData
-from nibe.exceptions import DecodeException, EncodeException
+from nibe.exceptions import DecodeException, EncodeException, ValidationError
 from nibe.parsers import WordSwapped
 
 parser_map = {
@@ -40,10 +40,10 @@ class CoilDataEncoder:
 
     def encode(self, coil_data: CoilData) -> bytes:
         try:
-            assert coil_data.is_valid, "Invalid coil data"
+            coil_data.validate()
 
             return self._pad(self._get_parser(coil_data.coil), coil_data.raw_value)
-        except (ConstructError, AssertionError) as e:
+        except (ConstructError, ValidationError) as e:
             raise EncodeException(
                 f"Failed to encode {coil_data.coil.name} coil for value: {coil_data.value}, exception: {e}"
             )
@@ -59,7 +59,7 @@ class CoilDataEncoder:
                 return CoilData(coil, None)
 
             return CoilData.from_raw_value(coil, value)
-        except AssertionError as e:
+        except (AssertionError, ValidationError) as e:
             raise DecodeException(
                 f"Failed to decode {coil.name} coil from raw: {hexlify(raw).decode('utf-8')}, exception: {e}"
             )

@@ -271,6 +271,10 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
                 raise CoilReadTimeoutException(
                     f"Timeout waiting for read response for {coil.name}"
                 )
+            except DecodeException as e:
+                raise CoilReadException(
+                    f"Failed decoding response for {coil.name}: {e}"
+                ) from e
 
     def _register_coil_read_request(self, coil: Coil) -> Future:
         read = self._registered_reads.get(str(coil.address))
