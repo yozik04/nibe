@@ -8,7 +8,7 @@ import pytest
 
 from nibe.coil import CoilData
 from nibe.connection.nibegw import ConnectionStatus, NibeGW
-from nibe.exceptions import CoilReadException, CoilReadTimeoutException
+from nibe.exceptions import CoilReadTimeoutException, ReadException, WriteException
 from nibe.heatpump import HeatPump, Model, ProductInfo
 
 
@@ -71,7 +71,7 @@ class TestNibeGW(IsolatedAsyncioTestCase):
         self._enqueue_datagram(binascii.unhexlify("5c00206a064ea8f51200004d"))
 
         start = time.time()
-        with pytest.raises(CoilReadException) as excinfo:
+        with pytest.raises(ReadException) as excinfo:
             await self.nibegw.read_coil(coil, timeout=0.1)
             assert "Decode failed" in str(excinfo.value)
         duration = time.time() - start
@@ -84,7 +84,13 @@ class TestNibeGW(IsolatedAsyncioTestCase):
         with pytest.raises(CoilReadTimeoutException):
             await self.nibegw.read_coil(coil, timeout=0.1)
         duration = time.time() - start
-        assert 0.1 <= duration <= 0.2, "Timeout should be between 0.1 and 0.2 seconds"
+        assert (
+            0.3 <= duration <= 0.4
+        ), "Timeout should be between 0.3 and 0.4 seconds. We do 3 retries"
+        assert 3 == self.transport.sendto.call_count
+        self.transport.sendto.assert_called_with(
+            b"\xc0i\x02N\xa8M", ("127.0.0.1", 9999)
+        )
 
     async def test_read_coil_timeout_exception(self):
         coil = self.heatpump.get_coil_by_address(43086)
@@ -102,6 +108,14 @@ class TestNibeGW(IsolatedAsyncioTestCase):
         self.transport.sendto.assert_called_with(
             binascii.unhexlify("c06b0604bc0400000011"), ("127.0.0.1", 10000)
         )
+
+    async def test_write_coil_failed(self):
+        coil = self.heatpump.get_coil_by_address(48132)
+        coil_data = CoilData(coil, "One time increase")
+
+        self._enqueue_datagram(binascii.unhexlify("5c00206c01004d"))
+        with pytest.raises(WriteException):
+            await self.nibegw.write_coil(coil_data)
 
     async def test_read_product_info(self):
         self._enqueue_datagram(

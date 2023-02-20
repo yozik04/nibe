@@ -65,6 +65,8 @@ from nibe.exceptions import (
     DecodeException,
     NibeException,
     ProductInfoReadTimeoutException,
+    ReadException,
+    WriteException,
 )
 from nibe.heatpump import HeatPump, ProductInfo
 
@@ -272,7 +274,7 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
                     f"Timeout waiting for read response for {coil.name}"
                 )
             except DecodeException as e:
-                raise CoilReadException(
+                raise ReadException(
                     f"Failed decoding response for {coil.name}: {e}"
                 ) from e
 
@@ -357,7 +359,7 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
                 result = self._futures["write"].result()
 
                 if not result:
-                    raise CoilWriteException(f"Heatpump denied writing {coil.name}")
+                    raise WriteException(f"Heatpump denied writing {coil.name}")
                 else:
                     logger.info(f"Write succeeded for {coil.name}")
             except asyncio.TimeoutError:
