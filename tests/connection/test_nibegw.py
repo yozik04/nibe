@@ -61,7 +61,7 @@ class TestNibeGW(IsolatedAsyncioTestCase):
         coil_data = await self.nibegw.read_coil(coil)
         assert coil_data.value == 4853
 
-        self.transport.sendto.assert_called_with(
+        self.transport.sendto.assert_called_once_with(
             binascii.unhexlify("c06902a0a9a2"), ("127.0.0.1", 9999)
         )
 
@@ -74,6 +74,7 @@ class TestNibeGW(IsolatedAsyncioTestCase):
         with pytest.raises(ReadException) as excinfo:
             await self.nibegw.read_coil(coil, timeout=0.1)
             assert "Decode failed" in str(excinfo.value)
+        assert 1 == self.transport.sendto.call_count
         duration = time.time() - start
         assert duration <= 0.1
 
@@ -87,16 +88,10 @@ class TestNibeGW(IsolatedAsyncioTestCase):
         assert (
             0.3 <= duration <= 0.4
         ), "Timeout should be between 0.3 and 0.4 seconds. We do 3 retries"
-        assert 3 == self.transport.sendto.call_count
+        assert 3 == self.transport.sendto.call_count, "Should do 3 retries"
         self.transport.sendto.assert_called_with(
             b"\xc0i\x02N\xa8M", ("127.0.0.1", 9999)
         )
-
-    async def test_read_coil_timeout_exception(self):
-        coil = self.heatpump.get_coil_by_address(43086)
-
-        with pytest.raises(CoilReadTimeoutException):
-            await self.nibegw.read_coil(coil, 0.1)
 
     async def test_write_coil(self):
         coil = self.heatpump.get_coil_by_address(48132)
@@ -105,7 +100,7 @@ class TestNibeGW(IsolatedAsyncioTestCase):
         self._enqueue_datagram(binascii.unhexlify("5c00206c01014c"))
         await self.nibegw.write_coil(coil_data)
 
-        self.transport.sendto.assert_called_with(
+        self.transport.sendto.assert_called_once_with(
             binascii.unhexlify("c06b0604bc0400000011"), ("127.0.0.1", 10000)
         )
 
@@ -116,6 +111,8 @@ class TestNibeGW(IsolatedAsyncioTestCase):
         self._enqueue_datagram(binascii.unhexlify("5c00206c01004d"))
         with pytest.raises(WriteException):
             await self.nibegw.write_coil(coil_data)
+
+        assert 1 == self.transport.sendto.call_count, "Should only send once, no retry"
 
     async def test_read_product_info(self):
         self._enqueue_datagram(
