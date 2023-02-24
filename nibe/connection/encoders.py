@@ -67,10 +67,10 @@ class CoilDataEncoder:
                 return CoilData(coil, None)
 
             return CoilData.from_raw_value(coil, value)
-        except (AssertionError, ValidationError) as e:
+        except (AssertionError, ConstructError, ValidationError) as e:
             raise DecodeException(
                 f"Failed to decode {coil.name} coil from raw: {hexlify(raw).decode('utf-8')}, exception: {e}"
-            )
+            ) from e
 
     def _is_hitting_integer_limit(self, coil: Coil, int_value: int):
         if coil.size == "u8" and int_value == 0xFF:
