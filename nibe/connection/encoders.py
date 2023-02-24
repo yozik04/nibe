@@ -35,10 +35,15 @@ parser_map_word_swaped.update(
 
 
 class CoilDataEncoder:
+    """Encode and decode coil data."""
+
     def __init__(self, word_swap: bool = True) -> None:
         self._word_swap = word_swap
 
     def encode(self, coil_data: CoilData) -> bytes:
+        """Encode coil data to bytes.
+
+        :raises EncodeException: If encoding fails"""
         try:
             coil_data.validate()
 
@@ -49,6 +54,9 @@ class CoilDataEncoder:
             )
 
     def decode(self, coil: Coil, raw: bytes) -> CoilData:
+        """Decode coil data from bytes.
+
+        :raises DecodeException: If decoding fails"""
         try:
             parser = self._get_parser(coil)
             assert parser.sizeof() <= len(

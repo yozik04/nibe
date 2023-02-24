@@ -4,18 +4,20 @@ from typing import List
 
 from async_modbus import modbus_for_url
 import async_timeout
+from tenacity import retry, retry_if_exception_type, stop_after_attempt
 from umodbus.exceptions import ModbusError
 
 from nibe.coil import Coil, CoilData
 from nibe.connection import DEFAULT_TIMEOUT, Connection
 from nibe.connection.encoders import CoilDataEncoder
 from nibe.exceptions import (
-    CoilReadException,
-    CoilReadTimeoutException,
-    CoilWriteException,
-    CoilWriteTimeoutException,
     ModbusUrlException,
+    ReadException,
+    ReadIOException,
+    ReadTimeoutException,
     ValidationError,
+    WriteIOException,
+    WriteTimeoutException,
 )
 from nibe.heatpump import HeatPump
 
@@ -62,9 +64,31 @@ def split_chunks(data, max_len, chunks) -> List[int]:
 
 
 class Modbus(Connection):
-    def __init__(self, heatpump: HeatPump, url, slave_id, conn_options=None):
+    """Modbus connection."""
+
+    def __init__(
+        self,
+        heatpump: HeatPump,
+        url,
+        slave_id,
+        conn_options=None,
+        read_retries: int = 3,
+        write_retries: int = 3,
+    ):
         self._slave_id = slave_id
         self._heatpump = heatpump
+
+        self.read_coil = retry(
+            retry=retry_if_exception_type(ReadIOException),
+            stop=stop_after_attempt(read_retries),
+            reraise=True,
+        )(self.read_coil)
+
+        self.write_coil = retry(
+            retry=retry_if_exception_type(WriteIOException),
+            stop=stop_after_attempt(write_retries),
+            reraise=True,
+        )(self.write_coil)
 
         try:
             self._client = modbus_for_url(url, conn_options)
@@ -107,18 +131,18 @@ class Modbus(Connection):
                         quantity=entity_count,
                     )
                 else:
-                    raise CoilReadException(f"Unsupported entity type {entity_type}")
+                    raise ReadException(f"Unsupported entity type {entity_type}")
 
             coil_data = self.coil_encoder.decode(coil, encode_u16_list(result))
 
             logger.info(coil_data)
             self._heatpump.notify_coil_update(coil_data)
         except ModbusError as exc:
-            raise CoilReadException(
+            raise ReadIOException(
                 f"Error '{str(exc)}' reading {coil.name} starting: {entity_number} count: {entity_count} from: {self._slave_id}"
             ) from exc
         except asyncio.TimeoutError:
-            raise CoilReadTimeoutException(
+            raise ReadTimeoutException(
                 f"Timeout waiting for read response for {coil.name}"
             )
 
@@ -153,25 +177,24 @@ class Modbus(Connection):
                         ),
                     )
                 else:
-                    raise CoilReadException(f"Unsupported entity type {entity_type}")
+                    raise ReadIOException(f"Unsupported entity type {entity_type}")
 
             if not result:
-                raise CoilWriteException(f"Heatpump denied writing {coil.name}")
+                raise WriteIOException(f"Heatpump denied writing {coil.name}")
             else:
                 logger.info(f"Write succeeded for {coil.name}")
         except ValidationError as exc:
-            raise CoilWriteException(
+            raise WriteIOException(
                 f"Error validating {coil.name} coil value: {str(exc)}"
             ) from exc
         except ModbusError as exc:
-            raise CoilWriteException(
+            raise WriteIOException(
                 f"Error '{str(exc)}' writing {coil.name} starting: {entity_number} count: {entity_count} to: {self._slave_id}"
             ) from exc
         except asyncio.TimeoutError:
-            raise CoilWriteTimeoutException(
+            raise WriteTimeoutException(
                 f"Timeout waiting for write feedback for {coil.name}"
             )
 
     async def verify_connectivity(self):
-        """Verify that we have functioning communication."""
         await verify_connectivity_read_write_alarm(self, self._heatpump)

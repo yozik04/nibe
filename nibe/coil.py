@@ -18,6 +18,8 @@ def is_coil_boolean(coil):
 
 
 class Coil:
+    """Represents a coil."""
+
     mappings: Optional[Dict[str, str]]
     reverse_mappings: Optional[Dict[str, str]]
 
@@ -68,6 +70,7 @@ class Coil:
             self.set_mappings({"0": "OFF", "1": "ON"})
 
     def set_mappings(self, mappings):
+        """Set mappings for value translation."""
         if mappings:
             self.mappings = {k: v.upper() for k, v in mappings.items()}
             self.reverse_mappings = {v.upper(): k for k, v in mappings.items()}
@@ -77,9 +80,13 @@ class Coil:
 
     @property
     def has_mappings(self):
+        """Return True if mappings are defined."""
         return self.mappings is not None
 
     def get_mapping_for(self, value: int):
+        """Return mapping for value.
+
+        :raises NoMappingException: When no mapping is found"""
         if not self.mappings:
             raise NoMappingException(f"No mappings defined for {self.name}")
 
@@ -91,6 +98,9 @@ class Coil:
             )
 
     def get_reverse_mapping_for(self, value: Union[int, float, str, None]) -> int:
+        """Return reverse mapping for value.
+
+        :raises NoMappingException: When no mapping is found"""
         if not isinstance(value, str):
             raise ValidationError(
                 f"{self.name} coil value ({value}) is invalid type (str is expected)"
@@ -110,6 +120,7 @@ class Coil:
             )
 
     def is_raw_value_valid(self, value: int) -> bool:
+        """Return True if provided raw value is valid."""
         if not isinstance(value, int):
             return False
 
@@ -127,6 +138,8 @@ class Coil:
 
 @dataclass
 class CoilData:
+    """Represents a coil data."""
+
     coil: Coil
     value: Union[int, float, str, None] = None
 
@@ -135,10 +148,12 @@ class CoilData:
 
     @staticmethod
     def from_mapping(coil: Coil, value: int) -> "CoilData":
+        """Create CoilData from raw value using mappings."""
         return CoilData(coil, coil.get_mapping_for(value))
 
     @staticmethod
     def from_raw_value(coil: Coil, value: int) -> "CoilData":
+        """Create CoilData from raw value."""
         assert coil.is_raw_value_valid(
             value
         ), f"Raw value {value} is out of range for coil {coil.name}"
@@ -150,6 +165,7 @@ class CoilData:
 
     @property
     def raw_value(self) -> int:
+        """Return raw value for coil."""
         if self.coil.has_mappings:
             return self.coil.get_reverse_mapping_for(self.value)
 
@@ -165,6 +181,9 @@ class CoilData:
         return raw_value
 
     def validate(self) -> None:
+        """Validate coil data.
+
+        :raises ValidationError: when validation fails"""
         if self.value is None:
             raise ValidationError(f"Value for {self.coil.name} is not set")
 

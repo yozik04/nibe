@@ -8,7 +8,7 @@ import pytest
 
 from nibe.coil import CoilData
 from nibe.connection.nibegw import ConnectionStatus, NibeGW
-from nibe.exceptions import CoilReadTimeoutException, ReadException, WriteException
+from nibe.exceptions import ReadException, ReadTimeoutException, WriteException
 from nibe.heatpump import HeatPump, Model, ProductInfo
 
 
@@ -82,7 +82,7 @@ class TestNibeGW(IsolatedAsyncioTestCase):
         coil = self.heatpump.get_coil_by_address(43086)
 
         start = time.time()
-        with pytest.raises(CoilReadTimeoutException):
+        with pytest.raises(ReadTimeoutException):
             await self.nibegw.read_coil(coil, timeout=0.1)
         duration = time.time() - start
         assert (

@@ -56,17 +56,17 @@ from nibe.event_server import EventServer
 from nibe.exceptions import (
     AddressInUseException,
     CoilNotFoundException,
-    CoilReadException,
-    CoilReadSendException,
-    CoilReadTimeoutException,
-    CoilWriteException,
     CoilWriteSendException,
-    CoilWriteTimeoutException,
     DecodeException,
     NibeException,
     ProductInfoReadTimeoutException,
     ReadException,
+    ReadIOException,
+    ReadSendException,
+    ReadTimeoutException,
     WriteException,
+    WriteIOException,
+    WriteTimeoutException,
 )
 from nibe.heatpump import HeatPump, ProductInfo
 
@@ -76,6 +76,8 @@ logger = logging.getLogger("nibe").getChild(__name__)
 
 
 class ConnectionStatus(Enum):
+    """Connection status of the NibeGW connection."""
+
     UNKNOWN = "unknown"
     INITIALIZING = "initializing"
     LISTENING = "listening"
@@ -93,6 +95,8 @@ class CoilAction:
 
 
 class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
+    """NibeGW connection."""
+
     CONNECTION_STATUS_EVENT = "connection_status"
     PRODUCT_INFO_EVENT = "product_info"
     _futures: Dict[str, Future]
@@ -130,13 +134,13 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
         self.coil_encoder = CoilDataEncoder(heatpump.word_swap)
 
         self.read_coil = retry(
-            retry=retry_if_exception_type(CoilReadException),
+            retry=retry_if_exception_type(ReadIOException),
             stop=stop_after_attempt(read_retries),
             reraise=True,
         )(self.read_coil)
 
         self.write_coil = retry(
-            retry=retry_if_exception_type(CoilWriteException),
+            retry=retry_if_exception_type(WriteIOException),
             stop=stop_after_attempt(write_retries),
             reraise=True,
         )(self.write_coil)
@@ -179,10 +183,12 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
         await asyncio.get_event_loop().create_datagram_endpoint(lambda: self, sock=sock)
 
     def connection_made(self, transport):
+        """Callback when connection is made."""
         self._set_status(ConnectionStatus.LISTENING)
         self._transport = transport
 
     def datagram_received(self, data: bytes, addr):
+        """Callback when data is received."""
         logger.debug(f"Received {hexlify(data).decode('utf-8')} from {addr}")
         try:
             msg = Response.parse(data)
@@ -261,16 +267,14 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
             try:
                 self._transport.sendto(data, (self._remote_ip, self._remote_read_port))
             except socket.gaierror:
-                raise CoilReadSendException(
-                    f"Unable to lookup hostname: {self._remote_ip}"
-                )
+                raise ReadSendException(f"Unable to lookup hostname: {self._remote_ip}")
 
             logger.debug(f"Waiting for read response for {coil.name}")
 
             try:
                 return await asyncio.wait_for(future, timeout)
             except asyncio.TimeoutError:
-                raise CoilReadTimeoutException(
+                raise ReadTimeoutException(
                     f"Timeout waiting for read response for {coil.name}"
                 )
             except DecodeException as e:
@@ -363,21 +367,24 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
                 else:
                     logger.info(f"Write succeeded for {coil.name}")
             except asyncio.TimeoutError:
-                raise CoilWriteTimeoutException(
+                raise WriteTimeoutException(
                     f"Timeout waiting for write feedback for {coil.name}"
                 )
             finally:
                 del self._futures["write"]
 
     def error_received(self, exc):
+        """Handle errors from the transport"""
         logger.error(exc)
 
     @property
     def status(self) -> ConnectionStatus:
+        """Get the current connection status"""
         return self._status
 
     @property
     def remote_ip(self) -> Optional[str]:
+        """Get the remote IP address"""
         return self._remote_ip
 
     def _set_status(self, status: ConnectionStatus):
@@ -451,7 +458,6 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
             self._on_coil_read_error(coil_address, value, e)
 
     async def verify_connectivity(self):
-        """Verify that we have functioning communication."""
         await verify_connectivity_read_write_alarm(self, self._heatpump)
 
     async def stop(self):
