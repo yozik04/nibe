@@ -158,5 +158,101 @@
         "unit": "kW"
       }
     }
+  },
+  {
+    "description": "Corrections for compressor power units - S series",
+    "files": [
+      "s1155_s1255.json"
+    ],
+    "data": {
+      "32167": {
+        "unit": "W"
+      }
+    }
+  },
+  {
+    "description": "Fix wrong degrees symbol",
+    "files": [
+      "smo20.json",
+      "smo40.json",
+      "vvm225_vvm320_vvm325.json",
+      "vvm310_vvm500.json"
+    ],
+    "data": {
+      "40121": {
+        "unit": "°C"
+      }
+    }
+  },
+  {
+    "description": "Add ampere unit to first current sensor",
+    "files": [
+      "smo20.json",
+      "smo40.json",
+      "vvm225_vvm320_vvm325.json",
+      "vvm310_vvm500.json"
+    ],
+    "data": {
+      "44866": {
+        "unit": "A"
+      }
+    }
+  },
+  {
+    "description": "Add ampere unit to other current sensors",
+    "files": [
+      "smo40.json"
+    ],
+    "data": {
+      "44824": {
+        "unit": "A"
+      },
+      "44830": {
+        "unit": "A"
+      },
+      "44836": {
+        "unit": "A"
+      },
+      "44842": {
+        "unit": "A"
+      },
+      "44848": {
+        "unit": "A"
+      },
+      "44854": {
+        "unit": "A"
+      },
+      "44860": {
+        "unit": "A"
+      }
+    }
+  },
+  {
+    "description": "Allow for numerical selection for Outdoor Filter Time",
+    "files": [
+      "smo40.json"
+    ],
+    "data": {
+     "47377": {
+        "size": "s16",
+        "mappings": null
+      }
+    }
+  },
+  {
+    "description": "Fix invalid datatype of 'Cooling with room sensor'",
+    "files": [
+      "smo40.json"
+    ],
+    "data": {
+      "47340": {
+         "factor": 1,
+         "max": 1.0,
+         "mappings": {
+           "0": "Off",
+           "1": "On"
+         }
+      }
+    }
   }
 ]

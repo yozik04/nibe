@@ -12,8 +12,8 @@ from construct import (
     Padded,
 )
 
-from nibe.coil import Coil
-from nibe.exceptions import DecodeException, EncodeException
+from nibe.coil import Coil, CoilData
+from nibe.exceptions import DecodeException, EncodeException, ValidationError
 from nibe.parsers import WordSwapped
 
 parser_map = {
@@ -35,30 +35,28 @@ parser_map_word_swaped.update(
 
 
 class CoilDataEncoder:
+    """Encode and decode coil data."""
+
     def __init__(self, word_swap: bool = True) -> None:
         self._word_swap = word_swap
 
-    def encode(self, coil: Coil):
-        value = coil.value
+    def encode(self, coil_data: CoilData) -> bytes:
+        """Encode coil data to bytes.
+
+        :raises EncodeException: If encoding fails"""
         try:
-            assert value is not None, "Unable to encode None value"
-            if coil.has_mappings:
-                return self._pad(
-                    self._get_parser(coil), coil.get_reverse_mapping_for(value)
-                )
+            coil_data.validate()
 
-            if coil.factor != 1:
-                value *= coil.factor
-
-            coil.check_raw_value_bounds(value)
-
-            return self._pad(self._get_parser(coil), value)
-        except (ConstructError, AssertionError) as e:
+            return self._pad(self._get_parser(coil_data.coil), coil_data.raw_value)
+        except (ConstructError, ValidationError) as e:
             raise EncodeException(
-                f"Failed to encode {coil.name} coil for value: {value}, exception: {e}"
+                f"Failed to encode {coil_data.coil.name} coil for value: {coil_data.value}, exception: {e}"
             )
 
-    def decode(self, coil: Coil, raw: bytes):
+    def decode(self, coil: Coil, raw: bytes) -> CoilData:
+        """Decode coil data from bytes.
+
+        :raises DecodeException: If decoding fails"""
         try:
             parser = self._get_parser(coil)
             assert parser.sizeof() <= len(
@@ -66,18 +64,13 @@ class CoilDataEncoder:
             ), f"Invalid raw data size: given {len(raw)}, expected at least {parser.sizeof()}"
             value = parser.parse(raw)
             if self._is_hitting_integer_limit(coil, value):
-                return None
-            coil.check_raw_value_bounds(value)
-        except (ConstructError, AssertionError) as e:
+                return CoilData(coil, None)
+
+            return CoilData.from_raw_value(coil, value)
+        except (AssertionError, ConstructError, ValidationError) as e:
             raise DecodeException(
                 f"Failed to decode {coil.name} coil from raw: {hexlify(raw).decode('utf-8')}, exception: {e}"
             ) from e
-        if coil.factor != 1:
-            value /= coil.factor
-        if not coil.has_mappings:
-            return value
-
-        return coil.get_mapping_for(value)
 
     def _is_hitting_integer_limit(self, coil: Coil, int_value: int):
         if coil.size == "u8" and int_value == 0xFF:
@@ -101,5 +94,5 @@ class CoilDataEncoder:
         else:
             return parser_map_word_swaped[coil.size]
 
-    def _pad(self, parser: Construct, value) -> bytes:
-        return Padded(4, parser).build(int(value))
+    def _pad(self, parser: Construct, value: int) -> bytes:
+        return Padded(4, parser).build(value)

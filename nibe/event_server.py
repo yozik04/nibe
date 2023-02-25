@@ -12,6 +12,7 @@ class EventServer:
         self._listeners = defaultdict(list)
 
     def notify_event_listeners(self, event_name: str, *args, **kwargs):
+        """Notify all listeners of an event"""
         for listener in self._listeners[event_name]:
             try:
                 listener(*args, **kwargs)
@@ -19,4 +20,5 @@ class EventServer:
                 logger.exception(e)
 
     def subscribe(self, event_name: str, callback: Callable[..., None]):
+        """Subscribe to an event"""
         self._listeners[event_name].append(callback)
