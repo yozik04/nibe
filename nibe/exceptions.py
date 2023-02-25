@@ -17,7 +17,11 @@ class DecodeException(NibeException):
     pass
 
 
-class NoMappingException(DecodeException):
+class ValidationError(NibeException):
+    pass
+
+
+class NoMappingException(ValidationError):
     pass
 
 
@@ -29,15 +33,15 @@ class WriteException(NibeException):
     pass
 
 
-class CoilWriteException(WriteException):
+class WriteIOException(WriteException):
     pass
 
 
-class CoilWriteSendException(CoilWriteException):
+class CoilWriteSendException(WriteIOException):
     pass
 
 
-class CoilWriteTimeoutException(CoilWriteException):
+class WriteTimeoutException(WriteIOException):
     pass
 
 
@@ -45,29 +49,25 @@ class ReadException(NibeException):
     pass
 
 
-class CoilReadException(ReadException):
+class ReadIOException(ReadException):
     pass
 
 
-class CoilReadExceptionGroup(ExceptionGroup, CoilReadException):
+class ReadExceptionGroup(ExceptionGroup, ReadIOException):
     def __str__(self) -> str:
         messages = ", ".join(str(exception) for exception in self._exceptions)
         return f"{self.message} ({messages})"
 
 
-class CoilReadSendException(CoilReadException):
+class ReadSendException(ReadIOException):
     pass
 
 
-class CoilReadTimeoutException(CoilReadException):
+class ReadTimeoutException(ReadIOException):
     pass
 
 
-class ProductInfoReadException(ReadException):
-    pass
-
-
-class ProductInfoReadTimeoutException(ProductInfoReadException):
+class ProductInfoReadTimeoutException(ReadIOException):
     pass
 
 

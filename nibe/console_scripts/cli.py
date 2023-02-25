@@ -10,7 +10,7 @@ from typing import IO
 import asyncclick as click
 from construct import Const, GreedyRange, Int8ul, RawCopy, Select, Struct, Terminated
 
-from ..coil import Coil
+from ..coil import CoilData
 from ..connection import Connection
 from ..connection.modbus import Modbus
 from ..connection.nibegw import NibeGW, Request, Response
@@ -113,7 +113,6 @@ async def nibegw(
 async def modbus(
     ctx: click.Context, remote_ip: str, remote_port: str, model: str, slave_id: int
 ):
-
     heatpump = HeatPump(Model[model])
     await heatpump.initialize()
     connection = Modbus(
@@ -133,8 +132,8 @@ def add_connect_command(command: click.Command):
 @click.command(help="Monitor data sent by pump out of band")
 @click.pass_obj
 async def monitor(obj: ConnectionContext):
-    def on_coil_update(coil: Coil):
-        click.echo(f"{coil.name}: {coil.value}")
+    def on_coil_update(coil_data: CoilData):
+        click.echo(coil_data)
 
     obj.heatpump.subscribe(HeatPump.COIL_UPDATE_EVENT, on_coil_update)
 
@@ -172,11 +171,12 @@ add_connect_command(read)
 @click.argument("value", type=str)
 async def write(obj: ConnectionContext, parameter: int, value: str, **kwargs):
     coil = obj.heatpump.get_coil_by_address(parameter)
-    if coil.mappings:
-        coil.value = value
-    else:
-        coil.value = float(value)
-    click.echo(await obj.connection.write_coil(coil))
+    if not coil.mappings:
+        value = float(value)
+
+    coil_data = CoilData(coil, value)
+    await obj.connection.write_coil(coil_data)
+    click.echo(coil_data)
 
 
 add_connect_command(read)
@@ -211,9 +211,7 @@ def parse_stream(stream: io.RawIOBase):
 @cli.command()
 @click.argument("file", type=click.File())
 def parse_file(file: IO):
-
     with io.BytesIO(bytes(read_bytes_socat(file))) as stream:
-
         for packet in parse_stream(stream):
             click.echo(packet.fields.value)
 
