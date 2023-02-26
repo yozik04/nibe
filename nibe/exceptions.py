@@ -55,7 +55,7 @@ class ReadIOException(ReadException):
 
 class ReadExceptionGroup(ExceptionGroup, ReadIOException):
     def __str__(self) -> str:
-        messages = ", ".join(str(exception) for exception in self._exceptions)
+        messages = ", ".join(str(exception) for exception in self.exceptions)
         return f"{self.message} ({messages})"
 
 
