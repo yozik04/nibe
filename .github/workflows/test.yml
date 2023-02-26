@@ -6,8 +6,11 @@ name: Test and Lint
 on:
   workflow_call:
   workflow_dispatch:
-  pull_request:
   push:
+    branches: [ master ]
+  pull_request:
+    # The branches below must be a subset of the branches above
+    branches: [ master ]
 
 jobs:
   build:
