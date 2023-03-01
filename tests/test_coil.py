@@ -28,6 +28,11 @@ def encoder():
 
 
 @pytest.fixture
+def encoder_word_swap_false():
+    return CoilDataEncoder(word_swap=False)
+
+
+@pytest.fixture
 def encoder_word_swap():
     return CoilDataEncoder(word_swap=True)
 
@@ -44,33 +49,46 @@ def coil_signed_s8():
         (b"\xfc\x00\x00\x00", -4),
         (b"\xfc\x00", -4),
         (b"\xfc", -4),
+        (b"\xff", -1),
+        (b"\x7f", 127),
+        (b"\x81", -127),
         (b"\x80", None),
     ],
 )
 def test_signed_s8_decode(
-    raw_value, value, encoder: CoilDataEncoder, coil_signed_s8: Coil
+    raw_value, value, encoder_word_swap_false: CoilDataEncoder, coil_signed_s8: Coil
 ):
-    assert encoder.decode(coil_signed_s8, raw_value) == CoilData(coil_signed_s8, value)
+    assert encoder_word_swap_false.decode(coil_signed_s8, raw_value) == CoilData(
+        coil_signed_s8, value
+    )
 
 
-def test_signed_s8_encode(encoder: CoilDataEncoder, coil_signed_s8: Coil):
+def test_signed_s8_encode(
+    encoder_word_swap_false: CoilDataEncoder, coil_signed_s8: Coil
+):
     coil_data = CoilData(coil_signed_s8, -4)
-    assert encoder.encode(coil_data) == b"\xfc\x00\x00\x00"
+    assert encoder_word_swap_false.encode(coil_data) == b"\xfc\x00\x00\x00"
 
 
-@pytest.mark.parametrize("value", [(256), (None)])
+@pytest.mark.parametrize("value", [(128), (None), (-129)])
 def test_signed_s8_encode_exceptions(
-    value, encoder: CoilDataEncoder, coil_signed_s8: Coil
+    value, encoder_word_swap_false: CoilDataEncoder, coil_signed_s8: Coil
 ):
     with pytest.raises(EncodeException):
         coil_data = CoilData(coil_signed_s8, value)
-        encoder.encode(coil_data)
+        encoder_word_swap_false.encode(coil_data)
 
 
 # Unsigned 8-bit
 @pytest.fixture
 def coil_unsigned_u8():
     return Coil(123, "test", "test", "u8")
+
+
+def test_validate_error(coil_unsigned_u8: Coil):
+    coil_data = CoilData(coil_unsigned_u8, "fail")
+    with pytest.raises(ValidationError):
+        coil_data.validate()
 
 
 @pytest.mark.parametrize(
@@ -84,9 +102,9 @@ def coil_unsigned_u8():
     ],
 )
 def test_unsigned_s8_decode(
-    raw_value, value, encoder: CoilDataEncoder, coil_unsigned_u8: Coil
+    raw_value, value, encoder_word_swap_false: CoilDataEncoder, coil_unsigned_u8: Coil
 ):
-    assert encoder.decode(coil_unsigned_u8, raw_value) == CoilData(
+    assert encoder_word_swap_false.decode(coil_unsigned_u8, raw_value) == CoilData(
         coil_unsigned_u8, value
     )
 
@@ -99,16 +117,18 @@ def test_unsigned_s8_decode(
     ],
 )
 def test_unsigned_s8_encode(
-    value, raw_value, encoder: CoilDataEncoder, coil_unsigned_u8: Coil
+    value, raw_value, encoder_word_swap_false: CoilDataEncoder, coil_unsigned_u8: Coil
 ):
     coil_data = CoilData(coil_unsigned_u8, value)
-    assert encoder.encode(coil_data) == raw_value
+    assert encoder_word_swap_false.encode(coil_data) == raw_value
 
 
-def test_unsigned_s8_encode_exception(encoder: CoilDataEncoder, coil_unsigned_u8: Coil):
+def test_unsigned_s8_encode_exception(
+    encoder_word_swap_false: CoilDataEncoder, coil_unsigned_u8: Coil
+):
     with pytest.raises(EncodeException):
         coil_data = CoilData(coil_unsigned_u8, 256)
-        encoder.encode(coil_data)
+        encoder_word_swap_false.encode(coil_data)
 
 
 # Unsigned 8-bit with word swap
@@ -192,9 +212,9 @@ def test_signed_s16_is_valid(value, expected_raises, coil_signed_s16: Coil):
     ],
 )
 def test_signed_s16_decode(
-    raw_value, value, encoder: CoilDataEncoder, coil_signed_s16: Coil
+    raw_value, value, encoder_word_swap_false: CoilDataEncoder, coil_signed_s16: Coil
 ):
-    assert encoder.decode(coil_signed_s16, raw_value) == CoilData(
+    assert encoder_word_swap_false.decode(coil_signed_s16, raw_value) == CoilData(
         coil_signed_s16, value
     )
 
@@ -207,15 +227,17 @@ def test_signed_s16_decode(
     ],
 )
 def test_signed_s16_decode_exception(
-    raw_value, encoder: CoilDataEncoder, coil_signed_s16: Coil
+    raw_value, encoder_word_swap_false: CoilDataEncoder, coil_signed_s16: Coil
 ):
     with pytest.raises(DecodeException):
-        encoder.decode(coil_signed_s16, raw_value)
+        encoder_word_swap_false.decode(coil_signed_s16, raw_value)
 
 
-def test_signed_s16_encode(encoder: CoilDataEncoder, coil_signed_s16: Coil):
+def test_signed_s16_encode(
+    encoder_word_swap_false: CoilDataEncoder, coil_signed_s16: Coil
+):
     coil_data = CoilData(coil_signed_s16, 15.1)
-    assert encoder.encode(coil_data) == b"\x97\x00\x00\x00"
+    assert encoder_word_swap_false.encode(coil_data) == b"\x97\x00\x00\x00"
 
 
 @pytest.mark.parametrize(
@@ -226,11 +248,11 @@ def test_signed_s16_encode(encoder: CoilDataEncoder, coil_signed_s16: Coil):
     ],
 )
 def test_signed_s16_encode_exception(
-    value, encoder: CoilDataEncoder, coil_signed_s16: Coil
+    value, encoder_word_swap_false: CoilDataEncoder, coil_signed_s16: Coil
 ):
     with pytest.raises(EncodeException):
         coil_data = CoilData(coil_signed_s16, value)
-        encoder.encode(coil_data)
+        encoder_word_swap_false.encode(coil_data)
 
 
 # Unsigned 16-bit
@@ -254,9 +276,9 @@ def coil_unsigned_u16():
     ],
 )
 def test_unsigned_u16_decode(
-    raw_value, value, encoder: CoilDataEncoder, coil_unsigned_u16: Coil
+    raw_value, value, encoder_word_swap_false: CoilDataEncoder, coil_unsigned_u16: Coil
 ):
-    assert encoder.decode(coil_unsigned_u16, raw_value) == CoilData(
+    assert encoder_word_swap_false.decode(coil_unsigned_u16, raw_value) == CoilData(
         coil_unsigned_u16, value
     )
 
@@ -269,10 +291,10 @@ def test_unsigned_u16_decode(
     ],
 )
 def test_unsigned_u16_encode(
-    value, raw_value, encoder: CoilDataEncoder, coil_unsigned_u16: Coil
+    value, raw_value, encoder_word_swap_false: CoilDataEncoder, coil_unsigned_u16: Coil
 ):
     coil_data = CoilData(coil_unsigned_u16, value)
-    assert encoder.encode(coil_data) == raw_value
+    assert encoder_word_swap_false.encode(coil_data) == raw_value
 
 
 # Unsigned 16-bit word swap
@@ -320,21 +342,23 @@ def coil_signed_s32():
 @pytest.mark.parametrize(
     "raw_value, value",
     [
-        (b"2T\x00\x00", 21554),
-        (b"\x00\x00\x00\x80", None),
+        (b"\x00\x002T", 21554),
+        (b"\x00\x80\x00\x00", None),
     ],
 )
 def test_signed_s32_decode(
-    raw_value, value, encoder: CoilDataEncoder, coil_signed_s32: Coil
+    raw_value, value, encoder_word_swap_false: CoilDataEncoder, coil_signed_s32: Coil
 ):
-    assert encoder.decode(coil_signed_s32, raw_value) == CoilData(
+    assert encoder_word_swap_false.decode(coil_signed_s32, raw_value) == CoilData(
         coil_signed_s32, value
     )
 
 
-def test_signed_s32_encode(encoder: CoilDataEncoder, coil_signed_s32: Coil):
+def test_signed_s32_encode(
+    encoder_word_swap_false: CoilDataEncoder, coil_signed_s32: Coil
+):
     coil_data = CoilData(coil_signed_s32, 21554)
-    assert encoder.encode(coil_data) == b"2T\x00\x00"
+    assert encoder_word_swap_false.encode(coil_data) == b"\x00\x002T"
 
 
 # Signed 32-bit word swap
@@ -389,18 +413,21 @@ def coil_unsigned_u8_mapping():
     ],
 )
 def test_unsigned_u8_mapping_decode(
-    raw_value, value, encoder: CoilDataEncoder, coil_unsigned_u8_mapping: Coil
+    raw_value,
+    value,
+    encoder_word_swap_false: CoilDataEncoder,
+    coil_unsigned_u8_mapping: Coil,
 ):
-    assert encoder.decode(coil_unsigned_u8_mapping, raw_value) == CoilData(
-        coil_unsigned_u8_mapping, value
-    )
+    assert encoder_word_swap_false.decode(
+        coil_unsigned_u8_mapping, raw_value
+    ) == CoilData(coil_unsigned_u8_mapping, value)
 
 
 def test_unsigned_u8_mapping_decode_exception(
-    encoder: CoilDataEncoder, coil_unsigned_u8_mapping: Coil
+    encoder_word_swap_false: CoilDataEncoder, coil_unsigned_u8_mapping: Coil
 ):
     with pytest.raises(DecodeException):
-        encoder.decode(coil_unsigned_u8_mapping, b"\x00")
+        encoder_word_swap_false.decode(coil_unsigned_u8_mapping, b"\x00")
 
 
 @pytest.mark.parametrize(
@@ -412,18 +439,21 @@ def test_unsigned_u8_mapping_decode_exception(
     ],
 )
 def test_unsigned_u8_mapping_encode(
-    value, raw_value, encoder: CoilDataEncoder, coil_unsigned_u8_mapping: Coil
+    value,
+    raw_value,
+    encoder_word_swap_false: CoilDataEncoder,
+    coil_unsigned_u8_mapping: Coil,
 ):
     coil_data = CoilData(coil_unsigned_u8_mapping, value)
-    assert encoder.encode(coil_data) == raw_value
+    assert encoder_word_swap_false.encode(coil_data) == raw_value
 
 
 def test_unsigned_u8_mapping_encode_exception(
-    encoder: CoilDataEncoder, coil_unsigned_u8_mapping: Coil
+    encoder_word_swap_false: CoilDataEncoder, coil_unsigned_u8_mapping: Coil
 ):
     coil_data = CoilData(coil_unsigned_u8_mapping, "Beer")
     with pytest.raises(EncodeException):
-        encoder.encode(coil_data)
+        encoder_word_swap_false.encode(coil_data)
 
 
 # Unsigned 8-bit boolean
@@ -443,9 +473,11 @@ def test_unsigned_u8_boolean(coil_unsigned_u8_boolean: Coil):
     assert coil_unsigned_u8_boolean.is_boolean
 
 
-def test_unsigned_u8_encode(encoder: CoilDataEncoder, coil_unsigned_u8_boolean: Coil):
+def test_unsigned_u8_encode(
+    encoder_word_swap_false: CoilDataEncoder, coil_unsigned_u8_boolean: Coil
+):
     coil_data = CoilData(coil_unsigned_u8_boolean, "On")
-    assert encoder.encode(coil_data) == b"\x01\x00\x00\x00"
+    assert encoder_word_swap_false.encode(coil_data) == b"\x01\x00\x00\x00"
 
 
 # Unsigned 8-bit boolean with bounds
@@ -478,8 +510,18 @@ def test_unsigned_u8_boolean_with_bounds_is_boolean(
 def test_unsigned_u8_boolean_with_bounds_encode(
     value,
     raw_value,
-    encoder: CoilDataEncoder,
+    encoder_word_swap_false: CoilDataEncoder,
     coil_unsigned_u8_boolean_with_bounds: Coil,
 ):
     coil_data = CoilData(coil_unsigned_u8_boolean_with_bounds, value)
-    assert encoder.encode(coil_data) == raw_value
+    assert encoder_word_swap_false.encode(coil_data) == raw_value
+
+
+@pytest.mark.parametrize("size", ["u32", "s32"])
+def test_word_swap_unset(size, encoder: CoilDataEncoder):
+    coil = Coil(1, "test", "test", size)
+    with pytest.raises(DecodeException):
+        encoder.decode(coil, b"(\x06\x00\x00")
+
+    with pytest.raises(EncodeException):
+        encoder.encode(CoilData(coil, 1))

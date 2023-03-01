@@ -4,7 +4,6 @@ from unittest.mock import Mock
 import pytest
 
 from nibe.coil import CoilData
-from nibe.connection.nibegw import CoilDataEncoder
 from nibe.exceptions import CoilNotFoundException, ModelIdentificationFailed
 from nibe.heatpump import HeatPump, Model, ProductInfo, Series
 
@@ -63,31 +62,6 @@ class HeatpumpTestCase(unittest.IsolatedAsyncioTestCase):
             coil_data
         )  # Error should be logged but not thrown out
 
-    def test_word_swap_is_true(self):
-        coil = self.heat_pump.get_coil_by_address(43420)
-        assert (
-            CoilDataEncoder(self.heat_pump.word_swap)
-            .decode(coil, b"(\x06\x00\x00")
-            .value
-            == 1576
-        )
-
-
-class HeatpumpWordSwapTestCase(unittest.IsolatedAsyncioTestCase):
-    async def asyncSetUp(self) -> None:
-        self.heat_pump = HeatPump(Model.F1255)
-        self.heat_pump.word_swap = False
-        await self.heat_pump.initialize()
-
-    def test_word_swap_is_false(self):
-        coil = self.heat_pump.get_coil_by_address(43420)
-        assert (
-            CoilDataEncoder(self.heat_pump.word_swap)
-            .decode(coil, b"\x00\x00(\x06")
-            .value
-            == 1576
-        )
-
 
 class HeatpumpIntialization(unittest.IsolatedAsyncioTestCase):
     def setUp(self) -> None:
@@ -97,11 +71,14 @@ class HeatpumpIntialization(unittest.IsolatedAsyncioTestCase):
         self.heat_pump.model = Model.F1255
         await self.heat_pump.initialize()
         self.heat_pump.get_coil_by_address(43420)
+        assert self.heat_pump.model is Model.F1255
 
     async def test_initalize_with_product_info(self):
-        self.heat_pump.product_info = ProductInfo("F1255-12 R", 0)
+        product_info = ProductInfo("F1255-12 R", 0)
+        self.heat_pump.product_info = product_info
         await self.heat_pump.initialize()
         self.heat_pump.get_coil_by_address(43420)
+        assert self.heat_pump.product_info is product_info
 
     async def test_initalization_failed(self):
         with pytest.raises(AssertionError):

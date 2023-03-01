@@ -52,6 +52,7 @@ from tenacity import retry, retry_if_exception_type, stop_after_attempt
 from nibe.coil import Coil, CoilData
 from nibe.connection import DEFAULT_TIMEOUT, READ_PRODUCT_INFO_TIMEOUT, Connection
 from nibe.connection.encoders import CoilDataEncoder
+from nibe.connection.mixins import ConnectionStatus, ConnectionStatusMixin
 from nibe.event_server import EventServer
 from nibe.exceptions import (
     AddressInUseException,
@@ -75,33 +76,18 @@ from . import verify_connectivity_read_write_alarm
 logger = logging.getLogger("nibe").getChild(__name__)
 
 
-class ConnectionStatus(Enum):
-    """Connection status of the NibeGW connection."""
-
-    UNKNOWN = "unknown"
-    INITIALIZING = "initializing"
-    LISTENING = "listening"
-    CONNECTED = "connected"
-    DISCONNECTED = "disconnected"
-
-    def __str__(self):
-        return self.value
-
-
 @dataclass
 class CoilAction:
     coil: Coil
     future: Future
 
 
-class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
+class NibeGW(asyncio.DatagramProtocol, Connection, EventServer, ConnectionStatusMixin):
     """NibeGW connection."""
 
-    CONNECTION_STATUS_EVENT = "connection_status"
     PRODUCT_INFO_EVENT = "product_info"
     _futures: Dict[str, Future]
     _registered_reads: Dict[str, CoilAction]
-    _status: ConnectionStatus
 
     def __init__(
         self,
@@ -125,7 +111,6 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
         self._remote_write_port = remote_write_port
 
         self._transport = None
-        self._status = ConnectionStatus.UNKNOWN
 
         self._send_lock = asyncio.Lock()
         self._futures = {}
@@ -148,7 +133,7 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
     async def start(self):
         logger.info(f"Starting UDP server on port {self._listening_port}")
 
-        self._set_status(ConnectionStatus.INITIALIZING)
+        self.status = ConnectionStatus.INITIALIZING
 
         family, type, proto, _, sockaddr = socket.getaddrinfo(
             self._listening_ip,
@@ -182,9 +167,12 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
 
         await asyncio.get_event_loop().create_datagram_endpoint(lambda: self, sock=sock)
 
+        if self._heatpump.word_swap is None:
+            await self.detect_word_swap()
+
     def connection_made(self, transport):
         """Callback when connection is made."""
-        self._set_status(ConnectionStatus.LISTENING)
+        self.status = ConnectionStatus.LISTENING
         self._transport = transport
 
     def datagram_received(self, data: bytes, addr):
@@ -197,7 +185,7 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
                 logger.debug("Pump discovered at %s", addr)
                 self._remote_ip = addr[0]
 
-            self._set_status(ConnectionStatus.CONNECTED)
+            self.status = ConnectionStatus.CONNECTED
 
             logger.debug(msg.fields.value)
             cmd = msg.fields.value.cmd
@@ -244,6 +232,18 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
             raise ProductInfoReadTimeoutException("Timeout waiting for product message")
         finally:
             del self._futures["product_info"]
+
+    async def detect_word_swap(self, timeout: float = DEFAULT_TIMEOUT) -> None:
+        """Read word swap setting."""
+        try:
+            coil = self._heatpump.get_coil_by_address(48852)
+            assert coil.is_boolean, "Coil is not boolean"
+            coil_data = await self.read_coil(coil, timeout)
+            self.coil_encoder.word_swap = coil_data.value == "ON"
+            self._heatpump.word_swap = self.coil_encoder.word_swap
+            logger.info(f"Word swap setting detected: {coil_data.value}")
+        except Exception as e:
+            logger.warning(f"Failed to detect word swap setting: {e}")
 
     async def read_coil(self, coil: Coil, timeout: float = DEFAULT_TIMEOUT) -> CoilData:
         async with self._send_lock:
@@ -378,19 +378,9 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
         logger.error(exc)
 
     @property
-    def status(self) -> ConnectionStatus:
-        """Get the current connection status"""
-        return self._status
-
-    @property
     def remote_ip(self) -> Optional[str]:
         """Get the remote IP address"""
         return self._remote_ip
-
-    def _set_status(self, status: ConnectionStatus):
-        if status != self._status:
-            self._status = status
-            self.notify_event_listeners(self.CONNECTION_STATUS_EVENT, status=status)
 
     def _on_rmu_data(self, value: Container):
         data = value.data
@@ -465,7 +455,7 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
             self._transport.close()
             self._transport = None
         await asyncio.sleep(0)
-        self._set_status(ConnectionStatus.DISCONNECTED)
+        self.status = ConnectionStatus.DISCONNECTED
 
 
 def xor8(data: bytes) -> int:

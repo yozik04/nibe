@@ -17,15 +17,16 @@ class TestNibeGW(IsolatedAsyncioTestCase):
         self.loop = asyncio.get_running_loop()
 
         self.heatpump = HeatPump(Model.F1255)
+        self.heatpump.word_swap = True
         await self.heatpump.initialize()
         self.nibegw = NibeGW(self.heatpump, "127.0.0.1")
 
         self.transport = Mock()
-        assert self.nibegw.status == "unknown"
+        assert self.nibegw.status == ConnectionStatus.UNKNOWN
         self.nibegw.connection_made(self.transport)
 
     async def test_status(self):
-        assert self.nibegw.status == "listening"
+        assert self.nibegw.status == ConnectionStatus.LISTENING
 
         connection_status_handler_mock = Mock()
         self.nibegw.subscribe(
@@ -38,7 +39,7 @@ class TestNibeGW(IsolatedAsyncioTestCase):
 
         await self.nibegw.read_coil(coil)
 
-        assert self.nibegw.status == "connected"
+        assert self.nibegw.status == ConnectionStatus.CONNECTED
         connection_status_handler_mock.assert_called_once_with(
             status=ConnectionStatus.CONNECTED
         )

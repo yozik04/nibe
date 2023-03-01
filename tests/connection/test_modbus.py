@@ -20,6 +20,7 @@ def fixture_modbus_client():
 @pytest.fixture(name="heatpump")
 async def fixture_heatpump():
     heatpump = HeatPump(Model.S1255)
+    heatpump.word_swap = True
     await heatpump.initialize()
     yield heatpump
 

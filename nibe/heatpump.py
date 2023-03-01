@@ -113,7 +113,7 @@ class HeatPump(EventServer):
 
     _address_to_coil: Dict[str, Coil]
     _name_to_coil: Dict[str, Coil]
-    word_swap: bool = True
+    word_swap: Optional[bool] = None
     _product_info: Union[ProductInfo, None] = None
     _model: Optional[Model] = None
 
@@ -167,14 +167,10 @@ class HeatPump(EventServer):
         self._address_to_coil = {}
         for k, v in data.items():
             try:
-                self._address_to_coil[k] = self._make_coil(address=int(k), **v)
+                self._address_to_coil[k] = Coil(address=int(k), **v)
             except (AssertionError, TypeError) as e:
                 logger.warning(f"Failed to register coil {k}: {e}")
         self._name_to_coil = {c.name: c for _, c in self._address_to_coil.items()}
-
-    def _make_coil(self, address: int, **kwargs):
-        kwargs["word_swap"] = self.word_swap
-        return Coil(address, **kwargs)
 
     async def initialize(self):
         """Initialize the heat pump"""

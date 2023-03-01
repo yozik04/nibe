@@ -1,4 +1,5 @@
 from binascii import hexlify
+from typing import Optional
 
 from construct import (
     Construct,
@@ -25,8 +26,8 @@ parser_map = {
     "s32": Int32sl,
 }
 
-parser_map_word_swaped = parser_map.copy()
-parser_map_word_swaped.update(
+parser_map_word_swapped = parser_map.copy()
+parser_map_word_swapped.update(
     {
         "u32": WordSwapped(Int32ul),
         "s32": WordSwapped(Int32sl),
@@ -37,8 +38,10 @@ parser_map_word_swaped.update(
 class CoilDataEncoder:
     """Encode and decode coil data."""
 
-    def __init__(self, word_swap: bool = True) -> None:
-        self._word_swap = word_swap
+    word_swap: Optional[bool] = None
+
+    def __init__(self, word_swap: Optional[bool] = None):
+        self.word_swap = word_swap
 
     def encode(self, coil_data: CoilData) -> bytes:
         """Encode coil data to bytes.
@@ -48,7 +51,7 @@ class CoilDataEncoder:
             coil_data.validate()
 
             return self._pad(self._get_parser(coil_data.coil), coil_data.raw_value)
-        except (ConstructError, ValidationError) as e:
+        except (ValueError, ConstructError, ValidationError) as e:
             raise EncodeException(
                 f"Failed to encode {coil_data.coil.name} coil for value: {coil_data.value}, exception: {e}"
             )
@@ -67,7 +70,7 @@ class CoilDataEncoder:
                 return CoilData(coil, None)
 
             return CoilData.from_raw_value(coil, value)
-        except (AssertionError, ConstructError, ValidationError) as e:
+        except (ValueError, AssertionError, ConstructError, ValidationError) as e:
             raise DecodeException(
                 f"Failed to decode {coil.name} coil from raw: {hexlify(raw).decode('utf-8')}, exception: {e}"
             ) from e
@@ -89,10 +92,13 @@ class CoilDataEncoder:
         return False
 
     def _get_parser(self, coil: Coil) -> Construct:
-        if self._word_swap:
+        if coil.size in ["u32", "s32"] and self.word_swap is None:
+            raise ValueError("Word swap is not set, cannot parse 32 bit integers")
+
+        if self.word_swap:  # yes, it is visa versa
             return parser_map[coil.size]
         else:
-            return parser_map_word_swaped[coil.size]
+            return parser_map_word_swapped[coil.size]
 
     def _pad(self, parser: Construct, value: int) -> bytes:
         return Padded(4, parser).build(value)
