@@ -1516,6 +1516,19 @@ id:24496	MODBUS_HOLDING_REGISTER	5021	10	°C	2	-50	300	250
 id:24497	MODBUS_HOLDING_REGISTER	5022	10	°C	2	-50	300	250
 id:24498	MODBUS_HOLDING_REGISTER	5023	10	°C	2	-50	300	250
 id:24499	MODBUS_HOLDING_REGISTER	5024	10	°C	2	-50	300	250
+Energy log - Energy produced for heat during current hour	MODBUS_INPUT_REGISTER	2283	100	kWh	6	0	0	0
+Energy log - Energy produced for hot water during current hour	MODBUS_INPUT_REGISTER	2285	100	kWh	6	0	0	0
+Energy log - Energy produced for pool during current hour	MODBUS_INPUT_REGISTER	2287	100	kWh	6	0	0	0
+Energy log - Energy produced for cooling during current hour	MODBUS_INPUT_REGISTER	2289	100	kWh	6	0	0	0
+Energy log - Energy used for heat during current hour	MODBUS_INPUT_REGISTER	2291	100	kWh	6	0	0	0
+Energy log - Energy used for hot water during current hour	MODBUS_INPUT_REGISTER	2293	100	kWh	6	0	0	0
+Energy log - Energy used for pool during current hour	MODBUS_INPUT_REGISTER	2295	100	kWh	6	0	0	0
+Energy log - Energy used for cooling during current hour	MODBUS_INPUT_REGISTER	2297	100	kWh	6	0	0	0
+Energy log - Energy used by additional heater for heat during current hour	MODBUS_INPUT_REGISTER	2299	100	kWh	6	0	0	0
+Energy log - Energy used by additional heater for hot water during current hour	MODBUS_INPUT_REGISTER	2301	100	kWh	6	0	0	0
+Energy log - Energy used by additional heater for pool during current hour	MODBUS_INPUT_REGISTER	2303	100	kWh	6	0	0	0
+Energy log - Current power consumption	MODBUS_INPUT_REGISTER	2305	100	kW	6	0	0	0
+Energy log - Current power consumption, components	MODBUS_INPUT_REGISTER	2307	100	kW	6	0	0	0
 id:55035	MODBUS_HOLDING_REGISTER	1555	1		4	0	40	0
 id:55036	MODBUS_HOLDING_REGISTER	1556	1		4	0	40	0
 id:55037	MODBUS_HOLDING_REGISTER	1557	1		4	0	40	0

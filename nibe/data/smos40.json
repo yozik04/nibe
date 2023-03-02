@@ -9515,6 +9515,97 @@
     "name": "disable-emergency-restart-gp1-43987",
     "write": true
   },
+  "32284": {
+    "title": "Energy log - Energy produced for heat during current hour",
+    "factor": 100,
+    "unit": "kWh",
+    "size": "u32",
+    "name": "energy-log-energy-produced-for-heat-during-current-hour-32284"
+  },
+  "32286": {
+    "title": "Energy log - Energy produced for hot water during current hour",
+    "factor": 100,
+    "unit": "kWh",
+    "size": "u32",
+    "name": "energy-log-energy-produced-for-hot-water-during-current-hour-32286"
+  },
+  "32288": {
+    "title": "Energy log - Energy produced for pool during current hour",
+    "factor": 100,
+    "unit": "kWh",
+    "size": "u32",
+    "name": "energy-log-energy-produced-for-pool-during-current-hour-32288"
+  },
+  "32290": {
+    "title": "Energy log - Energy produced for cooling during current hour",
+    "factor": 100,
+    "unit": "kWh",
+    "size": "u32",
+    "name": "energy-log-energy-produced-for-cooling-during-current-hour-32290"
+  },
+  "32292": {
+    "title": "Energy log - Energy used for heat during current hour",
+    "factor": 100,
+    "unit": "kWh",
+    "size": "u32",
+    "name": "energy-log-energy-used-for-heat-during-current-hour-32292"
+  },
+  "32294": {
+    "title": "Energy log - Energy used for hot water during current hour",
+    "factor": 100,
+    "unit": "kWh",
+    "size": "u32",
+    "name": "energy-log-energy-used-for-hot-water-during-current-hour-32294"
+  },
+  "32296": {
+    "title": "Energy log - Energy used for pool during current hour",
+    "factor": 100,
+    "unit": "kWh",
+    "size": "u32",
+    "name": "energy-log-energy-used-for-pool-during-current-hour-32296"
+  },
+  "32298": {
+    "title": "Energy log - Energy used for cooling during current hour",
+    "factor": 100,
+    "unit": "kWh",
+    "size": "u32",
+    "name": "energy-log-energy-used-for-cooling-during-current-hour-32298"
+  },
+  "32300": {
+    "title": "Energy log - Energy used by additional heater for heat during current hour",
+    "factor": 100,
+    "unit": "kWh",
+    "size": "u32",
+    "name": "energy-log-energy-used-by-additional-heater-for-heat-during-current-hour-32300"
+  },
+  "32302": {
+    "title": "Energy log - Energy used by additional heater for hot water during current hour",
+    "factor": 100,
+    "unit": "kWh",
+    "size": "u32",
+    "name": "energy-log-energy-used-by-additional-heater-for-hot-water-during-current-hour-32302"
+  },
+  "32304": {
+    "title": "Energy log - Energy used by additional heater for pool during current hour",
+    "factor": 100,
+    "unit": "kWh",
+    "size": "u32",
+    "name": "energy-log-energy-used-by-additional-heater-for-pool-during-current-hour-32304"
+  },
+  "32306": {
+    "title": "Energy log - Current power consumption",
+    "factor": 100,
+    "unit": "kW",
+    "size": "u32",
+    "name": "energy-log-current-power-consumption-32306"
+  },
+  "32308": {
+    "title": "Energy log - Current power consumption, components",
+    "factor": 100,
+    "unit": "kW",
+    "size": "u32",
+    "name": "energy-log-current-power-consumption-components-32308"
+  },
   "32191": {
     "title": "Return line (AZ2-BT69)",
     "factor": 10,
