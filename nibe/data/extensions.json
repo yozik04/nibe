@@ -238,21 +238,5 @@
         "mappings": null
       }
     }
-  },
-  {
-    "description": "Fix invalid datatype of 'Cooling with room sensor'",
-    "files": [
-      "smo40.json"
-    ],
-    "data": {
-      "47340": {
-         "factor": 1,
-         "max": 1.0,
-         "mappings": {
-           "0": "Off",
-           "1": "On"
-         }
-      }
-    }
   }
 ]
