@@ -161,7 +161,10 @@ class CoilData:
         if coil.has_mappings:
             return CoilData.from_mapping(coil, value)
 
-        return CoilData(coil, value / coil.factor)
+        if coil.factor == 1:
+            return CoilData(coil, value)
+        else:
+            return CoilData(coil, value / coil.factor)
 
     @property
     def raw_value(self) -> int:

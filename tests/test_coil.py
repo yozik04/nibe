@@ -214,9 +214,9 @@ def test_signed_s16_is_valid(value, expected_raises, coil_signed_s16: Coil):
 def test_signed_s16_decode(
     raw_value, value, encoder_word_swap_false: CoilDataEncoder, coil_signed_s16: Coil
 ):
-    assert encoder_word_swap_false.decode(coil_signed_s16, raw_value) == CoilData(
-        coil_signed_s16, value
-    )
+    actual_coil_data = encoder_word_swap_false.decode(coil_signed_s16, raw_value)
+    assert actual_coil_data == CoilData(coil_signed_s16, value)
+    assert isinstance(actual_coil_data.value, float) or actual_coil_data.value is None
 
 
 @pytest.mark.parametrize(
@@ -309,9 +309,9 @@ def test_unsigned_u16_encode(
 def test_unsigned_u16_word_swap_decode(
     raw_value, value, encoder_word_swap: CoilDataEncoder, coil_unsigned_u16: Coil
 ):
-    assert encoder_word_swap.decode(coil_unsigned_u16, raw_value) == CoilData(
-        coil_unsigned_u16, value
-    )
+    actual_coil_data = encoder_word_swap.decode(coil_unsigned_u16, raw_value)
+    assert actual_coil_data == CoilData(coil_unsigned_u16, value)
+    assert isinstance(actual_coil_data.value, float) or actual_coil_data.value is None
 
 
 @pytest.mark.parametrize(
@@ -349,9 +349,9 @@ def coil_signed_s32():
 def test_signed_s32_decode(
     raw_value, value, encoder_word_swap_false: CoilDataEncoder, coil_signed_s32: Coil
 ):
-    assert encoder_word_swap_false.decode(coil_signed_s32, raw_value) == CoilData(
-        coil_signed_s32, value
-    )
+    actual_coil_data = encoder_word_swap_false.decode(coil_signed_s32, raw_value)
+    assert actual_coil_data == CoilData(coil_signed_s32, value)
+    assert isinstance(actual_coil_data.value, int) or actual_coil_data.value is None
 
 
 def test_signed_s32_encode(
