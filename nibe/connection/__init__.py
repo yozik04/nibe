@@ -4,7 +4,7 @@ from abc import ABC, abstractmethod
 from collections.abc import AsyncIterator, Iterable
 
 from nibe.coil import Coil, CoilData
-from nibe.exceptions import ReadExceptionGroup, ReadIOException
+from nibe.exceptions import ReadException, ReadExceptionGroup
 from nibe.heatpump import HeatPump, ProductInfo, Series
 
 DEFAULT_TIMEOUT: float = 5
@@ -41,7 +41,7 @@ class Connection(ABC):
         for coil in coils:
             try:
                 yield await self.read_coil(coil, timeout)
-            except ReadIOException as exception:
+            except ReadException as exception:
                 exceptions.append(exception)
         if exceptions:
             raise ReadExceptionGroup("Failed to read some or all coils", exceptions)
