@@ -9573,6 +9573,7 @@
     "write": true,
     "mappings": {
       "0": "OFF",
+      "1": "ON",
       "2": "BT50",
       "10": "RMU-BT50"
     }
