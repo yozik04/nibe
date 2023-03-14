@@ -9494,27 +9494,6 @@
     "name": "disable-emergency-restart-gp1-45026",
     "write": true
   },
-  "43029": {
-    "title": "Immersion heater power, emergency mode",
-    "factor": 100,
-    "unit": "kW",
-    "size": "s16",
-    "min": 0.0,
-    "max": 4500.0,
-    "default": 940.0,
-    "name": "immersion-heater-power-emergency-mode-43029",
-    "write": true
-  },
-  "43987": {
-    "title": "Disable emergency restart GP1",
-    "factor": 1,
-    "size": "u8",
-    "min": 0.0,
-    "max": 1.0,
-    "default": 0.0,
-    "name": "disable-emergency-restart-gp1-43987",
-    "write": true
-  },
   "32284": {
     "title": "Energy log - Energy produced for heat during current hour",
     "factor": 100,
@@ -9605,6 +9584,27 @@
     "unit": "kW",
     "size": "u32",
     "name": "energy-log-current-power-consumption-components-32308"
+  },
+  "43029": {
+    "title": "Immersion heater power, emergency mode",
+    "factor": 100,
+    "unit": "kW",
+    "size": "s16",
+    "min": 0.0,
+    "max": 4500.0,
+    "default": 940.0,
+    "name": "immersion-heater-power-emergency-mode-43029",
+    "write": true
+  },
+  "43987": {
+    "title": "Disable emergency restart GP1",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "disable-emergency-restart-gp1-43987",
+    "write": true
   },
   "32191": {
     "title": "Return line (AZ2-BT69)",

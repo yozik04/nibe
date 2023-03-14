@@ -3529,7 +3529,8 @@
     "factor": 1,
     "name": "freeze-protection-status-43013",
     "mappings": {
-      "1": "Freeze protection active"
+      "0": "OFF",
+      "1": "ON"
     }
   },
   "43024": {
