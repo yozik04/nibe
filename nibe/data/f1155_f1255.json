@@ -4737,12 +4737,18 @@
     "title": "Cooling with room sensor",
     "info": "Enables use of room sensor together with cooling 0=Off 1=On",
     "size": "u8",
-    "factor": 10,
+    "factor": 1,
     "min": 0.0,
     "max": 18.0,
     "default": 0.0,
     "name": "cooling-with-room-sensor-47340",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "OFF",
+      "1": "ON",
+      "2": "BT50",
+      "10": "RMU-BT50"
+    }
   },
   "47341": {
     "title": "HPAC accessory",

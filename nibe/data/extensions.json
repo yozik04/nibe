@@ -29,6 +29,16 @@
         "mappings": {
           "0": "Off"
         }
+      },
+      "47340": {
+        "factor": 1,
+        "max": 18.0,
+        "mappings": {
+          "0": "OFF",
+          "1": "ON",
+          "2": "BT50",
+          "10": "RMU-BT50"
+        }
       }
     }
   },
@@ -236,22 +246,6 @@
      "47377": {
         "size": "s16",
         "mappings": null
-      }
-    }
-  },
-  {
-    "description": "Fix invalid datatype of 'Cooling with room sensor'",
-    "files": [
-      "smo40.json"
-    ],
-    "data": {
-      "47340": {
-         "factor": 1,
-         "max": 1.0,
-         "mappings": {
-           "0": "Off",
-           "1": "On"
-         }
       }
     }
   }

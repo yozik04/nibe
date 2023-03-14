@@ -7250,13 +7250,15 @@
     "size": "u8",
     "factor": 1,
     "min": 0.0,
-    "max": 1.0,
+    "max": 18.0,
     "default": 0.0,
     "name": "cooling-with-room-sensor-47340",
     "write": true,
     "mappings": {
-      "0": "Off",
-      "1": "On"
+      "0": "OFF",
+      "1": "ON",
+      "2": "BT50",
+      "10": "RMU-BT50"
     }
   },
   "47343": {
