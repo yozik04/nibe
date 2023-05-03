@@ -105,6 +105,7 @@ class HeatpumpIntialization(unittest.IsolatedAsyncioTestCase):
         (Model.SMOS40, Series.S),
         (Model.S320, Series.S),
         (Model.S325, Series.S),
+        (Model.S735, Series.S),
         (Model.S1155, Series.S),
         (Model.S1255, Series.S),
     ],
