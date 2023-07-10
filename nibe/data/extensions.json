@@ -247,7 +247,8 @@
   {
     "description": "Allow for numerical selection for Outdoor Filter Time",
     "files": [
-      "smo40.json"
+      "smo40.json",
+      "f1145_f1245.json"
     ],
     "data": {
      "47377": {
