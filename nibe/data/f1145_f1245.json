@@ -3873,7 +3873,8 @@
     "factor": 1,
     "name": "freeze-protection-status-43013",
     "mappings": {
-      "1": "Freeze protection active"
+      "0": "OFF",
+      "1": "ON"
     }
   },
   "43024": {
@@ -9014,12 +9015,18 @@
     "title": "Cooling with room sensor",
     "info": "Enables use of room sensor together with cooling 0=Off 1=On",
     "size": "u8",
-    "factor": 10,
+    "factor": 1,
     "min": 0.0,
     "max": 18.0,
     "default": 0.0,
     "name": "cooling-with-room-sensor-47340",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "OFF",
+      "1": "ON",
+      "2": "BT50",
+      "10": "RMU-BT50"
+    }
   },
   "47341": {
     "title": "HPAC accessory",
@@ -9182,17 +9189,13 @@
     "title": "Outdoor Filter Time",
     "info": " 12=12 Hours 24=24 Hours",
     "unit": "h",
-    "size": "u8",
+    "size": "s16",
     "factor": 1,
     "min": 0.0,
     "max": 48.0,
     "default": 24.0,
     "name": "outdoor-filter-time-47377",
-    "write": true,
-    "mappings": {
-      "12": "12 Hours",
-      "24": "24 Hours"
-    }
+    "write": true
   },
   "47378": {
     "title": "Max diff. comp.",

@@ -1,3 +1,10 @@
+[![Test and Lint](https://github.com/yozik04/nibe/actions/workflows/test.yml/badge.svg)](https://github.com/yozik04/nibe/actions/workflows/test.yml)
+![PyPI - Status](https://img.shields.io/pypi/status/nibe)
+![PyPI - Downloads](https://img.shields.io/pypi/dm/nibe)
+[![PyPI](https://img.shields.io/pypi/v/nibe)](https://pypi.org/project/nibe/)
+![PyPI - License](https://img.shields.io/pypi/l/nibe)
+[![Codecov](https://codecov.io/gh/yozik04/nibe/branch/master/graph/badge.svg?token=ZJIOTGLNW5)](https://codecov.io/gh/yozik04/nibe)
+
 # Nibe library
 Library for communication with Nibe heatpumps.
 
@@ -12,8 +19,13 @@ Library for communication with Nibe heatpumps.
  - F470
  - F730
  - F750
+ - S320
+ - S325
+ - S735
+ - S2125
  - SMO20
  - SMO40
+ - SMOS40
  - VVM225
  - VVM310
  - VVM320
@@ -40,14 +52,14 @@ Ports are configurable
 import asyncio
 import logging
 
-from nibe.coil import Coil
+from nibe.coil import CoilData
 from nibe.connection.nibegw import NibeGW
 from nibe.heatpump import HeatPump, Model
 
 logger = logging.getLogger("nibe").getChild(__name__)
 
-def on_coil_update(coil: Coil):
-    logger.debug(f"{coil.name}: {coil.value}")
+def on_coil_update(coil_data: CoilData):
+    logger.debug(coil_data)
 
 async def main():
     heatpump = HeatPump(Model.F1255)
@@ -74,14 +86,14 @@ With S series heatpumps
 import asyncio
 import logging
 
-from nibe.coil import Coil
+from nibe.coil import CoilData
 from nibe.connection.modbus import Modbus
 from nibe.heatpump import HeatPump, Model
 
 logger = logging.getLogger("nibe").getChild(__name__)
 
-def on_coil_update(coil: Coil):
-    logger.debug(f"on_coil_update: {coil.name}: {coil.value}")
+def on_coil_update(coil_data: CoilData):
+    logger.debug(f"on_coil_update: {coil_data}")
 
 async def main():
     heatpump = HeatPump(Model.F1255)
@@ -93,9 +105,9 @@ async def main():
     connection = Modbus(heatpump=heatpump, url="tcp://192.168.1.2:502", slave_id=1)
 
     coil = heatpump.get_coil_by_name('bt50-room-temp-s1-40033')
-    await connection.read_coil(coil)
+    coil_data = await connection.read_coil(coil)
 
-    logger.debug(f"main: {coil.name}: {coil.value}")
+    logger.debug(f"main: {coil_data}")
 
 if __name__ == '__main__':
     logging.basicConfig(level=logging.DEBUG)
@@ -112,14 +124,14 @@ With NIBE MODBUS 40
 import asyncio
 import logging
 
-from nibe.coil import Coil
+from nibe.coil import CoilData
 from nibe.connection.modbus import Modbus
 from nibe.heatpump import HeatPump, Model
 
 logger = logging.getLogger("nibe").getChild(__name__)
 
-def on_coil_update(coil: Coil):
-    logger.debug(f"on_coil_update: {coil.name}: {coil.value}")
+def on_coil_update(coil_data: CoilData):
+    logger.debug(f"on_coil_update: {coil_data}")
 
 async def main():
     heatpump = HeatPump(Model.F1255)
@@ -131,9 +143,9 @@ async def main():
     connection = Modbus(heatpump=heatpump, url="serial:///dev/ttyS0", slave_id=1, conn_options={"baudrate": 9600})
 
     coil = heatpump.get_coil_by_name('bt50-room-temp-s1-40033')
-    await connection.read_coil(coil)
+    coil_data = await connection.read_coil(coil)
 
-    logger.debug(f"main: {coil.name}: {coil.value}")
+    logger.debug(f"main: {coil_data}")
 
 if __name__ == '__main__':
     logging.basicConfig(level=logging.DEBUG)

@@ -13,12 +13,16 @@ from nibe.heatpump import HeatPump, Model
 logger = logging.getLogger("nibe").getChild(__name__)
 
 
-def update_dict(d: MutableMapping, u: Mapping) -> Mapping:
+def update_dict(d: MutableMapping, u: Mapping, removeExplicitNulls: bool) -> Mapping:
     for k, v in u.items():
-        if isinstance(v, Mapping):
-            update_dict(d.setdefault(k, {}), v)
+        if v is None and removeExplicitNulls:
+            d.pop(k, None)
+        elif isinstance(v, Mapping):
+            update_dict(d.setdefault(k, {}), v, removeExplicitNulls)
         else:
             d[k] = v
+
+    return d
 
 
 class CSVConverter:
@@ -238,7 +242,7 @@ class CSVConverter:
 
     def _export_to_file(self):
         o = self._make_dict()
-        update_dict(o, self.extensions)
+        update_dict(o, self.extensions, True)
         with open(self.out_file, "w") as fh:
             json.dump(o, fh, indent=2, default=self._convert_series_to_dict)
             fh.write("\n")
@@ -255,7 +259,7 @@ async def run():
         for extra in all_extensions:
             if out_file.name not in extra["files"]:
                 continue
-            update_dict(extensions, extra["data"])
+            update_dict(extensions, extra["data"], False)
 
         logger.info(f"Converting {in_file} to {out_file}")
         try:

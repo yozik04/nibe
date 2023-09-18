@@ -2,6 +2,8 @@ import asyncio
 from asyncio import CancelledError, Future, InvalidStateError
 from binascii import hexlify
 from contextlib import suppress
+from dataclasses import dataclass
+import errno
 from functools import reduce
 from io import BytesIO
 from ipaddress import ip_address
@@ -9,7 +11,7 @@ import logging
 from operator import xor
 import socket
 import struct
-from typing import Container, Dict, Union
+from typing import Dict, Optional, Union
 
 from construct import (
     Adapter,
@@ -19,6 +21,7 @@ from construct import (
     Checksum,
     ChecksumError,
     Const,
+    Container,
     Enum,
     EnumIntegerString,
     FixedSized,
@@ -46,45 +49,50 @@ from construct import (
 )
 from tenacity import retry, retry_if_exception_type, stop_after_attempt
 
-from nibe.coil import Coil
+from nibe.coil import Coil, CoilData
 from nibe.connection import DEFAULT_TIMEOUT, READ_PRODUCT_INFO_TIMEOUT, Connection
 from nibe.connection.encoders import CoilDataEncoder
+from nibe.connection.mixins import ConnectionStatus, ConnectionStatusMixin
 from nibe.event_server import EventServer
 from nibe.exceptions import (
+    AddressInUseException,
     CoilNotFoundException,
-    CoilReadException,
-    CoilReadTimeoutException,
-    CoilWriteException,
-    CoilWriteTimeoutException,
+    CoilWriteSendException,
     DecodeException,
     NibeException,
     ProductInfoReadTimeoutException,
+    ReadException,
+    ReadIOException,
+    ReadSendException,
+    ReadTimeoutException,
+    WriteException,
+    WriteIOException,
+    WriteTimeoutException,
 )
 from nibe.heatpump import HeatPump, ProductInfo
+
+from . import verify_connectivity_read_write_alarm
 
 logger = logging.getLogger("nibe").getChild(__name__)
 
 
-class ConnectionStatus(Enum):
-    UNKNOWN = "unknown"
-    INITIALIZING = "initializing"
-    LISTENING = "listening"
-    CONNECTED = "connected"
-    DISCONNECTED = "disconnected"
-
-    def __str__(self):
-        return self.value
+@dataclass
+class CoilAction:
+    coil: Coil
+    future: Future
 
 
-class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
-    CONNECTION_STATUS_EVENT = "connection_status"
+class NibeGW(asyncio.DatagramProtocol, Connection, EventServer, ConnectionStatusMixin):
+    """NibeGW connection."""
+
+    PRODUCT_INFO_EVENT = "product_info"
     _futures: Dict[str, Future]
-    _status: ConnectionStatus
+    _registered_reads: Dict[str, CoilAction]
 
     def __init__(
         self,
         heatpump: HeatPump,
-        remote_ip: str,
+        remote_ip: Optional[str] = None,
         remote_read_port: int = 9999,
         remote_write_port: int = 10000,
         listening_ip: str = "0.0.0.0",
@@ -103,21 +111,21 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
         self._remote_write_port = remote_write_port
 
         self._transport = None
-        self._status = ConnectionStatus.UNKNOWN
 
         self._send_lock = asyncio.Lock()
         self._futures = {}
+        self._registered_reads = {}
 
         self.coil_encoder = CoilDataEncoder(heatpump.word_swap)
 
         self.read_coil = retry(
-            retry=retry_if_exception_type(CoilReadException),
+            retry=retry_if_exception_type(ReadIOException),
             stop=stop_after_attempt(read_retries),
             reraise=True,
         )(self.read_coil)
 
         self.write_coil = retry(
-            retry=retry_if_exception_type(CoilWriteException),
+            retry=retry_if_exception_type(WriteIOException),
             stop=stop_after_attempt(write_retries),
             reraise=True,
         )(self.write_coil)
@@ -125,7 +133,7 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
     async def start(self):
         logger.info(f"Starting UDP server on port {self._listening_port}")
 
-        self._set_status(ConnectionStatus.INITIALIZING)
+        self.status = ConnectionStatus.INITIALIZING
 
         family, type, proto, _, sockaddr = socket.getaddrinfo(
             self._listening_ip,
@@ -134,62 +142,72 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
             proto=socket.IPPROTO_UDP,
             family=socket.AddressFamily.AF_INET,
         )[0]
+
         sock = socket.socket(family, type, proto)
         sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEPORT, 1)
-        if ip_address(sockaddr[0]).is_multicast:
-            group_bin = socket.inet_pton(family, sockaddr[0])
-            if family == socket.AF_INET:  # IPv4
-                sock.bind(("", sockaddr[1]))
-                mreq = group_bin + struct.pack("=I", socket.INADDR_ANY)
-                sock.setsockopt(socket.IPPROTO_IP, socket.IP_ADD_MEMBERSHIP, mreq)
+        try:
+            if ip_address(sockaddr[0]).is_multicast:
+                group_bin = socket.inet_pton(family, sockaddr[0])
+                if family == socket.AF_INET:  # IPv4
+                    sock.bind(("", sockaddr[1]))
+                    mreq = group_bin + struct.pack("=I", socket.INADDR_ANY)
+                    sock.setsockopt(socket.IPPROTO_IP, socket.IP_ADD_MEMBERSHIP, mreq)
+                else:
+                    sock.bind(("", sockaddr[1]))
+                    mreq = group_bin + struct.pack("@I", 0)
+                    sock.setsockopt(socket.IPPROTO_IPV6, socket.IPV6_JOIN_GROUP, mreq)
+            elif self._listening_ip:
+                sock.bind(sockaddr)
             else:
                 sock.bind(("", sockaddr[1]))
-                mreq = group_bin + struct.pack("@I", 0)
-                sock.setsockopt(socket.IPPROTO_IPV6, socket.IPV6_JOIN_GROUP, mreq)
-        elif self._listening_ip:
-            sock.bind(sockaddr)
-        else:
-            sock.bind(("", sockaddr[1]))
+        except OSError as exception:
+            if exception.errno == errno.EADDRINUSE:
+                raise AddressInUseException(f"Address in use {sockaddr}")
+            raise
 
         await asyncio.get_event_loop().create_datagram_endpoint(lambda: self, sock=sock)
 
+        if self._heatpump.word_swap is None:
+            await self.detect_word_swap()
+
     def connection_made(self, transport):
-        self._set_status(ConnectionStatus.LISTENING)
+        """Callback when connection is made."""
+        self.status = ConnectionStatus.LISTENING
         self._transport = transport
 
     def datagram_received(self, data: bytes, addr):
+        """Callback when data is received."""
         logger.debug(f"Received {hexlify(data).decode('utf-8')} from {addr}")
-        self._set_status(ConnectionStatus.CONNECTED)
         try:
             msg = Response.parse(data)
+
+            if not self._remote_ip:
+                logger.debug("Pump discovered at %s", addr)
+                self._remote_ip = addr[0]
+
+            self.status = ConnectionStatus.CONNECTED
+
             logger.debug(msg.fields.value)
             cmd = msg.fields.value.cmd
             if cmd == "MODBUS_DATA_MSG":
                 for row in msg.fields.value.data:
-                    try:
-                        self._on_raw_coil_value(row.coil_address, row.value)
-                    except NibeException as e:
-                        logger.error(str(e))
+                    self._on_raw_coil_value(row.coil_address, row.value)
             elif cmd == "MODBUS_READ_RESP":
                 row = msg.fields.value.data
-                try:
-                    self._on_raw_coil_value(row.coil_address, row.value)
-                    with suppress(InvalidStateError, CancelledError, KeyError):
-                        self._futures["read"].set_result(None)
-                except NibeException as e:
-                    with suppress(InvalidStateError, CancelledError, KeyError):
-                        self._futures["read"].set_exception(
-                            CoilReadException(str(e), e)
-                        )
-                    raise
+                self._on_raw_coil_value(row.coil_address, row.value)
             elif cmd == "MODBUS_WRITE_RESP":
                 with suppress(InvalidStateError, CancelledError, KeyError):
                     self._futures["write"].set_result(msg.fields.value.data.result)
             elif cmd == "RMU_DATA_MSG":
                 self._on_rmu_data(msg.fields.value)
             elif cmd == "PRODUCT_INFO_MSG":
+                data = msg.fields.value.data
+                product_info = ProductInfo(data["model"], data["version"])
                 with suppress(InvalidStateError, CancelledError, KeyError):
-                    self._futures["product_info"].set_result(msg.fields.value.data)
+                    self._futures["product_info"].set_result(product_info)
+                self.notify_event_listeners(
+                    self.PRODUCT_INFO_EVENT, product_info=product_info
+                )
             elif not isinstance(cmd, EnumIntegerString):
                 logger.debug(f"Unknown command {cmd}")
         except ChecksumError:
@@ -209,14 +227,25 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
     ) -> ProductInfo:
         self._futures["product_info"] = asyncio.get_event_loop().create_future()
         try:
-            result = await asyncio.wait_for(self._futures["product_info"], timeout)
-            return ProductInfo(result["model"], result["version"])
+            return await asyncio.wait_for(self._futures["product_info"], timeout)
         except asyncio.TimeoutError:
             raise ProductInfoReadTimeoutException("Timeout waiting for product message")
         finally:
             del self._futures["product_info"]
 
-    async def read_coil(self, coil: Coil, timeout: float = DEFAULT_TIMEOUT) -> Coil:
+    async def detect_word_swap(self, timeout: float = DEFAULT_TIMEOUT) -> None:
+        """Read word swap setting."""
+        try:
+            coil = self._heatpump.get_coil_by_address(48852)
+            assert coil.is_boolean, "Coil is not boolean"
+            coil_data = await self.read_coil(coil, timeout)
+            self.coil_encoder.word_swap = coil_data.value == "ON"
+            self._heatpump.word_swap = self.coil_encoder.word_swap
+            logger.info(f"Word swap setting detected: {coil_data.value}")
+        except Exception as e:
+            logger.warning(f"Failed to detect word swap setting: {e}")
+
+    async def read_coil(self, coil: Coil, timeout: float = DEFAULT_TIMEOUT) -> CoilData:
         async with self._send_lock:
             assert self._transport, "Transport is closed"
             data = Request.build(
@@ -229,28 +258,76 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
                 )
             )
 
-            self._futures["read"] = asyncio.get_event_loop().create_future()
+            future = self._register_coil_read_request(coil)
 
             logger.debug(
                 f"Sending {hexlify(data).decode('utf-8')} (read request) to {self._remote_ip}:{self._remote_write_port}"
             )
-            self._transport.sendto(data, (self._remote_ip, self._remote_read_port))
+
+            try:
+                self._transport.sendto(data, (self._remote_ip, self._remote_read_port))
+            except socket.gaierror:
+                raise ReadSendException(f"Unable to lookup hostname: {self._remote_ip}")
+
             logger.debug(f"Waiting for read response for {coil.name}")
 
             try:
-                await asyncio.wait_for(self._futures["read"], timeout)
+                return await asyncio.wait_for(future, timeout)
             except asyncio.TimeoutError:
-                raise CoilReadTimeoutException(
+                raise ReadTimeoutException(
                     f"Timeout waiting for read response for {coil.name}"
                 )
-            finally:
-                del self._futures["read"]
+            except DecodeException as e:
+                raise ReadException(
+                    f"Failed decoding response for {coil.name}: {e}"
+                ) from e
 
-            return coil
+    def _register_coil_read_request(self, coil: Coil) -> Future:
+        read = self._registered_reads.get(str(coil.address))
+        if read is not None and not read.future.done():
+            return read.future
 
-    async def write_coil(self, coil: Coil, timeout: float = DEFAULT_TIMEOUT) -> Coil:
+        future = asyncio.get_event_loop().create_future()
+        self._registered_reads[str(coil.address)] = CoilAction(coil, future)
+        return future
+
+    def _on_coil_read_success(self, coil_data):
+        logger.info(coil_data)
+
+        read = self._registered_reads.get(str(coil_data.coil.address))
+        if read is not None and not read.future.done():
+            read.future.set_result(coil_data)
+
+        self._heatpump.notify_coil_update(coil_data)
+
+    def _on_coil_read_error(
+        self, coil_address, value: Union[bytes, float, int, str], exception: Exception
+    ):
+        if coil_address == 65535:  # 0xffff
+            return
+
+        read = self._registered_reads.get(str(coil_address))
+        if read is not None and not read.future.done():
+            read.future.set_exception(exception)
+
+        if isinstance(exception, CoilNotFoundException):
+            logger.warning(f"Ignoring coil {coil_address} - coil definition not found")
+        elif isinstance(exception, DecodeException):
+            str_value = (
+                hexlify(value).decode("utf-8") if isinstance(value, bytes) else value
+            )
+            logger.warning(
+                f"Ignoring coil {coil_address} value {str_value} - failed to decode"
+            )
+        elif isinstance(exception, NibeException):
+            logger.error(f"Failed handling read for {coil_address}: {exception}")
+
+    async def write_coil(
+        self, coil_data: CoilData, timeout: float = DEFAULT_TIMEOUT
+    ) -> None:
+        coil = coil_data.coil
         assert coil.is_writable, f"{coil.name} is not writable"
-        assert coil.value is not None, f"{coil.name} value must be set"
+        assert coil_data.value is not None, f"{coil.name} value must be set"
         async with self._send_lock:
             assert self._transport, "Transport is closed"
             data = Request.build(
@@ -260,7 +337,7 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
                             cmd="MODBUS_WRITE_REQ",
                             data=dict(
                                 coil_address=coil.address,
-                                value=self.coil_encoder.encode(coil),
+                                value=self.coil_encoder.encode(coil_data),
                             ),
                         )
                     )
@@ -272,7 +349,13 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
             logger.debug(
                 f"Sending {hexlify(data).decode('utf-8')} (write request) to {self._remote_ip}:{self._remote_write_port}"
             )
-            self._transport.sendto(data, (self._remote_ip, self._remote_write_port))
+
+            try:
+                self._transport.sendto(data, (self._remote_ip, self._remote_write_port))
+            except socket.gaierror:
+                raise CoilWriteSendException(
+                    f"Unable to lookup hostname: {self._remote_ip}"
+                )
 
             try:
                 await asyncio.wait_for(self._futures["write"], timeout)
@@ -280,29 +363,24 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
                 result = self._futures["write"].result()
 
                 if not result:
-                    raise CoilWriteException(f"Heatpump denied writing {coil.name}")
+                    raise WriteException(f"Heatpump denied writing {coil.name}")
                 else:
                     logger.info(f"Write succeeded for {coil.name}")
             except asyncio.TimeoutError:
-                raise CoilWriteTimeoutException(
+                raise WriteTimeoutException(
                     f"Timeout waiting for write feedback for {coil.name}"
                 )
             finally:
                 del self._futures["write"]
 
-            return coil
-
     def error_received(self, exc):
+        """Handle errors from the transport"""
         logger.error(exc)
 
     @property
-    def status(self) -> ConnectionStatus:
-        return self._status
-
-    def _set_status(self, status: ConnectionStatus):
-        if status != self._status:
-            self._status = status
-            self.notify_event_listeners(self.CONNECTION_STATUS_EVENT, status=status)
+    def remote_ip(self) -> Optional[str]:
+        """Get the remote IP address"""
+        return self._remote_ip
 
     def _on_rmu_data(self, value: Container):
         data = value.data
@@ -342,29 +420,15 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
         if coil_address := ADDRESS_TO_ROOM_TEMP_COIL.get(value.address):
             self._on_coil_value(coil_address, data.bt50_room_temp_sX)
 
-    def _on_raw_coil_value(self, coil_address: int, raw_value: bytes):
+    def _on_raw_coil_value(self, coil_address: int, raw_value: bytes) -> None:
         try:
             coil = self._heatpump.get_coil_by_address(coil_address)
-            coil.value = self.coil_encoder.decode(coil, raw_value)
+            coil_data = self.coil_encoder.decode(coil, raw_value)
+            self._on_coil_read_success(coil_data)
+        except NibeException as e:
+            self._on_coil_read_error(coil_address, raw_value, e)
 
-            # coil.raw_value = raw_value
-            logger.info(f"{coil.name}: {coil.value}")
-            self._heatpump.notify_coil_update(coil)
-        except CoilNotFoundException:
-            if coil_address == 65535:  # 0xffff
-                return
-
-            logger.warning(
-                f"Ignoring coil {coil_address} value - coil definition not found"
-            )
-            return
-        except DecodeException:
-            logger.warning(
-                f"Ignoring coil {coil_address} value - failed to decode raw value: {hexlify(raw_value).decode('utf-8')}"
-            )
-            return
-
-    def _on_coil_value(self, coil_address: int, value: Union[float, int, str]):
+    def _on_coil_value(self, coil_address: int, value: Union[float, int, str]) -> None:
         try:
             coil = self._heatpump.get_coil_by_address(coil_address)
 
@@ -377,29 +441,21 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer):
             if coil.has_mappings and isinstance(value, int):
                 value = coil.get_mapping_for(value)
 
-            coil.value = value
-            logger.info(f"{coil.name}: {coil.value}")
-            self._heatpump.notify_coil_update(coil)
+            coil_data = CoilData(coil, value)
+            logger.info(coil_data)
+            self._on_coil_read_success(coil_data)
+        except NibeException as e:
+            self._on_coil_read_error(coil_address, value, e)
 
-        except CoilNotFoundException:
-            if coil_address == 65535:  # 0xffff
-                return
-
-            logger.warning(
-                f"Ignoring coil {coil_address} value - coil definition not found"
-            )
-            return
-        except DecodeException:
-            logger.warning(
-                f"Ignoring coil {coil_address} value - failed to decode value: {value}"
-            )
-            return
+    async def verify_connectivity(self):
+        await verify_connectivity_read_write_alarm(self, self._heatpump)
 
     async def stop(self):
-        self._transport.close()
-        self._transport = None
+        if self._transport:
+            self._transport.close()
+            self._transport = None
         await asyncio.sleep(0)
-        self._set_status(ConnectionStatus.DISCONNECTED)
+        self.status = ConnectionStatus.DISCONNECTED
 
 
 def xor8(data: bytes) -> int:
@@ -556,10 +612,11 @@ Command = Enum(
     ECS_DATA_MSG_1=0x55,
     ECS_DATA_MSG_2=0xA0,
     STRING_MSG=0xB1,
+    HEATPUMP_REQ=0xF7,
 )
 
 Address = Enum(
-    Int8ub,
+    Int16ub,
     ECS_S2=0x02,
     # 0x13 = 19, ?
     SMS40=0x16,
@@ -568,6 +625,14 @@ Address = Enum(
     RMU40_S3=0x1B,
     RMU40_S4=0x1C,
     MODBUS40=0x20,
+    HEATPUMP_1=0x41C9,
+    HEATPUMP_2=0x42C9,
+    HEATPUMP_3=0x43C9,
+    HEATPUMP_4=0x44C9,
+    HEATPUMP_5=0x45C9,
+    HEATPUMP_6=0x46C9,
+    HEATPUMP_7=0x47C9,
+    HEATPUMP_8=0x48C9,
 )
 
 RmuWriteIndex = Enum(
@@ -589,7 +654,6 @@ ADDRESS_TO_ROOM_TEMP_COIL = {
 # fmt: off
 Response = Struct(
     "start_byte" / Const(0x5C, Int8ub),
-    "empty_byte" / Const(0x00, Int8ub),
     "fields" / RawCopy(
         Struct(
             "address" / Address,

@@ -4,7 +4,7 @@ from unittest.mock import AsyncMock, patch
 from async_modbus import AsyncClient
 import pytest
 
-from nibe.coil import Coil
+from nibe.coil import Coil, CoilData
 from nibe.connection.modbus import Modbus
 from nibe.heatpump import HeatPump, Model
 
@@ -17,10 +17,11 @@ def fixture_modbus_client():
         yield client
 
 
-@pytest.fixture(name="heatpump", scope="module")
-def fixture_heatpump():
+@pytest.fixture(name="heatpump")
+async def fixture_heatpump():
     heatpump = HeatPump(Model.S1255)
-    heatpump.initialize()
+    heatpump.word_swap = True
+    await heatpump.initialize()
     yield heatpump
 
 
@@ -32,31 +33,38 @@ def fixture_connection(heatpump: HeatPump):
 @pytest.mark.parametrize(
     ("size", "raw", "value"),
     [
-        ("u32", [b"\x01\x00", b"\x00\x00"], 1),
-        ("u16", [b"\x01\x00"], 1),
-        ("u8", [b"\x01\x00"], 1),
+        ("u32", [1, 0], 0x00000001),
+        ("u32", [0, 32768], 0x80000000),
+        ("u16", [1], 0x0001),
+        ("u16", [32768], 0x8000),
+        ("u16", ["32768"], 0x8000),
+        ("u8", [1], 0x01),
+        ("u8", [128], 0x80),
     ],
 )
 async def test_read_holding_register_coil(
     connection: Modbus,
     modbus_client: AsyncMock,
     size: str,
-    raw: List[bytes],
+    raw: List[int],
     value: Union[int, float, str],
 ):
     coil = Coil(40001, "test", "test", size, 1)
     modbus_client.read_holding_registers.return_value = raw
-    coil = await connection.read_coil(coil)
-    assert coil.value == value
+    coil_data = await connection.read_coil(coil)
+    assert coil_data.value == value
     modbus_client.read_holding_registers.assert_called()
 
 
 @pytest.mark.parametrize(
     ("size", "raw", "value"),
     [
-        ("u32", [b"\x01\x00", b"\x00\x00"], 1),
-        ("u16", [b"\x01\x00"], 1),
-        ("u8", [b"\x01\x00"], 1),
+        ("u32", [1, 0], 0x00000001),
+        ("u32", [0, 32768], 0x80000000),
+        ("u16", [1], 0x0001),
+        ("u16", [32768], 0x8000),
+        ("u8", [1], 0x01),
+        ("u8", [128], 0x80),
     ],
 )
 async def test_write_holding_register(
@@ -67,8 +75,8 @@ async def test_write_holding_register(
     value: Union[int, float, str],
 ):
     coil = Coil(40002, "test", "test", size, 1, write=True)
-    coil.value = value
-    coil = await connection.write_coil(coil)
+    coil_data = CoilData(coil, value)
+    await connection.write_coil(coil_data)
     modbus_client.write_registers.assert_called_with(
         slave_id=0, starting_address=1, values=raw
     )
@@ -77,9 +85,13 @@ async def test_write_holding_register(
 @pytest.mark.parametrize(
     ("size", "raw", "value"),
     [
-        ("u32", [b"\x01\x00", b"\x00\x00"], 1),
-        ("u16", [b"\x01\x00"], 1),
-        ("u8", [b"\x01\x00"], 1),
+        ("u32", [1, 0], 0x00000001),
+        ("u32", [0, 32768], 0x80000000),
+        ("u16", [1], 0x0001),
+        ("u16", [32768], 0x8000),
+        ("u16", ["32768"], 0x8000),
+        ("u8", [1], 0x01),
+        ("u8", [128], 0x80),
     ],
 )
 async def test_read_input_register_coil(
@@ -91,15 +103,17 @@ async def test_read_input_register_coil(
 ):
     coil = Coil(30001, "test", "test", size, 1)
     modbus_client.read_input_registers.return_value = raw
-    coil = await connection.read_coil(coil)
-    assert coil.value == value
+    coil_data = await connection.read_coil(coil)
+    assert coil_data.value == value
     modbus_client.read_input_registers.assert_called()
 
 
 @pytest.mark.parametrize(
     ("size", "raw", "value"),
     [
-        ("u8", [b"\x01"], 1),
+        ("u8", [1], 0x01),
+        ("u8", [0], 0x00),
+        ("u8", ["0"], 0x00),
     ],
 )
 async def test_read_discrete_input_coil(
@@ -111,15 +125,17 @@ async def test_read_discrete_input_coil(
 ):
     coil = Coil(10001, "test", "test", size, 1)
     modbus_client.read_discrete_inputs.return_value = raw
-    coil = await connection.read_coil(coil)
-    assert coil.value == value
+    coil_data = await connection.read_coil(coil)
+    assert coil_data.value == value
     modbus_client.read_discrete_inputs.assert_called()
 
 
 @pytest.mark.parametrize(
     ("size", "raw", "value"),
     [
-        ("u8", [b"\x01"], 1),
+        ("u8", [1], 0x01),
+        ("u8", [0], 0x00),
+        ("u8", ["0"], 0x00),
     ],
 )
 async def test_read_coil_coil(
@@ -131,15 +147,16 @@ async def test_read_coil_coil(
 ):
     coil = Coil(1, "test", "test", size, 1)
     modbus_client.read_coils.return_value = raw
-    coil = await connection.read_coil(coil)
-    assert coil.value == value
+    coil_data = await connection.read_coil(coil)
+    assert coil_data.value == value
     modbus_client.read_coils.assert_called()
 
 
 @pytest.mark.parametrize(
     ("size", "raw", "value"),
     [
-        ("u8", [b"\x01"], 1),
+        ("u8", [1], 0x01),
+        ("u8", [0], 0x00),
     ],
 )
 async def test_write_coil_coil(
@@ -150,8 +167,8 @@ async def test_write_coil_coil(
     value: Union[int, float, str],
 ):
     coil = Coil(2, "test", "test", size, 1, write=True)
-    coil.value = value
-    coil = await connection.write_coil(coil)
+    coil_data = CoilData(coil, value)
+    await connection.write_coil(coil_data)
     modbus_client.write_coils.assert_called_with(
         slave_id=0, starting_address=1, values=raw
     )

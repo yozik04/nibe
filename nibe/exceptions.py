@@ -1,4 +1,11 @@
+from exceptiongroup import ExceptionGroup
+
+
 class NibeException(Exception):
+    pass
+
+
+class AddressInUseException(NibeException):
     pass
 
 
@@ -10,7 +17,11 @@ class DecodeException(NibeException):
     pass
 
 
-class NoMappingException(DecodeException):
+class ValidationError(NibeException):
+    pass
+
+
+class NoMappingException(ValidationError):
     pass
 
 
@@ -22,11 +33,15 @@ class WriteException(NibeException):
     pass
 
 
-class CoilWriteException(WriteException):
+class WriteIOException(WriteException):
     pass
 
 
-class CoilWriteTimeoutException(CoilWriteException):
+class CoilWriteSendException(WriteIOException):
+    pass
+
+
+class WriteTimeoutException(WriteIOException):
     pass
 
 
@@ -34,19 +49,25 @@ class ReadException(NibeException):
     pass
 
 
-class CoilReadException(ReadException):
+class ReadIOException(ReadException):
     pass
 
 
-class CoilReadTimeoutException(CoilReadException):
+class ReadExceptionGroup(ExceptionGroup, ReadException):
+    def __str__(self) -> str:
+        messages = ", ".join(str(exception) for exception in self.exceptions)
+        return f"{self.message} ({messages})"
+
+
+class ReadSendException(ReadIOException):
     pass
 
 
-class ProductInfoReadException(ReadException):
+class ReadTimeoutException(ReadIOException):
     pass
 
 
-class ProductInfoReadTimeoutException(ProductInfoReadException):
+class ProductInfoReadTimeoutException(ReadIOException):
     pass
 
 

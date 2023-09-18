@@ -97,6 +97,20 @@
     "size": "s16",
     "name": "suction-gas-bt17-30017"
   },
+  "30020": {
+    "title": "Exh. air (AZ30-BT20)",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "exh-air-az30-bt20-30020"
+  },
+  "30021": {
+    "title": "Extr. air (AZ30-BT21)",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "extr-air-az30-bt21-30021"
+  },
   "30022": {
     "title": "Collector in (AZ10-BT26)",
     "factor": 10,
@@ -117,6 +131,13 @@
     "unit": "\u00b0C",
     "size": "s16",
     "name": "roomsensor-1-1-30027"
+  },
+  "30028": {
+    "title": "Pool (BT51)",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "pool-bt51-30028"
   },
   "30032": {
     "title": "Return line (EQ1-BT65)",
@@ -157,6 +178,13 @@
     "factor": 1,
     "size": "s16",
     "name": "electrical-anode-eb100-fr1-30042"
+  },
+  "30043": {
+    "title": "Supp. air (AZ30-BT22)",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "supp-air-az30-bt22-30043"
   },
   "30047": {
     "title": "Current (BE3)",
@@ -339,6 +367,16 @@
     "unit": "\u00b0C",
     "size": "s16",
     "name": "return-line-ep44-bt3-30102"
+  },
+  "40105": {
+    "title": "Ventilation mode",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 4.0,
+    "default": 0.0,
+    "name": "ventilation-mode-40105",
+    "write": true
   },
   "30107": {
     "title": "Brine in (EP10-BT26)",
@@ -832,6 +870,38 @@
     "unit": "h",
     "size": "u32",
     "name": "compressor-total-time-pool-heat-pump-4-ep15-30228"
+  },
+  "40228": {
+    "title": "Night cooling 1",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "night-cooling-1-40228",
+    "write": true
+  },
+  "40229": {
+    "title": "Starttemperature Night cooling 1",
+    "factor": 1,
+    "unit": "\u00b0C",
+    "size": "u8",
+    "min": 20.0,
+    "max": 30.0,
+    "default": 25.0,
+    "name": "starttemperature-night-cooling-1-40229",
+    "write": true
+  },
+  "40230": {
+    "title": "Min diff. for Night cooling 1",
+    "factor": 1,
+    "unit": "\u00b0C",
+    "size": "u8",
+    "min": 3.0,
+    "max": 10.0,
+    "default": 6.0,
+    "name": "min-diff-for-night-cooling-1-40230",
+    "write": true
   },
   "30230": {
     "title": "Compressor, total time pool 2, heat pump 4 (EP15)",
@@ -3350,6 +3420,61 @@
     "factor": 1,
     "size": "s8",
     "name": "current-hot-water-mode-31039"
+  },
+  "41039": {
+    "title": "Supply air fan speed 4 (ERS 1)",
+    "factor": 1,
+    "unit": "%",
+    "size": "u8",
+    "min": 0.0,
+    "max": 100.0,
+    "default": 100.0,
+    "name": "supply-air-fan-speed-4-ers-1-41039",
+    "write": true
+  },
+  "41040": {
+    "title": "Supply air fan speed 3 (ERS 1)",
+    "factor": 1,
+    "unit": "%",
+    "size": "u8",
+    "min": 0.0,
+    "max": 100.0,
+    "default": 80.0,
+    "name": "supply-air-fan-speed-3-ers-1-41040",
+    "write": true
+  },
+  "41041": {
+    "title": "Supply air fan speed 2 (ERS 1)",
+    "factor": 1,
+    "unit": "%",
+    "size": "u8",
+    "min": 0.0,
+    "max": 100.0,
+    "default": 30.0,
+    "name": "supply-air-fan-speed-2-ers-1-41041",
+    "write": true
+  },
+  "41042": {
+    "title": "Supply air fan speed 1 (ERS 1)",
+    "factor": 1,
+    "unit": "%",
+    "size": "u8",
+    "min": 0.0,
+    "max": 100.0,
+    "default": 0.0,
+    "name": "supply-air-fan-speed-1-ers-1-41042",
+    "write": true
+  },
+  "41043": {
+    "title": "Supply air fan speed normal (ERS 1)",
+    "factor": 1,
+    "unit": "%",
+    "size": "u8",
+    "min": 1.0,
+    "max": 100.0,
+    "default": 60.0,
+    "name": "supply-air-fan-speed-normal-ers-1-41043",
+    "write": true
   },
   "31042": {
     "title": "Min frequency compressor",
@@ -9887,7 +10012,7 @@
   "32167": {
     "title": "Instantaneous used power",
     "factor": 1,
-    "unit": "Ws",
+    "unit": "W",
     "size": "u32",
     "min": 0.0,
     "max": 9999999.0,

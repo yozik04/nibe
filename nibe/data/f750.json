@@ -1849,7 +1849,8 @@
     "factor": 1,
     "name": "freeze-protection-status-43013",
     "mappings": {
-      "1": "Freeze protection active"
+      "0": "OFF",
+      "1": "ON"
     }
   },
   "43061": {
@@ -2027,9 +2028,9 @@
   "43141": {
     "title": "compr. in power",
     "info": "The power delivered from the inverter to the compressor",
-    "unit": "W",
+    "unit": "kW",
     "size": "u16",
-    "factor": 1,
+    "factor": 100,
     "name": "compr-in-power-43141"
   },
   "43144": {
@@ -2138,9 +2139,9 @@
   "43375": {
     "title": "compr. in power mean",
     "info": "Mean power delivered from the inverter to the compressor. Mean is calculated every 10 seconds.",
-    "unit": "W",
+    "unit": "kW",
     "size": "s16",
-    "factor": 1,
+    "factor": 100,
     "name": "compr-in-power-mean-43375"
   },
   "43382": {
@@ -6034,5 +6035,33 @@
     "default": 6.0,
     "name": "night-cooling-min-diff-49366",
     "write": true
+  },
+  "47340": {
+    "factor": 1,
+    "max": 18.0,
+    "mappings": {
+      "0": "OFF",
+      "1": "ON",
+      "2": "BT50",
+      "10": "RMU-BT50"
+    }
+  },
+  "47260": {
+    "title": "Fan Mode",
+    "info": "0=Normal 1=Fan speed 1, 2=Fan speed 2, 3=Fan speed 3, 4=Fan speed 4",
+    "size": "u8",
+    "factor": 1,
+    "min": 0,
+    "max": 4,
+    "default": 0,
+    "name": "fan-mode-47260",
+    "write": true,
+    "mappings": {
+      "0": "Normal",
+      "1": "Fan mode 1",
+      "2": "Fan mode 2",
+      "3": "Fan mode 3",
+      "4": "Fan mode 4"
+    }
   }
 }

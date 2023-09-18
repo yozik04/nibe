@@ -16,6 +16,13 @@ class MessageResponseParsingTestCase(unittest.TestCase):
         assert data.data.coil_address == 47372
         assert data.data.value == b"\x01\x00\x00\x00"
 
+    def test_parse_token_response_16bit_address(self):
+        data = self._parse_hexlified_raw_message("5c41c9f7007f06")
+        assert data.address == "HEATPUMP_1"
+        assert data.cmd == "HEATPUMP_REQ"
+        assert data.length == 0
+        assert data.data == b""
+
     def test_parse_escaped_read_response(self):
         data = self._parse_hexlified_raw_message("5c00206a074f9c5c5c002c00b2")
 

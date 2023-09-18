@@ -4470,7 +4470,8 @@
     "factor": 1,
     "name": "freeze-protection-status-43013",
     "mappings": {
-      "1": "Freeze protection active"
+      "0": "OFF",
+      "1": "ON"
     }
   },
   "43064": {
@@ -4619,9 +4620,9 @@
   "43141": {
     "title": "compr. in power",
     "info": "The power delivered from the inverter to the compressor",
-    "unit": "W",
+    "unit": "kW",
     "size": "u16",
-    "factor": 1,
+    "factor": 100,
     "name": "compr-in-power-43141"
   },
   "43147": {
@@ -4721,9 +4722,9 @@
   "43375": {
     "title": "compr. in power mean",
     "info": "Mean power delivered from the inverter to the compressor. Mean is calculated every 10 seconds.",
-    "unit": "W",
+    "unit": "kW",
     "size": "s16",
-    "factor": 1,
+    "factor": 100,
     "name": "compr-in-power-mean-43375"
   },
   "43414": {
@@ -9565,12 +9566,18 @@
     "title": "Cooling with room sensor",
     "info": "Enables use of room sensor together with cooling 0=Off 1=On",
     "size": "u8",
-    "factor": 10,
+    "factor": 1,
     "min": 0.0,
     "max": 18.0,
     "default": 0.0,
     "name": "cooling-with-room-sensor-47340",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "OFF",
+      "1": "ON",
+      "2": "BT50",
+      "10": "RMU-BT50"
+    }
   },
   "47341": {
     "title": "HPAC accessory",
