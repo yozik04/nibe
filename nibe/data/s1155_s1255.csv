@@ -130,6 +130,9 @@ Compressor, total time pool, heat pump 5 (EP14)	MODBUS_INPUT_REGISTER	221	1	h	6	
 Compressor, total time pool 2, heat pump 5 (EP14)	MODBUS_INPUT_REGISTER	223	1	h	6	-2147483648	2147483647	0
 Compressor, total time cooling, heat pump 4 (EP15)	MODBUS_INPUT_REGISTER	225	1	h	6	0	0	0
 Compressor, total time pool, heat pump 4 (EP15)	MODBUS_INPUT_REGISTER	227	1	h	6	0	0	0
+Night cooling 1	MODBUS_HOLDING_REGISTER	227	1		4	0	1	0
+Starttemperature Night cooling 1	MODBUS_HOLDING_REGISTER	228	1	°C	4	20	30	25
+Min diff. for Night cooling 1	MODBUS_HOLDING_REGISTER	229	1	°C	4	3	10	6
 Compressor, total time pool 2, heat pump 4 (EP15)	MODBUS_INPUT_REGISTER	229	1	h	6	0	0	0
 Compressor, total time cooling, heat pump 4 (EP14)	MODBUS_INPUT_REGISTER	231	1	h	6	-2147483648	2147483647	0
 Compressor, total time pool, heat pump 4 (EP14)	MODBUS_INPUT_REGISTER	233	1	h	6	-2147483648	2147483647	0
