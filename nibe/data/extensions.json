@@ -256,5 +256,124 @@
         "mappings": null
       }
     }
+  },
+  {
+    "description": "M12676EN-1 - S1155/S1255 ",
+    "files": ["s1155_s1255.json"],
+    "data": {
+      "31101": {
+        "mappings": {
+          "0": "Off",
+          "1": "On"
+        }
+      }
+    }
+  },
+  {
+    "description": "M12676EN-1 - SMOS40 Mappings",
+    "files": ["smos40.json"],
+    "data": {
+      "31067": {
+        "mappings": {
+          "0": "Off",
+          "1": "On"
+        }
+      }
+    }
+  },
+  {
+    "description": "M12676EN-1 - F2120 slave 1",
+    "files": ["smos40.json"],
+    "data": {
+      "31806": {
+        "mappings": {
+          "0": "Off",
+          "1": "Active",
+          "2": "Passive"
+        }
+      }
+    }
+  },
+  {
+    "description": "M12676EN-1 - F2120 slave 2",
+    "files": ["smos40.json"],
+    "data": {
+      "31792": {
+        "mappings": {
+          "0": "Off",
+          "1": "Active",
+          "2": "Passive"
+        }
+      }
+    }
+  },
+  {
+    "description": "M12676EN-1 - F2120 slave 3",
+    "files": ["smos40.json"],
+    "data": {
+      "31778": {
+        "mappings": {
+          "0": "Off",
+          "1": "Active",
+          "2": "Passive"
+        }
+      }
+    }
+  },
+  {
+    "description": "M12676EN-1 - F2120 slave 4",
+    "files": [],
+    "data": {
+      "31764": {
+        "mappings": {
+          "0": "Off",
+          "1": "Active",
+          "2": "Passive"
+        }
+      }
+    }
+  },
+  {
+    "description": "M12676EN-1 - F2140",
+    "files": [],
+    "data": {
+      "31805": {
+        "mappings": {
+          "0": "Off",
+          "1": "Active",
+          "2": "Passive"
+        }
+      }
+    }
+  },
+  {
+    "description": "M12676EN-1 - Common Parameters",
+    "files": ["s320_s325.json", "s1155_s1255.json", "smos40.json"],
+    "data": {
+      "40057": {
+        "mappings": {
+          "0": "Small",
+          "1": "Medium",
+          "2": "Large",
+          "3": "Smart Control"
+        }
+      },
+      "40238": {
+        "mappings": {
+          "0": "Auto",
+          "1": "Manual",
+          "2": "Add. heat only"
+        }
+      },
+      "31029": {
+        "mappings": {
+          "10": "Off",
+          "20": "Hot Water",
+          "30": "Heat",
+          "40": "Pool",
+          "60": "Cooling"
+        }
+      }
+    }
   }
 ]
