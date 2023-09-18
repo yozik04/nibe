@@ -871,6 +871,38 @@
     "size": "u32",
     "name": "compressor-total-time-pool-heat-pump-4-ep15-30228"
   },
+  "40228": {
+    "title": "Night cooling 1",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "night-cooling-1-40228",
+    "write": true
+  },
+  "40229": {
+    "title": "Starttemperature Night cooling 1",
+    "factor": 1,
+    "unit": "\u00b0C",
+    "size": "u8",
+    "min": 20.0,
+    "max": 30.0,
+    "default": 25.0,
+    "name": "starttemperature-night-cooling-1-40229",
+    "write": true
+  },
+  "40230": {
+    "title": "Min diff. for Night cooling 1",
+    "factor": 1,
+    "unit": "\u00b0C",
+    "size": "u8",
+    "min": 3.0,
+    "max": 10.0,
+    "default": 6.0,
+    "name": "min-diff-for-night-cooling-1-40230",
+    "write": true
+  },
   "30230": {
     "title": "Compressor, total time pool 2, heat pump 4 (EP15)",
     "factor": 1,
