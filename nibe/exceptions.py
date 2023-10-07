@@ -34,6 +34,8 @@ class WriteException(NibeException):
 
 
 class WriteIOException(WriteException):
+    """Use this and child exceptions if IO has failed and you want to retry."""
+
     pass
 
 
@@ -50,6 +52,8 @@ class ReadException(NibeException):
 
 
 class ReadIOException(ReadException):
+    """Use this and child exception if IO has failed and you want to retry."""
+
     pass
 
 
