@@ -6,6 +6,7 @@ import pytest
 
 from nibe.coil import Coil, CoilData
 from nibe.connection.modbus import Modbus
+from nibe.exceptions import ReadException
 from nibe.heatpump import HeatPump, Model
 
 
@@ -150,6 +151,16 @@ async def test_read_coil_coil(
     coil_data = await connection.read_coil(coil)
     assert coil_data.value == value
     modbus_client.read_coils.assert_called()
+
+
+async def test_read_coil_out_of_range(
+    connection: Modbus,
+    modbus_client: AsyncMock,
+):
+    coil = Coil(1, "test", "test", "u8", 1, min=1, max=2)
+    modbus_client.read_coils.return_value = bytes([0])
+    with pytest.raises(ReadException):
+        await connection.read_coil(coil)
 
 
 @pytest.mark.parametrize(

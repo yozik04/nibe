@@ -11,6 +11,7 @@ from nibe.coil import Coil, CoilData
 from nibe.connection import DEFAULT_TIMEOUT, Connection
 from nibe.connection.encoders import CoilDataEncoder
 from nibe.exceptions import (
+    DecodeException,
     ModbusUrlException,
     ReadException,
     ReadIOException,
@@ -141,10 +142,12 @@ class Modbus(Connection):
             raise ReadIOException(
                 f"Error '{str(exc)}' reading {coil.name} starting: {entity_number} count: {entity_count} from: {self._slave_id}"
             ) from exc
-        except asyncio.TimeoutError:
+        except asyncio.TimeoutError as exc:
             raise ReadTimeoutException(
                 f"Timeout waiting for read response for {coil.name}"
-            )
+            ) from exc
+        except DecodeException as exc:
+            raise ReadException(f"Failed decoding response for {coil.name}") from exc
 
         return coil_data
 
