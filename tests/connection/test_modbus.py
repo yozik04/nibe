@@ -88,9 +88,11 @@ async def test_write_holding_register(
     [
         ("u32", [1, 0], 0x00000001),
         ("u32", [0, 32768], 0x80000000),
+        ("s32", [0xFFF6, 0xFFFF], -0xA),
         ("u16", [1], 0x0001),
         ("u16", [32768], 0x8000),
         ("u16", ["32768"], 0x8000),
+        ("s16", [0xFFF6], -0xA),
         ("u8", [1], 0x01),
         ("u8", [128], 0x80),
     ],
@@ -168,6 +170,9 @@ async def test_read_coil_out_of_range(
     [
         ("u8", [1], 0x01),
         ("u8", [0], 0x00),
+        ("s8", [0xF6], -0xA),
+        ("s16", [0xFFF6], -0xA),
+        ("s32", [0xFFF6, 0xFFFF], -0xA),
     ],
 )
 async def test_write_coil_coil(

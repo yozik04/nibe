@@ -66,6 +66,17 @@ class TestNibeGW(IsolatedAsyncioTestCase):
             binascii.unhexlify("c06902a0a9a2"), ("127.0.0.1", 9999)
         )
 
+    async def test_write_s32_coil(self):
+        coil = self.heatpump.get_coil_by_address(40940)
+        coil_data = CoilData(coil, -10)
+
+        self._enqueue_datagram(binascii.unhexlify("5c00206c01014c"))
+        await self.nibegw.write_coil(coil_data)
+
+        self.transport.sendto.assert_called_once_with(
+            binascii.unhexlify("c06b06ec9f9cffffffbd"), ("127.0.0.1", 10000)
+        )
+
     async def test_read_coil_decode_failed(self):
         coil = self.heatpump.get_coil_by_address(43086)
 
