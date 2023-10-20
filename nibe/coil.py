@@ -188,7 +188,6 @@ class CoilData:
         ), f"Raw value {value} is out of range for coil {coil.name}"
 
         if coil.is_date:
-            # value equals days since 2007-01-01
             return CoilData(coil, MIN_DATE + datetime.timedelta(days=value))
 
         if coil.has_mappings:
@@ -252,12 +251,12 @@ class CoilData:
         if self.coil.is_date:
             if self.value < MIN_DATE:
                 raise ValidationError(
-                    f"{self.coil.name} coil value ({self.value}) is smaller than min allowed (2007-01-01)"
+                    f"{self.coil.name} coil value ({self.value}) is smaller than min allowed ({MIN_DATE})"
                 )
 
             if self.value > MAX_DATE:
                 raise ValidationError(
-                    f"{self.coil.name} coil value ({self.value}) is larger than max allowed (2186-06-06)"
+                    f"{self.coil.name} coil value ({self.value}) is larger than max allowed ({MAX_DATE})"
                 )
 
         else:
