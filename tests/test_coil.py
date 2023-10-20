@@ -268,18 +268,6 @@ def coil_unsigned_u16():
     )
 
 
-# Date
-@pytest.fixture
-def coil_date():
-    return Coil(
-        123,
-        "holiday-48044",
-        "Holiday",
-        "u16",
-        type="date",
-    )
-
-
 @pytest.mark.parametrize(
     "raw_value, value",
     [
@@ -301,6 +289,7 @@ def test_unsigned_u16_decode(
     [
         (0.1, b"\x01\x00\x00\x00"),
         (25.5, b"\xff\x00\x00\x00"),
+        (18.0, b"\xb4\x00\x00\x00"),
     ],
 )
 def test_unsigned_u16_encode(
@@ -317,6 +306,7 @@ def test_unsigned_u16_encode(
         (b"\x01\x00\x00\x00", 0.1),
         (b"\x01\x00", 0.1),
         (b"\xff\xff", None),
+        (b"\xb4\x00\x00\x00", 18.0),
     ],
 )
 def test_unsigned_u16_word_swap_decode(
@@ -329,10 +319,7 @@ def test_unsigned_u16_word_swap_decode(
 
 @pytest.mark.parametrize(
     "value, raw_value",
-    [
-        (0.1, b"\x01\x00\x00\x00"),
-        (25.5, b"\xff\x00\x00\x00"),
-    ],
+    [(0.1, b"\x01\x00\x00\x00"), (25.5, b"\xff\x00\x00\x00")],
 )
 def test_unsigned_u16_word_swap_encode(
     value, raw_value, encoder_word_swap: CoilDataEncoder, coil_unsigned_u16: Coil
@@ -538,6 +525,18 @@ def test_word_swap_unset(size, encoder: CoilDataEncoder):
 
     with pytest.raises(EncodeException):
         encoder.encode(CoilData(coil, 1))
+
+
+# Date
+@pytest.fixture
+def coil_date():
+    return Coil(
+        123,
+        "holiday-48044",
+        "Holiday",
+        "u16",
+        type="date",
+    )
 
 
 @pytest.mark.parametrize(
