@@ -166,6 +166,13 @@
     "size": "s16",
     "name": "boiler-temperature-bt52-30039"
   },
+  "30040": {
+    "title": "External supply line (BT25)",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "external-supply-line-bt25-30040"
+  },
   "30041": {
     "title": "Flow sensor (BF1)",
     "factor": 10,
@@ -297,6 +304,13 @@
     "unit": "\u00b0C",
     "size": "s16",
     "name": "outgoing-hot-water-bt70-30088"
+  },
+  "30089": {
+    "title": "Return line (BT71)",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "return-line-bt71-30089"
   },
   "30091": {
     "title": "Collector (EQ1-BT57)",
