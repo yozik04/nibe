@@ -1,7 +1,11 @@
 from dataclasses import dataclass
+import datetime
 from typing import Dict, Optional, Union
 
 from nibe.exceptions import NoMappingException, ValidationError
+
+MIN_DATE = datetime.date(2007, 1, 1)
+MAX_DATE = MIN_DATE + datetime.timedelta(0xFFFE)
 
 
 def is_coil_boolean(coil):
@@ -20,8 +24,8 @@ def is_coil_boolean(coil):
 class Coil:
     """Represents a coil."""
 
-    mappings: Optional[Dict[str, str]]
-    reverse_mappings: Optional[Dict[str, str]]
+    mappings: Optional[Dict[str, str]] = None
+    reverse_mappings: Optional[Dict[str, str]] = None
 
     def __init__(
         self,
@@ -30,44 +34,69 @@ class Coil:
         title: str,
         size: str,
         factor: int = 1,
-        info: str = None,
-        unit: str = None,
-        mappings: dict = None,
         write: bool = False,
         **kwargs,
     ):
+        r"""Initialize coil.
+
+        :param address: Coil address
+        :param name: Coil name
+        :param title: Coil title
+        :param size: Coil size ("u8", "s8", "u16", "s16", "u32", "s32")
+        :param factor: Coil raw value factor (used for value translation)
+        :param write: Is coil writable
+        :param kwargs:
+            - mappings: Coil mappings (used for value translation)
+            - info: Coil info
+            - unit: Coil measurement unit
+            - type: Coil type (number or date)
+            - min: Coil raw min value (used for validation)
+            - max: Coil raw max value (used for validation)
+        """
+
         assert isinstance(address, int), "Address must be defined"
         assert name, "Name must be defined"
         assert title, "Title must be defined"
         assert factor, "Factor must be defined"
-        assert not (
-            mappings is not None and factor != 1
-        ), "When mapping is used factor needs to be 1"
-
-        self.size = size
 
         self.address = address
         self.name = name
         self.title = title
+        self.size = size
         self.factor = factor
-
-        self.set_mappings(mappings)
-
-        self.info = info
-        self.unit = unit
         self.is_writable = write
 
-        self.other = kwargs
+        if "mappings" in kwargs:
+            mappings = kwargs.pop("mappings")
+            assert factor == 1, "When mapping is used factor needs to be 1"
+            self.set_mappings(mappings)
 
-        self.raw_min = self.other.get("min")
-        self.raw_max = self.other.get("max")
+        self.info = kwargs.pop("info", None)
+        self.unit = kwargs.pop("unit", None)
+        self.type = kwargs.pop("type", "number")
+
+        assert self.type in [
+            "number",
+            "date",
+        ], f"Invalid coil type {self.type} for coil {self.name}"
+
+        assert not (
+            self.has_mappings and self.type == "date"
+        ), f"Date coil {self.name} cannot have mappings"
+
+        self.raw_min = kwargs.pop("min", None)
+        self.raw_max = kwargs.pop("max", None)
 
         self.min = self.raw_min / factor if self.raw_min is not None else None
         self.max = self.raw_max / factor if self.raw_max is not None else None
 
         self.is_boolean = is_coil_boolean(self)
-        if self.is_boolean and not mappings:
+        if self.is_boolean and not self.has_mappings:
             self.set_mappings({"0": "OFF", "1": "ON"})
+
+        self.is_date = self.type == "date"
+
+        self.other = kwargs
 
     def set_mappings(self, mappings):
         """Set mappings for value translation."""
@@ -141,7 +170,7 @@ class CoilData:
     """Represents a coil data."""
 
     coil: Coil
-    value: Union[int, float, str, None] = None
+    value: Union[int, float, str, datetime.date, None] = None
 
     def __repr__(self) -> str:
         return f"Coil {self.coil.name}, value: {self.value}"
@@ -158,6 +187,9 @@ class CoilData:
             value
         ), f"Raw value {value} is out of range for coil {coil.name}"
 
+        if coil.is_date:
+            return CoilData(coil, MIN_DATE + datetime.timedelta(days=value))
+
         if coil.has_mappings:
             return CoilData.from_mapping(coil, value)
 
@@ -169,6 +201,13 @@ class CoilData:
     @property
     def raw_value(self) -> int:
         """Return raw value for coil."""
+        if self.coil.is_date:
+            assert isinstance(
+                self.value, datetime.date
+            ), f"Provided value '{self.value}' is invalid type (datetime.date is expected) for {self.coil.name}"
+
+            return (self.value - MIN_DATE).days
+
         if self.coil.has_mappings:
             return self.coil.get_reverse_mapping_for(self.value)
 
@@ -190,26 +229,43 @@ class CoilData:
         if self.value is None:
             raise ValidationError(f"Value for {self.coil.name} is not set")
 
+        if self.coil.is_date and not isinstance(self.value, datetime.date):
+            raise ValidationError(
+                f"{self.coil.name} coil value ({self.value}) is invalid type (expected datetime.date)"
+            )
+
         if self.coil.has_mappings:
             self.coil.get_reverse_mapping_for(
                 self.value
             )  # can throw NoMappingException(ValidationException) or AssertionError
             return
 
-        if not isinstance(self.value, (int, float)):
+        if not isinstance(self.value, (int, float, datetime.date)):
             raise ValidationError(
-                f"{self.coil.name} coil value ({self.value}) is invalid type (expected int or float)"
+                f"{self.coil.name} coil value ({self.value}) is invalid type (expected int, float or datetime.date)"
             )
 
         self._check_value_bounds()
 
     def _check_value_bounds(self):
-        if self.coil.min is not None and self.value < self.coil.min:
-            raise ValidationError(
-                f"{self.coil.name} coil value ({self.value}) is smaller than min allowed ({self.coil.min})"
-            )
+        if self.coil.is_date:
+            if self.value < MIN_DATE:
+                raise ValidationError(
+                    f"{self.coil.name} coil value ({self.value}) is smaller than min allowed ({MIN_DATE})"
+                )
 
-        if self.coil.max is not None and self.value > self.coil.max:
-            raise ValidationError(
-                f"{self.coil.name} coil value ({self.value}) is larger than max allowed ({self.coil.max})"
-            )
+            if self.value > MAX_DATE:
+                raise ValidationError(
+                    f"{self.coil.name} coil value ({self.value}) is larger than max allowed ({MAX_DATE})"
+                )
+
+        else:
+            if self.coil.min is not None and self.value < self.coil.min:
+                raise ValidationError(
+                    f"{self.coil.name} coil value ({self.value}) is smaller than min allowed ({self.coil.min})"
+                )
+
+            if self.coil.max is not None and self.value > self.coil.max:
+                raise ValidationError(
+                    f"{self.coil.name} coil value ({self.value}) is larger than max allowed ({self.coil.max})"
+                )
