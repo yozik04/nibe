@@ -3100,6 +3100,24 @@
     "name": "fuse-47214",
     "write": true
   },
+  "47260": {
+    "title": "Fan mode",
+    "info": "Fan mode: 0 = Normal, 1 = Speed 1, 2 = Speed 2, 3 = Speed 3, 4 = Speed 4",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 4.0,
+    "default": 0.0,
+    "name": "fan-mode-47260",
+    "write": true,
+    "mappings": {
+      "0": "Normal",
+      "1": "Speed 1",
+      "2": "Speed 2",
+      "3": "Speed 3",
+      "4": "Speed 4"
+    }
+  },
   "47261": {
     "title": "Exhaust Fan speed 4",
     "unit": "%",
