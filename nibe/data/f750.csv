@@ -501,6 +501,11 @@ Title;Info;ID;Unit;Size;Factor;Min;Max;Default;Mode
 "DEW accessory";"Activates the DEW accessory";47555;"";u8;1;0;1;0;R/W;
 "Heat Curve S7";"Heat curve, see manual for more information";47567;"";s8;1;0;15;9;R/W;
 "Holiday - Activated";"0=inactive, 10=active";48043;"";u8;1;0;10;0;R/W;
+"Holiday - Start Date";"Days since 1 January 2007";48044;"";u16;1;0;0;0;R/W;
+"Holiday - End Date";"Days since 1 January 2007";48045;"";u16;1;0;0;0;R/W;
+"Holiday - HW Comfort Mode";"-1=Off 0=Economy 1=Normal 2=Luxury";48047;"";s8;1;-1;2;1;R/W;
+"Holiday - Fan Mode";"0=Normal 1=Fan speed 1, 2=Fan speed 2, 3=Fan speed 3, 4=Fan speed 4";48048;"";u8;1;0;4;0;R/W;
+"Holiday - Room Temperature";"Room temperature during holiday";48051;"°C";s16;10;50;300;200;R/W;
 "DM diff start add.";"The value below the last compressor step the degree minutes needed to be reached for the pump to start electric addition";48072;"";s16;1;0;0;0;R/W;
 "Temporary Lux";"0=Off, 1=3h, 2=6h, 3=12h, 4=One time increase";48132;"";s8;1;0;0;0;R/W;
 "DM startdiff add. with shunt";"";48139;"";s16;1;0;2000;400;R/W;
