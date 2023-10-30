@@ -6,9 +6,11 @@
 [![Codecov](https://codecov.io/gh/yozik04/nibe/branch/master/graph/badge.svg?token=ZJIOTGLNW5)](https://codecov.io/gh/yozik04/nibe)
 
 # Nibe library
+
 Library for communication with Nibe heatpumps.
 
 ### Supported heatpump models
+
  - F1145
  - F1155
  - F1245
@@ -33,11 +35,13 @@ Library for communication with Nibe heatpumps.
  - VVM500
 
 ## Connection methods
+
 - RS485 hardwired using NibeGW on Arduino or RPi. NibeGW was developed by Pauli Anttila for [Openhab's integration](https://www.openhab.org/addons/bindings/nibeheatpump/).
 - **(Not yet tested)** TCP Modbus for S Models
 - **(Not yet tested)** Serial Modbus for Nibe Modbus 40)
 
 ### NibeGW
+
 For this connection method to work you will need to connect an Arduino with special firmware that will act as a proxy between Heatpump RS485 and this library. Some details regarding how this method works can be found [here](https://www.openhab.org/addons/bindings/nibeheatpump/#prerequisites).
 
 NibeGW firmware for Arduino or RPi can be [download here](https://github.com/openhab/openhab-addons/tree/3.2.x/bundles/org.openhab.binding.nibeheatpump/contrib/NibeGW).
@@ -80,6 +84,7 @@ if __name__ == '__main__':
 ```
 
 ### TCP Modbus
+
 With S series heatpumps
 
 ```python3
@@ -118,6 +123,7 @@ if __name__ == '__main__':
 ```
 
 ### Serial Modbus
+
 With NIBE MODBUS 40
 
 ```python3
@@ -156,6 +162,7 @@ if __name__ == '__main__':
 ```
 
 ### Model auto detection
+
 With NibeGW it is possible to auto identify heatpump model.
 Heatpump sends information about model every 15 seconds.
 ```
@@ -170,15 +177,19 @@ await heatpump.initialize()
 ```
 
 ## Disclaimer
+
 Nibe is registered mark of NIBE Energy Systems.
 
 The code was developed as a way of integrating personally owned Nibe heatpump, and it cannot be used for other purposes. It is not affiliated with any company, and it doesn't have commercial intent.
 
 The code is provided AS IS and the developers will not be held responsible for failures in the heatpump operation or any other malfunction.
 
-## HOWTOs for developers
-### How to capture and replay traffic from NibeGW
+# HOWTOs for developers
+
+## How to capture and replay traffic from NibeGW
+
 ### Requirements
+
 APT:
  - tcpdump
  - tcpreplay
@@ -193,3 +204,31 @@ sudo tcpreplay --intf1=eth0 nibe-9999rw.pcap
 ```
 
 You will need to replace IP addresses for rewrite and Mac address of new recipient device
+
+## I want to add/update registers in the library
+
+To add/edit registers in the library first of all you need to find documentation how these parameters are officially called. There will be a backward compatibility break if a name will change.
+
+The process contains of mainly next steps: 1. Update source CSV files. 2. Convert CSV files to JSON. 3. Edit extensions.json if needed. 4. Submit PR.
+
+### 1.A For F series pumps
+
+Use [ModbusManager](https://professional.nibe.eu/sv/proffshjalp/kommunikation/nibe-modbus). Do CSV export for the unit you want to update. Find the correct file in `nibe/data` folder. Merge data into that file (Do not change/update any lines. All CSV files are source files they must not be changed).
+
+### 1.B For S serires pumps
+
+Change your pump language to English and do registers export. Merge that data into the correct file in `nibe/data` folder (Do not change/update any lines. All CSV files are source files they must not be changed).
+
+### 2. Convert source CSV files to JSON
+
+```bash
+python3 -m nibe.console_scripts.convert_csv
+```
+
+### 3. Verify JSON files
+
+Verify that convertion was succesful and required lines correctly appeared in the json files. If some modifications are required you need to edit `extensions.json` to fix these. Do not edit source CSV files.
+
+### 4. Submit PR
+
+Attach your source CSV file for reference so we could verify as well.
