@@ -1,6 +1,5 @@
 import asyncio
 import logging
-from typing import List
 
 from async_modbus import modbus_for_url
 import async_timeout
@@ -9,7 +8,7 @@ from umodbus.exceptions import ModbusError
 
 from nibe.coil import Coil, CoilData
 from nibe.connection import DEFAULT_TIMEOUT, Connection
-from nibe.connection.encoders import CoilDataEncoder
+from nibe.connection.encoders import CoilDataCoderModbus
 from nibe.exceptions import (
     DecodeException,
     ModbusUrlException,
@@ -37,31 +36,6 @@ def split_modbus_data(coil: Coil):
         entity_count = 1
 
     return entity_type, entity_address, entity_count
-
-
-def decode_u16_list(data: bytes, count: int) -> List[int]:
-    """Split data into chunks of a certain max length, cropping of trailing data."""
-    res = []
-    for i in range(0, count * 2, 2):
-        res.append(int.from_bytes(data[i : i + 2], "little", signed=False))
-    return res
-
-
-def encode_u16_list(data: List[int]) -> bytes:
-    return bytes(
-        byte for val in data for byte in int(val).to_bytes(2, "little", signed=False)
-    )
-
-
-def split_chunks(data, max_len, chunks) -> List[int]:
-    """Split data into chunks of a certain max length, cropping of trailing data."""
-    count = len(data) // chunks
-    res = []
-    for i in range(0, len(data), count):
-        chunk = data[i : i + count]
-        assert all(x == 0 for x in chunk[max_len:])
-        res.append(int.from_bytes(chunk[0:max_len], "little"), signed=False)
-    return res
 
 
 class Modbus(Connection):
@@ -96,7 +70,7 @@ class Modbus(Connection):
         except ValueError as exc:
             raise ModbusUrlException(str(exc)) from exc
 
-        self.coil_encoder = CoilDataEncoder(heatpump.word_swap)
+        self.coil_encoder = CoilDataCoderModbus(heatpump.word_swap)
 
     async def stop(self) -> None:
         await self._client.stream.close()
@@ -134,7 +108,7 @@ class Modbus(Connection):
                 else:
                     raise ReadException(f"Unsupported entity type {entity_type}")
 
-            coil_data = self.coil_encoder.decode(coil, encode_u16_list(result))
+            coil_data = self.coil_encoder.decode(coil, result)
 
             logger.info(coil_data)
             self._heatpump.notify_coil_update(coil_data)
@@ -159,7 +133,7 @@ class Modbus(Connection):
 
         entity_type, entity_number, entity_count = split_modbus_data(coil)
         try:
-            coil_data.validate()
+            values = self.coil_encoder.encode(coil_data)
 
             logger.debug("Sending write request")
             async with async_timeout.timeout(timeout):
@@ -167,17 +141,13 @@ class Modbus(Connection):
                     result = await self._client.write_registers(
                         slave_id=self._slave_id,
                         starting_address=entity_number,
-                        values=decode_u16_list(
-                            self.coil_encoder.encode(coil_data), entity_count
-                        ),
+                        values=values,
                     )
                 elif entity_type == 0:
                     result = await self._client.write_coils(
                         slave_id=self._slave_id,
                         starting_address=entity_number,
-                        values=decode_u16_list(
-                            self.coil_encoder.encode(coil_data), entity_count
-                        ),
+                        values=values,
                     )
                 else:
                     raise ReadIOException(f"Unsupported entity type {entity_type}")
