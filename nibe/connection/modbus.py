@@ -146,7 +146,7 @@ class Modbus(Connection):
             raise ReadTimeoutException(
                 f"Timeout waiting for read response for {coil.name}"
             ) from exc
-        except DecodeException as exc:
+        except (DecodeException, ValidationError) as exc:
             raise ReadException(f"Failed decoding response for {coil.name}") from exc
 
         return coil_data
