@@ -279,6 +279,10 @@ async def _validate(out_file):
     await hp.initialize()
 
 
-if __name__ == "__main__":
+def main():
     logging.basicConfig(level=logging.INFO)
     asyncio.run(run())
+
+
+if __name__ == "__main__":
+    main()
