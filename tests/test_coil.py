@@ -569,7 +569,7 @@ def coil_date():
     ],
 )
 def test_date_decode(
-    raw_value, value, encoder_word_swap: CoilDataEncoder, coil_date: Coil
+    raw_value, value, encoder_word_swap: CoilDataEncoderNibeGw, coil_date: Coil
 ):
     assert encoder_word_swap.decode(coil_date, raw_value) == CoilData(coil_date, value)
 
@@ -583,7 +583,7 @@ def test_date_decode(
     ],
 )
 def test_date_encode(
-    value, raw_value, encoder_word_swap: CoilDataEncoder, coil_date: Coil
+    value, raw_value, encoder_word_swap: CoilDataEncoderNibeGw, coil_date: Coil
 ):
     coil_data = CoilData(coil_date, value)
     assert encoder_word_swap.encode(coil_data) == raw_value
