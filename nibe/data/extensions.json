@@ -348,14 +348,19 @@
   },
   {
     "description": "M12676EN-1 - Common Parameters",
-    "files": ["s320_s325.json", "s1155_s1255.json", "smos40.json"],
+    "files": [
+      "s320_s325.json",
+      "s735.json",
+      "s1155_s1255.json",
+      "s2125.json",
+      "smos40.json"],
     "data": {
       "40057": {
         "mappings": {
           "0": "Small",
           "1": "Medium",
           "2": "Large",
-          "3": "Smart Control"
+          "4": "Smart Control"
         }
       },
       "40238": {
