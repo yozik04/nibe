@@ -166,6 +166,13 @@
     "size": "s16",
     "name": "boiler-temperature-bt52-30039"
   },
+  "30040": {
+    "title": "External supply line (BT25)",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "external-supply-line-bt25-30040"
+  },
   "30041": {
     "title": "Flow sensor (BF1)",
     "factor": 10,
@@ -297,6 +304,13 @@
     "unit": "\u00b0C",
     "size": "s16",
     "name": "outgoing-hot-water-bt70-30088"
+  },
+  "30089": {
+    "title": "Return line (BT71)",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "return-line-bt71-30089"
   },
   "30091": {
     "title": "Collector (EQ1-BT57)",
@@ -679,7 +693,7 @@
     "factor": 1,
     "unit": "h",
     "size": "u32",
-    "min": -2147483648.0,
+    "min": 0.0,
     "max": 2147483647.0,
     "default": 0.0,
     "name": "compressor-total-time-cooling-heat-pump-8-ep14-30184"
@@ -689,7 +703,7 @@
     "factor": 1,
     "unit": "h",
     "size": "u32",
-    "min": -2147483648.0,
+    "min": 0.0,
     "max": 2147483647.0,
     "default": 0.0,
     "name": "compressor-total-time-pool-heat-pump-8-ep14-30186"
@@ -699,7 +713,7 @@
     "factor": 1,
     "unit": "h",
     "size": "u32",
-    "min": -2147483648.0,
+    "min": 0.0,
     "max": 2147483647.0,
     "default": 0.0,
     "name": "compressor-total-time-pool-2-heat-pump-8-ep14-30188"
@@ -730,7 +744,7 @@
     "factor": 1,
     "unit": "h",
     "size": "u32",
-    "min": -2147483648.0,
+    "min": 0.0,
     "max": 2147483647.0,
     "default": 0.0,
     "name": "compressor-total-time-cooling-heat-pump-7-ep14-30196"
@@ -740,7 +754,7 @@
     "factor": 1,
     "unit": "h",
     "size": "u32",
-    "min": -2147483648.0,
+    "min": 0.0,
     "max": 2147483647.0,
     "default": 0.0,
     "name": "compressor-total-time-pool-heat-pump-7-ep14-30198"
@@ -750,7 +764,7 @@
     "factor": 1,
     "unit": "h",
     "size": "u32",
-    "min": -2147483648.0,
+    "min": 0.0,
     "max": 2147483647.0,
     "default": 0.0,
     "name": "compressor-total-time-pool-2-heat-pump-7-ep14-30200"
@@ -781,7 +795,7 @@
     "factor": 1,
     "unit": "h",
     "size": "u32",
-    "min": -2147483648.0,
+    "min": 0.0,
     "max": 2147483647.0,
     "default": 0.0,
     "name": "compressor-total-time-cooling-heat-pump-6-ep14-30208"
@@ -791,7 +805,7 @@
     "factor": 1,
     "unit": "h",
     "size": "u32",
-    "min": -2147483648.0,
+    "min": 0.0,
     "max": 2147483647.0,
     "default": 0.0,
     "name": "compressor-total-time-pool-heat-pump-6-ep14-30210"
@@ -801,7 +815,7 @@
     "factor": 1,
     "unit": "h",
     "size": "u32",
-    "min": -2147483648.0,
+    "min": 0.0,
     "max": 2147483647.0,
     "default": 0.0,
     "name": "compressor-total-time-pool-2-heat-pump-6-ep14-30212"
@@ -832,7 +846,7 @@
     "factor": 1,
     "unit": "h",
     "size": "u32",
-    "min": -2147483648.0,
+    "min": 0.0,
     "max": 2147483647.0,
     "default": 0.0,
     "name": "compressor-total-time-cooling-heat-pump-5-ep14-30220"
@@ -842,7 +856,7 @@
     "factor": 1,
     "unit": "h",
     "size": "u32",
-    "min": -2147483648.0,
+    "min": 0.0,
     "max": 2147483647.0,
     "default": 0.0,
     "name": "compressor-total-time-pool-heat-pump-5-ep14-30222"
@@ -852,7 +866,7 @@
     "factor": 1,
     "unit": "h",
     "size": "u32",
-    "min": -2147483648.0,
+    "min": 0.0,
     "max": 2147483647.0,
     "default": 0.0,
     "name": "compressor-total-time-pool-2-heat-pump-5-ep14-30224"
@@ -915,7 +929,7 @@
     "factor": 1,
     "unit": "h",
     "size": "u32",
-    "min": -2147483648.0,
+    "min": 0.0,
     "max": 2147483647.0,
     "default": 0.0,
     "name": "compressor-total-time-cooling-heat-pump-4-ep14-30232"
@@ -925,7 +939,7 @@
     "factor": 1,
     "unit": "h",
     "size": "u32",
-    "min": -2147483648.0,
+    "min": 0.0,
     "max": 2147483647.0,
     "default": 0.0,
     "name": "compressor-total-time-pool-heat-pump-4-ep14-30234"
@@ -935,7 +949,7 @@
     "factor": 1,
     "unit": "h",
     "size": "u32",
-    "min": -2147483648.0,
+    "min": 0.0,
     "max": 2147483647.0,
     "default": 0.0,
     "name": "compressor-total-time-pool-2-heat-pump-4-ep14-30236"
@@ -966,7 +980,7 @@
     "factor": 1,
     "unit": "h",
     "size": "u32",
-    "min": -2147483648.0,
+    "min": 0.0,
     "max": 2147483647.0,
     "default": 0.0,
     "name": "compressor-total-time-cooling-heat-pump-3-ep14-30244"
@@ -976,7 +990,7 @@
     "factor": 1,
     "unit": "h",
     "size": "u32",
-    "min": -2147483648.0,
+    "min": 0.0,
     "max": 2147483647.0,
     "default": 0.0,
     "name": "compressor-total-time-pool-heat-pump-3-ep14-30246"
@@ -986,7 +1000,7 @@
     "factor": 1,
     "unit": "h",
     "size": "u32",
-    "min": -2147483648.0,
+    "min": 0.0,
     "max": 2147483647.0,
     "default": 0.0,
     "name": "compressor-total-time-pool-2-heat-pump-3-ep14-30248"
@@ -1017,7 +1031,7 @@
     "factor": 1,
     "unit": "h",
     "size": "u32",
-    "min": -2147483648.0,
+    "min": 0.0,
     "max": 2147483647.0,
     "default": 0.0,
     "name": "compressor-total-time-cooling-heat-pump-2-ep14-30256"
@@ -1027,7 +1041,7 @@
     "factor": 1,
     "unit": "h",
     "size": "u32",
-    "min": -2147483648.0,
+    "min": 0.0,
     "max": 2147483647.0,
     "default": 0.0,
     "name": "compressor-total-time-pool-heat-pump-2-ep14-30258"
@@ -1037,7 +1051,7 @@
     "factor": 1,
     "unit": "h",
     "size": "u32",
-    "min": -2147483648.0,
+    "min": 0.0,
     "max": 2147483647.0,
     "default": 0.0,
     "name": "compressor-total-time-pool-2-heat-pump-2-ep14-30260"
@@ -1068,7 +1082,7 @@
     "factor": 1,
     "unit": "h",
     "size": "u32",
-    "min": -2147483648.0,
+    "min": 0.0,
     "max": 2147483647.0,
     "default": 0.0,
     "name": "compressor-total-time-cooling-main-unit-ep14-30280"
@@ -1078,7 +1092,7 @@
     "factor": 1,
     "unit": "h",
     "size": "u32",
-    "min": -2147483648.0,
+    "min": 0.0,
     "max": 2147483647.0,
     "default": 0.0,
     "name": "compressor-total-time-pool-main-unit-ep14-30282"
@@ -1088,7 +1102,7 @@
     "factor": 1,
     "unit": "h",
     "size": "u32",
-    "min": -2147483648.0,
+    "min": 0.0,
     "max": 2147483647.0,
     "default": 0.0,
     "name": "compressor-total-time-pool-2-main-unit-ep14-30284"
@@ -3601,6 +3615,13 @@
     "default": 0.0,
     "name": "total-hw-run-time-additional-heat-31070"
   },
+  "31076": {
+    "title": "Compressor power input, average",
+    "factor": 1,
+    "unit": "W",
+    "size": "s16",
+    "name": "compressor-power-input-average-31076"
+  },
   "31079": {
     "title": "More hot water status",
     "factor": 1,
@@ -5930,6 +5951,16 @@
     "name": "time-format-40195",
     "write": true
   },
+  "40196": {
+    "title": "Hot water permitted",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "hot-water-permitted-40196",
+    "write": true
+  },
   "40197": {
     "title": "Alarm action, lower room temperature",
     "factor": 1,
@@ -6086,7 +6117,7 @@
     "factor": 1,
     "size": "u8",
     "min": 0.0,
-    "max": 59.0,
+    "max": 65.0,
     "default": 0.0,
     "name": "input-aux5-40212",
     "write": true
@@ -6096,7 +6127,7 @@
     "factor": 1,
     "size": "u8",
     "min": 0.0,
-    "max": 59.0,
+    "max": 65.0,
     "default": 0.0,
     "name": "input-aux4-40213",
     "write": true
@@ -6106,7 +6137,7 @@
     "factor": 1,
     "size": "u8",
     "min": 0.0,
-    "max": 59.0,
+    "max": 65.0,
     "default": 0.0,
     "name": "input-aux3-40214",
     "write": true
@@ -6116,7 +6147,7 @@
     "factor": 1,
     "size": "u8",
     "min": 0.0,
-    "max": 59.0,
+    "max": 65.0,
     "default": 0.0,
     "name": "input-aux2-40215",
     "write": true
@@ -6126,7 +6157,7 @@
     "factor": 1,
     "size": "u8",
     "min": 0.0,
-    "max": 59.0,
+    "max": 65.0,
     "default": 0.0,
     "name": "input-aux1-40216",
     "write": true
@@ -6136,7 +6167,7 @@
     "factor": 1,
     "size": "u8",
     "min": 0.0,
-    "max": 25.0,
+    "max": 29.0,
     "default": 0.0,
     "name": "output-aux1-40217",
     "write": true
@@ -6366,6 +6397,16 @@
     "name": "hw-comfort-shunt-on-off-40706",
     "write": true
   },
+  "40711": {
+    "title": "HW comfort additional heat",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "hw-comfort-additional-heat-40711",
+    "write": true
+  },
   "40712": {
     "title": "Supp. air curve SAM, outd. temp. (T3)",
     "factor": 10,
@@ -6469,6 +6510,9 @@
     "title": "Cooling connected, climate system 1",
     "factor": 1,
     "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 1.0,
     "name": "cooling-connected-climate-system-1-40727",
     "write": true
   },
@@ -7270,6 +7314,16 @@
     "name": "hts-1-40999",
     "write": true
   },
+  "41007": {
+    "title": "Prevent condensation climate system 1",
+    "factor": 1,
+    "size": "s8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "prevent-condensation-climate-system-1-41007",
+    "write": true
+  },
   "41016": {
     "title": "OPT",
     "factor": 1,
@@ -7440,6 +7494,16 @@
     "max": 900.0,
     "default": 700.0,
     "name": "max-internal-additional-heat-sg-ready-41053",
+    "write": true
+  },
+  "41064": {
+    "title": "Limit humidity in the room, cooling climate system 1",
+    "factor": 1,
+    "size": "s8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "limit-humidity-in-the-room-cooling-climate-system-1-41064",
     "write": true
   },
   "41067": {
@@ -7828,7 +7892,7 @@
     "factor": 1,
     "size": "u8",
     "min": 0.0,
-    "max": 1.0,
+    "max": 3.0,
     "default": 0.0,
     "name": "el-price-smart-energy-source-41112",
     "write": true
@@ -8657,6 +8721,13 @@
     "name": "external-adjustment-with-room-sensor-cooling-climate-system-1-44154",
     "write": true
   },
+  "32728": {
+    "title": "Current power",
+    "factor": 100,
+    "unit": "kW",
+    "size": "u32",
+    "name": "current-power-32728"
+  },
   "44165": {
     "title": "BlockFreq 1 (EB102)",
     "factor": 1,
@@ -9117,7 +9188,7 @@
   },
   "40001": {
     "title": "Temperature, Overload, pool",
-    "factor": 1,
+    "factor": 10,
     "unit": "\u00b0C",
     "size": "u8",
     "min": 1.0,
@@ -9997,7 +10068,7 @@
     "factor": 1,
     "size": "u8",
     "min": 0.0,
-    "max": 59.0,
+    "max": 65.0,
     "default": 0.0,
     "name": "aux-from-modbus-42741",
     "write": true
@@ -10018,6 +10089,16 @@
     "max": 9999999.0,
     "default": 0.0,
     "name": "instantaneous-used-power-32167"
+  },
+  "45102": {
+    "title": "Heat pump test - Silent mode (EB101/EB102)",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "heat-pump-test-silent-mode-eb101-eb102-45102",
+    "write": true
   },
   "42821": {
     "title": "ERS 2",
@@ -10210,6 +10291,291 @@
     "unit": "%",
     "size": "u8",
     "name": "fan-mode-8-32172"
+  },
+  "45393": {
+    "title": "Disable emergency restart GP1",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "disable-emergency-restart-gp1-45393",
+    "write": true
+  },
+  "45026": {
+    "title": "Disable emergency restart GP1",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "disable-emergency-restart-gp1-45026",
+    "write": true
+  },
+  "32284": {
+    "title": "Energy log - Produced energy for heating over the past hour",
+    "factor": 100,
+    "unit": "kWh",
+    "size": "u32",
+    "name": "energy-log-produced-energy-for-heating-over-the-past-hour-32284"
+  },
+  "32286": {
+    "title": "Energy log - Produced energy for hot water over the past hour",
+    "factor": 100,
+    "unit": "kWh",
+    "size": "u32",
+    "name": "energy-log-produced-energy-for-hot-water-over-the-past-hour-32286"
+  },
+  "32290": {
+    "title": "Energy log - Produced energy for cooling over the past hour",
+    "factor": 100,
+    "unit": "kWh",
+    "size": "u32",
+    "name": "energy-log-produced-energy-for-cooling-over-the-past-hour-32290"
+  },
+  "32292": {
+    "title": "Energy log - Used energy for heating over the past hour",
+    "factor": 100,
+    "unit": "kWh",
+    "size": "u32",
+    "name": "energy-log-used-energy-for-heating-over-the-past-hour-32292"
+  },
+  "32294": {
+    "title": "Energy log - Used energy for hot water over the past hour",
+    "factor": 100,
+    "unit": "kWh",
+    "size": "u32",
+    "name": "energy-log-used-energy-for-hot-water-over-the-past-hour-32294"
+  },
+  "32298": {
+    "title": "Energy log - Used energy for cooling over the past hour",
+    "factor": 100,
+    "unit": "kWh",
+    "size": "u32",
+    "name": "energy-log-used-energy-for-cooling-over-the-past-hour-32298"
+  },
+  "32300": {
+    "title": "Energy log - Used energy by additional heater for heating over the past hour",
+    "factor": 100,
+    "unit": "kWh",
+    "size": "u32",
+    "name": "energy-log-used-energy-by-additional-heater-for-heating-over-the-past-hour-32300"
+  },
+  "32302": {
+    "title": "Energy log - Used energy by additional heater for hot water over the past hour",
+    "factor": 100,
+    "unit": "kWh",
+    "size": "u32",
+    "name": "energy-log-used-energy-by-additional-heater-for-hot-water-over-the-past-hour-32302"
+  },
+  "32306": {
+    "title": "Energy log - Current power consumption",
+    "factor": 100,
+    "unit": "kW",
+    "size": "u32",
+    "name": "energy-log-current-power-consumption-32306"
+  },
+  "32308": {
+    "title": "Energy log - Current power consumption, components",
+    "factor": 100,
+    "unit": "kW",
+    "size": "u32",
+    "name": "energy-log-current-power-consumption-components-32308"
+  },
+  "32336": {
+    "title": "Compressor, total time energy storage, main unit (EP14)",
+    "factor": 1,
+    "unit": "h",
+    "size": "u32",
+    "min": 0.0,
+    "max": 2147483647.0,
+    "default": 0.0,
+    "name": "compressor-total-time-energy-storage-main-unit-ep14-32336"
+  },
+  "32338": {
+    "title": "Compressor, total time energy storage, main unit (EP15)",
+    "factor": 1,
+    "unit": "h",
+    "size": "u32",
+    "min": 0.0,
+    "max": 2147483647.0,
+    "default": 0.0,
+    "name": "compressor-total-time-energy-storage-main-unit-ep15-32338"
+  },
+  "32340": {
+    "title": "Compressor, total time energy storage, heat pump 1 (EP14)",
+    "factor": 1,
+    "unit": "h",
+    "size": "u32",
+    "min": 0.0,
+    "max": 2147483647.0,
+    "default": 0.0,
+    "name": "compressor-total-time-energy-storage-heat-pump-1-ep14-32340"
+  },
+  "32342": {
+    "title": "Compressor, total time energy storage, heat pump 1 (EP15)",
+    "factor": 1,
+    "unit": "h",
+    "size": "u32",
+    "min": 0.0,
+    "max": 2147483647.0,
+    "default": 0.0,
+    "name": "compressor-total-time-energy-storage-heat-pump-1-ep15-32342"
+  },
+  "32344": {
+    "title": "Compressor, total time energy storage, heat pump 2 (EP14)",
+    "factor": 1,
+    "unit": "h",
+    "size": "u32",
+    "min": 0.0,
+    "max": 2147483647.0,
+    "default": 0.0,
+    "name": "compressor-total-time-energy-storage-heat-pump-2-ep14-32344"
+  },
+  "32346": {
+    "title": "Compressor, total time energy storage, heat pump 2 (EP15)",
+    "factor": 1,
+    "unit": "h",
+    "size": "u32",
+    "min": 0.0,
+    "max": 2147483647.0,
+    "default": 0.0,
+    "name": "compressor-total-time-energy-storage-heat-pump-2-ep15-32346"
+  },
+  "32348": {
+    "title": "Compressor, total time energy storage, heat pump 3 (EP14)",
+    "factor": 1,
+    "unit": "h",
+    "size": "u32",
+    "min": 0.0,
+    "max": 2147483647.0,
+    "default": 0.0,
+    "name": "compressor-total-time-energy-storage-heat-pump-3-ep14-32348"
+  },
+  "32350": {
+    "title": "Compressor, total time energy storage, heat pump 3 (EP15)",
+    "factor": 1,
+    "unit": "h",
+    "size": "u32",
+    "min": 0.0,
+    "max": 2147483647.0,
+    "default": 0.0,
+    "name": "compressor-total-time-energy-storage-heat-pump-3-ep15-32350"
+  },
+  "32352": {
+    "title": "Compressor, total time energy storage, heat pump 4 (EP14)",
+    "factor": 1,
+    "unit": "h",
+    "size": "u32",
+    "min": 0.0,
+    "max": 2147483647.0,
+    "default": 0.0,
+    "name": "compressor-total-time-energy-storage-heat-pump-4-ep14-32352"
+  },
+  "32354": {
+    "title": "Compressor, total time energy storage, heat pump 4 (EP15)",
+    "factor": 1,
+    "unit": "h",
+    "size": "u32",
+    "min": 0.0,
+    "max": 2147483647.0,
+    "default": 0.0,
+    "name": "compressor-total-time-energy-storage-heat-pump-4-ep15-32354"
+  },
+  "32356": {
+    "title": "Compressor, total time energy storage, heat pump 5 (EP14)",
+    "factor": 1,
+    "unit": "h",
+    "size": "u32",
+    "min": 0.0,
+    "max": 2147483647.0,
+    "default": 0.0,
+    "name": "compressor-total-time-energy-storage-heat-pump-5-ep14-32356"
+  },
+  "32358": {
+    "title": "Compressor, total time energy storage, heat pump 5 (EP15)",
+    "factor": 1,
+    "unit": "h",
+    "size": "u32",
+    "min": 0.0,
+    "max": 2147483647.0,
+    "default": 0.0,
+    "name": "compressor-total-time-energy-storage-heat-pump-5-ep15-32358"
+  },
+  "32360": {
+    "title": "Compressor, total time energy storage, heat pump 6 (EP14)",
+    "factor": 1,
+    "unit": "h",
+    "size": "u32",
+    "min": 0.0,
+    "max": 2147483647.0,
+    "default": 0.0,
+    "name": "compressor-total-time-energy-storage-heat-pump-6-ep14-32360"
+  },
+  "32362": {
+    "title": "Compressor, total time energy storage, heat pump 6 (EP15)",
+    "factor": 1,
+    "unit": "h",
+    "size": "u32",
+    "min": 0.0,
+    "max": 2147483647.0,
+    "default": 0.0,
+    "name": "compressor-total-time-energy-storage-heat-pump-6-ep15-32362"
+  },
+  "32364": {
+    "title": "Compressor, total time energy storage, heat pump 7 (EP14)",
+    "factor": 1,
+    "unit": "h",
+    "size": "u32",
+    "min": 0.0,
+    "max": 2147483647.0,
+    "default": 0.0,
+    "name": "compressor-total-time-energy-storage-heat-pump-7-ep14-32364"
+  },
+  "32366": {
+    "title": "Compressor, total time energy storage, heat pump 7 (EP15)",
+    "factor": 1,
+    "unit": "h",
+    "size": "u32",
+    "min": 0.0,
+    "max": 2147483647.0,
+    "default": 0.0,
+    "name": "compressor-total-time-energy-storage-heat-pump-7-ep15-32366"
+  },
+  "32368": {
+    "title": "Compressor, total time energy storage, heat pump 8 (EP14)",
+    "factor": 1,
+    "unit": "h",
+    "size": "u32",
+    "min": 0.0,
+    "max": 2147483647.0,
+    "default": 0.0,
+    "name": "compressor-total-time-energy-storage-heat-pump-8-ep14-32368"
+  },
+  "32370": {
+    "title": "Compressor, total time energy storage, heat pump 8 (EP15)",
+    "factor": 1,
+    "unit": "h",
+    "size": "u32",
+    "min": 0.0,
+    "max": 2147483647.0,
+    "default": 0.0,
+    "name": "compressor-total-time-energy-storage-heat-pump-8-ep15-32370"
+  },
+  "45078": {
+    "title": "Freeze protection with LP-Dew",
+    "factor": 1,
+    "size": "u8",
+    "name": "freeze-protection-with-lp-dew-45078",
+    "write": true
+  },
+  "45077": {
+    "title": "Use LP as freeze protection",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "use-lp-as-freeze-protection-45077",
+    "write": true
   },
   "43029": {
     "title": "Immersion heater power, emergency mode",
