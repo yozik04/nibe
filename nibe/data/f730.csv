@@ -382,7 +382,6 @@ Title;Info;ID;Unit;Size;Factor;Min;Max;Default;Mode
 "DM between add. steps";"The number of degree minutes between start of each electric addition step";47209;"";s16;1;0;0;0;R/W;
 "Max int add. power";"";47212;"kW";s16;100;0;4500;600;R/W;
 "Fuse";"Size of the fuse that the HP is connected to";47214;"A";u16;1;1;400;16;R/W;
-"Fan mode";"Fan mode: 0 = Normal, 1 = Speed 1, 2 = Speed 2, 3 = Speed 3, 4 = Speed 4";47260;"";u8;1;0;4;0;R/W;
 "Exhaust Fan speed 4";"";47261;"%";u8;1;0;100;100;R/W;
 "Exhaust Fan speed 3";"";47262;"%";u8;1;0;100;80;R/W;
 "Exhaust Fan speed 2";"";47263;"%";u8;1;0;100;30;R/W;
