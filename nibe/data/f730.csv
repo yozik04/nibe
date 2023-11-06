@@ -419,6 +419,7 @@ Title;Info;ID;Unit;Size;Factor;Min;Max;Default;Mode
 "Climate system 4 shunt wait";"Wait time between changes of the shunt in extra climate systems";47308;"secs";s16;10;10;300;30;R/W;
 "Climate system 3 shunt wait";"Wait time between changes of the shunt in extra climate systems";47309;"secs";s16;10;10;300;30;R/W;
 "Climate system 2 shunt wait";"Wait time between changes of the shunt in extra climate systems";47310;"secs";s16;10;10;300;30;R/W;
+"Cooling with room sensor";"Enables use of room sensor together with cooling 0=Off 1=On";47340;"";u8;10;0;18;0;R/W;
 "SMS40 accessory";"Activates the SMS40 accessory";47352;"";u8;1;0;1;0;R/W;
 "Allow Additive Heating";"Whether to allow additive heating (only valid for operational mode Manual)";47370;"";u8;1;0;1;1;R/W;
 "Allow Heating";"Whether to allow heating (only valid for operational mode Manual or Add. heat only)";47371;"";u8;1;0;1;1;R/W;

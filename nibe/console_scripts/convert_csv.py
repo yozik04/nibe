@@ -10,7 +10,7 @@ from slugify import slugify
 
 from nibe.heatpump import HeatPump, Model
 
-logger = logging.getLogger("nibe").getChild(__name__)
+logger = logging.getLogger("nibe")
 
 
 def update_dict(d: MutableMapping, u: Mapping, removeExplicitNulls: bool) -> Mapping:
@@ -188,7 +188,7 @@ class CSVConverter:
                 self.in_file,
                 sep="\t",
                 skiprows=0,
-                encoding="utf8",
+                encoding="utf-8",
                 index_col=False,
                 skipinitialspace=True,
                 na_values="-",
@@ -243,7 +243,7 @@ class CSVConverter:
     def _export_to_file(self):
         o = self._make_dict()
         update_dict(o, self.extensions, True)
-        with open(self.out_file, "w") as fh:
+        with open(self.out_file, "w", encoding="utf-8") as fh:
             json.dump(o, fh, indent=2, default=self._convert_series_to_dict)
             fh.write("\n")
 
@@ -279,6 +279,10 @@ async def _validate(out_file):
     await hp.initialize()
 
 
-if __name__ == "__main__":
+def main():
     logging.basicConfig(level=logging.INFO)
     asyncio.run(run())
+
+
+if __name__ == "__main__":
+    main()
