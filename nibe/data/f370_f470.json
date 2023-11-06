@@ -3058,6 +3058,23 @@
     "name": "climate-system-2-shunt-wait-47310",
     "write": true
   },
+  "47340": {
+    "title": "Cooling with room sensor",
+    "info": "Enables use of room sensor together with cooling 0=Off 1=On",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 18.0,
+    "default": 0.0,
+    "name": "cooling-with-room-sensor-47340",
+    "write": true,
+    "mappings": {
+      "0": "OFF",
+      "1": "ON",
+      "2": "BT50",
+      "10": "RMU-BT50"
+    }
+  },
   "47351": {
     "title": "FJVM accessory",
     "info": "Activates the FJVM accessory 0=Off 1=On",
@@ -4652,16 +4669,6 @@
     "default": 170.0,
     "name": "stop-temperature-supply-air-heating-49431",
     "write": true
-  },
-  "47340": {
-    "factor": 1,
-    "max": 18.0,
-    "mappings": {
-      "0": "OFF",
-      "1": "ON",
-      "2": "BT50",
-      "10": "RMU-BT50"
-    }
   },
   "47260": {
     "title": "Fan Mode",

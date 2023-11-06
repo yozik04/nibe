@@ -3536,6 +3536,23 @@
     "name": "climate-system-2-shunt-wait-47310",
     "write": true
   },
+  "47340": {
+    "title": "Cooling with room sensor",
+    "info": "Enables use of room sensor together with cooling 0=Off 1=On",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 18.0,
+    "default": 0.0,
+    "name": "cooling-with-room-sensor-47340",
+    "write": true,
+    "mappings": {
+      "0": "OFF",
+      "1": "ON",
+      "2": "BT50",
+      "10": "RMU-BT50"
+    }
+  },
   "47352": {
     "title": "SMS40 accessory",
     "info": "Activates the SMS40 accessory",
@@ -5407,16 +5424,6 @@
     "default": 6.0,
     "name": "night-cooling-min-diff-49366",
     "write": true
-  },
-  "47340": {
-    "factor": 1,
-    "max": 18.0,
-    "mappings": {
-      "0": "OFF",
-      "1": "ON",
-      "2": "BT50",
-      "10": "RMU-BT50"
-    }
   },
   "48852": {
     "title": "Modbus40 Word Swap",
