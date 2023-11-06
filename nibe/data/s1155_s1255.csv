@@ -23,6 +23,7 @@ Return line (EQ1-BT65)	MODBUS_INPUT_REGISTER	31	10	°C	2	0	0	0
 Temperature limiter (EB100-FD1)	MODBUS_INPUT_REGISTER	36	1		2	0	0	0
 Average temperature (BT1)	MODBUS_INPUT_REGISTER	37	10	°C	2	0	0	0
 Boiler temperature (BT52)	MODBUS_INPUT_REGISTER	38	10	°C	2	0	0	0
+External supply line (BT25)	MODBUS_INPUT_REGISTER	39	10	°C	2	0	0	0
 Flow sensor (BF1)	MODBUS_INPUT_REGISTER	40	10	l/m	2	0	0	0
 Electrical anode (EB100-FR1)	MODBUS_INPUT_REGISTER	41	1		2	0	0	0
 Supp. air (AZ30-BT22)	MODBUS_INPUT_REGISTER	42	10	°C	2	0	0	0
@@ -48,6 +49,7 @@ Return line (EP21-BT3)	MODBUS_INPUT_REGISTER	77	10	°C	2	0	0	0
 Return line (EP15-BT3)	MODBUS_INPUT_REGISTER	78	10	°C	2	0	0	0
 Oil temperature (BT29)	MODBUS_INPUT_REGISTER	86	10	°C	2	0	0	0
 Outgoing hot water (BT70)	MODBUS_INPUT_REGISTER	87	10	°C	2	0	0	0
+Return line (BT71)	MODBUS_INPUT_REGISTER	88	10	°C	2	0	0	0
 Collector (EQ1-BT57)	MODBUS_INPUT_REGISTER	90	10	°C	2	0	0	0
 Heating dump (EQ1-BT75)	MODBUS_INPUT_REGISTER	91	10	°C	2	0	0	0
 Supply line (EP47-BT2)	MODBUS_INPUT_REGISTER	94	10	°C	2	0	0	0
@@ -107,57 +109,57 @@ Hot water comfort heater (BT83)	MODBUS_INPUT_REGISTER	175	10	°C	2	0	0	0
 Compressor, total time cooling, heat pump 8 (EP15)	MODBUS_INPUT_REGISTER	177	1	h	6	0	0	0
 Compressor, total time pool, heat pump 8 (EP15)	MODBUS_INPUT_REGISTER	179	1	h	6	0	0	0
 Compressor, total time pool 2, heat pump 8 (EP15)	MODBUS_INPUT_REGISTER	181	1	h	6	0	0	0
-Compressor, total time cooling, heat pump 8 (EP14)	MODBUS_INPUT_REGISTER	183	1	h	6	-2147483648	2147483647	0
-Compressor, total time pool, heat pump 8 (EP14)	MODBUS_INPUT_REGISTER	185	1	h	6	-2147483648	2147483647	0
-Compressor, total time pool 2, heat pump 8 (EP14)	MODBUS_INPUT_REGISTER	187	1	h	6	-2147483648	2147483647	0
+Compressor, total time cooling, heat pump 8 (EP14)	MODBUS_INPUT_REGISTER	183	1	h	6	0	2147483647	0
+Compressor, total time pool, heat pump 8 (EP14)	MODBUS_INPUT_REGISTER	185	1	h	6	0	2147483647	0
+Compressor, total time pool 2, heat pump 8 (EP14)	MODBUS_INPUT_REGISTER	187	1	h	6	0	2147483647	0
 Compressor, total time cooling, heat pump 7 (EP15)	MODBUS_INPUT_REGISTER	189	1	h	6	0	0	0
 Compressor, total time pool, heat pump 7 (EP15)	MODBUS_INPUT_REGISTER	191	1	h	6	0	0	0
 Compressor, total time pool 2, heat pump 7 (EP15)	MODBUS_INPUT_REGISTER	193	1	h	6	0	0	0
-Compressor, total time cooling, heat pump 7 (EP14)	MODBUS_INPUT_REGISTER	195	1	h	6	-2147483648	2147483647	0
-Compressor, total time pool, heat pump 7 (EP14)	MODBUS_INPUT_REGISTER	197	1	h	6	-2147483648	2147483647	0
-Compressor, total time pool 2, heat pump 7 (EP14)	MODBUS_INPUT_REGISTER	199	1	h	6	-2147483648	2147483647	0
+Compressor, total time cooling, heat pump 7 (EP14)	MODBUS_INPUT_REGISTER	195	1	h	6	0	2147483647	0
+Compressor, total time pool, heat pump 7 (EP14)	MODBUS_INPUT_REGISTER	197	1	h	6	0	2147483647	0
+Compressor, total time pool 2, heat pump 7 (EP14)	MODBUS_INPUT_REGISTER	199	1	h	6	0	2147483647	0
 Compressor, total time cooling, heat pump 6 (EP15)	MODBUS_INPUT_REGISTER	201	1	h	6	0	0	0
 Compressor, total time pool, heat pump 6 (EP15)	MODBUS_INPUT_REGISTER	203	1	h	6	0	0	0
 Compressor, total time pool 2, heat pump 6 (EP15)	MODBUS_INPUT_REGISTER	205	1	h	6	0	0	0
-Compressor, total time cooling, heat pump 6 (EP14)	MODBUS_INPUT_REGISTER	207	1	h	6	-2147483648	2147483647	0
-Compressor, total time pool, heat pump 6 (EP14)	MODBUS_INPUT_REGISTER	209	1	h	6	-2147483648	2147483647	0
-Compressor, total time pool 2, heat pump 6 (EP14)	MODBUS_INPUT_REGISTER	211	1	h	6	-2147483648	2147483647	0
+Compressor, total time cooling, heat pump 6 (EP14)	MODBUS_INPUT_REGISTER	207	1	h	6	0	2147483647	0
+Compressor, total time pool, heat pump 6 (EP14)	MODBUS_INPUT_REGISTER	209	1	h	6	0	2147483647	0
+Compressor, total time pool 2, heat pump 6 (EP14)	MODBUS_INPUT_REGISTER	211	1	h	6	0	2147483647	0
 Compressor, total time cooling, heat pump 5 (EP15)	MODBUS_INPUT_REGISTER	213	1	h	6	0	0	0
 Compressor, total time pool, heat pump 5 (EP15)	MODBUS_INPUT_REGISTER	215	1	h	6	0	0	0
 Compressor, total time pool 2, heat pump 5 (EP15)	MODBUS_INPUT_REGISTER	217	1	h	6	0	0	0
-Compressor, total time cooling, heat pump 5 (EP14)	MODBUS_INPUT_REGISTER	219	1	h	6	-2147483648	2147483647	0
-Compressor, total time pool, heat pump 5 (EP14)	MODBUS_INPUT_REGISTER	221	1	h	6	-2147483648	2147483647	0
-Compressor, total time pool 2, heat pump 5 (EP14)	MODBUS_INPUT_REGISTER	223	1	h	6	-2147483648	2147483647	0
+Compressor, total time cooling, heat pump 5 (EP14)	MODBUS_INPUT_REGISTER	219	1	h	6	0	2147483647	0
+Compressor, total time pool, heat pump 5 (EP14)	MODBUS_INPUT_REGISTER	221	1	h	6	0	2147483647	0
+Compressor, total time pool 2, heat pump 5 (EP14)	MODBUS_INPUT_REGISTER	223	1	h	6	0	2147483647	0
 Compressor, total time cooling, heat pump 4 (EP15)	MODBUS_INPUT_REGISTER	225	1	h	6	0	0	0
 Compressor, total time pool, heat pump 4 (EP15)	MODBUS_INPUT_REGISTER	227	1	h	6	0	0	0
 Night cooling 1	MODBUS_HOLDING_REGISTER	227	1		4	0	1	0
 Starttemperature Night cooling 1	MODBUS_HOLDING_REGISTER	228	1	°C	4	20	30	25
 Min diff. for Night cooling 1	MODBUS_HOLDING_REGISTER	229	1	°C	4	3	10	6
 Compressor, total time pool 2, heat pump 4 (EP15)	MODBUS_INPUT_REGISTER	229	1	h	6	0	0	0
-Compressor, total time cooling, heat pump 4 (EP14)	MODBUS_INPUT_REGISTER	231	1	h	6	-2147483648	2147483647	0
-Compressor, total time pool, heat pump 4 (EP14)	MODBUS_INPUT_REGISTER	233	1	h	6	-2147483648	2147483647	0
-Compressor, total time pool 2, heat pump 4 (EP14)	MODBUS_INPUT_REGISTER	235	1	h	6	-2147483648	2147483647	0
+Compressor, total time cooling, heat pump 4 (EP14)	MODBUS_INPUT_REGISTER	231	1	h	6	0	2147483647	0
+Compressor, total time pool, heat pump 4 (EP14)	MODBUS_INPUT_REGISTER	233	1	h	6	0	2147483647	0
+Compressor, total time pool 2, heat pump 4 (EP14)	MODBUS_INPUT_REGISTER	235	1	h	6	0	2147483647	0
 Compressor, total time cooling, heat pump 3 (EP15)	MODBUS_INPUT_REGISTER	237	1	h	6	0	0	0
 Compressor, total time pool, heat pump 3 (EP15)	MODBUS_INPUT_REGISTER	239	1	h	6	0	0	0
 Compressor, total time pool 2, heat pump 3 (EP15)	MODBUS_INPUT_REGISTER	241	1	h	6	0	0	0
-Compressor, total time cooling, heat pump 3 (EP14)	MODBUS_INPUT_REGISTER	243	1	h	6	-2147483648	2147483647	0
-Compressor, total time pool, heat pump 3 (EP14)	MODBUS_INPUT_REGISTER	245	1	h	6	-2147483648	2147483647	0
-Compressor, total time pool 2, heat pump 3 (EP14)	MODBUS_INPUT_REGISTER	247	1	h	6	-2147483648	2147483647	0
+Compressor, total time cooling, heat pump 3 (EP14)	MODBUS_INPUT_REGISTER	243	1	h	6	0	2147483647	0
+Compressor, total time pool, heat pump 3 (EP14)	MODBUS_INPUT_REGISTER	245	1	h	6	0	2147483647	0
+Compressor, total time pool 2, heat pump 3 (EP14)	MODBUS_INPUT_REGISTER	247	1	h	6	0	2147483647	0
 Compressor, total time cooling, heat pump 2 (EP15)	MODBUS_INPUT_REGISTER	249	1	h	6	0	0	0
 Compressor, total time pool, heat pump 2 (EP15)	MODBUS_INPUT_REGISTER	251	1	h	6	0	0	0
 Compressor, total time pool 2, heat pump 2 (EP15)	MODBUS_INPUT_REGISTER	253	1	h	6	0	0	0
-Compressor, total time cooling, heat pump 2 (EP14)	MODBUS_INPUT_REGISTER	255	1	h	6	-2147483648	2147483647	0
-Compressor, total time pool, heat pump 2 (EP14)	MODBUS_INPUT_REGISTER	257	1	h	6	-2147483648	2147483647	0
-Compressor, total time pool 2, heat pump 2 (EP14)	MODBUS_INPUT_REGISTER	259	1	h	6	-2147483648	2147483647	0
+Compressor, total time cooling, heat pump 2 (EP14)	MODBUS_INPUT_REGISTER	255	1	h	6	0	2147483647	0
+Compressor, total time pool, heat pump 2 (EP14)	MODBUS_INPUT_REGISTER	257	1	h	6	0	2147483647	0
+Compressor, total time pool 2, heat pump 2 (EP14)	MODBUS_INPUT_REGISTER	259	1	h	6	0	2147483647	0
 Compressor, total time cooling, heat pump 1 (EP15)	MODBUS_INPUT_REGISTER	261	1	h	6	0	0	0
 Compressor, total time pool, heat pump 1 (EP15)	MODBUS_INPUT_REGISTER	263	1	h	6	0	0	0
 Compressor, total time pool 2, heat pump 1 (EP15)	MODBUS_INPUT_REGISTER	265	1	h	6	0	0	0
-id:599	MODBUS_INPUT_REGISTER	267	1	h	6	-2147483648	2147483647	0
-id:600	MODBUS_INPUT_REGISTER	269	1	h	6	-2147483648	2147483647	0
-id:601	MODBUS_INPUT_REGISTER	271	1	h	6	-2147483648	2147483647	0
-Compressor, total time cooling, main unit (EP14)	MODBUS_INPUT_REGISTER	279	1	h	6	-2147483648	2147483647	0
-Compressor, total time pool, main unit (EP14)	MODBUS_INPUT_REGISTER	281	1	h	6	-2147483648	2147483647	0
-Compressor, total time pool 2, main unit (EP14)	MODBUS_INPUT_REGISTER	283	1	h	6	-2147483648	2147483647	0
+id:599	MODBUS_INPUT_REGISTER	267	1	h	6	0	2147483647	0
+id:600	MODBUS_INPUT_REGISTER	269	1	h	6	0	2147483647	0
+id:601	MODBUS_INPUT_REGISTER	271	1	h	6	0	2147483647	0
+Compressor, total time cooling, main unit (EP14)	MODBUS_INPUT_REGISTER	279	1	h	6	0	2147483647	0
+Compressor, total time pool, main unit (EP14)	MODBUS_INPUT_REGISTER	281	1	h	6	0	2147483647	0
+Compressor, total time pool 2, main unit (EP14)	MODBUS_INPUT_REGISTER	283	1	h	6	0	2147483647	0
 Heat pump 8 requested compressor frequency	MODBUS_INPUT_REGISTER	294	1	Hz	4	0	0	0
 Heat pump 7 requested compressor frequency	MODBUS_INPUT_REGISTER	295	1	Hz	4	0	0	0
 Heat pump 6 requested compressor frequency	MODBUS_INPUT_REGISTER	296	1	Hz	4	0	0	0
@@ -541,6 +543,7 @@ Step controlled add. heat blocking	MODBUS_INPUT_REGISTER	1062	1		4	0	0	0
 Hot water circulation (GP11)	MODBUS_INPUT_REGISTER	1063	1		4	0	0	0
 Compressor frequency	MODBUS_INPUT_REGISTER	1065	1	Hz	5	0	0	0
 Total HW run time additional heat	MODBUS_INPUT_REGISTER	1069	10	h	3	0	9999999	0
+Compressor power input, average	MODBUS_INPUT_REGISTER	1075	1	W	2	0	0	0
 More hot water status	MODBUS_INPUT_REGISTER	1078	1		4	0	0	0
 Relay status (HPAC)	MODBUS_INPUT_REGISTER	1079	1		4	0	0	0
 Holiday function status	MODBUS_HOLDING_REGISTER	19	1		1	0	0	0
@@ -846,6 +849,7 @@ Low brine out alarm temperature (EP14)	MODBUS_HOLDING_REGISTER	190	10	°C	2	-120
 High brine in alarm active	MODBUS_HOLDING_REGISTER	191	1		4	1	1	1
 High brine in alarm temperature	MODBUS_HOLDING_REGISTER	192	10	°C	2	100	300	300
 Time format	MODBUS_HOLDING_REGISTER	194	1		4	0	1	1
+Hot water permitted	MODBUS_HOLDING_REGISTER	195	1		4	0	1	0
 Alarm action, lower room temperature	MODBUS_HOLDING_REGISTER	196	1		4	0	1	0
 Alarm action lower HW temperature	MODBUS_HOLDING_REGISTER	197	1		4	0	1	1
 Auxiliary operation on alarm	MODBUS_HOLDING_REGISTER	198	1		4	0	0	0
@@ -861,12 +865,12 @@ Room sensor factor climate system 4	MODBUS_HOLDING_REGISTER	207	10		4	0	60	20
 Room sensor factor climate system 3	MODBUS_HOLDING_REGISTER	208	10		4	0	60	20
 Room sensor factor climate system 2	MODBUS_HOLDING_REGISTER	209	10		4	0	60	20
 Room sensor factor climate system 1	MODBUS_HOLDING_REGISTER	210	10		4	0	60	20
-Input AUX5	MODBUS_HOLDING_REGISTER	211	1		4	0	59	0
-Input AUX4	MODBUS_HOLDING_REGISTER	212	1		4	0	59	0
-Input AUX3	MODBUS_HOLDING_REGISTER	213	1		4	0	59	0
-Input AUX2	MODBUS_HOLDING_REGISTER	214	1		4	0	59	0
-Input AUX1	MODBUS_HOLDING_REGISTER	215	1		4	0	59	0
-Output AUX1	MODBUS_HOLDING_REGISTER	216	1		4	0	25	0
+Input AUX5	MODBUS_HOLDING_REGISTER	211	1		4	0	65	0
+Input AUX4	MODBUS_HOLDING_REGISTER	212	1		4	0	65	0
+Input AUX3	MODBUS_HOLDING_REGISTER	213	1		4	0	65	0
+Input AUX2	MODBUS_HOLDING_REGISTER	214	1		4	0	65	0
+Input AUX1	MODBUS_HOLDING_REGISTER	215	1		4	0	65	0
+Output AUX1	MODBUS_HOLDING_REGISTER	216	1		4	0	29	0
 Speed of circulation pump for hot water	MODBUS_HOLDING_REGISTER	217	1	%	4	1	100	70
 Speed of circulation pump for heating	MODBUS_HOLDING_REGISTER	218	1	%	4	1	100	70
 Speed, heating medium pump for pool	MODBUS_HOLDING_REGISTER	219	1	%	4	1	100	70
@@ -892,16 +896,18 @@ Manual heating medium pump speed	MODBUS_HOLDING_REGISTER	695	1	%	1	0	1	0
 More hot water	MODBUS_HOLDING_REGISTER	697	1		1	0	0	0
 Start diff. DM, step-controlled add. heat	MODBUS_HOLDING_REGISTER	703	1	DM	2	0	2000	400
 HW comfort shunt on/off	MODBUS_HOLDING_REGISTER	705	1		4	0	1	0
+HW comfort additional heat	MODBUS_HOLDING_REGISTER	710	1		4	0	1	0
 Supp. air curve SAM, outd. temp. (T3)	MODBUS_HOLDING_REGISTER	711	10	°C	2	-400	200	150
 Supp. air curve SAM, outd. temp. (T2)	MODBUS_HOLDING_REGISTER	712	10	°C	2	-390	190	0
 Supp. air curve SAM, outd. temp. (T1)	MODBUS_HOLDING_REGISTER	713	10	°C	2	-400	200	-150
 Supp. air curve SAM, desired supp. air temp. at given outd. temp. (T3)	MODBUS_HOLDING_REGISTER	714	10	°C	2	160	220	180
 Supp. air curve SAM, desired supp. air temp. at given outd. temp. (T2)	MODBUS_HOLDING_REGISTER	715	10	°C	2	160	220	180
 Supp. air curve SAM, desired supp. air temp. at given outd. temp. (T1)	MODBUS_HOLDING_REGISTER	716	10	°C	2	160	220	180
+id:4591	MODBUS_HOLDING_REGISTER	5256	1		1	5	80	30
 Min. supply temp. cooling climate system 1	MODBUS_HOLDING_REGISTER	720	1	°C	1	-5	30	18
 Own curve, cooling P3	MODBUS_HOLDING_REGISTER	721	1	°C	1	-5	40	20
 Own curve, cooling P5	MODBUS_HOLDING_REGISTER	722	1	°C	1	-5	40	20
-Cooling connected, climate system 1	MODBUS_HOLDING_REGISTER	726	1		4	0	0	0
+Cooling connected, climate system 1	MODBUS_HOLDING_REGISTER	726	1		4	0	1	1
 ACS	MODBUS_HOLDING_REGISTER	731	1		4	0	1	0
 id:4617	MODBUS_HOLDING_REGISTER	4053	1		1	0	1	0
 Max speed, regulator, charge/heating medium pump (EB100)	MODBUS_HOLDING_REGISTER	740	1	%	4	50	100	100
@@ -1003,6 +1009,7 @@ Room sensor factor climate system 2, cooling	MODBUS_HOLDING_REGISTER	995	10		4	0
 Room sensor factor climate system 1, cooling	MODBUS_HOLDING_REGISTER	996	10		4	0	60	10
 Set point value (RH)	MODBUS_HOLDING_REGISTER	997	1	%	1	30	90	60
 HTS 1	MODBUS_HOLDING_REGISTER	998	1		4	0	1	0
+Prevent condensation climate system 1	MODBUS_HOLDING_REGISTER	1006	1		1	0	1	0
 OPT	MODBUS_HOLDING_REGISTER	1015	1		4	0	1	0
 DM start difference (OPT)	MODBUS_HOLDING_REGISTER	1016	1	DM	2	10	2000	700
 Exhaust air fan speed 4 (ERS 1)	MODBUS_HOLDING_REGISTER	1021	1	%	4	0	100	100
@@ -1019,6 +1026,7 @@ Flow sensor activated X21	MODBUS_HOLDING_REGISTER	1031	1		4	0	1	0
 Bypass temp. (ERS 1)	MODBUS_HOLDING_REGISTER	1044	1	°C	4	2	10	4
 Flow sensor activated X22	MODBUS_HOLDING_REGISTER	1049	1		4	0	1	0
 Max. internal additional heat SG Ready	MODBUS_HOLDING_REGISTER	1052	100	kW	2	0	900	700
+Limit humidity in the room, cooling climate system 1	MODBUS_HOLDING_REGISTER	1063	1		1	0	1	0
 Hysteresis (OPT)	MODBUS_HOLDING_REGISTER	1066	1		2	10	2000	100
 Activated (EME10)	MODBUS_HOLDING_REGISTER	1068	1		4	0	1	0
 PV panel affects heating (EME)	MODBUS_HOLDING_REGISTER	1069	1		4	0	1	0
@@ -1056,7 +1064,7 @@ El. price, special, smart energy source	MODBUS_HOLDING_REGISTER	1107	1		4	0	2	0
 El. price, fixed, smart energy source	MODBUS_HOLDING_REGISTER	1108	1		5	0	10000	100
 El. price, smart energy source	MODBUS_HOLDING_REGISTER	1109	1		4	0	1	0
 El. price, fixed, smart energy source	MODBUS_HOLDING_REGISTER	1110	1		5	0	10000	100
-El. price, smart energy source	MODBUS_HOLDING_REGISTER	1111	1		4	0	1	0
+El. price, smart energy source	MODBUS_HOLDING_REGISTER	1111	1		4	0	3	0
 El. price, fixed, smart energy source	MODBUS_HOLDING_REGISTER	1112	1		5	0	10000	100
 El. price, smart energy source	MODBUS_HOLDING_REGISTER	1113	1		4	0	1	0
 El. price, fixed, smart energy source	MODBUS_HOLDING_REGISTER	1114	1		5	0	10000	100
@@ -1143,6 +1151,7 @@ External adjustment with room sensor, cooling climate system 4	MODBUS_HOLDING_RE
 External adjustment with room sensor, cooling climate system 3	MODBUS_HOLDING_REGISTER	4151	10	°C	2	50	300	200
 External adjustment with room sensor, cooling climate system 2	MODBUS_HOLDING_REGISTER	4152	10	°C	2	50	300	200
 External adjustment with room sensor, cooling climate system 1	MODBUS_HOLDING_REGISTER	4153	10	°C	2	50	300	200
+Current power	MODBUS_INPUT_REGISTER	2727	100	kW	6	0	0	0
 id:6917	MODBUS_HOLDING_REGISTER	4072	1		4	0	200	1
 id:6918	MODBUS_HOLDING_REGISTER	4073	1		4	0	20	1
 id:6920	MODBUS_HOLDING_REGISTER	4074	1		4	0	20	0
@@ -1500,7 +1509,7 @@ Cooling (EME20)	MODBUS_HOLDING_REGISTER	2666	1		4	0	1	0
 AUX (EME20)	MODBUS_HOLDING_REGISTER	2675	1		4	0	1	0
 id:14052	MODBUS_HOLDING_REGISTER	2670	1	kW	6	1	999	1
 id:14061	MODBUS_HOLDING_REGISTER	2672	1		4	0	1	0
-Temperature, Overload, pool	MODBUS_HOLDING_REGISTER	0	1	°C	4	1	50	1
+Temperature, Overload, pool	MODBUS_HOLDING_REGISTER	0	10	°C	4	1	50	1
 EME20 API	MODBUS_HOLDING_REGISTER	2107	1		4	0	1	0
 EME20 API Include own consumption	MODBUS_HOLDING_REGISTER	2108	1		4	0	1	0
 EME20 API Available power	MODBUS_HOLDING_REGISTER	2109	1		5	0	65535	0
@@ -1594,9 +1603,10 @@ Time between filter replacement	MODBUS_HOLDING_REGISTER	2728	1		4	1	24	3
 Time between filter replacement	MODBUS_HOLDING_REGISTER	2729	1		4	1	24	3
 Time between filter replacement	MODBUS_HOLDING_REGISTER	2730	1		4	1	24	3
 Time between filter replacement	MODBUS_HOLDING_REGISTER	2731	1		4	1	24	3
-AUX from Modbus	MODBUS_HOLDING_REGISTER	2740	1		4	0	59	0
+AUX from Modbus	MODBUS_HOLDING_REGISTER	2740	1		4	0	65	0
 AUX from Modbus	MODBUS_HOLDING_REGISTER	2741	1		2	0	0	0
 Instantaneous used power	MODBUS_INPUT_REGISTER	2166	1	Ws	6	0	9999999	0
+Heat pump test - Silent mode (EB101/EB102)	MODBUS_HOLDING_REGISTER	5101	1		4	0	1	0
 ERS 2	MODBUS_HOLDING_REGISTER	2820	1		4	0	1	0
 ERS 3	MODBUS_HOLDING_REGISTER	2821	1		4	0	1	0
 ERS 4	MODBUS_HOLDING_REGISTER	2822	1		4	0	1	0
@@ -1629,9 +1639,41 @@ Fan mode 5	MODBUS_INPUT_REGISTER	2168	1	%	4	0	0	0
 Fan mode 6	MODBUS_INPUT_REGISTER	2169	1	%	4	0	0	0
 Fan mode 7	MODBUS_INPUT_REGISTER	2170	1	%	4	0	0	0
 Fan mode 8	MODBUS_INPUT_REGISTER	2171	1	%	4	0	0	0
+Disable emergency restart GP1	MODBUS_HOLDING_REGISTER	5392	1		4	0	1	0
+Disable emergency restart GP1	MODBUS_HOLDING_REGISTER	5025	1		4	0	1	0
 id:55035	MODBUS_HOLDING_REGISTER	1555	1		4	0	40	0
 id:55036	MODBUS_HOLDING_REGISTER	1556	1		4	0	40	0
 id:55037	MODBUS_HOLDING_REGISTER	1557	1		4	0	40	0
+Energy log - Produced energy for heating over the past hour	MODBUS_INPUT_REGISTER	2283	100	kWh	6	0	0	0
+Energy log - Produced energy for hot water over the past hour	MODBUS_INPUT_REGISTER	2285	100	kWh	6	0	0	0
+Energy log - Produced energy for cooling over the past hour	MODBUS_INPUT_REGISTER	2289	100	kWh	6	0	0	0
+Energy log - Used energy for heating over the past hour	MODBUS_INPUT_REGISTER	2291	100	kWh	6	0	0	0
+Energy log - Used energy for hot water over the past hour	MODBUS_INPUT_REGISTER	2293	100	kWh	6	0	0	0
+Energy log - Used energy for cooling over the past hour	MODBUS_INPUT_REGISTER	2297	100	kWh	6	0	0	0
+Energy log - Used energy by additional heater for heating over the past hour	MODBUS_INPUT_REGISTER	2299	100	kWh	6	0	0	0
+Energy log - Used energy by additional heater for hot water over the past hour	MODBUS_INPUT_REGISTER	2301	100	kWh	6	0	0	0
+Energy log - Current power consumption	MODBUS_INPUT_REGISTER	2305	100	kW	6	0	0	0
+Energy log - Current power consumption, components	MODBUS_INPUT_REGISTER	2307	100	kW	6	0	0	0
+Compressor, total time energy storage, main unit (EP14)	MODBUS_INPUT_REGISTER	2335	1	h	6	0	2147483647	0
+Compressor, total time energy storage, main unit (EP15)	MODBUS_INPUT_REGISTER	2337	1	h	6	0	2147483647	0
+Compressor, total time energy storage, heat pump 1 (EP14)	MODBUS_INPUT_REGISTER	2339	1	h	6	0	2147483647	0
+Compressor, total time energy storage, heat pump 1 (EP15)	MODBUS_INPUT_REGISTER	2341	1	h	6	0	2147483647	0
+Compressor, total time energy storage, heat pump 2 (EP14)	MODBUS_INPUT_REGISTER	2343	1	h	6	0	2147483647	0
+Compressor, total time energy storage, heat pump 2 (EP15)	MODBUS_INPUT_REGISTER	2345	1	h	6	0	2147483647	0
+Compressor, total time energy storage, heat pump 3 (EP14)	MODBUS_INPUT_REGISTER	2347	1	h	6	0	2147483647	0
+Compressor, total time energy storage, heat pump 3 (EP15)	MODBUS_INPUT_REGISTER	2349	1	h	6	0	2147483647	0
+Compressor, total time energy storage, heat pump 4 (EP14)	MODBUS_INPUT_REGISTER	2351	1	h	6	0	2147483647	0
+Compressor, total time energy storage, heat pump 4 (EP15)	MODBUS_INPUT_REGISTER	2353	1	h	6	0	2147483647	0
+Compressor, total time energy storage, heat pump 5 (EP14)	MODBUS_INPUT_REGISTER	2355	1	h	6	0	2147483647	0
+Compressor, total time energy storage, heat pump 5 (EP15)	MODBUS_INPUT_REGISTER	2357	1	h	6	0	2147483647	0
+Compressor, total time energy storage, heat pump 6 (EP14)	MODBUS_INPUT_REGISTER	2359	1	h	6	0	2147483647	0
+Compressor, total time energy storage, heat pump 6 (EP15)	MODBUS_INPUT_REGISTER	2361	1	h	6	0	2147483647	0
+Compressor, total time energy storage, heat pump 7 (EP14)	MODBUS_INPUT_REGISTER	2363	1	h	6	0	2147483647	0
+Compressor, total time energy storage, heat pump 7 (EP15)	MODBUS_INPUT_REGISTER	2365	1	h	6	0	2147483647	0
+Compressor, total time energy storage, heat pump 8 (EP14)	MODBUS_INPUT_REGISTER	2367	1	h	6	0	2147483647	0
+Compressor, total time energy storage, heat pump 8 (EP15)	MODBUS_INPUT_REGISTER	2369	1	h	6	0	2147483647	0
+Freeze protection with LP-Dew	MODBUS_HOLDING_REGISTER	5077	1		4	0	0	0
+Use LP as freeze protection	MODBUS_HOLDING_REGISTER	5076	10	°C	2	0	0	0
 id:55076	MODBUS_HOLDING_REGISTER	2877	1		4	0	1	0
 id:55077	MODBUS_HOLDING_REGISTER	2878	1		4	0	1	0
 id:55078	MODBUS_HOLDING_REGISTER	2879	1		4	0	1	0
