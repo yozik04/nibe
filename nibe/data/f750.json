@@ -3927,6 +3927,23 @@
     "name": "shunt-controlled-add-mixing-valve-wait-47321",
     "write": true
   },
+  "47340": {
+    "title": "Cooling with room sensor",
+    "info": "Enables use of room sensor together with cooling 0=Off 1=On",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 18.0,
+    "default": 0.0,
+    "name": "cooling-with-room-sensor-47340",
+    "write": true,
+    "mappings": {
+      "0": "OFF",
+      "1": "ON",
+      "2": "BT50",
+      "10": "RMU-BT50"
+    }
+  },
   "47352": {
     "title": "SMS40 accessory",
     "info": "Activates the SMS40 accessory",
@@ -4472,14 +4489,15 @@
   },
   "48051": {
     "title": "Holiday - Room Temperature",
+    "info": "Room temperature during holiday",
+    "unit": "\u00b0C",
     "size": "s16",
     "factor": 10,
-    "name": "holiday-room-temperature-48051",
-    "write": true,
-    "unit": "\u00b0C",
     "min": 50,
     "max": 300,
-    "default": 200
+    "default": 200,
+    "name": "holiday-room-temperature-48051",
+    "write": true
   },
   "48072": {
     "title": "DM diff start add.",
@@ -6099,15 +6117,6 @@
     "default": 6.0,
     "name": "night-cooling-min-diff-49366",
     "write": true
-  },
-  "47340": {
-    "title": "Cooling with room sensor",
-    "name": "cooling-with-room-sensor-47340",
-    "size": "s16",
-    "factor": 1,
-    "mappings": {
-      "-32768": "--"
-    }
   },
   "47260": {
     "title": "Fan Mode",

@@ -375,5 +375,75 @@
         }
       }
     }
+  },
+  {
+    "description": "Holiday settings",
+    "files": ["f750.json"],
+    "data": {
+      "48044": {
+        "title": "Holiday - Start Date",
+        "info": "Days since 1 January 2007",
+        "size": "u16",
+        "factor": 1,
+        "name": "holiday-start-date-48044",
+        "write": true,
+        "type": "date"
+      },
+      "48045": {
+        "title": "Holiday - End Date",
+        "info": "Days since 1 January 2007",
+        "size": "u16",
+        "factor": 1,
+        "name": "holiday-end-date-48045",
+        "write": true,
+        "type": "date"
+      },
+      "48047": {
+        "title": "Holiday - HW Comfort Mode",
+        "info": "-1=Off 0=Economy 1=Normal 2=Luxury",
+        "size": "s8",
+        "factor": 1,
+        "min": -1,
+        "max": 2,
+        "default": 1,
+        "name": "holiday-hot-water-comfort-mode-48047",
+        "write": true,
+        "mappings": {
+          "-1": "Off",
+          "0": "Economy",
+          "1": "Normal",
+          "2": "Luxury"
+        }
+      },
+      "48048": {
+        "title": "Holiday - Fan Mode",
+        "info": "0=Normal 1=Fan speed 1, 2=Fan speed 2, 3=Fan speed 3, 4=Fan speed 4",
+        "size": "u8",
+        "factor": 1,
+        "min": 0,
+        "max": 4,
+        "default": 0,
+        "name": "holiday-fan-mode-48048",
+        "write": true,
+        "mappings": {
+          "0": "Normal",
+          "1": "Fan mode 1",
+          "2": "Fan mode 2",
+          "3": "Fan mode 3",
+          "4": "Fan mode 4"
+        }
+      },
+      "48051": {
+        "title": "Holiday - Room Temperature",
+        "size": "s16",
+        "factor": 10,
+        "name": "holiday-room-temperature-48051",
+        "write": true,
+        "unit": "°C",
+        "min": 50,
+        "max": 300,
+        "default": 200
+      }
+    }
   }
 ]
