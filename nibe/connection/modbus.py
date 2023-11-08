@@ -8,7 +8,7 @@ from umodbus.exceptions import ModbusError
 
 from nibe.coil import Coil, CoilData
 from nibe.connection import DEFAULT_TIMEOUT, Connection
-from nibe.connection.encoders import CoilDataCoderModbus
+from nibe.connection.encoders import CoilDataEncoderModbus
 from nibe.exceptions import (
     DecodeException,
     ModbusUrlException,
@@ -70,7 +70,7 @@ class Modbus(Connection):
         except ValueError as exc:
             raise ModbusUrlException(str(exc)) from exc
 
-        self.coil_encoder = CoilDataCoderModbus(heatpump.word_swap)
+        self.coil_encoder = CoilDataEncoderModbus(heatpump.word_swap)
 
     async def stop(self) -> None:
         await self._client.stream.close()

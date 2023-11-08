@@ -181,8 +181,10 @@ class CoilData:
         return CoilData(coil, coil.get_mapping_for(value))
 
     @staticmethod
-    def from_raw_value(coil: Coil, value: int) -> "CoilData":
+    def from_raw_value(coil: Coil, value: Union[int, None]) -> "CoilData":
         """Create CoilData from raw value."""
+        if value is None:
+            return CoilData(coil, None)
         assert coil.is_raw_value_valid(
             value
         ), f"Raw value {value} is out of range for coil {coil.name}"

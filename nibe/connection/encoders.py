@@ -1,6 +1,6 @@
 from abc import abstractmethod
 from binascii import hexlify
-from typing import Generic, List, Optional, TypeVar
+from typing import Generic, List, Optional, TypeVar, Union
 
 from construct import (
     Construct,
@@ -35,6 +35,15 @@ parser_map_word_swapped.update(
     }
 )
 
+integer_limit = {
+    "u8": 0xFF,
+    "s8": -0x80,
+    "u16": 0xFFFF,
+    "s16": -0x8000,
+    "u32": 0xFFFFFFFF,
+    "s32": -0x80000000,
+}
+
 
 _RawDataT = TypeVar("_RawDataT")
 
@@ -48,7 +57,7 @@ class CoilDataEncoder(Generic[_RawDataT]):
         self.word_swap = word_swap
 
     @abstractmethod
-    def _encode(self, coil_data: CoilData) -> _RawDataT:
+    def encode_raw_value(self, size: str, raw_value: int) -> _RawDataT:
         pass
 
     def encode(self, coil_data: CoilData) -> _RawDataT:
@@ -56,14 +65,15 @@ class CoilDataEncoder(Generic[_RawDataT]):
 
         :raises EncodeException: If encoding fails"""
         try:
-            return self._encode(coil_data)
+            coil_data.validate()
+            return self.encode_raw_value(coil_data.coil.size, coil_data.raw_value)
         except (ValueError, ConstructError, ValidationError) as e:
             raise EncodeException(
                 f"Failed to encode {coil_data.coil.name} coil for value: {coil_data.value}, exception: {e}"
             )
 
     @abstractmethod
-    def _decode(self, coil: Coil, raw: _RawDataT) -> CoilData:
+    def decode_raw_value(self, size: str, raw: _RawDataT) -> Union[int, None]:
         pass
 
     def decode(self, coil: Coil, raw: _RawDataT) -> CoilData:
@@ -71,27 +81,17 @@ class CoilDataEncoder(Generic[_RawDataT]):
 
         :raises DecodeException: If decoding fails"""
         try:
-            return self._decode(coil, raw)
+            return CoilData.from_raw_value(coil, self.decode_raw_value(coil.size, raw))
         except (ValueError, AssertionError, ConstructError, ValidationError) as e:
             raise DecodeException(
                 f"Failed to decode {coil.name} coil from raw: {hexlify(raw).decode('utf-8')}, exception: {e}"
             ) from e
 
-    def _is_hitting_integer_limit(self, coil: Coil, int_value: int):
-        if coil.size == "u8" and int_value >= 0xFF:
-            return True
-        if coil.size == "s8" and int_value <= -0x80:
-            return True
-        if coil.size == "u16" and int_value >= 0xFFFF:
-            return True
-        if coil.size == "s16" and int_value <= -0x8000:
-            return True
-        if coil.size == "u32" and int_value >= 0xFFFFFFFF:
-            return True
-        if coil.size == "s32" and int_value <= -0x80000000:
-            return True
-
-        return False
+    def _is_hitting_integer_limit(self, size: str, int_value: int):
+        limit = integer_limit[size]
+        if limit < 0:
+            return int_value <= limit
+        return int_value >= limit
 
 
 class CoilDataEncoderNibeGw(CoilDataEncoder[bytes]):
@@ -102,52 +102,51 @@ class CoilDataEncoderNibeGw(CoilDataEncoder[bytes]):
     def __init__(self, word_swap: Optional[bool] = None):
         self.word_swap = word_swap
 
-    def _encode(self, coil_data: CoilData) -> bytes:
+    def encode_raw_value(self, size: str, raw_value: Union[int, None]) -> bytes:
         """Encode coil data to bytes."""
-        coil_data.validate()
+        if raw_value is None:
+            raw_value = integer_limit[size]
+        return self._pad(self._get_parser(size), raw_value)
 
-        return self._pad(self._get_parser(coil_data.coil), coil_data.raw_value)
-
-    def _decode(self, coil: Coil, raw: bytes) -> CoilData:
+    def decode_raw_value(self, size: str, raw: bytes) -> Union[int, None]:
         """Decode coil data from bytes."""
-        parser = self._get_parser(coil)
+        parser = self._get_parser(size)
         assert parser.sizeof() <= len(
             raw
         ), f"Invalid raw data size: given {len(raw)}, expected at least {parser.sizeof()}"
         value = parser.parse(raw)
-        if self._is_hitting_integer_limit(coil, value):
-            return CoilData(coil, None)
+        if self._is_hitting_integer_limit(size, value):
+            return None
 
-        return CoilData.from_raw_value(coil, value)
+        return value
 
-    def _get_parser(self, coil: Coil) -> Construct:
-        if coil.size in ["u32", "s32"] and self.word_swap is None:
+    def _get_parser(self, size: str) -> Construct:
+        if size in ["u32", "s32"] and self.word_swap is None:
             raise ValueError("Word swap is not set, cannot parse 32 bit integers")
 
         if self.word_swap:  # yes, it is visa versa
-            return parser_map[coil.size]
+            return parser_map[size]
         else:
-            return parser_map_word_swapped[coil.size]
+            return parser_map_word_swapped[size]
 
     def _pad(self, parser: Construct, value: int) -> bytes:
         return Padded(4, parser).build(value)
 
 
-class CoilDataCoderModbus(CoilDataEncoder[List[int]]):
+class CoilDataEncoderModbus(CoilDataEncoder[List[int]]):
     word_swap: Optional[bool] = None
 
     def __init__(self, word_swap: Optional[bool] = None):
         self.word_swap = word_swap
 
-    def _encode(self, coil_data: CoilData) -> List[int]:
-        coil_data.validate()
-        coil = coil_data.coil
+    def encode_raw_value(self, size: str, raw_value: Union[int, None]) -> List[int]:
+        if raw_value is None:
+            raw_value = integer_limit[size]
 
-        signed = coil.size in ("s32", "s16", "s8")
+        signed = size in ("s32", "s16", "s8")
 
-        raw_value = coil_data.raw_value
         raw_bytes = raw_value.to_bytes(8, "little", signed=signed)
-        if coil.size in ("s32", "u32"):
+        if size in ("s32", "u32"):
             if self.word_swap:
                 return [
                     int.from_bytes(raw_bytes[0:2], "little", signed=False),
@@ -158,17 +157,19 @@ class CoilDataCoderModbus(CoilDataEncoder[List[int]]):
                     int.from_bytes(raw_bytes[2:4], "little", signed=False),
                     int.from_bytes(raw_bytes[0:2], "little", signed=False),
                 ]
-        elif coil.size in ("s16", "u16", "s8", "u8"):
+        elif size in ("s16", "u16", "s8", "u8"):
             return [int.from_bytes(raw_bytes[0:2], "little", signed=False)]
         raise ValueError("Unknown coil encoding")
 
-    def _decode(self, coil: Coil, values: List[int]) -> CoilData:
-        signed = coil.size in ("s32", "s16", "s8")
+    def decode_raw_value(self, size: str, raw: List[int]) -> Union[int, None]:
+        signed = size in ("s32", "s16", "s8")
 
-        raw_bytes = [byte for value in values for byte in value.to_bytes(2, "little")]
+        if not self.word_swap:
+            raw = reversed(raw)
+        raw_bytes = [byte for value in raw for byte in value.to_bytes(2, "little")]
         raw_value = int.from_bytes(raw_bytes, byteorder="little", signed=signed)
 
-        if self._is_hitting_integer_limit(coil, raw_value):
-            return CoilData(coil, None)
+        if self._is_hitting_integer_limit(size, raw_value):
+            return None
 
-        return CoilData.from_raw_value(coil, raw_value)
+        return raw_value
