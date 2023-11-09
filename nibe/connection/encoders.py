@@ -73,7 +73,7 @@ class CoilDataEncoder(Generic[_RawDataT]):
             )
 
     @abstractmethod
-    def decode_raw_value(self, size: str, raw: _RawDataT) -> Union[int, None]:
+    def decode_raw_value(self, size: str, raw: _RawDataT) -> int:
         pass
 
     def decode(self, coil: Coil, raw: _RawDataT) -> CoilData:
@@ -81,7 +81,12 @@ class CoilDataEncoder(Generic[_RawDataT]):
 
         :raises DecodeException: If decoding fails"""
         try:
-            return CoilData.from_raw_value(coil, self.decode_raw_value(coil.size, raw))
+            value = self.decode_raw_value(coil.size, raw)
+            if self._is_hitting_integer_limit(coil.size, value):
+                value = None
+
+            return CoilData.from_raw_value(coil, value)
+
         except (ValueError, AssertionError, ConstructError, ValidationError) as e:
             raise DecodeException(
                 f"Failed to decode {coil.name} coil from raw: {hexlify(raw).decode('utf-8')}, exception: {e}"
@@ -102,22 +107,17 @@ class CoilDataEncoderNibeGw(CoilDataEncoder[bytes]):
     def __init__(self, word_swap: Optional[bool] = None):
         self.word_swap = word_swap
 
-    def encode_raw_value(self, size: str, raw_value: Union[int, None]) -> bytes:
+    def encode_raw_value(self, size: str, raw_value: int) -> bytes:
         """Encode coil data to bytes."""
-        if raw_value is None:
-            raw_value = integer_limit[size]
         return self._pad(self._get_parser(size), raw_value)
 
-    def decode_raw_value(self, size: str, raw: bytes) -> Union[int, None]:
+    def decode_raw_value(self, size: str, raw: bytes) -> int:
         """Decode coil data from bytes."""
         parser = self._get_parser(size)
         assert parser.sizeof() <= len(
             raw
         ), f"Invalid raw data size: given {len(raw)}, expected at least {parser.sizeof()}"
         value = parser.parse(raw)
-        if self._is_hitting_integer_limit(size, value):
-            return None
-
         return value
 
     def _get_parser(self, size: str) -> Construct:
@@ -139,10 +139,7 @@ class CoilDataEncoderModbus(CoilDataEncoder[List[int]]):
     def __init__(self, word_swap: Optional[bool] = None):
         self.word_swap = word_swap
 
-    def encode_raw_value(self, size: str, raw_value: Union[int, None]) -> List[int]:
-        if raw_value is None:
-            raw_value = integer_limit[size]
-
+    def encode_raw_value(self, size: str, raw_value: int) -> List[int]:
         signed = size in ("s32", "s16", "s8")
 
         raw_bytes = raw_value.to_bytes(8, "little", signed=signed)
