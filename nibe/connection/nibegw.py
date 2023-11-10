@@ -51,7 +51,7 @@ from tenacity import retry, retry_if_exception_type, stop_after_attempt
 
 from nibe.coil import Coil, CoilData
 from nibe.connection import DEFAULT_TIMEOUT, READ_PRODUCT_INFO_TIMEOUT, Connection
-from nibe.connection.encoders import CoilDataEncoder
+from nibe.connection.encoders import CoilDataEncoderNibeGw
 from nibe.connection.mixins import ConnectionStatus, ConnectionStatusMixin
 from nibe.event_server import EventServer
 from nibe.exceptions import (
@@ -116,7 +116,7 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer, ConnectionStatus
         self._futures = {}
         self._registered_reads = {}
 
-        self.coil_encoder = CoilDataEncoder(heatpump.word_swap)
+        self.coil_encoder = CoilDataEncoderNibeGw(heatpump.word_swap)
 
         self.read_coil = retry(
             retry=retry_if_exception_type(ReadIOException),
