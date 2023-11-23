@@ -1,6 +1,6 @@
 from abc import abstractmethod
 from binascii import hexlify
-from typing import Generic, List, Optional, TypeVar, Union
+from typing import Generic, List, Optional, SupportsInt, TypeVar, Union
 
 from construct import (
     Construct,
@@ -133,13 +133,13 @@ class CoilDataEncoderNibeGw(CoilDataEncoder[bytes]):
         return Padded(4, parser).build(value)
 
 
-class CoilDataEncoderModbus(CoilDataEncoder[List[int]]):
+class CoilDataEncoderModbus(CoilDataEncoder[List[SupportsInt]]):
     word_swap: Optional[bool] = None
 
     def __init__(self, word_swap: Optional[bool] = None):
         self.word_swap = word_swap
 
-    def encode_raw_value(self, size: str, raw_value: int) -> List[int]:
+    def encode_raw_value(self, size: str, raw_value: int) -> List[SupportsInt]:
         signed = size in ("s32", "s16", "s8")
 
         raw_bytes = raw_value.to_bytes(8, "little", signed=signed)
@@ -158,12 +158,12 @@ class CoilDataEncoderModbus(CoilDataEncoder[List[int]]):
             return [int.from_bytes(raw_bytes[0:2], "little", signed=False)]
         raise ValueError("Unknown coil encoding")
 
-    def decode_raw_value(self, size: str, raw: List[int]) -> Union[int, None]:
+    def decode_raw_value(self, size: str, raw: List[SupportsInt]) -> Union[int, None]:
         signed = size in ("s32", "s16", "s8")
 
         if not self.word_swap:
             raw = reversed(raw)
-        raw_bytes = [byte for value in raw for byte in value.to_bytes(2, "little")]
+        raw_bytes = [byte for value in raw for byte in int(value).to_bytes(2, "little")]
         raw_value = int.from_bytes(raw_bytes, byteorder="little", signed=signed)
 
         if self._is_hitting_integer_limit(size, raw_value):
