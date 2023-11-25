@@ -158,15 +158,11 @@ class CoilDataEncoderModbus(CoilDataEncoder[List[SupportsInt]]):
             return [int.from_bytes(raw_bytes[0:2], "little", signed=False)]
         raise ValueError("Unknown coil encoding")
 
-    def decode_raw_value(self, size: str, raw: List[SupportsInt]) -> Union[int, None]:
+    def decode_raw_value(self, size: str, raw: List[SupportsInt]) -> int:
         signed = size in ("s32", "s16", "s8")
 
         if not self.word_swap:
             raw = reversed(raw)
         raw_bytes = [byte for value in raw for byte in int(value).to_bytes(2, "little")]
         raw_value = int.from_bytes(raw_bytes, byteorder="little", signed=signed)
-
-        if self._is_hitting_integer_limit(size, raw_value):
-            return None
-
         return raw_value
