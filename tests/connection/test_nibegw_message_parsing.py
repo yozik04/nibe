@@ -308,6 +308,12 @@ class MessageRequestParsingTestCase(unittest.TestCase):
         assert data.data.index == "TEMPERATURE"
         assert data.data.value == 21.0
 
+        hex = bytes([192, 96, 3, 9, 230, 0, 76]).hex()
+        data = self._parse_hexlified_raw_message(hex)
+        assert data.cmd == "RMU_WRITE_REQ"
+        assert data.data.index == "SETPOINT"
+        assert data.data.value == 23.0
+
 
 if __name__ == "__main__":
     unittest.main()
