@@ -5,6 +5,7 @@ import asyncio
 from contextlib import AbstractAsyncContextManager
 import io
 import logging
+import re
 from typing import IO
 
 import asyncclick as click
@@ -203,6 +204,15 @@ def read_bytes_socat(file: IO):
         yield from bytes.fromhex(line)
 
 
+def read_bytes_nibepi(file: IO):
+    lines: list[str] = file.readlines()
+    m = re.compile(r"Serial: \[(([0-9]+,?)+)\]")
+    for line in lines:
+        data = m.match(line)
+        if data:
+            yield from [int(val) for val in data.groups()[0].split(",")]
+
+
 def parse_stream(stream: io.RawIOBase):
     while block := Block.parse_stream(stream):
         yield block
@@ -210,8 +220,16 @@ def parse_stream(stream: io.RawIOBase):
 
 @cli.command()
 @click.argument("file", type=click.File())
-def parse_file(file: IO):
-    with io.BytesIO(bytes(read_bytes_socat(file))) as stream:
+@click.option("--type", type=click.Choice(["hex", "nibepi"]), default="hex")
+def parse_file(file: IO, type: str):
+    if type == "hex":
+        data = read_bytes_socat(file)
+    elif type == "nibepi":
+        data = read_bytes_nibepi(file)
+    else:
+        raise ValueError("invalid argument")
+
+    with io.BytesIO(bytes(data)) as stream:
         for packet in parse_stream(stream):
             click.echo(packet.fields.value)
 
