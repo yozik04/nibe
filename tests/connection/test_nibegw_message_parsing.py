@@ -311,7 +311,7 @@ class MessageRequestParsingTestCase(unittest.TestCase):
         hex = bytes([192, 96, 3, 9, 230, 0, 76]).hex()
         data = self._parse_hexlified_raw_message(hex)
         assert data.cmd == "RMU_WRITE_REQ"
-        assert data.data.index == "SETPOINT"
+        assert data.data.index == "SETPOINT_S1"
         assert data.data.value == 23.0
 
 

@@ -641,7 +641,10 @@ RmuWriteIndex = Enum(
     OPERATIONAL_MODE=0x04,
     FUNCTIONS=0x05,
     TEMPERATURE=0x06,
-    SETPOINT=0x09,
+    SETPOINT_S1=0x09,
+    SETPOINT_S2=0x11,
+    SETPOINT_S3=0x13,
+    SETPOINT_S4=0x15,
 )
 
 ADDRESS_TO_ROOM_TEMP_COIL = {
@@ -697,7 +700,10 @@ RequestData = Switch(
                         allow_cooling=0x04,
                     ),
                     "OPERATIONAL_MODE": Int8ub,
-                    "SETPOINT": FixedPoint(Int8ub, 0.1, 0.0)
+                    "SETPOINT_S1": FixedPoint(Int8ub, 0.1, 0.0),
+                    "SETPOINT_S2": FixedPoint(Int8ub, 0.1, 0.0),
+                    "SETPOINT_S3": FixedPoint(Int8ub, 0.1, 0.0),
+                    "SETPOINT_S4": FixedPoint(Int8ub, 0.1, 0.0),
                 },
                 default=Select(
                     Int16ul,
