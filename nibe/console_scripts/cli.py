@@ -204,13 +204,15 @@ def read_bytes_socat(file: IO):
         yield from bytes.fromhex(line)
 
 
+RE_NIBEPI_LOG = re.compile(r"Serial: \[((?:[0-9]+,?)+)\]")
+
+
 def read_bytes_nibepi(file: IO):
     lines: list[str] = file.readlines()
-    m = re.compile(r"Serial: \[(([0-9]+,?)+)\]")
     for line in lines:
-        data = m.match(line)
+        data = RE_NIBEPI_LOG.match(line)
         if data:
-            yield from [int(val) for val in data.groups()[0].split(",")]
+            yield from map(int, data.group(1).split(","))
 
 
 def parse_stream(stream: io.RawIOBase):
