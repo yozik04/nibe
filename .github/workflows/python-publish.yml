@@ -27,7 +27,7 @@ jobs:
         PUBLISHING_VERSION=${{ github.event.release.tag_name }}
         grep -qE '__version__ = "'$PUBLISHING_VERSION'"' nibe/__init__.py
     - name: Set up Python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5
       with:
         python-version: '3.x'
     - name: Install dependencies
