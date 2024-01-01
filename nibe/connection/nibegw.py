@@ -19,8 +19,8 @@ from construct import (
     BitStruct,
     Bytes,
     Checksum,
-    ChecksumError,
     Const,
+    ConstructError,
     Container,
     Enum,
     EnumIntegerString,
@@ -210,16 +210,15 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer, ConnectionStatus
                 )
             elif not isinstance(cmd, EnumIntegerString):
                 logger.debug(f"Unknown command {cmd}")
-        except ChecksumError:
+        except ConstructError as e:
             logger.warning(
-                f"Ignoring packet from {addr} due to checksum error: {hexlify(data).decode('utf-8')}"
+                f"Ignoring packet from {addr} due to parse error: {hexlify(data).decode('utf-8')}: {e}"
             )
         except NibeException as e:
             logger.error(f"Failed handling packet from {addr}: {e}")
-        except Exception as e:
+        except Exception:
             logger.exception(
-                f"Unexpected exception during parsing packet data '{hexlify(data).decode('utf-8')}' from {addr}",
-                e,
+                f"Unexpected exception during parsing packet data '{hexlify(data).decode('utf-8')}' from {addr}"
             )
 
     async def read_product_info(
