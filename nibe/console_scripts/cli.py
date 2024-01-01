@@ -9,7 +9,16 @@ import re
 from typing import IO
 
 import asyncclick as click
-from construct import Const, GreedyRange, Int8ul, RawCopy, Select, Struct, Terminated
+from construct import (
+    Const,
+    ConstructError,
+    GreedyRange,
+    Int8ul,
+    RawCopy,
+    Select,
+    Struct,
+    Terminated,
+)
 
 from ..coil import CoilData
 from ..connection import Connection
@@ -191,8 +200,12 @@ async def parse_data(data: str, type: str):
         raw = bytes.fromhex(data)
     elif type == "bytes":
         raw = bytes(literal_eval(data))
-    request = Block.parse(raw)
-    click.echo(request)
+
+    try:
+        request = Block.parse(raw)
+        click.echo(request)
+    except ConstructError as exception:
+        click.echo(f"Failed to parse: {exception}", err=True)
 
 
 def read_bytes_socat(file: IO):
