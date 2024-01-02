@@ -538,25 +538,25 @@ RmuData = Struct(
     / IfThenElse(
         lambda this: this.flags.use_room_sensor_s1,
         FixedPoint(Int8ub, 0.1, 5.0),
-        FixedPoint(Int8sb, 0.1, 0),
+        FixedPoint(Int8sb, 1.0, 0),
     ),
     "setpoint_or_offset_s2"
     / IfThenElse(
         lambda this: this.flags.use_room_sensor_s2,
         FixedPoint(Int8ub, 0.1, 5.0),
-        FixedPoint(Int8sb, 0.1, 0),
+        FixedPoint(Int8sb, 1.0, 0),
     ),
     "setpoint_or_offset_s3"
     / IfThenElse(
         lambda this: this.flags.use_room_sensor_s3,
         FixedPoint(Int8ub, 0.1, 5.0),
-        FixedPoint(Int8sb, 0.1, 0),
+        FixedPoint(Int8sb, 1.0, 0),
     ),
     "setpoint_or_offset_s4"
     / IfThenElse(
         lambda this: this.flags.use_room_sensor_s4,
         FixedPoint(Int8ub, 0.1, 5.0),
-        FixedPoint(Int8sb, 0.1, 0),
+        FixedPoint(Int8sb, 1.0, 0),
     ),
     "bt50_room_temp_sX" / FixedPoint(Int16sl, 0.1, -0.5),
     "temporary_lux" / Int8ub,
