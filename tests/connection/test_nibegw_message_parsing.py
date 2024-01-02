@@ -4,7 +4,7 @@ import unittest
 from construct import ChecksumError, Container, Int16sl, Int32ul
 import pytest
 
-from nibe.connection.nibegw import Request, Response
+from nibe.connection.nibegw import Request, Response, RmuData
 
 
 class MessageResponseParsingTestCase(unittest.TestCase):
@@ -240,6 +240,99 @@ class MessageResponseParsingTestCase(unittest.TestCase):
         data = Response.parse(raw)
         value = data.fields.value
         return value
+
+
+class MessageRmuDataParsingTestCase(unittest.TestCase):
+    def test_negative_outdoor(self):
+        data = self.parse("faff12029b9b9bff1200000000000003791534000300000100")
+
+        assert data == Container(
+            alarm=0,
+            bt1_outdoor_temperature=-0.1,
+            bt50_room_temp_sX=1.3,
+            bt7_hw_top=52.5,
+            clock_time_hour=21,
+            clock_time_min=52,
+            fan_mode=0,
+            fan_time_hour=0,
+            fan_time_min=0,
+            flags=Container(
+                unknown_8000=False,
+                unknown_4000=False,
+                unknown_2000=False,
+                unknown_1000=False,
+                unknown_0800=False,
+                allow_cooling=False,
+                allow_heating=True,
+                allow_additive_heating=True,
+                use_room_sensor_s4=False,
+                use_room_sensor_s3=True,
+                use_room_sensor_s2=True,
+                use_room_sensor_s1=True,
+                unknown_0008=True,
+                unknown_0004=False,
+                unknown_0002=False,
+                hw_production=True,
+            ),
+            hw_time_hour=0,
+            hw_time_min=0,
+            operational_mode=0,
+            setpoint_or_offset_s1=20.5,
+            setpoint_or_offset_s2=20.5,
+            setpoint_or_offset_s3=20.5,
+            setpoint_or_offset_s4=-1.0,
+            temporary_lux=0,
+            unknown4=b"\x03",
+            unknown5=b"\x01\x00",
+        )
+
+    def test_zero_outdoor(self):
+        data = self.parse("050012029b9b9bff1200000000000003791534000300000100")
+
+        assert data == Container(
+            alarm=0,
+            bt1_outdoor_temperature=0.0,
+            bt50_room_temp_sX=1.3,
+            bt7_hw_top=52.5,
+            clock_time_hour=21,
+            clock_time_min=52,
+            fan_mode=0,
+            fan_time_hour=0,
+            fan_time_min=0,
+            flags=Container(
+                unknown_8000=False,
+                unknown_4000=False,
+                unknown_2000=False,
+                unknown_1000=False,
+                unknown_0800=False,
+                allow_cooling=False,
+                allow_heating=True,
+                allow_additive_heating=True,
+                use_room_sensor_s4=False,
+                use_room_sensor_s3=True,
+                use_room_sensor_s2=True,
+                use_room_sensor_s1=True,
+                unknown_0008=True,
+                unknown_0004=False,
+                unknown_0002=False,
+                hw_production=True,
+            ),
+            hw_time_hour=0,
+            hw_time_min=0,
+            operational_mode=0,
+            setpoint_or_offset_s1=20.5,
+            setpoint_or_offset_s2=20.5,
+            setpoint_or_offset_s3=20.5,
+            setpoint_or_offset_s4=-1.0,
+            temporary_lux=0,
+            unknown4=b"\x03",
+            unknown5=b"\x01\x00",
+        )
+
+    @staticmethod
+    def parse(txt_raw):
+        raw = binascii.unhexlify(txt_raw)
+        return RmuData.parse(raw)
 
 
 class MessageRequestParsingTestCase(unittest.TestCase):

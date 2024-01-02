@@ -489,6 +489,37 @@ ProductInfoData = Struct(
 )
 
 
+class FixedPointStrange(Adapter):
+    """Strange fixed point calculation
+
+    The pump seems to apply the offset in reverse when
+    crossing over to negative values. My guess it's some
+    bug in firmware that was never resolved, and can't
+    be fixed.
+    """
+
+    def __init__(self, subcon, scale, offset, ndigits=1) -> None:
+        super().__init__(subcon)
+        self._offset = offset
+        self._scale = scale
+        self._ndigits = ndigits
+
+    def _decode(self, obj, context, path):
+        scaled = obj * self._scale
+        if scaled >= self._offset:
+            scaled += self._offset
+        else:
+            scaled -= self._offset
+        return round(scaled, self._ndigits)
+
+    def _encode(self, obj, context, path):
+        if obj >= 0:
+            val = obj - self._offset
+        else:
+            val = obj + self._offset
+        return val / self._scale
+
+
 class FixedPoint(Adapter):
     def __init__(self, subcon, scale, offset, ndigits=1) -> None:
         super().__init__(subcon)
@@ -532,7 +563,7 @@ RmuData = Struct(
             "hw_production" / Flag,
         ),
     ),
-    "bt1_outdoor_temperature" / FixedPoint(Int16sl, 0.1, -0.5),
+    "bt1_outdoor_temperature" / FixedPointStrange(Int16sl, 0.1, -0.5),
     "bt7_hw_top" / FixedPoint(Int16sl, 0.1, -0.5),
     "setpoint_or_offset_s1"
     / IfThenElse(
