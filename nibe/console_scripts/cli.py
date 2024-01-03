@@ -189,7 +189,7 @@ async def write(obj: ConnectionContext, parameter: int, value: str, **kwargs):
     click.echo(coil_data)
 
 
-add_connect_command(read)
+add_connect_command(write)
 
 
 @cli.command()
