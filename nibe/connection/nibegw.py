@@ -489,6 +489,37 @@ ProductInfoData = Struct(
 )
 
 
+class FixedPointStrange(Adapter):
+    """Strange fixed point calculation
+
+    The pump seems to apply the offset in reverse when
+    crossing over to negative values. My guess it's some
+    bug in firmware that was never resolved, and can't
+    be fixed.
+    """
+
+    def __init__(self, subcon, scale, offset, ndigits=1) -> None:
+        super().__init__(subcon)
+        self._offset = offset
+        self._scale = scale
+        self._ndigits = ndigits
+
+    def _decode(self, obj, context, path):
+        scaled = obj * self._scale
+        if scaled >= self._offset:
+            scaled += self._offset
+        else:
+            scaled -= self._offset
+        return round(scaled, self._ndigits)
+
+    def _encode(self, obj, context, path):
+        if obj >= 0:
+            val = obj - self._offset
+        else:
+            val = obj + self._offset
+        return val / self._scale
+
+
 class FixedPoint(Adapter):
     def __init__(self, subcon, scale, offset, ndigits=1) -> None:
         super().__init__(subcon)
@@ -532,31 +563,31 @@ RmuData = Struct(
             "hw_production" / Flag,
         ),
     ),
-    "bt1_outdoor_temperature" / FixedPoint(Int16sl, 0.1, -0.5),
+    "bt1_outdoor_temperature" / FixedPointStrange(Int16sl, 0.1, -0.5),
     "bt7_hw_top" / FixedPoint(Int16sl, 0.1, -0.5),
     "setpoint_or_offset_s1"
     / IfThenElse(
         lambda this: this.flags.use_room_sensor_s1,
         FixedPoint(Int8ub, 0.1, 5.0),
-        FixedPoint(Int8sb, 0.1, 0),
+        FixedPoint(Int8sb, 1.0, 0),
     ),
     "setpoint_or_offset_s2"
     / IfThenElse(
         lambda this: this.flags.use_room_sensor_s2,
         FixedPoint(Int8ub, 0.1, 5.0),
-        FixedPoint(Int8sb, 0.1, 0),
+        FixedPoint(Int8sb, 1.0, 0),
     ),
     "setpoint_or_offset_s3"
     / IfThenElse(
         lambda this: this.flags.use_room_sensor_s3,
         FixedPoint(Int8ub, 0.1, 5.0),
-        FixedPoint(Int8sb, 0.1, 0),
+        FixedPoint(Int8sb, 1.0, 0),
     ),
     "setpoint_or_offset_s4"
     / IfThenElse(
         lambda this: this.flags.use_room_sensor_s4,
         FixedPoint(Int8ub, 0.1, 5.0),
-        FixedPoint(Int8sb, 0.1, 0),
+        FixedPoint(Int8sb, 1.0, 0),
     ),
     "bt50_room_temp_sX" / FixedPoint(Int16sl, 0.1, -0.5),
     "temporary_lux" / Int8ub,
@@ -699,10 +730,10 @@ RequestData = Switch(
                         allow_cooling=0x04,
                     ),
                     "OPERATIONAL_MODE": Int8ub,
-                    "SETPOINT_S1": FixedPoint(Int8ub, 0.1, 0.0),
-                    "SETPOINT_S2": FixedPoint(Int8ub, 0.1, 0.0),
-                    "SETPOINT_S3": FixedPoint(Int8ub, 0.1, 0.0),
-                    "SETPOINT_S4": FixedPoint(Int8ub, 0.1, 0.0),
+                    "SETPOINT_S1": FixedPoint(Int16sl, 0.1, 0.0),
+                    "SETPOINT_S2": FixedPoint(Int16sl, 0.1, 0.0),
+                    "SETPOINT_S3": FixedPoint(Int16sl, 0.1, 0.0),
+                    "SETPOINT_S4": FixedPoint(Int16sl, 0.1, 0.0),
                 },
                 default=Select(
                     Int16ul,
