@@ -266,6 +266,28 @@
     }
   },
   {
+    "description": "Add units to degree minutes parameters",
+    "files": [
+      "smo40.json",
+      "f1145_f1245.json",
+      "f1155_f1255.json",
+      "f1345.json",
+      "f1355.json",
+      "f730.json",
+      "f750.json",
+      "vvm225_vvm320_vvm325.json",
+      "vvm310_vvm500.json"
+    ],
+    "data": {
+     "40940": {
+        "unit": "DM"
+      },
+      "43005": {
+        "unit": "DM"
+      }
+    }
+  },
+  {
     "description": "M12676EN-1 - S1155/S1255 ",
     "files": ["s1155_s1255.json"],
     "data": {
