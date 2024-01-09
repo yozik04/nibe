@@ -1445,7 +1445,8 @@
     "max": 30000.0,
     "default": 0.0,
     "name": "degree-minutes-32-bit-40940",
-    "write": true
+    "write": true,
+    "unit": "DM"
   },
   "40942": {
     "title": "External ERS 1 accessory block status",
@@ -3832,7 +3833,8 @@
     "max": 30000.0,
     "default": 0.0,
     "name": "degree-minutes-16-bit-43005",
-    "write": true
+    "write": true,
+    "unit": "DM"
   },
   "43006": {
     "title": "Calc. Supply S4",
