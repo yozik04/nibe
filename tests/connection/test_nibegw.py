@@ -2,7 +2,7 @@ import asyncio
 import binascii
 import time
 from unittest import IsolatedAsyncioTestCase
-from unittest.mock import Mock
+from unittest.mock import Mock, call
 
 import pytest
 
@@ -140,14 +140,21 @@ class TestNibeGW(IsolatedAsyncioTestCase):
         self.heatpump.subscribe("coil_update", on_coil_update_mock)
         self.nibegw.datagram_received(
             binascii.unhexlify(
-                "5c00206850c9af0000889c7100a9a90a00a3a91400aba90000939c0000949c0000919c0000929c00008f9c0000909c00003ab95000ada94600a7a91400faa90200ffff0000ffff0000ffff0000ffff0000ffff0000cc"
+                "5c00206850c9af0000889c7100a9a90a00a3a91400aba90000939c0000949c0000919c3c00929c00008f9c0000909c00003ab95000ada94600a7a91400faa90200ffff0000ffff0000ffff0000ffff0000ffff0000f0"
             ),
             ("127.0.0.1", 12345),
         )
-
-        on_coil_update_mock.assert_any_call(
-            CoilData(self.heatpump.get_coil_by_address(45001), 0.0)
-        )
-        on_coil_update_mock.assert_any_call(
-            CoilData(self.heatpump.get_coil_by_address(43514), 2.0)
-        )
+        assert on_coil_update_mock.mock_calls == [
+            call(CoilData(self.heatpump.get_coil_by_address(40072), 11.3)),
+            call(CoilData(self.heatpump.get_coil_by_address(40079), 0.0)),
+            call(CoilData(self.heatpump.get_coil_by_address(40081), 6.0)),
+            call(CoilData(self.heatpump.get_coil_by_address(40083), 0.0)),
+            call(CoilData(self.heatpump.get_coil_by_address(43427), "STOPPED")),
+            call(CoilData(self.heatpump.get_coil_by_address(43431), "ON")),
+            call(CoilData(self.heatpump.get_coil_by_address(43433), "OFF")),
+            call(CoilData(self.heatpump.get_coil_by_address(43435), "OFF")),
+            call(CoilData(self.heatpump.get_coil_by_address(43437), 70)),
+            call(CoilData(self.heatpump.get_coil_by_address(43514), 2)),
+            call(CoilData(self.heatpump.get_coil_by_address(45001), 0)),
+            call(CoilData(self.heatpump.get_coil_by_address(47418), 80)),
+        ]
