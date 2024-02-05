@@ -168,7 +168,9 @@ class TestNibeGW(IsolatedAsyncioTestCase):
         self.heatpump.subscribe("coil_update", on_coil_update_mock)
         self.nibegw.datagram_received(
             binascii.unhexlify(
-                "5c00206850489ce4004c9ce3004e9ca101889c4500d5a1ae00d6a1a300fda718f8c5a5ad98c6a50100cda5d897cea50100cfa51fb7d0a5060098a96d2399a90000a0a9cf05a1a900009ca9a01a9da90000449c4500e5"
+                "5c00206850 489ce400 4c9ce300 4e9ca101 889c4500 d5a1ae00 d6a1a300 fda718f8 c5a5ad98c6a50100 cda5d897cea50100 cfa51fb7d0a50600 98a96d23 99a90000 a0a9cf05 a1a90000 9ca9a01a 9da90000 449c4500 e5".replace(
+                    " ", ""
+                )
             ),
             ("127.0.0.1", 12345),
         )
@@ -176,6 +178,7 @@ class TestNibeGW(IsolatedAsyncioTestCase):
         def _call(address, value):
             return call(CoilData(self.heatpump.get_coil_by_address(address), value))
 
+        # Values with 0000 will not be included in the call list
         assert on_coil_update_mock.mock_calls == [
             _call(40004, 6.9),
             _call(40008, 22.8),
@@ -184,9 +187,15 @@ class TestNibeGW(IsolatedAsyncioTestCase):
             _call(40072, 6.9),
             _call(41429, 17.4),
             _call(41430, 16.3),
-            _call(42437, 10462.1),
-            _call(42445, 10440.8),
-            _call(42447, 44009.5),
+            _call(
+                42437, 10462.1
+            ),  # 32-bit register occupies two addresses (42437, 42438): c5a5 ad98 c6a5 0100
+            _call(
+                42445, 10440.8
+            ),  # 32-bit register occupies two addresses (42445, 42446): cda5 d897 cea5 0100
+            _call(
+                42447, 44009.5
+            ),  # 32-bit register occupies two addresses (42447, 42448): cfa5 1fb7 d0a5 0600
             _call(43005, -202.4),
             _call(43416, 9069),
             _call(43420, 6816),
