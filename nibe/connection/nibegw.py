@@ -190,8 +190,12 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer, ConnectionStatus
             logger.debug(msg.fields.value)
             cmd = msg.fields.value.cmd
             if cmd == "MODBUS_DATA_MSG":
-                for row in msg.fields.value.data:
-                    self._on_raw_coil_value(row.coil_address, row.value)
+                data: dict[int, bytes] = {
+                    row.coil_address: row.value
+                    for row in msg.fields.value.data
+                    if row.coil_address != 0xFFFF
+                }
+                self._on_raw_coil_set(data)
             elif cmd == "MODBUS_READ_RESP":
                 row = msg.fields.value.data
                 self._on_raw_coil_value(row.coil_address, row.value)
@@ -426,6 +430,20 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer, ConnectionStatus
             self._on_coil_read_success(coil_data)
         except NibeException as e:
             self._on_coil_read_error(coil_address, raw_value, e)
+
+    def _on_raw_coil_set(self, data: dict[int, bytes]) -> None:
+        while data:
+            coil_address = min(data.keys())
+            raw_value = data.pop(coil_address)
+            coil = self._heatpump.get_coil_by_address(coil_address)
+            try:
+                coil = self._heatpump.get_coil_by_address(coil_address)
+                if coil.size in ("u32", "s32"):
+                    raw_value = raw_value + data.pop(coil_address + 1, b"")
+                coil_data = self.coil_encoder.decode(coil, raw_value)
+                self._on_coil_read_success(coil_data)
+            except NibeException as e:
+                self._on_coil_read_error(coil_address, raw_value, e)
 
     def _on_coil_value(self, coil_address: int, value: Union[float, int, str]) -> None:
         try:
