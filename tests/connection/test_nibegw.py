@@ -1,6 +1,7 @@
 import asyncio
 import binascii
 import time
+from typing import Any
 from unittest.mock import Mock, call
 
 import pytest
@@ -147,44 +148,63 @@ async def test_read_product_info(nibegw: NibeGW):
     assert "F1255-12 R" == product.model
 
 
-async def test_read_multiple_with_u32_1(nibegw: NibeGW, heatpump: HeatPump):
+@pytest.mark.parametrize(
+    ("raw", "calls"),
+    [
+        (
+            "5c00206850c9af0000889c7100a9a90a00a3a91400aba90000939c0000949c0000919c3c00929c00008f9c0000909c00003ab95000ada94600a7a91400faa90200ffff0000ffff0000ffff0000ffff0000ffff0000f0",
+            [
+                (40072, 11.3),
+                (40079, 0.0),
+                (40081, 6.0),
+                (40083, 0.0),
+                (43427, "STOPPED"),
+                (43431, "ON"),
+                (43433, "OFF"),
+                (43435, "OFF"),
+                (43437, 70),
+                (43514, 2),
+                (45001, 0),
+                (47418, 80),
+            ],
+        ),
+        (
+            "5c00206850 489ce400 4c9ce300 4e9ca101 889c4500 d5a1ae00 d6a1a300 fda718f8 c5a5ad98c6a50100 cda5d897cea50100 cfa51fb7d0a50600 98a96d23 99a90000 a0a9cf05 a1a90000 9ca9a01a 9da90000 449c4500 e5",
+            [
+                (40004, 6.9),
+                (40008, 22.8),
+                (40012, 22.7),
+                (40014, 41.7),
+                (40072, 6.9),
+                (41429, 17.4),
+                (41430, 16.3),
+                (
+                    42437,
+                    10462.1,
+                ),  # 32-bit register occupies two addresses (42437, 42438): c5a5 ad98 c6a5 0100
+                (
+                    42445,
+                    10440.8,
+                ),  # 32-bit register occupies two addresses (42445, 42446): cda5 d897 cea5 0100
+                (
+                    42447,
+                    44009.5,
+                ),  # 32-bit register occupies two addresses (42447, 42448): cfa5 1fb7 d0a5 0600
+                (43005, -202.4),
+                (43416, 9069),
+                (43420, 6816),
+                (43424, 1487),
+            ],
+        ),
+    ],
+)
+async def test_read_multiple_with_u32(
+    nibegw: NibeGW, heatpump: HeatPump, raw: str, calls: list[tuple[int, Any]]
+):
     on_coil_update_mock = Mock()
     heatpump.subscribe("coil_update", on_coil_update_mock)
     nibegw.datagram_received(
-        binascii.unhexlify(
-            "5c00206850c9af0000889c7100a9a90a00a3a91400aba90000939c0000949c0000919c3c00929c00008f9c0000909c00003ab95000ada94600a7a91400faa90200ffff0000ffff0000ffff0000ffff0000ffff0000f0"
-        ),
-        ("127.0.0.1", 12345),
-    )
-
-    def _call(address, value):
-        return call(CoilData(heatpump.get_coil_by_address(address), value))
-
-    assert on_coil_update_mock.mock_calls == [
-        _call(40072, 11.3),
-        _call(40079, 0.0),
-        _call(40081, 6.0),
-        _call(40083, 0.0),
-        _call(43427, "STOPPED"),
-        _call(43431, "ON"),
-        _call(43433, "OFF"),
-        _call(43435, "OFF"),
-        _call(43437, 70),
-        _call(43514, 2),
-        _call(45001, 0),
-        _call(47418, 80),
-    ]
-
-
-async def test_read_multiple_with_u32_2(nibegw: NibeGW, heatpump: HeatPump):
-    on_coil_update_mock = Mock()
-    heatpump.subscribe("coil_update", on_coil_update_mock)
-    nibegw.datagram_received(
-        binascii.unhexlify(
-            "5c00206850 489ce400 4c9ce300 4e9ca101 889c4500 d5a1ae00 d6a1a300 fda718f8 c5a5ad98c6a50100 cda5d897cea50100 cfa51fb7d0a50600 98a96d23 99a90000 a0a9cf05 a1a90000 9ca9a01a 9da90000 449c4500 e5".replace(
-                " ", ""
-            )
-        ),
+        binascii.unhexlify(raw.replace(" ", "")),
         ("127.0.0.1", 12345),
     )
 
@@ -192,25 +212,4 @@ async def test_read_multiple_with_u32_2(nibegw: NibeGW, heatpump: HeatPump):
         return call(CoilData(heatpump.get_coil_by_address(address), value))
 
     # Values with 0000 will not be included in the call list
-    assert on_coil_update_mock.mock_calls == [
-        _call(40004, 6.9),
-        _call(40008, 22.8),
-        _call(40012, 22.7),
-        _call(40014, 41.7),
-        _call(40072, 6.9),
-        _call(41429, 17.4),
-        _call(41430, 16.3),
-        _call(
-            42437, 10462.1
-        ),  # 32-bit register occupies two addresses (42437, 42438): c5a5 ad98 c6a5 0100
-        _call(
-            42445, 10440.8
-        ),  # 32-bit register occupies two addresses (42445, 42446): cda5 d897 cea5 0100
-        _call(
-            42447, 44009.5
-        ),  # 32-bit register occupies two addresses (42447, 42448): cfa5 1fb7 d0a5 0600
-        _call(43005, -202.4),
-        _call(43416, 9069),
-        _call(43420, 6816),
-        _call(43424, 1487),
-    ]
+    assert on_coil_update_mock.mock_calls == [_call(*call) for call in calls]
