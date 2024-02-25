@@ -425,6 +425,14 @@
     "factor": 10,
     "name": "bt70-hw-comfort-supply-temp-40147"
   },
+  "40152": {
+    "title": "BT71 Ext. Return Temp",
+    "info": "External return temperature, BT71",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "name": "bt71-ext-return-temp-40152"
+  },
   "40155": {
     "title": "EQ1-BT57 Collector Temp.",
     "info": "External collector temperature, BT57, for ACS",

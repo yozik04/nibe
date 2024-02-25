@@ -59,7 +59,6 @@ Title;Info;ID;Unit;Size;Factor;Min;Max;Default;Mode
 "EP21-BT3 Return temp S2";"Return temperature for system 2";40129;"°C";s16;10;0;0;0;R;
 "EB100-EP14-BT29 Cpr Oil Temp";"Compressor oil temperature, BT29";40146;"°C";s16;10;0;0;0;R;
 "BT70 HW Comfort Supply Temp.";"Hot water comfort supply temperature, BT70";40147;"°C";s16;10;0;0;0;R;
-"BT71 Ext. Return Temp";"External return temperature, BT71";40152;"°C";s16;10;0;0;0;R;
 "EQ1-BT57 Collector Temp.";"External collector temperature, BT57, for ACS";40155;"°C";s16;10;0;0;0;R;
 "EQ1-BT75 Heatdump Temp.";"Heating medium dump temperature, BT75, for ACS";40156;"°C";s16;10;0;0;0;R;
 "EP47-BT2 Supply temp S8";"Supply temperature for system 8";40159;"°C";s16;10;0;0;0;R;
