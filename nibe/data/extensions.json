@@ -37,7 +37,8 @@
           "0": "OFF",
           "1": "ON",
           "2": "BT50",
-          "10": "RMU-BT50"
+          "10": "RMU-BT50",
+          "18": "BT74"
         }
       },
       "43013": {
@@ -478,6 +479,22 @@
         "min": 50,
         "max": 300,
         "default": 200
+      }
+    }
+  },
+  {
+    "description": "Correction for BT71 missing in F1155/F1255",
+    "files": [
+      "f1155_f1255.json"
+    ],
+    "data": {
+      "40152": {
+        "title": "BT71 Ext. Return Temp",
+        "info": "External return temperature, BT71",
+        "unit": "°C",
+        "size": "s16",
+        "factor": 10,
+        "name": "bt71-ext-return-temp-40152"
       }
     }
   }
