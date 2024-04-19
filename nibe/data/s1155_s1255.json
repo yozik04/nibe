@@ -8637,11 +8637,11 @@
     "write": true
   },
   "32177": {
-    "title": "Current power",
+    "title": "Current power (EME 20)",
     "factor": 1,
     "unit": "W",
     "size": "u32",
-    "name": "current-power-32177"
+    "name": "current-power-eme-20-32177"
   },
   "44007": {
     "title": "Speed of circulation pump passive cooling (EP15)",
@@ -8691,11 +8691,11 @@
     "name": "total-average-power-eme-20-32179"
   },
   "32181": {
-    "title": "Total energy",
+    "title": "Total energy (EME 20)",
     "factor": 10,
     "unit": "kWh",
     "size": "s32",
-    "name": "total-energy-32181"
+    "name": "total-energy-eme-20-32181"
   },
   "44077": {
     "title": "ERS 2",
@@ -8933,7 +8933,7 @@
     "name": "current-power-32728"
   },
   "44165": {
-    "title": "blockFreq 1 (EB102)",
+    "title": "BlockFreq 1 (EB102)",
     "factor": 1,
     "size": "u8",
     "min": 0.0,
@@ -8943,7 +8943,7 @@
     "write": true
   },
   "44166": {
-    "title": "blockFreq 1 (EB103)",
+    "title": "BlockFreq 1 (EB103)",
     "factor": 1,
     "size": "u8",
     "min": 0.0,
@@ -8953,7 +8953,7 @@
     "write": true
   },
   "44167": {
-    "title": "blockFreq 1 (EB104)",
+    "title": "BlockFreq 1 (EB104)",
     "factor": 1,
     "size": "u8",
     "min": 0.0,
@@ -8963,7 +8963,7 @@
     "write": true
   },
   "44168": {
-    "title": "blockFreq 1 (EB105)",
+    "title": "BlockFreq 1 (EB105)",
     "factor": 1,
     "size": "u8",
     "min": 0.0,
@@ -8973,7 +8973,7 @@
     "write": true
   },
   "44169": {
-    "title": "blockFreq 1 (EB106)",
+    "title": "BlockFreq 1 (EB106)",
     "factor": 1,
     "size": "u8",
     "min": 0.0,
@@ -8983,7 +8983,7 @@
     "write": true
   },
   "44170": {
-    "title": "blockFreq 1 (EB107)",
+    "title": "BlockFreq 1 (EB107)",
     "factor": 1,
     "size": "u8",
     "min": 0.0,
@@ -8993,7 +8993,7 @@
     "write": true
   },
   "44171": {
-    "title": "blockFreq 1 (EB108)",
+    "title": "BlockFreq 1 (EB108)",
     "factor": 1,
     "size": "u8",
     "min": 0.0,
