@@ -39,7 +39,7 @@ def test_nibegw_decode_raw_value(
 
 
 @pytest.mark.parametrize(
-    "size, expected, word_swap",
+    "size, raw, expected, word_swap",
     [
         # Test with integer limits
         ("u8", b"\xFF", None, None),
