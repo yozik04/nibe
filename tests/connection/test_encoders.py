@@ -1,5 +1,6 @@
 import pytest
 
+from nibe.coil import Coil
 from nibe.connection.encoders import CoilDataEncoderModbus, CoilDataEncoderNibeGw
 
 
@@ -25,7 +26,7 @@ from nibe.connection.encoders import CoilDataEncoderModbus, CoilDataEncoderNibeG
         ("s32", b"(\x06\x00\x00", 1576, True),
     ],
 )
-def test_nibegw_decode(
+def test_nibegw_decode_raw_value(
     size,
     raw,
     raw_value,
@@ -35,6 +36,29 @@ def test_nibegw_decode(
         assert CoilDataEncoderNibeGw(True).decode_raw_value(size, raw) == raw_value
     if word_swap in (False, None):
         assert CoilDataEncoderNibeGw(False).decode_raw_value(size, raw) == raw_value
+
+
+@pytest.mark.parametrize(
+    "size, expected, word_swap",
+    [
+        # Test with integer limits
+        ("u8", b"\xFF", None, None),
+        ("s8", b"\x80", None, None),
+        ("u16", b"\x00\x80", None, None),
+        ("s16", b"\xFF\xFF", None, None),
+        ("s32", b"\x00\x00\x00\x80", None, True),
+        ("s32", b"\x00\x80\x00\x00", None, False),
+    ],
+)
+def test_nibegw_decode(size, raw, expected, word_swap):
+    coil = Coil(address=1, name="test", title="test", size=size)
+
+    if word_swap in (True, None):
+        result = CoilDataEncoderNibeGw(True).decode(coil, raw).value
+        assert (result is None and expected is None) or (result == expected)
+    if word_swap in (False, None):
+        result = CoilDataEncoderNibeGw(False).decode(coil, raw).value
+        assert (result is None and expected is None) or (result == expected)
 
 
 @pytest.mark.parametrize(
@@ -89,7 +113,7 @@ def test_nibegw_encode(
         ("s32", [0xF9D8, 0xFFFF], -0x628, True),
     ],
 )
-def test_modbus_decode(
+def test_modbus_decode_raw_value(
     size,
     raw,
     raw_value,
@@ -120,7 +144,7 @@ def test_modbus_decode(
         ("s32", [0xF9D8, 0xFFFF], -0x628, True),
     ],
 )
-def test_modbus_encode(
+def test_modbus_encode_raw_value(
     size,
     raw,
     raw_value,
