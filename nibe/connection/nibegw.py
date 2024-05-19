@@ -11,7 +11,7 @@ import logging
 from operator import xor
 import socket
 import struct
-from typing import Dict, Optional, Union
+from typing import Dict, Literal, Optional, Union
 
 from construct import (
     Adapter,
@@ -99,6 +99,7 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer, ConnectionStatus
         listening_port: int = 9999,
         read_retries: int = 3,
         write_retries: int = 3,
+        table_processing_mode: Literal["strict", "permissive"] = "strict",
     ) -> None:
         super().__init__()
 
@@ -109,6 +110,8 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer, ConnectionStatus
         self._remote_ip = remote_ip
         self._remote_read_port = remote_read_port
         self._remote_write_port = remote_write_port
+
+        self._table_processing_mode = table_processing_mode
 
         self._transport = None
 
@@ -432,18 +435,28 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer, ConnectionStatus
             self._on_coil_read_error(coil_address, raw_value, e)
 
     def _on_raw_coil_set(self, data: dict[int, bytes]) -> None:
+        successful_coil_data = []
+        decode_exception_occurred = False
         while data:
             coil_address = min(data.keys())
             raw_value = data.pop(coil_address)
-            coil = self._heatpump.get_coil_by_address(coil_address)
             try:
                 coil = self._heatpump.get_coil_by_address(coil_address)
                 if coil.size in ("u32", "s32"):
                     raw_value = raw_value + data.pop(coil_address + 1, b"")
                 coil_data = self.coil_encoder.decode(coil, raw_value)
-                self._on_coil_read_success(coil_data)
+                successful_coil_data.append(coil_data)
+            except DecodeException as e:
+                self._on_coil_read_error(coil_address, raw_value, e)
+                decode_exception_occurred = True
             except NibeException as e:
                 self._on_coil_read_error(coil_address, raw_value, e)
+
+        if self._table_processing_mode == "permissive" or (
+            self._table_processing_mode == "strict" and not decode_exception_occurred
+        ):
+            for coil_data in successful_coil_data:
+                self._on_coil_read_success(coil_data)
 
     def _on_coil_value(self, coil_address: int, value: Union[float, int, str]) -> None:
         try:
