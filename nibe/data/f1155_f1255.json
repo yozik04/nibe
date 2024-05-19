@@ -75,7 +75,9 @@
     "unit": "\u00b0C",
     "size": "s16",
     "factor": 10,
-    "name": "eb100-ep14-bt10-brine-in-temp-40015"
+    "name": "eb100-ep14-bt10-brine-in-temp-40015",
+    "min": -400,
+    "max": 800
   },
   "40016": {
     "title": "EB100-EP14-BT11 Brine Out Temp",
@@ -83,7 +85,9 @@
     "unit": "\u00b0C",
     "size": "s16",
     "factor": 10,
-    "name": "eb100-ep14-bt11-brine-out-temp-40016"
+    "name": "eb100-ep14-bt11-brine-out-temp-40016",
+    "min": -400,
+    "max": 800
   },
   "40017": {
     "title": "EB100-EP14-BT12 Condensor Out",
@@ -424,14 +428,6 @@
     "size": "s16",
     "factor": 10,
     "name": "bt70-hw-comfort-supply-temp-40147"
-  },
-  "40152": {
-    "title": "BT71 Ext. Return Temp",
-    "info": "External return temperature, BT71",
-    "unit": "\u00b0C",
-    "size": "s16",
-    "factor": 10,
-    "name": "bt71-ext-return-temp-40152"
   },
   "40155": {
     "title": "EQ1-BT57 Collector Temp.",
@@ -9558,5 +9554,13 @@
     "factor": 1,
     "name": "aux-ers-fire-place-guard-49430",
     "write": true
+  },
+  "40152": {
+    "title": "BT71 Ext. Return Temp",
+    "info": "External return temperature, BT71",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "name": "bt71-ext-return-temp-40152"
   }
 }
