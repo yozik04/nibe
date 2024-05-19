@@ -99,7 +99,7 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer, ConnectionStatus
         listening_port: int = 9999,
         read_retries: int = 3,
         write_retries: int = 3,
-        table_processing_mode: Literal["strict", "permissive"] = "strict",
+        table_processing_mode: Literal["permissive", "strict"] = "permissive",
     ) -> None:
         super().__init__()
 

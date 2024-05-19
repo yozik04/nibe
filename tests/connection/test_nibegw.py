@@ -149,10 +149,11 @@ async def test_read_product_info(nibegw: NibeGW):
 
 
 @pytest.mark.parametrize(
-    ("raw", "calls"),
+    ("raw", "table_processing_mode", "calls"),
     [
         (
             "5c00206850c9af0000889c7100a9a90a00a3a91400aba90000939c0000949c0000919c3c00929c00008f9c0000909c00003ab95000ada94600a7a91400faa90200ffff0000ffff0000ffff0000ffff0000ffff0000f0",
+            "strict",
             [
                 (40072, 11.3),
                 (40079, 0.0),
@@ -169,7 +170,33 @@ async def test_read_product_info(nibegw: NibeGW):
             ],
         ),
         (
+            "5c00206850c9af0000889c7100a9a90a00a3a91400aba90000939c0000949c0000919c3c00929c00008f9c0000909c0000 3ab97000 ada94600 a7a91400 faa90200 ffff0000 ffff0000 ffff0000 ffff0000 ffff0000 d0",
+            "permissive",
+            [
+                (40072, 11.3),
+                (40079, 0.0),
+                (40081, 6.0),
+                (40083, 0.0),
+                (43427, "STOPPED"),
+                (43431, "ON"),
+                (43433, "OFF"),
+                (43435, "OFF"),
+                (43437, 70),
+                (43514, 2),
+                (45001, 0),
+                # (47418, 80), # This coil will be ignored because of decoding error
+            ],
+        ),
+        (
+            "5c00206850c9af0000889c7100a9a90a00a3a91400aba90000939c0000949c0000919c3c00929c00008f9c0000909c0000 3ab97000 ada94600 a7a91400 faa90200 ffff0000 ffff0000 ffff0000 ffff0000 ffff0000 d0",
+            "strict",
+            [
+                # All will be ignored because of single decoding error
+            ],
+        ),
+        (
             "5c00206850 489ce400 4c9ce300 4e9ca101 889c4500 d5a1ae00 d6a1a300 fda718f8 c5a5ad98c6a50100 cda5d897cea50100 cfa51fb7d0a50600 98a96d23 99a90000 a0a9cf05 a1a90000 9ca9a01a 9da90000 449c4500 e5",
+            "strict",
             [
                 (40004, 6.9),
                 (40008, 22.8),
@@ -199,8 +226,13 @@ async def test_read_product_info(nibegw: NibeGW):
     ],
 )
 async def test_read_multiple_with_u32(
-    nibegw: NibeGW, heatpump: HeatPump, raw: str, calls: list[tuple[int, Any]]
+    nibegw: NibeGW,
+    heatpump: HeatPump,
+    raw: str,
+    table_processing_mode: str,
+    calls: list[tuple[int, Any]],
 ):
+    nibegw._table_processing_mode = table_processing_mode
     on_coil_update_mock = Mock()
     heatpump.subscribe("coil_update", on_coil_update_mock)
     nibegw.datagram_received(
