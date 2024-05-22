@@ -56,6 +56,8 @@ class CSVConverter:
 
         self._make_mapping_parameter()
 
+        self._ensure_no_duplicate_ids()
+
         self._export_to_file()
 
     def _make_dict(self):
@@ -240,6 +242,13 @@ class CSVConverter:
 
         raise TypeError(f"Object of type {type(o)} is not JSON serializable")
 
+    def _ensure_no_duplicate_ids(self):
+        if self.data.index.has_duplicates:
+            logger.error(
+                f"Duplicate IDs found in {self.in_file}:\n{self.data[self.data.index.duplicated()]}"
+            )
+            raise ValueError("Duplicate IDs found")
+
     def _export_to_file(self):
         o = self._make_dict()
         update_dict(o, self.extensions, True)
@@ -251,6 +260,8 @@ class CSVConverter:
 async def run():
     with open_text("nibe.data", "extensions.json") as fp:
         all_extensions = json.load(fp)
+
+    convert_failed = []
 
     for in_file in files("nibe.data").glob("*.csv"):
         out_file = in_file.with_suffix(".json")
@@ -269,7 +280,12 @@ async def run():
 
             logger.info(f"Converted {in_file} to {out_file}")
         except Exception as ex:
+            convert_failed.append(in_file)
             logger.exception("Failed to convert %s: %s", in_file, ex)
+
+    if convert_failed:
+        logger.error("Failed to convert next files: %s", convert_failed)
+        raise ValueError("Failed to convert all files")
 
 
 async def _validate(out_file):

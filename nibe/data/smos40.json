@@ -10161,7 +10161,7 @@
     "title": "Relay status",
     "factor": 1,
     "size": "u8",
-    "name": "id-30001-relay-status-30001-relay-status-name-title-dtype-object-id-30001-30001-30001-30001-name-id-dtype-string"
+    "name": "relay-status-30001"
   },
   "32284": {
     "title": "Energy log - Energy produced for heat during current hour",
