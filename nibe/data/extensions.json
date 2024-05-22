@@ -497,5 +497,21 @@
         "name": "bt71-ext-return-temp-40152"
       }
     }
+  },
+  {
+    "description": "Limit allowed Brine In/Out temperature values for F1155/F1255",
+    "files": [
+      "f1155_f1255.json"
+    ],
+    "data": {
+      "40015": {
+        "min": -400,
+        "max": 800
+      },
+      "40016": {
+        "min": -400,
+        "max": 800
+      }
+    }
   }
 ]
