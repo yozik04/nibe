@@ -6748,6 +6748,13 @@
     "name": "shunted-brine-max-temp-45272",
     "write": true
   },
+  "40759": {
+    "title": "Additional heat after reversing valve",
+    "factor": 1,
+    "size": "u8",
+    "name": "additional-heat-after-reversing-valve-40759",
+    "write": true
+  },
   "40761": {
     "title": "Heating (SG Ready)",
     "factor": 1,
@@ -11739,6 +11746,17 @@
     "unit": "\u00b0C",
     "size": "s16",
     "name": "use-lp-as-freeze-protection-45077",
+    "write": true
+  },
+  "44206": {
+    "title": "Auto mode, start temperature for passive cooling",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "min": -200.0,
+    "max": 400.0,
+    "default": 250.0,
+    "name": "auto-mode-start-temperature-for-passive-cooling-44206",
     "write": true
   },
   "41556": {
