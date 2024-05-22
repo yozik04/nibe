@@ -4981,13 +4981,14 @@
     "write": true
   },
   "44068": {
-    "title": "Demand controlled ventilation",
+    "title": "Shunted brine max. temp.",
     "factor": 1,
+    "unit": "\u00b0C",
     "size": "u8",
     "min": 0.0,
-    "max": 1.0,
-    "default": 0.0,
-    "name": "id-44068-shunted-brine-max-temp-44068-demand-controlled-ventilation-name-title-dtype-object-id-44068-44068-44068-44068-name-id-dtype-string",
+    "max": 30.0,
+    "default": 20.0,
+    "name": "shunted-brine-max-temp-44068",
     "write": true
   },
   "40761": {

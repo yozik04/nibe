@@ -863,7 +863,6 @@ External adjustment with room sensor, cooling climate system 4	MODBUS_HOLDING_RE
 External adjustment with room sensor, cooling climate system 3	MODBUS_HOLDING_REGISTER	4151	10	°C	2	50	300	200
 External adjustment with room sensor, cooling climate system 2	MODBUS_HOLDING_REGISTER	4152	10	°C	2	50	300	200
 External adjustment with room sensor, cooling climate system 1	MODBUS_HOLDING_REGISTER	4153	10	°C	2	50	300	200
-Demand controlled ventilation	MODBUS_HOLDING_REGISTER	4067	1		4	0	1	0
 Current power	MODBUS_INPUT_REGISTER	2177	100	kW	6	0	0	0
 id:6917	MODBUS_HOLDING_REGISTER	4072	1		4	0	200	1
 id:6918	MODBUS_HOLDING_REGISTER	4073	1		4	0	20	1
