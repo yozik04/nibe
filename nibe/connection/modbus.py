@@ -160,7 +160,7 @@ class Modbus(Connection):
             raise WriteIOException(
                 f"Error validating {coil.name} coil value: {str(exc)}"
             ) from exc
-        except ModbusError as exc:
+        except (ModbusError, asyncio.IncompleteReadError) as exc:
             raise WriteIOException(
                 f"Error '{str(exc)}' writing {coil.name} starting: {entity_number} count: {entity_count} to: {self._slave_id}"
             ) from exc
