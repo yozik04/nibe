@@ -50,6 +50,60 @@
     }
   },
   {
+    "description": "Corrections for fan speed current units",
+    "files": [
+      "f730.json",
+      "f750.json",
+      "f370_f470.json",
+      "f1145_f1245.json",
+      "f1155_f1255.json",
+      "f1345.json",
+      "f1355.json"
+    ],
+    "data": {
+      "41256": {
+        "unit": null,
+        "mappings": {
+          "0": "Normal",
+          "1": "Fan mode 1",
+          "2": "Fan mode 2",
+          "3": "Fan mode 3",
+          "4": "Fan mode 4"
+        }
+      },
+      "41257": {
+        "unit": null,
+        "mappings": {
+          "0": "Normal",
+          "1": "Fan mode 1",
+          "2": "Fan mode 2",
+          "3": "Fan mode 3",
+          "4": "Fan mode 4"
+        }
+      },
+      "41258": {
+        "unit": null,
+        "mappings": {
+          "0": "Normal",
+          "1": "Fan mode 1",
+          "2": "Fan mode 2",
+          "3": "Fan mode 3",
+          "4": "Fan mode 4"
+        }
+      },
+      "43108": {
+        "unit": null,
+        "mappings": {
+          "0": "Normal",
+          "1": "Fan mode 1",
+          "2": "Fan mode 2",
+          "3": "Fan mode 3",
+          "4": "Fan mode 4"
+        }
+      }
+    }
+  },
+  {
     "files": [
       "f370_f470.json",
       "f730.json",
