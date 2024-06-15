@@ -104,6 +104,25 @@
     }
   },
   {
+    "description": "Corrections for airflow units",
+    "files": [
+      "f730.json",
+      "f750.json"
+    ],
+    "data": {
+      "40050": {
+        "unit": "m\u00b3/h"
+      },
+      "40051": {
+        "factor": 10,
+        "unit": "m\u00b3/h"
+      },
+      "41026": {
+        "unit": "m\u00b3/h"
+      }
+    }
+  },
+  {
     "files": [
       "f370_f470.json",
       "f730.json",

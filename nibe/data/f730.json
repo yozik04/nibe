@@ -170,14 +170,16 @@
     "title": "EB100-BS1 Air flow",
     "size": "s16",
     "factor": 10,
-    "name": "eb100-bs1-air-flow-40050"
+    "name": "eb100-bs1-air-flow-40050",
+    "unit": "m\u00b3/h"
   },
   "40051": {
     "title": "EB100-BS1 Air flow unfiltered",
     "info": "Unfiltered air flow value",
     "size": "s16",
-    "factor": 100,
-    "name": "eb100-bs1-air-flow-unfiltered-40051"
+    "factor": 10,
+    "name": "eb100-bs1-air-flow-unfiltered-40051",
+    "unit": "m\u00b3/h"
   },
   "40054": {
     "title": "EB100-FD1 Temperature limiter",
@@ -834,7 +836,8 @@
     "title": "EB100-Adjusted BS1 Air flow",
     "size": "s16",
     "factor": 10,
-    "name": "eb100-adjusted-bs1-air-flow-41026"
+    "name": "eb100-adjusted-bs1-air-flow-41026",
+    "unit": "m\u00b3/h"
   },
   "41027": {
     "title": "Humidity average",
