@@ -7412,5 +7412,12 @@
     "unit": "\u00b0C",
     "size": "s16",
     "name": "supply-line-az2-bt68-32192"
+  },
+  "30397": {
+    "title": "Pulse energy meter (BE6/BF2)",
+    "factor": 100,
+     "size": "u32",
+     "unit": "kWh",
+     "name": "pulse-energy-meter-be6-bf2-30397"
   }
 }
