@@ -7416,8 +7416,12 @@
   "30397": {
     "title": "Pulse energy meter (BE6/BF2)",
     "factor": 100,
-     "size": "u32",
-     "unit": "kWh",
-     "name": "pulse-energy-meter-be6-bf2-30397"
+    "size": "u32",
+    "unit": "kWh",
+    "min": 0,
+    "max": 2147483647.0,
+    "default": 0.0,
+    "name": "pulse-energy-meter-be6-bf2-30397",
+    "write": true
   }
 }
