@@ -301,6 +301,18 @@
     }
   },
   {
+    "description": "Reversing valve hot water (QN10) - S1156/S1256 ",
+    "files": ["s1155_s1255.json"],
+    "data": {
+      "32197": {
+        "mappings": {
+          "0": "Off",
+          "1": "On"
+        }
+      }
+    }
+  },
+  {
     "description": "M12676EN-1 - SMOS40 Mappings",
     "files": ["smos40.json"],
     "data": {
