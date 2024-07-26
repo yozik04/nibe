@@ -16,6 +16,7 @@ from nibe.exceptions import (
     ReadIOException,
     ReadTimeoutException,
     ValidationError,
+    WriteDeniedException,
     WriteIOException,
     WriteTimeoutException,
 )
@@ -153,7 +154,7 @@ class Modbus(Connection):
                     raise ReadIOException(f"Unsupported entity type {entity_type}")
 
             if not result:
-                raise WriteIOException(f"Heatpump denied writing {coil.name}")
+                raise WriteDeniedException(f"Heatpump denied writing {coil.name}")
             else:
                 logger.info(f"Write succeeded for {coil.name}")
         except ValidationError as exc:

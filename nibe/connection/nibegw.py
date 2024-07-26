@@ -65,7 +65,7 @@ from nibe.exceptions import (
     ReadIOException,
     ReadSendException,
     ReadTimeoutException,
-    WriteException,
+    WriteDeniedException,
     WriteIOException,
     WriteTimeoutException,
 )
@@ -369,7 +369,7 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer, ConnectionStatus
                 result = self._futures["write"].result()
 
                 if not result:
-                    raise WriteException(f"Heatpump denied writing {coil.name}")
+                    raise WriteDeniedException(f"Heatpump denied writing {coil.name}")
                 else:
                     logger.info(f"Write succeeded for {coil.name}")
             except asyncio.TimeoutError:

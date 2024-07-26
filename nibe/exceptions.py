@@ -33,6 +33,10 @@ class WriteException(NibeException):
     pass
 
 
+class WriteDeniedException(WriteException):
+    """Raised a write of a value was rejected by the pump."""
+
+
 class WriteIOException(WriteException):
     """Use this and child exceptions if IO has failed and you want to retry."""
 
