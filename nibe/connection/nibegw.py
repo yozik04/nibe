@@ -469,9 +469,10 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer, ConnectionStatus
                 value = int(value)
 
             if coil.has_mappings and isinstance(value, int):
-                value = coil.get_mapping_for(value)
+                coil_data = CoilData.from_mapping(coil, value)
+            else:
+                coil_data = CoilData(coil, value)
 
-            coil_data = CoilData(coil, value)
             logger.info(coil_data)
             self._on_coil_read_success(coil_data)
         except NibeException as e:
