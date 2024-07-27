@@ -5,7 +5,12 @@ import pytest
 
 from nibe.coil import Coil, CoilData
 from nibe.connection.nibegw import CoilDataEncoderNibeGw
-from nibe.exceptions import DecodeException, EncodeException, ValidationError
+from nibe.exceptions import (
+    DecodeException,
+    EncodeException,
+    NoMappingException,
+    ValidationError,
+)
 from nibe.parsers import swapwords
 
 
@@ -447,8 +452,12 @@ def test_unsigned_u8_mapping_decode(
 def test_unsigned_u8_mapping_decode_exception(
     encoder_word_swap_false: CoilDataEncoderNibeGw, coil_unsigned_u8_mapping: Coil
 ):
-    with pytest.raises(DecodeException):
-        encoder_word_swap_false.decode(coil_unsigned_u8_mapping, b"\x00")
+    coil_data = encoder_word_swap_false.decode(coil_unsigned_u8_mapping, b"\x00")
+
+    assert coil_data.value == "UNKNOWN (0)"
+
+    with pytest.raises(NoMappingException):
+        coil_data.validate()
 
 
 @pytest.mark.parametrize(

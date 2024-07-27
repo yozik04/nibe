@@ -8,7 +8,7 @@ import pytest
 
 from nibe.coil import CoilData
 from nibe.connection.nibegw import ConnectionStatus, NibeGW
-from nibe.exceptions import ReadException, ReadTimeoutException, WriteException
+from nibe.exceptions import NoMappingException, ReadTimeoutException, WriteException
 from nibe.heatpump import HeatPump, Model, ProductInfo
 
 
@@ -95,9 +95,12 @@ async def test_read_coil_decode_failed(
     _enqueue_datagram(nibegw, "5c00206a064ea8f51200004d")
 
     start = time.time()
-    with pytest.raises(ReadException) as excinfo:
-        await nibegw.read_coil(coil, timeout=0.1)
-        assert "Decode failed" in str(excinfo.value)
+    data = await nibegw.read_coil(coil, timeout=0.1)
+    assert data.value == "UNKNOWN (245)"
+
+    with pytest.raises(NoMappingException):
+        data.validate()
+
     assert 1 == transport.sendto.call_count
     duration = time.time() - start
     assert duration <= 0.1

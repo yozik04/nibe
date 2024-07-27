@@ -178,7 +178,10 @@ class CoilData:
     @staticmethod
     def from_mapping(coil: Coil, value: int) -> "CoilData":
         """Create CoilData from raw value using mappings."""
-        return CoilData(coil, coil.get_mapping_for(value))
+        try:
+            return CoilData(coil, coil.get_mapping_for(value))
+        except NoMappingException:
+            return CoilData(coil, f"UNKNOWN ({value})")
 
     @staticmethod
     def from_raw_value(coil: Coil, value: Union[int, None]) -> "CoilData":
