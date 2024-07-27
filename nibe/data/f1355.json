@@ -1706,26 +1706,44 @@
   "41256": {
     "title": "Fan speed current",
     "info": "The current fan speed after scheduling and blocks are considered",
-    "unit": "%",
     "size": "u8",
     "factor": 1,
-    "name": "fan-speed-current-41256"
+    "name": "fan-speed-current-41256",
+    "mappings": {
+      "0": "Normal",
+      "1": "Fan mode 1",
+      "2": "Fan mode 2",
+      "3": "Fan mode 3",
+      "4": "Fan mode 4"
+    }
   },
   "41257": {
     "title": "Fan speed current",
     "info": "The current fan speed after scheduling and blocks are considered",
-    "unit": "%",
     "size": "u8",
     "factor": 1,
-    "name": "fan-speed-current-41257"
+    "name": "fan-speed-current-41257",
+    "mappings": {
+      "0": "Normal",
+      "1": "Fan mode 1",
+      "2": "Fan mode 2",
+      "3": "Fan mode 3",
+      "4": "Fan mode 4"
+    }
   },
   "41258": {
     "title": "Fan speed current",
     "info": "The current fan speed after scheduling and blocks are considered",
-    "unit": "%",
     "size": "u8",
     "factor": 1,
-    "name": "fan-speed-current-41258"
+    "name": "fan-speed-current-41258",
+    "mappings": {
+      "0": "Normal",
+      "1": "Fan mode 1",
+      "2": "Fan mode 2",
+      "3": "Fan mode 3",
+      "4": "Fan mode 4"
+    }
   },
   "41265": {
     "title": "Smart Home Mode",
@@ -4582,10 +4600,16 @@
   "43108": {
     "title": "Fan speed current",
     "info": "The current fan speed after scheduling and blocks are considered",
-    "unit": "%",
     "size": "u8",
     "factor": 1,
-    "name": "fan-speed-current-43108"
+    "name": "fan-speed-current-43108",
+    "mappings": {
+      "0": "Normal",
+      "1": "Fan mode 1",
+      "2": "Fan mode 2",
+      "3": "Fan mode 3",
+      "4": "Fan mode 4"
+    }
   },
   "43122": {
     "title": "Compr. current min.freq.",

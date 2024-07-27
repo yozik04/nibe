@@ -1,3 +1,4 @@
+import asyncio
 from typing import List, Union
 from unittest.mock import AsyncMock, patch
 
@@ -6,7 +7,7 @@ import pytest
 
 from nibe.coil import Coil, CoilData
 from nibe.connection.modbus import Modbus
-from nibe.exceptions import ReadException
+from nibe.exceptions import ReadException, ReadExceptionGroup, WriteException
 from nibe.heatpump import HeatPump, Model
 
 
@@ -161,6 +162,17 @@ async def test_read_coil_out_of_range(
         await connection.read_coil(coil)
 
 
+async def test_read_coils_failed_read(
+    connection: Modbus,
+    modbus_client: AsyncMock,
+):
+    coil = Coil(1, "test", "test", "u8", 1, min=1, max=2)
+    modbus_client.read_coils.side_effect = asyncio.IncompleteReadError(bytes([]), 9)
+    with pytest.raises(ReadExceptionGroup):
+        async for coil in connection.read_coils([coil]):
+            pass
+
+
 @pytest.mark.parametrize(
     ("size", "raw", "value"),
     [
@@ -184,3 +196,14 @@ async def test_write_coil_coil(
     modbus_client.write_coils.assert_called_with(
         slave_id=0, starting_address=1, values=raw
     )
+
+
+async def test_write_coil_failed_read(
+    connection: Modbus,
+    modbus_client: AsyncMock,
+):
+    coil = Coil(1, "test", "test", "u8", 1, min=1, max=2, write=True)
+    coil_data = CoilData(coil, 1)
+    modbus_client.write_coils.side_effect = asyncio.IncompleteReadError(bytes([]), 9)
+    with pytest.raises(WriteException):
+        await connection.write_coil(coil_data)

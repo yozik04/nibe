@@ -3762,7 +3762,11 @@
     "title": "Reversing valve hot water (QN10)",
     "factor": 1,
     "size": "u8",
-    "name": "reversing-valve-hot-water-qn10-32197"
+    "name": "reversing-valve-hot-water-qn10-32197",
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
   },
   "31112": {
     "title": "Cooling activated (FLM 4)",
