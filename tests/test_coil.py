@@ -449,7 +449,7 @@ def test_unsigned_u8_mapping_decode(
     ) == CoilData(coil_unsigned_u8_mapping, value)
 
 
-def test_unsigned_u8_mapping_decode_exception(
+def test_unsigned_u8_mapping_related_exceptions(
     encoder_word_swap_false: CoilDataEncoderNibeGw, coil_unsigned_u8_mapping: Coil
 ):
     coil_data = encoder_word_swap_false.decode(coil_unsigned_u8_mapping, b"\x00")
@@ -458,6 +458,9 @@ def test_unsigned_u8_mapping_decode_exception(
 
     with pytest.raises(NoMappingException):
         coil_data.validate()
+
+    with pytest.raises(EncodeException):
+        encoder_word_swap_false.encode(coil_data)
 
 
 @pytest.mark.parametrize(
