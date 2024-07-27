@@ -12,12 +12,14 @@ import asyncclick as click
 from construct import (
     Const,
     ConstructError,
+    FocusedSeq,
     GreedyRange,
     Int8ul,
+    Peek,
     RawCopy,
-    Select,
     Struct,
-    Terminated,
+    Switch,
+    this,
 )
 
 from ..coil import CoilData
@@ -31,12 +33,10 @@ Ack = Struct("fields" / RawCopy(Struct("Ack" / Const(0x06, Int8ul))))
 
 Nak = Struct("fields" / RawCopy(Struct("Nak" / Const(0x15, Int8ul))))
 
-Block = Select(
-    Terminated,
-    Response,
-    Request,
-    Ack,
-    Nak,
+Block = FocusedSeq(
+    "data",
+    "start" / Peek(Int8ul),
+    "data" / Switch(this.start, {0x5C: Response, 0xC0: Request, 0x06: Ack, 0x15: Nak}),
 )
 
 Stream = GreedyRange(Block)

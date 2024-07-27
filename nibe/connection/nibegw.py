@@ -728,7 +728,7 @@ Response = Struct(
         )
     ),
     "checksum" / Checksum(Int8ub, xor8, this.fields.data),
-).compile()
+)
 
 
 RequestData = Switch(
@@ -792,5 +792,5 @@ Request = Struct(
         )
     ),
     "checksum" / Checksum(Int8ub, xor8, this.fields.data),
-).compile()
+)
 # fmt: on
