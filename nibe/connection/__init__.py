@@ -2,9 +2,10 @@ from __future__ import annotations
 
 from abc import ABC, abstractmethod
 from collections.abc import AsyncIterator, Iterable
+from contextlib import suppress
 
 from nibe.coil import Coil, CoilData
-from nibe.exceptions import ReadException, ReadExceptionGroup
+from nibe.exceptions import ReadException, ReadExceptionGroup, WriteDeniedException
 from nibe.heatpump import HeatPump, ProductInfo, Series
 
 DEFAULT_TIMEOUT: float = 5
@@ -82,6 +83,10 @@ async def verify_connectivity_read_write_alarm(
 
     To verify connection, we read the alarm reset field and write it as 0
     this will be ignored by the pump, this will throw exceptions on failure.
+
+    We ignore if the write was denied since that is still indicative of a
+    working connection. F-series pumps that is MyUplink upgraded seem to
+    reject these writes.
     """
     if heatpump.series == Series.S:
         coil = heatpump.get_coil_by_name("reset-alarm-40023")
@@ -93,4 +98,6 @@ async def verify_connectivity_read_write_alarm(
     if coil.mappings:
         value = coil.mappings[str(value)]
     coil_data.value = value
-    await connection.write_coil(coil_data)
+
+    with suppress(WriteDeniedException):
+        await connection.write_coil(coil_data)
