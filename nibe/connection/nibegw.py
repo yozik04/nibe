@@ -72,6 +72,7 @@ from nibe.exceptions import (
 from nibe.heatpump import HeatPump, ProductInfo
 
 from . import verify_connectivity_read_write_alarm
+from .encoders import is_hitting_integer_limit
 
 logger = logging.getLogger("nibe").getChild(__name__)
 
@@ -530,40 +531,52 @@ class FixedPointStrange(Adapter):
     be fixed.
     """
 
-    def __init__(self, subcon, scale, offset, ndigits=1) -> None:
+    def __init__(self, subcon, scale, offset, ndigits=1, size=None) -> None:
         super().__init__(subcon)
-        self._offset = offset
+        self._offset = offset / scale
         self._scale = scale
         self._ndigits = ndigits
+        self._size = size
 
     def _decode(self, obj, context, path):
-        scaled = obj * self._scale
-        if scaled >= self._offset:
-            scaled += self._offset
+        value = obj
+        if value >= self._offset:
+            value += self._offset
         else:
-            scaled -= self._offset
-        return round(scaled, self._ndigits)
+            value -= self._offset
+
+        if self._size and is_hitting_integer_limit(self._size, value):
+            return None
+
+        return round(value * self._scale, self._ndigits)
 
     def _encode(self, obj, context, path):
-        if obj >= 0:
-            val = obj - self._offset
+        val = obj / self._scale
+        if val >= 0:
+            val -= self._offset
         else:
-            val = obj + self._offset
-        return val / self._scale
+            val += self._offset
+        return val
 
 
 class FixedPoint(Adapter):
-    def __init__(self, subcon, scale, offset, ndigits=1) -> None:
+    def __init__(self, subcon, scale, offset, ndigits=1, size=None) -> None:
         super().__init__(subcon)
-        self._offset = offset
+        self._offset = offset / scale
         self._scale = scale
         self._ndigits = ndigits
+        self._size = size
 
     def _decode(self, obj, context, path):
-        return round(obj * self._scale + self._offset, self._ndigits)
+        value = obj + self._offset
+
+        if self._size and is_hitting_integer_limit(self._size, value):
+            return None
+
+        return round(value * self._scale, self._ndigits)
 
     def _encode(self, obj, context, path):
-        return (obj - self._offset) / self._scale
+        return obj / self._scale - self._offset
 
 
 StringData = Struct(
@@ -595,33 +608,33 @@ RmuData = Struct(
             "hw_production" / Flag,
         ),
     ),
-    "bt1_outdoor_temperature" / FixedPointStrange(Int16sl, 0.1, -0.5),
+    "bt1_outdoor_temperature" / FixedPointStrange(Int16sl, 0.1, -0.5, size="s16"),
     "bt7_hw_top" / FixedPoint(Int16sl, 0.1, -0.5),
     "setpoint_or_offset_s1"
     / IfThenElse(
         lambda this: this.flags.use_room_sensor_s1,
-        FixedPoint(Int8ub, 0.1, 5.0),
-        FixedPoint(Int8sb, 1.0, 0),
+        FixedPoint(Int8ub, 0.1, 5.0, size="u8"),
+        FixedPoint(Int8sb, 1.0, 0, size="s8"),
     ),
     "setpoint_or_offset_s2"
     / IfThenElse(
         lambda this: this.flags.use_room_sensor_s2,
-        FixedPoint(Int8ub, 0.1, 5.0),
-        FixedPoint(Int8sb, 1.0, 0),
+        FixedPoint(Int8ub, 0.1, 5.0, size="u8"),
+        FixedPoint(Int8sb, 1.0, 0, size="s8"),
     ),
     "setpoint_or_offset_s3"
     / IfThenElse(
         lambda this: this.flags.use_room_sensor_s3,
-        FixedPoint(Int8ub, 0.1, 5.0),
-        FixedPoint(Int8sb, 1.0, 0),
+        FixedPoint(Int8ub, 0.1, 5.0, size="u8"),
+        FixedPoint(Int8sb, 1.0, 0, size="s8"),
     ),
     "setpoint_or_offset_s4"
     / IfThenElse(
         lambda this: this.flags.use_room_sensor_s4,
-        FixedPoint(Int8ub, 0.1, 5.0),
-        FixedPoint(Int8sb, 1.0, 0),
+        FixedPoint(Int8ub, 0.1, 5.0, size="u8"),
+        FixedPoint(Int8sb, 1.0, 0, size="s8"),
     ),
-    "bt50_room_temp_sX" / FixedPoint(Int16sl, 0.1, -0.5),
+    "bt50_room_temp_sX" / FixedPoint(Int16sl, 0.1, -0.5, size="s16"),
     "temporary_lux" / Int8ub,
     "hw_time_hour" / Int8ub,
     "hw_time_min" / Int8ub,

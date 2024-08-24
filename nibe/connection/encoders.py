@@ -1,6 +1,6 @@
 from abc import abstractmethod
 from binascii import hexlify
-from typing import Generic, List, Optional, SupportsInt, TypeVar, Union
+from typing import Generic, List, Optional, SupportsInt, TypeVar
 
 from construct import (
     Construct,
@@ -45,6 +45,13 @@ integer_limit = {
 }
 
 
+def is_hitting_integer_limit(size: str, int_value: int):
+    limit = integer_limit[size]
+    if limit < 0:
+        return int_value <= limit
+    return int_value >= limit
+
+
 _RawDataT = TypeVar("_RawDataT")
 
 
@@ -82,7 +89,7 @@ class CoilDataEncoder(Generic[_RawDataT]):
         :raises DecodeException: If decoding fails"""
         try:
             value = self.decode_raw_value(coil.size, raw)
-            if self._is_hitting_integer_limit(coil.size, value):
+            if is_hitting_integer_limit(coil.size, value):
                 value = None
 
             return CoilData.from_raw_value(coil, value)
@@ -91,12 +98,6 @@ class CoilDataEncoder(Generic[_RawDataT]):
             raise DecodeException(
                 f"Failed to decode {coil.name} coil from raw: {hexlify(raw).decode('utf-8')}, exception: {e}"
             ) from e
-
-    def _is_hitting_integer_limit(self, size: str, int_value: int):
-        limit = integer_limit[size]
-        if limit < 0:
-            return int_value <= limit
-        return int_value >= limit
 
 
 class CoilDataEncoderNibeGw(CoilDataEncoder[bytes]):
