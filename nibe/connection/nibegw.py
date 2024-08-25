@@ -531,7 +531,7 @@ class FixedPointStrange(Adapter):
     be fixed.
     """
 
-    def __init__(self, subcon, scale, offset, ndigits=1, size=None) -> None:
+    def __init__(self, subcon, scale, offset, size, ndigits=1) -> None:
         super().__init__(subcon)
         self._offset = offset
         self._scale = scale
@@ -545,7 +545,7 @@ class FixedPointStrange(Adapter):
         else:
             value -= self._offset
 
-        if self._size and is_hitting_integer_limit(self._size, value):
+        if is_hitting_integer_limit(self._size, value):
             return None
 
         return round(value * self._scale, self._ndigits)
@@ -560,7 +560,7 @@ class FixedPointStrange(Adapter):
 
 
 class FixedPoint(Adapter):
-    def __init__(self, subcon, scale, offset, ndigits=1, size=None) -> None:
+    def __init__(self, subcon, scale, offset, size, ndigits=1) -> None:
         super().__init__(subcon)
         self._offset = offset
         self._scale = scale
@@ -570,7 +570,7 @@ class FixedPoint(Adapter):
     def _decode(self, obj, context, path):
         value = obj + self._offset
 
-        if self._size and is_hitting_integer_limit(self._size, value):
+        if is_hitting_integer_limit(self._size, value):
             return None
 
         return round(value * self._scale, self._ndigits)
@@ -608,33 +608,33 @@ RmuData = Struct(
             "hw_production" / Flag,
         ),
     ),
-    "bt1_outdoor_temperature" / FixedPointStrange(Int16sl, 0.1, -5, size="s16"),
-    "bt7_hw_top" / FixedPoint(Int16sl, 0.1, -5, size="s16"),
+    "bt1_outdoor_temperature" / FixedPointStrange(Int16sl, 0.1, -5, "s16"),
+    "bt7_hw_top" / FixedPoint(Int16sl, 0.1, -5, "s16"),
     "setpoint_or_offset_s1"
     / IfThenElse(
         lambda this: this.flags.use_room_sensor_s1,
-        FixedPoint(Int8ub, 0.1, 50, size="u8"),
-        FixedPoint(Int8sb, 1.0, 0, size="s8"),
+        FixedPoint(Int8ub, 0.1, 50, "u8"),
+        FixedPoint(Int8sb, 1.0, 0, "s8"),
     ),
     "setpoint_or_offset_s2"
     / IfThenElse(
         lambda this: this.flags.use_room_sensor_s2,
-        FixedPoint(Int8ub, 0.1, 50, size="u8"),
-        FixedPoint(Int8sb, 1.0, 0, size="s8"),
+        FixedPoint(Int8ub, 0.1, 50, "u8"),
+        FixedPoint(Int8sb, 1.0, 0, "s8"),
     ),
     "setpoint_or_offset_s3"
     / IfThenElse(
         lambda this: this.flags.use_room_sensor_s3,
-        FixedPoint(Int8ub, 0.1, 50, size="u8"),
-        FixedPoint(Int8sb, 1.0, 0, size="s8"),
+        FixedPoint(Int8ub, 0.1, 50, "u8"),
+        FixedPoint(Int8sb, 1.0, 0, "s8"),
     ),
     "setpoint_or_offset_s4"
     / IfThenElse(
         lambda this: this.flags.use_room_sensor_s4,
-        FixedPoint(Int8ub, 0.1, 50, size="u8"),
-        FixedPoint(Int8sb, 1.0, 0, size="s8"),
+        FixedPoint(Int8ub, 0.1, 50, "u8"),
+        FixedPoint(Int8sb, 1.0, 0, "s8"),
     ),
-    "bt50_room_temp_sX" / FixedPoint(Int16sl, 0.1, -5, size="s16"),
+    "bt50_room_temp_sX" / FixedPoint(Int16sl, 0.1, -5, "s16"),
     "temporary_lux" / Int8ub,
     "hw_time_hour" / Int8ub,
     "hw_time_min" / Int8ub,
