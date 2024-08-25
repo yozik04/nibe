@@ -545,8 +545,10 @@ class FixedPointStrange(Adapter):
         else:
             value -= self._offset
 
-        if is_hitting_integer_limit(self._size, value):
-            return None
+        # For now skip limit checks, since we don't know
+        # how the pump handles these for this special case
+        # for negative offsets, we could never reach the
+        # integer limits after offset has been applied.
 
         return round(value * self._scale, self._ndigits)
 
@@ -570,6 +572,10 @@ class FixedPoint(Adapter):
     def _decode(self, obj, context, path):
         value = obj + self._offset
 
+        # Limits seem to be applied after offset
+        # have been applied. This may possible depend
+        # on the sign of the offset, but that is unknown
+        # at the moment.
         if is_hitting_integer_limit(self._size, value):
             return None
 
