@@ -609,7 +609,7 @@ RmuData = Struct(
         ),
     ),
     "bt1_outdoor_temperature" / FixedPointStrange(Int16sl, 0.1, -5, size="s16"),
-    "bt7_hw_top" / FixedPoint(Int16sl, 0.1, -5),
+    "bt7_hw_top" / FixedPoint(Int16sl, 0.1, -5, size="s16"),
     "setpoint_or_offset_s1"
     / IfThenElse(
         lambda this: this.flags.use_room_sensor_s1,
