@@ -72,6 +72,7 @@ from nibe.exceptions import (
 from nibe.heatpump import HeatPump, ProductInfo
 
 from . import verify_connectivity_read_write_alarm
+from .encoders import is_hitting_integer_limit
 
 logger = logging.getLogger("nibe").getChild(__name__)
 
@@ -530,40 +531,58 @@ class FixedPointStrange(Adapter):
     be fixed.
     """
 
-    def __init__(self, subcon, scale, offset, ndigits=1) -> None:
+    def __init__(self, subcon, scale, offset, size, ndigits=1) -> None:
         super().__init__(subcon)
         self._offset = offset
         self._scale = scale
         self._ndigits = ndigits
+        self._size = size
 
     def _decode(self, obj, context, path):
-        scaled = obj * self._scale
-        if scaled >= self._offset:
-            scaled += self._offset
+        value = obj
+        if value >= self._offset:
+            value += self._offset
         else:
-            scaled -= self._offset
-        return round(scaled, self._ndigits)
+            value -= self._offset
+
+        # For now skip limit checks, since we don't know
+        # how the pump handles these for this special case
+        # for negative offsets, we could never reach the
+        # integer limits after offset has been applied.
+
+        return round(value * self._scale, self._ndigits)
 
     def _encode(self, obj, context, path):
-        if obj >= 0:
-            val = obj - self._offset
+        val = obj / self._scale
+        if val >= 0:
+            val -= self._offset
         else:
-            val = obj + self._offset
-        return val / self._scale
+            val += self._offset
+        return val
 
 
 class FixedPoint(Adapter):
-    def __init__(self, subcon, scale, offset, ndigits=1) -> None:
+    def __init__(self, subcon, scale, offset, size, ndigits=1) -> None:
         super().__init__(subcon)
         self._offset = offset
         self._scale = scale
         self._ndigits = ndigits
+        self._size = size
 
     def _decode(self, obj, context, path):
-        return round(obj * self._scale + self._offset, self._ndigits)
+        value = obj + self._offset
+
+        # Limits seem to be applied after offset
+        # have been applied. This may possible depend
+        # on the sign of the offset, but that is unknown
+        # at the moment.
+        if is_hitting_integer_limit(self._size, value):
+            return None
+
+        return round(value * self._scale, self._ndigits)
 
     def _encode(self, obj, context, path):
-        return (obj - self._offset) / self._scale
+        return obj / self._scale - self._offset
 
 
 StringData = Struct(
@@ -595,33 +614,33 @@ RmuData = Struct(
             "hw_production" / Flag,
         ),
     ),
-    "bt1_outdoor_temperature" / FixedPointStrange(Int16sl, 0.1, -0.5),
-    "bt7_hw_top" / FixedPoint(Int16sl, 0.1, -0.5),
+    "bt1_outdoor_temperature" / FixedPointStrange(Int16sl, 0.1, -5, "s16"),
+    "bt7_hw_top" / FixedPoint(Int16sl, 0.1, -5, "s16"),
     "setpoint_or_offset_s1"
     / IfThenElse(
         lambda this: this.flags.use_room_sensor_s1,
-        FixedPoint(Int8ub, 0.1, 5.0),
-        FixedPoint(Int8sb, 1.0, 0),
+        FixedPoint(Int8ub, 0.1, 50, "u8"),
+        FixedPoint(Int8sb, 1.0, 0, "s8"),
     ),
     "setpoint_or_offset_s2"
     / IfThenElse(
         lambda this: this.flags.use_room_sensor_s2,
-        FixedPoint(Int8ub, 0.1, 5.0),
-        FixedPoint(Int8sb, 1.0, 0),
+        FixedPoint(Int8ub, 0.1, 50, "u8"),
+        FixedPoint(Int8sb, 1.0, 0, "s8"),
     ),
     "setpoint_or_offset_s3"
     / IfThenElse(
         lambda this: this.flags.use_room_sensor_s3,
-        FixedPoint(Int8ub, 0.1, 5.0),
-        FixedPoint(Int8sb, 1.0, 0),
+        FixedPoint(Int8ub, 0.1, 50, "u8"),
+        FixedPoint(Int8sb, 1.0, 0, "s8"),
     ),
     "setpoint_or_offset_s4"
     / IfThenElse(
         lambda this: this.flags.use_room_sensor_s4,
-        FixedPoint(Int8ub, 0.1, 5.0),
-        FixedPoint(Int8sb, 1.0, 0),
+        FixedPoint(Int8ub, 0.1, 50, "u8"),
+        FixedPoint(Int8sb, 1.0, 0, "s8"),
     ),
-    "bt50_room_temp_sX" / FixedPoint(Int16sl, 0.1, -0.5),
+    "bt50_room_temp_sX" / FixedPoint(Int16sl, 0.1, -5, "s16"),
     "temporary_lux" / Int8ub,
     "hw_time_hour" / Int8ub,
     "hw_time_min" / Int8ub,
@@ -754,7 +773,7 @@ RequestData = Switch(
                 lambda this: this.index,
                 {
                     "TEMPORARY_LUX": Int8ub,
-                    "TEMPERATURE": FixedPoint(Int16ul, 0.1, -0.7),
+                    "TEMPERATURE": FixedPoint(Int16ul, 0.1, -7.0, size="s16"),
                     "FUNCTIONS": FlagsEnum(
                         Int8ub,
                         allow_additive_heating=0x01,
@@ -762,10 +781,10 @@ RequestData = Switch(
                         allow_cooling=0x04,
                     ),
                     "OPERATIONAL_MODE": Int8ub,
-                    "SETPOINT_S1": FixedPoint(Int16sl, 0.1, 0.0),
-                    "SETPOINT_S2": FixedPoint(Int16sl, 0.1, 0.0),
-                    "SETPOINT_S3": FixedPoint(Int16sl, 0.1, 0.0),
-                    "SETPOINT_S4": FixedPoint(Int16sl, 0.1, 0.0),
+                    "SETPOINT_S1": FixedPoint(Int16sl, 0.1, 0.0, size="s16"),
+                    "SETPOINT_S2": FixedPoint(Int16sl, 0.1, 0.0, size="s16"),
+                    "SETPOINT_S3": FixedPoint(Int16sl, 0.1, 0.0, size="s16"),
+                    "SETPOINT_S4": FixedPoint(Int16sl, 0.1, 0.0, size="s16"),
                 },
                 default=Select(
                     Int16ul,
