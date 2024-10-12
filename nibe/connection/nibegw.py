@@ -760,7 +760,7 @@ ResponseData = Struct(
 )
 
 Response = Struct(
-    "start_byte" / Const(0x5C, Int8ub),
+    "start_byte" / Const("RESPONSE", StartCode),
     "fields" / RawCopy(ResponseData),
     "checksum" / Checksum(Int8ub, xor8, this.fields.data),
 )
@@ -824,7 +824,7 @@ RequestTypes = {
 }
 
 RequestData = Struct(
-    "start_byte" / Const(0xC0, Int8ub),
+    Const("REQUEST", StartCode),
     "cmd" / Command,
     "data" / Prefixed(Int8ub,
         Switch(
@@ -836,13 +836,22 @@ RequestData = Struct(
 )
 
 Request = Struct(
+    "start_byte" / Peek(StartCode),
     "fields" / RawCopy(RequestData),
     "checksum" / Checksum(Int8ub, xor8, this.fields.data),
 )
 
-Ack = Struct("fields" / RawCopy(Struct("Ack" / Const(0x06, Int8ub))))
+AckData = Struct(Const("ACK", StartCode))
+Ack = Struct(
+    "start_byte" / Peek(StartCode),
+    "fields" / RawCopy(AckData)
+)
 
-Nak = Struct("fields" / RawCopy(Struct("Nak" / Const(0x15, Int8ub))))
+NakData = Struct(Const("NAK", StartCode))
+Nak = Struct(
+    "start_byte" / Peek(StartCode),
+    "fields" / RawCopy(NakData)
+)
 
 BlockTypes = {
     "RESPONSE": Response,

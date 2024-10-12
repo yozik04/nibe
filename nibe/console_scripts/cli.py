@@ -223,7 +223,7 @@ def parse_file(file: IO, type: str):
 
     with io.BytesIO(bytes(data)) as stream:
         for packet in parse_stream(stream):
-            click.echo(packet.fields.value)
+            click.echo(packet)
 
         remaining = stream.read()
         if remaining:
