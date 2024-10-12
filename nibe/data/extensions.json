@@ -499,7 +499,7 @@
   },
   {
     "description": "Holiday settings",
-    "files": ["f750.json"],
+    "files": ["f750.json", "f1155_f1255.json"],
     "data": {
       "48044": {
         "title": "Holiday - Start Date",
