@@ -9,37 +9,14 @@ import re
 from typing import IO
 
 import asyncclick as click
-from construct import (
-    Const,
-    ConstructError,
-    FocusedSeq,
-    GreedyRange,
-    Int8ul,
-    Peek,
-    RawCopy,
-    Struct,
-    Switch,
-    this,
-)
+from construct import ConstructError
 
 from ..coil import CoilData
 from ..connection import Connection
 from ..connection.modbus import Modbus
-from ..connection.nibegw import NibeGW, Request, Response
+from ..connection.nibegw import Block, NibeGW
 from ..exceptions import NibeException
 from ..heatpump import HeatPump, Model
-
-Ack = Struct("fields" / RawCopy(Struct("Ack" / Const(0x06, Int8ul))))
-
-Nak = Struct("fields" / RawCopy(Struct("Nak" / Const(0x15, Int8ul))))
-
-Block = FocusedSeq(
-    "data",
-    "start" / Peek(Int8ul),
-    "data" / Switch(this.start, {0x5C: Response, 0xC0: Request, 0x06: Ack, 0x15: Nak}),
-)
-
-Stream = GreedyRange(Block)
 
 
 @click.group()

@@ -15,7 +15,6 @@ from typing import Dict, Literal, Optional, Union
 
 from construct import (
     Adapter,
-    Array,
     BitStruct,
     Bytes,
     Checksum,
@@ -27,7 +26,9 @@ from construct import (
     FixedSized,
     Flag,
     FlagsEnum,
+    FocusedSeq,
     GreedyBytes,
+    GreedyRange,
     GreedyString,
     IfThenElse,
     Int8sb,
@@ -36,6 +37,7 @@ from construct import (
     Int16ub,
     Int16ul,
     NullTerminated,
+    Peek,
     Pointer,
     Prefixed,
     RawCopy,
@@ -585,6 +587,35 @@ class FixedPoint(Adapter):
         return obj / self._scale - self._offset
 
 
+StartCode = Enum(
+    Int8ub,
+    RESPONSE=0x5C,
+    REQUEST=0xC0,
+    ACK=0x06,
+    NAK=0x15,
+)
+
+Command = Enum(
+    Int8ub,
+    RMU_WRITE_REQ=0x60,
+    RMU_DATA_MSG=0x62,
+    RMU_DATA_REQ=0x63,
+    MODBUS_DATA_MSG=0x68,
+    MODBUS_READ_REQ=0x69,
+    MODBUS_READ_RESP=0x6A,
+    MODBUS_WRITE_REQ=0x6B,
+    MODBUS_WRITE_RESP=0x6C,
+    MODBUS_ADDRESS_MSG=0x6E,
+    PRODUCT_INFO_MSG=0x6D,
+    ACCESSORY_VERSION_REQ=0xEE,
+    ECS_DATA_REQ=0x90,
+    ECS_DATA_MSG_1=0x55,
+    ECS_DATA_MSG_2=0xA0,
+    STRING_MSG=0xB1,
+    HEATPUMP_REQ=0xF7,
+)
+
+
 StringData = Struct(
     "unknown" / Int8ub,
     "id" / Int16ul,
@@ -656,45 +687,21 @@ RmuData = Struct(
     "unknown5" / GreedyBytes,
 )
 
-Data = Dedupe5C(
-    Switch(
-        this.cmd,
-        {
-            "MODBUS_READ_RESP": Struct("coil_address" / Int16ul, "value" / Bytes(4)),
-            "MODBUS_DATA_MSG": Array(
-                lambda this: this.length // 4,
-                Struct("coil_address" / Int16ul, "value" / Bytes(2)),
-            ),
-            "MODBUS_WRITE_RESP": Struct("result" / Flag),
-            "MODBUS_ADDRESS_MSG": Struct("address" / Int8ub),
-            "PRODUCT_INFO_MSG": ProductInfoData,
-            "RMU_DATA_MSG": RmuData,
-            "STRING_MSG": StringData,
-        },
-        default=Bytes(this.length),
-    )
-)
+ModbusDataValue = Struct("coil_address" / Int16ul, "value" / Bytes(2))
+ModbusData = GreedyRange(ModbusDataValue)
+ModbusReadResp = Struct("coil_address" / Int16ul, "value" / Bytes(4))
+ModbusWriteResp = Struct("result" / Flag)
+ModbusAddressMsg = Struct("address" / Int8ub)
 
-
-Command = Enum(
-    Int8ub,
-    RMU_WRITE_REQ=0x60,
-    RMU_DATA_MSG=0x62,
-    RMU_DATA_REQ=0x63,
-    MODBUS_DATA_MSG=0x68,
-    MODBUS_READ_REQ=0x69,
-    MODBUS_READ_RESP=0x6A,
-    MODBUS_WRITE_REQ=0x6B,
-    MODBUS_WRITE_RESP=0x6C,
-    MODBUS_ADDRESS_MSG=0x6E,
-    PRODUCT_INFO_MSG=0x6D,
-    ACCESSORY_VERSION_REQ=0xEE,
-    ECS_DATA_REQ=0x90,
-    ECS_DATA_MSG_1=0x55,
-    ECS_DATA_MSG_2=0xA0,
-    STRING_MSG=0xB1,
-    HEATPUMP_REQ=0xF7,
-)
+ResponseTypes = {
+    "MODBUS_READ_RESP": ModbusReadResp,
+    "MODBUS_DATA_MSG": ModbusData,
+    "MODBUS_WRITE_RESP": ModbusWriteResp,
+    "MODBUS_ADDRESS_MSG": ModbusAddressMsg,
+    "PRODUCT_INFO_MSG": ProductInfoData,
+    "RMU_DATA_MSG": RmuData,
+    "STRING_MSG": StringData,
+}
 
 Address = Enum(
     Int16ub,
@@ -737,80 +744,120 @@ ADDRESS_TO_ROOM_TEMP_COIL = {
 
 
 # fmt: off
-Response = Struct(
-    "start_byte" / Const(0x5C, Int8ub),
-    "fields" / RawCopy(
-        Struct(
-            "address" / Address,
-            "cmd" / Command,
-            "length" / Int8ub,
-            "data" / FixedSized(this.length, Data),
+
+ResponseData = Struct(
+    "address" / Address,
+    "cmd" / Command,
+    "length" / Int8ub,
+    "data" / FixedSized(this.length,
+        Dedupe5C(
+            Switch(
+                this.cmd, ResponseTypes,
+                default=GreedyBytes,
+            )
         )
     ),
+)
+
+Response = Struct(
+    "start_byte" / Const(0x5C, Int8ub),
+    "fields" / RawCopy(ResponseData),
     "checksum" / Checksum(Int8ub, xor8, this.fields.data),
 )
 
+AccessoryVersionReq = UnionConstruct(None,
+    # Modbus and RMU seem to disagree on how to interpret this
+    # data, at least from how it looks in the service info screen
+    # on the pump.
+    "modbus" / Struct(
+        "version" / Int16ul,
+        "unknown" / Int8ub,
+    ),
+    "rmu" / Struct(
+        "unknown" / Int8ub,
+        "version" / Int16ul,
+    ),
+)
 
-RequestData = Switch(
-    this.cmd,
-    {
-        "ACCESSORY_VERSION_REQ": UnionConstruct(None,
-            # Modbus and RMU seem to disagree on how to interpret this
-            # data, at least from how it looks in the service info screen
-            # on the pump.
-            "modbus" / Struct(
-                "version" / Int16ul,
-                "unknown" / Int8ub,
-            ),
-            "rmu" / Struct(
-                "unknown" / Int8ub,
-                "version" / Int16ul,
-            ),
-        ),
-        "RMU_WRITE_REQ": Struct(
-            "index" / RmuWriteIndex,
-            "value" / Switch(
-                lambda this: this.index,
-                {
-                    "TEMPORARY_LUX": Int8ub,
-                    "TEMPERATURE": FixedPoint(Int16ul, 0.1, -7.0, size="s16"),
-                    "FUNCTIONS": FlagsEnum(
-                        Int8ub,
-                        allow_additive_heating=0x01,
-                        allow_heating=0x02,
-                        allow_cooling=0x04,
-                    ),
-                    "OPERATIONAL_MODE": Int8ub,
-                    "SETPOINT_S1": FixedPoint(Int16sl, 0.1, 0.0, size="s16"),
-                    "SETPOINT_S2": FixedPoint(Int16sl, 0.1, 0.0, size="s16"),
-                    "SETPOINT_S3": FixedPoint(Int16sl, 0.1, 0.0, size="s16"),
-                    "SETPOINT_S4": FixedPoint(Int16sl, 0.1, 0.0, size="s16"),
-                },
-                default=Select(
-                    Int16ul,
-                    Int8ub,
-                )
-            )
-        ),
-        "MODBUS_READ_REQ": Struct(
-            "coil_address" / Int16ul,
-        ),
-        "MODBUS_WRITE_REQ": Struct(
-            "coil_address" / Int16ul,
-            "value" / Bytes(4),
+RmuWriteReqTypes = {
+    "TEMPORARY_LUX": Int8ub,
+    "TEMPERATURE": FixedPoint(Int16ul, 0.1, -7.0, size="s16"),
+    "FUNCTIONS": FlagsEnum(
+        Int8ub,
+        allow_additive_heating=0x01,
+        allow_heating=0x02,
+        allow_cooling=0x04,
+    ),
+    "OPERATIONAL_MODE": Int8ub,
+    "SETPOINT_S1": FixedPoint(Int16sl, 0.1, 0.0, size="s16"),
+    "SETPOINT_S2": FixedPoint(Int16sl, 0.1, 0.0, size="s16"),
+    "SETPOINT_S3": FixedPoint(Int16sl, 0.1, 0.0, size="s16"),
+    "SETPOINT_S4": FixedPoint(Int16sl, 0.1, 0.0, size="s16"),
+}
+
+RmuWriteReq = Struct(
+    "index" / RmuWriteIndex,
+    "value" / Switch(
+        this.index,
+        RmuWriteReqTypes,
+        default=Select(
+            Int16ul,
+            Int8ub,
         )
-    },
-    default=Bytes(this.length),
+    )
+)
+
+ModbusReadReq = Struct(
+    "coil_address" / Int16ul,
+)
+
+ModbusWriteReq = Struct(
+    "coil_address" / Int16ul,
+    "value" / Bytes(4),
+)
+
+RequestTypes = {
+    "ACCESSORY_VERSION_REQ": AccessoryVersionReq,
+    "RMU_WRITE_REQ": RmuWriteReq,
+    "MODBUS_READ_REQ": ModbusReadReq,
+    "MODBUS_WRITE_REQ": ModbusWriteReq
+}
+
+RequestData = Struct(
+    "start_byte" / Const(0xC0, Int8ub),
+    "cmd" / Command,
+    "data" / Prefixed(Int8ub,
+        Switch(
+            this.cmd,
+            RequestTypes,
+            default=GreedyBytes,
+        )
+    )
 )
 
 Request = Struct(
-    "fields" / RawCopy(
-        Struct(
-            "start_byte" / Const(0xC0, Int8ub),
-            "cmd" / Command,
-            "data" / Prefixed(Int8ub, RequestData)
-        )
-    ),
+    "fields" / RawCopy(RequestData),
     "checksum" / Checksum(Int8ub, xor8, this.fields.data),
 )
+
+Ack = Struct("fields" / RawCopy(Struct("Ack" / Const(0x06, Int8ub))))
+
+Nak = Struct("fields" / RawCopy(Struct("Nak" / Const(0x15, Int8ub))))
+
+BlockTypes = {
+    "RESPONSE": Response,
+    "REQUEST": Request,
+    "ACK": Ack,
+    "NAK": Nak,
+}
+
+Block = FocusedSeq(
+    "data",
+    "start" / Peek(StartCode),
+    "data" / Switch(
+        this.start,
+        BlockTypes
+    ),
+)
+
 # fmt: on
