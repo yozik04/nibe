@@ -20,7 +20,6 @@ class MessageResponseParsingTestCase(unittest.TestCase):
         data = self._parse_hexlified_raw_message("5c41c9f7007f06")
         assert data.address == "HEATPUMP_1"
         assert data.cmd == "HEATPUMP_REQ"
-        assert data.length == 0
         assert data.data == b""
 
     def test_parse_escaped_read_response(self):

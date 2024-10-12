@@ -23,7 +23,6 @@ from construct import (
     Container,
     Enum,
     EnumIntegerString,
-    FixedSized,
     Flag,
     FlagsEnum,
     FocusedSeq,
@@ -748,8 +747,7 @@ ADDRESS_TO_ROOM_TEMP_COIL = {
 ResponseData = Struct(
     "address" / Address,
     "cmd" / Command,
-    "length" / Int8ub,
-    "data" / FixedSized(this.length,
+    "data" / Prefixed(Int8ub,
         Dedupe5C(
             Switch(
                 this.cmd, ResponseTypes,
