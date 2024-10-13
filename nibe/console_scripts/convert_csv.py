@@ -16,7 +16,10 @@ logger = logging.getLogger("nibe")
 def update_dict(d: MutableMapping, u: Mapping, removeExplicitNulls: bool) -> Mapping:
     for k, v in u.items():
         if v is None and removeExplicitNulls:
-            d.pop(k, None)
+            try:
+                d.pop(k)
+            except (IndexError, KeyError):
+                pass
         elif isinstance(v, Mapping):
             update_dict(d.setdefault(k, {}), v, removeExplicitNulls)
         else:
