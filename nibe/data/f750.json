@@ -4457,8 +4457,7 @@
     "write": true,
     "mappings": {
       "0": "inactive",
-      "1": "active",
-      "10": "active"
+      "1": "active"
     }
   },
   "48044": {
