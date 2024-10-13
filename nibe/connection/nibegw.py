@@ -474,7 +474,6 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer, ConnectionStatus
             else:
                 coil_data = CoilData(coil, value)
 
-            logger.info(coil_data)
             self._on_coil_read_success(coil_data)
         except NibeException as e:
             self._on_coil_read_error(coil_address, value, e)
