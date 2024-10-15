@@ -374,7 +374,7 @@
     }
   },
   {
-    "description": "Reversing valve hot water (QN10) - S1156/S1256 ",
+    "description": "Reversing valve hot water (QN10) - S1155/S1255 ",
     "files": ["s1155_s1255.json"],
     "data": {
       "32197": {
