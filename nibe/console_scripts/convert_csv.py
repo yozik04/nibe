@@ -8,7 +8,7 @@ import logging
 import re
 from typing import Literal
 
-import pandas
+import pandas as pd
 from slugify import slugify
 
 from nibe.heatpump import HeatPump, Model
@@ -32,8 +32,8 @@ def update_dict(d: MutableMapping, u: Mapping, removeExplicitNulls: bool) -> Map
 
 
 def _convert_series_to_dict(obj):
-    if isinstance(obj, pandas.Series):
-        return obj.to_dict()
+    if isinstance(obj, pd.Series):
+        return obj.sort_index(key=lambda i: i.astype(int)).to_dict()
     elif isinstance(obj, dict):
         return {k: _convert_series_to_dict(v) for k, v in obj.items()}
     elif isinstance(obj, list):
@@ -47,7 +47,7 @@ class ValidationFailed(Exception):
 
 
 class CSVConverter:
-    data: pandas.DataFrame
+    data: pd.DataFrame
 
     def __init__(self, in_file, out_file, extensions):
         self.in_file = in_file
@@ -99,17 +99,17 @@ class CSVConverter:
         )
         mappings["value"] = mappings["value"].str.replace("I", "1").astype("str")
         mappings = mappings.reset_index("match", drop=True)
-        self.data["mappings"] = pandas.Series(
+        self.data["mappings"] = pd.Series(
             {
                 k: self._make_mapping_series(g)
                 for k, g in mappings.groupby("value", level=0)
             }
         ).where(self._is_mapping_allowed)
 
-    def _is_mapping_allowed(self, s):
+    def _is_mapping_allowed(self, s: pd.Series) -> bool:
         return self.data["factor"] == 1
 
-    def _make_mapping_series(self, g: pandas.DataFrame):
+    def _make_mapping_series(self, g: pd.DataFrame) -> pd.Series:
         return g.set_index("value", drop=True)["key"].drop_duplicates()
 
     def _unset_equal_min_max_default_values(self):
@@ -159,14 +159,14 @@ class CSVConverter:
 
     def _fix_data_unit_column(self):
         self.data["unit"] = (
-            self.data["unit"].replace(r"^\s*$", pandas.NA, regex=True).str.strip()
+            self.data["unit"].replace(r"^\s*$", pd.NA, regex=True).str.strip()
         )
 
     def _fix_data_soft_hyphens(self):
         self.data["title"] = self.data["title"].str.replace("\xad", "")
 
     def _make_name_using_slugify(self):
-        ids = pandas.Series(self.data.index, index=self.data.index)
+        ids = pd.Series(self.data.index, index=self.data.index)
         self.data["name"] = self.data["title"].combine(
             ids, lambda title, id_: slugify(f"{title}-{id_}")
         )
@@ -176,7 +176,7 @@ class CSVConverter:
             self.data["mode"] = self.data["mode"].str.strip().astype("string")
 
             self.data["write"] = self.data["mode"].map(
-                lambda x: True if x == "R/W" else pandas.NA
+                lambda x: True if x == "R/W" else pd.NA
             )
             del self.data["mode"]
 
@@ -198,7 +198,7 @@ class CSVConverter:
             modbus_manager = f.readline().startswith("ModbusManager")
 
         if modbus_manager:
-            self.data = pandas.read_csv(
+            self.data = pd.read_csv(
                 self.in_file,
                 sep=";",
                 skiprows=4,
@@ -207,7 +207,7 @@ class CSVConverter:
                 skipinitialspace=True,
             )
         else:
-            self.data = pandas.read_csv(
+            self.data = pd.read_csv(
                 self.in_file,
                 sep="\t",
                 skiprows=0,
