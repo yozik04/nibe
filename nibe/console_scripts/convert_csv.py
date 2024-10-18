@@ -71,17 +71,6 @@ def _update_dict(d: MutableMapping, u: Mapping, removeExplicitNulls: bool) -> Ma
     return d
 
 
-def _convert_series_to_dict(obj):
-    if isinstance(obj, pd.Series):
-        return obj.sort_index(key=lambda i: i.astype(int)).to_dict()
-    elif isinstance(obj, dict):
-        return {k: _convert_series_to_dict(v) for k, v in obj.items()}
-    elif isinstance(obj, list):
-        return [_convert_series_to_dict(item) for item in obj]
-    else:
-        return obj
-
-
 class ValidationFailed(Exception):
     """Raised when validation fails."""
 
@@ -301,10 +290,7 @@ class CSVConverter:
             raise ValueError("Duplicate IDs found")
 
     def _make_dict(self) -> dict:
-        out = {
-            index: _convert_series_to_dict(row.dropna().to_dict())
-            for index, row in self.data.iterrows()
-        }
+        out = {index: row.dropna().to_dict() for index, row in self.data.iterrows()}
 
         _update_dict(out, self.extensions, True)
         _sort_mappings_in_output(out)
