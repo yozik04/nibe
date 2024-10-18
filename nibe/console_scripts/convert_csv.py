@@ -6,7 +6,7 @@ from importlib.resources import files, open_text
 import json
 import logging
 import re
-from typing import Literal
+from typing import Literal, Optional
 
 import pandas as pd
 from slugify import slugify
@@ -14,6 +14,11 @@ from slugify import slugify
 from nibe.heatpump import HeatPump, Model
 
 logger = logging.getLogger("nibe")
+
+re_mapping = re.compile(
+    r"(?P<key>(?<!\w)\d+|I)\s*=\s*(?P<value>(?:[\w +.-]+[\w]\b[+]?(?! *=)))",
+    re.IGNORECASE,
+)
 
 
 def update_dict(d: MutableMapping, u: Mapping, removeExplicitNulls: bool) -> Mapping:
@@ -88,29 +93,40 @@ class CSVConverter:
         if "info" not in self.data:
             return
 
-        re_mapping = re.compile(
-            r"(?P<value>\d+|I)\s*=\s*(?P<key>(?:[\w +.-]+[\w]\b[+]?(?! *=)))",
-            re.IGNORECASE,
-        )
-        mappings = (
-            self.data["info"]
-            .where(~self.data["info"].str.contains("encoded"))
-            .str.extractall(re_mapping)
-        )
-        mappings["value"] = mappings["value"].str.replace("I", "1").astype("str")
-        mappings = mappings.reset_index("match", drop=True)
-        self.data["mappings"] = pd.Series(
-            {
-                k: self._make_mapping_series(g)
-                for k, g in mappings.groupby("value", level=0)
-            }
-        ).where(self._is_mapping_allowed)
+        # Create a mask to identify rows where mapping is allowed
+        allowed_mask = self.data["factor"] == 1
 
-    def _is_mapping_allowed(self, s: pd.Series) -> bool:
-        return self.data["factor"] == 1
+        # Apply the function to each cell in self.data["info"] column where mapping is allowed
+        self.data.loc[allowed_mask, "mappings"] = self.data.loc[
+            allowed_mask, "info"
+        ].apply(CSVConverter._extract_mappings)
 
-    def _make_mapping_series(self, g: pd.DataFrame) -> pd.Series:
-        return g.set_index("value", drop=True)["key"].drop_duplicates()
+    @staticmethod
+    def _extract_mappings(info: str) -> Optional[Mapping]:
+        if pd.isna(info):
+            return None
+
+        mappings = {}
+        matches = re_mapping.finditer(info)
+
+        for match in matches:
+            key = match.group("key")
+            value = match.group("value")
+
+            if key == "I":
+                key = "1"
+
+            mappings[key] = value
+
+        if not mappings:
+            return None
+
+        # Sort the dictionary by keys converted to integers
+        sorted_mappings = {
+            str(k): mappings[str(k)] for k in sorted(map(int, mappings.keys()))
+        }
+
+        return sorted_mappings
 
     def _unset_equal_min_max_default_values(self):
         valid_min_max = self.data["min"] != self.data["max"]
