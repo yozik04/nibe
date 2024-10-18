@@ -25,6 +25,9 @@ def _extract_mappings(info: str) -> Optional[Mapping]:
     if pd.isna(info):
         return None
 
+    if "Binary encoded" in info:
+        return None
+
     mappings = {}
     matches = re_mapping.finditer(info)
 
