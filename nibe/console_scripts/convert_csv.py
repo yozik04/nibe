@@ -6,7 +6,7 @@ from importlib.resources import files, open_text
 import json
 import logging
 import re
-from typing import Literal, Optional
+from typing import Optional
 
 import pandas as pd
 from slugify import slugify
@@ -21,7 +21,39 @@ re_mapping = re.compile(
 )
 
 
-def update_dict(d: MutableMapping, u: Mapping, removeExplicitNulls: bool) -> Mapping:
+def _extract_mappings(info: str) -> Optional[Mapping]:
+    if pd.isna(info):
+        return None
+
+    mappings = {}
+    matches = re_mapping.finditer(info)
+
+    for match in matches:
+        key = match.group("key")
+        value = match.group("value")
+
+        if key == "I":
+            key = "1"
+
+        mappings[key] = value
+
+    if not mappings:
+        return None
+
+    return _sort_mappings(mappings)
+
+
+def _sort_mappings(mappings) -> Mapping:
+    return {str(k): mappings[str(k)] for k in sorted(map(int, mappings.keys()))}
+
+
+def _sort_mappings_in_output(dict_):
+    for key, value in dict_.items():
+        if "mappings" in value:
+            dict_[key]["mappings"] = _sort_mappings(value["mappings"])
+
+
+def _update_dict(d: MutableMapping, u: Mapping, removeExplicitNulls: bool) -> Mapping:
     for k, v in u.items():
         if v is None and removeExplicitNulls:
             try:
@@ -29,7 +61,7 @@ def update_dict(d: MutableMapping, u: Mapping, removeExplicitNulls: bool) -> Map
             except (IndexError, KeyError):
                 pass
         elif isinstance(v, Mapping):
-            update_dict(d.setdefault(k, {}), v, removeExplicitNulls)
+            _update_dict(d.setdefault(k, {}), v, removeExplicitNulls)
         else:
             d[k] = v
 
@@ -48,10 +80,14 @@ def _convert_series_to_dict(obj):
 
 
 class ValidationFailed(Exception):
+    """Raised when validation fails."""
+
     pass
 
 
 class CSVConverter:
+    """Converts CSV file to JSON file."""
+
     data: pd.DataFrame
 
     def __init__(self, in_file, out_file, extensions):
@@ -59,7 +95,19 @@ class CSVConverter:
         self.out_file = out_file
         self.extensions = extensions
 
-    def convert(self, mode: Literal["export", "verify"] = "export"):
+    def convert(self):
+        """Converts CSV file to JSON file."""
+        self._process()
+
+        self._export_to_file()
+
+    def verify(self):
+        """Verifies that the JSON file matches the CSV file after conversion."""
+        self._process()
+
+        self._verify_export()
+
+    def _process(self):
         self._read_csv()
 
         self._unifi_column_names()
@@ -84,11 +132,6 @@ class CSVConverter:
 
         self._ensure_no_duplicate_ids()
 
-        if mode == "export":
-            self._export_to_file()
-        elif mode == "verify":
-            self._verify_export()
-
     def _make_mapping_parameter(self):
         if "info" not in self.data:
             return
@@ -99,51 +142,26 @@ class CSVConverter:
         # Apply the function to each cell in self.data["info"] column where mapping is allowed
         self.data.loc[allowed_mask, "mappings"] = self.data.loc[
             allowed_mask, "info"
-        ].apply(CSVConverter._extract_mappings)
-
-    @staticmethod
-    def _extract_mappings(info: str) -> Optional[Mapping]:
-        if pd.isna(info):
-            return None
-
-        mappings = {}
-        matches = re_mapping.finditer(info)
-
-        for match in matches:
-            key = match.group("key")
-            value = match.group("value")
-
-            if key == "I":
-                key = "1"
-
-            mappings[key] = value
-
-        if not mappings:
-            return None
-
-        return CSVConverter._sort_mappings(mappings)
-
-    @staticmethod
-    def _sort_mappings(mappings):
-        return {str(k): mappings[str(k)] for k in sorted(map(int, mappings.keys()))}
+        ].apply(_extract_mappings)
 
     def _unset_equal_min_max_default_values(self):
         valid_min_max = self.data["min"] != self.data["max"]
-        self.data["min"] = self.data["min"].where(valid_min_max)
-        self.data["max"] = self.data["max"].where(valid_min_max)
-        self.data["default"] = self.data["default"].where(valid_min_max)
+        for column in ["min", "max", "default"]:
+            self.data[column] = self.data[column].where(valid_min_max)
 
     def _fix_data_types(self):
-        self.data["unit"] = self.data["unit"].astype("string")
-        self.data["title"] = self.data["title"].astype("string")
+        string_columns = ["unit", "title", "size", "name"]
+        for column in string_columns:
+            self.data[column] = self.data[column].astype("string")
+
         if "info" in self.data:
             self.data["info"] = self.data["info"].astype("string")
-        self.data["size"] = self.data["size"].astype("string")
-        self.data["name"] = self.data["name"].astype("string")
+
         self.data["factor"] = self.data["factor"].astype("int")
-        self.data["min"] = self.data["min"].astype("float")
-        self.data["max"] = self.data["max"].astype("float")
-        self.data["default"] = self.data["default"].astype("float")
+
+        float_columns = ["min", "max", "default"]
+        for column in float_columns:
+            self.data[column] = self.data[column].astype("float")
 
     def _fix_data_size_column(self):
         mapping = {
@@ -279,30 +297,26 @@ class CSVConverter:
             )
             raise ValueError("Duplicate IDs found")
 
-    def _make_dict(self):
-        return {
+    def _make_dict(self) -> dict:
+        out = {
             index: _convert_series_to_dict(row.dropna().to_dict())
             for index, row in self.data.iterrows()
         }
 
-    def _sort_mappings_in_output(self, dict_):
-        for key, value in dict_.items():
-            if "mappings" in value:
-                dict_[key]["mappings"] = CSVConverter._sort_mappings(value["mappings"])
+        _update_dict(out, self.extensions, True)
+        _sort_mappings_in_output(out)
+
+        return out
 
     def _export_to_file(self):
-        o = self._make_dict()
-        update_dict(o, self.extensions, True)
-        self._sort_mappings_in_output(o)
+        out = self._make_dict()
 
         with open(self.out_file, "w", encoding="utf-8") as fh:
-            json.dump(o, fh, indent=2)
+            json.dump(out, fh, indent=2)
             fh.write("\n")
 
     def _verify_export(self):
         o = self._make_dict()
-        update_dict(o, self.extensions, True)
-        self._sort_mappings_in_output(o)
 
         try:
             with open(self.out_file, encoding="utf-8") as fh:
@@ -347,11 +361,17 @@ async def run(mode):
         for extra in all_extensions:
             if out_file.name not in extra["files"]:
                 continue
-            update_dict(extensions, extra["data"], False)
+            _update_dict(extensions, extra["data"], False)
 
         logger.info(f"Processing {in_file} to {out_file}")
         try:
-            CSVConverter(in_file, out_file, extensions).convert(mode=mode)
+            converter = CSVConverter(in_file, out_file, extensions)
+            if mode == "verify":
+                converter.verify()
+            elif mode == "export":
+                converter.convert()
+            else:
+                raise ValueError(f"Invalid mode: {mode}")
 
             await _verify_heat_pump_initialization(out_file)
 
