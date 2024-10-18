@@ -121,12 +121,11 @@ class CSVConverter:
         if not mappings:
             return None
 
-        # Sort the dictionary by keys converted to integers
-        sorted_mappings = {
-            str(k): mappings[str(k)] for k in sorted(map(int, mappings.keys()))
-        }
+        return CSVConverter._sort_mappings(mappings)
 
-        return sorted_mappings
+    @staticmethod
+    def _sort_mappings(mappings):
+        return {str(k): mappings[str(k)] for k in sorted(map(int, mappings.keys()))}
 
     def _unset_equal_min_max_default_values(self):
         valid_min_max = self.data["min"] != self.data["max"]
@@ -286,9 +285,15 @@ class CSVConverter:
             for index, row in self.data.iterrows()
         }
 
+    def _sort_mappings_in_output(self, dict_):
+        for key, value in dict_.items():
+            if "mappings" in value:
+                dict_[key]["mappings"] = CSVConverter._sort_mappings(value["mappings"])
+
     def _export_to_file(self):
         o = self._make_dict()
         update_dict(o, self.extensions, True)
+        self._sort_mappings_in_output(o)
 
         with open(self.out_file, "w", encoding="utf-8") as fh:
             json.dump(o, fh, indent=2)
@@ -297,6 +302,7 @@ class CSVConverter:
     def _verify_export(self):
         o = self._make_dict()
         update_dict(o, self.extensions, True)
+        self._sort_mappings_in_output(o)
 
         try:
             with open(self.out_file, encoding="utf-8") as fh:

@@ -4305,7 +4305,11 @@
     "info": "Indicates active relays on the PCA Base card. Please refer to the wiring diagram for relay description. Binary encoded. 1=on, 0=off. Bit0=K4,Bit1=K3,Bit2=K2,Bit3=K1",
     "size": "u8",
     "factor": 1,
-    "name": "eb100-ep14-pca-base-relays-43514"
+    "name": "eb100-ep14-pca-base-relays-43514",
+    "mappings": {
+      "0": "off",
+      "1": "on"
+    }
   },
   "43516": {
     "title": "PCA-Power Relays EP14",
