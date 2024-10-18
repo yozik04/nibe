@@ -377,9 +377,8 @@ async def run(mode):
         finally:
             processed_files.append(in_file)
 
-    if processing_failed:
-        logger.error("Failed to process the following files: %s", processing_failed)
-        raise ValueError("Failed to process all files")
+    assert len(processed_files) > 0, "No files were processed"
+    assert len(processing_failed) == 0, f"Failed to process files: {processing_failed}"
 
     logger.info(
         "Successfully processed files: %s", list(map(lambda x: x.name, processed_files))
@@ -394,7 +393,12 @@ def main():
     mode = "verify" if args.verify else "export"
 
     logging.basicConfig(level=logging.INFO)
-    asyncio.run(run(mode))
+
+    try:
+        asyncio.run(run(mode))
+    except AssertionError as ex:
+        logger.error(ex)
+        exit(1)
 
 
 if __name__ == "__main__":
