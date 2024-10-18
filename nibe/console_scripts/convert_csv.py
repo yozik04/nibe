@@ -31,6 +31,17 @@ def update_dict(d: MutableMapping, u: Mapping, removeExplicitNulls: bool) -> Map
     return d
 
 
+def _convert_series_to_dict(obj):
+    if isinstance(obj, pandas.Series):
+        return obj.to_dict()
+    elif isinstance(obj, dict):
+        return {k: _convert_series_to_dict(v) for k, v in obj.items()}
+    elif isinstance(obj, list):
+        return [_convert_series_to_dict(item) for item in obj]
+    else:
+        return obj
+
+
 class ValidationFailed(Exception):
     pass
 
@@ -68,11 +79,9 @@ class CSVConverter:
 
         self._ensure_no_duplicate_ids()
 
-        self._export_to_file()
-
         if mode == "export":
             self._export_to_file()
-        elif mode == "validate":
+        elif mode == "verify":
             self._verify_export()
 
     def _make_mapping_parameter(self):
@@ -92,7 +101,7 @@ class CSVConverter:
         mappings = mappings.reset_index("match", drop=True)
         self.data["mappings"] = pandas.Series(
             {
-                str(k): self._make_mapping_series(g)
+                k: self._make_mapping_series(g)
                 for k, g in mappings.groupby("value", level=0)
             }
         ).where(self._is_mapping_allowed)
@@ -100,7 +109,7 @@ class CSVConverter:
     def _is_mapping_allowed(self, s):
         return self.data["factor"] == 1
 
-    def _make_mapping_series(self, g):
+    def _make_mapping_series(self, g: pandas.DataFrame):
         return g.set_index("value", drop=True)["key"].drop_duplicates()
 
     def _unset_equal_min_max_default_values(self):
@@ -248,12 +257,6 @@ class CSVConverter:
 
         self.data = self.data.set_index("id")
 
-    def _convert_series_to_dict(self, o):
-        if isinstance(o, pandas.Series):
-            return o.sort_index(key=lambda i: i.astype(int)).to_dict()
-
-        raise TypeError(f"Object of type {type(o)} is not JSON serializable")
-
     def _ensure_no_duplicate_ids(self):
         if self.data.index.has_duplicates:
             logger.error(
@@ -262,14 +265,17 @@ class CSVConverter:
             raise ValueError("Duplicate IDs found")
 
     def _make_dict(self):
-        return {index: row.dropna().to_dict() for index, row in self.data.iterrows()}
+        return {
+            index: _convert_series_to_dict(row.dropna().to_dict())
+            for index, row in self.data.iterrows()
+        }
 
     def _export_to_file(self):
         o = self._make_dict()
         update_dict(o, self.extensions, True)
 
         with open(self.out_file, "w", encoding="utf-8") as fh:
-            json.dump(o, fh, indent=2, default=self._convert_series_to_dict)
+            json.dump(o, fh, indent=2)
             fh.write("\n")
 
     def _verify_export(self):
@@ -285,21 +291,20 @@ class CSVConverter:
             raise ValidationFailed(f"File {self.out_file} not found")
 
         if o != file_contents:
-            expected = json.dumps(o, indent=4, sort_keys=True)
-            actual = json.dumps(file_contents, indent=4, sort_keys=True)
+            expected = json.dumps(o, indent=2, sort_keys=True)
+            actual = json.dumps(file_contents, indent=2, sort_keys=True)
             diff = difflib.unified_diff(
                 expected.splitlines(),
                 actual.splitlines(),
                 fromfile="expected",
                 tofile="actual",
+                lineterm="",
             )
             diff_text = "\n".join(diff)
-            raise ValidationFailed(
-                f"File {self.out_file} does not match the expected content\nDiff:\n{diff_text}"
-            )
+            raise ValidationFailed(f"File {self.out_file} does not match:\n{diff_text}")
 
 
-async def _validate_initialization(out_file):
+async def _verify_heat_pump_initialization(out_file):
     model = Model.CUSTOM
     model.data_file = out_file
     hp = HeatPump(model)
@@ -311,7 +316,7 @@ async def run(mode):
         all_extensions = json.load(fp)
 
     processed_files = []
-    convert_failed = []
+    processing_failed = []
 
     for in_file in files("nibe.data").glob("*.csv"):
         out_file = in_file.with_suffix(".json")
@@ -326,23 +331,28 @@ async def run(mode):
         try:
             CSVConverter(in_file, out_file, extensions).convert(mode=mode)
 
-            await _validate_initialization(out_file)
+            await _verify_heat_pump_initialization(out_file)
 
             if mode == "verify":
                 logger.info(f"Verified {out_file}")
             else:
                 logger.info(f"Converted {in_file} to {out_file}")
+        except ValidationFailed as ex:
+            processing_failed.append(in_file)
+            logger.error("Validation failed for %s: %s", in_file, ex)
         except Exception as ex:
-            convert_failed.append(in_file)
+            processing_failed.append(in_file)
             logger.exception("Failed to process %s: %s", in_file, ex)
         finally:
             processed_files.append(in_file)
 
-    if convert_failed:
-        logger.error("Failed to process the following files: %s", convert_failed)
+    if processing_failed:
+        logger.error("Failed to process the following files: %s", processing_failed)
         raise ValueError("Failed to process all files")
 
-    logger.info("Processed files: %s", list(map(lambda x: x.name, processed_files)))
+    logger.info(
+        "Successfully processed files: %s", list(map(lambda x: x.name, processed_files))
+    )
 
 
 def main():
