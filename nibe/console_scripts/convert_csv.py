@@ -1,9 +1,12 @@
+import argparse
 import asyncio
 from collections.abc import Mapping, MutableMapping
+import difflib
 from importlib.resources import files, open_text
 import json
 import logging
 import re
+from typing import Literal
 
 import pandas
 from slugify import slugify
@@ -28,6 +31,10 @@ def update_dict(d: MutableMapping, u: Mapping, removeExplicitNulls: bool) -> Map
     return d
 
 
+class ValidationFailed(Exception):
+    pass
+
+
 class CSVConverter:
     data: pandas.DataFrame
 
@@ -36,7 +43,7 @@ class CSVConverter:
         self.out_file = out_file
         self.extensions = extensions
 
-    def convert(self):
+    def convert(self, mode: Literal["export", "verify"] = "export"):
         self._read_csv()
 
         self._unifi_column_names()
@@ -63,8 +70,10 @@ class CSVConverter:
 
         self._export_to_file()
 
-    def _make_dict(self):
-        return {index: row.dropna().to_dict() for index, row in self.data.iterrows()}
+        if mode == "export":
+            self._export_to_file()
+        elif mode == "validate":
+            self._verify_export()
 
     def _make_mapping_parameter(self):
         if "info" not in self.data:
@@ -252,18 +261,56 @@ class CSVConverter:
             )
             raise ValueError("Duplicate IDs found")
 
+    def _make_dict(self):
+        return {index: row.dropna().to_dict() for index, row in self.data.iterrows()}
+
     def _export_to_file(self):
         o = self._make_dict()
         update_dict(o, self.extensions, True)
+
         with open(self.out_file, "w", encoding="utf-8") as fh:
             json.dump(o, fh, indent=2, default=self._convert_series_to_dict)
             fh.write("\n")
 
+    def _verify_export(self):
+        o = self._make_dict()
+        update_dict(o, self.extensions, True)
 
-async def run():
+        try:
+            with open(self.out_file, encoding="utf-8") as fh:
+                file_contents = json.load(fh)
+        except json.JSONDecodeError:
+            raise ValidationFailed(f"Failed to decode JSON file {self.out_file}")
+        except FileNotFoundError:
+            raise ValidationFailed(f"File {self.out_file} not found")
+
+        if o != file_contents:
+            expected = json.dumps(o, indent=4, sort_keys=True)
+            actual = json.dumps(file_contents, indent=4, sort_keys=True)
+            diff = difflib.unified_diff(
+                expected.splitlines(),
+                actual.splitlines(),
+                fromfile="expected",
+                tofile="actual",
+            )
+            diff_text = "\n".join(diff)
+            raise ValidationFailed(
+                f"File {self.out_file} does not match the expected content\nDiff:\n{diff_text}"
+            )
+
+
+async def _validate_initialization(out_file):
+    model = Model.CUSTOM
+    model.data_file = out_file
+    hp = HeatPump(model)
+    await hp.initialize()
+
+
+async def run(mode):
     with open_text("nibe.data", "extensions.json") as fp:
         all_extensions = json.load(fp)
 
+    processed_files = []
     convert_failed = []
 
     for in_file in files("nibe.data").glob("*.csv"):
@@ -275,32 +322,38 @@ async def run():
                 continue
             update_dict(extensions, extra["data"], False)
 
-        logger.info(f"Converting {in_file} to {out_file}")
+        logger.info(f"Processing {in_file} to {out_file}")
         try:
-            CSVConverter(in_file, out_file, extensions).convert()
+            CSVConverter(in_file, out_file, extensions).convert(mode=mode)
 
-            await _validate(out_file)
+            await _validate_initialization(out_file)
 
-            logger.info(f"Converted {in_file} to {out_file}")
+            if mode == "verify":
+                logger.info(f"Verified {out_file}")
+            else:
+                logger.info(f"Converted {in_file} to {out_file}")
         except Exception as ex:
             convert_failed.append(in_file)
-            logger.exception("Failed to convert %s: %s", in_file, ex)
+            logger.exception("Failed to process %s: %s", in_file, ex)
+        finally:
+            processed_files.append(in_file)
 
     if convert_failed:
-        logger.error("Failed to convert next files: %s", convert_failed)
-        raise ValueError("Failed to convert all files")
+        logger.error("Failed to process the following files: %s", convert_failed)
+        raise ValueError("Failed to process all files")
 
-
-async def _validate(out_file):
-    model = Model.CUSTOM
-    model.data_file = out_file
-    hp = HeatPump(model)
-    await hp.initialize()
+    logger.info("Processed files: %s", list(map(lambda x: x.name, processed_files)))
 
 
 def main():
+    parser = argparse.ArgumentParser(description="Convert CSV files to JSON.")
+    parser.add_argument("--verify", action="store_true", help="Run in verify mode")
+    args = parser.parse_args()
+
+    mode = "verify" if args.verify else "export"
+
     logging.basicConfig(level=logging.INFO)
-    asyncio.run(run())
+    asyncio.run(run(mode))
 
 
 if __name__ == "__main__":
