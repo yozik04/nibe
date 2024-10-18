@@ -413,6 +413,13 @@
     "size": "s16",
     "name": "brine-in-ep10-bt26-30107"
   },
+  "30108": {
+    "title": "Outd temperature (AZ30-BT23)",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "outd-temperature-az30-bt23-30108"
+  },
   "30110": {
     "title": "Room average temp. clim. system 8 (BT50)",
     "factor": 10,
@@ -5545,6 +5552,60 @@
     "name": "fuse-40104",
     "write": true
   },
+  "40116": {
+    "title": "Return time fan 4",
+    "factor": 1,
+    "unit": "h",
+    "size": "u8",
+    "min": 1.0,
+    "max": 24.0,
+    "default": 4.0,
+    "name": "return-time-fan-4-40116",
+    "write": true
+  },
+  "40117": {
+    "title": "Return time fan 3",
+    "factor": 1,
+    "unit": "h",
+    "size": "u8",
+    "min": 1.0,
+    "max": 24.0,
+    "default": 4.0,
+    "name": "return-time-fan-3-40117",
+    "write": true
+  },
+  "40118": {
+    "title": "Return time fan 2",
+    "factor": 1,
+    "unit": "h",
+    "size": "u8",
+    "min": 1.0,
+    "max": 24.0,
+    "default": 4.0,
+    "name": "return-time-fan-2-40118",
+    "write": true
+  },
+  "40119": {
+    "title": "Return time fan 1",
+    "factor": 1,
+    "unit": "h",
+    "size": "u8",
+    "min": 1.0,
+    "max": 24.0,
+    "default": 4.0,
+    "name": "return-time-fan-1-40119",
+    "write": true
+  },
+  "40120": {
+    "title": "Time between filter replacement",
+    "factor": 1,
+    "size": "u8",
+    "min": 1.0,
+    "max": 24.0,
+    "default": 3.0,
+    "name": "time-between-filter-replacement-40120",
+    "write": true
+  },
   "40121": {
     "title": "Floor drying",
     "factor": 1,
@@ -7007,6 +7068,20 @@
     "name": "spa-hot-water-influence-40903",
     "write": true
   },
+  "45028": {
+    "title": "Forced control (AZ30-QN37) (open)",
+    "factor": 1,
+    "size": "u8",
+    "name": "forced-control-az30-qn37-open-45028",
+    "write": true
+  },
+  "45027": {
+    "title": "Forced control (AZ30-EB17)",
+    "factor": 1,
+    "size": "u8",
+    "name": "forced-control-az30-eb17-45027",
+    "write": true
+  },
   "40904": {
     "title": "Initiate inverter",
     "factor": 1,
@@ -7677,6 +7752,17 @@
     "max": 1.0,
     "default": 0.0,
     "name": "flow-sensor-activated-x21-41032",
+    "write": true
+  },
+  "41044": {
+    "title": "Min. vent temp. (ERS 1)",
+    "factor": 1,
+    "unit": "\u00b0C",
+    "size": "u8",
+    "min": 0.0,
+    "max": 10.0,
+    "default": 3.0,
+    "name": "min-vent-temp-ers-1-41044",
     "write": true
   },
   "41045": {
@@ -8627,6 +8713,28 @@
     "name": "delta-brine-pump-passive-cooling-41329",
     "write": true
   },
+  "45030": {
+    "title": "Forced control (AZ30-GQ2)",
+    "factor": 1,
+    "unit": "%",
+    "size": "u8",
+    "min": 0.0,
+    "max": 100.0,
+    "default": 50.0,
+    "name": "forced-control-az30-gq2-45030",
+    "write": true
+  },
+  "45031": {
+    "title": "Forced control (AZ30-GQ3)",
+    "factor": 1,
+    "unit": "%",
+    "size": "u8",
+    "min": 0.0,
+    "max": 100.0,
+    "default": 50.0,
+    "name": "forced-control-az30-gq3-45031",
+    "write": true
+  },
   "41551": {
     "title": "Installed (EB101)",
     "factor": 1,
@@ -8736,6 +8844,27 @@
     "max": 1.0,
     "default": 0.0,
     "name": "ers-4-44079",
+    "write": true
+  },
+  "44086": {
+    "title": "Bypass set point value (ERS 1)",
+    "factor": 1,
+    "unit": "\u00b0C",
+    "size": "u8",
+    "min": 5.0,
+    "max": 30.0,
+    "default": 25.0,
+    "name": "bypass-set-point-value-ers-1-44086",
+    "write": true
+  },
+  "44090": {
+    "title": "Bypass during heating (ERS 1)",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "bypass-during-heating-ers-1-44090",
     "write": true
   },
   "41982": {
@@ -8936,6 +9065,16 @@
     "name": "external-adjustment-with-room-sensor-cooling-climate-system-1-44154",
     "write": true
   },
+  "44068": {
+    "title": "Demand controlled ventilation",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "demand-controlled-ventilation-44068",
+    "write": true
+  },
   "32728": {
     "title": "Current power",
     "factor": 100,
@@ -9021,6 +9160,16 @@
     "max": 1000.0,
     "default": 10.0,
     "name": "power-kw-required-for-dimensioned-outdoor-temperature-44200",
+    "write": true
+  },
+  "44095": {
+    "title": "ERS 1",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 1.0,
+    "name": "ers-1-44095",
     "write": true
   },
   "44201": {
@@ -9214,6 +9363,20 @@
     "default": 5.0,
     "name": "factor-43034",
     "write": true
+  },
+  "32252": {
+    "title": "Fan speed ERS1 (GQ2)",
+    "factor": 1,
+    "unit": "%",
+    "size": "u8",
+    "name": "fan-speed-ers1-gq2-32252"
+  },
+  "32253": {
+    "title": "Fan speed ERS1 (GQ3)",
+    "factor": 1,
+    "unit": "%",
+    "size": "u8",
+    "name": "fan-speed-ers1-gq3-32253"
   },
   "43089": {
     "title": "Period",
@@ -11762,6 +11925,13 @@
     "default": 250.0,
     "name": "auto-mode-start-temperature-for-passive-cooling-44206",
     "write": true
+  },
+  "33801": {
+    "title": "Boiler temperature (BT52)",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "boiler-temperature-bt52-33801"
   },
   "41556": {
     "title": "Input AUX7",
