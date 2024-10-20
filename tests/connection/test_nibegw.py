@@ -226,6 +226,29 @@ async def test_read_product_info(nibegw: NibeGW):
                 (43424, 1487),
             ],
         ),
+        (
+            # 32 bil values that is extended with FFFF fields on following values
+            "5C00206851 449C8400 489C3401 4D9CE101 4E9CB901 4F9C0E01 509CFB00 599CE100 5A9CE800 5C5C9CEB00 5D9CEE00 EC9F0000 ED9F0000 01A82101 98A98184 FFFF0000 0AAD209F FFFF0000 0CADF75D FFFF0000 EAAC0000 AF",
+            "strict",
+            [
+                (40004, 13.2),
+                (40008, 30.8),
+                (40013, 48.1),
+                (40014, 44.1),
+                (40015, 27.0),
+                (40016, 25.1),
+                (40025, 22.5),
+                (40026, 23.2),
+                (40028, 23.5),
+                (40029, 23.8),
+                (40940, 0.0),
+                (43009, 28.9),
+                (43416, 33921),
+                (44266, 0.0),
+                (44298, 4073.6),
+                (44300, 2405.5),
+            ],
+        ),
     ],
 )
 async def test_read_multiple_with_u32(

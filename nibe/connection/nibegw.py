@@ -84,6 +84,22 @@ class CoilAction:
     future: Future
 
 
+def combine_coil_values(values):
+    """Combine data of a coil when it's followed by a FFFF address."""
+    data = {}
+    ix = 0
+    for ix in range(len(values)):
+        if values[ix].coil_address == 0xFFFF:
+            continue
+        combined = bytearray(values[ix].value)
+        for ix2 in range(ix + 1, len(values)):
+            if values[ix2].coil_address != 0xFFFF:
+                break
+            combined += values[ix2].value
+        data[values[ix].coil_address] = combined
+    return data
+
+
 class NibeGW(asyncio.DatagramProtocol, Connection, EventServer, ConnectionStatusMixin):
     """NibeGW connection."""
 
@@ -195,11 +211,7 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer, ConnectionStatus
             logger.debug(msg.fields.value)
             cmd = msg.fields.value.cmd
             if cmd == "MODBUS_DATA_MSG":
-                data: dict[int, bytes] = {
-                    row.coil_address: row.value
-                    for row in msg.fields.value.data
-                    if row.coil_address != 0xFFFF
-                }
+                data = combine_coil_values(msg.fields.value.data)
                 self._on_raw_coil_set(data)
             elif cmd == "MODBUS_READ_RESP":
                 row = msg.fields.value.data
