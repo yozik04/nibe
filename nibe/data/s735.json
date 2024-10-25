@@ -144,6 +144,27 @@
     "size": "s16",
     "name": "electrical-anode-eb100-fr1-30042"
   },
+  "30047": {
+    "title": "Current (BE3)",
+    "factor": 10,
+    "unit": "A",
+    "size": "u32",
+    "name": "current-be3-30047"
+  },
+  "30049": {
+    "title": "Current (BE2)",
+    "factor": 10,
+    "unit": "A",
+    "size": "u32",
+    "name": "current-be2-30049"
+  },
+  "30051": {
+    "title": "Current (BE1)",
+    "factor": 10,
+    "unit": "A",
+    "size": "u32",
+    "name": "current-be1-30051"
+  },
   "32309": {
     "title": "Low press (BP8)",
     "factor": 100,
@@ -497,6 +518,16 @@
     "factor": 1,
     "size": "u8",
     "name": "climate-system-5-30160"
+  },
+  "30280": {
+    "title": "Compressor, total time cooling, main unit (EP14)",
+    "factor": 1,
+    "unit": "h",
+    "size": "u32",
+    "min": 0.0,
+    "max": 2147483647.0,
+    "default": 0.0,
+    "name": "compressor-total-time-cooling-main-unit-ep14-30280"
   },
   "30295": {
     "title": "Heat pump 8 requested compressor frequency",
@@ -4141,6 +4172,61 @@
     "name": "exhaust-air-fan-speed-normal-40110",
     "write": true
   },
+  "40111": {
+    "title": "Supply air fan speed 4",
+    "factor": 1,
+    "unit": "%",
+    "size": "u8",
+    "min": 0.0,
+    "max": 100.0,
+    "default": 90.0,
+    "name": "supply-air-fan-speed-4-40111",
+    "write": true
+  },
+  "40112": {
+    "title": "Supply air fan speed 3",
+    "factor": 1,
+    "unit": "%",
+    "size": "u8",
+    "min": 0.0,
+    "max": 100.0,
+    "default": 70.0,
+    "name": "supply-air-fan-speed-3-40112",
+    "write": true
+  },
+  "40113": {
+    "title": "Supply air fan speed 2",
+    "factor": 1,
+    "unit": "%",
+    "size": "u8",
+    "min": 0.0,
+    "max": 100.0,
+    "default": 25.0,
+    "name": "supply-air-fan-speed-2-40113",
+    "write": true
+  },
+  "40114": {
+    "title": "Supply air fan speed 1",
+    "factor": 1,
+    "unit": "%",
+    "size": "u8",
+    "min": 0.0,
+    "max": 100.0,
+    "default": 0.0,
+    "name": "supply-air-fan-speed-1-40114",
+    "write": true
+  },
+  "40115": {
+    "title": "Supply air fan speed normal",
+    "factor": 1,
+    "unit": "%",
+    "size": "u8",
+    "min": 0.0,
+    "max": 100.0,
+    "default": 60.0,
+    "name": "supply-air-fan-speed-normal-40115",
+    "write": true
+  },
   "40116": {
     "title": "Return time fan 4",
     "factor": 1,
@@ -4463,6 +4549,38 @@
     "max": 48.0,
     "default": 2.0,
     "name": "waiting-time-cooling-heating-40166",
+    "write": true
+  },
+  "40167": {
+    "title": "Heating start at under temp.",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s8",
+    "min": 5.0,
+    "max": 100.0,
+    "default": 10.0,
+    "name": "heating-start-at-under-temp-40167",
+    "write": true
+  },
+  "40168": {
+    "title": "Cooling start at over temp.",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s8",
+    "min": 5.0,
+    "max": 100.0,
+    "default": 30.0,
+    "name": "cooling-start-at-over-temp-40168",
+    "write": true
+  },
+  "40171": {
+    "title": "Cooling with room sensors",
+    "factor": 10,
+    "size": "u8",
+    "min": 0.0,
+    "max": 41.0,
+    "default": 0.0,
+    "name": "cooling-with-room-sensors-40171",
     "write": true
   },
   "40174": {
@@ -4843,6 +4961,16 @@
     "name": "more-hot-water-40226",
     "write": true
   },
+  "43104": {
+    "title": "Fan sync. mode",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "fan-sync-mode-43104",
+    "write": true
+  },
   "40228": {
     "title": "Night cooling 1",
     "factor": 1,
@@ -4851,6 +4979,28 @@
     "max": 1.0,
     "default": 0.0,
     "name": "night-cooling-1-40228",
+    "write": true
+  },
+  "40229": {
+    "title": "Start temperature night cooling 1",
+    "factor": 1,
+    "unit": "\u00b0C",
+    "size": "u8",
+    "min": 20.0,
+    "max": 30.0,
+    "default": 25.0,
+    "name": "start-temperature-night-cooling-1-40229",
+    "write": true
+  },
+  "40230": {
+    "title": "Min diff. for night cooling 1",
+    "factor": 1,
+    "unit": "\u00b0C",
+    "size": "u8",
+    "min": 3.0,
+    "max": 10.0,
+    "default": 6.0,
+    "name": "min-diff-for-night-cooling-1-40230",
     "write": true
   },
   "40238": {
@@ -4864,6 +5014,16 @@
       "1": "Manual",
       "2": "Add. heat only"
     }
+  },
+  "40682": {
+    "title": "Cooling heat sensor set point value",
+    "factor": 10,
+    "size": "s16",
+    "min": 50.0,
+    "max": 400.0,
+    "default": 210.0,
+    "name": "cooling-heat-sensor-set-point-value-40682",
+    "write": true
   },
   "40696": {
     "title": "Manual heating medium pump speed",
@@ -4949,6 +5109,16 @@
     "name": "supp-air-curve-sam-desired-supp-air-temp-at-given-outd-temp-t1-40717",
     "write": true
   },
+  "40727": {
+    "title": "Cooling connected, climate system 1",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 1.0,
+    "name": "cooling-connected-climate-system-1-40727",
+    "write": true
+  },
   "40736": {
     "title": "SCA40/41/42",
     "factor": 1,
@@ -4991,6 +5161,13 @@
     "name": "shunted-brine-max-temp-44068",
     "write": true
   },
+  "40759": {
+    "title": "Additional heat after reversing valve",
+    "factor": 1,
+    "size": "u8",
+    "name": "additional-heat-after-reversing-valve-40759",
+    "write": true
+  },
   "40761": {
     "title": "Heating (SG Ready)",
     "factor": 1,
@@ -5027,6 +5204,36 @@
     "max": 1.0,
     "default": 0.0,
     "name": "activated-smart-price-adaption-40844",
+    "write": true
+  },
+  "40845": {
+    "title": "(SPA), heating activated (SPA)",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 3.0,
+    "default": 1.0,
+    "name": "spa-heating-activated-spa-40845",
+    "write": true
+  },
+  "40846": {
+    "title": "(SPA), heating influence",
+    "factor": 1,
+    "size": "s8",
+    "min": 1.0,
+    "max": 10.0,
+    "default": 5.0,
+    "name": "spa-heating-influence-40846",
+    "write": true
+  },
+  "40847": {
+    "title": "(SPA), hot water activated",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 3.0,
+    "default": 1.0,
+    "name": "spa-hot-water-activated-40847",
     "write": true
   },
   "40850": {
@@ -6870,6 +7077,14 @@
     "name": "temperature-overload-pool-40001",
     "write": true
   },
+  "42675": {
+    "title": "Pump speed (AZ20-GP6)",
+    "factor": 1,
+    "unit": "%",
+    "size": "u8",
+    "name": "pump-speed-az20-gp6-42675",
+    "write": true
+  },
   "42108": {
     "title": "EME20 API",
     "factor": 1,
@@ -7470,6 +7685,14 @@
     "name": "external-setting-for-adjustment-migrated-42504",
     "write": true
   },
+  "42674": {
+    "title": "Fan speed (AZ20-GQ3)",
+    "factor": 1,
+    "unit": "%",
+    "size": "u8",
+    "name": "fan-speed-az20-gq3-42674",
+    "write": true
+  },
   "42677": {
     "title": "Time between filter replacement",
     "factor": 1,
@@ -7521,6 +7744,34 @@
     "factor": 1,
     "size": "u16",
     "name": "pressure-2-sft10-32124"
+  },
+  "32138": {
+    "title": "Supply line (AZ20-BT68)",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "supply-line-az20-bt68-32138"
+  },
+  "32140": {
+    "title": "Outd temperature (AZ20-BT23)",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "outd-temperature-az20-bt23-32140"
+  },
+  "32139": {
+    "title": "Supply air (AZ20-BT22)",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "supply-air-az20-bt22-32139"
+  },
+  "32141": {
+    "title": "Return line (AZ20-BT69)",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "return-line-az20-bt69-32141"
   },
   "32131": {
     "title": "Diff. pr. airflow (BP15)",
@@ -7816,6 +8067,16 @@
     "unit": "%",
     "size": "u8",
     "name": "fan-mode-8-32172"
+  },
+  "42763": {
+    "title": "Fan sync operation at high outdoor temperature",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "fan-sync-operation-at-high-outdoor-temperature-42763",
+    "write": true
   },
   "44205": {
     "title": "Disable emergency restart GP1",
