@@ -189,8 +189,6 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer, ConnectionStatus
             with io.BytesIO(bytes(data)) as stream:
                 while block := Block.parse_stream(stream):
                     self._on_block(block, addr)
-                if remaining := stream.read():
-                    logger.warning("Failed to parse: %s", remaining)
         except ConstructError as e:
             logger.warning(
                 f"Ignoring packet from {addr} due to parse error: {hexlify(data).decode('utf-8')}: {e}"

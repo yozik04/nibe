@@ -151,6 +151,20 @@ async def test_read_product_info(nibegw: NibeGW):
     assert "F1255-12 R" == product.model
 
 
+async def test_read_product_info_with_extras(nibegw: NibeGW):
+    _enqueue_datagram(
+        nibegw,
+        "5c0019ee00f7"  # token accessory version
+        "c0ee03ee0101c3"  # accessory version from accessory
+        "06"  # ack from pump
+        "5c00206d0d0124e346313235352d313220529f",
+    )
+    product = await nibegw.read_product_info()
+
+    assert isinstance(product, ProductInfo)
+    assert "F1255-12 R" == product.model
+
+
 @pytest.mark.parametrize(
     ("raw", "table_processing_mode", "calls"),
     [
