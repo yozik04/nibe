@@ -23,6 +23,7 @@ Library for communication with Nibe heatpumps.
  - F750
  - S320
  - S325
+ - S330
  - S735
  - S2125
  - SMO20
