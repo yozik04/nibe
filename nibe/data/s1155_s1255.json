@@ -277,6 +277,13 @@
     "size": "s16",
     "name": "collector-out-az11-bt27-30072"
   },
+  "32309": {
+    "title": "Low press (BP8)",
+    "factor": 100,
+    "unit": "bar",
+    "size": "s16",
+    "name": "low-press-bp8-32309"
+  },
   "30076": {
     "title": "Return line (EP23-BT3)",
     "factor": 10,
@@ -1500,11 +1507,11 @@
     "name": "min-fan-speed-eb101-30404"
   },
   "30407": {
-    "title": "Generated power (EB101)",
+    "title": "Generated power heating (EB101)",
     "factor": 10,
     "unit": "kW",
     "size": "u16",
-    "name": "generated-power-eb101-30407"
+    "name": "generated-power-heating-eb101-30407"
   },
   "30408": {
     "title": "Time to defrosting (EB101)",
@@ -2363,11 +2370,11 @@
     "name": "min-fan-speed-eb108-30764"
   },
   "30767": {
-    "title": "Generated power (EB108-F21x0)",
+    "title": "Generated power heating (EB108)",
     "factor": 10,
     "unit": "kW",
     "size": "u16",
-    "name": "generated-power-eb108-f21x0-30767"
+    "name": "generated-power-heating-eb108-30767"
   },
   "30768": {
     "title": "Time to defrosting (EB108)",
@@ -2507,11 +2514,11 @@
     "name": "min-fan-speed-eb107-30789"
   },
   "30792": {
-    "title": "Generated power (EB107-F21x0)",
+    "title": "Generated power heating (EB107)",
     "factor": 10,
     "unit": "kW",
     "size": "u16",
-    "name": "generated-power-eb107-f21x0-30792"
+    "name": "generated-power-heating-eb107-30792"
   },
   "30794": {
     "title": "Defrosting index (EB107)",
@@ -2637,11 +2644,11 @@
     "name": "max-fan-speed-eb106-30813"
   },
   "30817": {
-    "title": "Generated power (EB106)",
+    "title": "Generated power heating (EB106)",
     "factor": 10,
     "unit": "kW",
     "size": "u16",
-    "name": "generated-power-eb106-30817"
+    "name": "generated-power-heating-eb106-30817"
   },
   "30819": {
     "title": "Defrosting index (EB106)",
@@ -2774,11 +2781,11 @@
     "name": "min-fan-speed-eb105-30839"
   },
   "30842": {
-    "title": "Generated power (EB105)",
+    "title": "Generated power heating (EB105)",
     "factor": 10,
     "unit": "kW",
     "size": "u16",
-    "name": "generated-power-eb105-30842"
+    "name": "generated-power-heating-eb105-30842"
   },
   "30844": {
     "title": "Defrosting index (EB105)",
@@ -2911,11 +2918,11 @@
     "name": "min-fan-speed-eb104-30864"
   },
   "30867": {
-    "title": "Generated power (EB104)",
+    "title": "Generated power heating (EB104)",
     "factor": 10,
     "unit": "kW",
     "size": "u16",
-    "name": "generated-power-eb104-30867"
+    "name": "generated-power-heating-eb104-30867"
   },
   "30869": {
     "title": "Defrosting index (EB104)",
@@ -3048,11 +3055,11 @@
     "name": "min-fan-speed-eb103-30889"
   },
   "30892": {
-    "title": "Generated power (EB103)",
+    "title": "Generated power heating (EB103)",
     "factor": 10,
     "unit": "kW",
     "size": "u16",
-    "name": "generated-power-eb103-30892"
+    "name": "generated-power-heating-eb103-30892"
   },
   "30894": {
     "title": "Defrosting index (EB103)",
@@ -3192,11 +3199,11 @@
     "name": "min-fan-speed-eb102-30914"
   },
   "30917": {
-    "title": "Generated power (EB102)",
+    "title": "Generated power heating (EB102",
     "factor": 10,
     "unit": "kW",
     "size": "u16",
-    "name": "generated-power-eb102-30917"
+    "name": "generated-power-heating-eb102-30917"
   },
   "30919": {
     "title": "Defrosting index (EB102)",
@@ -3917,18 +3924,18 @@
     "name": "return-line-eb100-bt3-31521"
   },
   "31522": {
-    "title": "Brine sensor in (EB100-BT10)",
+    "title": "Brine in (EB100-BT10)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
-    "name": "brine-sensor-in-eb100-bt10-31522"
+    "name": "brine-in-eb100-bt10-31522"
   },
   "31523": {
-    "title": "Brine sensor out (EB100-BT11)",
+    "title": "Brine out (EB100-BT11)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
-    "name": "brine-sensor-out-eb100-bt11-31523"
+    "name": "brine-out-eb100-bt11-31523"
   },
   "31524": {
     "title": "Condenser (EB100-BT2)",
@@ -3938,25 +3945,25 @@
     "name": "condenser-eb100-bt2-31524"
   },
   "31525": {
-    "title": "Discharge sensor (EB100-BT14)",
+    "title": "Discharge (EB100-BT14)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
-    "name": "discharge-sensor-eb100-bt14-31525"
+    "name": "discharge-eb100-bt14-31525"
   },
   "31526": {
-    "title": "Liquid line sensor (EB100-BT15)",
+    "title": "Liquid line (EB100-BT15)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
-    "name": "liquid-line-sensor-eb100-bt15-31526"
+    "name": "liquid-line-eb100-bt15-31526"
   },
   "31527": {
-    "title": "Suction gas sensor (EB100-BT17)",
+    "title": "Suction gas (EB100-BT17)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
-    "name": "suction-gas-sensor-eb100-bt17-31527"
+    "name": "suction-gas-eb100-bt17-31527"
   },
   "31528": {
     "title": "Compressor sensor (EB100-BT29)",
@@ -5331,7 +5338,7 @@
     "size": "s16",
     "min": 50.0,
     "max": 700.0,
-    "default": 490.0,
+    "default": 530.0,
     "name": "start-temperature-hw-high-temperature-40059",
     "write": true
   },
@@ -5342,7 +5349,7 @@
     "size": "s16",
     "min": 50.0,
     "max": 600.0,
-    "default": 460.0,
+    "default": 480.0,
     "name": "start-temperature-hw-normal-temperature-40060",
     "write": true
   },
@@ -5353,7 +5360,7 @@
     "size": "s16",
     "min": 50.0,
     "max": 550.0,
-    "default": 420.0,
+    "default": 450.0,
     "name": "start-temperature-hw-low-temperature-40061",
     "write": true
   },
@@ -5375,7 +5382,7 @@
     "size": "s16",
     "min": 50.0,
     "max": 700.0,
-    "default": 530.0,
+    "default": 550.0,
     "name": "stop-temperature-hw-high-temperature-40063",
     "write": true
   },
@@ -5386,7 +5393,7 @@
     "size": "s16",
     "min": 50.0,
     "max": 650.0,
-    "default": 500.0,
+    "default": 510.0,
     "name": "stop-temperature-hw-normal-temperature-40064",
     "write": true
   },
@@ -5444,7 +5451,7 @@
     "factor": 1,
     "size": "s8",
     "min": 0.0,
-    "max": 22.0,
+    "max": 24.0,
     "default": 0.0,
     "name": "language-40092",
     "write": true
@@ -6191,8 +6198,8 @@
     "unit": "\u00b0C",
     "size": "s16",
     "min": 100.0,
-    "max": 300.0,
-    "default": 300.0,
+    "max": 350.0,
+    "default": 350.0,
     "name": "high-brine-in-alarm-temperature-40193",
     "write": true
   },
@@ -6372,7 +6379,7 @@
     "factor": 1,
     "size": "u8",
     "min": 0.0,
-    "max": 66.0,
+    "max": 67.0,
     "default": 0.0,
     "name": "input-aux5-40212",
     "write": true
@@ -6382,7 +6389,7 @@
     "factor": 1,
     "size": "u8",
     "min": 0.0,
-    "max": 66.0,
+    "max": 67.0,
     "default": 0.0,
     "name": "input-aux4-40213",
     "write": true
@@ -6392,7 +6399,7 @@
     "factor": 1,
     "size": "u8",
     "min": 0.0,
-    "max": 66.0,
+    "max": 67.0,
     "default": 0.0,
     "name": "input-aux3-40214",
     "write": true
@@ -6402,7 +6409,7 @@
     "factor": 1,
     "size": "u8",
     "min": 0.0,
-    "max": 66.0,
+    "max": 67.0,
     "default": 0.0,
     "name": "input-aux2-40215",
     "write": true
@@ -6412,7 +6419,7 @@
     "factor": 1,
     "size": "u8",
     "min": 0.0,
-    "max": 66.0,
+    "max": 67.0,
     "default": 0.0,
     "name": "input-aux1-40216",
     "write": true
@@ -6422,7 +6429,7 @@
     "factor": 1,
     "size": "u8",
     "min": 0.0,
-    "max": 29.0,
+    "max": 30.0,
     "default": 0.0,
     "name": "output-aux1-40217",
     "write": true
@@ -6505,7 +6512,7 @@
   },
   "40226": {
     "title": "More hot water (Number of minutes)",
-    "factor": 10,
+    "factor": 1,
     "size": "u16",
     "name": "more-hot-water-number-of-minutes-40226",
     "write": true
@@ -6808,7 +6815,7 @@
     "unit": "\u00b0C",
     "size": "u8",
     "min": 0.0,
-    "max": 30.0,
+    "max": 35.0,
     "default": 20.0,
     "name": "shunted-brine-max-temp-45272",
     "write": true
@@ -6846,7 +6853,7 @@
     "factor": 1,
     "size": "u8",
     "min": 0.0,
-    "max": 66.0,
+    "max": 67.0,
     "default": 0.0,
     "name": "input-aux6-40768",
     "write": true
@@ -6914,8 +6921,8 @@
     "factor": 1,
     "size": "u8",
     "min": 0.0,
-    "max": 254.0,
-    "default": 23.0,
+    "max": 255.0,
+    "default": 255.0,
     "name": "spa-area-40852",
     "write": true
   },
@@ -9183,6 +9190,13 @@
     "name": "power-at-dot-manual-value-44201",
     "write": true
   },
+  "32133": {
+    "title": "Hi press (BP9)",
+    "factor": 100,
+    "unit": "bar",
+    "size": "s16",
+    "name": "hi-press-bp9-32133"
+  },
   "44101": {
     "title": "Blocking actions (ERS 3)",
     "factor": 1,
@@ -9202,6 +9216,13 @@
     "default": 2.0,
     "name": "blocking-actions-ers-4-44102",
     "write": true
+  },
+  "32130": {
+    "title": "Evaporator (BT84)",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "evaporator-bt84-32130"
   },
   "45455": {
     "title": "EB103/104-GP12",
@@ -9223,6 +9244,20 @@
     "default": 1.0,
     "name": "minimum-permitted-speed-eb100-gp1-45352",
     "write": true
+  },
+  "32127": {
+    "title": "High pressure (BP9 dew)",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "high-pressure-bp9-dew-32127"
+  },
+  "32128": {
+    "title": "Low pressure (BP8 dew)",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "low-pressure-bp8-dew-32128"
   },
   "40177": {
     "title": "System 1 (RMU)",
@@ -9377,6 +9412,13 @@
     "unit": "%",
     "size": "u8",
     "name": "fan-speed-ers1-gq3-32253"
+  },
+  "32015": {
+    "title": "Hot water start (BT5)",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "hot-water-start-bt5-32015"
   },
   "43089": {
     "title": "Period",
@@ -11406,7 +11448,7 @@
     "factor": 1,
     "size": "u8",
     "min": 0.0,
-    "max": 66.0,
+    "max": 67.0,
     "default": 0.0,
     "name": "aux-from-modbus-42741",
     "write": true
@@ -11904,6 +11946,9 @@
     "title": "Freeze protection with LP-Dew",
     "factor": 1,
     "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
     "name": "freeze-protection-with-lp-dew-45078",
     "write": true
   },
@@ -11912,6 +11957,9 @@
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
+    "min": -100.0,
+    "max": 200.0,
+    "default": 0.0,
     "name": "use-lp-as-freeze-protection-45077",
     "write": true
   },
@@ -11932,6 +11980,13 @@
     "unit": "\u00b0C",
     "size": "s16",
     "name": "boiler-temperature-bt52-33801"
+  },
+  "32801": {
+    "title": "Temperature: BT50",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s32",
+    "name": "temperature-bt50-32801"
   },
   "41556": {
     "title": "Input AUX7",
