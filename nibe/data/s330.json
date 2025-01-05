@@ -88,27 +88,6 @@
     "size": "s16",
     "name": "electrical-anode-eb100-fr1-30042"
   },
-  "30047": {
-    "title": "Current (BE3)",
-    "factor": 10,
-    "unit": "A",
-    "size": "u32",
-    "name": "current-be3-30047"
-  },
-  "30049": {
-    "title": "Current (BE2)",
-    "factor": 10,
-    "unit": "A",
-    "size": "u32",
-    "name": "current-be2-30049"
-  },
-  "30051": {
-    "title": "Current (BE1)",
-    "factor": 10,
-    "unit": "A",
-    "size": "u32",
-    "name": "current-be1-30051"
-  },
   "30073": {
     "title": "Additional heat (BT63)",
     "factor": 10,
@@ -3415,6 +3394,16 @@
     "max": 1.0,
     "default": 1.0,
     "name": "operating-mode-circulation-pump-heating-heat-pump-1-40784",
+    "write": true
+  },
+  "40800": {
+    "title": "Operating mode circulation pump hot water heat pump 1",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 1.0,
+    "name": "operating-mode-circulation-pump-hot-water-heat-pump-1-40800",
     "write": true
   },
   "40842": {
@@ -7063,6 +7052,16 @@
     "name": "disable-emergency-restart-gp1-45026",
     "write": true
   },
+  "45009": {
+    "title": "Modbus external control",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "modbus-external-control-45009",
+    "write": true
+  },
   "30001": {
     "title": "Relay status",
     "factor": 1,
@@ -7192,6 +7191,27 @@
     "unit": "kWh",
     "size": "u32",
     "name": "hot-water-including-int-add-heat-31576"
+  },
+  "30047": {
+    "title": "Current (BE3)",
+    "factor": 10,
+    "unit": "A",
+    "size": "u32",
+    "name": "current-be3-30047"
+  },
+  "30049": {
+    "title": "Current (BE2)",
+    "factor": 10,
+    "unit": "A",
+    "size": "u32",
+    "name": "current-be2-30049"
+  },
+  "30051": {
+    "title": "Current (BE1)",
+    "factor": 10,
+    "unit": "A",
+    "size": "u32",
+    "name": "current-be1-30051"
   },
   "33801": {
     "title": "Boiler temperature (BT52)",
