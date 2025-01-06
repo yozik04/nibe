@@ -12,8 +12,8 @@ Library for communication with Nibe heatpumps.
 ### Supported heatpump models
 
  - F1145
- - F1155
  - F1245
+ - F1155
  - F1255
  - F1345
  - F1355
@@ -25,6 +25,8 @@ Library for communication with Nibe heatpumps.
  - S325
  - S330
  - S735
+ - S1156
+ - S1256
  - S2125
  - SMO20
  - SMO40
@@ -228,7 +230,7 @@ python3 -m nibe.console_scripts.convert_csv
 
 ### 3. Verify JSON files
 
-Verify that convertion was succesful and required lines correctly appeared in the json files. If some modifications are required you need to edit `extensions.json` to fix these. Do not edit source CSV files.
+Verify that conversion was successful and required lines correctly appeared in the json files. If some modifications are required you need to edit `extensions.json` to fix these. Do not edit source CSV files.
 
 ### 4. Submit PR
 
