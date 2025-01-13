@@ -3195,6 +3195,12 @@
     "size": "u16",
     "name": "compressor-frequency-31066"
   },
+  "31067": {
+    "title": "External heating medium pump (GP10) status",
+    "factor": 1,
+    "size": "u8",
+    "name": "external-heating-medium-pump-gp10-status-31067"
+  },
   "31070": {
     "title": "Total HW run time additional heat",
     "factor": 10,
@@ -4804,7 +4810,7 @@
     "size": "s16",
     "min": 50.0,
     "max": 550.0,
-    "default": 450.0,
+    "default": 430.0,
     "name": "start-temperature-hw-low-temperature-40061",
     "write": true
   },
@@ -4888,6 +4894,28 @@
     "max": 1.0,
     "default": 0.0,
     "name": "hot-water-circulation-42755",
+    "write": true
+  },
+  "43103": {
+    "title": "Operating time",
+    "factor": 1,
+    "unit": "min",
+    "size": "s8",
+    "min": 1.0,
+    "max": 60.0,
+    "default": 60.0,
+    "name": "operating-time-43103",
+    "write": true
+  },
+  "40070": {
+    "title": "Downtime",
+    "factor": 1,
+    "unit": "min",
+    "size": "s8",
+    "min": 0.0,
+    "max": 60.0,
+    "default": 0.0,
+    "name": "downtime-40070",
     "write": true
   },
   "40092": {
@@ -5311,6 +5339,26 @@
     "name": "pci-accessories-41981",
     "write": true
   },
+  "40164": {
+    "title": "Cooling 2-pipe",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "cooling-2-pipe-40164",
+    "write": true
+  },
+  "40165": {
+    "title": "Cooling 4-pipe",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "cooling-4-pipe-40165",
+    "write": true
+  },
   "40166": {
     "title": "Waiting time cooling/heating",
     "factor": 1,
@@ -5373,6 +5421,16 @@
     "max": 41.0,
     "default": 0.0,
     "name": "cooling-with-room-sensors-40171",
+    "write": true
+  },
+  "40172": {
+    "title": "HPAC",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "hpac-40172",
     "write": true
   },
   "40173": {
@@ -8469,6 +8527,48 @@
     "name": "eb103-104-gp12-45455",
     "write": true
   },
+  "45410": {
+    "title": "Start time HWC period 1",
+    "factor": 1,
+    "size": "u16",
+    "name": "start-time-hwc-period-1-45410",
+    "write": true
+  },
+  "45414": {
+    "title": "Start time HWC period 2",
+    "factor": 1,
+    "size": "u16",
+    "name": "start-time-hwc-period-2-45414",
+    "write": true
+  },
+  "45418": {
+    "title": "Start time HWC period 3",
+    "factor": 1,
+    "size": "u16",
+    "name": "start-time-hwc-period-3-45418",
+    "write": true
+  },
+  "45422": {
+    "title": "Stop time HWC period 1",
+    "factor": 1,
+    "size": "u16",
+    "name": "stop-time-hwc-period-1-45422",
+    "write": true
+  },
+  "45426": {
+    "title": "Stop time HWC period 2",
+    "factor": 1,
+    "size": "u16",
+    "name": "stop-time-hwc-period-2-45426",
+    "write": true
+  },
+  "45430": {
+    "title": "Stop time HWC period 3",
+    "factor": 1,
+    "size": "u16",
+    "name": "stop-time-hwc-period-3-45430",
+    "write": true
+  },
   "45352": {
     "title": "Minimum permitted speed (EB100 GP1)",
     "factor": 1,
@@ -8655,6 +8755,13 @@
     "name": "factor-43034",
     "write": true
   },
+  "32015": {
+    "title": "Hot water start (BT5)",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "hot-water-start-bt5-32015"
+  },
   "43089": {
     "title": "Period",
     "factor": 1,
@@ -8683,6 +8790,20 @@
     "max": 4095.0,
     "default": 4095.0,
     "name": "months-43091",
+    "write": true
+  },
+  "43097": {
+    "title": "Show outdoor temperature",
+    "factor": 1,
+    "size": "u8",
+    "name": "show-outdoor-temperature-43097",
+    "write": true
+  },
+  "43098": {
+    "title": "Show indoor temperature",
+    "factor": 1,
+    "size": "u8",
+    "name": "show-indoor-temperature-43098",
     "write": true
   },
   "43067": {
