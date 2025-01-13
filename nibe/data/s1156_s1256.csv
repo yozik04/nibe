@@ -15,6 +15,7 @@ Liquid line (BT15)	MODBUS_INPUT_REGISTER	14	10	°C	2	0	0	0
 Suction gas (BT17)	MODBUS_INPUT_REGISTER	16	10	°C	2	0	0	0
 Collector in (AZ10-BT26)	MODBUS_INPUT_REGISTER	21	10	°C	2	0	0	0
 Collector out (AZ10-BT27)	MODBUS_INPUT_REGISTER	22	10	°C	2	0	0	0
+Pool (BT51)	MODBUS_INPUT_REGISTER	27	10	°C	2	0	0	0
 Return line (EQ1-BT65)	MODBUS_INPUT_REGISTER	31	10	°C	2	0	0	0
 Temperature limiter (EB100-FD1)	MODBUS_INPUT_REGISTER	36	1		2	0	0	0
 Average temperature (BT1)	MODBUS_INPUT_REGISTER	37	10	°C	2	0	0	0
@@ -736,6 +737,7 @@ Hot water circulation	MODBUS_HOLDING_REGISTER	2754	1		4	0	1	0
 Language	MODBUS_HOLDING_REGISTER	91	1		1	0	24	0
 Period time hot water	MODBUS_HOLDING_REGISTER	92	1	min	4	0	180	30
 Period time heating	MODBUS_HOLDING_REGISTER	93	1	min	4	0	180	30
+Period time pool	MODBUS_HOLDING_REGISTER	94	1	min	4	0	180	30
 Operating mode	MODBUS_HOLDING_REGISTER	2743	1		4	0	2	0
 Operating mode heating medium pump	MODBUS_HOLDING_REGISTER	95	1		4	10	40	40
 Operating mode brine pump	MODBUS_HOLDING_REGISTER	96	1		4	10	30	10
@@ -843,6 +845,9 @@ DM diff. start additional heat	MODBUS_HOLDING_REGISTER	679	1	DM	2	100	2000	400
 Cooling heat sensor set point value	MODBUS_HOLDING_REGISTER	681	10		2	50	400	210
 Pool 2 accessory	MODBUS_HOLDING_REGISTER	684	1		4	0	1	0
 Pool 1 accessory	MODBUS_HOLDING_REGISTER	685	1		4	0	1	0
+Pool 1 start temperature	MODBUS_HOLDING_REGISTER	687	10	°C	2	50	795	220
+Pool 1 stop temperature	MODBUS_HOLDING_REGISTER	689	10	°C	2	55	800	240
+Pool 1 activated	MODBUS_HOLDING_REGISTER	691	1		4	0	1	1
 Hot water comfort	MODBUS_HOLDING_REGISTER	694	1		4	0	1	0
 Manual heating medium pump speed	MODBUS_HOLDING_REGISTER	695	1	%	1	0	1	0
 More hot water	MODBUS_HOLDING_REGISTER	697	1		1	0	0	0
@@ -1064,6 +1069,7 @@ Delta brine pump passive cooling	MODBUS_HOLDING_REGISTER	1328	1	°C	4	1	15	4
 Installed (EB101)	MODBUS_HOLDING_REGISTER	1550	1		4	0	1	0
 EME20	MODBUS_HOLDING_REGISTER	4000	1		4	0	1	0
 Current power	MODBUS_INPUT_REGISTER	2176	1	W	6	0	0	0
+PV panel affects pool (EME)	MODBUS_HOLDING_REGISTER	4005	1		4	0	1	0
 Speed of circulation pump passive cooling (EP15)	MODBUS_HOLDING_REGISTER	4006	1	%	4	1	100	70
 Speed of circulation pump active cooling (EP15)	MODBUS_HOLDING_REGISTER	4007	1	%	4	1	100	70
 Ground water pump's control signal	MODBUS_HOLDING_REGISTER	4012	1		1	0	0	0
@@ -1160,6 +1166,7 @@ id:8982	MODBUS_HOLDING_REGISTER	5390	1		4	0	0	0
 The start guide has been run	MODBUS_HOLDING_REGISTER	2742	1		4	0	1	1
 Audio signal on alarm	MODBUS_HOLDING_REGISTER	5326	1		4	0	1	1
 Sound when pressing button	MODBUS_HOLDING_REGISTER	5327	1		4	0	1	1
+Desired charge power pool 1 main unit	MODBUS_HOLDING_REGISTER	3039	1	kW	4	1	100	6
 ERS S40 7	MODBUS_HOLDING_REGISTER	3057	1		4	0	1	0
 Alarm room sens cool oper	MODBUS_HOLDING_REGISTER	3031	1		4	0	1	0
 Heating, auto	MODBUS_HOLDING_REGISTER	3059	1		4	0	1	1
@@ -1613,6 +1620,7 @@ AUX from Modbus	MODBUS_HOLDING_REGISTER	2740	1		4	0	67	0
 AUX from Modbus	MODBUS_HOLDING_REGISTER	2741	1		2	0	0	0
 Instantaneous used power	MODBUS_INPUT_REGISTER	2166	1	W	6	0	9999999	0
 Heat pump test - Silent mode (EB101/EB102)	MODBUS_HOLDING_REGISTER	5101	1		4	0	1	0
+Permit additional heat, Pool 1	MODBUS_HOLDING_REGISTER	2760	1		4	0	1	0
 ERS 2	MODBUS_HOLDING_REGISTER	2820	1		4	0	1	0
 ERS 3	MODBUS_HOLDING_REGISTER	2821	1		4	0	1	0
 ERS 4	MODBUS_HOLDING_REGISTER	2822	1		4	0	1	0
@@ -1683,11 +1691,14 @@ id:24980	MODBUS_HOLDING_REGISTER	5071	1		5	0	1000	0
 Energy log - Produced energy for heating over the past hour	MODBUS_INPUT_REGISTER	2283	100	kWh	6	0	0	0
 Energy log - Produced energy for hot water over the past hour	MODBUS_INPUT_REGISTER	2285	100	kWh	6	0	0	0
 Energy log - Produced energy for cooling over the past hour	MODBUS_INPUT_REGISTER	2289	100	kWh	6	0	0	0
+Energy log - Produced energy for pool over the past hour	MODBUS_INPUT_REGISTER	2287	100	kWh	6	0	0	0
 Energy log - Used energy for heating over the past hour	MODBUS_INPUT_REGISTER	2291	100	kWh	6	0	0	0
 Energy log - Used energy for hot water over the past hour	MODBUS_INPUT_REGISTER	2293	100	kWh	6	0	0	0
 Energy log - Used energy for cooling over the past hour	MODBUS_INPUT_REGISTER	2297	100	kWh	6	0	0	0
+Energy log - Used energy for pool over the past hour	MODBUS_INPUT_REGISTER	2295	100	kWh	6	0	0	0
 Energy log - Used energy by additional heater for heating over the past hour	MODBUS_INPUT_REGISTER	2299	100	kWh	6	0	0	0
 Energy log - Used energy by additional heater for hot water over the past hour	MODBUS_INPUT_REGISTER	2301	100	kWh	6	0	0	0
+Energy log - Used energy by additional heater for pool over the past hour	MODBUS_INPUT_REGISTER	2303	100	kWh	6	0	0	0
 Energy log - Current power consumption	MODBUS_INPUT_REGISTER	2305	100	kWh	6	0	0	0
 Energy log - Current power consumption, components	MODBUS_INPUT_REGISTER	2408	100	kWh	6	0	0	0
 Compressor, total time energy storage, main unit (EP14)	MODBUS_INPUT_REGISTER	2335	1	h	6	0	2147483647	0
@@ -1777,6 +1788,7 @@ id:26867	MODBUS_HOLDING_REGISTER	5182	1		4	0	0	0
 Auto mode, start temperature for passive cooling	MODBUS_HOLDING_REGISTER	4205	10	°C	2	-200	400	250
 Heating, compressor only	MODBUS_INPUT_REGISTER	1585	10	kWh	6	0	0	0
 Hot water, compressor only	MODBUS_INPUT_REGISTER	1583	10	kWh	6	0	0	0
+Pool, compressor only	MODBUS_INPUT_REGISTER	1581	10	kWh	6	0	0	0
 Heating, including int. add. heat	MODBUS_INPUT_REGISTER	1577	10	kWh	6	0	0	0
 Hot water, including int. add. heat	MODBUS_INPUT_REGISTER	1575	10	kWh	6	0	0	0
 id:27790	MODBUS_INPUT_REGISTER	2437	1		4	0	0	0
