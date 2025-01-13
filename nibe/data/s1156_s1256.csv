@@ -726,7 +726,7 @@ External adjustment with room sensor climate system 1	MODBUS_HOLDING_REGISTER	55
 Hot water demand mode	MODBUS_HOLDING_REGISTER	56	1		1	0	4	1
 Start temperature HW high temperature	MODBUS_HOLDING_REGISTER	58	10	°C	2	50	700	530
 Start temperature HW normal temperature	MODBUS_HOLDING_REGISTER	59	10	°C	2	50	600	480
-Start temperature HW low temperature	MODBUS_HOLDING_REGISTER	60	10	°C	2	50	550	430
+Start temperature HW low temperature	MODBUS_HOLDING_REGISTER	60	10	°C	2	50	550	450
 Stop temperature HW periodic increase	MODBUS_HOLDING_REGISTER	61	10	°C	2	550	700	550
 Stop temperature HW high temperature	MODBUS_HOLDING_REGISTER	62	10	°C	2	50	700	550
 Stop temperature HW normal temperature	MODBUS_HOLDING_REGISTER	63	10	°C	2	50	650	510

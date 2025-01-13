@@ -4810,7 +4810,7 @@
     "size": "s16",
     "min": 50.0,
     "max": 550.0,
-    "default": 430.0,
+    "default": 450.0,
     "name": "start-temperature-hw-low-temperature-40061",
     "write": true
   },
