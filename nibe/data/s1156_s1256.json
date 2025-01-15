@@ -10926,12 +10926,40 @@
     "size": "s32",
     "name": "temperature-hts-1-32801"
   },
+  "32803": {
+    "title": "Temperature: THS10 1",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s32",
+    "name": "temperature-ths10-1-32803"
+  },
+  "32805": {
+    "title": "Temperature: THS10 2",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s32",
+    "name": "temperature-ths10-2-32805"
+  },
   "33131": {
     "title": "Humidity: HTS 1",
     "factor": 10,
     "unit": "%RH",
     "size": "s32",
     "name": "humidity-hts-1-33131"
+  },
+  "33133": {
+    "title": "Humidity: THS10 1",
+    "factor": 10,
+    "unit": "%RH",
+    "size": "s32",
+    "name": "humidity-ths10-1-33133"
+  },
+  "33135": {
+    "title": "Humidity: THS10 2",
+    "factor": 10,
+    "unit": "%RH",
+    "size": "s32",
+    "name": "humidity-ths10-2-33135"
   },
   "41556": {
     "title": "Input AUX7",
