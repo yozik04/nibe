@@ -615,16 +615,5 @@
         "max": 800
       }
     }
-  },
-  {
-    "description": "Adjust default Start temperature HW low temperature for S1156/S1256",
-    "files": [
-      "s1156_s1256.json"
-    ],
-    "data": {
-      "40061": {
-        "default": 430.0
-      }
-    }
   }
 ]
