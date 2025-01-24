@@ -263,18 +263,6 @@
     "size": "s16",
     "name": "external-cooling-supply-temperature-bt25-30120"
   },
-  "30143": {
-    "title": "Inverter alarm code",
-    "factor": 1,
-    "size": "u16",
-    "name": "inverter-alarm-code-30143"
-  },
-  "30144": {
-    "title": "Inverter alarm code",
-    "factor": 1,
-    "size": "u16",
-    "name": "inverter-alarm-code-30144"
-  },
   "30130": {
     "title": "Oper. mode shunt climate system 8",
     "factor": 1,
@@ -331,6 +319,18 @@
     "unit": "Hz",
     "size": "u16",
     "name": "max-compressor-frequency-heating-30142"
+  },
+  "30143": {
+    "title": "Inverter alarm code",
+    "factor": 1,
+    "size": "u16",
+    "name": "inverter-alarm-code-30143"
+  },
+  "30144": {
+    "title": "Inverter alarm code",
+    "factor": 1,
+    "size": "u16",
+    "name": "inverter-alarm-code-30144"
   },
   "30152": {
     "title": "External adjustment climate system 8",
@@ -3071,6 +3071,17 @@
     "name": "step-controlled-additional-heat-accessory-40159",
     "write": true
   },
+  "40160": {
+    "title": "DM start step controlled additional heat",
+    "factor": 1,
+    "unit": "DM",
+    "size": "s16",
+    "min": -2000.0,
+    "max": -30.0,
+    "default": -400.0,
+    "name": "dm-start-step-controlled-additional-heat-40160",
+    "write": true
+  },
   "40166": {
     "title": "Waiting time cooling/heating",
     "factor": 1,
@@ -3153,6 +3164,17 @@
     "max": 1.0,
     "default": 1.0,
     "name": "permit-cooling-40183",
+    "write": true
+  },
+  "40184": {
+    "title": "Auto mode, start temperature for cooling",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "min": 150.0,
+    "max": 400.0,
+    "default": 250.0,
+    "name": "auto-mode-start-temperature-for-cooling-40184",
     "write": true
   },
   "40185": {
@@ -3691,6 +3713,17 @@
     "max": 1.0,
     "default": 1.0,
     "name": "operating-mode-circulation-pump-hot-water-heat-pump-1-40800",
+    "write": true
+  },
+  "40824": {
+    "title": "Speed circulation pump cooling heat pump 1",
+    "factor": 1,
+    "unit": "%",
+    "size": "u8",
+    "min": 1.0,
+    "max": 100.0,
+    "default": 70.0,
+    "name": "speed-circulation-pump-cooling-heat-pump-1-40824",
     "write": true
   },
   "40833": {
@@ -4495,6 +4528,16 @@
     "name": "hysteresis-opt-41067",
     "write": true
   },
+  "41069": {
+    "title": "Activated (EME10)",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "activated-eme10-41069",
+    "write": true
+  },
   "41070": {
     "title": "PV panel affects heating (EME)",
     "factor": 1,
@@ -5057,6 +5100,16 @@
     "max": 12.0,
     "default": 12.0,
     "name": "end-month-tariff-ext-step-add-heat-smart-energy-source-41284",
+    "write": true
+  },
+  "41321": {
+    "title": "Prioritise additional heat (AXC40)",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "prioritise-additional-heat-axc40-41321",
     "write": true
   },
   "41327": {
@@ -5688,6 +5741,12 @@
     "unit": "\u00b0C",
     "size": "s16",
     "name": "hot-water-start-bt5-32015"
+  },
+  "32129": {
+    "title": "Pump: Heating medium (GP6)",
+    "factor": 1,
+    "size": "u8",
+    "name": "pump-heating-medium-gp6-32129"
   },
   "43089": {
     "title": "Period",
@@ -7219,6 +7278,20 @@
     "default": 0.0,
     "name": "disable-emergency-restart-gp1-43987",
     "write": true
+  },
+  "32191": {
+    "title": "Return line (AZ2-BT69)",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "return-line-az2-bt69-32191"
+  },
+  "32192": {
+    "title": "Supply line (AZ2-BT68)",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "supply-line-az2-bt68-32192"
   },
   "32414": {
     "title": "EEV Control Mode (EB101)",

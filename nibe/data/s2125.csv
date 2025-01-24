@@ -1,4 +1,4 @@
-Title	Register type	Register	Division factor	Unit	Size of variable	Min value	Max value	Default value	
+Title	Register type	Register	Division factor	Unit	Size of variable	Min value	Max value	Default value
 Current outdoor temperature (BT1)	MODBUS_INPUT_REGISTER	1	10	°C	2	0	0	0
 Supply line (EP23-BT2)	MODBUS_INPUT_REGISTER	2	10	°C	2	0	0	0
 Supply line (EP22-BT2)	MODBUS_INPUT_REGISTER	3	10	°C	2	0	0	0
@@ -45,8 +45,6 @@ Room average temp. clim. system 2 (BT50)	MODBUS_INPUT_REGISTER	115	10	°C	2	0	0	
 Room average temp. clim. system 1 (BT50)	MODBUS_INPUT_REGISTER	116	10	°C	2	0	0	0
 External cooling supply temperature (BT25)	MODBUS_INPUT_REGISTER	119	10	°C	2	0	0	0
 id:193	MODBUS_INPUT_REGISTER	128	1		4	0	0	0
-Inverter alarm code	MODBUS_INPUT_REGISTER	142	1		5	0	0	0
-Inverter alarm code	MODBUS_INPUT_REGISTER	143	1		5	0	0	0
 Oper. mode shunt climate system 8	MODBUS_INPUT_REGISTER	129	1		4	0	0	0
 Oper. mode shunt climate system 7	MODBUS_INPUT_REGISTER	130	1		4	0	0	0
 Oper. mode shunt climate system 6	MODBUS_INPUT_REGISTER	131	1		4	0	0	0
@@ -57,6 +55,8 @@ Fan speed (AZ30-GQ2)	MODBUS_INPUT_REGISTER	135	1	%	4	0	0	0
 Fan speed (AZ30-GQ3)	MODBUS_INPUT_REGISTER	136	1	%	4	0	0	0
 Current hot water mode controlled by	MODBUS_INPUT_REGISTER	137	1		1	0	0	0
 Max. compressor frequency, heating	MODBUS_INPUT_REGISTER	141	100	Hz	5	0	0	0
+Inverter alarm code	MODBUS_INPUT_REGISTER	142	1		5	0	0	0
+Inverter alarm code	MODBUS_INPUT_REGISTER	143	1		5	0	0	0
 External adjustment climate system 8	MODBUS_INPUT_REGISTER	151	1		4	0	0	0
 External adjustment climate system 7	MODBUS_INPUT_REGISTER	152	1		4	0	0	0
 External adjustment climate system 6	MODBUS_INPUT_REGISTER	153	1		4	0	0	0
@@ -446,6 +446,7 @@ Climate system 4	MODBUS_HOLDING_REGISTER	144	1		4	0	1	0
 Shunt controlled additional heat	MODBUS_HOLDING_REGISTER	153	1		4	0	1	0
 Wait time shunt, shunt controlled additional heat	MODBUS_HOLDING_REGISTER	157	1	s	2	10	300	30
 Step controlled additional heat accessory	MODBUS_HOLDING_REGISTER	158	1		4	0	1	0
+DM start step controlled additional heat	MODBUS_HOLDING_REGISTER	159	1	DM	2	-2000	-30	-400
 Waiting time cooling/heating	MODBUS_HOLDING_REGISTER	165	1	h	1	0	48	2
 Heating start at under temp.	MODBUS_HOLDING_REGISTER	166	10	°C	1	5	100	10
 Cooling start at over temp.	MODBUS_HOLDING_REGISTER	167	10	°C	1	5	100	30
@@ -454,6 +455,7 @@ Start active cooling DM	MODBUS_HOLDING_REGISTER	173	1	DM	2	10	300	30
 Permit additional heat, heating	MODBUS_HOLDING_REGISTER	180	1		4	0	1	1
 Permit heating	MODBUS_HOLDING_REGISTER	181	1		4	0	1	1
 Permit cooling	MODBUS_HOLDING_REGISTER	182	1		4	0	1	1
+Auto mode, start temperature for cooling	MODBUS_HOLDING_REGISTER	183	10	°C	2	150	400	250
 Auto mode, stop temperature for heating	MODBUS_HOLDING_REGISTER	184	10	°C	2	-200	400	170
 Auto mode, additional heat stop temperature	MODBUS_HOLDING_REGISTER	185	10	°C	2	-250	400	50
 Auto mode filter time	MODBUS_HOLDING_REGISTER	186	1	h	4	0	48	24
@@ -525,6 +527,7 @@ id:4710	MODBUS_HOLDING_REGISTER	5279	1		4	0	1	0
 Input AUX6	MODBUS_HOLDING_REGISTER	767	1		4	0	68	0
 Operating mode circulation pump heating heat pump 1	MODBUS_HOLDING_REGISTER	783	1		4	0	1	1
 Operating mode circulation pump hot water heat pump 1	MODBUS_HOLDING_REGISTER	799	1		4	0	1	1
+Speed circulation pump cooling heat pump 1	MODBUS_HOLDING_REGISTER	823	1	%	4	1	100	70
 Operating mode circulation pump cooling heat pump 1	MODBUS_HOLDING_REGISTER	832	1		4	0	1	1
 Speed circulation pump waiting mode heat pump 1	MODBUS_HOLDING_REGISTER	841	1	%	4	1	100	30
 Speed, circulation pump, standby mode (EB100)	MODBUS_HOLDING_REGISTER	842	1	%	4	1	100	30
@@ -608,6 +611,7 @@ Flow sensor activated X22	MODBUS_HOLDING_REGISTER	1049	1		4	0	1	0
 Max. internal additional heat SG Ready	MODBUS_HOLDING_REGISTER	1052	100	kW	2	0	900	900
 Limit humidity in the room, cooling climate system 1	MODBUS_HOLDING_REGISTER	1063	1		1	0	1	0
 Hysteresis (OPT)	MODBUS_HOLDING_REGISTER	1066	1		2	10	2000	100
+Activated (EME10)	MODBUS_HOLDING_REGISTER	1068	1		4	0	1	0
 PV panel affects heating (EME)	MODBUS_HOLDING_REGISTER	1069	1		4	0	1	0
 PV panel affects hot water (EME)	MODBUS_HOLDING_REGISTER	1070	1		4	0	1	0
 Delay timer EME	MODBUS_HOLDING_REGISTER	1071	1		5	0	0	0
@@ -665,6 +669,7 @@ Start day tariff, ext. step add. heat smart energy source	MODBUS_HOLDING_REGISTE
 End day tariff, ext. step add. heat  smart energy source	MODBUS_HOLDING_REGISTER	1281	1		4	1	31	31
 Start month tariff, ext. step add. heat smart energy source	MODBUS_HOLDING_REGISTER	1282	1		4	1	12	1
 End month tariff, ext. step add. heat smart energy source	MODBUS_HOLDING_REGISTER	1283	1		4	1	12	12
+Prioritise additional heat (AXC40)	MODBUS_HOLDING_REGISTER	1320	1		4	0	1	0
 Max difference, SES priority 1 energy source	MODBUS_HOLDING_REGISTER	1326	10	°C	2	10	250	100
 Max difference, SES lower priority energy source	MODBUS_HOLDING_REGISTER	1327	10	°C	2	10	250	70
 Installed (EB101)	MODBUS_HOLDING_REGISTER	1550	1		4	0	1	1
@@ -772,6 +777,7 @@ Factor	MODBUS_HOLDING_REGISTER	3033	1		4	1	10	5
 id:10881	MODBUS_HOLDING_REGISTER	3062	1		4	0	1	0
 id:10890	MODBUS_HOLDING_REGISTER	3063	1		4	0	1	0
 Hot water start (BT5)	MODBUS_INPUT_REGISTER	2014	10	°C	2	0	0	0
+Pump: Heating medium (GP6)	MODBUS_INPUT_REGISTER	2128	1		4	0	0	0
 id:12332	MODBUS_HOLDING_REGISTER	2767	1		2	-32768	32767	-32768
 id:12333	MODBUS_HOLDING_REGISTER	2768	1		2	-32768	32767	-32768
 id:12334	MODBUS_HOLDING_REGISTER	2769	1		2	-32768	32767	-32768
@@ -1472,6 +1478,8 @@ id:55082	MODBUS_HOLDING_REGISTER	2883	1		4	0	1	0
 id:55083	MODBUS_HOLDING_REGISTER	2884	1		4	0	1	0
 Immersion heater power, emergency mode	MODBUS_HOLDING_REGISTER	3028	100	kW	2	0	4500	600
 Disable emergency restart GP1	MODBUS_HOLDING_REGISTER	3986	1		4	0	1	0
+Return line (AZ2-BT69)	MODBUS_INPUT_REGISTER	2190	10	°C	2	0	0	0
+Supply line (AZ2-BT68)	MODBUS_INPUT_REGISTER	2191	10	°C	2	0	0	0
 "EEV Control Mode (EB101)"	MODBUS_INPUT_REGISTER	2413	1		4	0	0	0
 "EEV State (EB101)"	MODBUS_INPUT_REGISTER	2421	1		4	0	0	0
 id:55495	MODBUS_HOLDING_REGISTER	5550	1		4	0	1	0
