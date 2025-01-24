@@ -55,6 +55,13 @@
     "size": "s16",
     "name": "hot-water-charging-bt6-30010"
   },
+  "30027": {
+    "title": "Roomsensor 1-1",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "roomsensor-1-1-30027"
+  },
   "30037": {
     "title": "Temperature limiter (EB100-FD1)",
     "factor": 1,
@@ -87,6 +94,13 @@
     "factor": 1,
     "size": "s16",
     "name": "electrical-anode-eb100-fr1-30042"
+  },
+  "30047": {
+    "title": "Current (BE3)",
+    "factor": 10,
+    "unit": "A",
+    "size": "u32",
+    "name": "current-be3-30047"
   },
   "30073": {
     "title": "Additional heat (BT63)",
@@ -248,6 +262,18 @@
     "unit": "\u00b0C",
     "size": "s16",
     "name": "external-cooling-supply-temperature-bt25-30120"
+  },
+  "30143": {
+    "title": "Inverter alarm code",
+    "factor": 1,
+    "size": "u16",
+    "name": "inverter-alarm-code-30143"
+  },
+  "30144": {
+    "title": "Inverter alarm code",
+    "factor": 1,
+    "size": "u16",
+    "name": "inverter-alarm-code-30144"
   },
   "30130": {
     "title": "Oper. mode shunt climate system 8",
@@ -478,6 +504,117 @@
     "size": "u8",
     "name": "available-compressors-cooling-30322"
   },
+  "30328": {
+    "title": "+Adjust, port",
+    "factor": 1,
+    "size": "u8",
+    "name": "adjust-port-30328"
+  },
+  "30329": {
+    "title": "+Adjust, operating mode",
+    "factor": 1,
+    "size": "u8",
+    "name": "adjust-operating-mode-30329"
+  },
+  "30330": {
+    "title": "+Adjust, comfort",
+    "factor": 1,
+    "size": "u8",
+    "name": "adjust-comfort-30330"
+  },
+  "30331": {
+    "title": "+Adjust, parallel adjustment",
+    "factor": 1,
+    "size": "s8",
+    "name": "adjust-parallel-adjustment-30331"
+  },
+  "30332": {
+    "title": "+Adjust, humidity",
+    "factor": 10,
+    "unit": "%RH",
+    "size": "s16",
+    "name": "adjust-humidity-30332"
+  },
+  "30333": {
+    "title": "+Adjust, indoor temperature",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "adjust-indoor-temperature-30333"
+  },
+  "30334": {
+    "title": "+Adjust, outdoor temperature",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "adjust-outdoor-temperature-30334"
+  },
+  "30335": {
+    "title": "+Adjust, version",
+    "factor": 1,
+    "size": "u16",
+    "name": "adjust-version-30335"
+  },
+  "30336": {
+    "title": "+Adjust, active",
+    "factor": 1,
+    "size": "u8",
+    "name": "adjust-active-30336"
+  },
+  "30337": {
+    "title": "+Adjust, demand",
+    "factor": 1,
+    "size": "u8",
+    "name": "adjust-demand-30337"
+  },
+  "40002": {
+    "title": "+Adjust, parallel factor",
+    "factor": 1,
+    "size": "s8",
+    "min": 1.0,
+    "max": 10.0,
+    "default": 5.0,
+    "name": "adjust-parallel-factor-40002",
+    "write": true
+  },
+  "40003": {
+    "title": "+Adjust, Parallel (min-max)",
+    "factor": 1,
+    "size": "s8",
+    "min": 1.0,
+    "max": 100.0,
+    "default": 100.0,
+    "name": "adjust-parallel-min-max-40003",
+    "write": true
+  },
+  "30324": {
+    "title": "Humidity (BM1)",
+    "factor": 10,
+    "unit": "%",
+    "size": "s16",
+    "name": "humidity-bm1-30324"
+  },
+  "30325": {
+    "title": "Temperature (BM1)",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "temperature-bm1-30325"
+  },
+  "30326": {
+    "title": "Pressure (BM1)",
+    "factor": 10,
+    "unit": "kPa",
+    "size": "s16",
+    "name": "pressure-bm1-30326"
+  },
+  "30327": {
+    "title": "Dew point (BM1)",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "dew-point-bm1-30327"
+  },
   "30338": {
     "title": "Supply temperature (BT64)",
     "factor": 10,
@@ -526,6 +663,25 @@
     "factor": 1,
     "size": "u8",
     "name": "status-compressor-demand-s135-30351"
+  },
+  "30352": {
+    "title": "No. of starts (S135)",
+    "factor": 1,
+    "size": "u32",
+    "min": 0.0,
+    "max": 9999999.0,
+    "default": 0.0,
+    "name": "no-of-starts-s135-30352"
+  },
+  "30354": {
+    "title": "Operating time (S135)",
+    "factor": 1,
+    "unit": "h",
+    "size": "u32",
+    "min": 0.0,
+    "max": 9999999.0,
+    "default": 0.0,
+    "name": "operating-time-s135-30354"
   },
   "40012": {
     "title": "Degree minutes",
@@ -901,6 +1057,13 @@
     "factor": 1,
     "size": "u16",
     "name": "high-condenser-in-alarm-s135-30577"
+  },
+  "30579": {
+    "title": "Average current (EME 10)",
+    "factor": 10,
+    "unit": "A",
+    "size": "s16",
+    "name": "average-current-eme-10-30579"
   },
   "30580": {
     "title": "Operating mode PV panels",
@@ -1957,6 +2120,13 @@
     "size": "s16",
     "name": "calculated-cooling-supply-climate-system-1-31568"
   },
+  "31590": {
+    "title": "Speed (GP12)",
+    "factor": 1,
+    "unit": "%",
+    "size": "u8",
+    "name": "speed-gp12-31590"
+  },
   "40022": {
     "title": "Cooling pump manual speed",
     "factor": 1,
@@ -2119,6 +2289,12 @@
     "factor": 1,
     "size": "u8",
     "name": "sg-ready-input-b-31914"
+  },
+  "31915": {
+    "title": "Heating offset (SPA)",
+    "factor": 10,
+    "size": "u16",
+    "name": "heating-offset-spa-31915"
   },
   "31916": {
     "title": "Hot water comfort mode (SPA)",
