@@ -223,6 +223,7 @@ Seconds of blank time left, charge pump 2	MODBUS_INPUT_REGISTER	391	1		4	0	0	0
 Seconds of blank time left, charge pump 1	MODBUS_INPUT_REGISTER	392	1		4	0	0	0
 Inverter min speed	MODBUS_INPUT_REGISTER	394	1		5	0	0	0
 Inverter max speed	MODBUS_INPUT_REGISTER	395	1		5	0	0	0
+Pulse energy meter (BE6)	MODBUS_INPUT_REGISTER	396	100	kWh	6	0	2147483647	0
 Max fan speed (EB101)	MODBUS_INPUT_REGISTER	402	1	rpm	5	0	0	0
 Min fan speed (EB101)	MODBUS_INPUT_REGISTER	403	1	rpm	5	0	0	0
 Generated power heating (EB101)	MODBUS_INPUT_REGISTER	406	10	kW	5	0	0	0
