@@ -111,6 +111,13 @@
     "size": "s16",
     "name": "collector-out-az10-bt27-30023"
   },
+  "30027": {
+    "title": "Roomsensor 1-1",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "roomsensor-1-1-30027"
+  },
   "30032": {
     "title": "Return line (EQ1-BT65)",
     "factor": 10,
@@ -157,6 +164,27 @@
     "factor": 1,
     "size": "s16",
     "name": "electrical-anode-eb100-fr1-30042"
+  },
+  "30047": {
+    "title": "Current (BE3)",
+    "factor": 10,
+    "unit": "A",
+    "size": "u32",
+    "name": "current-be3-30047"
+  },
+  "30049": {
+    "title": "Current (BE2)",
+    "factor": 10,
+    "unit": "A",
+    "size": "u32",
+    "name": "current-be2-30049"
+  },
+  "30051": {
+    "title": "Current (BE1)",
+    "factor": 10,
+    "unit": "A",
+    "size": "u32",
+    "name": "current-be1-30051"
   },
   "30060": {
     "title": "Pool (CL12-BT51)",
@@ -5293,6 +5321,26 @@
     "name": "pci-accessories-41981",
     "write": true
   },
+  "40164": {
+    "title": "Cooling 2-pipe",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "cooling-2-pipe-40164",
+    "write": true
+  },
+  "40165": {
+    "title": "Cooling 4-pipe",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "cooling-4-pipe-40165",
+    "write": true
+  },
   "40166": {
     "title": "Waiting time cooling/heating",
     "factor": 1,
@@ -5355,6 +5403,16 @@
     "max": 41.0,
     "default": 0.0,
     "name": "cooling-with-room-sensors-40171",
+    "write": true
+  },
+  "40172": {
+    "title": "HPAC",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "hpac-40172",
     "write": true
   },
   "40173": {
@@ -8584,6 +8642,13 @@
     "name": "factor-43034",
     "write": true
   },
+  "32015": {
+    "title": "Hot water start (BT5)",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "hot-water-start-bt5-32015"
+  },
   "43089": {
     "title": "Period",
     "factor": 1,
@@ -8612,6 +8677,20 @@
     "max": 4095.0,
     "default": 4095.0,
     "name": "months-43091",
+    "write": true
+  },
+  "43097": {
+    "title": "Show outdoor temperature",
+    "factor": 1,
+    "size": "u8",
+    "name": "show-outdoor-temperature-43097",
+    "write": true
+  },
+  "43098": {
+    "title": "Show indoor temperature",
+    "factor": 1,
+    "size": "u8",
+    "name": "show-indoor-temperature-43098",
     "write": true
   },
   "43067": {
