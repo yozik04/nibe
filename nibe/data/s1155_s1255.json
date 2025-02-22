@@ -1492,6 +1492,16 @@
     "size": "u16",
     "name": "inverter-max-speed-30396"
   },
+  "30397": {
+    "title": "Pulse energy meter (BE6)",
+    "factor": 100,
+    "unit": "kWh",
+    "size": "u32",
+    "min": 0.0,
+    "max": 2147483647.0,
+    "default": 0.0,
+    "name": "pulse-energy-meter-be6-30397"
+  },
   "30403": {
     "title": "Max fan speed (EB101)",
     "factor": 1,
