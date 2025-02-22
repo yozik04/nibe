@@ -4447,17 +4447,17 @@
   },
   "48043": {
     "title": "Holiday - Activated",
-    "info": "0=inactive, 10=active",
+    "info": "0=inactive, 1=active",
     "size": "u8",
     "factor": 1,
     "min": 0.0,
-    "max": 10.0,
+    "max": 1.0,
     "default": 0.0,
     "name": "holiday-activated-48043",
     "write": true,
     "mappings": {
       "0": "inactive",
-      "10": "active"
+      "1": "active"
     }
   },
   "48044": {

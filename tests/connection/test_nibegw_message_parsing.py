@@ -20,7 +20,6 @@ class MessageResponseParsingTestCase(unittest.TestCase):
         data = self._parse_hexlified_raw_message("5c41c9f7007f06")
         assert data.address == "HEATPUMP_1"
         assert data.cmd == "HEATPUMP_REQ"
-        assert data.length == 0
         assert data.data == b""
 
     def test_parse_escaped_read_response(self):
@@ -329,9 +328,54 @@ class MessageRmuDataParsingTestCase(unittest.TestCase):
             unknown5=b"\x01\x00",
         )
 
+    def test_invalid_values(self):
+        data = self.parse(
+            "0500 0080 9b 9b 9b ff 0080 00 00 00 00 00 03 79 15 34 00 03 00 00 01 00"
+        )
+
+        assert data == Container(
+            bt1_outdoor_temperature=0.0,
+            bt7_hw_top=None,
+            setpoint_or_offset_s1=20.5,
+            setpoint_or_offset_s2=20.5,
+            setpoint_or_offset_s3=20.5,
+            setpoint_or_offset_s4=-1.0,
+            bt50_room_temp_sX=None,
+            temporary_lux=0,
+            hw_time_hour=0,
+            hw_time_min=0,
+            fan_mode=0,
+            operational_mode=0,
+            flags=Container(
+                unknown_8000=False,
+                unknown_4000=False,
+                unknown_2000=False,
+                unknown_1000=False,
+                unknown_0800=False,
+                allow_cooling=False,
+                allow_heating=True,
+                allow_additive_heating=True,
+                use_room_sensor_s4=False,
+                use_room_sensor_s3=True,
+                use_room_sensor_s2=True,
+                use_room_sensor_s1=True,
+                unknown_0008=True,
+                unknown_0004=False,
+                unknown_0002=False,
+                hw_production=True,
+            ),
+            clock_time_hour=21,
+            clock_time_min=52,
+            alarm=0,
+            unknown4=b"\x03",
+            fan_time_hour=0,
+            fan_time_min=0,
+            unknown5=b"\x01\x00",
+        )
+
     @staticmethod
     def parse(txt_raw):
-        raw = binascii.unhexlify(txt_raw)
+        raw = binascii.unhexlify(txt_raw.replace(" ", ""))
         return RmuData.parse(raw)
 
 

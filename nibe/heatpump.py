@@ -31,7 +31,8 @@ class Model(Enum):
     S1155 = "s1155_s1255", Series.S
     S1255 = "s1155_s1255", Series.S
 
-    S1256 = "s1155_s1255", Series.S
+    S1156 = "s1156_s1256", Series.S
+    S1256 = "s1156_s1256", Series.S
 
     F1145 = "f1145_f1245", Series.F
     F1245 = "f1145_f1245", Series.F
@@ -47,6 +48,8 @@ class Model(Enum):
 
     S320 = "s320_s325", Series.S
     S325 = "s320_s325", Series.S
+
+    S330 = "s330", Series.S
 
     S735 = "s735", Series.S
 

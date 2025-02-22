@@ -76,6 +76,13 @@
     "size": "s16",
     "name": "roomsensor-1-1-30027"
   },
+  "30028": {
+    "title": "Pool (BT51)",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "pool-bt51-30028"
+  },
   "30037": {
     "title": "Temperature limiter (EB100-FD1)",
     "factor": 1,
@@ -1927,6 +1934,12 @@
     "size": "u8",
     "name": "hot-water-circulation-gp11-31064"
   },
+  "31067": {
+    "title": "External heating medium pump (GP10) status",
+    "factor": 1,
+    "size": "u8",
+    "name": "external-heating-medium-pump-gp10-status-31067"
+  },
   "31070": {
     "title": "Total HW run time additional heat",
     "factor": 10,
@@ -2207,7 +2220,7 @@
     "title": "Cooling pump manual speed",
     "factor": 1,
     "unit": "%",
-    "size": "s8",
+    "size": "u8",
     "min": 1.0,
     "max": 100.0,
     "default": 70.0,
@@ -2817,6 +2830,17 @@
     "max": 180.0,
     "default": 30.0,
     "name": "period-time-heating-40094",
+    "write": true
+  },
+  "40095": {
+    "title": "Period time pool",
+    "factor": 1,
+    "unit": "min",
+    "size": "u8",
+    "min": 0.0,
+    "max": 180.0,
+    "default": 30.0,
+    "name": "period-time-pool-40095",
     "write": true
   },
   "42744": {
@@ -3629,6 +3653,38 @@
     "name": "pool-1-accessory-40686",
     "write": true
   },
+  "40688": {
+    "title": "Pool 1 start temperature",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "min": 50.0,
+    "max": 795.0,
+    "default": 220.0,
+    "name": "pool-1-start-temperature-40688",
+    "write": true
+  },
+  "40690": {
+    "title": "Pool 1 stop temperature",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "min": 55.0,
+    "max": 800.0,
+    "default": 240.0,
+    "name": "pool-1-stop-temperature-40690",
+    "write": true
+  },
+  "40692": {
+    "title": "Pool 1 activated",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 1.0,
+    "name": "pool-1-activated-40692",
+    "write": true
+  },
   "40695": {
     "title": "Hot water comfort",
     "factor": 1,
@@ -3829,6 +3885,16 @@
     "max": 1.0,
     "default": 1.0,
     "name": "operating-mode-circulation-pump-hot-water-heat-pump-1-40800",
+    "write": true
+  },
+  "40816": {
+    "title": "Operating mode circulation pump pool heat pump 1",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 1.0,
+    "name": "operating-mode-circulation-pump-pool-heat-pump-1-40816",
     "write": true
   },
   "40824": {
@@ -5356,6 +5422,16 @@
     "size": "u32",
     "name": "current-power-32177"
   },
+  "44006": {
+    "title": "PV panel affects pool (EME)",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "pv-panel-affects-pool-eme-44006",
+    "write": true
+  },
   "32179": {
     "title": "Total average power (EME 20)",
     "factor": 100,
@@ -5629,6 +5705,16 @@
     "name": "external-adjustment-with-room-sensor-cooling-climate-system-1-44154",
     "write": true
   },
+  "44068": {
+    "title": "Demand controlled ventilation",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "demand-controlled-ventilation-44068",
+    "write": true
+  },
   "32728": {
     "title": "Current power",
     "factor": 100,
@@ -5841,11 +5927,11 @@
     "name": "start-fan-de-icing-eb101-45361",
     "write": true
   },
-  "43628": {
+  "45392": {
     "title": "Increased ventilation 1",
     "factor": 1,
     "size": "u8",
-    "name": "increased-ventilation-1-43628",
+    "name": "increased-ventilation-1-45392",
     "write": true
   },
   "40177": {
@@ -5977,6 +6063,17 @@
     "max": 1.0,
     "default": 0.0,
     "name": "alarm-room-sens-cool-oper-43032",
+    "write": true
+  },
+  "43041": {
+    "title": "Desired charge power pool 1 heat pump 1",
+    "factor": 1,
+    "unit": "kW",
+    "size": "u8",
+    "min": 1.0,
+    "max": 100.0,
+    "default": 6.0,
+    "name": "desired-charge-power-pool-1-heat-pump-1-43041",
     "write": true
   },
   "43060": {
@@ -7111,6 +7208,16 @@
     "default": 255.0,
     "name": "last-defrost-heat-pump-1-32159"
   },
+  "42761": {
+    "title": "Permit additional heat, Pool 1",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "permit-additional-heat-pool-1-42761",
+    "write": true
+  },
   "42821": {
     "title": "ERS 2",
     "factor": 1,
@@ -7343,6 +7450,13 @@
     "size": "u32",
     "name": "energy-log-produced-energy-for-hot-water-over-the-past-hour-32286"
   },
+  "32288": {
+    "title": "Energy log - Produced energy for pool over the past hour",
+    "factor": 100,
+    "unit": "kWh",
+    "size": "u32",
+    "name": "energy-log-produced-energy-for-pool-over-the-past-hour-32288"
+  },
   "32290": {
     "title": "Energy log - Produced energy for cooling over the past hour",
     "factor": 100,
@@ -7363,6 +7477,13 @@
     "unit": "kWh",
     "size": "u32",
     "name": "energy-log-used-energy-for-hot-water-over-the-past-hour-32294"
+  },
+  "32296": {
+    "title": "Energy log - Used energy for pool over the past hour",
+    "factor": 100,
+    "unit": "kWh",
+    "size": "u32",
+    "name": "energy-log-used-energy-for-pool-over-the-past-hour-32296"
   },
   "32298": {
     "title": "Energy log - Used energy for cooling over the past hour",
@@ -7385,17 +7506,24 @@
     "size": "u32",
     "name": "energy-log-used-energy-by-additional-heater-for-hot-water-over-the-past-hour-32302"
   },
+  "32304": {
+    "title": "Energy log - Used energy by additional heater for pool over the past hour",
+    "factor": 100,
+    "unit": "kWh",
+    "size": "u32",
+    "name": "energy-log-used-energy-by-additional-heater-for-pool-over-the-past-hour-32304"
+  },
   "32306": {
     "title": "Energy log - Current power consumption",
     "factor": 100,
-    "unit": "kWh",
+    "unit": "kW",
     "size": "u32",
     "name": "energy-log-current-power-consumption-32306"
   },
   "32409": {
     "title": "Energy log - Current power consumption, components",
     "factor": 100,
-    "unit": "kWh",
+    "unit": "kW",
     "size": "u32",
     "name": "energy-log-current-power-consumption-components-32409"
   },
@@ -7464,6 +7592,13 @@
     "size": "u32",
     "name": "hot-water-compressor-only-31584"
   },
+  "31582": {
+    "title": "Pool, compressor only",
+    "factor": 10,
+    "unit": "kWh",
+    "size": "u32",
+    "name": "pool-compressor-only-31582"
+  },
   "31580": {
     "title": "Cooling, compressor only",
     "factor": 10,
@@ -7491,6 +7626,13 @@
     "unit": "\u00b0C",
     "size": "s32",
     "name": "temperature-bt50-32801"
+  },
+  "33801": {
+    "title": "Boiler temperature (BT52)",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "boiler-temperature-bt52-33801"
   },
   "41556": {
     "title": "Input AUX7",

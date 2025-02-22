@@ -374,7 +374,7 @@
     }
   },
   {
-    "description": "Reversing valve hot water (QN10) - S1156/S1256 ",
+    "description": "Reversing valve hot water (QN10) - S1155/S1255 ",
     "files": ["s1155_s1255.json"],
     "data": {
       "32197": {
@@ -466,6 +466,7 @@
     "description": "M12676EN-1 - Common Parameters",
     "files": [
       "s320_s325.json",
+      "s330.json",
       "s735.json",
       "s1155_s1255.json",
       "s2125.json",
@@ -499,8 +500,24 @@
   },
   {
     "description": "Holiday settings",
-    "files": ["f750.json"],
+    "files": ["f750.json", "f1155_f1255.json"],
     "data": {
+      "48043": {
+        "title": "Holiday - Activated",
+        "info": "0=inactive, 1=active",
+        "size": "u8",
+        "factor": 1,
+        "min": 0.0,
+        "max": 1.0,
+        "default": 0.0,
+        "name": "holiday-activated-48043",
+        "write": true,
+        "mappings": {
+          "0": "inactive",
+          "1": "active",
+          "10": null
+        }
+      },
       "48044": {
         "title": "Holiday - Start Date",
         "info": "Days since 1 January 2007",

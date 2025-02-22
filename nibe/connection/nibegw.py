@@ -5,17 +5,17 @@ from contextlib import suppress
 from dataclasses import dataclass
 import errno
 from functools import reduce
+import io
 from io import BytesIO
 from ipaddress import ip_address
 import logging
 from operator import xor
 import socket
 import struct
-from typing import Dict, Literal, Optional, Union
+from typing import Any, Dict, Literal, Optional, Union
 
 from construct import (
     Adapter,
-    Array,
     BitStruct,
     Bytes,
     Checksum,
@@ -24,10 +24,11 @@ from construct import (
     Container,
     Enum,
     EnumIntegerString,
-    FixedSized,
     Flag,
     FlagsEnum,
+    FocusedSeq,
     GreedyBytes,
+    GreedyRange,
     GreedyString,
     IfThenElse,
     Int8sb,
@@ -36,6 +37,7 @@ from construct import (
     Int16ub,
     Int16ul,
     NullTerminated,
+    Peek,
     Pointer,
     Prefixed,
     RawCopy,
@@ -72,6 +74,7 @@ from nibe.exceptions import (
 from nibe.heatpump import HeatPump, ProductInfo
 
 from . import verify_connectivity_read_write_alarm
+from .encoders import is_hitting_integer_limit
 
 logger = logging.getLogger("nibe").getChild(__name__)
 
@@ -181,42 +184,11 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer, ConnectionStatus
     def datagram_received(self, data: bytes, addr):
         """Callback when data is received."""
         logger.debug(f"Received {hexlify(data).decode('utf-8')} from {addr}")
+
         try:
-            msg = Response.parse(data)
-
-            if not self._remote_ip:
-                logger.debug("Pump discovered at %s", addr)
-                self._remote_ip = addr[0]
-
-            self.status = ConnectionStatus.CONNECTED
-
-            logger.debug(msg.fields.value)
-            cmd = msg.fields.value.cmd
-            if cmd == "MODBUS_DATA_MSG":
-                data: dict[int, bytes] = {
-                    row.coil_address: row.value
-                    for row in msg.fields.value.data
-                    if row.coil_address != 0xFFFF
-                }
-                self._on_raw_coil_set(data)
-            elif cmd == "MODBUS_READ_RESP":
-                row = msg.fields.value.data
-                self._on_raw_coil_value(row.coil_address, row.value)
-            elif cmd == "MODBUS_WRITE_RESP":
-                with suppress(InvalidStateError, CancelledError, KeyError):
-                    self._futures["write"].set_result(msg.fields.value.data.result)
-            elif cmd == "RMU_DATA_MSG":
-                self._on_rmu_data(msg.fields.value)
-            elif cmd == "PRODUCT_INFO_MSG":
-                data = msg.fields.value.data
-                product_info = ProductInfo(data["model"], data["version"])
-                with suppress(InvalidStateError, CancelledError, KeyError):
-                    self._futures["product_info"].set_result(product_info)
-                self.notify_event_listeners(
-                    self.PRODUCT_INFO_EVENT, product_info=product_info
-                )
-            elif not isinstance(cmd, EnumIntegerString):
-                logger.debug(f"Unknown command {cmd}")
+            with io.BytesIO(bytes(data)) as stream:
+                while block := Block.parse_stream(stream):
+                    self._on_block(block, addr)
         except ConstructError as e:
             logger.warning(
                 f"Ignoring packet from {addr} due to parse error: {hexlify(data).decode('utf-8')}: {e}"
@@ -227,6 +199,47 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer, ConnectionStatus
             logger.exception(
                 f"Unexpected exception during parsing packet data '{hexlify(data).decode('utf-8')}' from {addr}"
             )
+
+    def _on_block(self, block: Container[Any], addr) -> None:
+        if block.start_byte == "RESPONSE":
+            self._on_response(block, addr)
+        else:
+            logger.debug(block)
+
+    def _on_response(self, msg: Container[Any], addr) -> None:
+        if not self._remote_ip:
+            logger.debug("Pump discovered at %s", addr)
+            self._remote_ip = addr[0]
+
+        self.status = ConnectionStatus.CONNECTED
+
+        logger.debug(msg.fields.value)
+        cmd = msg.fields.value.cmd
+        if cmd == "MODBUS_DATA_MSG":
+            data: dict[int, bytes] = {
+                row.coil_address: row.value
+                for row in msg.fields.value.data
+                if row.coil_address != 0xFFFF
+            }
+            self._on_raw_coil_set(data)
+        elif cmd == "MODBUS_READ_RESP":
+            row = msg.fields.value.data
+            self._on_raw_coil_value(row.coil_address, row.value)
+        elif cmd == "MODBUS_WRITE_RESP":
+            with suppress(InvalidStateError, CancelledError, KeyError):
+                self._futures["write"].set_result(msg.fields.value.data.result)
+        elif cmd == "RMU_DATA_MSG":
+            self._on_rmu_data(msg.fields.value)
+        elif cmd == "PRODUCT_INFO_MSG":
+            data = msg.fields.value.data
+            product_info = ProductInfo(data["model"], data["version"])
+            with suppress(InvalidStateError, CancelledError, KeyError):
+                self._futures["product_info"].set_result(product_info)
+            self.notify_event_listeners(
+                self.PRODUCT_INFO_EVENT, product_info=product_info
+            )
+        elif not isinstance(cmd, EnumIntegerString):
+            logger.debug(f"Unknown command {cmd}")
 
     async def read_product_info(
         self, timeout: float = READ_PRODUCT_INFO_TIMEOUT
@@ -473,7 +486,6 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer, ConnectionStatus
             else:
                 coil_data = CoilData(coil, value)
 
-            logger.info(coil_data)
             self._on_coil_read_success(coil_data)
         except NibeException as e:
             self._on_coil_read_error(coil_address, value, e)
@@ -530,40 +542,87 @@ class FixedPointStrange(Adapter):
     be fixed.
     """
 
-    def __init__(self, subcon, scale, offset, ndigits=1) -> None:
+    def __init__(self, subcon, scale, offset, size, ndigits=1) -> None:
         super().__init__(subcon)
         self._offset = offset
         self._scale = scale
         self._ndigits = ndigits
+        self._size = size
 
     def _decode(self, obj, context, path):
-        scaled = obj * self._scale
-        if scaled >= self._offset:
-            scaled += self._offset
+        value = obj
+        if value >= self._offset:
+            value += self._offset
         else:
-            scaled -= self._offset
-        return round(scaled, self._ndigits)
+            value -= self._offset
+
+        # For now skip limit checks, since we don't know
+        # how the pump handles these for this special case
+        # for negative offsets, we could never reach the
+        # integer limits after offset has been applied.
+
+        return round(value * self._scale, self._ndigits)
 
     def _encode(self, obj, context, path):
-        if obj >= 0:
-            val = obj - self._offset
+        val = obj / self._scale
+        if val >= 0:
+            val -= self._offset
         else:
-            val = obj + self._offset
-        return val / self._scale
+            val += self._offset
+        return val
 
 
 class FixedPoint(Adapter):
-    def __init__(self, subcon, scale, offset, ndigits=1) -> None:
+    def __init__(self, subcon, scale, offset, size, ndigits=1) -> None:
         super().__init__(subcon)
         self._offset = offset
         self._scale = scale
         self._ndigits = ndigits
+        self._size = size
 
     def _decode(self, obj, context, path):
-        return round(obj * self._scale + self._offset, self._ndigits)
+        value = obj + self._offset
+
+        # Limits seem to be applied after offset
+        # have been applied. This may possible depend
+        # on the sign of the offset, but that is unknown
+        # at the moment.
+        if is_hitting_integer_limit(self._size, value):
+            return None
+
+        return round(value * self._scale, self._ndigits)
 
     def _encode(self, obj, context, path):
-        return (obj - self._offset) / self._scale
+        return obj / self._scale - self._offset
+
+
+StartCode = Enum(
+    Int8ub,
+    RESPONSE=0x5C,
+    REQUEST=0xC0,
+    ACK=0x06,
+    NAK=0x15,
+)
+
+Command = Enum(
+    Int8ub,
+    RMU_WRITE_REQ=0x60,
+    RMU_DATA_MSG=0x62,
+    RMU_DATA_REQ=0x63,
+    MODBUS_DATA_MSG=0x68,
+    MODBUS_READ_REQ=0x69,
+    MODBUS_READ_RESP=0x6A,
+    MODBUS_WRITE_REQ=0x6B,
+    MODBUS_WRITE_RESP=0x6C,
+    MODBUS_ADDRESS_MSG=0x6E,
+    PRODUCT_INFO_MSG=0x6D,
+    ACCESSORY_VERSION_REQ=0xEE,
+    ECS_DATA_REQ=0x90,
+    ECS_DATA_MSG_1=0x55,
+    ECS_DATA_MSG_2=0xA0,
+    STRING_MSG=0xB1,
+    HEATPUMP_REQ=0xF7,
+)
 
 
 StringData = Struct(
@@ -595,33 +654,33 @@ RmuData = Struct(
             "hw_production" / Flag,
         ),
     ),
-    "bt1_outdoor_temperature" / FixedPointStrange(Int16sl, 0.1, -0.5),
-    "bt7_hw_top" / FixedPoint(Int16sl, 0.1, -0.5),
+    "bt1_outdoor_temperature" / FixedPointStrange(Int16sl, 0.1, -5, "s16"),
+    "bt7_hw_top" / FixedPoint(Int16sl, 0.1, -5, "s16"),
     "setpoint_or_offset_s1"
     / IfThenElse(
         lambda this: this.flags.use_room_sensor_s1,
-        FixedPoint(Int8ub, 0.1, 5.0),
-        FixedPoint(Int8sb, 1.0, 0),
+        FixedPoint(Int8ub, 0.1, 50, "u8"),
+        FixedPoint(Int8sb, 1.0, 0, "s8"),
     ),
     "setpoint_or_offset_s2"
     / IfThenElse(
         lambda this: this.flags.use_room_sensor_s2,
-        FixedPoint(Int8ub, 0.1, 5.0),
-        FixedPoint(Int8sb, 1.0, 0),
+        FixedPoint(Int8ub, 0.1, 50, "u8"),
+        FixedPoint(Int8sb, 1.0, 0, "s8"),
     ),
     "setpoint_or_offset_s3"
     / IfThenElse(
         lambda this: this.flags.use_room_sensor_s3,
-        FixedPoint(Int8ub, 0.1, 5.0),
-        FixedPoint(Int8sb, 1.0, 0),
+        FixedPoint(Int8ub, 0.1, 50, "u8"),
+        FixedPoint(Int8sb, 1.0, 0, "s8"),
     ),
     "setpoint_or_offset_s4"
     / IfThenElse(
         lambda this: this.flags.use_room_sensor_s4,
-        FixedPoint(Int8ub, 0.1, 5.0),
-        FixedPoint(Int8sb, 1.0, 0),
+        FixedPoint(Int8ub, 0.1, 50, "u8"),
+        FixedPoint(Int8sb, 1.0, 0, "s8"),
     ),
-    "bt50_room_temp_sX" / FixedPoint(Int16sl, 0.1, -0.5),
+    "bt50_room_temp_sX" / FixedPoint(Int16sl, 0.1, -5, "s16"),
     "temporary_lux" / Int8ub,
     "hw_time_hour" / Int8ub,
     "hw_time_min" / Int8ub,
@@ -637,45 +696,21 @@ RmuData = Struct(
     "unknown5" / GreedyBytes,
 )
 
-Data = Dedupe5C(
-    Switch(
-        this.cmd,
-        {
-            "MODBUS_READ_RESP": Struct("coil_address" / Int16ul, "value" / Bytes(4)),
-            "MODBUS_DATA_MSG": Array(
-                lambda this: this.length // 4,
-                Struct("coil_address" / Int16ul, "value" / Bytes(2)),
-            ),
-            "MODBUS_WRITE_RESP": Struct("result" / Flag),
-            "MODBUS_ADDRESS_MSG": Struct("address" / Int8ub),
-            "PRODUCT_INFO_MSG": ProductInfoData,
-            "RMU_DATA_MSG": RmuData,
-            "STRING_MSG": StringData,
-        },
-        default=Bytes(this.length),
-    )
-)
+ModbusDataValue = Struct("coil_address" / Int16ul, "value" / Bytes(2))
+ModbusData = GreedyRange(ModbusDataValue)
+ModbusReadResp = Struct("coil_address" / Int16ul, "value" / Bytes(4))
+ModbusWriteResp = Struct("result" / Flag)
+ModbusAddressMsg = Struct("address" / Int8ub)
 
-
-Command = Enum(
-    Int8ub,
-    RMU_WRITE_REQ=0x60,
-    RMU_DATA_MSG=0x62,
-    RMU_DATA_REQ=0x63,
-    MODBUS_DATA_MSG=0x68,
-    MODBUS_READ_REQ=0x69,
-    MODBUS_READ_RESP=0x6A,
-    MODBUS_WRITE_REQ=0x6B,
-    MODBUS_WRITE_RESP=0x6C,
-    MODBUS_ADDRESS_MSG=0x6E,
-    PRODUCT_INFO_MSG=0x6D,
-    ACCESSORY_VERSION_REQ=0xEE,
-    ECS_DATA_REQ=0x90,
-    ECS_DATA_MSG_1=0x55,
-    ECS_DATA_MSG_2=0xA0,
-    STRING_MSG=0xB1,
-    HEATPUMP_REQ=0xF7,
-)
+ResponseTypes = {
+    "MODBUS_READ_RESP": ModbusReadResp,
+    "MODBUS_DATA_MSG": ModbusData,
+    "MODBUS_WRITE_RESP": ModbusWriteResp,
+    "MODBUS_ADDRESS_MSG": ModbusAddressMsg,
+    "PRODUCT_INFO_MSG": ProductInfoData,
+    "RMU_DATA_MSG": RmuData,
+    "STRING_MSG": StringData,
+}
 
 Address = Enum(
     Int16ub,
@@ -718,80 +753,128 @@ ADDRESS_TO_ROOM_TEMP_COIL = {
 
 
 # fmt: off
-Response = Struct(
-    "start_byte" / Const(0x5C, Int8ub),
-    "fields" / RawCopy(
-        Struct(
-            "address" / Address,
-            "cmd" / Command,
-            "length" / Int8ub,
-            "data" / FixedSized(this.length, Data),
+
+ResponseData = Struct(
+    "address" / Address,
+    "cmd" / Command,
+    "data" / Prefixed(Int8ub,
+        Dedupe5C(
+            Switch(
+                this.cmd, ResponseTypes,
+                default=GreedyBytes,
+            )
         )
     ),
+)
+
+Response = Struct(
+    "start_byte" / Const("RESPONSE", StartCode),
+    "fields" / RawCopy(ResponseData),
     "checksum" / Checksum(Int8ub, xor8, this.fields.data),
 )
 
+AccessoryVersionReq = UnionConstruct(None,
+    # Modbus and RMU seem to disagree on how to interpret this
+    # data, at least from how it looks in the service info screen
+    # on the pump.
+    "modbus" / Struct(
+        "version" / Int16ul,
+        "unknown" / Int8ub,
+    ),
+    "rmu" / Struct(
+        "unknown" / Int8ub,
+        "version" / Int16ul,
+    ),
+)
 
-RequestData = Switch(
-    this.cmd,
-    {
-        "ACCESSORY_VERSION_REQ": UnionConstruct(None,
-            # Modbus and RMU seem to disagree on how to interpret this
-            # data, at least from how it looks in the service info screen
-            # on the pump.
-            "modbus" / Struct(
-                "version" / Int16ul,
-                "unknown" / Int8ub,
-            ),
-            "rmu" / Struct(
-                "unknown" / Int8ub,
-                "version" / Int16ul,
-            ),
-        ),
-        "RMU_WRITE_REQ": Struct(
-            "index" / RmuWriteIndex,
-            "value" / Switch(
-                lambda this: this.index,
-                {
-                    "TEMPORARY_LUX": Int8ub,
-                    "TEMPERATURE": FixedPoint(Int16ul, 0.1, -0.7),
-                    "FUNCTIONS": FlagsEnum(
-                        Int8ub,
-                        allow_additive_heating=0x01,
-                        allow_heating=0x02,
-                        allow_cooling=0x04,
-                    ),
-                    "OPERATIONAL_MODE": Int8ub,
-                    "SETPOINT_S1": FixedPoint(Int16sl, 0.1, 0.0),
-                    "SETPOINT_S2": FixedPoint(Int16sl, 0.1, 0.0),
-                    "SETPOINT_S3": FixedPoint(Int16sl, 0.1, 0.0),
-                    "SETPOINT_S4": FixedPoint(Int16sl, 0.1, 0.0),
-                },
-                default=Select(
-                    Int16ul,
-                    Int8ub,
-                )
-            )
-        ),
-        "MODBUS_READ_REQ": Struct(
-            "coil_address" / Int16ul,
-        ),
-        "MODBUS_WRITE_REQ": Struct(
-            "coil_address" / Int16ul,
-            "value" / Bytes(4),
+RmuWriteReqTypes = {
+    "TEMPORARY_LUX": Int8ub,
+    "TEMPERATURE": FixedPoint(Int16ul, 0.1, -7.0, size="s16"),
+    "FUNCTIONS": FlagsEnum(
+        Int8ub,
+        allow_additive_heating=0x01,
+        allow_heating=0x02,
+        allow_cooling=0x04,
+    ),
+    "OPERATIONAL_MODE": Int8ub,
+    "SETPOINT_S1": FixedPoint(Int16sl, 0.1, 0.0, size="s16"),
+    "SETPOINT_S2": FixedPoint(Int16sl, 0.1, 0.0, size="s16"),
+    "SETPOINT_S3": FixedPoint(Int16sl, 0.1, 0.0, size="s16"),
+    "SETPOINT_S4": FixedPoint(Int16sl, 0.1, 0.0, size="s16"),
+}
+
+RmuWriteReq = Struct(
+    "index" / RmuWriteIndex,
+    "value" / Switch(
+        this.index,
+        RmuWriteReqTypes,
+        default=Select(
+            Int16ul,
+            Int8ub,
         )
-    },
-    default=Bytes(this.length),
+    )
+)
+
+ModbusReadReq = Struct(
+    "coil_address" / Int16ul,
+)
+
+ModbusWriteReq = Struct(
+    "coil_address" / Int16ul,
+    "value" / Bytes(4),
+)
+
+RequestTypes = {
+    "ACCESSORY_VERSION_REQ": AccessoryVersionReq,
+    "RMU_WRITE_REQ": RmuWriteReq,
+    "MODBUS_READ_REQ": ModbusReadReq,
+    "MODBUS_WRITE_REQ": ModbusWriteReq
+}
+
+RequestData = Struct(
+    Const("REQUEST", StartCode),
+    "cmd" / Command,
+    "data" / Prefixed(Int8ub,
+        Switch(
+            this.cmd,
+            RequestTypes,
+            default=GreedyBytes,
+        )
+    )
 )
 
 Request = Struct(
-    "fields" / RawCopy(
-        Struct(
-            "start_byte" / Const(0xC0, Int8ub),
-            "cmd" / Command,
-            "data" / Prefixed(Int8ub, RequestData)
-        )
-    ),
+    "start_byte" / Peek(StartCode),
+    "fields" / RawCopy(RequestData),
     "checksum" / Checksum(Int8ub, xor8, this.fields.data),
 )
+
+AckData = Struct(Const("ACK", StartCode))
+Ack = Struct(
+    "start_byte" / Peek(StartCode),
+    "fields" / RawCopy(AckData)
+)
+
+NakData = Struct(Const("NAK", StartCode))
+Nak = Struct(
+    "start_byte" / Peek(StartCode),
+    "fields" / RawCopy(NakData)
+)
+
+BlockTypes = {
+    "RESPONSE": Response,
+    "REQUEST": Request,
+    "ACK": Ack,
+    "NAK": Nak,
+}
+
+Block = FocusedSeq(
+    "data",
+    "start_byte" / Peek(StartCode),
+    "data" / Switch(
+        this.start_byte,
+        BlockTypes
+    ),
+)
+
 # fmt: on

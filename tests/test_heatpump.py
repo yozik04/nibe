@@ -89,11 +89,14 @@ class HeatpumpIntialization(unittest.IsolatedAsyncioTestCase):
     "model,series",
     [
         (Model.F370, Series.F),
+        (Model.F470, Series.F),
         (Model.F730, Series.F),
+        (Model.F750, Series.F),
         (Model.F1145, Series.F),
         (Model.F1245, Series.F),
         (Model.F1155, Series.F),
         (Model.F1255, Series.F),
+        (Model.F1345, Series.F),
         (Model.F1355, Series.F),
         (Model.SMO20, Series.F),
         (Model.SMO40, Series.F),
@@ -105,10 +108,13 @@ class HeatpumpIntialization(unittest.IsolatedAsyncioTestCase):
         (Model.SMOS40, Series.S),
         (Model.S320, Series.S),
         (Model.S325, Series.S),
+        (Model.S330, Series.S),
         (Model.S735, Series.S),
         (Model.S1155, Series.S),
         (Model.S1255, Series.S),
+        (Model.S1156, Series.S),
         (Model.S1256, Series.S),
+        (Model.S2125, Series.S),
     ],
 )
 def test_series(model: Model, series: Series):
