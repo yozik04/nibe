@@ -111,6 +111,13 @@
     "size": "s16",
     "name": "collector-out-az10-bt27-30023"
   },
+  "30027": {
+    "title": "Roomsensor 1-1",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "roomsensor-1-1-30027"
+  },
   "30028": {
     "title": "Pool (BT51)",
     "factor": 10,
@@ -164,6 +171,27 @@
     "factor": 1,
     "size": "s16",
     "name": "electrical-anode-eb100-fr1-30042"
+  },
+  "30047": {
+    "title": "Current (BE3)",
+    "factor": 10,
+    "unit": "A",
+    "size": "u32",
+    "name": "current-be3-30047"
+  },
+  "30049": {
+    "title": "Current (BE2)",
+    "factor": 10,
+    "unit": "A",
+    "size": "u32",
+    "name": "current-be2-30049"
+  },
+  "30051": {
+    "title": "Current (BE1)",
+    "factor": 10,
+    "unit": "A",
+    "size": "u32",
+    "name": "current-be1-30051"
   },
   "30060": {
     "title": "Pool (CL12-BT51)",

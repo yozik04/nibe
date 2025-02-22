@@ -497,6 +497,8 @@ Title;Info;ID;Unit;Size;Factor;Min;Max;Default;Mode
 "Blocking status of the step controlled add heat acc";"0 = Unblocked, 1 = Blocked";43171;"";u8;1;0;0;0;R;
 "GP10 Ext. Supply Pump Status";"External supply pump status. 1=on,0=off";43189;"";u8;1;0;0;0;R;
 "Heat Meter (OBSOLETE)";"Obsolete since v4798 of the controller software";43230;"kWh";u32;10;0;9999999;0;R;
+"Heat Meter - HW Cpr EP14";"Accumulated energy production as calculated by the heat meter";44306;"kWh";u32;10;0;0;0;R;
+"Heat Meter - Heat Cpr EP14";"Accumulated energy production as calculated by the heat meter";44308;"kWh";u32;10;0;0;0;R;
 "Tot. HW op.time add.";"Total electric additive operation time in hot water mode";43239;"h";s32;10;0;9999999;0;R;
 "Docked Heat Compressors";"Number of compressors docked to heating";43473;"";u8;1;0;0;0;R;
 "Docked Hot Water Compressors";"Number of compressors docked to hot water";43474;"";u8;1;0;0;0;R;
