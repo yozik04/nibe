@@ -11060,6 +11060,16 @@
     "default": 0.0,
     "name": "compressor-total-time-energy-storage-heat-pump-8-ep15-32370"
   },
+  "45459": {
+    "title": "Cooling with solar energy surplus",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "cooling-with-solar-energy-surplus-45459",
+    "write": true
+  },
   "44205": {
     "title": "Auto mode, start temperature for active cooling",
     "factor": 10,
@@ -11105,6 +11115,20 @@
     "unit": "\u00b0C",
     "size": "s16",
     "name": "boiler-temperature-bt52-33801"
+  },
+  "32801": {
+    "title": "Temperature: RMU S40 1",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s32",
+    "name": "temperature-rmu-s40-1-32801"
+  },
+  "33131": {
+    "title": "Humidity: RMU S40 1",
+    "factor": 10,
+    "unit": "%RH",
+    "size": "s32",
+    "name": "humidity-rmu-s40-1-33131"
   },
   "41556": {
     "title": "Input AUX7",
