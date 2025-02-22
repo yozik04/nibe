@@ -3703,6 +3703,22 @@
     "default": 0.0,
     "name": "heat-meter-obsolete-43230"
   },
+  "44306": {
+    "title": "Heat Meter - HW Cpr EP14",
+    "info": "Accumulated energy production as calculated by the heat meter",
+    "unit": "kWh",
+    "size": "u32",
+    "factor": 10,
+    "name": "heat-meter-hw-cpr-ep14-44306"
+  },
+  "44308": {
+    "title": "Heat Meter - Heat Cpr EP14",
+    "info": "Accumulated energy production as calculated by the heat meter",
+    "unit": "kWh",
+    "size": "u32",
+    "factor": 10,
+    "name": "heat-meter-heat-cpr-ep14-44308"
+  },
   "43239": {
     "title": "Tot. HW op.time add.",
     "info": "Total electric additive operation time in hot water mode",
