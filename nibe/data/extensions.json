@@ -252,8 +252,9 @@
     }
   },
   {
-    "description": "Corrections for compressor power units - S series",
+    "description": "Corrections for compressor power units - S735, S1155/S1156",
     "files": [
+      "s735.json",
       "s1155_s1255.json"
     ],
     "data": {
@@ -362,115 +363,140 @@
     }
   },
   {
-    "description": "M12676EN-1 - S1155/S1255 ",
-    "files": ["s1155_s1255.json"],
-    "data": {
-      "31101": {
-        "mappings": {
-          "0": "Off",
-          "1": "On"
-        }
-      }
-    }
-  },
-  {
-    "description": "Reversing valve hot water (QN10) - S1155/S1255 ",
-    "files": ["s1155_s1255.json"],
-    "data": {
-      "32197": {
-        "mappings": {
-          "0": "Off",
-          "1": "On"
-        }
-      }
-    }
-  },
-  {
-    "description": "M12676EN-1 - SMOS40 Mappings",
-    "files": ["smos40.json"],
+    "description": "S-series: Map registers with binary states to 0=Off 1=On",
+    "files": [
+      "s1155_s1255.json",
+      "s1156_s1256.json",
+      "s735.json",
+      "smos40.json",
+      "s320_s325.json",
+      "s330.json",
+      "s2125.json"
+    ],
     "data": {
       "31067": {
         "mappings": {
           "0": "Off",
           "1": "On"
         }
-      }
-    }
-  },
-  {
-    "description": "M12676EN-1 - F2120 slave 1",
-    "files": ["smos40.json"],
-    "data": {
-      "31806": {
+      },
+      "31101": {
         "mappings": {
           "0": "Off",
-          "1": "Active",
-          "2": "Passive"
+          "1": "On"
+        }
+      },
+      "31828": {
+        "mappings": {
+          "0": "Off",
+          "1": "On"
+        }
+      },
+      "31829": {
+        "mappings": {
+          "0": "Off",
+          "1": "On"
+        }
+      },
+      "32197": {
+        "mappings": {
+          "0": "Off",
+          "1": "On"
+        }
+      },
+      "40200": {
+        "mappings": {
+          "0": "Off",
+          "1": "On"
+        }
+      },
+      "40201": {
+        "mappings": {
+          "0": "Off",
+          "1": "On"
+        }
+      },
+      "40202": {
+        "mappings": {
+          "0": "Off",
+          "1": "On"
+        }
+      },
+      "40203": {
+        "mappings": {
+          "0": "Off",
+          "1": "On"
         }
       }
     }
   },
   {
-    "description": "M12676EN-1 - F2120 slave 2",
-    "files": ["smos40.json"],
+    "description": "S-series: Map registers with valves to 0=Closed 1=Open",
+    "files": [
+      "s1155_s1255.json",
+      "s1156_s1256.json",
+      "s735.json",
+      "smos40.json",
+      "s320_s325.json",
+      "s330.json",
+      "s2125.json"
+    ],
     "data": {
-      "31792": {
+      "31031": {
         "mappings": {
-          "0": "Off",
-          "1": "Active",
-          "2": "Passive"
+          "0": "Closed",
+          "1": "Open"
+        }
+      },
+      "31032": {
+        "mappings": {
+          "0": "Closed",
+          "1": "Open"
+        }
+      },
+      "31033": {
+        "mappings": {
+          "0": "Closed",
+          "1": "Open"
+        }
+      },
+      "31034": {
+        "mappings": {
+          "0": "Closed",
+          "1": "Open"
+        }
+      },
+      "31134": {
+        "mappings": {
+          "0": "Closed",
+          "1": "Open"
+        }
+      },
+      "31135": {
+        "mappings": {
+          "0": "Closed",
+          "1": "Open"
+        }
+      },
+      "32197": {
+        "mappings": {
+          "0": "Heat",
+          "1": "Hot water"
         }
       }
     }
   },
   {
-    "description": "M12676EN-1 - F2120 slave 3",
-    "files": ["smos40.json"],
-    "data": {
-      "31778": {
-        "mappings": {
-          "0": "Off",
-          "1": "Active",
-          "2": "Passive"
-        }
-      }
-    }
-  },
-  {
-    "description": "M12676EN-1 - F2120 slave 4",
-    "files": [],
-    "data": {
-      "31764": {
-        "mappings": {
-          "0": "Off",
-          "1": "Active",
-          "2": "Passive"
-        }
-      }
-    }
-  },
-  {
-    "description": "M12676EN-1 - F2140",
-    "files": [],
-    "data": {
-      "31805": {
-        "mappings": {
-          "0": "Off",
-          "1": "Active",
-          "2": "Passive"
-        }
-      }
-    }
-  },
-  {
-    "description": "M12676EN-1 - Common Parameters",
+    "description": "S-series: Map registers with modes to human-readable strings",
     "files": [
       "s320_s325.json",
       "s330.json",
       "s735.json",
       "s1155_s1255.json",
+      "s1156_s1256.json",
       "s2125.json",
-      "smos40.json"],
+      "smos40.json"
+    ],
     "data": {
       "40057": {
         "mappings": {
@@ -494,6 +520,41 @@
           "30": "Heat",
           "40": "Pool",
           "60": "Cooling"
+        }
+      },
+      "31764": {
+        "mappings": {
+          "0": "Off",
+          "1": "Active",
+          "2": "Passive"
+        }
+      },
+      "31778": {
+        "mappings": {
+          "0": "Off",
+          "1": "Active",
+          "2": "Passive"
+        }
+      },
+      "31792": {
+        "mappings": {
+          "0": "Off",
+          "1": "Active",
+          "2": "Passive"
+        }
+      },
+      "31805": {
+        "mappings": {
+          "0": "Off",
+          "1": "Active",
+          "2": "Passive"
+        }
+      },
+      "31806": {
+        "mappings": {
+          "0": "Off",
+          "1": "Active",
+          "2": "Passive"
         }
       }
     }
