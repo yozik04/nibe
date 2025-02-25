@@ -1,8 +1,8 @@
 ---
-name: "Add/Update Registries"
+name: "🗃️ Add/Update Registries"
 about: "Request to add or update registers in the library"
 title: "[Add/Update Registries] for {{ heatpump model }} {{ firmware version }}"
-labels: "i: enhancement, i: needs triage"
+labels: "i: registries, i: needs triage"
 assignees: ""
 ---
 
