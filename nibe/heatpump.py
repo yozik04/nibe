@@ -67,6 +67,8 @@ class Model(Enum):
     VVM310 = "vvm310_vvm500", Series.F
     VVM500 = "vvm310_vvm500", Series.F
 
+    SVM_S332 = "svm_s332", Series.S
+
     CUSTOM = "custom", Series.CUSTOM
 
     data_file: Union[str, bytes, PathLike[str], PathLike[bytes]]

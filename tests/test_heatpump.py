@@ -115,6 +115,7 @@ class HeatpumpIntialization(unittest.IsolatedAsyncioTestCase):
         (Model.S1156, Series.S),
         (Model.S1256, Series.S),
         (Model.S2125, Series.S),
+        (Model.SVM_S332, Series.S),
     ],
 )
 def test_series(model: Model, series: Series):
