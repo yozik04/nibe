@@ -50,6 +50,7 @@ class Model(Enum):
     S325 = "s320_s325", Series.S
 
     S330 = "s330", Series.S
+    S332 = "s332", Series.S
 
     S735 = "s735", Series.S
 
@@ -66,8 +67,6 @@ class Model(Enum):
 
     VVM310 = "vvm310_vvm500", Series.F
     VVM500 = "vvm310_vvm500", Series.F
-
-    SVM_S332 = "svm_s332", Series.S
 
     CUSTOM = "custom", Series.CUSTOM
 

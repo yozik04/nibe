@@ -24,6 +24,7 @@ Library for communication with Nibe heatpumps.
  - S320
  - S325
  - S330
+ - S332
  - S735
  - S1156
  - S1256
@@ -36,7 +37,6 @@ Library for communication with Nibe heatpumps.
  - VVM320
  - VVM325
  - VVM500
- - SVM S332
 
 ## Connection methods
 
