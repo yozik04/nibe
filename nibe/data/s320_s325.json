@@ -2876,7 +2876,7 @@
     "unit": "kW",
     "size": "s16",
     "min": 0.0,
-    "max": 900.0,
+    "max": 4500.0,
     "default": 900.0,
     "name": "max-internal-additional-heat-40103",
     "write": true
