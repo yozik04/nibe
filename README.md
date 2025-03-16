@@ -41,8 +41,8 @@ Library for communication with Nibe heatpumps.
 ## Connection methods
 
 - RS485 hardwired using NibeGW on Arduino or RPi. NibeGW was developed by Pauli Anttila for [Openhab's integration](https://www.openhab.org/addons/bindings/nibeheatpump/).
-- **(Not yet tested)** TCP Modbus for S Models
-- **(Not yet tested)** Serial Modbus for Nibe Modbus 40)
+- TCP Modbus for S Models
+- Serial Modbus for Nibe Modbus 40)
 
 ### NibeGW
 
@@ -187,6 +187,8 @@ Nibe is registered mark of NIBE Energy Systems.
 The code was developed as a way of integrating personally owned Nibe heatpump, and it cannot be used for other purposes. It is not affiliated with any company, and it doesn't have commercial intent.
 
 The code is provided AS IS and the developers will not be held responsible for failures in the heatpump operation or any other malfunction.
+
+**IMPORTANT**: Using this library to control your heatpump is done at your own risk. The developers assume no responsibility for any damage that may occur to your heating system, property, or for any unsafe conditions that may result from improper use. Changing heatpump parameters can potentially damage your equipment or create hazardous conditions. Users should have sufficient knowledge of their heating system before attempting to control it.
 
 # HOWTOs for developers
 
