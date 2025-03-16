@@ -24,6 +24,7 @@ Library for communication with Nibe heatpumps.
  - S320
  - S325
  - S330
+ - S332
  - S735
  - S1156
  - S1256

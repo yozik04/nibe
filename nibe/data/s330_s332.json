@@ -55,6 +55,13 @@
     "size": "s16",
     "name": "hot-water-charging-bt6-30010"
   },
+  "30027": {
+    "title": "Roomsensor 1-1",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "roomsensor-1-1-30027"
+  },
   "30037": {
     "title": "Temperature limiter (EB100-FD1)",
     "factor": 1,
@@ -367,6 +374,26 @@
     "unit": "\u00b0C",
     "size": "s16",
     "name": "hot-water-comfort-heater-bt83-30176"
+  },
+  "30270": {
+    "title": "Compressor, total time pool, heat pump 1 (EP14)",
+    "factor": 1,
+    "unit": "h",
+    "size": "u32",
+    "min": 0.0,
+    "max": 2147483647.0,
+    "default": 0.0,
+    "name": "compressor-total-time-pool-heat-pump-1-ep14-30270"
+  },
+  "30272": {
+    "title": "Compressor, total time pool 2, heat pump 1 (EP14)",
+    "factor": 1,
+    "unit": "h",
+    "size": "u32",
+    "min": 0.0,
+    "max": 2147483647.0,
+    "default": 0.0,
+    "name": "compressor-total-time-pool-2-heat-pump-1-ep14-30272"
   },
   "30302": {
     "title": "Heat pump 1 requested compressor frequency",
@@ -1710,7 +1737,7 @@
   "31120": {
     "title": "Relay status, imm. heat. board (EB100-EP14)",
     "factor": 1,
-    "size": "u8",
+    "size": "u16",
     "name": "relay-status-imm-heat-board-eb100-ep14-31120"
   },
   "31121": {
@@ -1813,6 +1840,12 @@
     "unit": "\u00b0C",
     "size": "s16",
     "name": "suction-gas-eb101-bt17-31482"
+  },
+  "31485": {
+    "title": "Compressor status (EB101)",
+    "factor": 1,
+    "size": "u8",
+    "name": "compressor-status-eb101-31485"
   },
   "31486": {
     "title": "Compressor, time to start (EB101-EP14)",
@@ -1958,6 +1991,13 @@
     "factor": 1,
     "size": "s16",
     "name": "bp4-unprocessed-eb101-ep14-31801"
+  },
+  "31802": {
+    "title": "Pressure sensor, condenser (EB101-BP4)",
+    "factor": 10,
+    "unit": "bar",
+    "size": "s16",
+    "name": "pressure-sensor-condenser-eb101-bp4-31802"
   },
   "31803": {
     "title": "Low pressure (EB101-BP8)",
@@ -2545,13 +2585,35 @@
     "name": "activate-forced-control-45001",
     "write": true
   },
+  "40098": {
+    "title": "DM start heating",
+    "factor": 1,
+    "unit": "DM",
+    "size": "s16",
+    "min": -1000.0,
+    "max": -30.0,
+    "default": -60.0,
+    "name": "dm-start-heating-40098",
+    "write": true
+  },
+  "40101": {
+    "title": "DM between additional heat step",
+    "factor": 1,
+    "unit": "DM",
+    "size": "s16",
+    "min": 10.0,
+    "max": 1000.0,
+    "default": 100.0,
+    "name": "dm-between-additional-heat-step-40101",
+    "write": true
+  },
   "40103": {
     "title": "Max. internal additional heat",
     "factor": 100,
     "unit": "kW",
     "size": "s16",
     "min": 0.0,
-    "max": 900.0,
+    "max": 4500.0,
     "default": 900.0,
     "name": "max-internal-additional-heat-40103",
     "write": true
@@ -2565,6 +2627,36 @@
     "max": 400.0,
     "default": 16.0,
     "name": "fuse-40104",
+    "write": true
+  },
+  "42748": {
+    "title": "Phase Order L3",
+    "factor": 1,
+    "size": "u8",
+    "min": 1.0,
+    "max": 128.0,
+    "default": 4.0,
+    "name": "phase-order-l3-42748",
+    "write": true
+  },
+  "42747": {
+    "title": "Phase Order L2",
+    "factor": 1,
+    "size": "u8",
+    "min": 1.0,
+    "max": 128.0,
+    "default": 2.0,
+    "name": "phase-order-l2-42747",
+    "write": true
+  },
+  "42746": {
+    "title": "Phase Order L1",
+    "factor": 1,
+    "size": "u8",
+    "min": 1.0,
+    "max": 128.0,
+    "default": 1.0,
+    "name": "phase-order-l1-42746",
     "write": true
   },
   "40121": {
@@ -3149,7 +3241,7 @@
     "factor": 1,
     "size": "u8",
     "min": 0.0,
-    "max": 67.0,
+    "max": 68.0,
     "default": 0.0,
     "name": "input-aux5-40212",
     "write": true
@@ -3159,7 +3251,7 @@
     "factor": 1,
     "size": "u8",
     "min": 0.0,
-    "max": 67.0,
+    "max": 68.0,
     "default": 0.0,
     "name": "input-aux4-40213",
     "write": true
@@ -3169,7 +3261,7 @@
     "factor": 1,
     "size": "u8",
     "min": 0.0,
-    "max": 67.0,
+    "max": 68.0,
     "default": 0.0,
     "name": "input-aux3-40214",
     "write": true
@@ -3179,7 +3271,7 @@
     "factor": 1,
     "size": "u8",
     "min": 0.0,
-    "max": 67.0,
+    "max": 68.0,
     "default": 0.0,
     "name": "input-aux2-40215",
     "write": true
@@ -3189,7 +3281,7 @@
     "factor": 1,
     "size": "u8",
     "min": 0.0,
-    "max": 67.0,
+    "max": 68.0,
     "default": 0.0,
     "name": "input-aux1-40216",
     "write": true
@@ -3232,6 +3324,17 @@
       "1": "Manual",
       "2": "Add. heat only"
     }
+  },
+  "40680": {
+    "title": "DM diff. start additional heat",
+    "factor": 1,
+    "unit": "DM",
+    "size": "s16",
+    "min": 100.0,
+    "max": 2000.0,
+    "default": 700.0,
+    "name": "dm-diff-start-additional-heat-40680",
+    "write": true
   },
   "40682": {
     "title": "Cooling heat sensor set point value",
@@ -3322,13 +3425,13 @@
     "write": true
   },
   "40749": {
-    "title": "Operating mode charge pump climate system 1",
+    "title": "Operating mode charge pump (EB101)",
     "factor": 1,
     "size": "u8",
     "min": 0.0,
     "max": 1.0,
     "default": 1.0,
-    "name": "operating-mode-charge-pump-climate-system-1-40749",
+    "name": "operating-mode-charge-pump-eb101-40749",
     "write": true
   },
   "45269": {
@@ -3381,7 +3484,7 @@
     "factor": 1,
     "size": "u8",
     "min": 0.0,
-    "max": 67.0,
+    "max": 68.0,
     "default": 0.0,
     "name": "input-aux6-40768",
     "write": true
@@ -3611,6 +3714,26 @@
     "max": 1.0,
     "default": 0.0,
     "name": "ers-1-40934",
+    "write": true
+  },
+  "45296": {
+    "title": "blockFreq 2 (EB101)",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "blockfreq-2-eb101-45296",
+    "write": true
+  },
+  "45297": {
+    "title": "blockFreq 1 (EB101)",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "blockfreq-1-eb101-45297",
     "write": true
   },
   "40949": {
@@ -5108,6 +5231,16 @@
     "max": 1.0,
     "default": 0.0,
     "name": "start-fan-de-icing-eb101-45361",
+    "write": true
+  },
+  "45369": {
+    "title": "Defrost Requested EB101",
+    "factor": 1,
+    "size": "s8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "defrost-requested-eb101-45369",
     "write": true
   },
   "40177": {
@@ -6802,7 +6935,7 @@
     "factor": 1,
     "size": "u8",
     "min": 0.0,
-    "max": 67.0,
+    "max": 68.0,
     "default": 0.0,
     "name": "aux-from-modbus-42741",
     "write": true
@@ -7220,12 +7353,19 @@
     "size": "s16",
     "name": "boiler-temperature-bt52-33801"
   },
+  "32801": {
+    "title": "Temperature: Room Temp Sensor",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s32",
+    "name": "temperature-room-temp-sensor-32801"
+  },
   "41556": {
     "title": "Input AUX7",
     "factor": 1,
     "size": "u8",
     "min": 0.0,
-    "max": 67.0,
+    "max": 68.0,
     "default": 0.0,
     "name": "input-aux7-41556",
     "write": true
@@ -7235,7 +7375,7 @@
     "factor": 1,
     "size": "u8",
     "min": 0.0,
-    "max": 67.0,
+    "max": 68.0,
     "default": 0.0,
     "name": "input-aux8-41557",
     "write": true
@@ -7245,7 +7385,7 @@
     "factor": 1,
     "size": "u8",
     "min": 0.0,
-    "max": 67.0,
+    "max": 68.0,
     "default": 0.0,
     "name": "input-aux9-41558",
     "write": true

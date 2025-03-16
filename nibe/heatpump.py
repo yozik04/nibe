@@ -49,7 +49,8 @@ class Model(Enum):
     S320 = "s320_s325", Series.S
     S325 = "s320_s325", Series.S
 
-    S330 = "s330", Series.S
+    S330 = "s330_s332", Series.S
+    S332 = "s330_s332", Series.S
 
     S735 = "s735", Series.S
 

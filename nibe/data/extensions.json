@@ -466,7 +466,7 @@
     "description": "M12676EN-1 - Common Parameters",
     "files": [
       "s320_s325.json",
-      "s330.json",
+      "s330_s332.json",
       "s735.json",
       "s1155_s1255.json",
       "s2125.json",
