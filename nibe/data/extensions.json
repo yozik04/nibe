@@ -363,7 +363,10 @@
   },
   {
     "description": "M12676EN-1 - S1155/S1255 ",
-    "files": ["s1155_s1255.json"],
+    "files": [
+      "s1155_s1255.json",
+      "s1156_s1256.json"
+    ],
     "data": {
       "31101": {
         "mappings": {
@@ -375,7 +378,10 @@
   },
   {
     "description": "Reversing valve hot water (QN10) - S1155/S1255 ",
-    "files": ["s1155_s1255.json"],
+    "files": [
+      "s1155_s1255.json",
+      "s1156_s1256.json"
+    ],
     "data": {
       "32197": {
         "mappings": {
@@ -469,6 +475,7 @@
       "s330_s332.json",
       "s735.json",
       "s1155_s1255.json",
+      "s1156_s1256.json",
       "s2125.json",
       "smos40.json"],
     "data": {
