@@ -8335,6 +8335,13 @@
     "size": "s16",
     "name": "boiler-temperature-bt52-33801"
   },
+  "32801": {
+    "title": "Temperature: BT50",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s32",
+    "name": "temperature-bt50-32801"
+  },
   "41552": {
     "title": "Speed of circulation pump for (EP15)",
     "factor": 1,
