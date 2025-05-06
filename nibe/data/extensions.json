@@ -622,5 +622,22 @@
         "max": 800
       }
     }
+  },
+  {
+    "description": "Add Room Sensor (BT50) holding register",
+    "files": [
+      "s1156_s1256.json"
+    ],
+    "data": {
+      "5987": {
+        "title": "Room sensor (BT50)",
+        "info": "Room sensor (BT50)",
+        "unit": "°C",
+        "size": "s16",
+        "factor": 10,
+        "name": "room-sensor-bt-50-5987",
+        "write": true
+      }
+    }
   }
 ]
