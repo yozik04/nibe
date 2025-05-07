@@ -1078,6 +1078,7 @@ Max difference, SES lower priority energy source	MODBUS_HOLDING_REGISTER	1327	10
 Delta brine pump passive cooling	MODBUS_HOLDING_REGISTER	1328	1	°C	u8	1	15	4
 Installed (EB101)	MODBUS_HOLDING_REGISTER	1550	1		u8	0	1	0
 EME20	MODBUS_HOLDING_REGISTER	4000	1		u8	0	1	0
+Current power	MODBUS_INPUT_REGISTER	2176	1	W	u32	0	0	0
 PV panel affects pool (EME)	MODBUS_HOLDING_REGISTER	4005	1		u8	0	1	0
 Speed of circulation pump passive cooling (EP15)	MODBUS_HOLDING_REGISTER	4006	1	%	u8	1	100	70
 Speed of circulation pump active cooling (EP15)	MODBUS_HOLDING_REGISTER	4007	1	%	u8	1	100	70
@@ -1111,7 +1112,6 @@ External adjustment with room sensor, cooling climate system 4	MODBUS_HOLDING_RE
 External adjustment with room sensor, cooling climate system 3	MODBUS_HOLDING_REGISTER	4151	10	°C	s16	50	300	200
 External adjustment with room sensor, cooling climate system 2	MODBUS_HOLDING_REGISTER	4152	10	°C	s16	50	300	200
 External adjustment with room sensor, cooling climate system 1	MODBUS_HOLDING_REGISTER	4153	10	°C	s16	50	300	200
-Current power	MODBUS_INPUT_REGISTER	2727	100	kW	u32	0	0	0
 id:6917	MODBUS_HOLDING_REGISTER	4072	1		s16	0	200	1
 id:6918	MODBUS_HOLDING_REGISTER	4073	1		s16	0	20	1
 id:6920	MODBUS_HOLDING_REGISTER	4074	1		s16	0	20	0

@@ -8221,6 +8221,13 @@
     "name": "eme20-44001",
     "write": true
   },
+  "32177": {
+    "title": "Current power",
+    "factor": 1,
+    "unit": "W",
+    "size": "u32",
+    "name": "current-power-32177"
+  },
   "44006": {
     "title": "PV panel affects pool (EME)",
     "factor": 1,
