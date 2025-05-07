@@ -70,11 +70,11 @@
     "name": "brine-out-bt11-30012"
   },
   "30013": {
-    "title": "Condenser (BT12)",
+    "title": "Condenser sensor, supply line (BT12)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
-    "name": "condenser-bt12-30013"
+    "name": "condenser-sensor-supply-line-bt12-30013"
   },
   "30014": {
     "title": "Discharge (BT14)",
@@ -881,6 +881,26 @@
     "unit": "h",
     "size": "u32",
     "name": "compressor-total-time-pool-2-heat-pump-1-ep15-30266"
+  },
+  "30270": {
+    "title": "Compressor, total time pool, heat pump 1 (EP14)",
+    "factor": 1,
+    "unit": "h",
+    "size": "u32",
+    "min": 0.0,
+    "max": 2147483647.0,
+    "default": 0.0,
+    "name": "compressor-total-time-pool-heat-pump-1-ep14-30270"
+  },
+  "30272": {
+    "title": "Compressor, total time pool 2, heat pump 1 (EP14)",
+    "factor": 1,
+    "unit": "h",
+    "size": "u32",
+    "min": 0.0,
+    "max": 2147483647.0,
+    "default": 0.0,
+    "name": "compressor-total-time-pool-2-heat-pump-1-ep14-30272"
   },
   "30280": {
     "title": "Compressor, total time cooling, main unit (EP14)",
@@ -3404,7 +3424,7 @@
   "31120": {
     "title": "Relay status, imm. heat. board (EB100-EP14)",
     "factor": 1,
-    "size": "u8",
+    "size": "u16",
     "name": "relay-status-imm-heat-board-eb100-ep14-31120"
   },
   "31121": {
@@ -5087,8 +5107,38 @@
     "size": "u16",
     "min": 1.0,
     "max": 400.0,
-    "default": 16.0,
+    "default": 25.0,
     "name": "fuse-40104",
+    "write": true
+  },
+  "42748": {
+    "title": "Phase Order L3",
+    "factor": 1,
+    "size": "u8",
+    "min": 1.0,
+    "max": 128.0,
+    "default": 4.0,
+    "name": "phase-order-l3-42748",
+    "write": true
+  },
+  "42747": {
+    "title": "Phase Order L2",
+    "factor": 1,
+    "size": "u8",
+    "min": 1.0,
+    "max": 128.0,
+    "default": 2.0,
+    "name": "phase-order-l2-42747",
+    "write": true
+  },
+  "42746": {
+    "title": "Phase Order L1",
+    "factor": 1,
+    "size": "u8",
+    "min": 1.0,
+    "max": 128.0,
+    "default": 1.0,
+    "name": "phase-order-l1-42746",
     "write": true
   },
   "40121": {
@@ -5814,7 +5864,7 @@
     "factor": 1,
     "size": "u8",
     "min": 0.0,
-    "max": 67.0,
+    "max": 68.0,
     "default": 0.0,
     "name": "input-aux5-40212",
     "write": true
@@ -5824,7 +5874,7 @@
     "factor": 1,
     "size": "u8",
     "min": 0.0,
-    "max": 67.0,
+    "max": 68.0,
     "default": 0.0,
     "name": "input-aux4-40213",
     "write": true
@@ -5834,7 +5884,7 @@
     "factor": 1,
     "size": "u8",
     "min": 0.0,
-    "max": 67.0,
+    "max": 68.0,
     "default": 0.0,
     "name": "input-aux3-40214",
     "write": true
@@ -5844,7 +5894,7 @@
     "factor": 1,
     "size": "u8",
     "min": 0.0,
-    "max": 67.0,
+    "max": 68.0,
     "default": 0.0,
     "name": "input-aux2-40215",
     "write": true
@@ -5854,7 +5904,7 @@
     "factor": 1,
     "size": "u8",
     "min": 0.0,
-    "max": 67.0,
+    "max": 68.0,
     "default": 0.0,
     "name": "input-aux1-40216",
     "write": true
@@ -6341,7 +6391,7 @@
     "factor": 1,
     "size": "u8",
     "min": 0.0,
-    "max": 67.0,
+    "max": 68.0,
     "default": 0.0,
     "name": "input-aux6-40768",
     "write": true
@@ -6655,6 +6705,26 @@
     "max": 1.0,
     "default": 0.0,
     "name": "blockfreq-1-activated-40944",
+    "write": true
+  },
+  "45296": {
+    "title": "blockFreq 2 (EB101)",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "blockfreq-2-eb101-45296",
+    "write": true
+  },
+  "45297": {
+    "title": "blockFreq 1 (EB101)",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "blockfreq-1-eb101-45297",
     "write": true
   },
   "40949": {
@@ -8209,11 +8279,11 @@
     "write": true
   },
   "32179": {
-    "title": "Total average power (EME 20)",
+    "title": "Total average power (Solar PV)",
     "factor": 100,
     "unit": "kW",
     "size": "u32",
-    "name": "total-average-power-eme-20-32179"
+    "name": "total-average-power-solar-pv-32179"
   },
   "32181": {
     "title": "Total energy",
@@ -8450,13 +8520,6 @@
     "name": "external-adjustment-with-room-sensor-cooling-climate-system-1-44154",
     "write": true
   },
-  "32728": {
-    "title": "Current power",
-    "factor": 100,
-    "unit": "kW",
-    "size": "u32",
-    "name": "current-power-32728"
-  },
   "44165": {
     "title": "blockFreq 1 (EB102)",
     "factor": 1,
@@ -8525,6 +8588,17 @@
     "max": 1.0,
     "default": 0.0,
     "name": "blockfreq-1-eb108-44171",
+    "write": true
+  },
+  "44200": {
+    "title": "Power [kW] required for dimensioned outdoor temperature",
+    "factor": 1,
+    "unit": "kW",
+    "size": "u16",
+    "min": 1.0,
+    "max": 1000.0,
+    "default": 10.0,
+    "name": "power-kw-required-for-dimensioned-outdoor-temperature-44200",
     "write": true
   },
   "44201": {
@@ -8952,54 +9026,54 @@
     "write": true
   },
   "42668": {
-    "title": "Offset cooling (EME20)",
+    "title": "Offset cooling (Solar PV)",
     "factor": 1,
     "size": "s8",
     "min": -10.0,
     "max": 0.0,
     "default": -1.0,
-    "name": "offset-cooling-eme20-42668",
+    "name": "offset-cooling-solar-pv-42668",
     "write": true
   },
   "42669": {
-    "title": "Offset heating (EME20)",
+    "title": "Offset heating (Solar PV)",
     "factor": 1,
     "size": "u8",
     "min": 0.0,
     "max": 10.0,
     "default": 1.0,
-    "name": "offset-heating-eme20-42669",
+    "name": "offset-heating-solar-pv-42669",
     "write": true
   },
   "42670": {
-    "title": "Offset pool (EME20)",
+    "title": "Offset pool (Solar PV)",
     "factor": 1,
     "unit": "\u00b0C",
     "size": "u8",
     "min": 0.0,
     "max": 10.0,
     "default": 10.0,
-    "name": "offset-pool-eme20-42670",
+    "name": "offset-pool-solar-pv-42670",
     "write": true
   },
   "42667": {
-    "title": "Cooling (EME20)",
+    "title": "Cooling (Solar PV)",
     "factor": 1,
     "size": "u8",
     "min": 0.0,
     "max": 1.0,
     "default": 0.0,
-    "name": "cooling-eme20-42667",
+    "name": "cooling-solar-pv-42667",
     "write": true
   },
   "42676": {
-    "title": "AUX (EME20)",
+    "title": "AUX (Solar PV)",
     "factor": 1,
     "size": "u8",
     "min": 0.0,
     "max": 1.0,
     "default": 0.0,
-    "name": "aux-eme20-42676",
+    "name": "aux-solar-pv-42676",
     "write": true
   },
   "40001": {
@@ -9014,33 +9088,33 @@
     "write": true
   },
   "42108": {
-    "title": "EME20 API",
+    "title": "Modbus TCP/IP Ext. (Solar PV)",
     "factor": 1,
     "size": "u8",
     "min": 0.0,
     "max": 1.0,
     "default": 0.0,
-    "name": "eme20-api-42108",
+    "name": "modbus-tcp-ip-ext-solar-pv-42108",
     "write": true
   },
   "42109": {
-    "title": "EME20 API Include own consumption",
+    "title": "Modbus TCP/IP Ext.Include own consumption (Solar PV)",
     "factor": 1,
     "size": "u8",
     "min": 0.0,
     "max": 1.0,
     "default": 0.0,
-    "name": "eme20-api-include-own-consumption-42109",
+    "name": "modbus-tcp-ip-ext-include-own-consumption-solar-pv-42109",
     "write": true
   },
   "42110": {
-    "title": "EME20 API Available power",
+    "title": "Modbus TCP/IP Ext. Available power (Solar PV)",
     "factor": 1,
     "size": "u16",
     "min": 0.0,
     "max": 65535.0,
     "default": 0.0,
-    "name": "eme20-api-available-power-42110",
+    "name": "modbus-tcp-ip-ext-available-power-solar-pv-42110",
     "write": true
   },
   "42112": {
@@ -10364,7 +10438,7 @@
     "factor": 1,
     "size": "u8",
     "min": 0.0,
-    "max": 67.0,
+    "max": 68.0,
     "default": 0.0,
     "name": "aux-from-modbus-42741",
     "write": true
@@ -10931,6 +11005,16 @@
     "name": "auto-mode-start-temperature-for-passive-cooling-44206",
     "write": true
   },
+  "45459": {
+    "title": "Cooling with solar energy surplus",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "cooling-with-solar-energy-surplus-45459",
+    "write": true
+  },
   "31586": {
     "title": "Heating, compressor only",
     "factor": 10,
@@ -10972,6 +11056,13 @@
     "unit": "\u00b0C",
     "size": "s16",
     "name": "boiler-temperature-bt52-33801"
+  },
+  "32728": {
+    "title": "Current power",
+    "factor": 100,
+    "unit": "kW",
+    "size": "u32",
+    "name": "current-power-32728"
   },
   "32801": {
     "title": "Temperature: HTS 1",
@@ -11020,7 +11111,7 @@
     "factor": 1,
     "size": "u8",
     "min": 0.0,
-    "max": 67.0,
+    "max": 68.0,
     "default": 0.0,
     "name": "input-aux7-41556",
     "write": true
@@ -11030,7 +11121,7 @@
     "factor": 1,
     "size": "u8",
     "min": 0.0,
-    "max": 67.0,
+    "max": 68.0,
     "default": 0.0,
     "name": "input-aux8-41557",
     "write": true
@@ -11040,7 +11131,7 @@
     "factor": 1,
     "size": "u8",
     "min": 0.0,
-    "max": 67.0,
+    "max": 68.0,
     "default": 0.0,
     "name": "input-aux9-41558",
     "write": true
