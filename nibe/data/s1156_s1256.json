@@ -11066,13 +11066,13 @@
     "name": "disable-emergency-restart-gp1-43987",
     "write": true
   },
-  "5987": {
+  "45988": {
     "title": "Room sensor (BT50)",
     "info": "Room sensor (BT50)",
     "unit": "\u00b0C",
     "size": "s16",
     "factor": 10,
-    "name": "room-sensor-bt-50-5987",
+    "name": "room-sensor-bt-50-45988",
     "write": true
   }
 }

@@ -629,13 +629,13 @@
       "s1156_s1256.json"
     ],
     "data": {
-      "5987": {
+      "45988": {
         "title": "Room sensor (BT50)",
         "info": "Room sensor (BT50)",
         "unit": "°C",
         "size": "s16",
         "factor": 10,
-        "name": "room-sensor-bt-50-5987",
+        "name": "room-sensor-bt-50-45988",
         "write": true
       }
     }
