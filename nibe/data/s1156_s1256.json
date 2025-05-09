@@ -11067,12 +11067,12 @@
     "write": true
   },
   "45988": {
-    "title": "Room sensor (BT50)",
-    "info": "Room sensor (BT50)",
+    "title": "Room temperature (BT50)",
+    "info": "Room temperature (BT50)",
     "unit": "\u00b0C",
     "size": "s16",
     "factor": 10,
-    "name": "room-sensor-bt-50-45988",
+    "name": "room-temperature-bt50-45988",
     "write": true
   }
 }
