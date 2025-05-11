@@ -11156,5 +11156,14 @@
     "default": 0.0,
     "name": "disable-emergency-restart-gp1-43987",
     "write": true
+  },
+  "45988": {
+    "title": "Room temperature (BT50)",
+    "info": "Room temperature (BT50)",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "name": "room-temperature-bt50-45988",
+    "write": true
   }
 }
