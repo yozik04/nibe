@@ -431,6 +431,34 @@
     "size": "s16",
     "name": "external-cooling-supply-temperature-bt25-30120"
   },
+  "30121": {
+    "title": "Calculated supply climate system 8",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "calculated-supply-climate-system-8-30121"
+  },
+  "30122": {
+    "title": "Calculated supply climate system 7",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "calculated-supply-climate-system-7-30122"
+  },
+  "30123": {
+    "title": "Calculated supply climate system 6",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "calculated-supply-climate-system-6-30123"
+  },
+  "30124": {
+    "title": "Calculated supply climate system 5",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "calculated-supply-climate-system-5-30124"
+  },
   "30130": {
     "title": "Oper. mode shunt climate system 8",
     "factor": 1,
@@ -3024,6 +3052,20 @@
     "name": "limit-dm-40019",
     "write": true
   },
+  "31015": {
+    "title": "Calculated supply climate system 4",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "calculated-supply-climate-system-4-31015"
+  },
+  "31016": {
+    "title": "Calculated supply climate system 3",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "calculated-supply-climate-system-3-31016"
+  },
   "31017": {
     "title": "Calculated supply climate system 2",
     "factor": 10,
@@ -4609,6 +4651,26 @@
     "size": "s16",
     "name": "non-module-specific-alarm-numbers-31977"
   },
+  "40024": {
+    "title": "Heating curve climate system 4",
+    "factor": 1,
+    "size": "s8",
+    "min": 0.0,
+    "max": 15.0,
+    "default": 9.0,
+    "name": "heating-curve-climate-system-4-40024",
+    "write": true
+  },
+  "40025": {
+    "title": "Heating curve climate system 3",
+    "factor": 1,
+    "size": "s8",
+    "min": 0.0,
+    "max": 15.0,
+    "default": 9.0,
+    "name": "heating-curve-climate-system-3-40025",
+    "write": true
+  },
   "40026": {
     "title": "Heating curve climate system 2",
     "factor": 1,
@@ -4627,6 +4689,26 @@
     "max": 15.0,
     "default": 9.0,
     "name": "heating-curve-climate-system-1-40027",
+    "write": true
+  },
+  "40028": {
+    "title": "Heating offset climate system 4",
+    "factor": 1,
+    "size": "s8",
+    "min": -10.0,
+    "max": 10.0,
+    "default": 0.0,
+    "name": "heating-offset-climate-system-4-40028",
+    "write": true
+  },
+  "40029": {
+    "title": "Heating offset climate system 3",
+    "factor": 1,
+    "size": "s8",
+    "min": -10.0,
+    "max": 10.0,
+    "default": 0.0,
+    "name": "heating-offset-climate-system-3-40029",
     "write": true
   },
   "40030": {
@@ -4649,6 +4731,28 @@
     "name": "heating-offset-climate-system-1-40031",
     "write": true
   },
+  "40032": {
+    "title": "Min supply climate system 4",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "min": 50.0,
+    "max": 800.0,
+    "default": 200.0,
+    "name": "min-supply-climate-system-4-40032",
+    "write": true
+  },
+  "40033": {
+    "title": "Min supply climate system 3",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "min": 50.0,
+    "max": 800.0,
+    "default": 200.0,
+    "name": "min-supply-climate-system-3-40033",
+    "write": true
+  },
   "40034": {
     "title": "Min supply climate system 2",
     "factor": 10,
@@ -4669,6 +4773,28 @@
     "max": 800.0,
     "default": 200.0,
     "name": "min-supply-climate-system-1-40035",
+    "write": true
+  },
+  "40036": {
+    "title": "Max supply climate system 4",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "min": 50.0,
+    "max": 800.0,
+    "default": 600.0,
+    "name": "max-supply-climate-system-4-40036",
+    "write": true
+  },
+  "40037": {
+    "title": "Max supply climate system 3",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "min": 50.0,
+    "max": 800.0,
+    "default": 600.0,
+    "name": "max-supply-climate-system-3-40037",
     "write": true
   },
   "40038": {
@@ -4792,6 +4918,26 @@
     "name": "point-offset-40048",
     "write": true
   },
+  "40049": {
+    "title": "External adjustment climate system 4",
+    "factor": 1,
+    "size": "s8",
+    "min": -10.0,
+    "max": 10.0,
+    "default": 0.0,
+    "name": "external-adjustment-climate-system-4-40049",
+    "write": true
+  },
+  "40050": {
+    "title": "External adjustment climate system 3",
+    "factor": 1,
+    "size": "s8",
+    "min": -10.0,
+    "max": 10.0,
+    "default": 0.0,
+    "name": "external-adjustment-climate-system-3-40050",
+    "write": true
+  },
   "40051": {
     "title": "External adjustment climate system 2",
     "factor": 1,
@@ -4810,6 +4956,28 @@
     "max": 10.0,
     "default": 0.0,
     "name": "external-adjustment-climate-system-1-40052",
+    "write": true
+  },
+  "40053": {
+    "title": "External adjustment with room sensor climate system 4",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "min": 50.0,
+    "max": 300.0,
+    "default": 200.0,
+    "name": "external-adjustment-with-room-sensor-climate-system-4-40053",
+    "write": true
+  },
+  "40054": {
+    "title": "External adjustment with room sensor climate system 3",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "min": 50.0,
+    "max": 300.0,
+    "default": 200.0,
+    "name": "external-adjustment-with-room-sensor-climate-system-3-40054",
     "write": true
   },
   "40055": {
@@ -5366,6 +5534,26 @@
     "name": "climate-system-4-40145",
     "write": true
   },
+  "40146": {
+    "title": "Climate system 4 shunt amplification",
+    "factor": 10,
+    "size": "s8",
+    "min": 1.0,
+    "max": 100.0,
+    "default": 10.0,
+    "name": "climate-system-4-shunt-amplification-40146",
+    "write": true
+  },
+  "40147": {
+    "title": "Climate system 3 shunt amplification",
+    "factor": 10,
+    "size": "s8",
+    "min": 1.0,
+    "max": 100.0,
+    "default": 10.0,
+    "name": "climate-system-3-shunt-amplification-40147",
+    "write": true
+  },
   "40148": {
     "title": "Climate system 2 shunt amplification",
     "factor": 10,
@@ -5374,6 +5562,28 @@
     "max": 100.0,
     "default": 10.0,
     "name": "climate-system-2-shunt-amplification-40148",
+    "write": true
+  },
+  "40149": {
+    "title": "Climate system 4 shunt wait time",
+    "factor": 1,
+    "unit": "s",
+    "size": "s16",
+    "min": 10.0,
+    "max": 300.0,
+    "default": 30.0,
+    "name": "climate-system-4-shunt-wait-time-40149",
+    "write": true
+  },
+  "40150": {
+    "title": "Climate system 3 shunt wait time",
+    "factor": 1,
+    "unit": "s",
+    "size": "s16",
+    "min": 10.0,
+    "max": 300.0,
+    "default": 30.0,
+    "name": "climate-system-3-shunt-wait-time-40150",
     "write": true
   },
   "40151": {
@@ -5995,11 +6205,31 @@
     "name": "preset-flow-setting-for-climate-system-40224",
     "write": true
   },
+  "40225": {
+    "title": "Heating curve climate system 8",
+    "factor": 1,
+    "size": "s8",
+    "min": 0.0,
+    "max": 15.0,
+    "default": 9.0,
+    "name": "heating-curve-climate-system-8-40225",
+    "write": true
+  },
   "40226": {
     "title": "More hot water (Number of minutes)",
     "factor": 1,
     "size": "u16",
     "name": "more-hot-water-number-of-minutes-40226",
+    "write": true
+  },
+  "40237": {
+    "title": "Heating curve climate system 7",
+    "factor": 1,
+    "size": "s8",
+    "min": 0.0,
+    "max": 15.0,
+    "default": 9.0,
+    "name": "heating-curve-climate-system-7-40237",
     "write": true
   },
   "40238": {
@@ -6095,6 +6325,17 @@
     "name": "pool-1-accessory-40686",
     "write": true
   },
+  "40687": {
+    "title": "Pool 2 start temperature",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "min": 50.0,
+    "max": 795.0,
+    "default": 220.0,
+    "name": "pool-2-start-temperature-40687",
+    "write": true
+  },
   "40688": {
     "title": "Pool 1 start temperature",
     "factor": 10,
@@ -6106,6 +6347,17 @@
     "name": "pool-1-start-temperature-40688",
     "write": true
   },
+  "40689": {
+    "title": "Pool 2 stop temperature",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "min": 55.0,
+    "max": 800.0,
+    "default": 240.0,
+    "name": "pool-2-stop-temperature-40689",
+    "write": true
+  },
   "40690": {
     "title": "Pool 1 stop temperature",
     "factor": 10,
@@ -6115,6 +6367,16 @@
     "max": 800.0,
     "default": 240.0,
     "name": "pool-1-stop-temperature-40690",
+    "write": true
+  },
+  "40691": {
+    "title": "Pool 2 activated",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 1.0,
+    "name": "pool-2-activated-40691",
     "write": true
   },
   "40692": {
@@ -6489,6 +6751,154 @@
     "name": "speed-brine-pump-passive-cooling-mode-40860",
     "write": true
   },
+  "40880": {
+    "title": "Heating curve climate system 6",
+    "factor": 1,
+    "size": "s8",
+    "min": 0.0,
+    "max": 15.0,
+    "default": 9.0,
+    "name": "heating-curve-climate-system-6-40880",
+    "write": true
+  },
+  "40881": {
+    "title": "Heating curve climate system 5",
+    "factor": 1,
+    "size": "s8",
+    "min": 0.0,
+    "max": 15.0,
+    "default": 9.0,
+    "name": "heating-curve-climate-system-5-40881",
+    "write": true
+  },
+  "40882": {
+    "title": "Heating offset climate system 8",
+    "factor": 1,
+    "size": "s8",
+    "min": -10.0,
+    "max": 10.0,
+    "default": 0.0,
+    "name": "heating-offset-climate-system-8-40882",
+    "write": true
+  },
+  "40883": {
+    "title": "Heating offset climate system 7",
+    "factor": 1,
+    "size": "s8",
+    "min": -10.0,
+    "max": 10.0,
+    "default": 0.0,
+    "name": "heating-offset-climate-system-7-40883",
+    "write": true
+  },
+  "40884": {
+    "title": "Heating offset climate system 6",
+    "factor": 1,
+    "size": "s8",
+    "min": -10.0,
+    "max": 10.0,
+    "default": 0.0,
+    "name": "heating-offset-climate-system-6-40884",
+    "write": true
+  },
+  "40885": {
+    "title": "Heating offset climate system 5",
+    "factor": 1,
+    "size": "s8",
+    "min": -10.0,
+    "max": 10.0,
+    "default": 0.0,
+    "name": "heating-offset-climate-system-5-40885",
+    "write": true
+  },
+  "40886": {
+    "title": "Min supply climate system 8",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "min": 50.0,
+    "max": 800.0,
+    "default": 200.0,
+    "name": "min-supply-climate-system-8-40886",
+    "write": true
+  },
+  "40887": {
+    "title": "Min supply climate system 7",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "min": 50.0,
+    "max": 800.0,
+    "default": 200.0,
+    "name": "min-supply-climate-system-7-40887",
+    "write": true
+  },
+  "40888": {
+    "title": "Min supply climate system 6",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "min": 50.0,
+    "max": 800.0,
+    "default": 200.0,
+    "name": "min-supply-climate-system-6-40888",
+    "write": true
+  },
+  "40889": {
+    "title": "Min supply climate system 5",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "min": 50.0,
+    "max": 800.0,
+    "default": 200.0,
+    "name": "min-supply-climate-system-5-40889",
+    "write": true
+  },
+  "40890": {
+    "title": "Max supply climate system 8",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "min": 50.0,
+    "max": 800.0,
+    "default": 600.0,
+    "name": "max-supply-climate-system-8-40890",
+    "write": true
+  },
+  "40891": {
+    "title": "Max supply climate system 7",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "min": 50.0,
+    "max": 800.0,
+    "default": 600.0,
+    "name": "max-supply-climate-system-7-40891",
+    "write": true
+  },
+  "40892": {
+    "title": "Max supply climate system 6",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "min": 50.0,
+    "max": 800.0,
+    "default": 600.0,
+    "name": "max-supply-climate-system-6-40892",
+    "write": true
+  },
+  "40893": {
+    "title": "Max supply climate system 5",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "min": 50.0,
+    "max": 800.0,
+    "default": 600.0,
+    "name": "max-supply-climate-system-5-40893",
+    "write": true
+  },
   "40894": {
     "title": "External adjustment climate system 8",
     "factor": 1,
@@ -6625,6 +7035,90 @@
     "max": 1.0,
     "default": 0.0,
     "name": "climate-system-8-40909",
+    "write": true
+  },
+  "40910": {
+    "title": "Climate system 8 shunt amplification",
+    "factor": 10,
+    "size": "s8",
+    "min": 1.0,
+    "max": 100.0,
+    "default": 10.0,
+    "name": "climate-system-8-shunt-amplification-40910",
+    "write": true
+  },
+  "40911": {
+    "title": "Climate system 7 shunt amplification",
+    "factor": 10,
+    "size": "s8",
+    "min": 1.0,
+    "max": 100.0,
+    "default": 10.0,
+    "name": "climate-system-7-shunt-amplification-40911",
+    "write": true
+  },
+  "40912": {
+    "title": "Climate system 6 shunt amplification",
+    "factor": 10,
+    "size": "s8",
+    "min": 1.0,
+    "max": 100.0,
+    "default": 10.0,
+    "name": "climate-system-6-shunt-amplification-40912",
+    "write": true
+  },
+  "40913": {
+    "title": "Climate system 5 shunt amplification",
+    "factor": 10,
+    "size": "s8",
+    "min": 1.0,
+    "max": 100.0,
+    "default": 10.0,
+    "name": "climate-system-5-shunt-amplification-40913",
+    "write": true
+  },
+  "40914": {
+    "title": "Climate system 8 shunt wait time",
+    "factor": 1,
+    "unit": "s",
+    "size": "s16",
+    "min": 10.0,
+    "max": 300.0,
+    "default": 30.0,
+    "name": "climate-system-8-shunt-wait-time-40914",
+    "write": true
+  },
+  "40915": {
+    "title": "Climate system 7 shunt wait time",
+    "factor": 1,
+    "unit": "s",
+    "size": "s16",
+    "min": 10.0,
+    "max": 300.0,
+    "default": 30.0,
+    "name": "climate-system-7-shunt-wait-time-40915",
+    "write": true
+  },
+  "40916": {
+    "title": "Climate system 6 shunt wait time",
+    "factor": 1,
+    "unit": "s",
+    "size": "s16",
+    "min": 10.0,
+    "max": 300.0,
+    "default": 30.0,
+    "name": "climate-system-6-shunt-wait-time-40916",
+    "write": true
+  },
+  "40917": {
+    "title": "Climate system 5 shunt wait time",
+    "factor": 1,
+    "unit": "s",
+    "size": "s16",
+    "min": 10.0,
+    "max": 300.0,
+    "default": 30.0,
+    "name": "climate-system-5-shunt-wait-time-40917",
     "write": true
   },
   "40932": {
@@ -8322,6 +8816,69 @@
     "name": "ers-4-44079",
     "write": true
   },
+  "31996": {
+    "title": "Temperature (BM1.2)",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "temperature-bm1-2-31996"
+  },
+  "31997": {
+    "title": "Pressure (BM1.2)",
+    "factor": 10,
+    "unit": "kPa",
+    "size": "s16",
+    "name": "pressure-bm1-2-31997"
+  },
+  "31998": {
+    "title": "Dew point (BM1.2)",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "dew-point-bm1-2-31998"
+  },
+  "31999": {
+    "title": "Temperature (BM1.3)",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "temperature-bm1-3-31999"
+  },
+  "32000": {
+    "title": "Pressure (BM1.3)",
+    "factor": 10,
+    "unit": "kPa",
+    "size": "s16",
+    "name": "pressure-bm1-3-32000"
+  },
+  "32001": {
+    "title": "Dew point (BM1.3)",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "dew-point-bm1-3-32001"
+  },
+  "32002": {
+    "title": "Temperature (BM1.4)",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "temperature-bm1-4-32002"
+  },
+  "32003": {
+    "title": "Pressure (BM1.4)",
+    "factor": 10,
+    "unit": "kPa",
+    "size": "s16",
+    "name": "pressure-bm1-4-32003"
+  },
+  "32004": {
+    "title": "Dew point (BM1.4)",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "dew-point-bm1-4-32004"
+  },
   "41982": {
     "title": "HTS 2",
     "factor": 1,
@@ -8841,6 +9398,17 @@
     "max": 100.0,
     "default": 6.0,
     "name": "desired-charge-power-pool-1-main-unit-43040",
+    "write": true
+  },
+  "43049": {
+    "title": "Desired charge power pool 2 main unit",
+    "factor": 1,
+    "unit": "kW",
+    "size": "u8",
+    "min": 1.0,
+    "max": 100.0,
+    "default": 6.0,
+    "name": "desired-charge-power-pool-2-main-unit-43049",
     "write": true
   },
   "43058": {
@@ -9997,6 +10565,2406 @@
     "name": "zone-40-affected-by-ecs2-42199",
     "write": true
   },
+  "42200": {
+    "title": "Zone 1 affected by ECS3",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-1-affected-by-ecs3-42200",
+    "write": true
+  },
+  "42201": {
+    "title": "Zone 2 affected by ECS3",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-2-affected-by-ecs3-42201",
+    "write": true
+  },
+  "42202": {
+    "title": "Zone 3 affected by ECS3",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-3-affected-by-ecs3-42202",
+    "write": true
+  },
+  "42203": {
+    "title": "Zone 4 affected by ECS3",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-4-affected-by-ecs3-42203",
+    "write": true
+  },
+  "42204": {
+    "title": "Zone 5 affected by ECS3",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-5-affected-by-ecs3-42204",
+    "write": true
+  },
+  "42205": {
+    "title": "Zone 6 affected by ECS3",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-6-affected-by-ecs3-42205",
+    "write": true
+  },
+  "42206": {
+    "title": "Zone 7 affected by ECS3",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-7-affected-by-ecs3-42206",
+    "write": true
+  },
+  "42207": {
+    "title": "Zone 8 affected by ECS3",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-8-affected-by-ecs3-42207",
+    "write": true
+  },
+  "42208": {
+    "title": "Zone 9 affected by ECS3",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-9-affected-by-ecs3-42208",
+    "write": true
+  },
+  "42209": {
+    "title": "Zone 10 affected by ECS3",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-10-affected-by-ecs3-42209",
+    "write": true
+  },
+  "42210": {
+    "title": "Zone 11 affected by ECS3",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-11-affected-by-ecs3-42210",
+    "write": true
+  },
+  "42211": {
+    "title": "Zone 12 affected by ECS3",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-12-affected-by-ecs3-42211",
+    "write": true
+  },
+  "42212": {
+    "title": "Zone 13 affected by ECS3",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-13-affected-by-ecs3-42212",
+    "write": true
+  },
+  "42213": {
+    "title": "Zone 14 affected by ECS3",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-14-affected-by-ecs3-42213",
+    "write": true
+  },
+  "42214": {
+    "title": "Zone 15 affected by ECS3",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-15-affected-by-ecs3-42214",
+    "write": true
+  },
+  "42215": {
+    "title": "Zone 16 affected by ECS3",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-16-affected-by-ecs3-42215",
+    "write": true
+  },
+  "42216": {
+    "title": "Zone 17 affected by ECS3",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-17-affected-by-ecs3-42216",
+    "write": true
+  },
+  "42217": {
+    "title": "Zone 18 affected by ECS3",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-18-affected-by-ecs3-42217",
+    "write": true
+  },
+  "42218": {
+    "title": "Zone 19 affected by ECS3",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-19-affected-by-ecs3-42218",
+    "write": true
+  },
+  "42219": {
+    "title": "Zone 20 affected by ECS3",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-20-affected-by-ecs3-42219",
+    "write": true
+  },
+  "42220": {
+    "title": "Zone 21 affected by ECS3",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-21-affected-by-ecs3-42220",
+    "write": true
+  },
+  "42221": {
+    "title": "Zone 22 affected by ECS3",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-22-affected-by-ecs3-42221",
+    "write": true
+  },
+  "42222": {
+    "title": "Zone 23 affected by ECS3",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-23-affected-by-ecs3-42222",
+    "write": true
+  },
+  "42223": {
+    "title": "Zone 24 affected by ECS3",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-24-affected-by-ecs3-42223",
+    "write": true
+  },
+  "42224": {
+    "title": "Zone 25 affected by ECS3",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-25-affected-by-ecs3-42224",
+    "write": true
+  },
+  "42225": {
+    "title": "Zone 26 affected by ECS3",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-26-affected-by-ecs3-42225",
+    "write": true
+  },
+  "42226": {
+    "title": "Zone 27 affected by ECS3",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-27-affected-by-ecs3-42226",
+    "write": true
+  },
+  "42227": {
+    "title": "Zone 28 affected by ECS3",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-28-affected-by-ecs3-42227",
+    "write": true
+  },
+  "42228": {
+    "title": "Zone 29 affected by ECS3",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-29-affected-by-ecs3-42228",
+    "write": true
+  },
+  "42229": {
+    "title": "Zone 30 affected by ECS3",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-30-affected-by-ecs3-42229",
+    "write": true
+  },
+  "42230": {
+    "title": "Zone 31 affected by ECS3",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-31-affected-by-ecs3-42230",
+    "write": true
+  },
+  "42231": {
+    "title": "Zone 32 affected by ECS3",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-32-affected-by-ecs3-42231",
+    "write": true
+  },
+  "42232": {
+    "title": "Zone 33 affected by ECS3",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-33-affected-by-ecs3-42232",
+    "write": true
+  },
+  "42233": {
+    "title": "Zone 34 affected by ECS3",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-34-affected-by-ecs3-42233",
+    "write": true
+  },
+  "42234": {
+    "title": "Zone 35 affected by ECS3",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-35-affected-by-ecs3-42234",
+    "write": true
+  },
+  "42235": {
+    "title": "Zone 36 affected by ECS3",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-36-affected-by-ecs3-42235",
+    "write": true
+  },
+  "42236": {
+    "title": "Zone 37 affected by ECS3",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-37-affected-by-ecs3-42236",
+    "write": true
+  },
+  "42237": {
+    "title": "Zone 38 affected by ECS3",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-38-affected-by-ecs3-42237",
+    "write": true
+  },
+  "42238": {
+    "title": "Zone 39 affected by ECS3",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-39-affected-by-ecs3-42238",
+    "write": true
+  },
+  "42239": {
+    "title": "Zone 40 affected by ECS3",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-40-affected-by-ecs3-42239",
+    "write": true
+  },
+  "42240": {
+    "title": "Zone 1 affected by ECS4",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-1-affected-by-ecs4-42240",
+    "write": true
+  },
+  "42241": {
+    "title": "Zone 2 affected by ECS4",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-2-affected-by-ecs4-42241",
+    "write": true
+  },
+  "42242": {
+    "title": "Zone 3 affected by ECS4",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-3-affected-by-ecs4-42242",
+    "write": true
+  },
+  "42243": {
+    "title": "Zone 4 affected by ECS4",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-4-affected-by-ecs4-42243",
+    "write": true
+  },
+  "42244": {
+    "title": "Zone 5 affected by ECS4",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-5-affected-by-ecs4-42244",
+    "write": true
+  },
+  "42245": {
+    "title": "Zone 6 affected by ECS4",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-6-affected-by-ecs4-42245",
+    "write": true
+  },
+  "42246": {
+    "title": "Zone 7 affected by ECS4",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-7-affected-by-ecs4-42246",
+    "write": true
+  },
+  "42247": {
+    "title": "Zone 8 affected by ECS4",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-8-affected-by-ecs4-42247",
+    "write": true
+  },
+  "42248": {
+    "title": "Zone 9 affected by ECS4",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-9-affected-by-ecs4-42248",
+    "write": true
+  },
+  "42249": {
+    "title": "Zone 10 affected by ECS4",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-10-affected-by-ecs4-42249",
+    "write": true
+  },
+  "42250": {
+    "title": "Zone 11 affected by ECS4",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-11-affected-by-ecs4-42250",
+    "write": true
+  },
+  "42251": {
+    "title": "Zone 12 affected by ECS4",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-12-affected-by-ecs4-42251",
+    "write": true
+  },
+  "42252": {
+    "title": "Zone 13 affected by ECS4",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-13-affected-by-ecs4-42252",
+    "write": true
+  },
+  "42253": {
+    "title": "Zone 14 affected by ECS4",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-14-affected-by-ecs4-42253",
+    "write": true
+  },
+  "42254": {
+    "title": "Zone 15 affected by ECS4",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-15-affected-by-ecs4-42254",
+    "write": true
+  },
+  "42255": {
+    "title": "Zone 16 affected by ECS4",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-16-affected-by-ecs4-42255",
+    "write": true
+  },
+  "42256": {
+    "title": "Zone 17 affected by ECS4",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-17-affected-by-ecs4-42256",
+    "write": true
+  },
+  "42257": {
+    "title": "Zone 18 affected by ECS4",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-18-affected-by-ecs4-42257",
+    "write": true
+  },
+  "42258": {
+    "title": "Zone 19 affected by ECS4",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-19-affected-by-ecs4-42258",
+    "write": true
+  },
+  "42259": {
+    "title": "Zone 20 affected by ECS4",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-20-affected-by-ecs4-42259",
+    "write": true
+  },
+  "42260": {
+    "title": "Zone 21 affected by ECS4",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-21-affected-by-ecs4-42260",
+    "write": true
+  },
+  "42261": {
+    "title": "Zone 22 affected by ECS4",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-22-affected-by-ecs4-42261",
+    "write": true
+  },
+  "42262": {
+    "title": "Zone 23 affected by ECS4",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-23-affected-by-ecs4-42262",
+    "write": true
+  },
+  "42263": {
+    "title": "Zone 24 affected by ECS4",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-24-affected-by-ecs4-42263",
+    "write": true
+  },
+  "42264": {
+    "title": "Zone 25 affected by ECS4",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-25-affected-by-ecs4-42264",
+    "write": true
+  },
+  "42265": {
+    "title": "Zone 26 affected by ECS4",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-26-affected-by-ecs4-42265",
+    "write": true
+  },
+  "42266": {
+    "title": "Zone 27 affected by ECS4",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-27-affected-by-ecs4-42266",
+    "write": true
+  },
+  "42267": {
+    "title": "Zone 28 affected by ECS4",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-28-affected-by-ecs4-42267",
+    "write": true
+  },
+  "42268": {
+    "title": "Zone 29 affected by ECS4",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-29-affected-by-ecs4-42268",
+    "write": true
+  },
+  "42269": {
+    "title": "Zone 30 affected by ECS4",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-30-affected-by-ecs4-42269",
+    "write": true
+  },
+  "42270": {
+    "title": "Zone 31 affected by ECS4",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-31-affected-by-ecs4-42270",
+    "write": true
+  },
+  "42271": {
+    "title": "Zone 32 affected by ECS4",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-32-affected-by-ecs4-42271",
+    "write": true
+  },
+  "42272": {
+    "title": "Zone 33 affected by ECS4",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-33-affected-by-ecs4-42272",
+    "write": true
+  },
+  "42273": {
+    "title": "Zone 34 affected by ECS4",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-34-affected-by-ecs4-42273",
+    "write": true
+  },
+  "42274": {
+    "title": "Zone 35 affected by ECS4",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-35-affected-by-ecs4-42274",
+    "write": true
+  },
+  "42275": {
+    "title": "Zone 36 affected by ECS4",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-36-affected-by-ecs4-42275",
+    "write": true
+  },
+  "42276": {
+    "title": "Zone 37 affected by ECS4",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-37-affected-by-ecs4-42276",
+    "write": true
+  },
+  "42277": {
+    "title": "Zone 38 affected by ECS4",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-38-affected-by-ecs4-42277",
+    "write": true
+  },
+  "42278": {
+    "title": "Zone 39 affected by ECS4",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-39-affected-by-ecs4-42278",
+    "write": true
+  },
+  "42279": {
+    "title": "Zone 40 affected by ECS4",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-40-affected-by-ecs4-42279",
+    "write": true
+  },
+  "42280": {
+    "title": "Zone 1 affected by ECS5",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-1-affected-by-ecs5-42280",
+    "write": true
+  },
+  "42281": {
+    "title": "Zone 2 affected by ECS5",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-2-affected-by-ecs5-42281",
+    "write": true
+  },
+  "42282": {
+    "title": "Zone 3 affected by ECS5",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-3-affected-by-ecs5-42282",
+    "write": true
+  },
+  "42283": {
+    "title": "Zone 4 affected by ECS5",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-4-affected-by-ecs5-42283",
+    "write": true
+  },
+  "42284": {
+    "title": "Zone 5 affected by ECS5",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-5-affected-by-ecs5-42284",
+    "write": true
+  },
+  "42285": {
+    "title": "Zone 6 affected by ECS5",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-6-affected-by-ecs5-42285",
+    "write": true
+  },
+  "42286": {
+    "title": "Zone 7 affected by ECS5",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-7-affected-by-ecs5-42286",
+    "write": true
+  },
+  "42287": {
+    "title": "Zone 8 affected by ECS5",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-8-affected-by-ecs5-42287",
+    "write": true
+  },
+  "42288": {
+    "title": "Zone 9 affected by ECS5",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-9-affected-by-ecs5-42288",
+    "write": true
+  },
+  "42289": {
+    "title": "Zone 10 affected by ECS5",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-10-affected-by-ecs5-42289",
+    "write": true
+  },
+  "42290": {
+    "title": "Zone 11 affected by ECS5",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-11-affected-by-ecs5-42290",
+    "write": true
+  },
+  "42291": {
+    "title": "Zone 12 affected by ECS5",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-12-affected-by-ecs5-42291",
+    "write": true
+  },
+  "42292": {
+    "title": "Zone 13 affected by ECS5",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-13-affected-by-ecs5-42292",
+    "write": true
+  },
+  "42293": {
+    "title": "Zone 14 affected by ECS5",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-14-affected-by-ecs5-42293",
+    "write": true
+  },
+  "42294": {
+    "title": "Zone 15 affected by ECS5",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-15-affected-by-ecs5-42294",
+    "write": true
+  },
+  "42295": {
+    "title": "Zone 16 affected by ECS5",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-16-affected-by-ecs5-42295",
+    "write": true
+  },
+  "42296": {
+    "title": "Zone 17 affected by ECS5",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-17-affected-by-ecs5-42296",
+    "write": true
+  },
+  "42297": {
+    "title": "Zone 18 affected by ECS5",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-18-affected-by-ecs5-42297",
+    "write": true
+  },
+  "42298": {
+    "title": "Zone 19 affected by ECS5",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-19-affected-by-ecs5-42298",
+    "write": true
+  },
+  "42299": {
+    "title": "Zone 20 affected by ECS5",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-20-affected-by-ecs5-42299",
+    "write": true
+  },
+  "42300": {
+    "title": "Zone 21 affected by ECS5",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-21-affected-by-ecs5-42300",
+    "write": true
+  },
+  "42301": {
+    "title": "Zone 22 affected by ECS5",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-22-affected-by-ecs5-42301",
+    "write": true
+  },
+  "42302": {
+    "title": "Zone 23 affected by ECS5",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-23-affected-by-ecs5-42302",
+    "write": true
+  },
+  "42303": {
+    "title": "Zone 24 affected by ECS5",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-24-affected-by-ecs5-42303",
+    "write": true
+  },
+  "42304": {
+    "title": "Zone 25 affected by ECS5",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-25-affected-by-ecs5-42304",
+    "write": true
+  },
+  "42305": {
+    "title": "Zone 26 affected by ECS5",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-26-affected-by-ecs5-42305",
+    "write": true
+  },
+  "42306": {
+    "title": "Zone 27 affected by ECS5",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-27-affected-by-ecs5-42306",
+    "write": true
+  },
+  "42307": {
+    "title": "Zone 28 affected by ECS5",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-28-affected-by-ecs5-42307",
+    "write": true
+  },
+  "42308": {
+    "title": "Zone 29 affected by ECS5",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-29-affected-by-ecs5-42308",
+    "write": true
+  },
+  "42309": {
+    "title": "Zone 30 affected by ECS5",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-30-affected-by-ecs5-42309",
+    "write": true
+  },
+  "42310": {
+    "title": "Zone 31 affected by ECS5",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-31-affected-by-ecs5-42310",
+    "write": true
+  },
+  "42311": {
+    "title": "Zone 32 affected by ECS5",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-32-affected-by-ecs5-42311",
+    "write": true
+  },
+  "42312": {
+    "title": "Zone 33 affected by ECS5",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-33-affected-by-ecs5-42312",
+    "write": true
+  },
+  "42313": {
+    "title": "Zone 34 affected by ECS5",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-34-affected-by-ecs5-42313",
+    "write": true
+  },
+  "42314": {
+    "title": "Zone 35 affected by ECS5",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-35-affected-by-ecs5-42314",
+    "write": true
+  },
+  "42315": {
+    "title": "Zone 36 affected by ECS5",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-36-affected-by-ecs5-42315",
+    "write": true
+  },
+  "42316": {
+    "title": "Zone 37 affected by ECS5",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-37-affected-by-ecs5-42316",
+    "write": true
+  },
+  "42317": {
+    "title": "Zone 38 affected by ECS5",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-38-affected-by-ecs5-42317",
+    "write": true
+  },
+  "42318": {
+    "title": "Zone 39 affected by ECS5",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-39-affected-by-ecs5-42318",
+    "write": true
+  },
+  "42319": {
+    "title": "Zone 40 affected by ECS5",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-40-affected-by-ecs5-42319",
+    "write": true
+  },
+  "42320": {
+    "title": "Zone 1 affected by ECS6",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-1-affected-by-ecs6-42320",
+    "write": true
+  },
+  "42321": {
+    "title": "Zone 2 affected by ECS6",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-2-affected-by-ecs6-42321",
+    "write": true
+  },
+  "42322": {
+    "title": "Zone 3 affected by ECS6",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-3-affected-by-ecs6-42322",
+    "write": true
+  },
+  "42323": {
+    "title": "Zone 4 affected by ECS6",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-4-affected-by-ecs6-42323",
+    "write": true
+  },
+  "42324": {
+    "title": "Zone 5 affected by ECS6",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-5-affected-by-ecs6-42324",
+    "write": true
+  },
+  "42325": {
+    "title": "Zone 6 affected by ECS6",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-6-affected-by-ecs6-42325",
+    "write": true
+  },
+  "42326": {
+    "title": "Zone 7 affected by ECS6",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-7-affected-by-ecs6-42326",
+    "write": true
+  },
+  "42327": {
+    "title": "Zone 8 affected by ECS6",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-8-affected-by-ecs6-42327",
+    "write": true
+  },
+  "42328": {
+    "title": "Zone 9 affected by ECS6",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-9-affected-by-ecs6-42328",
+    "write": true
+  },
+  "42329": {
+    "title": "Zone 10 affected by ECS6",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-10-affected-by-ecs6-42329",
+    "write": true
+  },
+  "42330": {
+    "title": "Zone 11 affected by ECS6",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-11-affected-by-ecs6-42330",
+    "write": true
+  },
+  "42331": {
+    "title": "Zone 12 affected by ECS6",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-12-affected-by-ecs6-42331",
+    "write": true
+  },
+  "42332": {
+    "title": "Zone 13 affected by ECS6",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-13-affected-by-ecs6-42332",
+    "write": true
+  },
+  "42333": {
+    "title": "Zone 14 affected by ECS6",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-14-affected-by-ecs6-42333",
+    "write": true
+  },
+  "42334": {
+    "title": "Zone 15 affected by ECS6",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-15-affected-by-ecs6-42334",
+    "write": true
+  },
+  "42335": {
+    "title": "Zone 16 affected by ECS6",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-16-affected-by-ecs6-42335",
+    "write": true
+  },
+  "42336": {
+    "title": "Zone 17 affected by ECS6",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-17-affected-by-ecs6-42336",
+    "write": true
+  },
+  "42337": {
+    "title": "Zone 18 affected by ECS6",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-18-affected-by-ecs6-42337",
+    "write": true
+  },
+  "42338": {
+    "title": "Zone 19 affected by ECS6",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-19-affected-by-ecs6-42338",
+    "write": true
+  },
+  "42339": {
+    "title": "Zone 20 affected by ECS6",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-20-affected-by-ecs6-42339",
+    "write": true
+  },
+  "42340": {
+    "title": "Zone 21 affected by ECS6",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-21-affected-by-ecs6-42340",
+    "write": true
+  },
+  "42341": {
+    "title": "Zone 22 affected by ECS6",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-22-affected-by-ecs6-42341",
+    "write": true
+  },
+  "42342": {
+    "title": "Zone 23 affected by ECS6",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-23-affected-by-ecs6-42342",
+    "write": true
+  },
+  "42343": {
+    "title": "Zone 24 affected by ECS6",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-24-affected-by-ecs6-42343",
+    "write": true
+  },
+  "42344": {
+    "title": "Zone 25 affected by ECS6",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-25-affected-by-ecs6-42344",
+    "write": true
+  },
+  "42345": {
+    "title": "Zone 26 affected by ECS6",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-26-affected-by-ecs6-42345",
+    "write": true
+  },
+  "42346": {
+    "title": "Zone 27 affected by ECS6",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-27-affected-by-ecs6-42346",
+    "write": true
+  },
+  "42347": {
+    "title": "Zone 28 affected by ECS6",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-28-affected-by-ecs6-42347",
+    "write": true
+  },
+  "42348": {
+    "title": "Zone 29 affected by ECS6",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-29-affected-by-ecs6-42348",
+    "write": true
+  },
+  "42349": {
+    "title": "Zone 30 affected by ECS6",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-30-affected-by-ecs6-42349",
+    "write": true
+  },
+  "42350": {
+    "title": "Zone 31 affected by ECS6",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-31-affected-by-ecs6-42350",
+    "write": true
+  },
+  "42351": {
+    "title": "Zone 32 affected by ECS6",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-32-affected-by-ecs6-42351",
+    "write": true
+  },
+  "42352": {
+    "title": "Zone 33 affected by ECS6",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-33-affected-by-ecs6-42352",
+    "write": true
+  },
+  "42353": {
+    "title": "Zone 34 affected by ECS6",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-34-affected-by-ecs6-42353",
+    "write": true
+  },
+  "42354": {
+    "title": "Zone 35 affected by ECS6",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-35-affected-by-ecs6-42354",
+    "write": true
+  },
+  "42355": {
+    "title": "Zone 36 affected by ECS6",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-36-affected-by-ecs6-42355",
+    "write": true
+  },
+  "42356": {
+    "title": "Zone 37 affected by ECS6",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-37-affected-by-ecs6-42356",
+    "write": true
+  },
+  "42357": {
+    "title": "Zone 38 affected by ECS6",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-38-affected-by-ecs6-42357",
+    "write": true
+  },
+  "42358": {
+    "title": "Zone 39 affected by ECS6",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-39-affected-by-ecs6-42358",
+    "write": true
+  },
+  "42359": {
+    "title": "Zone 40 affected by ECS6",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-40-affected-by-ecs6-42359",
+    "write": true
+  },
+  "42360": {
+    "title": "Zone 1 affected by ECS7",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-1-affected-by-ecs7-42360",
+    "write": true
+  },
+  "42361": {
+    "title": "Zone 2 affected by ECS7",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-2-affected-by-ecs7-42361",
+    "write": true
+  },
+  "42362": {
+    "title": "Zone 3 affected by ECS7",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-3-affected-by-ecs7-42362",
+    "write": true
+  },
+  "42363": {
+    "title": "Zone 4 affected by ECS7",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-4-affected-by-ecs7-42363",
+    "write": true
+  },
+  "42364": {
+    "title": "Zone 5 affected by ECS7",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-5-affected-by-ecs7-42364",
+    "write": true
+  },
+  "42365": {
+    "title": "Zone 6 affected by ECS7",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-6-affected-by-ecs7-42365",
+    "write": true
+  },
+  "42366": {
+    "title": "Zone 7 affected by ECS7",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-7-affected-by-ecs7-42366",
+    "write": true
+  },
+  "42367": {
+    "title": "Zone 8 affected by ECS7",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-8-affected-by-ecs7-42367",
+    "write": true
+  },
+  "42368": {
+    "title": "Zone 9 affected by ECS7",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-9-affected-by-ecs7-42368",
+    "write": true
+  },
+  "42369": {
+    "title": "Zone 10 affected by ECS7",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-10-affected-by-ecs7-42369",
+    "write": true
+  },
+  "42370": {
+    "title": "Zone 11 affected by ECS7",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-11-affected-by-ecs7-42370",
+    "write": true
+  },
+  "42371": {
+    "title": "Zone 12 affected by ECS7",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-12-affected-by-ecs7-42371",
+    "write": true
+  },
+  "42372": {
+    "title": "Zone 13 affected by ECS7",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-13-affected-by-ecs7-42372",
+    "write": true
+  },
+  "42373": {
+    "title": "Zone 14 affected by ECS7",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-14-affected-by-ecs7-42373",
+    "write": true
+  },
+  "42374": {
+    "title": "Zone 15 affected by ECS7",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-15-affected-by-ecs7-42374",
+    "write": true
+  },
+  "42375": {
+    "title": "Zone 16 affected by ECS7",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-16-affected-by-ecs7-42375",
+    "write": true
+  },
+  "42376": {
+    "title": "Zone 17 affected by ECS7",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-17-affected-by-ecs7-42376",
+    "write": true
+  },
+  "42377": {
+    "title": "Zone 18 affected by ECS7",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-18-affected-by-ecs7-42377",
+    "write": true
+  },
+  "42378": {
+    "title": "Zone 19 affected by ECS7",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-19-affected-by-ecs7-42378",
+    "write": true
+  },
+  "42379": {
+    "title": "Zone 20 affected by ECS7",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-20-affected-by-ecs7-42379",
+    "write": true
+  },
+  "42380": {
+    "title": "Zone 21 affected by ECS7",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-21-affected-by-ecs7-42380",
+    "write": true
+  },
+  "42381": {
+    "title": "Zone 22 affected by ECS7",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-22-affected-by-ecs7-42381",
+    "write": true
+  },
+  "42382": {
+    "title": "Zone 23 affected by ECS7",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-23-affected-by-ecs7-42382",
+    "write": true
+  },
+  "42383": {
+    "title": "Zone 24 affected by ECS7",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-24-affected-by-ecs7-42383",
+    "write": true
+  },
+  "42384": {
+    "title": "Zone 25 affected by ECS7",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-25-affected-by-ecs7-42384",
+    "write": true
+  },
+  "42385": {
+    "title": "Zone 26 affected by ECS7",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-26-affected-by-ecs7-42385",
+    "write": true
+  },
+  "42386": {
+    "title": "Zone 27 affected by ECS7",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-27-affected-by-ecs7-42386",
+    "write": true
+  },
+  "42387": {
+    "title": "Zone 28 affected by ECS7",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-28-affected-by-ecs7-42387",
+    "write": true
+  },
+  "42388": {
+    "title": "Zone 29 affected by ECS7",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-29-affected-by-ecs7-42388",
+    "write": true
+  },
+  "42389": {
+    "title": "Zone 30 affected by ECS7",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-30-affected-by-ecs7-42389",
+    "write": true
+  },
+  "42390": {
+    "title": "Zone 31 affected by ECS7",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-31-affected-by-ecs7-42390",
+    "write": true
+  },
+  "42391": {
+    "title": "Zone 32 affected by ECS7",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-32-affected-by-ecs7-42391",
+    "write": true
+  },
+  "42392": {
+    "title": "Zone 33 affected by ECS7",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-33-affected-by-ecs7-42392",
+    "write": true
+  },
+  "42393": {
+    "title": "Zone 34 affected by ECS7",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-34-affected-by-ecs7-42393",
+    "write": true
+  },
+  "42394": {
+    "title": "Zone 35 affected by ECS7",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-35-affected-by-ecs7-42394",
+    "write": true
+  },
+  "42395": {
+    "title": "Zone 36 affected by ECS7",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-36-affected-by-ecs7-42395",
+    "write": true
+  },
+  "42396": {
+    "title": "Zone 37 affected by ECS7",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-37-affected-by-ecs7-42396",
+    "write": true
+  },
+  "42397": {
+    "title": "Zone 38 affected by ECS7",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-38-affected-by-ecs7-42397",
+    "write": true
+  },
+  "42398": {
+    "title": "Zone 39 affected by ECS7",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-39-affected-by-ecs7-42398",
+    "write": true
+  },
+  "42399": {
+    "title": "Zone 40 affected by ECS7",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-40-affected-by-ecs7-42399",
+    "write": true
+  },
+  "42400": {
+    "title": "Zone 1 affected by ECS8",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-1-affected-by-ecs8-42400",
+    "write": true
+  },
+  "42401": {
+    "title": "Zone 2 affected by ECS8",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-2-affected-by-ecs8-42401",
+    "write": true
+  },
+  "42402": {
+    "title": "Zone 3 affected by ECS8",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-3-affected-by-ecs8-42402",
+    "write": true
+  },
+  "42403": {
+    "title": "Zone 4 affected by ECS8",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-4-affected-by-ecs8-42403",
+    "write": true
+  },
+  "42404": {
+    "title": "Zone 5 affected by ECS8",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-5-affected-by-ecs8-42404",
+    "write": true
+  },
+  "42405": {
+    "title": "Zone 6 affected by ECS8",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-6-affected-by-ecs8-42405",
+    "write": true
+  },
+  "42406": {
+    "title": "Zone 7 affected by ECS8",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-7-affected-by-ecs8-42406",
+    "write": true
+  },
+  "42407": {
+    "title": "Zone 8 affected by ECS8",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-8-affected-by-ecs8-42407",
+    "write": true
+  },
+  "42408": {
+    "title": "Zone 9 affected by ECS8",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-9-affected-by-ecs8-42408",
+    "write": true
+  },
+  "42409": {
+    "title": "Zone 10 affected by ECS8",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-10-affected-by-ecs8-42409",
+    "write": true
+  },
+  "42410": {
+    "title": "Zone 11 affected by ECS8",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-11-affected-by-ecs8-42410",
+    "write": true
+  },
+  "42411": {
+    "title": "Zone 12 affected by ECS8",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-12-affected-by-ecs8-42411",
+    "write": true
+  },
+  "42412": {
+    "title": "Zone 13 affected by ECS8",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-13-affected-by-ecs8-42412",
+    "write": true
+  },
+  "42413": {
+    "title": "Zone 14 affected by ECS8",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-14-affected-by-ecs8-42413",
+    "write": true
+  },
+  "42414": {
+    "title": "Zone 15 affected by ECS8",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-15-affected-by-ecs8-42414",
+    "write": true
+  },
+  "42415": {
+    "title": "Zone 16 affected by ECS8",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-16-affected-by-ecs8-42415",
+    "write": true
+  },
+  "42416": {
+    "title": "Zone 17 affected by ECS8",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-17-affected-by-ecs8-42416",
+    "write": true
+  },
+  "42417": {
+    "title": "Zone 18 affected by ECS8",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-18-affected-by-ecs8-42417",
+    "write": true
+  },
+  "42418": {
+    "title": "Zone 19 affected by ECS8",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-19-affected-by-ecs8-42418",
+    "write": true
+  },
+  "42419": {
+    "title": "Zone 20 affected by ECS8",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-20-affected-by-ecs8-42419",
+    "write": true
+  },
+  "42420": {
+    "title": "Zone 21 affected by ECS8",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-21-affected-by-ecs8-42420",
+    "write": true
+  },
+  "42421": {
+    "title": "Zone 22 affected by ECS8",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-22-affected-by-ecs8-42421",
+    "write": true
+  },
+  "42422": {
+    "title": "Zone 23 affected by ECS8",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-23-affected-by-ecs8-42422",
+    "write": true
+  },
+  "42423": {
+    "title": "Zone 24 affected by ECS8",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-24-affected-by-ecs8-42423",
+    "write": true
+  },
+  "42424": {
+    "title": "Zone 25 affected by ECS8",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-25-affected-by-ecs8-42424",
+    "write": true
+  },
+  "42425": {
+    "title": "Zone 26 affected by ECS8",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-26-affected-by-ecs8-42425",
+    "write": true
+  },
+  "42426": {
+    "title": "Zone 27 affected by ECS8",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-27-affected-by-ecs8-42426",
+    "write": true
+  },
+  "42427": {
+    "title": "Zone 28 affected by ECS8",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-28-affected-by-ecs8-42427",
+    "write": true
+  },
+  "42428": {
+    "title": "Zone 29 affected by ECS8",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-29-affected-by-ecs8-42428",
+    "write": true
+  },
+  "42429": {
+    "title": "Zone 30 affected by ECS8",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-30-affected-by-ecs8-42429",
+    "write": true
+  },
+  "42430": {
+    "title": "Zone 31 affected by ECS8",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-31-affected-by-ecs8-42430",
+    "write": true
+  },
+  "42431": {
+    "title": "Zone 32 affected by ECS8",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-32-affected-by-ecs8-42431",
+    "write": true
+  },
+  "42432": {
+    "title": "Zone 33 affected by ECS8",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-33-affected-by-ecs8-42432",
+    "write": true
+  },
+  "42433": {
+    "title": "Zone 34 affected by ECS8",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-34-affected-by-ecs8-42433",
+    "write": true
+  },
+  "42434": {
+    "title": "Zone 35 affected by ECS8",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-35-affected-by-ecs8-42434",
+    "write": true
+  },
+  "42435": {
+    "title": "Zone 36 affected by ECS8",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-36-affected-by-ecs8-42435",
+    "write": true
+  },
+  "42436": {
+    "title": "Zone 37 affected by ECS8",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-37-affected-by-ecs8-42436",
+    "write": true
+  },
+  "42437": {
+    "title": "Zone 38 affected by ECS8",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-38-affected-by-ecs8-42437",
+    "write": true
+  },
+  "42438": {
+    "title": "Zone 39 affected by ECS8",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-39-affected-by-ecs8-42438",
+    "write": true
+  },
+  "42439": {
+    "title": "Zone 40 affected by ECS8",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-40-affected-by-ecs8-42439",
+    "write": true
+  },
   "42440": {
     "title": "Input on ECS1 affects ECS1",
     "factor": 1,
@@ -10155,6 +13123,486 @@
     "max": 1.0,
     "default": 0.0,
     "name": "input-on-ecs2-affects-ecs8-42455",
+    "write": true
+  },
+  "42456": {
+    "title": "Input on ECS3 affects ECS1",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "input-on-ecs3-affects-ecs1-42456",
+    "write": true
+  },
+  "42457": {
+    "title": "Input on ECS3 affects ECS2",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "input-on-ecs3-affects-ecs2-42457",
+    "write": true
+  },
+  "42458": {
+    "title": "Input on ECS3 affects ECS3",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "input-on-ecs3-affects-ecs3-42458",
+    "write": true
+  },
+  "42459": {
+    "title": "Input on ECS3 affects ECS4",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "input-on-ecs3-affects-ecs4-42459",
+    "write": true
+  },
+  "42460": {
+    "title": "Input on ECS3 affects ECS5",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "input-on-ecs3-affects-ecs5-42460",
+    "write": true
+  },
+  "42461": {
+    "title": "Input on ECS3 affects ECS6",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "input-on-ecs3-affects-ecs6-42461",
+    "write": true
+  },
+  "42462": {
+    "title": "Input on ECS3 affects ECS7",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "input-on-ecs3-affects-ecs7-42462",
+    "write": true
+  },
+  "42463": {
+    "title": "Input on ECS3 affects ECS8",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "input-on-ecs3-affects-ecs8-42463",
+    "write": true
+  },
+  "42464": {
+    "title": "Input on ECS4 affects ECS1",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "input-on-ecs4-affects-ecs1-42464",
+    "write": true
+  },
+  "42465": {
+    "title": "Input on ECS4 affects ECS2",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "input-on-ecs4-affects-ecs2-42465",
+    "write": true
+  },
+  "42466": {
+    "title": "Input on ECS4 affects ECS3",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "input-on-ecs4-affects-ecs3-42466",
+    "write": true
+  },
+  "42467": {
+    "title": "Input on ECS4 affects ECS4",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "input-on-ecs4-affects-ecs4-42467",
+    "write": true
+  },
+  "42468": {
+    "title": "Input on ECS4 affects ECS5",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "input-on-ecs4-affects-ecs5-42468",
+    "write": true
+  },
+  "42469": {
+    "title": "Input on ECS4 affects ECS6",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "input-on-ecs4-affects-ecs6-42469",
+    "write": true
+  },
+  "42470": {
+    "title": "Input on ECS4 affects ECS7",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "input-on-ecs4-affects-ecs7-42470",
+    "write": true
+  },
+  "42471": {
+    "title": "Input on ECS4 affects ECS8",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "input-on-ecs4-affects-ecs8-42471",
+    "write": true
+  },
+  "42472": {
+    "title": "Input on ECS5 affects ECS1",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "input-on-ecs5-affects-ecs1-42472",
+    "write": true
+  },
+  "42473": {
+    "title": "Input on ECS5 affects ECS2",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "input-on-ecs5-affects-ecs2-42473",
+    "write": true
+  },
+  "42474": {
+    "title": "Input on ECS5 affects ECS3",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "input-on-ecs5-affects-ecs3-42474",
+    "write": true
+  },
+  "42475": {
+    "title": "Input on ECS5 affects ECS4",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "input-on-ecs5-affects-ecs4-42475",
+    "write": true
+  },
+  "42476": {
+    "title": "Input on ECS5 affects ECS5",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "input-on-ecs5-affects-ecs5-42476",
+    "write": true
+  },
+  "42477": {
+    "title": "Input on ECS5 affects ECS6",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "input-on-ecs5-affects-ecs6-42477",
+    "write": true
+  },
+  "42478": {
+    "title": "Input on ECS5 affects ECS7",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "input-on-ecs5-affects-ecs7-42478",
+    "write": true
+  },
+  "42479": {
+    "title": "Input on ECS5 affects ECS8",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "input-on-ecs5-affects-ecs8-42479",
+    "write": true
+  },
+  "42480": {
+    "title": "Input on ECS6 affects ECS1",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "input-on-ecs6-affects-ecs1-42480",
+    "write": true
+  },
+  "42481": {
+    "title": "Input on ECS6 affects ECS2",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "input-on-ecs6-affects-ecs2-42481",
+    "write": true
+  },
+  "42482": {
+    "title": "Input on ECS6 affects ECS3",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "input-on-ecs6-affects-ecs3-42482",
+    "write": true
+  },
+  "42483": {
+    "title": "Input on ECS6 affects ECS4",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "input-on-ecs6-affects-ecs4-42483",
+    "write": true
+  },
+  "42484": {
+    "title": "Input on ECS6 affects ECS5",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "input-on-ecs6-affects-ecs5-42484",
+    "write": true
+  },
+  "42485": {
+    "title": "Input on ECS6 affects ECS6",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "input-on-ecs6-affects-ecs6-42485",
+    "write": true
+  },
+  "42486": {
+    "title": "Input on ECS6 affects ECS7",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "input-on-ecs6-affects-ecs7-42486",
+    "write": true
+  },
+  "42487": {
+    "title": "Input on ECS6 affects ECS8",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "input-on-ecs6-affects-ecs8-42487",
+    "write": true
+  },
+  "42488": {
+    "title": "Input on ECS7 affects ECS1",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "input-on-ecs7-affects-ecs1-42488",
+    "write": true
+  },
+  "42489": {
+    "title": "Input on ECS7 affects ECS2",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "input-on-ecs7-affects-ecs2-42489",
+    "write": true
+  },
+  "42490": {
+    "title": "Input on ECS7 affects ECS3",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "input-on-ecs7-affects-ecs3-42490",
+    "write": true
+  },
+  "42491": {
+    "title": "Input on ECS7 affects ECS4",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "input-on-ecs7-affects-ecs4-42491",
+    "write": true
+  },
+  "42492": {
+    "title": "Input on ECS7 affects ECS5",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "input-on-ecs7-affects-ecs5-42492",
+    "write": true
+  },
+  "42493": {
+    "title": "Input on ECS7 affects ECS6",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "input-on-ecs7-affects-ecs6-42493",
+    "write": true
+  },
+  "42494": {
+    "title": "Input on ECS7 affects ECS7",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "input-on-ecs7-affects-ecs7-42494",
+    "write": true
+  },
+  "42495": {
+    "title": "Input on ECS7 affects ECS8",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "input-on-ecs7-affects-ecs8-42495",
+    "write": true
+  },
+  "42496": {
+    "title": "Input on ECS8 affects ECS1",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "input-on-ecs8-affects-ecs1-42496",
+    "write": true
+  },
+  "42497": {
+    "title": "Input on ECS8 affects ECS2",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "input-on-ecs8-affects-ecs2-42497",
+    "write": true
+  },
+  "42498": {
+    "title": "Input on ECS8 affects ECS3",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "input-on-ecs8-affects-ecs3-42498",
+    "write": true
+  },
+  "42499": {
+    "title": "Input on ECS8 affects ECS4",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "input-on-ecs8-affects-ecs4-42499",
+    "write": true
+  },
+  "42500": {
+    "title": "Input on ECS8 affects ECS5",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "input-on-ecs8-affects-ecs5-42500",
+    "write": true
+  },
+  "42501": {
+    "title": "Input on ECS8 affects ECS6",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "input-on-ecs8-affects-ecs6-42501",
+    "write": true
+  },
+  "42502": {
+    "title": "Input on ECS8 affects ECS7",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "input-on-ecs8-affects-ecs7-42502",
+    "write": true
+  },
+  "42503": {
+    "title": "Input on ECS8 affects ECS8",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "input-on-ecs8-affects-ecs8-42503",
     "write": true
   },
   "42504": {
@@ -10478,6 +13926,16 @@
     "max": 1.0,
     "default": 0.0,
     "name": "permit-additional-heat-pool-1-42761",
+    "write": true
+  },
+  "42762": {
+    "title": "Permit additional heat, Pool 2",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "permit-additional-heat-pool-2-42762",
     "write": true
   },
   "42821": {
@@ -11085,6 +14543,34 @@
     "size": "s32",
     "name": "temperature-ths10-2-32805"
   },
+  "32809": {
+    "title": "Temperature: HTS 1",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s32",
+    "name": "temperature-hts-1-32809"
+  },
+  "32811": {
+    "title": "Temperature: HTS 2",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s32",
+    "name": "temperature-hts-2-32811"
+  },
+  "32813": {
+    "title": "Temperature: HTS 3",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s32",
+    "name": "temperature-hts-3-32813"
+  },
+  "32815": {
+    "title": "Temperature: HTS 4",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s32",
+    "name": "temperature-hts-4-32815"
+  },
   "33131": {
     "title": "Humidity: HTS 1",
     "factor": 10,
@@ -11105,6 +14591,34 @@
     "unit": "%RH",
     "size": "s32",
     "name": "humidity-ths10-2-33135"
+  },
+  "33139": {
+    "title": "Humidity: HTS 1",
+    "factor": 10,
+    "unit": "%RH",
+    "size": "s32",
+    "name": "humidity-hts-1-33139"
+  },
+  "33141": {
+    "title": "Humidity: HTS 2",
+    "factor": 10,
+    "unit": "%RH",
+    "size": "s32",
+    "name": "humidity-hts-2-33141"
+  },
+  "33143": {
+    "title": "Humidity: HTS 3",
+    "factor": 10,
+    "unit": "%RH",
+    "size": "s32",
+    "name": "humidity-hts-3-33143"
+  },
+  "33145": {
+    "title": "Humidity: HTS 4",
+    "factor": 10,
+    "unit": "%RH",
+    "size": "s32",
+    "name": "humidity-hts-4-33145"
   },
   "41556": {
     "title": "Input AUX7",
