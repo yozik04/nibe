@@ -1720,7 +1720,11 @@
     "title": "Reversing valve hot water (QN10)",
     "factor": 1,
     "size": "u8",
-    "name": "reversing-valve-hot-water-qn10-32197"
+    "name": "reversing-valve-hot-water-qn10-32197",
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
   },
   "31116": {
     "title": "Operating mode step controlled additional heat",
@@ -2017,13 +2021,23 @@
     "title": "Protection mode (EB101)",
     "factor": 1,
     "size": "u16",
-    "name": "protection-mode-eb101-31805"
+    "name": "protection-mode-eb101-31805",
+    "mappings": {
+      "0": "Off",
+      "1": "Active",
+      "2": "Passive"
+    }
   },
   "31806": {
     "title": "Defrosting (EB101)",
     "factor": 1,
     "size": "u8",
-    "name": "defrosting-eb101-31806"
+    "name": "defrosting-eb101-31806",
+    "mappings": {
+      "0": "Off",
+      "1": "Active",
+      "2": "Passive"
+    }
   },
   "31807": {
     "title": "Power (EB101-EP14)",
@@ -2066,7 +2080,11 @@
     "title": "Pool 1 pump status",
     "factor": 1,
     "size": "u8",
-    "name": "pool-1-pump-status-31829"
+    "name": "pool-1-pump-status-31829",
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
   },
   "31855": {
     "title": "Requested compressor frequency (EB101)",
@@ -3120,7 +3138,11 @@
     "max": 1.0,
     "default": 0.0,
     "name": "use-room-sensor-climate-system-4-40200",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
   },
   "40201": {
     "title": "Use room sensor climate system 3",
@@ -3130,7 +3152,11 @@
     "max": 1.0,
     "default": 0.0,
     "name": "use-room-sensor-climate-system-3-40201",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
   },
   "40202": {
     "title": "Use room sensor climate system 2",
@@ -3140,7 +3166,11 @@
     "max": 1.0,
     "default": 0.0,
     "name": "use-room-sensor-climate-system-2-40202",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
   },
   "40203": {
     "title": "Use room sensor climate system 1",
@@ -3150,7 +3180,11 @@
     "max": 1.0,
     "default": 0.0,
     "name": "use-room-sensor-climate-system-1-40203",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
   },
   "40204": {
     "title": "Room sensor set point value climate system 4",
@@ -3354,7 +3388,11 @@
     "max": 1.0,
     "default": 0.0,
     "name": "pool-1-accessory-40686",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
   },
   "40695": {
     "title": "Hot water comfort",
@@ -3364,7 +3402,11 @@
     "max": 1.0,
     "default": 0.0,
     "name": "hot-water-comfort-40695",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
   },
   "40698": {
     "title": "More hot water",
@@ -3392,7 +3434,11 @@
     "max": 1.0,
     "default": 0.0,
     "name": "hw-comfort-shunt-on-off-40706",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
   },
   "40710": {
     "title": "External cooling accessory",
@@ -3412,7 +3458,11 @@
     "max": 1.0,
     "default": 0.0,
     "name": "hw-comfort-additional-heat-40711",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
   },
   "40727": {
     "title": "Cooling connected, climate system 1",
@@ -7193,7 +7243,11 @@
     "max": 1.0,
     "default": 0.0,
     "name": "modbus-external-control-45009",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
   },
   "30001": {
     "title": "Relay status",
@@ -7422,5 +7476,41 @@
     "factor": 1,
     "size": "u8",
     "name": "eev-state-eb101-32422"
+  },
+  "31828": {
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
+  },
+  "40685": {
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
+  },
+  "40691": {
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
+  },
+  "40692": {
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
+  },
+  "42761": {
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
+  },
+  "42762": {
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
   }
 }

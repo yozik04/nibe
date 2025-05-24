@@ -365,7 +365,12 @@
     "description": "M12676EN-1 - S1155/S1255 ",
     "files": [
       "s1155_s1255.json",
-      "s1156_s1256.json"
+      "s1156_s1256.json",
+      "s735.json",
+      "smos40.json",
+      "s320_s325.json",
+      "s330.json",
+      "s2125.json"
     ],
     "data": {
       "31101": {
@@ -379,8 +384,13 @@
   {
     "description": "Reversing valve hot water (QN10) - S1155/S1255 ",
     "files": [
+      "s320_s325.json",
+      "s330_s332.json",
+      "s735.json",
       "s1155_s1255.json",
-      "s1156_s1256.json"
+      "s1156_s1256.json",
+      "s2125.json",
+      "smos40.json"
     ],
     "data": {
       "32197": {
@@ -393,7 +403,11 @@
   },
   {
     "description": "M12676EN-1 - SMOS40 Mappings",
-    "files": ["smos40.json"],
+    "files": [
+      "s320_s325.json",
+      "s1156_s1256.json",
+      "smos40.json"
+    ],
     "data": {
       "31067": {
         "mappings": {
@@ -405,7 +419,15 @@
   },
   {
     "description": "M12676EN-1 - F2120 slave 1",
-    "files": ["smos40.json"],
+    "files": [
+      "s320_s325.json",
+      "s330_s332.json",
+      "s735.json",
+      "s1155_s1255.json",
+      "s1156_s1256.json",
+      "s2125.json",
+      "smos40.json"
+    ],
     "data": {
       "31806": {
         "mappings": {
@@ -418,7 +440,12 @@
   },
   {
     "description": "M12676EN-1 - F2120 slave 2",
-    "files": ["smos40.json"],
+    "files": [
+      "s735.json",
+      "s1155_s1255.json",
+      "s1156_s1256.json",
+      "smos40.json"
+    ],
     "data": {
       "31792": {
         "mappings": {
@@ -431,7 +458,12 @@
   },
   {
     "description": "M12676EN-1 - F2120 slave 3",
-    "files": ["smos40.json"],
+    "files": [
+      "s735.json",
+      "s1155_s1255.json",
+      "s1156_s1256.json",
+      "smos40.json"
+    ],
     "data": {
       "31778": {
         "mappings": {
@@ -457,7 +489,12 @@
   },
   {
     "description": "M12676EN-1 - F2140",
-    "files": [],
+    "files": [
+      "s320_s325.json",
+      "s330_s332.json",
+      "s2125.json",
+      "smos40.json"
+    ],
     "data": {
       "31805": {
         "mappings": {
@@ -477,7 +514,8 @@
       "s1155_s1255.json",
       "s1156_s1256.json",
       "s2125.json",
-      "smos40.json"],
+      "smos40.json"
+    ],
     "data": {
       "40057": {
         "mappings": {
@@ -637,6 +675,166 @@
         "factor": 10,
         "name": "room-temperature-bt50-45988",
         "write": true
+      }
+    }
+  },
+  {
+    "description": "Map states for valves in S-series registers",
+    "files": [
+      "s1155_s1255.json",
+      "s1156_s1256.json",
+      "s735.json",
+      "smos40.json",
+      "s320_s325.json",
+      "s330.json",
+      "s2125.json"
+    ],
+    "data": {
+      "31031": {
+      "mappings": {
+        "0": "Closed",
+        "1": "Open"
+      }
+      },
+      "31032": {
+        "mappings": {
+          "0": "Closed",
+          "1": "Open"
+        }
+      },
+      "31033": {
+        "mappings": {
+          "0": "Closed",
+          "1": "Open"
+        }
+      },
+      "31034": {
+        "mappings": {
+          "0": "Closed",
+          "1": "Open"
+        }
+      },
+      "31134": {
+        "mappings": {
+          "0": "Closed",
+          "1": "Open"
+        }
+      },
+      "31135": {
+        "mappings": {
+          "0": "Closed",
+          "1": "Open"
+        }
+      }
+    }
+  },
+  {
+    "description": "Map states for switches in S-series registers",
+    "files": [
+      "s1155_s1255.json",
+      "s1156_s1256.json",
+      "s735.json",
+      "smos40.json",
+      "s320_s325.json",
+      "s330_s332.json",
+      "s2125.json"
+    ],
+    "data": {
+      "31828": {
+        "mappings": {
+          "0": "Off",
+          "1": "On"
+        }
+      },
+      "31829": {
+        "mappings": {
+          "0": "Off",
+          "1": "On"
+        }
+      },
+      "40200": {
+        "mappings": {
+          "0": "Off",
+          "1": "On"
+        }
+      },
+      "40201": {
+        "mappings": {
+          "0": "Off",
+          "1": "On"
+        }
+      },
+      "40202": {
+        "mappings": {
+          "0": "Off",
+          "1": "On"
+        }
+      },
+      "40203": {
+        "mappings": {
+          "0": "Off",
+          "1": "On"
+        }
+      },
+      "40685": {
+        "mappings": {
+          "0": "Off",
+          "1": "On"
+        }
+      },
+      "40686": {
+        "mappings": {
+          "0": "Off",
+          "1": "On"
+        }
+      },
+      "40691": {
+        "mappings": {
+          "0": "Off",
+          "1": "On"
+        }
+      },
+      "40692": {
+        "mappings": {
+          "0": "Off",
+          "1": "On"
+        }
+      },
+      "40695": {
+        "mappings": {
+          "0": "Off",
+          "1": "On"
+        }
+      },
+      "40706": {
+        "mappings": {
+          "0": "Off",
+          "1": "On"
+        }
+      },
+      "40711": {
+        "mappings": {
+          "0": "Off",
+          "1": "On"
+        }
+      },
+      "42761": {
+        "mappings": {
+          "0": "Off",
+          "1": "On"
+        }
+      },
+      "42762": {
+        "mappings": {
+          "0": "Off",
+          "1": "On"
+        }
+      },
+      "45009": {
+        "mappings": {
+          "0": "Off",
+          "1": "On"
+        }
       }
     }
   }
