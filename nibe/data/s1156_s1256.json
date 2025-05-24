@@ -3138,25 +3138,41 @@
     "title": "Oper. mode shunt climate system 4",
     "factor": 1,
     "size": "u8",
-    "name": "oper-mode-shunt-climate-system-4-31031"
+    "name": "oper-mode-shunt-climate-system-4-31031",
+    "mappings": {
+      "0": "Closed",
+      "1": "Open"
+    }
   },
   "31032": {
     "title": "Oper. mode shunt climate system 3",
     "factor": 1,
     "size": "u8",
-    "name": "oper-mode-shunt-climate-system-3-31032"
+    "name": "oper-mode-shunt-climate-system-3-31032",
+    "mappings": {
+      "0": "Closed",
+      "1": "Open"
+    }
   },
   "31033": {
     "title": "Oper. mode shunt climate system 2",
     "factor": 1,
     "size": "u8",
-    "name": "oper-mode-shunt-climate-system-2-31033"
+    "name": "oper-mode-shunt-climate-system-2-31033",
+    "mappings": {
+      "0": "Closed",
+      "1": "Open"
+    }
   },
   "31034": {
     "title": "Oper. mode shunt climate system 1",
     "factor": 1,
     "size": "u8",
-    "name": "oper-mode-shunt-climate-system-1-31034"
+    "name": "oper-mode-shunt-climate-system-1-31034",
+    "mappings": {
+      "0": "Closed",
+      "1": "Open"
+    }
   },
   "31035": {
     "title": "Operating. mode shunt controlled additional heat",
@@ -3296,7 +3312,11 @@
     "title": "External heating medium pump (GP10) status",
     "factor": 1,
     "size": "u8",
-    "name": "external-heating-medium-pump-gp10-status-31067"
+    "name": "external-heating-medium-pump-gp10-status-31067",
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
   },
   "31070": {
     "title": "Total HW run time additional heat",
@@ -3521,13 +3541,21 @@
     "title": "Pool 2 (QN19)",
     "factor": 1,
     "size": "u8",
-    "name": "pool-2-qn19-31134"
+    "name": "pool-2-qn19-31134",
+    "mappings": {
+      "0": "Closed",
+      "1": "Open"
+    }
   },
   "31135": {
     "title": "Pool 1 (QN19)",
     "factor": 1,
     "size": "u8",
-    "name": "pool-1-qn19-31135"
+    "name": "pool-1-qn19-31135",
+    "mappings": {
+      "0": "Closed",
+      "1": "Open"
+    }
   },
   "31136": {
     "title": "Docked compressors pool 2",
@@ -4169,7 +4197,12 @@
     "title": "Defrosting (EB103)",
     "factor": 1,
     "size": "u8",
-    "name": "defrosting-eb103-31778"
+    "name": "defrosting-eb103-31778",
+    "mappings": {
+      "0": "Off",
+      "1": "Active",
+      "2": "Passive"
+    }
   },
   "31779": {
     "title": "Power (EB103-EP14)",
@@ -4220,7 +4253,12 @@
     "title": "Defrosting (EB102)",
     "factor": 1,
     "size": "u8",
-    "name": "defrosting-eb102-31792"
+    "name": "defrosting-eb102-31792",
+    "mappings": {
+      "0": "Off",
+      "1": "Active",
+      "2": "Passive"
+    }
   },
   "31793": {
     "title": "Power (EB102-EP14)",
@@ -4271,7 +4309,12 @@
     "title": "Defrosting (EB101)",
     "factor": 1,
     "size": "u8",
-    "name": "defrosting-eb101-31806"
+    "name": "defrosting-eb101-31806",
+    "mappings": {
+      "0": "Off",
+      "1": "Active",
+      "2": "Passive"
+    }
   },
   "31807": {
     "title": "Power (EB101-EP14)",
@@ -4386,13 +4429,21 @@
     "title": "Pool 2 pump status",
     "factor": 1,
     "size": "u8",
-    "name": "pool-2-pump-status-31828"
+    "name": "pool-2-pump-status-31828",
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
   },
   "31829": {
     "title": "Pool 1 pump status",
     "factor": 1,
     "size": "u8",
-    "name": "pool-1-pump-status-31829"
+    "name": "pool-1-pump-status-31829",
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
   },
   "31831": {
     "title": "ACS EQ1-QN12",
@@ -5953,7 +6004,11 @@
     "max": 1.0,
     "default": 0.0,
     "name": "use-room-sensor-climate-system-4-40200",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
   },
   "40201": {
     "title": "Use room sensor climate system 3",
@@ -5963,7 +6018,11 @@
     "max": 1.0,
     "default": 0.0,
     "name": "use-room-sensor-climate-system-3-40201",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
   },
   "40202": {
     "title": "Use room sensor climate system 2",
@@ -5973,7 +6032,11 @@
     "max": 1.0,
     "default": 0.0,
     "name": "use-room-sensor-climate-system-2-40202",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
   },
   "40203": {
     "title": "Use room sensor climate system 1",
@@ -5983,7 +6046,11 @@
     "max": 1.0,
     "default": 0.0,
     "name": "use-room-sensor-climate-system-1-40203",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
   },
   "40204": {
     "title": "Room sensor set point value climate system 4",
@@ -6313,7 +6380,11 @@
     "max": 1.0,
     "default": 0.0,
     "name": "pool-2-accessory-40685",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
   },
   "40686": {
     "title": "Pool 1 accessory",
@@ -6323,7 +6394,11 @@
     "max": 1.0,
     "default": 0.0,
     "name": "pool-1-accessory-40686",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
   },
   "40687": {
     "title": "Pool 2 start temperature",
@@ -6377,7 +6452,11 @@
     "max": 1.0,
     "default": 1.0,
     "name": "pool-2-activated-40691",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
   },
   "40692": {
     "title": "Pool 1 activated",
@@ -6387,7 +6466,11 @@
     "max": 1.0,
     "default": 1.0,
     "name": "pool-1-activated-40692",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
   },
   "40695": {
     "title": "Hot water comfort",
@@ -6397,7 +6480,11 @@
     "max": 1.0,
     "default": 0.0,
     "name": "hot-water-comfort-40695",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
   },
   "40696": {
     "title": "Manual heating medium pump speed",
@@ -6436,7 +6523,11 @@
     "max": 1.0,
     "default": 0.0,
     "name": "hw-comfort-shunt-on-off-40706",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
   },
   "40711": {
     "title": "HW comfort additional heat",
@@ -6446,7 +6537,11 @@
     "max": 1.0,
     "default": 0.0,
     "name": "hw-comfort-additional-heat-40711",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
   },
   "40712": {
     "title": "Supp. air curve SAM, outd. temp. (T3)",
@@ -13926,7 +14021,11 @@
     "max": 1.0,
     "default": 0.0,
     "name": "permit-additional-heat-pool-1-42761",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
   },
   "42762": {
     "title": "Permit additional heat, Pool 2",
@@ -13936,7 +14035,11 @@
     "max": 1.0,
     "default": 0.0,
     "name": "permit-additional-heat-pool-2-42762",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
   },
   "42821": {
     "title": "ERS 2",
@@ -14158,7 +14261,11 @@
     "max": 1.0,
     "default": 0.0,
     "name": "modbus-external-control-45009",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
   },
   "32284": {
     "title": "Energy log - Produced energy for heating over the past hour",
