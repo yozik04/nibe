@@ -111,20 +111,6 @@
     "size": "s16",
     "name": "collector-out-az10-bt27-30023"
   },
-  "30027": {
-    "title": "Roomsensor 1-1",
-    "factor": 10,
-    "unit": "\u00b0C",
-    "size": "s16",
-    "name": "roomsensor-1-1-30027"
-  },
-  "30028": {
-    "title": "Pool (BT51)",
-    "factor": 10,
-    "unit": "\u00b0C",
-    "size": "s16",
-    "name": "pool-bt51-30028"
-  },
   "30032": {
     "title": "Return line (EQ1-BT65)",
     "factor": 10,
@@ -152,13 +138,6 @@
     "size": "s16",
     "name": "boiler-temperature-bt52-30039"
   },
-  "30040": {
-    "title": "External supply line (BT25)",
-    "factor": 10,
-    "unit": "\u00b0C",
-    "size": "s16",
-    "name": "external-supply-line-bt25-30040"
-  },
   "30041": {
     "title": "Flow sensor (BF1)",
     "factor": 10,
@@ -171,27 +150,6 @@
     "factor": 1,
     "size": "s16",
     "name": "electrical-anode-eb100-fr1-30042"
-  },
-  "30047": {
-    "title": "Current (BE3)",
-    "factor": 10,
-    "unit": "A",
-    "size": "u32",
-    "name": "current-be3-30047"
-  },
-  "30049": {
-    "title": "Current (BE2)",
-    "factor": 10,
-    "unit": "A",
-    "size": "u32",
-    "name": "current-be2-30049"
-  },
-  "30051": {
-    "title": "Current (BE1)",
-    "factor": 10,
-    "unit": "A",
-    "size": "u32",
-    "name": "current-be1-30051"
   },
   "30060": {
     "title": "Pool (CL12-BT51)",
@@ -423,13 +381,6 @@
     "unit": "\u00b0C",
     "size": "s16",
     "name": "room-average-temp-clim-system-1-bt50-30117"
-  },
-  "30120": {
-    "title": "External cooling supply temperature (BT25)",
-    "factor": 10,
-    "unit": "\u00b0C",
-    "size": "s16",
-    "name": "external-cooling-supply-temperature-bt25-30120"
   },
   "30130": {
     "title": "Oper. mode shunt climate system 8",
@@ -1097,34 +1048,6 @@
     "factor": 1,
     "size": "u8",
     "name": "available-compressors-external-control-30323"
-  },
-  "30324": {
-    "title": "Humidity (BM1)",
-    "factor": 10,
-    "unit": "%",
-    "size": "s16",
-    "name": "humidity-bm1-30324"
-  },
-  "30325": {
-    "title": "Temperature (BM1)",
-    "factor": 10,
-    "unit": "\u00b0C",
-    "size": "s16",
-    "name": "temperature-bm1-30325"
-  },
-  "30326": {
-    "title": "Pressure (BM1)",
-    "factor": 10,
-    "unit": "kPa",
-    "size": "s16",
-    "name": "pressure-bm1-30326"
-  },
-  "30327": {
-    "title": "Dew point (BM1)",
-    "factor": 10,
-    "unit": "\u00b0C",
-    "size": "s16",
-    "name": "dew-point-bm1-30327"
   },
   "30338": {
     "title": "Supply temperature (BT64)",
@@ -3024,13 +2947,6 @@
     "name": "limit-dm-40019",
     "write": true
   },
-  "31017": {
-    "title": "Calculated supply climate system 2",
-    "factor": 10,
-    "unit": "\u00b0C",
-    "size": "s16",
-    "name": "calculated-supply-climate-system-2-31017"
-  },
   "31018": {
     "title": "Calculated supply climate system 1",
     "factor": 10,
@@ -3249,12 +3165,6 @@
     "unit": "Hz",
     "size": "u16",
     "name": "compressor-frequency-31066"
-  },
-  "31067": {
-    "title": "External heating medium pump (GP10) status",
-    "factor": 1,
-    "size": "u8",
-    "name": "external-heating-medium-pump-gp10-status-31067"
   },
   "31070": {
     "title": "Total HW run time additional heat",
@@ -3759,20 +3669,6 @@
     "default": 0.0,
     "name": "cooling-degree-minutes-40021",
     "write": true
-  },
-  "31567": {
-    "title": "Calculated cooling supply climate system 2",
-    "factor": 10,
-    "unit": "\u00b0C",
-    "size": "s16",
-    "name": "calculated-cooling-supply-climate-system-2-31567"
-  },
-  "31568": {
-    "title": "Calculated cooling supply climate system 1",
-    "factor": 10,
-    "unit": "\u00b0C",
-    "size": "s16",
-    "name": "calculated-cooling-supply-climate-system-1-31568"
   },
   "31569": {
     "title": "Status (ACS)",
@@ -4609,16 +4505,6 @@
     "size": "s16",
     "name": "non-module-specific-alarm-numbers-31977"
   },
-  "40026": {
-    "title": "Heating curve climate system 2",
-    "factor": 1,
-    "size": "s8",
-    "min": 0.0,
-    "max": 15.0,
-    "default": 9.0,
-    "name": "heating-curve-climate-system-2-40026",
-    "write": true
-  },
   "40027": {
     "title": "Heating curve climate system 1",
     "factor": 1,
@@ -4627,16 +4513,6 @@
     "max": 15.0,
     "default": 9.0,
     "name": "heating-curve-climate-system-1-40027",
-    "write": true
-  },
-  "40030": {
-    "title": "Heating offset climate system 2",
-    "factor": 1,
-    "size": "s8",
-    "min": -10.0,
-    "max": 10.0,
-    "default": 0.0,
-    "name": "heating-offset-climate-system-2-40030",
     "write": true
   },
   "40031": {
@@ -4649,17 +4525,6 @@
     "name": "heating-offset-climate-system-1-40031",
     "write": true
   },
-  "40034": {
-    "title": "Min supply climate system 2",
-    "factor": 10,
-    "unit": "\u00b0C",
-    "size": "s16",
-    "min": 50.0,
-    "max": 800.0,
-    "default": 200.0,
-    "name": "min-supply-climate-system-2-40034",
-    "write": true
-  },
   "40035": {
     "title": "Min supply climate system 1",
     "factor": 10,
@@ -4669,17 +4534,6 @@
     "max": 800.0,
     "default": 200.0,
     "name": "min-supply-climate-system-1-40035",
-    "write": true
-  },
-  "40038": {
-    "title": "Max supply climate system 2",
-    "factor": 10,
-    "unit": "\u00b0C",
-    "size": "s16",
-    "min": 50.0,
-    "max": 800.0,
-    "default": 600.0,
-    "name": "max-supply-climate-system-2-40038",
     "write": true
   },
   "40039": {
@@ -4792,16 +4646,6 @@
     "name": "point-offset-40048",
     "write": true
   },
-  "40051": {
-    "title": "External adjustment climate system 2",
-    "factor": 1,
-    "size": "s8",
-    "min": -10.0,
-    "max": 10.0,
-    "default": 0.0,
-    "name": "external-adjustment-climate-system-2-40051",
-    "write": true
-  },
   "40052": {
     "title": "External adjustment climate system 1",
     "factor": 1,
@@ -4810,17 +4654,6 @@
     "max": 10.0,
     "default": 0.0,
     "name": "external-adjustment-climate-system-1-40052",
-    "write": true
-  },
-  "40055": {
-    "title": "External adjustment with room sensor climate system 2",
-    "factor": 10,
-    "unit": "\u00b0C",
-    "size": "s16",
-    "min": 50.0,
-    "max": 300.0,
-    "default": 200.0,
-    "name": "external-adjustment-with-room-sensor-climate-system-2-40055",
     "write": true
   },
   "40056": {
@@ -4965,28 +4798,6 @@
     "name": "hot-water-circulation-42755",
     "write": true
   },
-  "43103": {
-    "title": "Operating time",
-    "factor": 1,
-    "unit": "min",
-    "size": "s8",
-    "min": 1.0,
-    "max": 60.0,
-    "default": 60.0,
-    "name": "operating-time-43103",
-    "write": true
-  },
-  "40070": {
-    "title": "Downtime",
-    "factor": 1,
-    "unit": "min",
-    "size": "s8",
-    "min": 0.0,
-    "max": 60.0,
-    "default": 0.0,
-    "name": "downtime-40070",
-    "write": true
-  },
   "40092": {
     "title": "Language",
     "factor": 1,
@@ -5017,17 +4828,6 @@
     "max": 180.0,
     "default": 30.0,
     "name": "period-time-heating-40094",
-    "write": true
-  },
-  "40095": {
-    "title": "Period time pool",
-    "factor": 1,
-    "unit": "min",
-    "size": "u8",
-    "min": 0.0,
-    "max": 180.0,
-    "default": 30.0,
-    "name": "period-time-pool-40095",
     "write": true
   },
   "42744": {
@@ -5065,28 +4865,6 @@
     "factor": 1,
     "size": "u8",
     "name": "activate-forced-control-45001",
-    "write": true
-  },
-  "40098": {
-    "title": "DM start heating",
-    "factor": 1,
-    "unit": "DM",
-    "size": "s16",
-    "min": -1000.0,
-    "max": -30.0,
-    "default": -60.0,
-    "name": "dm-start-heating-40098",
-    "write": true
-  },
-  "40101": {
-    "title": "DM between additional heat step",
-    "factor": 1,
-    "unit": "DM",
-    "size": "s16",
-    "min": 10.0,
-    "max": 1000.0,
-    "default": 100.0,
-    "name": "dm-between-additional-heat-step-40101",
     "write": true
   },
   "40103": {
@@ -5364,27 +5142,6 @@
     "max": 1.0,
     "default": 0.0,
     "name": "climate-system-4-40145",
-    "write": true
-  },
-  "40148": {
-    "title": "Climate system 2 shunt amplification",
-    "factor": 10,
-    "size": "s8",
-    "min": 1.0,
-    "max": 100.0,
-    "default": 10.0,
-    "name": "climate-system-2-shunt-amplification-40148",
-    "write": true
-  },
-  "40151": {
-    "title": "Climate system 2 shunt wait time",
-    "factor": 1,
-    "unit": "s",
-    "size": "s16",
-    "min": 10.0,
-    "max": 300.0,
-    "default": 30.0,
-    "name": "climate-system-2-shunt-wait-time-40151",
     "write": true
   },
   "40154": {
@@ -5696,16 +5453,6 @@
     "max": 1.0,
     "default": 1.0,
     "name": "time-format-40195",
-    "write": true
-  },
-  "40196": {
-    "title": "Hot water permitted",
-    "factor": 1,
-    "size": "u8",
-    "min": 0.0,
-    "max": 1.0,
-    "default": 0.0,
-    "name": "hot-water-permitted-40196",
     "write": true
   },
   "40197": {
@@ -6054,17 +5801,6 @@
     "name": "flm-1-40679",
     "write": true
   },
-  "40680": {
-    "title": "DM diff. start additional heat",
-    "factor": 1,
-    "unit": "DM",
-    "size": "s16",
-    "min": 100.0,
-    "max": 2000.0,
-    "default": 400.0,
-    "name": "dm-diff-start-additional-heat-40680",
-    "write": true
-  },
   "40682": {
     "title": "Cooling heat sensor set point value",
     "factor": 10,
@@ -6093,38 +5829,6 @@
     "max": 1.0,
     "default": 0.0,
     "name": "pool-1-accessory-40686",
-    "write": true
-  },
-  "40688": {
-    "title": "Pool 1 start temperature",
-    "factor": 10,
-    "unit": "\u00b0C",
-    "size": "s16",
-    "min": 50.0,
-    "max": 795.0,
-    "default": 220.0,
-    "name": "pool-1-start-temperature-40688",
-    "write": true
-  },
-  "40690": {
-    "title": "Pool 1 stop temperature",
-    "factor": 10,
-    "unit": "\u00b0C",
-    "size": "s16",
-    "min": 55.0,
-    "max": 800.0,
-    "default": 240.0,
-    "name": "pool-1-stop-temperature-40690",
-    "write": true
-  },
-  "40692": {
-    "title": "Pool 1 activated",
-    "factor": 1,
-    "size": "u8",
-    "min": 0.0,
-    "max": 1.0,
-    "default": 1.0,
-    "name": "pool-1-activated-40692",
     "write": true
   },
   "40695": {
@@ -6174,16 +5878,6 @@
     "max": 1.0,
     "default": 0.0,
     "name": "hw-comfort-shunt-on-off-40706",
-    "write": true
-  },
-  "40711": {
-    "title": "HW comfort additional heat",
-    "factor": 1,
-    "size": "u8",
-    "min": 0.0,
-    "max": 1.0,
-    "default": 0.0,
-    "name": "hw-comfort-additional-heat-40711",
     "write": true
   },
   "40712": {
@@ -6250,60 +5944,6 @@
     "max": 220.0,
     "default": 180.0,
     "name": "supp-air-curve-sam-desired-supp-air-temp-at-given-outd-temp-t1-40717",
-    "write": true
-  },
-  "40720": {
-    "title": "Min. supply temp. cooling climate system 2",
-    "factor": 1,
-    "unit": "\u00b0C",
-    "size": "s8",
-    "min": -5.0,
-    "max": 30.0,
-    "default": 18.0,
-    "name": "min-supply-temp-cooling-climate-system-2-40720",
-    "write": true
-  },
-  "40721": {
-    "title": "Min. supply temp. cooling climate system 1",
-    "factor": 1,
-    "unit": "\u00b0C",
-    "size": "s8",
-    "min": -5.0,
-    "max": 30.0,
-    "default": 18.0,
-    "name": "min-supply-temp-cooling-climate-system-1-40721",
-    "write": true
-  },
-  "40722": {
-    "title": "Own curve, cooling P3",
-    "factor": 1,
-    "unit": "\u00b0C",
-    "size": "s8",
-    "min": -5.0,
-    "max": 40.0,
-    "default": 20.0,
-    "name": "own-curve-cooling-p3-40722",
-    "write": true
-  },
-  "40723": {
-    "title": "Own curve, cooling P5",
-    "factor": 1,
-    "unit": "\u00b0C",
-    "size": "s8",
-    "min": -5.0,
-    "max": 40.0,
-    "default": 20.0,
-    "name": "own-curve-cooling-p5-40723",
-    "write": true
-  },
-  "40726": {
-    "title": "Cooling connected, climate system 2",
-    "factor": 1,
-    "size": "u8",
-    "min": 0.0,
-    "max": 1.0,
-    "default": 0.0,
-    "name": "cooling-connected-climate-system-2-40726",
     "write": true
   },
   "40727": {
@@ -6414,6 +6054,16 @@
     "name": "activated-smart-price-adaption-40844",
     "write": true
   },
+  "40849": {
+    "title": "(SPA), pool influence",
+    "factor": 1,
+    "size": "s8",
+    "min": 0.0,
+    "max": 10.0,
+    "default": 2.0,
+    "name": "spa-pool-influence-40849",
+    "write": true
+  },
   "40850": {
     "title": "(SPA), cooling activated",
     "factor": 1,
@@ -6422,6 +6072,16 @@
     "max": 1.0,
     "default": 1.0,
     "name": "spa-cooling-activated-40850",
+    "write": true
+  },
+  "40851": {
+    "title": "(SPA), cooling influence",
+    "factor": 1,
+    "size": "s8",
+    "min": 0.0,
+    "max": 10.0,
+    "default": 2.0,
+    "name": "spa-cooling-influence-40851",
     "write": true
   },
   "40852": {
@@ -6476,17 +6136,6 @@
     "max": 100.0,
     "default": 100.0,
     "name": "maximum-speed-of-circulation-pump-for-heating-40859",
-    "write": true
-  },
-  "40860": {
-    "title": "Speed, brine pump, passive cooling mode",
-    "factor": 1,
-    "unit": "%",
-    "size": "u8",
-    "min": 0.0,
-    "max": 100.0,
-    "default": 75.0,
-    "name": "speed-brine-pump-passive-cooling-mode-40860",
     "write": true
   },
   "40894": {
@@ -6625,16 +6274,6 @@
     "max": 1.0,
     "default": 0.0,
     "name": "climate-system-8-40909",
-    "write": true
-  },
-  "40932": {
-    "title": "Heating connected, climate system 2",
-    "factor": 1,
-    "size": "u8",
-    "min": 0.0,
-    "max": 1.0,
-    "default": 1.0,
-    "name": "heating-connected-climate-system-2-40932",
     "write": true
   },
   "40933": {
@@ -6851,79 +6490,6 @@
     "name": "room-sensor-factor-climate-system-5-40960",
     "write": true
   },
-  "40967": {
-    "title": "Cooling curve climate system 2",
-    "factor": 1,
-    "size": "s8",
-    "min": 0.0,
-    "max": 9.0,
-    "default": 0.0,
-    "name": "cooling-curve-climate-system-2-40967",
-    "write": true
-  },
-  "40968": {
-    "title": "Cooling curve climate system 1",
-    "factor": 1,
-    "size": "s8",
-    "min": 0.0,
-    "max": 9.0,
-    "default": 0.0,
-    "name": "cooling-curve-climate-system-1-40968",
-    "write": true
-  },
-  "40975": {
-    "title": "Cooling offset climate system 2",
-    "factor": 1,
-    "size": "s8",
-    "min": -10.0,
-    "max": 10.0,
-    "default": 0.0,
-    "name": "cooling-offset-climate-system-2-40975",
-    "write": true
-  },
-  "40976": {
-    "title": "Cooling offset climate system 1",
-    "factor": 1,
-    "size": "s8",
-    "min": -10.0,
-    "max": 10.0,
-    "default": 0.0,
-    "name": "cooling-offset-climate-system-1-40976",
-    "write": true
-  },
-  "40977": {
-    "title": "Own curve, cooling P4",
-    "factor": 1,
-    "unit": "\u00b0C",
-    "size": "s8",
-    "min": -5.0,
-    "max": 40.0,
-    "default": 20.0,
-    "name": "own-curve-cooling-p4-40977",
-    "write": true
-  },
-  "40978": {
-    "title": "Own curve, cooling P2",
-    "factor": 1,
-    "unit": "\u00b0C",
-    "size": "s8",
-    "min": -5.0,
-    "max": 40.0,
-    "default": 20.0,
-    "name": "own-curve-cooling-p2-40978",
-    "write": true
-  },
-  "40979": {
-    "title": "Own curve, cooling P1",
-    "factor": 1,
-    "unit": "\u00b0C",
-    "size": "s8",
-    "min": -5.0,
-    "max": 40.0,
-    "default": 20.0,
-    "name": "own-curve-cooling-p1-40979",
-    "write": true
-  },
   "40981": {
     "title": "Current transformer ratio",
     "factor": 1,
@@ -7123,16 +6689,6 @@
     "name": "hts-1-40999",
     "write": true
   },
-  "41007": {
-    "title": "Prevent condensation climate system 1",
-    "factor": 1,
-    "size": "s8",
-    "min": 0.0,
-    "max": 1.0,
-    "default": 0.0,
-    "name": "prevent-condensation-climate-system-1-41007",
-    "write": true
-  },
   "41016": {
     "title": "OPT",
     "factor": 1,
@@ -7293,16 +6849,6 @@
     "max": 900.0,
     "default": 700.0,
     "name": "max-internal-additional-heat-sg-ready-41053",
-    "write": true
-  },
-  "41064": {
-    "title": "Limit humidity in the room, cooling climate system 1",
-    "factor": 1,
-    "size": "s8",
-    "min": 0.0,
-    "max": 1.0,
-    "default": 0.0,
-    "name": "limit-humidity-in-the-room-cooling-climate-system-1-41064",
     "write": true
   },
   "41067": {
@@ -8228,16 +7774,6 @@
     "size": "u32",
     "name": "current-power-32177"
   },
-  "44006": {
-    "title": "PV panel affects pool (EME)",
-    "factor": 1,
-    "size": "u8",
-    "min": 0.0,
-    "max": 1.0,
-    "default": 0.0,
-    "name": "pv-panel-affects-pool-eme-44006",
-    "write": true
-  },
   "44007": {
     "title": "Speed of circulation pump passive cooling (EP15)",
     "factor": 1,
@@ -8655,48 +8191,6 @@
     "name": "eb103-104-gp12-45455",
     "write": true
   },
-  "45410": {
-    "title": "Start time HWC period 1",
-    "factor": 1,
-    "size": "u16",
-    "name": "start-time-hwc-period-1-45410",
-    "write": true
-  },
-  "45414": {
-    "title": "Start time HWC period 2",
-    "factor": 1,
-    "size": "u16",
-    "name": "start-time-hwc-period-2-45414",
-    "write": true
-  },
-  "45418": {
-    "title": "Start time HWC period 3",
-    "factor": 1,
-    "size": "u16",
-    "name": "start-time-hwc-period-3-45418",
-    "write": true
-  },
-  "45422": {
-    "title": "Stop time HWC period 1",
-    "factor": 1,
-    "size": "u16",
-    "name": "stop-time-hwc-period-1-45422",
-    "write": true
-  },
-  "45426": {
-    "title": "Stop time HWC period 2",
-    "factor": 1,
-    "size": "u16",
-    "name": "stop-time-hwc-period-2-45426",
-    "write": true
-  },
-  "45430": {
-    "title": "Stop time HWC period 3",
-    "factor": 1,
-    "size": "u16",
-    "name": "stop-time-hwc-period-3-45430",
-    "write": true
-  },
   "45352": {
     "title": "Minimum permitted speed (EB100 GP1)",
     "factor": 1,
@@ -8832,17 +8326,6 @@
     "name": "sound-when-pressing-button-45328",
     "write": true
   },
-  "43040": {
-    "title": "Desired charge power pool 1 main unit",
-    "factor": 1,
-    "unit": "kW",
-    "size": "u8",
-    "min": 1.0,
-    "max": 100.0,
-    "default": 6.0,
-    "name": "desired-charge-power-pool-1-main-unit-43040",
-    "write": true
-  },
   "43058": {
     "title": "ERS S40 7",
     "factor": 1,
@@ -8851,16 +8334,6 @@
     "max": 1.0,
     "default": 0.0,
     "name": "ers-s40-7-43058",
-    "write": true
-  },
-  "43032": {
-    "title": "Alarm room sens cool oper",
-    "factor": 1,
-    "size": "u8",
-    "min": 0.0,
-    "max": 1.0,
-    "default": 0.0,
-    "name": "alarm-room-sens-cool-oper-43032",
     "write": true
   },
   "43060": {
@@ -9003,26 +8476,6 @@
     "factor": 1,
     "size": "u16",
     "name": "stop-time-45402",
-    "write": true
-  },
-  "42767": {
-    "title": "Allow add. heat during defrosting",
-    "factor": 1,
-    "size": "u8",
-    "min": 0.0,
-    "max": 1.0,
-    "default": 0.0,
-    "name": "allow-add-heat-during-defrosting-42767",
-    "write": true
-  },
-  "42765": {
-    "title": "K4 relay is Normally Closed",
-    "factor": 1,
-    "size": "u8",
-    "min": 0.0,
-    "max": 1.0,
-    "default": 0.0,
-    "name": "k4-relay-is-normally-closed-42765",
     "write": true
   },
   "42668": {
@@ -9597,406 +9050,6 @@
     "name": "zone-40-affected-by-ecs1-42159",
     "write": true
   },
-  "42160": {
-    "title": "Zone 1 affected by ECS2",
-    "factor": 1,
-    "size": "u8",
-    "min": 0.0,
-    "max": 1.0,
-    "default": 0.0,
-    "name": "zone-1-affected-by-ecs2-42160",
-    "write": true
-  },
-  "42161": {
-    "title": "Zone 2 affected by ECS2",
-    "factor": 1,
-    "size": "u8",
-    "min": 0.0,
-    "max": 1.0,
-    "default": 0.0,
-    "name": "zone-2-affected-by-ecs2-42161",
-    "write": true
-  },
-  "42162": {
-    "title": "Zone 3 affected by ECS2",
-    "factor": 1,
-    "size": "u8",
-    "min": 0.0,
-    "max": 1.0,
-    "default": 0.0,
-    "name": "zone-3-affected-by-ecs2-42162",
-    "write": true
-  },
-  "42163": {
-    "title": "Zone 4 affected by ECS2",
-    "factor": 1,
-    "size": "u8",
-    "min": 0.0,
-    "max": 1.0,
-    "default": 0.0,
-    "name": "zone-4-affected-by-ecs2-42163",
-    "write": true
-  },
-  "42164": {
-    "title": "Zone 5 affected by ECS2",
-    "factor": 1,
-    "size": "u8",
-    "min": 0.0,
-    "max": 1.0,
-    "default": 0.0,
-    "name": "zone-5-affected-by-ecs2-42164",
-    "write": true
-  },
-  "42165": {
-    "title": "Zone 6 affected by ECS2",
-    "factor": 1,
-    "size": "u8",
-    "min": 0.0,
-    "max": 1.0,
-    "default": 0.0,
-    "name": "zone-6-affected-by-ecs2-42165",
-    "write": true
-  },
-  "42166": {
-    "title": "Zone 7 affected by ECS2",
-    "factor": 1,
-    "size": "u8",
-    "min": 0.0,
-    "max": 1.0,
-    "default": 0.0,
-    "name": "zone-7-affected-by-ecs2-42166",
-    "write": true
-  },
-  "42167": {
-    "title": "Zone 8 affected by ECS2",
-    "factor": 1,
-    "size": "u8",
-    "min": 0.0,
-    "max": 1.0,
-    "default": 0.0,
-    "name": "zone-8-affected-by-ecs2-42167",
-    "write": true
-  },
-  "42168": {
-    "title": "Zone 9 affected by ECS2",
-    "factor": 1,
-    "size": "u8",
-    "min": 0.0,
-    "max": 1.0,
-    "default": 0.0,
-    "name": "zone-9-affected-by-ecs2-42168",
-    "write": true
-  },
-  "42169": {
-    "title": "Zone 10 affected by ECS2",
-    "factor": 1,
-    "size": "u8",
-    "min": 0.0,
-    "max": 1.0,
-    "default": 0.0,
-    "name": "zone-10-affected-by-ecs2-42169",
-    "write": true
-  },
-  "42170": {
-    "title": "Zone 11 affected by ECS2",
-    "factor": 1,
-    "size": "u8",
-    "min": 0.0,
-    "max": 1.0,
-    "default": 0.0,
-    "name": "zone-11-affected-by-ecs2-42170",
-    "write": true
-  },
-  "42171": {
-    "title": "Zone 12 affected by ECS2",
-    "factor": 1,
-    "size": "u8",
-    "min": 0.0,
-    "max": 1.0,
-    "default": 0.0,
-    "name": "zone-12-affected-by-ecs2-42171",
-    "write": true
-  },
-  "42172": {
-    "title": "Zone 13 affected by ECS2",
-    "factor": 1,
-    "size": "u8",
-    "min": 0.0,
-    "max": 1.0,
-    "default": 0.0,
-    "name": "zone-13-affected-by-ecs2-42172",
-    "write": true
-  },
-  "42173": {
-    "title": "Zone 14 affected by ECS2",
-    "factor": 1,
-    "size": "u8",
-    "min": 0.0,
-    "max": 1.0,
-    "default": 0.0,
-    "name": "zone-14-affected-by-ecs2-42173",
-    "write": true
-  },
-  "42174": {
-    "title": "Zone 15 affected by ECS2",
-    "factor": 1,
-    "size": "u8",
-    "min": 0.0,
-    "max": 1.0,
-    "default": 0.0,
-    "name": "zone-15-affected-by-ecs2-42174",
-    "write": true
-  },
-  "42175": {
-    "title": "Zone 16 affected by ECS2",
-    "factor": 1,
-    "size": "u8",
-    "min": 0.0,
-    "max": 1.0,
-    "default": 0.0,
-    "name": "zone-16-affected-by-ecs2-42175",
-    "write": true
-  },
-  "42176": {
-    "title": "Zone 17 affected by ECS2",
-    "factor": 1,
-    "size": "u8",
-    "min": 0.0,
-    "max": 1.0,
-    "default": 0.0,
-    "name": "zone-17-affected-by-ecs2-42176",
-    "write": true
-  },
-  "42177": {
-    "title": "Zone 18 affected by ECS2",
-    "factor": 1,
-    "size": "u8",
-    "min": 0.0,
-    "max": 1.0,
-    "default": 0.0,
-    "name": "zone-18-affected-by-ecs2-42177",
-    "write": true
-  },
-  "42178": {
-    "title": "Zone 19 affected by ECS2",
-    "factor": 1,
-    "size": "u8",
-    "min": 0.0,
-    "max": 1.0,
-    "default": 0.0,
-    "name": "zone-19-affected-by-ecs2-42178",
-    "write": true
-  },
-  "42179": {
-    "title": "Zone 20 affected by ECS2",
-    "factor": 1,
-    "size": "u8",
-    "min": 0.0,
-    "max": 1.0,
-    "default": 0.0,
-    "name": "zone-20-affected-by-ecs2-42179",
-    "write": true
-  },
-  "42180": {
-    "title": "Zone 21 affected by ECS2",
-    "factor": 1,
-    "size": "u8",
-    "min": 0.0,
-    "max": 1.0,
-    "default": 0.0,
-    "name": "zone-21-affected-by-ecs2-42180",
-    "write": true
-  },
-  "42181": {
-    "title": "Zone 22 affected by ECS2",
-    "factor": 1,
-    "size": "u8",
-    "min": 0.0,
-    "max": 1.0,
-    "default": 0.0,
-    "name": "zone-22-affected-by-ecs2-42181",
-    "write": true
-  },
-  "42182": {
-    "title": "Zone 23 affected by ECS2",
-    "factor": 1,
-    "size": "u8",
-    "min": 0.0,
-    "max": 1.0,
-    "default": 0.0,
-    "name": "zone-23-affected-by-ecs2-42182",
-    "write": true
-  },
-  "42183": {
-    "title": "Zone 24 affected by ECS2",
-    "factor": 1,
-    "size": "u8",
-    "min": 0.0,
-    "max": 1.0,
-    "default": 0.0,
-    "name": "zone-24-affected-by-ecs2-42183",
-    "write": true
-  },
-  "42184": {
-    "title": "Zone 25 affected by ECS2",
-    "factor": 1,
-    "size": "u8",
-    "min": 0.0,
-    "max": 1.0,
-    "default": 0.0,
-    "name": "zone-25-affected-by-ecs2-42184",
-    "write": true
-  },
-  "42185": {
-    "title": "Zone 26 affected by ECS2",
-    "factor": 1,
-    "size": "u8",
-    "min": 0.0,
-    "max": 1.0,
-    "default": 0.0,
-    "name": "zone-26-affected-by-ecs2-42185",
-    "write": true
-  },
-  "42186": {
-    "title": "Zone 27 affected by ECS2",
-    "factor": 1,
-    "size": "u8",
-    "min": 0.0,
-    "max": 1.0,
-    "default": 0.0,
-    "name": "zone-27-affected-by-ecs2-42186",
-    "write": true
-  },
-  "42187": {
-    "title": "Zone 28 affected by ECS2",
-    "factor": 1,
-    "size": "u8",
-    "min": 0.0,
-    "max": 1.0,
-    "default": 0.0,
-    "name": "zone-28-affected-by-ecs2-42187",
-    "write": true
-  },
-  "42188": {
-    "title": "Zone 29 affected by ECS2",
-    "factor": 1,
-    "size": "u8",
-    "min": 0.0,
-    "max": 1.0,
-    "default": 0.0,
-    "name": "zone-29-affected-by-ecs2-42188",
-    "write": true
-  },
-  "42189": {
-    "title": "Zone 30 affected by ECS2",
-    "factor": 1,
-    "size": "u8",
-    "min": 0.0,
-    "max": 1.0,
-    "default": 0.0,
-    "name": "zone-30-affected-by-ecs2-42189",
-    "write": true
-  },
-  "42190": {
-    "title": "Zone 31 affected by ECS2",
-    "factor": 1,
-    "size": "u8",
-    "min": 0.0,
-    "max": 1.0,
-    "default": 0.0,
-    "name": "zone-31-affected-by-ecs2-42190",
-    "write": true
-  },
-  "42191": {
-    "title": "Zone 32 affected by ECS2",
-    "factor": 1,
-    "size": "u8",
-    "min": 0.0,
-    "max": 1.0,
-    "default": 0.0,
-    "name": "zone-32-affected-by-ecs2-42191",
-    "write": true
-  },
-  "42192": {
-    "title": "Zone 33 affected by ECS2",
-    "factor": 1,
-    "size": "u8",
-    "min": 0.0,
-    "max": 1.0,
-    "default": 0.0,
-    "name": "zone-33-affected-by-ecs2-42192",
-    "write": true
-  },
-  "42193": {
-    "title": "Zone 34 affected by ECS2",
-    "factor": 1,
-    "size": "u8",
-    "min": 0.0,
-    "max": 1.0,
-    "default": 0.0,
-    "name": "zone-34-affected-by-ecs2-42193",
-    "write": true
-  },
-  "42194": {
-    "title": "Zone 35 affected by ECS2",
-    "factor": 1,
-    "size": "u8",
-    "min": 0.0,
-    "max": 1.0,
-    "default": 0.0,
-    "name": "zone-35-affected-by-ecs2-42194",
-    "write": true
-  },
-  "42195": {
-    "title": "Zone 36 affected by ECS2",
-    "factor": 1,
-    "size": "u8",
-    "min": 0.0,
-    "max": 1.0,
-    "default": 0.0,
-    "name": "zone-36-affected-by-ecs2-42195",
-    "write": true
-  },
-  "42196": {
-    "title": "Zone 37 affected by ECS2",
-    "factor": 1,
-    "size": "u8",
-    "min": 0.0,
-    "max": 1.0,
-    "default": 0.0,
-    "name": "zone-37-affected-by-ecs2-42196",
-    "write": true
-  },
-  "42197": {
-    "title": "Zone 38 affected by ECS2",
-    "factor": 1,
-    "size": "u8",
-    "min": 0.0,
-    "max": 1.0,
-    "default": 0.0,
-    "name": "zone-38-affected-by-ecs2-42197",
-    "write": true
-  },
-  "42198": {
-    "title": "Zone 39 affected by ECS2",
-    "factor": 1,
-    "size": "u8",
-    "min": 0.0,
-    "max": 1.0,
-    "default": 0.0,
-    "name": "zone-39-affected-by-ecs2-42198",
-    "write": true
-  },
-  "42199": {
-    "title": "Zone 40 affected by ECS2",
-    "factor": 1,
-    "size": "u8",
-    "min": 0.0,
-    "max": 1.0,
-    "default": 0.0,
-    "name": "zone-40-affected-by-ecs2-42199",
-    "write": true
-  },
   "42440": {
     "title": "Input on ECS1 affects ECS1",
     "factor": 1,
@@ -10077,86 +9130,6 @@
     "name": "input-on-ecs1-affects-ecs8-42447",
     "write": true
   },
-  "42448": {
-    "title": "Input on ECS2 affects ECS1",
-    "factor": 1,
-    "size": "u8",
-    "min": 0.0,
-    "max": 1.0,
-    "default": 0.0,
-    "name": "input-on-ecs2-affects-ecs1-42448",
-    "write": true
-  },
-  "42449": {
-    "title": "Input on ECS2 affects ECS2",
-    "factor": 1,
-    "size": "u8",
-    "min": 0.0,
-    "max": 1.0,
-    "default": 0.0,
-    "name": "input-on-ecs2-affects-ecs2-42449",
-    "write": true
-  },
-  "42450": {
-    "title": "Input on ECS2 affects ECS3",
-    "factor": 1,
-    "size": "u8",
-    "min": 0.0,
-    "max": 1.0,
-    "default": 0.0,
-    "name": "input-on-ecs2-affects-ecs3-42450",
-    "write": true
-  },
-  "42451": {
-    "title": "Input on ECS2 affects ECS4",
-    "factor": 1,
-    "size": "u8",
-    "min": 0.0,
-    "max": 1.0,
-    "default": 0.0,
-    "name": "input-on-ecs2-affects-ecs4-42451",
-    "write": true
-  },
-  "42452": {
-    "title": "Input on ECS2 affects ECS5",
-    "factor": 1,
-    "size": "u8",
-    "min": 0.0,
-    "max": 1.0,
-    "default": 0.0,
-    "name": "input-on-ecs2-affects-ecs5-42452",
-    "write": true
-  },
-  "42453": {
-    "title": "Input on ECS2 affects ECS6",
-    "factor": 1,
-    "size": "u8",
-    "min": 0.0,
-    "max": 1.0,
-    "default": 0.0,
-    "name": "input-on-ecs2-affects-ecs6-42453",
-    "write": true
-  },
-  "42454": {
-    "title": "Input on ECS2 affects ECS7",
-    "factor": 1,
-    "size": "u8",
-    "min": 0.0,
-    "max": 1.0,
-    "default": 0.0,
-    "name": "input-on-ecs2-affects-ecs7-42454",
-    "write": true
-  },
-  "42455": {
-    "title": "Input on ECS2 affects ECS8",
-    "factor": 1,
-    "size": "u8",
-    "min": 0.0,
-    "max": 1.0,
-    "default": 0.0,
-    "name": "input-on-ecs2-affects-ecs8-42455",
-    "write": true
-  },
   "42504": {
     "title": "External setting for adjustment migrated",
     "factor": 1,
@@ -10206,16 +9179,6 @@
     "default": 3.0,
     "name": "time-between-filter-replacement-42680",
     "write": true
-  },
-  "32020": {
-    "title": "Cooling, passive",
-    "factor": 10,
-    "unit": "kWh",
-    "size": "u32",
-    "min": 0.0,
-    "max": 9999999.0,
-    "default": 0.0,
-    "name": "cooling-passive-32020"
   },
   "42701": {
     "title": "Return time fan 4",
@@ -10470,16 +9433,6 @@
     "name": "heat-pump-test-silent-mode-eb101-eb102-45102",
     "write": true
   },
-  "42761": {
-    "title": "Permit additional heat, Pool 1",
-    "factor": 1,
-    "size": "u8",
-    "min": 0.0,
-    "max": 1.0,
-    "default": 0.0,
-    "name": "permit-additional-heat-pool-1-42761",
-    "write": true
-  },
   "42821": {
     "title": "ERS 2",
     "factor": 1,
@@ -10716,20 +9669,6 @@
     "size": "u32",
     "name": "energy-log-produced-energy-for-hot-water-over-the-past-hour-32286"
   },
-  "32290": {
-    "title": "Energy log - Produced energy for cooling over the past hour",
-    "factor": 100,
-    "unit": "kWh",
-    "size": "u32",
-    "name": "energy-log-produced-energy-for-cooling-over-the-past-hour-32290"
-  },
-  "32288": {
-    "title": "Energy log - Produced energy for pool over the past hour",
-    "factor": 100,
-    "unit": "kWh",
-    "size": "u32",
-    "name": "energy-log-produced-energy-for-pool-over-the-past-hour-32288"
-  },
   "32292": {
     "title": "Energy log - Used energy for heating over the past hour",
     "factor": 100,
@@ -10744,20 +9683,6 @@
     "size": "u32",
     "name": "energy-log-used-energy-for-hot-water-over-the-past-hour-32294"
   },
-  "32298": {
-    "title": "Energy log - Used energy for cooling over the past hour",
-    "factor": 100,
-    "unit": "kWh",
-    "size": "u32",
-    "name": "energy-log-used-energy-for-cooling-over-the-past-hour-32298"
-  },
-  "32296": {
-    "title": "Energy log - Used energy for pool over the past hour",
-    "factor": 100,
-    "unit": "kWh",
-    "size": "u32",
-    "name": "energy-log-used-energy-for-pool-over-the-past-hour-32296"
-  },
   "32300": {
     "title": "Energy log - Used energy by additional heater for heating over the past hour",
     "factor": 100,
@@ -10771,13 +9696,6 @@
     "unit": "kWh",
     "size": "u32",
     "name": "energy-log-used-energy-by-additional-heater-for-hot-water-over-the-past-hour-32302"
-  },
-  "32304": {
-    "title": "Energy log - Used energy by additional heater for pool over the past hour",
-    "factor": 100,
-    "unit": "kWh",
-    "size": "u32",
-    "name": "energy-log-used-energy-by-additional-heater-for-pool-over-the-past-hour-32304"
   },
   "32306": {
     "title": "Energy log - Current power consumption",
@@ -10994,15 +9912,74 @@
     "name": "use-lp-as-freeze-protection-45077",
     "write": true
   },
-  "44206": {
-    "title": "Auto mode, start temperature for passive cooling",
-    "factor": 10,
-    "unit": "\u00b0C",
-    "size": "s16",
-    "min": -200.0,
-    "max": 400.0,
-    "default": 250.0,
-    "name": "auto-mode-start-temperature-for-passive-cooling-44206",
+  "45209": {
+    "title": "External reading of BT1 activated",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "external-reading-of-bt1-activated-45209",
+    "write": true
+  },
+  "45210": {
+    "title": "External reading of BT25 activated",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "external-reading-of-bt25-activated-45210",
+    "write": true
+  },
+  "45211": {
+    "title": "External reading of BT71 activated",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "external-reading-of-bt71-activated-45211",
+    "write": true
+  },
+  "45212": {
+    "title": "External reading of BT5 activated",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "external-reading-of-bt5-activated-45212",
+    "write": true
+  },
+  "45213": {
+    "title": "External reading of BT6 activated",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "external-reading-of-bt6-activated-45213",
+    "write": true
+  },
+  "45214": {
+    "title": "External reading of BT7 activated",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "external-reading-of-bt7-activated-45214",
+    "write": true
+  },
+  "45217": {
+    "title": "External reading of BT52 activated",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "external-reading-of-bt52-activated-45217",
     "write": true
   },
   "45459": {
@@ -11028,13 +10005,6 @@
     "unit": "kWh",
     "size": "u32",
     "name": "hot-water-compressor-only-31584"
-  },
-  "31582": {
-    "title": "Pool, compressor only",
-    "factor": 10,
-    "unit": "kWh",
-    "size": "u32",
-    "name": "pool-compressor-only-31582"
   },
   "31578": {
     "title": "Heating, including int. add. heat",
@@ -11064,47 +10034,23 @@
     "size": "u32",
     "name": "current-power-32728"
   },
-  "32801": {
-    "title": "Temperature: HTS 1",
-    "factor": 10,
-    "unit": "\u00b0C",
-    "size": "s32",
-    "name": "temperature-hts-1-32801"
+  "45987": {
+    "title": "External reading of BT50 activated",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "external-reading-of-bt50-activated-45987",
+    "write": true
   },
-  "32803": {
-    "title": "Temperature: THS10 1",
-    "factor": 10,
-    "unit": "\u00b0C",
-    "size": "s32",
-    "name": "temperature-ths10-1-32803"
-  },
-  "32805": {
-    "title": "Temperature: THS10 2",
-    "factor": 10,
-    "unit": "\u00b0C",
-    "size": "s32",
-    "name": "temperature-ths10-2-32805"
-  },
-  "33131": {
-    "title": "Humidity: HTS 1",
-    "factor": 10,
-    "unit": "%RH",
-    "size": "s32",
-    "name": "humidity-hts-1-33131"
-  },
-  "33133": {
-    "title": "Humidity: THS10 1",
-    "factor": 10,
-    "unit": "%RH",
-    "size": "s32",
-    "name": "humidity-ths10-1-33133"
-  },
-  "33135": {
-    "title": "Humidity: THS10 2",
-    "factor": 10,
-    "unit": "%RH",
-    "size": "s32",
-    "name": "humidity-ths10-2-33135"
+  "45997": {
+    "title": "Speed, circulation pump, standby mode (EB100)",
+    "factor": 1,
+    "unit": "%",
+    "size": "u8",
+    "name": "speed-circulation-pump-standby-mode-eb100-45997",
+    "write": true
   },
   "41556": {
     "title": "Input AUX7",
