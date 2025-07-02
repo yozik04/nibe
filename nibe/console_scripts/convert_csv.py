@@ -270,9 +270,9 @@ class CSVConverter:
             self.data["id"] = self.data.apply(calculate_number, axis=1)
 
             self.data["mode"] = self.data["register type"].map(
-                lambda x: "R/W"
-                if x in ("MODBUS_HOLDING_REGISTER", "MODBUS_COIL")
-                else "R"
+                lambda x: (
+                    "R/W" if x in ("MODBUS_HOLDING_REGISTER", "MODBUS_COIL") else "R"
+                )
             )
 
             del self.data["register type"]
