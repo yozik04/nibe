@@ -6414,6 +6414,16 @@
     "name": "activated-smart-price-adaption-40844",
     "write": true
   },
+  "40849": {
+    "title": "(SPA), pool influence",
+    "factor": 1,
+    "size": "s8",
+    "min": 0.0,
+    "max": 10.0,
+    "default": 2.0,
+    "name": "spa-pool-influence-40849",
+    "write": true
+  },
   "40850": {
     "title": "(SPA), cooling activated",
     "factor": 1,
@@ -6422,6 +6432,16 @@
     "max": 1.0,
     "default": 1.0,
     "name": "spa-cooling-activated-40850",
+    "write": true
+  },
+  "40851": {
+    "title": "(SPA), cooling influence",
+    "factor": 1,
+    "size": "s8",
+    "min": 0.0,
+    "max": 10.0,
+    "default": 2.0,
+    "name": "spa-cooling-influence-40851",
     "write": true
   },
   "40852": {
@@ -10994,6 +11014,76 @@
     "name": "use-lp-as-freeze-protection-45077",
     "write": true
   },
+  "45209": {
+    "title": "External reading of BT1 activated",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "external-reading-of-bt1-activated-45209",
+    "write": true
+  },
+  "45210": {
+    "title": "External reading of BT25 activated",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "external-reading-of-bt25-activated-45210",
+    "write": true
+  },
+  "45211": {
+    "title": "External reading of BT71 activated",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "external-reading-of-bt71-activated-45211",
+    "write": true
+  },
+  "45212": {
+    "title": "External reading of BT5 activated",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "external-reading-of-bt5-activated-45212",
+    "write": true
+  },
+  "45213": {
+    "title": "External reading of BT6 activated",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "external-reading-of-bt6-activated-45213",
+    "write": true
+  },
+  "45214": {
+    "title": "External reading of BT7 activated",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "external-reading-of-bt7-activated-45214",
+    "write": true
+  },
+  "45217": {
+    "title": "External reading of BT52 activated",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "external-reading-of-bt52-activated-45217",
+    "write": true
+  },
   "44206": {
     "title": "Auto mode, start temperature for passive cooling",
     "factor": 10,
@@ -11063,6 +11153,24 @@
     "unit": "kW",
     "size": "u32",
     "name": "current-power-32728"
+  },
+  "45987": {
+    "title": "External reading of BT50 activated",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "external-reading-of-bt50-activated-45987",
+    "write": true
+  },
+  "45997": {
+    "title": "Speed, circulation pump, standby mode (EB100)",
+    "factor": 1,
+    "unit": "%",
+    "size": "u8",
+    "name": "speed-circulation-pump-standby-mode-eb100-45997",
+    "write": true
   },
   "32801": {
     "title": "Temperature: HTS 1",
