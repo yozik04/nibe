@@ -7,7 +7,7 @@ exceptiongroup >= 1.0.0
 isort>=5.0.0
 
 pandas>=1.0.5
-pre-commit==4.2.0
+pre-commit==4.3.0
 pytest
 pytest-asyncio
 python-slugify>=4.0.0
