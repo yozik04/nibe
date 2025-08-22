@@ -11973,6 +11973,78 @@
     "name": "use-lp-as-freeze-protection-45077",
     "write": true
   },
+  "45218": {
+    "title": "External sensor, Outdoor Temperature (BT1)",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "external-sensor-outdoor-temperature-bt1-45218",
+    "write": true
+  },
+  "45219": {
+    "title": "External sensor, External supply line (BT25)",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "external-sensor-external-supply-line-bt25-45219",
+    "write": true
+  },
+  "45220": {
+    "title": "External sensor, Return temperature (BT71)",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "external-sensor-return-temperature-bt71-45220",
+    "write": true
+  },
+  "45221": {
+    "title": "External sensor, Hot water start (BT5) ",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "external-sensor-hot-water-start-bt5-45221",
+    "write": true
+  },
+  "45222": {
+    "title": "External sensor, Hot water charging (BT6)",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "external-sensor-hot-water-charging-bt6-45222",
+    "write": true
+  },
+  "45223": {
+    "title": "External sensor, Hot water top (BT7)",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "external-sensor-hot-water-top-bt7-45223",
+    "write": true
+  },
+  "45224": {
+    "title": "External sensor, Pool 1 temperature (BT51)",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "external-sensor-pool-1-temperature-bt51-45224",
+    "write": true
+  },
+  "45225": {
+    "title": "External sensor, Pool 2 temperature (BT51)",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "external-sensor-pool-2-temperature-bt51-45225",
+    "write": true
+  },
+  "45226": {
+    "title": "External sensor, Boiler temperature (BT52)",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "external-sensor-boiler-temperature-bt52-45226",
+    "write": true
+  },
   "44206": {
     "title": "Auto mode, start temperature for passive cooling",
     "factor": 10,
