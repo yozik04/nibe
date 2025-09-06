@@ -180,7 +180,7 @@ _WATER_HEATER_COILGROUPS_F = {
 _WATER_HEATER_COILGROUPS_S = {
     "hw1": WaterHeaterCoilGroup(
         name="Hot Water",
-        hot_water_load=30010,
+        hot_water_load=30009,
         hot_water_comfort_mode=31039,
         start_temperature={
             "LOW": 40061,
