@@ -1710,7 +1710,11 @@
     "title": "Class 1 alarm",
     "factor": 1,
     "size": "u8",
-    "name": "class-1-alarm-32196"
+    "name": "class-1-alarm-32196",
+    "mappings": {
+      "0": "No alarm",
+      "1": "Alarm"
+    }
   },
   "31019": {
     "title": "Frost protection status",

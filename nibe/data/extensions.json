@@ -469,6 +469,25 @@
     }
   },
   {
+    "description": "Alarm class 1 mapping - S series",
+    "files": [
+      "s320_s325.json",
+      "s330_s332.json",
+      "s735.json",
+      "s1155_s1255.json",
+      "s1156_s1256.json",
+      "s2125.json",
+      "smos40.json"],
+    "data": {
+      "32196": {
+        "mappings": {
+          "0": "No alarm",
+          "1": "Alarm"
+        }
+      }
+    }
+  },
+  {
     "description": "M12676EN-1 - Common Parameters",
     "files": [
       "s320_s325.json",
