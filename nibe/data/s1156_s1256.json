@@ -11088,6 +11088,62 @@
     "name": "external-reading-of-bt52-activated-45217",
     "write": true
   },
+  "45218": {
+    "title": "External reading of value BT1",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "external-reading-of-value-bt1-45218",
+    "write": true
+  },
+  "45219": {
+    "title": "External reading of value BT25",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "external-reading-of-value-bt25-45219",
+    "write": true
+  },
+  "45220": {
+    "title": "External reading of value BT71",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "external-reading-of-value-bt71-45220",
+    "write": true
+  },
+  "45221": {
+    "title": "External reading of value BT5",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "external-reading-of-value-bt5-45221",
+    "write": true
+  },
+  "45222": {
+    "title": "External reading of value BT6",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "external-reading-of-value-bt6-45222",
+    "write": true
+  },
+  "45223": {
+    "title": "External reading of value BT7",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "external-reading-of-value-bt7-45223",
+    "write": true
+  },
+  "45226": {
+    "title": "External reading of value BT52",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "external-reading-of-value-bt52-45226",
+    "write": true
+  },
   "44206": {
     "title": "Auto mode, start temperature for passive cooling",
     "factor": 10,
@@ -11166,6 +11222,14 @@
     "max": 1.0,
     "default": 0.0,
     "name": "external-reading-of-bt50-activated-45987",
+    "write": true
+  },
+  "45988": {
+    "title": "External reading of value BT50",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "external-reading-of-value-bt50-45988",
     "write": true
   },
   "45997": {
@@ -11267,15 +11331,6 @@
     "max": 1.0,
     "default": 0.0,
     "name": "disable-emergency-restart-gp1-43987",
-    "write": true
-  },
-  "45988": {
-    "title": "Room temperature (BT50)",
-    "info": "Room temperature (BT50)",
-    "unit": "\u00b0C",
-    "size": "s16",
-    "factor": 10,
-    "name": "room-temperature-bt50-45988",
     "write": true
   }
 }
