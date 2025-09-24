@@ -641,22 +641,5 @@
         "max": 800
       }
     }
-  },
-  {
-    "description": "Add Room Temperature (BT50) holding register",
-    "files": [
-      "s1156_s1256.json"
-    ],
-    "data": {
-      "45988": {
-        "title": "Room temperature (BT50)",
-        "info": "Room temperature (BT50)",
-        "unit": "°C",
-        "size": "s16",
-        "factor": 10,
-        "name": "room-temperature-bt50-45988",
-        "write": true
-      }
-    }
   }
 ]
