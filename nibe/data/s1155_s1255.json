@@ -4926,7 +4926,13 @@
     "title": "Operating mode (SG Ready)",
     "factor": 1,
     "size": "u8",
-    "name": "operating-mode-sg-ready-31912"
+    "name": "operating-mode-sg-ready-31912",
+    "mappings": {
+      "10": "Normal Price",
+      "20": "High Price",
+      "30": "Low Price",
+      "40": "Free Electricity"
+    }
   },
   "31913": {
     "title": "SG ready, input A",
@@ -6849,6 +6855,26 @@
     "max": 1.0,
     "default": 1.0,
     "name": "heating-sg-ready-40761",
+    "write": true
+  },
+  "40762": {
+    "title": "Cooling (SG Ready)",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 1.0,
+    "name": "cooling-sg-ready-40762",
+    "write": true
+  },
+  "40763": {
+    "title": "Hot water (SG Ready)",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 1.0,
+    "name": "hot-water-sg-ready-40763",
     "write": true
   },
   "40767": {
@@ -9401,6 +9427,16 @@
     "max": 1.0,
     "default": 1.0,
     "name": "heating-auto-43060",
+    "write": true
+  },
+  "43033": {
+    "title": "Activate SG Ready via API",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "activate-sg-ready-via-api-43033",
     "write": true
   },
   "43034": {
