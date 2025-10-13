@@ -392,6 +392,23 @@
     }
   },
   {
+    "description": "SG Ready Operating Mode - S1155/S1255",
+    "files": [
+      "s1155_s1255.json",
+      "s1156_s1256.json"
+    ],
+    "data": {
+      "31912": {
+        "mappings": {
+          "10": "Normal Price",
+          "20": "High Price",
+          "30": "Low Price",
+          "40": "Free Electricity"
+        }
+      }
+    }
+  },
+  {
     "description": "M12676EN-1 - SMOS40 Mappings",
     "files": ["smos40.json"],
     "data": {

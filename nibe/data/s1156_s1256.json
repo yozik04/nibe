@@ -4504,7 +4504,13 @@
     "title": "Operating mode (SG Ready)",
     "factor": 1,
     "size": "u8",
-    "name": "operating-mode-sg-ready-31912"
+    "name": "operating-mode-sg-ready-31912",
+    "mappings": {
+      "10": "Normal Price",
+      "20": "High Price",
+      "30": "Low Price",
+      "40": "Free Electricity"
+    }
   },
   "31913": {
     "title": "SG ready, input A",

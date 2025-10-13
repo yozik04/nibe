@@ -221,7 +221,7 @@ The process contains of mainly next steps: 1. Update source CSV files. 2. Conver
 
 Use [ModbusManager](https://professional.nibe.eu/sv/proffshjalp/kommunikation/nibe-modbus). Do CSV export for the unit you want to update. Find the correct file in `nibe/data` folder. Merge data into that file (Do not change/update any lines. All CSV files are source files they must not be changed).
 
-### 1.B For S serires pumps
+### 1.B For S series pumps
 
 Change your pump language to English and do registers export. Merge that data into the correct file in `nibe/data` folder (Do not change/update any lines. All CSV files are source files they must not be changed).
 
