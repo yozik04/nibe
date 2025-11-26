@@ -8241,5 +8241,23 @@
     "factor": 1,
     "name": "aux-ers-fire-place-guard-49430",
     "write": true
+  },
+  "47260": {
+    "title": "Fan Mode",
+    "info": "0=Normal 1=Fan speed 1, 2=Fan speed 2, 3=Fan speed 3, 4=Fan speed 4",
+    "size": "u8",
+    "factor": 1,
+    "min": 0,
+    "max": 4,
+    "default": 0,
+    "name": "fan-mode-47260",
+    "write": true,
+    "mappings": {
+      "0": "Normal",
+      "1": "Fan mode 1",
+      "2": "Fan mode 2",
+      "3": "Fan mode 3",
+      "4": "Fan mode 4"
+    }
   }
 }
