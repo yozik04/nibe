@@ -11,16 +11,21 @@ Library for communication with Nibe heatpumps.
 
 ### Supported heatpump models
 
- - F1145
- - F1245
- - F1155
- - F1255
- - F1345
- - F1355
+#### F series
+
  - F370
  - F470
  - F730
  - F750
+ - F1145
+ - F1155
+ - F1245
+ - F1255
+ - F1345
+ - F1355
+
+#### S series
+
  - S320
  - S325
  - S330
@@ -29,14 +34,27 @@ Library for communication with Nibe heatpumps.
  - S1156
  - S1256
  - S2125
+
+#### SMO series
+
  - SMO20
  - SMO40
+
+#### SMOS series
+
  - SMOS40
+
+#### VVM series
+
  - VVM225
  - VVM310
  - VVM320
  - VVM325
  - VVM500
+
+#### VVMS series
+
+ - VVMS325
 
 ## Connection methods
 
