@@ -1724,8 +1724,8 @@ Energy log - Used energy for pool over the past hour	MODBUS_INPUT_REGISTER	2295	
 Energy log - Used energy by additional heater for heating over the past hour	MODBUS_INPUT_REGISTER	2299	100	kWh	u32	0	0	0
 Energy log - Used energy by additional heater for hot water over the past hour	MODBUS_INPUT_REGISTER	2301	100	kWh	u32	0	0	0
 Energy log - Used energy by additional heater for pool over the past hour	MODBUS_INPUT_REGISTER	2303	100	kWh	u32	0	0	0
-Energy log - Current power consumption	MODBUS_INPUT_REGISTER	2305	100	kWh	u32	0	0	0
-Energy log - Current power consumption, components	MODBUS_INPUT_REGISTER	2408	100	kWh	u32	0	0	0
+Energy log - Current power consumption	MODBUS_INPUT_REGISTER	2305	100	kW	u32	0	0	0
+Energy log - Current power consumption, components	MODBUS_INPUT_REGISTER	2408	100	kW	u32	0	0	0
 Compressor, total time energy storage, main unit (EP14)	MODBUS_INPUT_REGISTER	2335	1	h	u32	0	2147483647	0
 Compressor, total time energy storage, main unit (EP15)	MODBUS_INPUT_REGISTER	2337	1	h	u32	0	2147483647	0
 Compressor, total time energy storage, heat pump 1 (EP14)	MODBUS_INPUT_REGISTER	2339	1	h	u32	0	2147483647	0
