@@ -658,5 +658,24 @@
         "max": 800
       }
     }
+  },
+  {
+    "description": "Fix units for current power consumption",
+    "files": [
+      "s320_s325.json",
+      "s330_s332.json",
+      "s735.json",
+      "s1155_s1255.json",
+      "s1156_s1256.json",
+      "s2125.json"
+    ],
+    "data": {
+      "32306": {
+        "unit": "kW"
+      },
+      "32409": {
+        "unit": "kW"
+      }
+    }
   }
 ]
