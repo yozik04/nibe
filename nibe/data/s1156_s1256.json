@@ -70,7 +70,7 @@
     "name": "brine-out-bt11-30012"
   },
   "30013": {
-    "title": "Condenser sensor supply line (BT12)",
+    "title": "Condenser sensor, supply line (BT12)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
@@ -903,14 +903,14 @@
     "name": "compressor-total-time-pool-2-heat-pump-1-ep14-30272"
   },
   "30280": {
-    "title": "Total run time compressor cooling",
+    "title": "Compressor, total time cooling, main unit (EP14)",
     "factor": 1,
     "unit": "h",
     "size": "u32",
     "min": 0.0,
     "max": 2147483647.0,
     "default": 0.0,
-    "name": "total-run-time-compressor-cooling-30280"
+    "name": "compressor-total-time-cooling-main-unit-ep14-30280"
   },
   "30282": {
     "title": "Compressor, total time pool, main unit (EP14)",
@@ -5874,7 +5874,7 @@
     "factor": 1,
     "size": "u8",
     "min": 0.0,
-    "max": 69.0,
+    "max": 68.0,
     "default": 0.0,
     "name": "input-aux5-40212",
     "write": true
@@ -5884,7 +5884,7 @@
     "factor": 1,
     "size": "u8",
     "min": 0.0,
-    "max": 69.0,
+    "max": 68.0,
     "default": 0.0,
     "name": "input-aux4-40213",
     "write": true
@@ -5894,7 +5894,7 @@
     "factor": 1,
     "size": "u8",
     "min": 0.0,
-    "max": 69.0,
+    "max": 68.0,
     "default": 0.0,
     "name": "input-aux3-40214",
     "write": true
@@ -5904,7 +5904,7 @@
     "factor": 1,
     "size": "u8",
     "min": 0.0,
-    "max": 69.0,
+    "max": 68.0,
     "default": 0.0,
     "name": "input-aux2-40215",
     "write": true
@@ -5914,7 +5914,7 @@
     "factor": 1,
     "size": "u8",
     "min": 0.0,
-    "max": 69.0,
+    "max": 68.0,
     "default": 0.0,
     "name": "input-aux1-40216",
     "write": true
@@ -6421,7 +6421,7 @@
     "factor": 1,
     "size": "u8",
     "min": 0.0,
-    "max": 69.0,
+    "max": 68.0,
     "default": 0.0,
     "name": "input-aux6-40768",
     "write": true
@@ -10542,7 +10542,7 @@
     "factor": 1,
     "size": "u8",
     "min": 0.0,
-    "max": 69.0,
+    "max": 68.0,
     "default": 0.0,
     "name": "aux-from-modbus-42741",
     "write": true
@@ -11367,7 +11367,7 @@
     "factor": 1,
     "size": "u8",
     "min": 0.0,
-    "max": 69.0,
+    "max": 68.0,
     "default": 0.0,
     "name": "input-aux7-41556",
     "write": true
@@ -11377,7 +11377,7 @@
     "factor": 1,
     "size": "u8",
     "min": 0.0,
-    "max": 69.0,
+    "max": 68.0,
     "default": 0.0,
     "name": "input-aux8-41557",
     "write": true
@@ -11387,7 +11387,7 @@
     "factor": 1,
     "size": "u8",
     "min": 0.0,
-    "max": 69.0,
+    "max": 68.0,
     "default": 0.0,
     "name": "input-aux9-41558",
     "write": true
