@@ -8372,6 +8372,20 @@
     "size": "s32",
     "name": "total-energy-32181"
   },
+  "33822": {
+    "title": "Tot. production",
+    "factor": 10,
+    "unit": "kWh",
+    "size": "u32",
+    "name": "tot-production-33822"
+  },
+  "33824": {
+    "title": "Tot. consumption",
+    "factor": 10,
+    "unit": "kWh",
+    "size": "u32",
+    "name": "tot-consumption-33824"
+  },
   "44077": {
     "title": "ERS 2",
     "factor": 1,
@@ -10872,14 +10886,14 @@
   "32306": {
     "title": "Energy log - Current power consumption",
     "factor": 100,
-    "unit": "kWh",
+    "unit": "kW",
     "size": "u32",
     "name": "energy-log-current-power-consumption-32306"
   },
   "32409": {
     "title": "Energy log - Current power consumption, components",
     "factor": 100,
-    "unit": "kWh",
+    "unit": "kW",
     "size": "u32",
     "name": "energy-log-current-power-consumption-components-32409"
   },
