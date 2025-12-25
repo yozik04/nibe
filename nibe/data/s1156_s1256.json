@@ -3261,14 +3261,14 @@
     "name": "external-heating-medium-pump-gp10-status-31067"
   },
   "31070": {
-    "title": "Total HW run time additional heat",
+    "title": "Op.time electrical heater for hot water",
     "factor": 10,
     "unit": "h",
     "size": "s32",
     "min": 0.0,
     "max": 9999999.0,
     "default": 0.0,
-    "name": "total-hw-run-time-additional-heat-31070"
+    "name": "op-time-electrical-heater-for-hot-water-31070"
   },
   "31076": {
     "title": "Compressor power input, average",
@@ -3386,10 +3386,10 @@
     "name": "docked-compressors-pool-1-31111"
   },
   "32197": {
-    "title": "Reversing valve hot water (QN10)",
+    "title": "Diverter valve hot water (QN10)",
     "factor": 1,
     "size": "u8",
-    "name": "reversing-valve-hot-water-qn10-32197",
+    "name": "diverter-valve-hot-water-qn10-32197",
     "mappings": {
       "0": "Off",
       "1": "On"
@@ -6369,10 +6369,10 @@
     "write": true
   },
   "40759": {
-    "title": "Additional heat after reversing valve",
+    "title": "Additional heat after diverter valve",
     "factor": 1,
     "size": "u8",
-    "name": "additional-heat-after-reversing-valve-40759",
+    "name": "additional-heat-after-diverter-valve-40759",
     "write": true
   },
   "40761": {
@@ -6383,6 +6383,26 @@
     "max": 1.0,
     "default": 1.0,
     "name": "heating-sg-ready-40761",
+    "write": true
+  },
+  "40762": {
+    "title": "Cooling (SG Ready)",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 1.0,
+    "name": "cooling-sg-ready-40762",
+    "write": true
+  },
+  "40763": {
+    "title": "Hot water (SG Ready)",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 1.0,
+    "name": "hot-water-sg-ready-40763",
     "write": true
   },
   "40767": {
@@ -6422,6 +6442,36 @@
     "max": 1.0,
     "default": 0.0,
     "name": "activated-smart-price-adaption-40844",
+    "write": true
+  },
+  "40845": {
+    "title": "(SPA), heating activated (SPA)",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 3.0,
+    "default": 1.0,
+    "name": "spa-heating-activated-spa-40845",
+    "write": true
+  },
+  "40846": {
+    "title": "(SPA), heating influence",
+    "factor": 1,
+    "size": "s8",
+    "min": 1.0,
+    "max": 10.0,
+    "default": 5.0,
+    "name": "spa-heating-influence-40846",
+    "write": true
+  },
+  "40847": {
+    "title": "(SPA), hot water activated",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 4.0,
+    "default": 0.0,
+    "name": "spa-hot-water-activated-40847",
     "write": true
   },
   "40849": {
@@ -8917,6 +8967,16 @@
     "name": "heating-auto-43060",
     "write": true
   },
+  "43033": {
+    "title": "Activate SG Ready via API",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "activate-sg-ready-via-api-43033",
+    "write": true
+  },
   "43034": {
     "title": "Factor",
     "factor": 1,
@@ -9121,14 +9181,14 @@
     "write": true
   },
   "40001": {
-    "title": "Temperature, Overload, pool",
+    "title": "Temperature overcharging pool",
     "factor": 1,
     "unit": "\u00b0C",
     "size": "u8",
     "min": 1.0,
     "max": 50.0,
     "default": 1.0,
-    "name": "temperature-overload-pool-40001",
+    "name": "temperature-overcharging-pool-40001",
     "write": true
   },
   "42108": {
@@ -11331,6 +11391,48 @@
     "default": 0.0,
     "name": "input-aux9-41558",
     "write": true
+  },
+  "46004": {
+    "title": "External reading of BT68 activated",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "external-reading-of-bt68-activated-46004",
+    "write": true
+  },
+  "46005": {
+    "title": "External reading of value BT68",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "external-reading-of-value-bt68-46005",
+    "write": true
+  },
+  "46006": {
+    "title": "External reading of BT69 activated",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "external-reading-of-bt69-activated-46006",
+    "write": true
+  },
+  "46007": {
+    "title": "External reading of value BT68",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "external-reading-of-value-bt68-46007",
+    "write": true
+  },
+  "33805": {
+    "title": "Priority",
+    "factor": 1,
+    "size": "u8",
+    "name": "priority-33805"
   },
   "43029": {
     "title": "Immersion heater power, emergency mode",
