@@ -881,7 +881,7 @@
     "factor": 1,
     "unit": "h",
     "size": "u32",
-    "min": -2147483648.0,
+    "min": 0.0,
     "max": 2147483647.0,
     "default": 0.0,
     "name": "compressor-total-time-cooling-heat-pump-2-ep14-30256"
@@ -936,6 +936,26 @@
     "max": 2147483647.0,
     "default": 0.0,
     "name": "compressor-total-time-cooling-heat-pump-1-ep14-30268"
+  },
+  "30270": {
+    "title": "Compressor, total time pool, heat pump 1 (EP14)",
+    "factor": 1,
+    "unit": "h",
+    "size": "u32",
+    "min": 0.0,
+    "max": 2147483647.0,
+    "default": 0.0,
+    "name": "compressor-total-time-pool-heat-pump-1-ep14-30270"
+  },
+  "30272": {
+    "title": "Compressor, total time pool 2, heat pump 1 (EP14)",
+    "factor": 1,
+    "unit": "h",
+    "size": "u32",
+    "min": 0.0,
+    "max": 2147483647.0,
+    "default": 0.0,
+    "name": "compressor-total-time-pool-2-heat-pump-1-ep14-30272"
   },
   "30280": {
     "title": "Compressor, total time cooling, main unit (EP14)",
@@ -1354,6 +1374,19 @@
     "size": "u8",
     "name": "seconds-of-blank-time-left-charge-pump-1-30393"
   },
+  "30401": {
+    "title": "Alarm number from outdoor air heat pump (EB101)",
+    "factor": 1,
+    "size": "u8",
+    "name": "alarm-number-from-outdoor-air-heat-pump-eb101-30401"
+  },
+  "30402": {
+    "title": "Fan speed (EB101)",
+    "factor": 1,
+    "unit": "rpm",
+    "size": "u16",
+    "name": "fan-speed-eb101-30402"
+  },
   "30403": {
     "title": "Max fan speed (EB101)",
     "factor": 1,
@@ -1766,6 +1799,13 @@
     "size": "s16",
     "name": "hi-press-eb102-bp9-dew-30536"
   },
+  "30537": {
+    "title": "Injection (EB102-BT81)",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "injection-eb102-bt81-30537"
+  },
   "30538": {
     "title": "Pressure sensor, injection (EB102-EP14-BP11)",
     "factor": 10,
@@ -1778,6 +1818,13 @@
     "unit": "\u00b0C",
     "size": "s16",
     "name": "evi-pressure-eb102-ep14-bp11-dew-30539"
+  },
+  "30540": {
+    "title": "Evaporator (EB102-BT84)",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "evaporator-eb102-bt84-30540"
   },
   "30541": {
     "title": "Fan status (EB102-EP14)",
@@ -1806,6 +1853,13 @@
     "size": "s16",
     "name": "hi-press-eb101-bp9-dew-30552"
   },
+  "30553": {
+    "title": "Injection (EB101-BT81)",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "injection-eb101-bt81-30553"
+  },
   "30554": {
     "title": "Pressure sensor, injection (EB101-BP11)",
     "factor": 10,
@@ -1818,6 +1872,13 @@
     "unit": "\u00b0C",
     "size": "s16",
     "name": "evi-pressure-eb101-ep14-bp11-dew-30555"
+  },
+  "30556": {
+    "title": "Evaporator (EB101-BT84)",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "evaporator-eb101-bt84-30556"
   },
   "30557": {
     "title": "Fan status (EB101-EP14)",
@@ -3029,6 +3090,12 @@
     "size": "u16",
     "name": "degree-of-opening-evi-eb103-30910"
   },
+  "30911": {
+    "title": "Alarm number from outdoor air heat pump (EB102)",
+    "factor": 1,
+    "size": "u8",
+    "name": "alarm-number-from-outdoor-air-heat-pump-eb102-30911"
+  },
   "30912": {
     "title": "Fan speed (EB102)",
     "factor": 1,
@@ -3211,6 +3278,18 @@
     "factor": 1,
     "size": "u8",
     "name": "outd-air-heat-pump-inverter-speed-reducing-30994"
+  },
+  "31007": {
+    "title": "Has one phase (EB102)",
+    "factor": 1,
+    "size": "u8",
+    "name": "has-one-phase-eb102-31007"
+  },
+  "31008": {
+    "title": "Serial index (EB102)",
+    "factor": 1,
+    "size": "u8",
+    "name": "serial-index-eb102-31008"
   },
   "31009": {
     "title": "Has one phase (EB101)",
@@ -3543,6 +3622,113 @@
     "size": "u8",
     "name": "docked-compressors-pool-2-31136"
   },
+  "31407": {
+    "title": "Version (EB102)",
+    "factor": 1,
+    "size": "u16",
+    "name": "version-eb102-31407"
+  },
+  "31408": {
+    "title": "Heat pump type (EB102)",
+    "factor": 1,
+    "size": "u8",
+    "name": "heat-pump-type-eb102-31408"
+  },
+  "31409": {
+    "title": "Compressor size (EB102)",
+    "factor": 1,
+    "size": "u8",
+    "name": "compressor-size-eb102-31409"
+  },
+  "31431": {
+    "title": "Return line (EB102-BT3)",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "return-line-eb102-bt3-31431"
+  },
+  "31434": {
+    "title": "Condenser sensor, supply line (EB102-BT12)",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "condenser-sensor-supply-line-eb102-bt12-31434"
+  },
+  "31435": {
+    "title": "Discharge (EB102-BT14)",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "discharge-eb102-bt14-31435"
+  },
+  "31436": {
+    "title": "Liquid line (EB102-BT15)",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "liquid-line-eb102-bt15-31436"
+  },
+  "31437": {
+    "title": "Suction gas (EB102-BT17)",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "suction-gas-eb102-bt17-31437"
+  },
+  "31440": {
+    "title": "Compressor status (EB102)",
+    "factor": 1,
+    "size": "u8",
+    "name": "compressor-status-eb102-31440"
+  },
+  "31441": {
+    "title": "Compressor, time to start (EB102-EP14)",
+    "factor": 1,
+    "unit": "min",
+    "size": "u8",
+    "name": "compressor-time-to-start-eb102-ep14-31441"
+  },
+  "31442": {
+    "title": "Relay status (EB102-EP14)",
+    "factor": 1,
+    "size": "u16",
+    "name": "relay-status-eb102-ep14-31442"
+  },
+  "31445": {
+    "title": "Compressor, number of starts (EB102-EP14)",
+    "factor": 1,
+    "size": "u32",
+    "min": 0.0,
+    "max": 2147483647.0,
+    "default": 0.0,
+    "name": "compressor-number-of-starts-eb102-ep14-31445"
+  },
+  "31447": {
+    "title": "Compressor, oper. time, total (EB102-EP14)",
+    "factor": 1,
+    "unit": "h",
+    "size": "u32",
+    "min": 0.0,
+    "max": 2147483647.0,
+    "default": 0.0,
+    "name": "compressor-oper-time-total-eb102-ep14-31447"
+  },
+  "31449": {
+    "title": "Compressor, oper. time, hot water (EB102-EP14)",
+    "factor": 1,
+    "unit": "h",
+    "size": "u32",
+    "min": 0.0,
+    "max": 2147483647.0,
+    "default": 0.0,
+    "name": "compressor-oper-time-hot-water-eb102-ep14-31449"
+  },
+  "31451": {
+    "title": "Alarm number (EB102-EP14)",
+    "factor": 1,
+    "size": "u16",
+    "name": "alarm-number-eb102-ep14-31451"
+  },
   "31452": {
     "title": "Version (EB101)",
     "factor": 1,
@@ -3569,11 +3755,11 @@
     "name": "return-line-eb101-bt3-31476"
   },
   "31479": {
-    "title": "Supply line (EB101-BT12)",
+    "title": "Condenser sensor, supply line (EB101-BT12)",
     "factor": 10,
     "unit": "\u00b0C",
     "size": "s16",
-    "name": "supply-line-eb101-bt12-31479"
+    "name": "condenser-sensor-supply-line-eb101-bt12-31479"
   },
   "31480": {
     "title": "Discharge (EB101-BT14)",
@@ -3805,11 +3991,23 @@
     "size": "u32",
     "name": "compressor-oper-time-hot-water-eb100-ep14-31539"
   },
+  "31542": {
+    "title": "Compressor, requested (EB108-EP15)",
+    "factor": 1,
+    "size": "u8",
+    "name": "compressor-requested-eb108-ep15-31542"
+  },
   "31543": {
     "title": "Compressor, requested (EB108-EP14)",
     "factor": 1,
     "size": "u8",
     "name": "compressor-requested-eb108-ep14-31543"
+  },
+  "31544": {
+    "title": "Compressor, requested (EB107-EP15)",
+    "factor": 1,
+    "size": "u8",
+    "name": "compressor-requested-eb107-ep15-31544"
   },
   "31545": {
     "title": "Compressor, requested (EB107-EP14)",
@@ -3817,11 +4015,23 @@
     "size": "u8",
     "name": "compressor-requested-eb107-ep14-31545"
   },
+  "31546": {
+    "title": "Compressor, requested (EB106-EP15)",
+    "factor": 1,
+    "size": "u8",
+    "name": "compressor-requested-eb106-ep15-31546"
+  },
   "31547": {
     "title": "Compressor, requested (EB106-EP14)",
     "factor": 1,
     "size": "u8",
     "name": "compressor-requested-eb106-ep14-31547"
+  },
+  "31548": {
+    "title": "Compressor, requested (EB105-EP15)",
+    "factor": 1,
+    "size": "u8",
+    "name": "compressor-requested-eb105-ep15-31548"
   },
   "31549": {
     "title": "Compressor, requested (EB105-EP14)",
@@ -3829,11 +4039,23 @@
     "size": "u8",
     "name": "compressor-requested-eb105-ep14-31549"
   },
+  "31550": {
+    "title": "Compressor, requested (EB104-EP15)",
+    "factor": 1,
+    "size": "u8",
+    "name": "compressor-requested-eb104-ep15-31550"
+  },
   "31551": {
     "title": "Compressor, requested (EB104-EP14)",
     "factor": 1,
     "size": "u8",
     "name": "compressor-requested-eb104-ep14-31551"
+  },
+  "31552": {
+    "title": "Compressor, requested (EB103-EP15)",
+    "factor": 1,
+    "size": "u8",
+    "name": "compressor-requested-eb103-ep15-31552"
   },
   "31553": {
     "title": "Compressor, requested (EB103-EP14)",
@@ -3841,11 +4063,23 @@
     "size": "u8",
     "name": "compressor-requested-eb103-ep14-31553"
   },
+  "31554": {
+    "title": "Compressor, requested (EB102-EP15)",
+    "factor": 1,
+    "size": "u8",
+    "name": "compressor-requested-eb102-ep15-31554"
+  },
   "31555": {
     "title": "Compressor, requested (EB102-EP14)",
     "factor": 1,
     "size": "u8",
     "name": "compressor-requested-eb102-ep14-31555"
+  },
+  "31556": {
+    "title": "Compressor, requested (EB101-EP15)",
+    "factor": 1,
+    "size": "u8",
+    "name": "compressor-requested-eb101-ep15-31556"
   },
   "31557": {
     "title": "Compressor, requested (EB101-EP14)",
@@ -3881,6 +4115,13 @@
     "default": 0.0,
     "name": "cooling-degree-minutes-40021",
     "write": true
+  },
+  "31568": {
+    "title": "Calculated cooling supply climate system 1",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "calculated-cooling-supply-climate-system-1-31568"
   },
   "31569": {
     "title": "Status (ACS)",
@@ -3930,6 +4171,20 @@
     "size": "u8",
     "name": "used-compressors-cooling-31589"
   },
+  "31618": {
+    "title": "Outdoor temperature (EB102-BT28)",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "outdoor-temperature-eb102-bt28-31618"
+  },
+  "31619": {
+    "title": "Evaporator (EB102-BT16)",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "evaporator-eb102-bt16-31619"
+  },
   "31622": {
     "title": "Outdoor temperature (EB101-BT28)",
     "factor": 10,
@@ -3971,6 +4226,13 @@
     "unit": "\u00b0C",
     "size": "s16",
     "name": "eb100-ep14-bt16-31627"
+  },
+  "31636": {
+    "title": "Charge pump speed (EB102-GP12)",
+    "factor": 1,
+    "unit": "%",
+    "size": "u8",
+    "name": "charge-pump-speed-eb102-gp12-31636"
   },
   "31637": {
     "title": "Charge pump speed (EB101-GP12)",
@@ -4314,6 +4576,26 @@
     "size": "s16",
     "name": "bp4-unprocessed-eb102-ep14-31787"
   },
+  "31789": {
+    "title": "Low pressure (EB102-BP8)",
+    "factor": 10,
+    "unit": "bar",
+    "size": "s16",
+    "name": "low-pressure-eb102-bp8-31789"
+  },
+  "31790": {
+    "title": "Current compressor frequency (EB102)",
+    "factor": 10,
+    "unit": "Hz",
+    "size": "s16",
+    "name": "current-compressor-frequency-eb102-31790"
+  },
+  "31791": {
+    "title": "Protection mode (EB102)",
+    "factor": 1,
+    "size": "u16",
+    "name": "protection-mode-eb102-31791"
+  },
   "31792": {
     "title": "Defrosting (EB102)",
     "factor": 1,
@@ -4614,6 +4896,13 @@
     "size": "u8",
     "name": "requested-compressor-frequency-eb102-ep15-31852"
   },
+  "31853": {
+    "title": "Requested compressor frequency (EB102)",
+    "factor": 1,
+    "unit": "Hz",
+    "size": "u8",
+    "name": "requested-compressor-frequency-eb102-31853"
+  },
   "31854": {
     "title": "Requested compressor frequency (EB101-EP15)",
     "factor": 1,
@@ -4642,6 +4931,12 @@
     "size": "u8",
     "name": "requested-compressor-frequency-31857"
   },
+  "32411": {
+    "title": "Operating mode, shunt controlled brine (QN41)",
+    "factor": 1,
+    "size": "u8",
+    "name": "operating-mode-shunt-controlled-brine-qn41-32411"
+  },
   "31897": {
     "title": "Low press. sensor, unprocessed (EB102-EP14)",
     "factor": 1,
@@ -4654,12 +4949,6 @@
     "unit": "A",
     "size": "s16",
     "name": "current-sensor-eb102-ep14-31898"
-  },
-  "32411": {
-    "title": "Operating mode, shunt controlled brine (QN41)",
-    "factor": 1,
-    "size": "u8",
-    "name": "operating-mode-shunt-controlled-brine-qn41-32411"
   },
   "31903": {
     "title": "Low press. sensor, unprocessed (EB101-EP14)",
@@ -4741,6 +5030,26 @@
     "factor": 1,
     "size": "u8",
     "name": "operating-mode-smart-price-adaption-31919"
+  },
+  "31961": {
+    "title": "Evaporator 2 (EB102-EP14-BT16)",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "evaporator-2-eb102-ep14-bt16-31961"
+  },
+  "31962": {
+    "title": "Temperature, inverter (EB102-EP14)",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "temperature-inverter-eb102-ep14-31962"
+  },
+  "31963": {
+    "title": "fan speed (EB102-EP14)",
+    "factor": 1,
+    "size": "u8",
+    "name": "fan-speed-eb102-ep14-31963"
   },
   "31967": {
     "title": "Evaporator 2 (EB101-EP14-BT16)",
@@ -5990,6 +6299,17 @@
     "name": "output-aux1-40217",
     "write": true
   },
+  "40223": {
+    "title": "Speed, brine pump",
+    "factor": 1,
+    "unit": "%",
+    "size": "u8",
+    "min": 1.0,
+    "max": 100.0,
+    "default": 100.0,
+    "name": "speed-brine-pump-40223",
+    "write": true
+  },
   "40224": {
     "title": "Preset flow setting for climate system",
     "factor": 1,
@@ -6256,14 +6576,24 @@
     "name": "cooling-delta-temp-40degc-40740",
     "write": true
   },
-  "40749": {
-    "title": "Operating mode charge pump (EB101)",
+  "40748": {
+    "title": "Op. mode charge pump (EB102)",
     "factor": 1,
     "size": "u8",
     "min": 0.0,
     "max": 1.0,
     "default": 0.0,
-    "name": "operating-mode-charge-pump-eb101-40749",
+    "name": "op-mode-charge-pump-eb102-40748",
+    "write": true
+  },
+  "40749": {
+    "title": "Op. mode charge pump (EB101)",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "op-mode-charge-pump-eb101-40749",
     "write": true
   },
   "45269": {
@@ -6377,6 +6707,16 @@
     "name": "operating-mode-circulation-pump-heating-heat-pump-1-40784",
     "write": true
   },
+  "40799": {
+    "title": "Operating mode circulation pump hot water heat pump 2",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 1.0,
+    "name": "operating-mode-circulation-pump-hot-water-heat-pump-2-40799",
+    "write": true
+  },
   "40800": {
     "title": "Operating mode circulation pump hot water heat pump 1",
     "factor": 1,
@@ -6385,6 +6725,37 @@
     "max": 1.0,
     "default": 1.0,
     "name": "operating-mode-circulation-pump-hot-water-heat-pump-1-40800",
+    "write": true
+  },
+  "40832": {
+    "title": "Operating mode circulation pump cooling heat pump 2",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 1.0,
+    "name": "operating-mode-circulation-pump-cooling-heat-pump-2-40832",
+    "write": true
+  },
+  "40833": {
+    "title": "Operating mode circulation pump cooling heat pump 1",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 1.0,
+    "name": "operating-mode-circulation-pump-cooling-heat-pump-1-40833",
+    "write": true
+  },
+  "40841": {
+    "title": "Speed circulation pump waiting mode heat pump 2",
+    "factor": 1,
+    "unit": "%",
+    "size": "u8",
+    "min": 1.0,
+    "max": 100.0,
+    "default": 30.0,
+    "name": "speed-circulation-pump-waiting-mode-heat-pump-2-40841",
     "write": true
   },
   "40842": {
@@ -6449,6 +6820,17 @@
     "name": "internal-shunt-controlled-additional-heat-40858",
     "write": true
   },
+  "40867": {
+    "title": "Max. speed controlled charge pump (EB102)",
+    "factor": 1,
+    "unit": "%",
+    "size": "u8",
+    "min": 80.0,
+    "max": 100.0,
+    "default": 100.0,
+    "name": "max-speed-controlled-charge-pump-eb102-40867",
+    "write": true
+  },
   "40868": {
     "title": "Max. speed controlled charge pump (EB101)",
     "factor": 1,
@@ -6460,14 +6842,24 @@
     "name": "max-speed-controlled-charge-pump-eb101-40868",
     "write": true
   },
-  "40876": {
-    "title": "Operating mode charge pump, cooling climate system 1",
+  "40875": {
+    "title": "Op. mode charge pump, cooling (EB102)",
     "factor": 1,
     "size": "u8",
     "min": 0.0,
     "max": 1.0,
     "default": 0.0,
-    "name": "operating-mode-charge-pump-cooling-climate-system-1-40876",
+    "name": "op-mode-charge-pump-cooling-eb102-40875",
+    "write": true
+  },
+  "40876": {
+    "title": "Op. mode charge pump, cooling (EB101)",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "op-mode-charge-pump-cooling-eb101-40876",
     "write": true
   },
   "40894": {
@@ -6665,6 +7057,26 @@
     "name": "eb107-108-gp12-40942",
     "write": true
   },
+  "45296": {
+    "title": "blockFreq 2 (EB101)",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "blockfreq-2-eb101-45296",
+    "write": true
+  },
+  "45297": {
+    "title": "blockFreq 1 (EB101)",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "blockfreq-1-eb101-45297",
+    "write": true
+  },
   "40949": {
     "title": "Use room sensor climate system 8",
     "factor": 1,
@@ -6787,6 +7199,59 @@
     "max": 60.0,
     "default": 20.0,
     "name": "room-sensor-factor-climate-system-5-40960",
+    "write": true
+  },
+  "40968": {
+    "title": "Cooling curve climate system 1",
+    "factor": 1,
+    "size": "s8",
+    "min": 0.0,
+    "max": 9.0,
+    "default": 0.0,
+    "name": "cooling-curve-climate-system-1-40968",
+    "write": true
+  },
+  "40976": {
+    "title": "Cooling offset climate system 1",
+    "factor": 1,
+    "size": "s8",
+    "min": -10.0,
+    "max": 10.0,
+    "default": 0.0,
+    "name": "cooling-offset-climate-system-1-40976",
+    "write": true
+  },
+  "40977": {
+    "title": "Own curve, cooling P4",
+    "factor": 1,
+    "unit": "\u00b0C",
+    "size": "s8",
+    "min": 7.0,
+    "max": 40.0,
+    "default": 20.0,
+    "name": "own-curve-cooling-p4-40977",
+    "write": true
+  },
+  "40978": {
+    "title": "Own curve, cooling P2",
+    "factor": 1,
+    "unit": "\u00b0C",
+    "size": "s8",
+    "min": 7.0,
+    "max": 40.0,
+    "default": 20.0,
+    "name": "own-curve-cooling-p2-40978",
+    "write": true
+  },
+  "40979": {
+    "title": "Own curve, cooling P1",
+    "factor": 1,
+    "unit": "\u00b0C",
+    "size": "s8",
+    "min": 7.0,
+    "max": 40.0,
+    "default": 20.0,
+    "name": "own-curve-cooling-p1-40979",
     "write": true
   },
   "40981": {
@@ -7968,6 +8433,16 @@
     "name": "ground-water-pump-temperature-alarm-level-41318",
     "write": true
   },
+  "41320": {
+    "title": "Brine pump auto mode",
+    "factor": 1,
+    "size": "s8",
+    "min": 0.0,
+    "max": 2.0,
+    "default": 1.0,
+    "name": "brine-pump-auto-mode-41320",
+    "write": true
+  },
   "41327": {
     "title": "Max difference, SES priority 1 energy source",
     "factor": 10,
@@ -8339,13 +8814,6 @@
     "name": "demand-controlled-ventilation-44068",
     "write": true
   },
-  "32728": {
-    "title": "Current power",
-    "factor": 100,
-    "unit": "kW",
-    "size": "u32",
-    "name": "current-power-32728"
-  },
   "44158": {
     "title": "BlockFreq 2 (EB102)",
     "factor": 1,
@@ -8529,7 +8997,7 @@
     "name": "minimum-permitted-speed-eb101-gp12-45353",
     "write": true
   },
-  "43245": {
+  "45354": {
     "title": "Minimum permitted speed (EB102 GP12)",
     "factor": 1,
     "unit": "%",
@@ -8537,7 +9005,7 @@
     "min": 1.0,
     "max": 50.0,
     "default": 1.0,
-    "name": "minimum-permitted-speed-eb102-gp12-43245",
+    "name": "minimum-permitted-speed-eb102-gp12-45354",
     "write": true
   },
   "45361": {
@@ -8550,14 +9018,34 @@
     "name": "start-fan-de-icing-eb101-45361",
     "write": true
   },
-  "43253": {
+  "45362": {
     "title": "Start fan de-icing (EB102)",
     "factor": 1,
     "size": "s8",
     "min": 0.0,
     "max": 1.0,
     "default": 0.0,
-    "name": "start-fan-de-icing-eb102-43253",
+    "name": "start-fan-de-icing-eb102-45362",
+    "write": true
+  },
+  "45369": {
+    "title": "Defrost Requested EB101",
+    "factor": 1,
+    "size": "s8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "defrost-requested-eb101-45369",
+    "write": true
+  },
+  "45370": {
+    "title": "Defrost Requested EB102",
+    "factor": 1,
+    "size": "s8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "defrost-requested-eb102-45370",
     "write": true
   },
   "45392": {
@@ -8688,7 +9176,7 @@
     "name": "bt12-offset-heat-pump-1-45329",
     "write": true
   },
-  "43236": {
+  "45330": {
     "title": "BT12 offset, heat pump 2",
     "factor": 10,
     "unit": "\u00b0C",
@@ -8696,7 +9184,7 @@
     "min": -50.0,
     "max": 50.0,
     "default": 0.0,
-    "name": "bt12-offset-heat-pump-2-43236",
+    "name": "bt12-offset-heat-pump-2-45330",
     "write": true
   },
   "43059": {
@@ -8707,6 +9195,16 @@
     "max": 7.0,
     "default": 0.0,
     "name": "additional-heat-step-emergency-mode-43059",
+    "write": true
+  },
+  "43032": {
+    "title": "Alarm room sens cool oper",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "alarm-room-sens-cool-oper-43032",
     "write": true
   },
   "43060": {
@@ -8805,6 +9303,26 @@
     "factor": 1,
     "size": "u8",
     "name": "show-indoor-temperature-43098",
+    "write": true
+  },
+  "43037": {
+    "title": "Activate",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "activate-43037",
+    "write": true
+  },
+  "43066": {
+    "title": "Activate",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "activate-43066",
     "write": true
   },
   "43067": {
@@ -9560,6 +10078,18 @@
     "name": "max-step-internal-additional-heat-42505",
     "write": true
   },
+  "32148": {
+    "title": "Version, inverter (EB101)",
+    "factor": 1,
+    "size": "u8",
+    "name": "version-inverter-eb101-32148"
+  },
+  "32149": {
+    "title": "Version, inverter (EB102)",
+    "factor": 1,
+    "size": "u8",
+    "name": "version-inverter-eb102-32149"
+  },
   "42677": {
     "title": "Time between filter replacement",
     "factor": 1,
@@ -9863,6 +10393,24 @@
     "name": "heat-pump-test-silent-mode-eb101-eb102-45102",
     "write": true
   },
+  "32159": {
+    "title": "Last defrost, heat pump 1",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 255.0,
+    "default": 255.0,
+    "name": "last-defrost-heat-pump-1-32159"
+  },
+  "32160": {
+    "title": "Last defrost, heat pump 2",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 255.0,
+    "default": 255.0,
+    "name": "last-defrost-heat-pump-2-32160"
+  },
   "42821": {
     "title": "ERS 2",
     "factor": 1,
@@ -10084,6 +10632,12 @@
     "default": 0.0,
     "name": "modbus-external-control-45009",
     "write": true
+  },
+  "30001": {
+    "title": "Relay status",
+    "factor": 1,
+    "size": "u8",
+    "name": "relay-status-30001"
   },
   "32284": {
     "title": "Energy log - Produced energy for heating over the past hour",
@@ -10439,6 +10993,13 @@
     "size": "s16",
     "name": "boiler-temperature-bt52-33801"
   },
+  "32728": {
+    "title": "Current power",
+    "factor": 100,
+    "unit": "kW",
+    "size": "u32",
+    "name": "current-power-32728"
+  },
   "32801": {
     "title": "Temperature: BT50",
     "factor": 10,
@@ -10524,10 +11085,22 @@
     "size": "u8",
     "name": "eev-control-mode-eb101-32414"
   },
+  "32415": {
+    "title": "EEV Control Mode (EB102)",
+    "factor": 1,
+    "size": "u8",
+    "name": "eev-control-mode-eb102-32415"
+  },
   "32422": {
     "title": "EEV State (EB101)",
     "factor": 1,
     "size": "u8",
     "name": "eev-state-eb101-32422"
+  },
+  "32423": {
+    "title": "EEV State (EB102)",
+    "factor": 1,
+    "size": "u8",
+    "name": "eev-state-eb102-32423"
   }
 }
