@@ -1710,7 +1710,11 @@
     "title": "Class 1 alarm",
     "factor": 1,
     "size": "u8",
-    "name": "class-1-alarm-32196"
+    "name": "class-1-alarm-32196",
+    "mappings": {
+      "0": "No alarm",
+      "1": "Alarm"
+    }
   },
   "31019": {
     "title": "Frost protection status",
@@ -7180,14 +7184,14 @@
   "32306": {
     "title": "Energy log - Current power consumption",
     "factor": 100,
-    "unit": "kWh",
+    "unit": "kW",
     "size": "u32",
     "name": "energy-log-current-power-consumption-32306"
   },
   "32409": {
     "title": "Energy log - Current power consumption, components",
     "factor": 100,
-    "unit": "kWh",
+    "unit": "kW",
     "size": "u32",
     "name": "energy-log-current-power-consumption-components-32409"
   },

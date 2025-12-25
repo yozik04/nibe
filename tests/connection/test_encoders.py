@@ -42,9 +42,9 @@ def test_nibegw_decode_raw_value(
     "size, raw, expected, word_swap",
     [
         # Test with integer limits
-        ("u8", b"\xFF", None, None),
+        ("u8", b"\xff", None, None),
         ("s8", b"\x80", None, None),
-        ("u16", b"\xFF\xFF", None, None),
+        ("u16", b"\xff\xff", None, None),
         ("s16", b"\x00\x80", None, None),
         ("s32", b"\x00\x00\x00\x80", None, True),
         ("s32", b"\x00\x80\x00\x00", None, False),

@@ -163,6 +163,12 @@ class CSVConverter:
             "4.0": "u8",
             "5.0": "u16",
             "6.0": "u32",
+            "1": "s8",
+            "2": "s16",
+            "3": "s32",
+            "4": "u8",
+            "5": "u16",
+            "6": "u32",
             "s8": "s8",
             "s16": "s16",
             "s32": "s32",
@@ -270,9 +276,9 @@ class CSVConverter:
             self.data["id"] = self.data.apply(calculate_number, axis=1)
 
             self.data["mode"] = self.data["register type"].map(
-                lambda x: "R/W"
-                if x in ("MODBUS_HOLDING_REGISTER", "MODBUS_COIL")
-                else "R"
+                lambda x: (
+                    "R/W" if x in ("MODBUS_HOLDING_REGISTER", "MODBUS_COIL") else "R"
+                )
             )
 
             del self.data["register type"]

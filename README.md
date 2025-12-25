@@ -11,16 +11,21 @@ Library for communication with Nibe heatpumps.
 
 ### Supported heatpump models
 
- - F1145
- - F1245
- - F1155
- - F1255
- - F1345
- - F1355
+#### F series
+
  - F370
  - F470
  - F730
  - F750
+ - F1145
+ - F1155
+ - F1245
+ - F1255
+ - F1345
+ - F1355
+
+#### S series
+
  - S320
  - S325
  - S330
@@ -29,14 +34,27 @@ Library for communication with Nibe heatpumps.
  - S1156
  - S1256
  - S2125
+
+#### SMO series
+
  - SMO20
  - SMO40
+
+#### SMOS series
+
  - SMOS40
+
+#### VVM series
+
  - VVM225
  - VVM310
  - VVM320
  - VVM325
  - VVM500
+
+#### VVMS series
+
+ - VVMS325
 
 ## Connection methods
 
@@ -221,7 +239,7 @@ The process contains of mainly next steps: 1. Update source CSV files. 2. Conver
 
 Use [ModbusManager](https://professional.nibe.eu/sv/proffshjalp/kommunikation/nibe-modbus). Do CSV export for the unit you want to update. Find the correct file in `nibe/data` folder. Merge data into that file (Do not change/update any lines. All CSV files are source files they must not be changed).
 
-### 1.B For S serires pumps
+### 1.B For S series pumps
 
 Change your pump language to English and do registers export. Merge that data into the correct file in `nibe/data` folder (Do not change/update any lines. All CSV files are source files they must not be changed).
 

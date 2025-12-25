@@ -21,13 +21,13 @@ jobs:
     runs-on: ubuntu-latest
     needs: test
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v6
     - name: Check versions match
       run: |
         PUBLISHING_VERSION=${{ github.event.release.tag_name }}
         grep -qE '__version__ = "'$PUBLISHING_VERSION'"' nibe/__init__.py
     - name: Set up Python
-      uses: actions/setup-python@v5
+      uses: actions/setup-python@v6
       with:
         python-version: '3.x'
     - name: Install dependencies
@@ -37,7 +37,7 @@ jobs:
     - name: Build package
       run: python -m build
     - name: Publish package
-      uses: pypa/gh-action-pypi-publish@release/v1.12
+      uses: pypa/gh-action-pypi-publish@release/v1.13
       with:
         user: __token__
         password: ${{ secrets.PYPI_API_TOKEN }}

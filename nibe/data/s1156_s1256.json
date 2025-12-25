@@ -3084,7 +3084,11 @@
     "title": "Class 1 alarm",
     "factor": 1,
     "size": "u8",
-    "name": "class-1-alarm-32196"
+    "name": "class-1-alarm-32196",
+    "mappings": {
+      "0": "No alarm",
+      "1": "Alarm"
+    }
   },
   "31019": {
     "title": "Frost protection status",
@@ -4593,7 +4597,13 @@
     "title": "Operating mode (SG Ready)",
     "factor": 1,
     "size": "u8",
-    "name": "operating-mode-sg-ready-31912"
+    "name": "operating-mode-sg-ready-31912",
+    "mappings": {
+      "10": "Normal Price",
+      "20": "High Price",
+      "30": "Low Price",
+      "40": "Free Electricity"
+    }
   },
   "31913": {
     "title": "SG ready, input A",
@@ -6771,6 +6781,16 @@
     "name": "activated-smart-price-adaption-40844",
     "write": true
   },
+  "40849": {
+    "title": "(SPA), pool influence",
+    "factor": 1,
+    "size": "s8",
+    "min": 0.0,
+    "max": 10.0,
+    "default": 2.0,
+    "name": "spa-pool-influence-40849",
+    "write": true
+  },
   "40850": {
     "title": "(SPA), cooling activated",
     "factor": 1,
@@ -6779,6 +6799,16 @@
     "max": 1.0,
     "default": 1.0,
     "name": "spa-cooling-activated-40850",
+    "write": true
+  },
+  "40851": {
+    "title": "(SPA), cooling influence",
+    "factor": 1,
+    "size": "s8",
+    "min": 0.0,
+    "max": 10.0,
+    "default": 2.0,
+    "name": "spa-cooling-influence-40851",
     "write": true
   },
   "40852": {
@@ -8880,6 +8910,20 @@
     "unit": "kWh",
     "size": "s32",
     "name": "total-energy-32181"
+  },
+  "33822": {
+    "title": "Tot. production",
+    "factor": 10,
+    "unit": "kWh",
+    "size": "u32",
+    "name": "tot-production-33822"
+  },
+  "33824": {
+    "title": "Tot. consumption",
+    "factor": 10,
+    "unit": "kWh",
+    "size": "u32",
+    "name": "tot-consumption-33824"
   },
   "44077": {
     "title": "ERS 2",
@@ -14347,14 +14391,14 @@
   "32306": {
     "title": "Energy log - Current power consumption",
     "factor": 100,
-    "unit": "kWh",
+    "unit": "kW",
     "size": "u32",
     "name": "energy-log-current-power-consumption-32306"
   },
   "32409": {
     "title": "Energy log - Current power consumption, components",
     "factor": 100,
-    "unit": "kWh",
+    "unit": "kW",
     "size": "u32",
     "name": "energy-log-current-power-consumption-components-32409"
   },
@@ -14559,6 +14603,132 @@
     "name": "use-lp-as-freeze-protection-45077",
     "write": true
   },
+  "45209": {
+    "title": "External reading of BT1 activated",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "external-reading-of-bt1-activated-45209",
+    "write": true
+  },
+  "45210": {
+    "title": "External reading of BT25 activated",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "external-reading-of-bt25-activated-45210",
+    "write": true
+  },
+  "45211": {
+    "title": "External reading of BT71 activated",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "external-reading-of-bt71-activated-45211",
+    "write": true
+  },
+  "45212": {
+    "title": "External reading of BT5 activated",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "external-reading-of-bt5-activated-45212",
+    "write": true
+  },
+  "45213": {
+    "title": "External reading of BT6 activated",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "external-reading-of-bt6-activated-45213",
+    "write": true
+  },
+  "45214": {
+    "title": "External reading of BT7 activated",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "external-reading-of-bt7-activated-45214",
+    "write": true
+  },
+  "45217": {
+    "title": "External reading of BT52 activated",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "external-reading-of-bt52-activated-45217",
+    "write": true
+  },
+  "45218": {
+    "title": "External reading of value BT1",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "external-reading-of-value-bt1-45218",
+    "write": true
+  },
+  "45219": {
+    "title": "External reading of value BT25",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "external-reading-of-value-bt25-45219",
+    "write": true
+  },
+  "45220": {
+    "title": "External reading of value BT71",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "external-reading-of-value-bt71-45220",
+    "write": true
+  },
+  "45221": {
+    "title": "External reading of value BT5",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "external-reading-of-value-bt5-45221",
+    "write": true
+  },
+  "45222": {
+    "title": "External reading of value BT6",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "external-reading-of-value-bt6-45222",
+    "write": true
+  },
+  "45223": {
+    "title": "External reading of value BT7",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "external-reading-of-value-bt7-45223",
+    "write": true
+  },
+  "45226": {
+    "title": "External reading of value BT52",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "external-reading-of-value-bt52-45226",
+    "write": true
+  },
   "44206": {
     "title": "Auto mode, start temperature for passive cooling",
     "factor": 10,
@@ -14628,6 +14798,32 @@
     "unit": "kW",
     "size": "u32",
     "name": "current-power-32728"
+  },
+  "45987": {
+    "title": "External reading of BT50 activated",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "external-reading-of-bt50-activated-45987",
+    "write": true
+  },
+  "45988": {
+    "title": "External reading of value BT50",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "external-reading-of-value-bt50-45988",
+    "write": true
+  },
+  "45997": {
+    "title": "Speed, circulation pump, standby mode (EB100)",
+    "factor": 1,
+    "unit": "%",
+    "size": "u8",
+    "name": "speed-circulation-pump-standby-mode-eb100-45997",
+    "write": true
   },
   "32801": {
     "title": "Temperature: HTS 1",
@@ -14776,15 +14972,6 @@
     "max": 1.0,
     "default": 0.0,
     "name": "disable-emergency-restart-gp1-43987",
-    "write": true
-  },
-  "45988": {
-    "title": "Room temperature (BT50)",
-    "info": "Room temperature (BT50)",
-    "unit": "\u00b0C",
-    "size": "s16",
-    "factor": 10,
-    "name": "room-temperature-bt50-45988",
     "write": true
   }
 }

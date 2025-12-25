@@ -402,6 +402,23 @@
     }
   },
   {
+    "description": "SG Ready Operating Mode - S1155/S1255",
+    "files": [
+      "s1155_s1255.json",
+      "s1156_s1256.json"
+    ],
+    "data": {
+      "31912": {
+        "mappings": {
+          "10": "Normal Price",
+          "20": "High Price",
+          "30": "Low Price",
+          "40": "Free Electricity"
+        }
+      }
+    }
+  },
+  {
     "description": "M12676EN-1 - SMOS40 Mappings",
     "files": [
       "s320_s325.json",
@@ -501,6 +518,25 @@
           "0": "Off",
           "1": "Active",
           "2": "Passive"
+        }
+      }
+    }
+  },
+  {
+    "description": "Alarm class 1 mapping - S series",
+    "files": [
+      "s320_s325.json",
+      "s330_s332.json",
+      "s735.json",
+      "s1155_s1255.json",
+      "s1156_s1256.json",
+      "s2125.json",
+      "smos40.json"],
+    "data": {
+      "32196": {
+        "mappings": {
+          "0": "No alarm",
+          "1": "Alarm"
         }
       }
     }
@@ -662,19 +698,21 @@
     }
   },
   {
-    "description": "Add Room Temperature (BT50) holding register",
+    "description": "Fix units for current power consumption",
     "files": [
-      "s1156_s1256.json"
+      "s320_s325.json",
+      "s330_s332.json",
+      "s735.json",
+      "s1155_s1255.json",
+      "s1156_s1256.json",
+      "s2125.json"
     ],
     "data": {
-      "45988": {
-        "title": "Room temperature (BT50)",
-        "info": "Room temperature (BT50)",
-        "unit": "°C",
-        "size": "s16",
-        "factor": 10,
-        "name": "room-temperature-bt50-45988",
-        "write": true
+      "32306": {
+        "unit": "kW"
+      },
+      "32409": {
+        "unit": "kW"
       }
     }
   },
