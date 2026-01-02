@@ -3314,6 +3314,13 @@
     "name": "limit-dm-40019",
     "write": true
   },
+  "31017": {
+    "title": "Calculated supply climate system 2",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "calculated-supply-climate-system-2-31017"
+  },
   "31018": {
     "title": "Calculated supply climate system 1",
     "factor": 10,
@@ -3838,10 +3845,10 @@
     "name": "compressor-oper-time-hot-water-eb101-ep14-31494"
   },
   "31496": {
-    "title": "Alarm number (EB101)",
+    "title": "Alarm number (EB101-EP14)",
     "factor": 1,
     "size": "u16",
-    "name": "alarm-number-eb101-31496"
+    "name": "alarm-number-eb101-ep14-31496"
   },
   "31497": {
     "title": "Version (EB100)",
@@ -5130,6 +5137,16 @@
     "size": "s16",
     "name": "non-module-specific-alarm-numbers-31977"
   },
+  "40026": {
+    "title": "Heating curve climate system 2",
+    "factor": 1,
+    "size": "s8",
+    "min": 0.0,
+    "max": 15.0,
+    "default": 9.0,
+    "name": "heating-curve-climate-system-2-40026",
+    "write": true
+  },
   "40027": {
     "title": "Heating curve climate system 1",
     "factor": 1,
@@ -5138,6 +5155,16 @@
     "max": 15.0,
     "default": 9.0,
     "name": "heating-curve-climate-system-1-40027",
+    "write": true
+  },
+  "40030": {
+    "title": "Heating offset climate system 2",
+    "factor": 1,
+    "size": "s8",
+    "min": -10.0,
+    "max": 10.0,
+    "default": 0.0,
+    "name": "heating-offset-climate-system-2-40030",
     "write": true
   },
   "40031": {
@@ -5150,6 +5177,17 @@
     "name": "heating-offset-climate-system-1-40031",
     "write": true
   },
+  "40034": {
+    "title": "Min supply climate system 2",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "min": 50.0,
+    "max": 800.0,
+    "default": 200.0,
+    "name": "min-supply-climate-system-2-40034",
+    "write": true
+  },
   "40035": {
     "title": "Min supply climate system 1",
     "factor": 10,
@@ -5159,6 +5197,17 @@
     "max": 800.0,
     "default": 200.0,
     "name": "min-supply-climate-system-1-40035",
+    "write": true
+  },
+  "40038": {
+    "title": "Max supply climate system 2",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "min": 50.0,
+    "max": 800.0,
+    "default": 600.0,
+    "name": "max-supply-climate-system-2-40038",
     "write": true
   },
   "40039": {
@@ -5271,6 +5320,16 @@
     "name": "point-offset-40048",
     "write": true
   },
+  "40051": {
+    "title": "External adjustment climate system 2",
+    "factor": 1,
+    "size": "s8",
+    "min": -10.0,
+    "max": 10.0,
+    "default": 0.0,
+    "name": "external-adjustment-climate-system-2-40051",
+    "write": true
+  },
   "40052": {
     "title": "External adjustment climate system 1",
     "factor": 1,
@@ -5279,6 +5338,17 @@
     "max": 10.0,
     "default": 0.0,
     "name": "external-adjustment-climate-system-1-40052",
+    "write": true
+  },
+  "40055": {
+    "title": "External adjustment with room sensor climate system 2",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "min": 50.0,
+    "max": 300.0,
+    "default": 200.0,
+    "name": "external-adjustment-with-room-sensor-climate-system-2-40055",
     "write": true
   },
   "40056": {
@@ -5844,6 +5914,27 @@
     "max": 1.0,
     "default": 0.0,
     "name": "climate-system-4-40145",
+    "write": true
+  },
+  "40148": {
+    "title": "Climate system 2 shunt amplification",
+    "factor": 10,
+    "size": "s8",
+    "min": 1.0,
+    "max": 100.0,
+    "default": 10.0,
+    "name": "climate-system-2-shunt-amplification-40148",
+    "write": true
+  },
+  "40151": {
+    "title": "Climate system 2 shunt wait time",
+    "factor": 1,
+    "unit": "s",
+    "size": "s16",
+    "min": 10.0,
+    "max": 300.0,
+    "default": 30.0,
+    "name": "climate-system-2-shunt-wait-time-40151",
     "write": true
   },
   "40154": {
@@ -6790,6 +6881,16 @@
     "name": "activated-smart-price-adaption-40844",
     "write": true
   },
+  "40849": {
+    "title": "(SPA), pool influence",
+    "factor": 1,
+    "size": "s8",
+    "min": 0.0,
+    "max": 10.0,
+    "default": 2.0,
+    "name": "spa-pool-influence-40849",
+    "write": true
+  },
   "40850": {
     "title": "(SPA), cooling activated",
     "factor": 1,
@@ -6798,6 +6899,16 @@
     "max": 1.0,
     "default": 1.0,
     "name": "spa-cooling-activated-40850",
+    "write": true
+  },
+  "40851": {
+    "title": "(SPA), cooling influence",
+    "factor": 1,
+    "size": "s8",
+    "min": 0.0,
+    "max": 10.0,
+    "default": 2.0,
+    "name": "spa-cooling-influence-40851",
     "write": true
   },
   "40852": {
@@ -8522,11 +8633,11 @@
     "write": true
   },
   "32179": {
-    "title": "Total average power (EME 20)",
+    "title": "Total average power (Solar PV)",
     "factor": 100,
     "unit": "kW",
     "size": "u32",
-    "name": "total-average-power-eme-20-32179"
+    "name": "total-average-power-solar-pv-32179"
   },
   "32181": {
     "title": "Total energy",
@@ -8942,6 +9053,17 @@
     "max": 2.0,
     "default": 2.0,
     "name": "blocking-actions-ers-4-44102",
+    "write": true
+  },
+  "42944": {
+    "title": "Night cooling diff",
+    "factor": 1,
+    "unit": "\u00b0C",
+    "size": "u8",
+    "min": 3.0,
+    "max": 10.0,
+    "default": 6.0,
+    "name": "night-cooling-diff-42944",
     "write": true
   },
   "45410": {
@@ -9407,54 +9529,54 @@
     "write": true
   },
   "42668": {
-    "title": "Offset cooling (EME20)",
+    "title": "Offset cooling (Solar PV)",
     "factor": 1,
     "size": "s8",
     "min": -10.0,
     "max": 0.0,
     "default": -1.0,
-    "name": "offset-cooling-eme20-42668",
+    "name": "offset-cooling-solar-pv-42668",
     "write": true
   },
   "42669": {
-    "title": "Offset heating (EME20)",
+    "title": "Offset heating (Solar PV)",
     "factor": 1,
     "size": "u8",
     "min": 0.0,
     "max": 10.0,
     "default": 1.0,
-    "name": "offset-heating-eme20-42669",
+    "name": "offset-heating-solar-pv-42669",
     "write": true
   },
   "42670": {
-    "title": "Offset pool (EME20)",
+    "title": "Offset pool (Solar PV)",
     "factor": 1,
     "unit": "\u00b0C",
     "size": "u8",
     "min": 0.0,
     "max": 10.0,
     "default": 10.0,
-    "name": "offset-pool-eme20-42670",
+    "name": "offset-pool-solar-pv-42670",
     "write": true
   },
   "42667": {
-    "title": "Cooling (EME20)",
+    "title": "Cooling (Solar PV)",
     "factor": 1,
     "size": "u8",
     "min": 0.0,
     "max": 1.0,
     "default": 0.0,
-    "name": "cooling-eme20-42667",
+    "name": "cooling-solar-pv-42667",
     "write": true
   },
   "42676": {
-    "title": "AUX (EME20)",
+    "title": "AUX (Solar PV)",
     "factor": 1,
     "size": "u8",
     "min": 0.0,
     "max": 1.0,
     "default": 0.0,
-    "name": "aux-eme20-42676",
+    "name": "aux-solar-pv-42676",
     "write": true
   },
   "40001": {
@@ -9469,33 +9591,33 @@
     "write": true
   },
   "42108": {
-    "title": "EME20 API",
+    "title": "Modbus TCP/IP Ext. (Solar PV)",
     "factor": 1,
     "size": "u8",
     "min": 0.0,
     "max": 1.0,
     "default": 0.0,
-    "name": "eme20-api-42108",
+    "name": "modbus-tcp-ip-ext-solar-pv-42108",
     "write": true
   },
   "42109": {
-    "title": "EME20 API Include own consumption",
+    "title": "Modbus TCP/IP Ext.Include own consumption (Solar PV)",
     "factor": 1,
     "size": "u8",
     "min": 0.0,
     "max": 1.0,
     "default": 0.0,
-    "name": "eme20-api-include-own-consumption-42109",
+    "name": "modbus-tcp-ip-ext-include-own-consumption-solar-pv-42109",
     "write": true
   },
   "42110": {
-    "title": "EME20 API Available power",
+    "title": "Modbus TCP/IP Ext. Available power (Solar PV)",
     "factor": 1,
     "size": "u16",
     "min": 0.0,
     "max": 65535.0,
     "default": 0.0,
-    "name": "eme20-api-available-power-42110",
+    "name": "modbus-tcp-ip-ext-available-power-solar-pv-42110",
     "write": true
   },
   "42112": {
@@ -9978,6 +10100,406 @@
     "name": "zone-40-affected-by-ecs1-42159",
     "write": true
   },
+  "42160": {
+    "title": "Zone 1 affected by ECS2",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-1-affected-by-ecs2-42160",
+    "write": true
+  },
+  "42161": {
+    "title": "Zone 2 affected by ECS2",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-2-affected-by-ecs2-42161",
+    "write": true
+  },
+  "42162": {
+    "title": "Zone 3 affected by ECS2",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-3-affected-by-ecs2-42162",
+    "write": true
+  },
+  "42163": {
+    "title": "Zone 4 affected by ECS2",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-4-affected-by-ecs2-42163",
+    "write": true
+  },
+  "42164": {
+    "title": "Zone 5 affected by ECS2",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-5-affected-by-ecs2-42164",
+    "write": true
+  },
+  "42165": {
+    "title": "Zone 6 affected by ECS2",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-6-affected-by-ecs2-42165",
+    "write": true
+  },
+  "42166": {
+    "title": "Zone 7 affected by ECS2",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-7-affected-by-ecs2-42166",
+    "write": true
+  },
+  "42167": {
+    "title": "Zone 8 affected by ECS2",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-8-affected-by-ecs2-42167",
+    "write": true
+  },
+  "42168": {
+    "title": "Zone 9 affected by ECS2",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-9-affected-by-ecs2-42168",
+    "write": true
+  },
+  "42169": {
+    "title": "Zone 10 affected by ECS2",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-10-affected-by-ecs2-42169",
+    "write": true
+  },
+  "42170": {
+    "title": "Zone 11 affected by ECS2",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-11-affected-by-ecs2-42170",
+    "write": true
+  },
+  "42171": {
+    "title": "Zone 12 affected by ECS2",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-12-affected-by-ecs2-42171",
+    "write": true
+  },
+  "42172": {
+    "title": "Zone 13 affected by ECS2",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-13-affected-by-ecs2-42172",
+    "write": true
+  },
+  "42173": {
+    "title": "Zone 14 affected by ECS2",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-14-affected-by-ecs2-42173",
+    "write": true
+  },
+  "42174": {
+    "title": "Zone 15 affected by ECS2",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-15-affected-by-ecs2-42174",
+    "write": true
+  },
+  "42175": {
+    "title": "Zone 16 affected by ECS2",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-16-affected-by-ecs2-42175",
+    "write": true
+  },
+  "42176": {
+    "title": "Zone 17 affected by ECS2",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-17-affected-by-ecs2-42176",
+    "write": true
+  },
+  "42177": {
+    "title": "Zone 18 affected by ECS2",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-18-affected-by-ecs2-42177",
+    "write": true
+  },
+  "42178": {
+    "title": "Zone 19 affected by ECS2",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-19-affected-by-ecs2-42178",
+    "write": true
+  },
+  "42179": {
+    "title": "Zone 20 affected by ECS2",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-20-affected-by-ecs2-42179",
+    "write": true
+  },
+  "42180": {
+    "title": "Zone 21 affected by ECS2",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-21-affected-by-ecs2-42180",
+    "write": true
+  },
+  "42181": {
+    "title": "Zone 22 affected by ECS2",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-22-affected-by-ecs2-42181",
+    "write": true
+  },
+  "42182": {
+    "title": "Zone 23 affected by ECS2",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-23-affected-by-ecs2-42182",
+    "write": true
+  },
+  "42183": {
+    "title": "Zone 24 affected by ECS2",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-24-affected-by-ecs2-42183",
+    "write": true
+  },
+  "42184": {
+    "title": "Zone 25 affected by ECS2",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-25-affected-by-ecs2-42184",
+    "write": true
+  },
+  "42185": {
+    "title": "Zone 26 affected by ECS2",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-26-affected-by-ecs2-42185",
+    "write": true
+  },
+  "42186": {
+    "title": "Zone 27 affected by ECS2",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-27-affected-by-ecs2-42186",
+    "write": true
+  },
+  "42187": {
+    "title": "Zone 28 affected by ECS2",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-28-affected-by-ecs2-42187",
+    "write": true
+  },
+  "42188": {
+    "title": "Zone 29 affected by ECS2",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-29-affected-by-ecs2-42188",
+    "write": true
+  },
+  "42189": {
+    "title": "Zone 30 affected by ECS2",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-30-affected-by-ecs2-42189",
+    "write": true
+  },
+  "42190": {
+    "title": "Zone 31 affected by ECS2",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-31-affected-by-ecs2-42190",
+    "write": true
+  },
+  "42191": {
+    "title": "Zone 32 affected by ECS2",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-32-affected-by-ecs2-42191",
+    "write": true
+  },
+  "42192": {
+    "title": "Zone 33 affected by ECS2",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-33-affected-by-ecs2-42192",
+    "write": true
+  },
+  "42193": {
+    "title": "Zone 34 affected by ECS2",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-34-affected-by-ecs2-42193",
+    "write": true
+  },
+  "42194": {
+    "title": "Zone 35 affected by ECS2",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-35-affected-by-ecs2-42194",
+    "write": true
+  },
+  "42195": {
+    "title": "Zone 36 affected by ECS2",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-36-affected-by-ecs2-42195",
+    "write": true
+  },
+  "42196": {
+    "title": "Zone 37 affected by ECS2",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-37-affected-by-ecs2-42196",
+    "write": true
+  },
+  "42197": {
+    "title": "Zone 38 affected by ECS2",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-38-affected-by-ecs2-42197",
+    "write": true
+  },
+  "42198": {
+    "title": "Zone 39 affected by ECS2",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-39-affected-by-ecs2-42198",
+    "write": true
+  },
+  "42199": {
+    "title": "Zone 40 affected by ECS2",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "zone-40-affected-by-ecs2-42199",
+    "write": true
+  },
   "42440": {
     "title": "Input on ECS1 affects ECS1",
     "factor": 1,
@@ -10056,6 +10578,86 @@
     "max": 1.0,
     "default": 0.0,
     "name": "input-on-ecs1-affects-ecs8-42447",
+    "write": true
+  },
+  "42448": {
+    "title": "Input on ECS2 affects ECS1",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "input-on-ecs2-affects-ecs1-42448",
+    "write": true
+  },
+  "42449": {
+    "title": "Input on ECS2 affects ECS2",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "input-on-ecs2-affects-ecs2-42449",
+    "write": true
+  },
+  "42450": {
+    "title": "Input on ECS2 affects ECS3",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "input-on-ecs2-affects-ecs3-42450",
+    "write": true
+  },
+  "42451": {
+    "title": "Input on ECS2 affects ECS4",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "input-on-ecs2-affects-ecs4-42451",
+    "write": true
+  },
+  "42452": {
+    "title": "Input on ECS2 affects ECS5",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "input-on-ecs2-affects-ecs5-42452",
+    "write": true
+  },
+  "42453": {
+    "title": "Input on ECS2 affects ECS6",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "input-on-ecs2-affects-ecs6-42453",
+    "write": true
+  },
+  "42454": {
+    "title": "Input on ECS2 affects ECS7",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "input-on-ecs2-affects-ecs7-42454",
+    "write": true
+  },
+  "42455": {
+    "title": "Input on ECS2 affects ECS8",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "input-on-ecs2-affects-ecs8-42455",
     "write": true
   },
   "42504": {
@@ -10937,6 +11539,132 @@
     "default": 0.0,
     "name": "compressor-total-time-energy-storage-heat-pump-8-ep15-32370"
   },
+  "45209": {
+    "title": "External reading of BT1 activated",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "external-reading-of-bt1-activated-45209",
+    "write": true
+  },
+  "45210": {
+    "title": "External reading of BT25 activated",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "external-reading-of-bt25-activated-45210",
+    "write": true
+  },
+  "45211": {
+    "title": "External reading of BT71 activated",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "external-reading-of-bt71-activated-45211",
+    "write": true
+  },
+  "45212": {
+    "title": "External reading of BT5 activated",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "external-reading-of-bt5-activated-45212",
+    "write": true
+  },
+  "45213": {
+    "title": "External reading of BT6 activated",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "external-reading-of-bt6-activated-45213",
+    "write": true
+  },
+  "45214": {
+    "title": "External reading of BT7 activated",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "external-reading-of-bt7-activated-45214",
+    "write": true
+  },
+  "45217": {
+    "title": "External reading of BT52 activated",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "external-reading-of-bt52-activated-45217",
+    "write": true
+  },
+  "45218": {
+    "title": "External reading of value BT1",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "external-reading-of-value-bt1-45218",
+    "write": true
+  },
+  "45219": {
+    "title": "External reading of value BT25",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "external-reading-of-value-bt25-45219",
+    "write": true
+  },
+  "45220": {
+    "title": "External reading of value BT71",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "external-reading-of-value-bt71-45220",
+    "write": true
+  },
+  "45221": {
+    "title": "External reading of value BT5",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "external-reading-of-value-bt5-45221",
+    "write": true
+  },
+  "45222": {
+    "title": "External reading of value BT6",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "external-reading-of-value-bt6-45222",
+    "write": true
+  },
+  "45223": {
+    "title": "External reading of value BT7",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "external-reading-of-value-bt7-45223",
+    "write": true
+  },
+  "45226": {
+    "title": "External reading of value BT52",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "external-reading-of-value-bt52-45226",
+    "write": true
+  },
   "45459": {
     "title": "Cooling with solar energy surplus",
     "factor": 1,
@@ -11013,6 +11741,35 @@
     "unit": "%RH",
     "size": "s32",
     "name": "humidity-rmu-s40-1-33131"
+  },
+  "45987": {
+    "title": "External reading of BT50 activated",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "external-reading-of-bt50-activated-45987",
+    "write": true
+  },
+  "45988": {
+    "title": "External reading of value BT50",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "external-reading-of-value-bt50-45988",
+    "write": true
+  },
+  "45997": {
+    "title": "Speed, circulation pump, standby mode (EB100)",
+    "factor": 1,
+    "unit": "%",
+    "size": "u8",
+    "min": 1.0,
+    "max": 100.0,
+    "default": 30.0,
+    "name": "speed-circulation-pump-standby-mode-eb100-45997",
+    "write": true
   },
   "41556": {
     "title": "Input AUX7",
@@ -11102,5 +11859,16 @@
     "factor": 1,
     "size": "u8",
     "name": "eev-state-eb102-32423"
+  },
+  "45998": {
+    "title": "Setpoint power",
+    "factor": 10,
+    "unit": "kW",
+    "size": "u16",
+    "min": 0.0,
+    "max": 60.0,
+    "default": 0.0,
+    "name": "setpoint-power-45998",
+    "write": true
   }
 }
