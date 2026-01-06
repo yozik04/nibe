@@ -4849,6 +4849,20 @@
     "size": "s32",
     "name": "total-energy-32181"
   },
+  "33822": {
+    "title": "Tot. production",
+    "factor": 10,
+    "unit": "kWh",
+    "size": "u32",
+    "name": "tot-production-33822"
+  },
+  "33824": {
+    "title": "Tot. consumption",
+    "factor": 10,
+    "unit": "kWh",
+    "size": "u32",
+    "name": "tot-consumption-33824"
+  },
   "44077": {
     "title": "ERS 2",
     "factor": 1,
