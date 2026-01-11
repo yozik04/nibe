@@ -178,11 +178,13 @@ async def parse_data(data: str, type: str):
     elif type == "bytes":
         raw = bytes(literal_eval(data))
 
-    try:
-        request = Block.parse(raw)
-        click.echo(request)
-    except ConstructError as exception:
-        click.echo(f"Failed to parse: {exception}", err=True)
+    with io.BytesIO(bytes(raw)) as stream:
+        for packet in parse_stream(stream):
+            click.echo(packet)
+
+        remaining = stream.read()
+        if remaining:
+            click.echo(f"Remaining: {stream.read()}")
 
 
 def read_bytes_socat(file: IO):
