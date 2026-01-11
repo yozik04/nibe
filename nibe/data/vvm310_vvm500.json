@@ -2746,8 +2746,7 @@
     "max": 30000.0,
     "default": 0.0,
     "name": "cool-degree-minutes-44266",
-    "write": true,
-    "unit": "DM"
+    "write": true
   },
   "44267": {
     "title": "Calc. Cooling Supply S4",
