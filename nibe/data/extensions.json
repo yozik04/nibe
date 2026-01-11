@@ -46,9 +46,6 @@
           "0": "OFF",
           "1": "ON"
         }
-      },
-      "44266": {
-        "unit": "DM"
       }
     }
   },
@@ -678,6 +675,24 @@
       },
       "32409": {
         "unit": "kW"
+      }
+    }
+  },
+  {
+    "description": "Correction for Cool Degree Minutes unit",
+    "files": [
+      "f1145_f1245.json",
+      "f1155_f1255.json",
+      "f1345.json",
+      "f1355.json",
+      "smo20.json",
+      "smo40.json",
+      "vvm225_vvm320_vvm325.json",
+      "vvm310_vvm500.json"
+    ],
+    "data": {
+      "44266": {
+        "unit": "DM"
       }
     }
   }
