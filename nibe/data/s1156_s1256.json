@@ -8386,6 +8386,26 @@
     "size": "u32",
     "name": "tot-consumption-33824"
   },
+  "44016": {
+    "title": "Mode, energy meter (BE6)",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 255.0,
+    "default": 255.0,
+    "name": "mode-energy-meter-be6-44016",
+    "write": true
+  },
+  "44017": {
+    "title": "Mode, energy meter (BE7)",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 255.0,
+    "default": 255.0,
+    "name": "mode-energy-meter-be7-44017",
+    "write": true
+  },
   "44077": {
     "title": "ERS 2",
     "factor": 1,
@@ -8415,6 +8435,22 @@
     "default": 0.0,
     "name": "ers-4-44079",
     "write": true
+  },
+  "44128": {
+    "title": "Mode, energy meter (BE11)",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 255.0,
+    "default": 255.0,
+    "name": "mode-energy-meter-be11-44128",
+    "write": true
+  },
+  "32455": {
+    "title": "External addition steps active",
+    "factor": 1,
+    "size": "u8",
+    "name": "external-addition-steps-active-32455"
   },
   "41982": {
     "title": "HTS 2",
@@ -8896,6 +8932,13 @@
     "name": "system-4-rmu-42002",
     "write": true
   },
+  "45391": {
+    "title": "Away mode status",
+    "factor": 1,
+    "size": "u8",
+    "name": "away-mode-status-45391",
+    "write": true
+  },
   "42743": {
     "title": "The start guide has been run",
     "factor": 1,
@@ -8975,6 +9018,16 @@
     "max": 1.0,
     "default": 0.0,
     "name": "activate-sg-ready-via-api-43033",
+    "write": true
+  },
+  "46009": {
+    "title": "Requested operating mode (SG Ready)",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 3.0,
+    "default": 1.0,
+    "name": "requested-operating-mode-sg-ready-46009",
     "write": true
   },
   "43034": {
