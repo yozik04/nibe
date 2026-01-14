@@ -621,9 +621,14 @@ Command = Enum(
     ECS_DATA_MSG_1=0x55,
     ECS_DATA_MSG_2=0xA0,
     STRING_MSG=0xB1,
-    HEATPUMP_MSG_1=0xF1,
-    HEATPUMP_MSG_2=0xF2,
-    HEATPUMP_REQ=0xF7,
+    HEATPUMP_MSG_A0=0xA0,
+    HEATPUMP_REQ_73=0x73,
+    HEATPUMP_REQ_B7=0xB7,
+    HEATPUMP_REQ_ED=0xED,
+    HEATPUMP_REQ_F1=0xF1,
+    HEATPUMP_REQ_F2=0xF2,
+    HEATPUMP_REQ_F7=0xF7,
+    HEATPUMP_REQ_FC=0xFC,
 )
 
 
@@ -826,7 +831,7 @@ ModbusWriteReq = Struct(
     "value" / Bytes(4),
 )
 
-HeatpumpMessage1 = Struct(
+HeatpumpReqF1 = Struct(
     "unknown1" / Int16ul,
 
     # VVM500 EB101-EP14-BT3 Return Temp (43621).
@@ -871,7 +876,7 @@ RequestTypes = {
     "RMU_WRITE_REQ": RmuWriteReq,
     "MODBUS_READ_REQ": ModbusReadReq,
     "MODBUS_WRITE_REQ": ModbusWriteReq,
-    "HEATPUMP_MSG_1": HeatpumpMessage1,
+    "HEATPUMP_REQ_F1": HeatpumpReqF1,
 }
 
 RequestData = Struct(
