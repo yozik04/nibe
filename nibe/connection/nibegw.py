@@ -621,7 +621,14 @@ Command = Enum(
     ECS_DATA_MSG_1=0x55,
     ECS_DATA_MSG_2=0xA0,
     STRING_MSG=0xB1,
-    HEATPUMP_REQ=0xF7,
+    HEATPUMP_MSG_A0=0xA0,
+    HEATPUMP_REQ_73=0x73,
+    HEATPUMP_REQ_B7=0xB7,
+    HEATPUMP_REQ_ED=0xED,
+    HEATPUMP_REQ_F1=0xF1,
+    HEATPUMP_REQ_F2=0xF2,
+    HEATPUMP_REQ_F7=0xF7,
+    HEATPUMP_REQ_FC=0xFC,
 )
 
 
@@ -824,11 +831,52 @@ ModbusWriteReq = Struct(
     "value" / Bytes(4),
 )
 
+HeatpumpReqF1 = Struct(
+    "unknown1" / Int16ul,
+
+    # VVM500 EB101-EP14-BT3 Return Temp (43621).
+    "return_temp" / FixedPoint(Int16sl, 0.1, 0, "s16"),
+
+    # VVM500 EB101-EP14-BT12 Condensor Out (44058)
+    "condenser_out" / FixedPoint(Int16sl, 0.1, 0, "s16"),
+
+    # VVM500 EB101-EP14-BT14 Hot Gas Temp (44059)
+    "hot_gas_temp" / FixedPoint(Int16sl, 0.1, 0, "s16"),
+
+    # VVM500 EB101-EP14-BT14 Evaporator
+    "evaporator" / FixedPoint(Int16sl, 0.1, 0, "s16"),
+
+    # VVM500 EB101-EP14-BT17 Suction (44061)
+    "suction" / FixedPoint(Int16sl, 0.1, 0, "s16"),
+
+    # VVM500 EB101-EP14-BT28 Outdoor Temp (44362)
+    "outdoor_temp" / FixedPoint(Int16sl, 0.1, 0, "s16"),
+
+    # VVM500 EB101-EP14-BT14 Low Pressure Sensor
+    "low_pressure_sensor" / FixedPoint(Int16sl, 0.1, 0, "s16"),
+
+    "unknown2" / Int16ul,
+
+    # VVM500 EB101-EP14-BT14 High Pressure Sensor
+    "high_pressure_sensor" / FixedPoint(Int16sl, 0.1, 0, "s16"),
+
+    "unknown3" / Int16ul,
+    "unknown4" / Int16ul,
+    "unknown5" / Int16ul,
+    "unknown6" / Int16ul,
+    "unknown7" / Int16ul,
+    "unknown8" / Int16ul,
+    "unknown9" / Int16ul,
+    "unknown10" / Int16ul,
+    "unknown11" / Int16ul,
+)
+
 RequestTypes = {
     "ACCESSORY_VERSION_REQ": AccessoryVersionReq,
     "RMU_WRITE_REQ": RmuWriteReq,
     "MODBUS_READ_REQ": ModbusReadReq,
-    "MODBUS_WRITE_REQ": ModbusWriteReq
+    "MODBUS_WRITE_REQ": ModbusWriteReq,
+    "HEATPUMP_REQ_F1": HeatpumpReqF1,
 }
 
 RequestData = Struct(

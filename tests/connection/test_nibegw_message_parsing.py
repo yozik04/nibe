@@ -4,7 +4,7 @@ import unittest
 from construct import ChecksumError, Container, Int16sl, Int32ul
 import pytest
 
-from nibe.connection.nibegw import Request, Response, RmuData
+from nibe.connection.nibegw import Request, RequestData, Response, RmuData
 
 
 class MessageResponseParsingTestCase(unittest.TestCase):
@@ -19,7 +19,7 @@ class MessageResponseParsingTestCase(unittest.TestCase):
     def test_parse_token_response_16bit_address(self):
         data = self._parse_hexlified_raw_message("5c41c9f7007f06")
         assert data.address == "HEATPUMP_1"
-        assert data.cmd == "HEATPUMP_REQ"
+        assert data.cmd == "HEATPUMP_REQ_F7"
         assert data.data == b""
 
     def test_parse_escaped_read_response(self):
@@ -450,6 +450,101 @@ class MessageRequestParsingTestCase(unittest.TestCase):
         assert data.cmd == "RMU_WRITE_REQ"
         assert data.data.index == "SETPOINT_S1"
         assert data.data.value == 23.0
+
+
+class MessageHeatpumpReqParsingTestCase(unittest.TestCase):
+    def test_packet_f1(self):
+        data = self.parse(
+            "c0f126 e300ee00eb00e300aa00ef00a6007900a50077009f00e7007800a300d70000000a004119370a 5f"
+        )
+
+        assert data == Container(
+            cmd="HEATPUMP_REQ_F1",
+            data=Container(
+                unknown1=227,
+                return_temp=23.8,
+                condenser_out=23.5,
+                hot_gas_temp=22.7,
+                evaporator=17.0,
+                suction=23.9,
+                outdoor_temp=16.6,
+                low_pressure_sensor=12.1,
+                unknown2=165,
+                high_pressure_sensor=11.9,
+                unknown3=159,
+                unknown4=231,
+                unknown5=120,
+                unknown6=163,
+                unknown7=215,
+                unknown8=0,
+                unknown9=10,
+                unknown10=6465,
+                unknown11=2615,
+            ),
+        )
+
+    def test_packet_f2(self):
+        """Unknown fields real data"""
+        data = self.parse(
+            "c0f222 0000ffff0000000022017c0100000000000000009808551310000050000000000000 d8"
+        )
+
+        assert data == Container(
+            cmd="HEATPUMP_REQ_F2",
+            data=b'\x00\x00\xff\xff\x00\x00\x00\x00"\x01|\x01\x00\x00\x00\x00\x00\x00\x00\x00\x98\x08U\x13\x10\x00\x00P\x00\x00\x00\x00\x00\x00',
+        )
+
+    def test_packet_73(self):
+        """Unknown fields real data"""
+        data = self.parse("c07309 fc0400000026e72b0f a7")
+
+        assert data == Container(
+            cmd="HEATPUMP_REQ_73",
+            data=b"\xfc\x04\x00\x00\x00&\xe7+\x0f",
+        )
+
+    def test_packet_ed(self):
+        """Unknown fields but real data"""
+        data = self.parse("c0ed18 7d310000b25a100011470000abe50f006a00000001000000 fd")
+
+        assert data == Container(
+            cmd="HEATPUMP_REQ_ED",
+            data=b"}1\x00\x00\xb2Z\x10\x00\x11G\x00\x00\xab\xe5\x0f\x00j\x00\x00\x00\x01\x00\x00\x00",
+        )
+
+    def test_packet_b7(self):
+        """Unknown fields real data"""
+        data = self.parse("c0b7180 0000000000000000000000000000200d40000000000f100 48")
+
+        assert data == Container(
+            cmd="HEATPUMP_REQ_B7",
+            data=b"\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x02\x00\xd4\x00\x00\x00\x00\x00\xf1\x00",
+        )
+
+    def test_packet_f7(self):
+        """Unknown fields real data"""
+        data = self.parse(
+            "c0f7205 0003f00efff8d0000008800000000005a004100e7ff84000000850085000000 ea"
+        )
+
+        assert data == Container(
+            cmd="HEATPUMP_REQ_F7",
+            data=b"P\x00?\x00\xef\xff\x8d\x00\x00\x00\x88\x00\x00\x00\x00\x00Z\x00A\x00\xe7\xff\x84\x00\x00\x00\x85\x00\x85\x00\x00\x00",
+        )
+
+    def test_packet_fc(self):
+        """Unknown fields real data"""
+        data = self.parse("c0fc130 0000006ff0006ff0006ff0000ceff00ceff00 d6")
+
+        assert data == Container(
+            cmd="HEATPUMP_REQ_FC",
+            data=b"\x00\x00\x00\x06\xff\x00\x06\xff\x00\x06\xff\x00\x00\xce\xff\x00\xce\xff\x00",
+        )
+
+    @staticmethod
+    def parse(txt_raw):
+        raw = binascii.unhexlify(txt_raw.replace(" ", ""))
+        return RequestData.parse(raw)
 
 
 if __name__ == "__main__":
