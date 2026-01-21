@@ -9,7 +9,6 @@ import re
 from typing import IO
 
 import asyncclick as click
-from construct import ConstructError
 
 from ..coil import CoilData
 from ..connection import Connection
