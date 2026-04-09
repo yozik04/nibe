@@ -695,5 +695,21 @@
         "unit": "DM"
       }
     }
+  },
+   {
+    "description": "SG Ready Operating Mode - F1145/F1245",
+    "files": [
+      "f1145_f1245.json"
+    ],
+    "data": {
+      "44874": {
+        "mappings": {
+          "10": "Blocking",
+          "20": "Normal",
+          "30": "Low Price",
+          "40": "Overcapacity"
+        }
+      }
+    }
   }
 ]
