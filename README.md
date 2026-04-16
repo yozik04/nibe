@@ -54,8 +54,8 @@ Library for communication with Nibe heatpumps.
 
 #### VVMS series
 
- - VVMS325
  - VVMS320
+ - VVMS325
 
 ## Connection methods
 
