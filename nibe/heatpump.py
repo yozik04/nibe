@@ -69,6 +69,7 @@ class Model(Enum):
     VVM500 = "vvm310_vvm500", Series.F
 
     VVMS325 = "vvms325", Series.S
+    VVMS320 = "vvms320", Series.S
 
     CUSTOM = "custom", Series.CUSTOM
 
