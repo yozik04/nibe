@@ -667,7 +667,9 @@
       "s735.json",
       "s1155_s1255.json",
       "s1156_s1256.json",
-      "s2125.json"
+      "s2125.json",
+      "vvms320.json",
+      "vvms325.json"
     ],
     "data": {
       "32306": {
