@@ -7396,7 +7396,13 @@
     "title": "State SG Ready",
     "size": "u8",
     "factor": 1,
-    "name": "state-sg-ready-44874"
+    "name": "state-sg-ready-44874",
+    "mappings": {
+      "10": "Blocking",
+      "20": "Normal",
+      "30": "Low Price",
+      "40": "Overcapacity"
+    }
   },
   "44878": {
     "title": "SG Ready input A",
