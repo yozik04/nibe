@@ -108,6 +108,7 @@ class HeatpumpIntialization(unittest.IsolatedAsyncioTestCase):
         (Model.VVM500, Series.F),
         (Model.VVMS320, Series.S),
         (Model.VVMS325, Series.S),
+        (Model.VVMS500, Series.S),
         (Model.S320, Series.S),
         (Model.S325, Series.S),
         (Model.S330, Series.S),
