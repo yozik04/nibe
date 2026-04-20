@@ -97,6 +97,20 @@
     "size": "s16",
     "name": "suction-gas-bt17-30017"
   },
+  "30020": {
+    "title": "Exh. air (AZ10-BT20)",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "exh-air-az10-bt20-30020"
+  },
+  "30021": {
+    "title": "Extr. air (AZ10-BT21)",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "extr-air-az10-bt21-30021"
+  },
   "30022": {
     "title": "Collector in (AZ10-BT26)",
     "factor": 10,
@@ -5151,6 +5165,125 @@
     "name": "phase-order-l1-42746",
     "write": true
   },
+  "40105": {
+    "title": "Ventilation mode",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 4.0,
+    "default": 0.0,
+    "name": "ventilation-mode-40105",
+    "write": true
+  },
+  "40106": {
+    "title": "Exhaust air fan speed 4",
+    "factor": 1,
+    "unit": "%",
+    "size": "u8",
+    "min": 0.0,
+    "max": 100.0,
+    "default": 100.0,
+    "name": "exhaust-air-fan-speed-4-40106",
+    "write": true
+  },
+  "40107": {
+    "title": "Exhaust air fan speed 3",
+    "factor": 1,
+    "unit": "%",
+    "size": "u8",
+    "min": 0.0,
+    "max": 100.0,
+    "default": 80.0,
+    "name": "exhaust-air-fan-speed-3-40107",
+    "write": true
+  },
+  "40108": {
+    "title": "Exhaust air fan speed 2",
+    "factor": 1,
+    "unit": "%",
+    "size": "u8",
+    "min": 0.0,
+    "max": 100.0,
+    "default": 30.0,
+    "name": "exhaust-air-fan-speed-2-40108",
+    "write": true
+  },
+  "40109": {
+    "title": "Exhaust air fan speed 1",
+    "factor": 1,
+    "unit": "%",
+    "size": "u8",
+    "min": 0.0,
+    "max": 100.0,
+    "default": 0.0,
+    "name": "exhaust-air-fan-speed-1-40109",
+    "write": true
+  },
+  "40110": {
+    "title": "Exhaust air fan speed normal",
+    "factor": 1,
+    "unit": "%",
+    "size": "u8",
+    "min": 0.0,
+    "max": 100.0,
+    "default": 65.0,
+    "name": "exhaust-air-fan-speed-normal-40110",
+    "write": true
+  },
+  "40116": {
+    "title": "Return time fan 4",
+    "factor": 1,
+    "unit": "h",
+    "size": "u8",
+    "min": 1.0,
+    "max": 24.0,
+    "default": 4.0,
+    "name": "return-time-fan-4-40116",
+    "write": true
+  },
+  "40117": {
+    "title": "Return time fan 3",
+    "factor": 1,
+    "unit": "h",
+    "size": "u8",
+    "min": 1.0,
+    "max": 24.0,
+    "default": 4.0,
+    "name": "return-time-fan-3-40117",
+    "write": true
+  },
+  "40118": {
+    "title": "Return time fan 2",
+    "factor": 1,
+    "unit": "h",
+    "size": "u8",
+    "min": 1.0,
+    "max": 24.0,
+    "default": 4.0,
+    "name": "return-time-fan-2-40118",
+    "write": true
+  },
+  "40119": {
+    "title": "Return time fan 1",
+    "factor": 1,
+    "unit": "h",
+    "size": "u8",
+    "min": 1.0,
+    "max": 24.0,
+    "default": 4.0,
+    "name": "return-time-fan-1-40119",
+    "write": true
+  },
+  "40120": {
+    "title": "Time between filter replacement",
+    "factor": 1,
+    "size": "u8",
+    "min": 1.0,
+    "max": 24.0,
+    "default": 3.0,
+    "name": "time-between-filter-replacement-40120",
+    "write": true
+  },
   "40121": {
     "title": "Floor drying",
     "factor": 1,
@@ -5374,6 +5507,27 @@
     "max": 1.0,
     "default": 0.0,
     "name": "climate-system-4-40145",
+    "write": true
+  },
+  "40152": {
+    "title": "Pump 1 (FLM)",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "pump-1-flm-40152",
+    "write": true
+  },
+  "40153": {
+    "title": "Defrosting time (FLM 1)",
+    "factor": 1,
+    "unit": "h",
+    "size": "u8",
+    "min": 1.0,
+    "max": 30.0,
+    "default": 10.0,
+    "name": "defrosting-time-flm-1-40153",
     "write": true
   },
   "40148": {
@@ -6012,6 +6166,27 @@
     "name": "more-hot-water-number-of-minutes-40226",
     "write": true
   },
+  "40228": {
+    "title": "Night cooling 1",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "night-cooling-1-40228",
+    "write": true
+  },
+  "40229": {
+    "title": "Start temperature night cooling 1",
+    "factor": 1,
+    "unit": "\u00b0C",
+    "size": "u8",
+    "min": 20.0,
+    "max": 30.0,
+    "default": 25.0,
+    "name": "start-temperature-night-cooling-1-40229",
+    "write": true
+  },
   "40238": {
     "title": "Oper. mode",
     "factor": 1,
@@ -6062,6 +6237,16 @@
     "max": 1.0,
     "default": 0.0,
     "name": "flm-1-40679",
+    "write": true
+  },
+  "40681": {
+    "title": "Cooling (FLM 1)",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "cooling-flm-1-40681",
     "write": true
   },
   "40680": {
@@ -8650,6 +8835,16 @@
     "name": "external-adjustment-with-room-sensor-cooling-climate-system-1-44154",
     "write": true
   },
+  "44068": {
+    "title": "Demand controlled ventilation",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "demand-controlled-ventilation-44068",
+    "write": true
+  },
   "44165": {
     "title": "blockFreq 1 (EB102)",
     "factor": 1,
@@ -8851,6 +9046,13 @@
     "unit": "\u00b0C",
     "size": "s16",
     "name": "low-pressure-bp8-dew-32128"
+  },
+  "45392": {
+    "title": "Increased ventilation 1",
+    "factor": 1,
+    "size": "u8",
+    "name": "increased-ventilation-1-45392",
+    "write": true
   },
   "40177": {
     "title": "System 1 (RMU)",
@@ -10607,6 +10809,12 @@
     "name": "aux-from-modbus-42742",
     "write": true
   },
+  "32742": {
+    "title": "AUX from Modbus",
+    "factor": 1,
+    "size": "s16",
+    "name": "aux-from-modbus-32742"
+  },
   "32167": {
     "title": "Instantaneous used power",
     "factor": 1,
@@ -10828,6 +11036,12 @@
     "unit": "%",
     "size": "u8",
     "name": "fan-mode-8-32172"
+  },
+  "33813": {
+    "title": "Status",
+    "factor": 1,
+    "size": "u8",
+    "name": "status-33813"
   },
   "45393": {
     "title": "Disable emergency restart GP1",
@@ -11507,5 +11721,11 @@
     "default": 0.0,
     "name": "disable-emergency-restart-gp1-43987",
     "write": true
+  },
+  "33826": {
+    "title": "All sub units operating prio",
+    "factor": 1,
+    "size": "u32",
+    "name": "all-sub-units-operating-prio-33826"
   }
 }
