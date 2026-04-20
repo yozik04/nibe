@@ -82,10 +82,17 @@
     "size": "s16",
     "name": "boiler-temperature-bt52-30039"
   },
+  "30040": {
+    "title": "External supply line (BT25)",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "external-supply-line-bt25-30040"
+  },
   "30041": {
     "title": "Flow sensor (BF1)",
     "factor": 10,
-    "unit": "l/m",
+    "unit": "l/min",
     "size": "s16",
     "name": "flow-sensor-bf1-30041"
   },
@@ -471,6 +478,34 @@
     "factor": 1,
     "size": "u8",
     "name": "available-compressors-cooling-30322"
+  },
+  "30324": {
+    "title": "Humidity (BM1)",
+    "factor": 10,
+    "unit": "%",
+    "size": "s16",
+    "name": "humidity-bm1-30324"
+  },
+  "30325": {
+    "title": "Temperature (BM1)",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "temperature-bm1-30325"
+  },
+  "30326": {
+    "title": "Pressure (BM1)",
+    "factor": 10,
+    "unit": "kPa",
+    "size": "s16",
+    "name": "pressure-bm1-30326"
+  },
+  "30327": {
+    "title": "Dew point (BM1)",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "dew-point-bm1-30327"
   },
   "30338": {
     "title": "Supply temperature (BT64)",
@@ -1569,10 +1604,10 @@
     "name": "fan-mode-1-31038"
   },
   "31039": {
-    "title": "Current hot water mode",
+    "title": "Current hot water mode without SPA/SC",
     "factor": 1,
     "size": "s8",
-    "name": "current-hot-water-mode-31039"
+    "name": "current-hot-water-mode-without-spa-sc-31039"
   },
   "31054": {
     "title": "Blocking cooling",
@@ -1889,6 +1924,13 @@
     "default": 0.0,
     "name": "cooling-degree-minutes-40021",
     "write": true
+  },
+  "31568": {
+    "title": "Calculated cooling supply climate system 1",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "calculated-cooling-supply-climate-system-1-31568"
   },
   "40022": {
     "title": "Cooling pump manual speed",
@@ -3152,7 +3194,7 @@
     "factor": 1,
     "size": "u8",
     "min": 0.0,
-    "max": 30.0,
+    "max": 32.0,
     "default": 0.0,
     "name": "output-aux1-40217",
     "write": true
@@ -3249,6 +3291,39 @@
     "name": "external-cooling-accessory-40710",
     "write": true
   },
+  "40721": {
+    "title": "Min. supply temp. cooling climate system 1",
+    "factor": 1,
+    "unit": "\u00b0C",
+    "size": "s8",
+    "min": 18.0,
+    "max": 30.0,
+    "default": 18.0,
+    "name": "min-supply-temp-cooling-climate-system-1-40721",
+    "write": true
+  },
+  "40722": {
+    "title": "Own curve, cooling P3",
+    "factor": 1,
+    "unit": "\u00b0C",
+    "size": "s8",
+    "min": 7.0,
+    "max": 40.0,
+    "default": 20.0,
+    "name": "own-curve-cooling-p3-40722",
+    "write": true
+  },
+  "40723": {
+    "title": "Own curve, cooling P5",
+    "factor": 1,
+    "unit": "\u00b0C",
+    "size": "s8",
+    "min": 7.0,
+    "max": 40.0,
+    "default": 20.0,
+    "name": "own-curve-cooling-p5-40723",
+    "write": true
+  },
   "40727": {
     "title": "Cooling connected, climate system 1",
     "factor": 1,
@@ -3257,6 +3332,39 @@
     "max": 1.0,
     "default": 1.0,
     "name": "cooling-connected-climate-system-1-40727",
+    "write": true
+  },
+  "40737": {
+    "title": "Period time cooling",
+    "factor": 1,
+    "unit": "min",
+    "size": "u8",
+    "min": 0.0,
+    "max": 180.0,
+    "default": 30.0,
+    "name": "period-time-cooling-40737",
+    "write": true
+  },
+  "40739": {
+    "title": "Cooling delta temp. 20\u00b0C",
+    "factor": 1,
+    "unit": "\u00b0C",
+    "size": "s8",
+    "min": 3.0,
+    "max": 10.0,
+    "default": 3.0,
+    "name": "cooling-delta-temp-20degc-40739",
+    "write": true
+  },
+  "40740": {
+    "title": "Cooling delta temp. 40\u00b0C",
+    "factor": 1,
+    "unit": "\u00b0C",
+    "size": "s8",
+    "min": 3.0,
+    "max": 20.0,
+    "default": 6.0,
+    "name": "cooling-delta-temp-40degc-40740",
     "write": true
   },
   "40749": {
@@ -3335,6 +3443,16 @@
     "max": 1.0,
     "default": 1.0,
     "name": "operating-mode-circulation-pump-hot-water-heat-pump-1-40800",
+    "write": true
+  },
+  "40833": {
+    "title": "Operating mode circulation pump cooling heat pump 1",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 1.0,
+    "name": "operating-mode-circulation-pump-cooling-heat-pump-1-40833",
     "write": true
   },
   "40842": {
@@ -3418,6 +3536,16 @@
     "max": 100.0,
     "default": 100.0,
     "name": "max-speed-controlled-charge-pump-eb101-40868",
+    "write": true
+  },
+  "40876": {
+    "title": "Op. mode charge pump, cooling (EB101)",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 1.0,
+    "name": "op-mode-charge-pump-cooling-eb101-40876",
     "write": true
   },
   "40894": {
@@ -3708,6 +3836,49 @@
     "name": "room-sensor-factor-climate-system-5-40960",
     "write": true
   },
+  "40968": {
+    "title": "Cooling curve climate system 1",
+    "factor": 1,
+    "size": "s8",
+    "min": 0.0,
+    "max": 9.0,
+    "default": 0.0,
+    "name": "cooling-curve-climate-system-1-40968",
+    "write": true
+  },
+  "40977": {
+    "title": "Own curve, cooling P4",
+    "factor": 1,
+    "unit": "\u00b0C",
+    "size": "s8",
+    "min": 7.0,
+    "max": 40.0,
+    "default": 20.0,
+    "name": "own-curve-cooling-p4-40977",
+    "write": true
+  },
+  "40978": {
+    "title": "Own curve, cooling P2",
+    "factor": 1,
+    "unit": "\u00b0C",
+    "size": "s8",
+    "min": 7.0,
+    "max": 40.0,
+    "default": 20.0,
+    "name": "own-curve-cooling-p2-40978",
+    "write": true
+  },
+  "40979": {
+    "title": "Own curve, cooling P1",
+    "factor": 1,
+    "unit": "\u00b0C",
+    "size": "s8",
+    "min": 7.0,
+    "max": 40.0,
+    "default": 20.0,
+    "name": "own-curve-cooling-p1-40979",
+    "write": true
+  },
   "40981": {
     "title": "Current transformer ratio",
     "factor": 1,
@@ -3907,6 +4078,16 @@
     "name": "hts-1-40999",
     "write": true
   },
+  "41007": {
+    "title": "Prevent condensation climate system 1",
+    "factor": 1,
+    "size": "s8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "prevent-condensation-climate-system-1-41007",
+    "write": true
+  },
   "41022": {
     "title": "Exhaust air fan speed 4 (ERS 1)",
     "factor": 1,
@@ -4033,6 +4214,16 @@
     "max": 900.0,
     "default": 900.0,
     "name": "max-internal-additional-heat-sg-ready-41053",
+    "write": true
+  },
+  "41064": {
+    "title": "Limit humidity in the room, cooling climate system 1",
+    "factor": 1,
+    "size": "s8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "limit-humidity-in-the-room-cooling-climate-system-1-41064",
     "write": true
   },
   "41070": {
@@ -4555,6 +4746,26 @@
     "size": "s32",
     "name": "total-energy-32181"
   },
+  "44016": {
+    "title": "Mode, energy meter (BE6)",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 255.0,
+    "default": 255.0,
+    "name": "mode-energy-meter-be6-44016",
+    "write": true
+  },
+  "44017": {
+    "title": "Mode, energy meter (BE7)",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 255.0,
+    "default": 255.0,
+    "name": "mode-energy-meter-be7-44017",
+    "write": true
+  },
   "44077": {
     "title": "ERS 2",
     "factor": 1,
@@ -4584,6 +4795,22 @@
     "default": 0.0,
     "name": "ers-4-44079",
     "write": true
+  },
+  "44128": {
+    "title": "Mode, energy meter (BE11)",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 255.0,
+    "default": 255.0,
+    "name": "mode-energy-meter-be11-44128",
+    "write": true
+  },
+  "32455": {
+    "title": "External addition steps active",
+    "factor": 1,
+    "size": "u8",
+    "name": "external-addition-steps-active-32455"
   },
   "41982": {
     "title": "HTS 2",
@@ -4956,43 +5183,50 @@
     "write": true
   },
   "41999": {
-    "title": "System 4 (RMU)",
+    "title": "System 5 (RMU)",
     "factor": 1,
     "size": "u8",
     "min": 0.0,
     "max": 1.0,
     "default": 0.0,
-    "name": "system-4-rmu-41999",
+    "name": "system-5-rmu-41999",
     "write": true
   },
   "42000": {
-    "title": "System 4 (RMU)",
+    "title": "System 6 (RMU)",
     "factor": 1,
     "size": "u8",
     "min": 0.0,
     "max": 1.0,
     "default": 0.0,
-    "name": "system-4-rmu-42000",
+    "name": "system-6-rmu-42000",
     "write": true
   },
   "42001": {
-    "title": "System 4 (RMU)",
+    "title": "System 7 (RMU)",
     "factor": 1,
     "size": "u8",
     "min": 0.0,
     "max": 1.0,
     "default": 0.0,
-    "name": "system-4-rmu-42001",
+    "name": "system-7-rmu-42001",
     "write": true
   },
   "42002": {
-    "title": "System 4 (RMU)",
+    "title": "System 8 (RMU)",
     "factor": 1,
     "size": "u8",
     "min": 0.0,
     "max": 1.0,
     "default": 0.0,
-    "name": "system-4-rmu-42002",
+    "name": "system-8-rmu-42002",
+    "write": true
+  },
+  "45391": {
+    "title": "Away mode status",
+    "factor": 1,
+    "size": "u8",
+    "name": "away-mode-status-45391",
     "write": true
   },
   "42743": {
@@ -5036,6 +5270,16 @@
     "name": "bt12-offset-heat-pump-1-45329",
     "write": true
   },
+  "43032": {
+    "title": "Alarm room sens cool oper",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "alarm-room-sens-cool-oper-43032",
+    "write": true
+  },
   "43060": {
     "title": "Heating, auto",
     "factor": 1,
@@ -5044,6 +5288,26 @@
     "max": 1.0,
     "default": 1.0,
     "name": "heating-auto-43060",
+    "write": true
+  },
+  "43061": {
+    "title": "Cooling, auto",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 1.0,
+    "name": "cooling-auto-43061",
+    "write": true
+  },
+  "43033": {
+    "title": "Activate SG Ready via API",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "activate-sg-ready-via-api-43033",
     "write": true
   },
   "43034": {
@@ -6106,12 +6370,11 @@
     "name": "aux-from-modbus-42741",
     "write": true
   },
-  "42742": {
+  "32742": {
     "title": "AUX from Modbus",
     "factor": 1,
     "size": "s16",
-    "name": "aux-from-modbus-42742",
-    "write": true
+    "name": "aux-from-modbus-32742"
   },
   "45102": {
     "title": "Heat pump test - Silent mode (EB101/EB102)",
@@ -6124,43 +6387,43 @@
     "write": true
   },
   "42821": {
-    "title": "ERS 2",
+    "title": "ERS 5",
     "factor": 1,
     "size": "u8",
     "min": 0.0,
     "max": 1.0,
     "default": 0.0,
-    "name": "ers-2-42821",
+    "name": "ers-5-42821",
     "write": true
   },
   "42822": {
-    "title": "ERS 3",
+    "title": "ERS 6",
     "factor": 1,
     "size": "u8",
     "min": 0.0,
     "max": 1.0,
     "default": 0.0,
-    "name": "ers-3-42822",
+    "name": "ers-6-42822",
     "write": true
   },
   "42823": {
-    "title": "ERS 4",
+    "title": "ERS 7",
     "factor": 1,
     "size": "u8",
     "min": 0.0,
     "max": 1.0,
     "default": 0.0,
-    "name": "ers-4-42823",
+    "name": "ers-7-42823",
     "write": true
   },
   "42824": {
-    "title": "ERS 4",
+    "title": "ERS 8",
     "factor": 1,
     "size": "u8",
     "min": 0.0,
     "max": 1.0,
     "default": 0.0,
-    "name": "ers-4-42824",
+    "name": "ers-8-42824",
     "write": true
   },
   "42825": {
@@ -6336,13 +6599,13 @@
     "write": true
   },
   "45009": {
-    "title": "Modbus external control",
+    "title": "Modbus use ext. calc supply",
     "factor": 1,
     "size": "u8",
     "min": 0.0,
     "max": 1.0,
     "default": 0.0,
-    "name": "modbus-external-control-45009",
+    "name": "modbus-use-ext-calc-supply-45009",
     "write": true
   },
   "32284": {
@@ -6359,6 +6622,13 @@
     "size": "u32",
     "name": "energy-log-produced-energy-for-hot-water-over-the-past-hour-32286"
   },
+  "32290": {
+    "title": "Energy log - Produced energy for cooling over the past hour",
+    "factor": 100,
+    "unit": "kWh",
+    "size": "u32",
+    "name": "energy-log-produced-energy-for-cooling-over-the-past-hour-32290"
+  },
   "32292": {
     "title": "Energy log - Used energy for heating over the past hour",
     "factor": 100,
@@ -6372,6 +6642,13 @@
     "unit": "kWh",
     "size": "u32",
     "name": "energy-log-used-energy-for-hot-water-over-the-past-hour-32294"
+  },
+  "32298": {
+    "title": "Energy log - Used energy for cooling over the past hour",
+    "factor": 100,
+    "unit": "kWh",
+    "size": "u32",
+    "name": "energy-log-used-energy-for-cooling-over-the-past-hour-32298"
   },
   "32300": {
     "title": "Energy log - Used energy by additional heater for heating over the past hour",
@@ -6390,14 +6667,14 @@
   "32306": {
     "title": "Energy log - Current power consumption",
     "factor": 100,
-    "unit": "kWh",
+    "unit": "kW",
     "size": "u32",
     "name": "energy-log-current-power-consumption-32306"
   },
   "32409": {
     "title": "Energy log - Current power consumption, components",
     "factor": 100,
-    "unit": "kWh",
+    "unit": "kW",
     "size": "u32",
     "name": "energy-log-current-power-consumption-components-32409"
   },
@@ -6467,6 +6744,17 @@
     "name": "external-reading-of-value-bt52-45226",
     "write": true
   },
+  "44205": {
+    "title": "Auto mode, start temperature for active cooling",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "min": 150.0,
+    "max": 400.0,
+    "default": 250.0,
+    "name": "auto-mode-start-temperature-for-active-cooling-44205",
+    "write": true
+  },
   "31586": {
     "title": "Heating, compressor only",
     "factor": 10,
@@ -6481,6 +6769,13 @@
     "size": "u32",
     "name": "hot-water-compressor-only-31584"
   },
+  "31580": {
+    "title": "Cooling, compressor only",
+    "factor": 10,
+    "unit": "kWh",
+    "size": "u32",
+    "name": "cooling-compressor-only-31580"
+  },
   "31578": {
     "title": "Heating, including int. add. heat",
     "factor": 10,
@@ -6494,6 +6789,31 @@
     "unit": "kWh",
     "size": "u32",
     "name": "hot-water-including-int-add-heat-31576"
+  },
+  "33822": {
+    "title": "Tot. production",
+    "factor": 10,
+    "unit": "kWh",
+    "size": "u32",
+    "name": "tot-production-33822"
+  },
+  "33824": {
+    "title": "Tot. consumption",
+    "factor": 10,
+    "unit": "kWh",
+    "size": "u32",
+    "name": "tot-consumption-33824"
+  },
+  "45985": {
+    "title": "Production (PV Power)",
+    "factor": 1,
+    "unit": "kW",
+    "size": "u16",
+    "min": 0.0,
+    "max": 65535.0,
+    "default": 0.0,
+    "name": "production-pv-power-45985",
+    "write": true
   },
   "30047": {
     "title": "Current (BE3)",
@@ -6541,6 +6861,17 @@
     "name": "speed-circulation-pump-standby-mode-eb100-45997",
     "write": true
   },
+  "45996": {
+    "title": "Speed circulation pump waiting mode heat pump 1",
+    "factor": 1,
+    "unit": "%",
+    "size": "u8",
+    "min": 1.0,
+    "max": 100.0,
+    "default": 30.0,
+    "name": "speed-circulation-pump-waiting-mode-heat-pump-1-45996",
+    "write": true
+  },
   "46004": {
     "title": "External reading of BT68 activated",
     "factor": 1,
@@ -6583,6 +6914,20 @@
     "unit": "\u00b0C",
     "size": "s32",
     "name": "temperature-bt50-32801"
+  },
+  "32803": {
+    "title": "Temperature: Secondary Sensor",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s32",
+    "name": "temperature-secondary-sensor-32803"
+  },
+  "33133": {
+    "title": "Humidity: Secondary Sensor",
+    "factor": 10,
+    "unit": "%RH",
+    "size": "s32",
+    "name": "humidity-secondary-sensor-33133"
   },
   "33805": {
     "title": "Priority",
@@ -6630,6 +6975,12 @@
     "default": 600.0,
     "name": "immersion-heater-power-emergency-mode-43029",
     "write": true
+  },
+  "33826": {
+    "title": "All sub units operating prio",
+    "factor": 1,
+    "size": "u32",
+    "name": "all-sub-units-operating-prio-33826"
   },
   "43987": {
     "title": "Disable emergency restart GP1",
