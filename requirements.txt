@@ -10,7 +10,7 @@ pandas>=1.0.5
 pre-commit==4.5.1
 pytest
 pytest-asyncio
-python-slugify>=4.0.0
+python-slugify>=8.0.4
 tenacity >= 8.0.0
 
 tox>=3.0.0
