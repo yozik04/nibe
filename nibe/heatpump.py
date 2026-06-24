@@ -53,6 +53,7 @@ class Model(Enum):
     S332 = "s330_s332", Series.S
 
     S735 = "s735", Series.S
+    S735C = "s735_s735c", Series.S
 
     S2125 = "s2125", Series.S
 
