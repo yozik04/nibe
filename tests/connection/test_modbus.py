@@ -32,6 +32,19 @@ def fixture_connection(heatpump: HeatPump):
     yield Modbus(heatpump, "tcp://127.0.0.1", 0)
 
 
+@pytest.fixture(name="heatpump_f_series")
+async def fixture_heatpump_f_series():
+    heatpump = HeatPump(Model.F1255)
+    heatpump.word_swap = True
+    await heatpump.initialize()
+    yield heatpump
+
+
+@pytest.fixture(name="connection_f_series")
+def fixture_connection_f_series(heatpump_f_series: HeatPump):
+    yield Modbus(heatpump_f_series, "tcp://127.0.0.1", 0)
+
+
 @pytest.mark.parametrize(
     ("size", "raw", "value"),
     [
@@ -60,8 +73,8 @@ async def test_read_holding_register_coil(
 @pytest.mark.parametrize(
     ("size", "raw", "value"),
     [
-        ("u32", [1, 0], 0x00000001),
-        ("u32", [0, 32768], 0x80000000),
+        ("u32", [0, 1], 0x00000001),
+        ("u32", [32768, 0], 0x80000000),
         ("u16", [1], 0x0001),
         ("u16", [32768], 0x8000),
         ("u8", [1], 0x01),
@@ -75,9 +88,35 @@ async def test_write_holding_register(
     raw: List[bytes],
     value: Union[int, float, str],
 ):
+    """S series pumps expect the high word first when writing 32 bit registers."""
     coil = Coil(40002, "test", "test", size, 1, write=True)
     coil_data = CoilData(coil, value)
     await connection.write_coil(coil_data)
+    modbus_client.write_registers.assert_called_with(
+        slave_id=0, starting_address=1, values=raw
+    )
+
+
+@pytest.mark.parametrize(
+    ("size", "raw", "value"),
+    [
+        ("u32", [1, 0], 0x00000001),
+        ("u32", [0, 32768], 0x80000000),
+        ("u16", [1], 0x0001),
+        ("u8", [1], 0x01),
+    ],
+)
+async def test_write_holding_register_f_series(
+    connection_f_series: Modbus,
+    modbus_client: AsyncMock,
+    size: str,
+    raw: List[bytes],
+    value: Union[int, float, str],
+):
+    """F series pumps use the same word order for reading and writing."""
+    coil = Coil(40002, "test", "test", size, 1, write=True)
+    coil_data = CoilData(coil, value)
+    await connection_f_series.write_coil(coil_data)
     modbus_client.write_registers.assert_called_with(
         slave_id=0, starting_address=1, values=raw
     )
@@ -180,7 +219,7 @@ async def test_read_coils_failed_read(
         ("u8", [0], 0x00),
         ("s8", [0xFFF6], -0xA),
         ("s16", [0xFFF6], -0xA),
-        ("s32", [0xFFF6, 0xFFFF], -0xA),
+        ("s32", [0xFFFF, 0xFFF6], -0xA),
     ],
 )
 async def test_write_coil_coil(

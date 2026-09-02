@@ -135,17 +135,33 @@ class CoilDataEncoderNibeGw(CoilDataEncoder[bytes]):
 
 
 class CoilDataEncoderModbus(CoilDataEncoder[List[SupportsInt]]):
-    word_swap: Optional[bool] = None
+    """Encode and decode coil data for modbus.
 
-    def __init__(self, word_swap: Optional[bool] = None):
+    Some heat pumps use a different word order for reading and writing 32 bit
+    registers. `word_swap_write` overrides the word order used for encoding,
+    when it is not set `word_swap` is used for both directions.
+    """
+
+    word_swap: Optional[bool] = None
+    word_swap_write: Optional[bool] = None
+
+    def __init__(
+        self,
+        word_swap: Optional[bool] = None,
+        word_swap_write: Optional[bool] = None,
+    ):
         self.word_swap = word_swap
+        self.word_swap_write = word_swap_write
 
     def encode_raw_value(self, size: str, raw_value: int) -> List[SupportsInt]:
         signed = size in ("s32", "s16", "s8")
+        word_swap = (
+            self.word_swap if self.word_swap_write is None else self.word_swap_write
+        )
 
         raw_bytes = raw_value.to_bytes(8, "little", signed=signed)
         if size in ("s32", "u32"):
-            if self.word_swap:
+            if word_swap:
                 return [
                     int.from_bytes(raw_bytes[0:2], "little", signed=False),
                     int.from_bytes(raw_bytes[2:4], "little", signed=False),
