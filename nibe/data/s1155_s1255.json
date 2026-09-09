@@ -9541,6 +9541,16 @@
     "name": "activate-sg-ready-via-api-43033",
     "write": true
   },
+  "46009": {
+    "title": "Requested operating mode (SG Ready)",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 3.0,
+    "default": 1.0,
+    "name": "requested-operating-mode-sg-ready-46009",
+    "write": true
+  },
   "43034": {
     "title": "Factor",
     "factor": 1,
