@@ -670,7 +670,7 @@
     }
   },
   {
-    "description": "Fix units for current power consumption and ",
+    "description": "Fix units for current power consumption",
     "files": [
       "s320_s325.json",
       "s330_s332.json",
@@ -682,11 +682,46 @@
       "vvms500.json"
     ],
     "data": {
+      "32284": {
+        "nature": "measurement"
+      },
+      "32286": {
+        "nature": "measurement"
+      },
+      "32288": {
+        "nature": "measurement"
+      },
+      "32290": {
+        "nature": "measurement"
+      },
+      "32292": {
+        "nature": "measurement"
+      },
+      "32294": {
+        "nature": "measurement"
+      },
+      "32296": {
+        "nature": "measurement"
+      },
+      "32298": {
+        "nature": "measurement"
+      },
+      "32300": {
+        "nature": "measurement"
+      },
+      "32302": {
+        "nature": "measurement"
+      },
+      "32304": {
+        "nature": "measurement"
+      },
       "32306": {
-        "unit": "kW"
+        "unit": "kW",
+        "nature": "measurement"
       },
       "32409": {
-        "unit": "kW"
+        "unit": "kW",
+        "nature": "measurement"
       }
     }
   },
