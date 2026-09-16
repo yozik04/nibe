@@ -1166,7 +1166,7 @@
     "name": "status-heating-dump-shunt-eq1-30342"
   },
   "40012": {
-    "title": "Degree minutes",
+    "title": "Degree minutes (32 bit)",
     "factor": 10,
     "unit": "DM",
     "size": "s32",
@@ -1174,7 +1174,8 @@
     "max": 30000.0,
     "default": 0.0,
     "name": "degree-minutes-40012",
-    "write": true
+    "write": true,
+    "nature": "total"
   },
   "30359": {
     "title": "Blocking (ERS 1)",
@@ -3028,7 +3029,7 @@
     "name": "temperature-weather-data-forecast-30964"
   },
   "40019": {
-    "title": "Limit DM",
+    "title": "Degree minutes (16 bit)",
     "factor": 10,
     "unit": "DM",
     "size": "s16",
@@ -3036,7 +3037,8 @@
     "max": 30000.0,
     "default": 0.0,
     "name": "limit-dm-40019",
-    "write": true
+    "write": true,
+    "nature": "total"
   },
   "31017": {
     "title": "Calculated supply climate system 2",

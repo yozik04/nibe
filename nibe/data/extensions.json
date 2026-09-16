@@ -354,10 +354,12 @@
     ],
     "data": {
      "40940": {
-        "unit": "DM"
+        "unit": "DM",
+        "nature": "total"
       },
       "43005": {
-        "unit": "DM"
+        "unit": "DM",
+        "nature": "total"
       }
     }
   },
@@ -515,6 +517,14 @@
       "s2125.json",
       "smos40.json"],
     "data": {
+      "40012": {
+        "title": "Degree minutes (32 bit)",
+        "nature": "total"
+      },
+      "40019": {
+        "title": "Degree minutes (16 bit)",
+        "nature": "total"
+      },
       "40057": {
         "mappings": {
           "0": "Small",
@@ -660,7 +670,7 @@
     }
   },
   {
-    "description": "Fix units for current power consumption",
+    "description": "Fix units for current power consumption and ",
     "files": [
       "s320_s325.json",
       "s330_s332.json",
