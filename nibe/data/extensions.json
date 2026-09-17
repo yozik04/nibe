@@ -515,7 +515,9 @@
       "s1155_s1255.json",
       "s1156_s1256.json",
       "s2125.json",
-      "smos40.json"],
+      "smos40.json",
+      "vvms320_vvms325.json",
+      "vvms500.json"],
     "data": {
       "40012": {
         "title": "Degree minutes (32 bit)",
@@ -679,7 +681,8 @@
       "s1156_s1256.json",
       "s2125.json",
       "vvms320_vvms325.json",
-      "vvms500.json"
+      "vvms500.json",
+      "smos40.json"
     ],
     "data": {
       "32284": {

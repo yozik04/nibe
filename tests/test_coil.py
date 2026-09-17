@@ -558,12 +558,12 @@ def test_word_swap_unset(size, encoder: CoilDataEncoderNibeGw):
 
 
 @pytest.mark.parametrize("nature", NATURES)
-def test_invalid_nature(nature):
+def test_valid_nature(nature):
     coil = Coil(1, "test", "test", "u32", nature=nature)
     assert coil.nature == nature
 
 
-def test_valid_nature():
+def test_invalid_nature():
     with pytest.raises(AssertionError):
         Coil(1, "test", "test", "u32", nature="invalid")
 
