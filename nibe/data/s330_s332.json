@@ -5103,7 +5103,8 @@
   "35987": {
     "title": "External reading of BT50 activated",
     "factor": 1,
-    "size": "u8",
+    "unit": "u8",
+    "size": "u16",
     "name": "external-reading-of-bt50-activated-35987"
   },
   "45988": {
