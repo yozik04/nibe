@@ -5100,6 +5100,21 @@
     "size": "u32",
     "name": "current-power-32728"
   },
+  "35987": {
+    "title": "External reading of BT50 activated",
+    "factor": 1,
+    "unit": "u8",
+    "size": "u16",
+    "name": "external-reading-of-bt50-activated-35987"
+  },
+  "45988": {
+    "title": "External reading of value BT50",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "external-reading-of-value-bt50-45988",
+    "write": true
+  },
   "44165": {
     "title": "blockFreq 1 (EB102)",
     "factor": 1,
