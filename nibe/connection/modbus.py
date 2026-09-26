@@ -1,5 +1,6 @@
 import asyncio
 import logging
+from typing import Optional
 
 from async_modbus import modbus_for_url
 import async_timeout
@@ -20,7 +21,7 @@ from nibe.exceptions import (
     WriteIOException,
     WriteTimeoutException,
 )
-from nibe.heatpump import HeatPump
+from nibe.heatpump import HeatPump, Series
 
 from . import verify_connectivity_read_write_alarm
 
@@ -72,7 +73,22 @@ class Modbus(Connection):
         except ValueError as exc:
             raise ModbusUrlException(str(exc)) from exc
 
-        self.coil_encoder = CoilDataEncoderModbus(heatpump.word_swap)
+        self.coil_encoder = CoilDataEncoderModbus(
+            heatpump.word_swap, word_swap_write=self._get_word_swap_write(heatpump)
+        )
+
+    @staticmethod
+    def _get_word_swap_write(heatpump: HeatPump) -> Optional[bool]:
+        """Get word order to use when writing 32 bit registers.
+
+        S series heat pumps return 32 bit registers with the low word first,
+        but expect the high word first when they are written. Other series use
+        the same word order in both directions.
+        """
+        model = heatpump.model
+        if model is not None and model.series is Series.S:
+            return False
+        return None
 
     async def stop(self) -> None:
         await self._client.stream.close()
