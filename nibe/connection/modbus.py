@@ -2,7 +2,7 @@ import asyncio
 import logging
 from typing import Optional
 
-from async_modbus import modbus_for_url
+from async_modbus import AsyncClient, AsyncTCPClient, modbus_for_url
 import async_timeout
 from tenacity import retry, retry_if_exception_type, stop_after_attempt
 from umodbus.exceptions import ModbusError
@@ -74,19 +74,25 @@ class Modbus(Connection):
             raise ModbusUrlException(str(exc)) from exc
 
         self.coil_encoder = CoilDataEncoderModbus(
-            heatpump.word_swap, word_swap_write=self._get_word_swap_write(heatpump)
+            heatpump.word_swap,
+            word_swap_write=self._get_word_swap_write(heatpump, self._client),
         )
 
     @staticmethod
-    def _get_word_swap_write(heatpump: HeatPump) -> Optional[bool]:
+    def _get_word_swap_write(heatpump: HeatPump, client: AsyncClient) -> Optional[bool]:
         """Get word order to use when writing 32 bit registers.
 
-        S series heat pumps return 32 bit registers with the low word first,
-        but expect the high word first when they are written. Other series use
-        the same word order in both directions.
+        S series heat pumps connected over Modbus TCP return 32 bit registers
+        with the low word first, but expect the high word first when they are
+        written. Every other combination, including S series over serial
+        (Modbus RTU), uses the same word order in both directions.
         """
         model = heatpump.model
-        if model is not None and model.series is Series.S:
+        if (
+            isinstance(client, AsyncTCPClient)
+            and model is not None
+            and model.series is Series.S
+        ):
             return False
         return None
 
