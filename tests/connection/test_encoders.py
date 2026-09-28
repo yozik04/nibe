@@ -154,3 +154,19 @@ def test_modbus_encode_raw_value(
         assert CoilDataEncoderModbus(True).encode_raw_value(size, raw_value) == raw
     if word_swap in (False, None):
         assert CoilDataEncoderModbus(False).encode_raw_value(size, raw_value) == raw
+
+
+@pytest.mark.parametrize(
+    "size, raw, raw_value",
+    [
+        ("u8", [0x0001], 1),
+        ("s16", [0xFFFF], -1),
+        ("s32", [0x0000, 0x5432], 0x5432),
+        ("s32", [0xFFFF, 0xF9D8], -0x628),
+    ],
+)
+def test_modbus_encode_raw_value_word_swap_write_override(size, raw, raw_value):
+    """Word order for writing can differ from the one used for reading."""
+    encoder = CoilDataEncoderModbus(True, word_swap_write=False)
+    assert encoder.encode_raw_value(size, raw_value) == raw
+    assert encoder.decode_raw_value(size, list(reversed(raw))) == raw_value
