@@ -1375,6 +1375,16 @@
     "size": "u8",
     "name": "seconds-of-blank-time-left-charge-pump-1-30393"
   },
+  "30399": {
+    "title": "Pulse energy meter (BE6)",
+    "factor": 100,
+    "unit": "kWh",
+    "size": "u32",
+    "min": 0.0,
+    "max": 2147483647.0,
+    "default": 0.0,
+    "name": "pulse-energy-meter-be6-30399"
+  },
   "30401": {
     "title": "Alarm number from outdoor air heat pump (EB101)",
     "factor": 1,
