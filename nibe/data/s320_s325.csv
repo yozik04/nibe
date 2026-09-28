@@ -138,7 +138,7 @@ id:805	MODBUS_INPUT_REGISTER	381	1		u32	0	2147483647	0
 id:806	MODBUS_INPUT_REGISTER	383	1		u32	0	0	0
 Seconds of blank time left, charge pump 1	MODBUS_INPUT_REGISTER	392	1		u8	0	0	0
 Seconds of blank time left, charge pump 0	MODBUS_INPUT_REGISTER	393	1		u8	0	0	0
-Pulse energy meter (BE6)	MODBUS_INPUT_REGISTER	396	100	kWh	u32	0	2147483647	0
+Pulse energy meter (BE6)	MODBUS_INPUT_REGISTER	398	100	kWh	u32	0	2147483647	0
 Alarm number from outdoor air heat pump (EB101)	MODBUS_INPUT_REGISTER	400	1		u8	0	0	0
 Fan speed (EB101)	MODBUS_INPUT_REGISTER	401	1	rpm	u16	0	0	0
 Max fan speed (EB101)	MODBUS_INPUT_REGISTER	402	1	rpm	u16	0	0	0
