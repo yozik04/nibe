@@ -43,8 +43,9 @@ class Model(Enum):
     F730 = "f730", Series.F
     F750 = "f750", Series.F
 
-    F370 = "f370_f470", Series.F
-    F470 = "f370_f470", Series.F
+    F370 = "f370_f372_f470", Series.F
+    F372 = "f370_f372_f470", Series.F
+    F470 = "f370_f372_f470", Series.F
 
     S320 = "s320_s325", Series.S
     S325 = "s320_s325", Series.S
