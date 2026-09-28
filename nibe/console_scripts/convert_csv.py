@@ -56,6 +56,13 @@ def _sort_mappings_in_output(dict_):
             dict_[key]["mappings"] = _sort_mappings(value["mappings"])
 
 
+def _drop_incomplete(d: MutableMapping):
+    incomplete = {key for key, value in d.items() if "size" not in value}
+    for key in incomplete:
+        logger.debug("Dropping incomplete coil: %s", key)
+        del d[key]
+
+
 def _update_dict(d: MutableMapping, u: Mapping, removeExplicitNulls: bool) -> Mapping:
     for k, v in u.items():
         if v is None and removeExplicitNulls:
@@ -299,6 +306,7 @@ class CSVConverter:
         out = {index: row.dropna().to_dict() for index, row in self.data.iterrows()}
 
         _update_dict(out, self.extensions, True)
+        _drop_incomplete(out)
         _sort_mappings_in_output(out)
 
         return out

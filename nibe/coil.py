@@ -6,6 +6,7 @@ from nibe.exceptions import NoMappingException, ValidationError
 
 MIN_DATE = datetime.date(2007, 1, 1)
 MAX_DATE = MIN_DATE + datetime.timedelta(0xFFFE)
+NATURES = {"total", "total_increasing", "measurement", "measurement_angle"}
 
 
 def is_coil_boolean(coil):
@@ -52,6 +53,7 @@ class Coil:
             - type: Coil type (number or date)
             - min: Coil raw min value (used for validation)
             - max: Coil raw max value (used for validation)
+            - nature: Coil class to indicate if this is (total, total_increasing, measurement, measurement_angle)
         """
 
         assert isinstance(address, int), "Address must be defined"
@@ -74,6 +76,11 @@ class Coil:
         self.info = kwargs.pop("info", None)
         self.unit = kwargs.pop("unit", None)
         self.type = kwargs.pop("type", "number")
+        self.nature = kwargs.pop("nature", None)
+
+        assert (
+            self.nature is None or self.nature in NATURES
+        ), f"Invalid coil nature {self.nature} for coil {self.name}"
 
         assert self.type in [
             "number",

@@ -557,7 +557,7 @@
     "name": "status-compressor-demand-s135-30351"
   },
   "40012": {
-    "title": "Degree minutes",
+    "title": "Degree minutes (32 bit)",
     "factor": 10,
     "unit": "DM",
     "size": "s32",
@@ -565,7 +565,8 @@
     "max": 30000.0,
     "default": 0.0,
     "name": "degree-minutes-40012",
-    "write": true
+    "write": true,
+    "nature": "total"
   },
   "30359": {
     "title": "Blocking (ERS 1)",
@@ -1502,7 +1503,7 @@
     "name": "alarm-incompatible-heat-pump-31013"
   },
   "40019": {
-    "title": "Limit DM",
+    "title": "Degree minutes (16 bit)",
     "factor": 10,
     "unit": "DM",
     "size": "s16",
@@ -1510,7 +1511,8 @@
     "max": 30000.0,
     "default": 0.0,
     "name": "limit-dm-40019",
-    "write": true
+    "write": true,
+    "nature": "total"
   },
   "31018": {
     "title": "Calculated supply climate system 1",
@@ -1558,7 +1560,14 @@
     "title": "Priority",
     "factor": 1,
     "size": "u8",
-    "name": "priority-31029"
+    "name": "priority-31029",
+    "mappings": {
+      "10": "Off",
+      "20": "Hot Water",
+      "30": "Heat",
+      "40": "Pool",
+      "60": "Cooling"
+    }
   },
   "31030": {
     "title": "Operating mode internal add. heat",
@@ -2365,7 +2374,13 @@
     "max": 4.0,
     "default": 1.0,
     "name": "hot-water-demand-mode-40057",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "Small",
+      "1": "Medium",
+      "2": "Large",
+      "4": "Smart Control"
+    }
   },
   "40059": {
     "title": "Start temperature HW high temperature",
@@ -3221,7 +3236,12 @@
     "factor": 1,
     "size": "u8",
     "name": "oper-mode-40238",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "Auto",
+      "1": "Manual",
+      "2": "Add. heat only"
+    }
   },
   "40682": {
     "title": "Cooling heat sensor set point value",
@@ -6613,70 +6633,80 @@
     "factor": 100,
     "unit": "kWh",
     "size": "u32",
-    "name": "energy-log-produced-energy-for-heating-over-the-past-hour-32284"
+    "name": "energy-log-produced-energy-for-heating-over-the-past-hour-32284",
+    "nature": "measurement"
   },
   "32286": {
     "title": "Energy log - Produced energy for hot water over the past hour",
     "factor": 100,
     "unit": "kWh",
     "size": "u32",
-    "name": "energy-log-produced-energy-for-hot-water-over-the-past-hour-32286"
+    "name": "energy-log-produced-energy-for-hot-water-over-the-past-hour-32286",
+    "nature": "measurement"
   },
   "32290": {
     "title": "Energy log - Produced energy for cooling over the past hour",
     "factor": 100,
     "unit": "kWh",
     "size": "u32",
-    "name": "energy-log-produced-energy-for-cooling-over-the-past-hour-32290"
+    "name": "energy-log-produced-energy-for-cooling-over-the-past-hour-32290",
+    "nature": "measurement"
   },
   "32292": {
     "title": "Energy log - Used energy for heating over the past hour",
     "factor": 100,
     "unit": "kWh",
     "size": "u32",
-    "name": "energy-log-used-energy-for-heating-over-the-past-hour-32292"
+    "name": "energy-log-used-energy-for-heating-over-the-past-hour-32292",
+    "nature": "measurement"
   },
   "32294": {
     "title": "Energy log - Used energy for hot water over the past hour",
     "factor": 100,
     "unit": "kWh",
     "size": "u32",
-    "name": "energy-log-used-energy-for-hot-water-over-the-past-hour-32294"
+    "name": "energy-log-used-energy-for-hot-water-over-the-past-hour-32294",
+    "nature": "measurement"
   },
   "32298": {
     "title": "Energy log - Used energy for cooling over the past hour",
     "factor": 100,
     "unit": "kWh",
     "size": "u32",
-    "name": "energy-log-used-energy-for-cooling-over-the-past-hour-32298"
+    "name": "energy-log-used-energy-for-cooling-over-the-past-hour-32298",
+    "nature": "measurement"
   },
   "32300": {
     "title": "Energy log - Used energy by additional heater for heating over the past hour",
     "factor": 100,
     "unit": "kWh",
     "size": "u32",
-    "name": "energy-log-used-energy-by-additional-heater-for-heating-over-the-past-hour-32300"
+    "name": "energy-log-used-energy-by-additional-heater-for-heating-over-the-past-hour-32300",
+    "nature": "measurement"
   },
   "32302": {
     "title": "Energy log - Used energy by additional heater for hot water over the past hour",
     "factor": 100,
     "unit": "kWh",
     "size": "u32",
-    "name": "energy-log-used-energy-by-additional-heater-for-hot-water-over-the-past-hour-32302"
+    "name": "energy-log-used-energy-by-additional-heater-for-hot-water-over-the-past-hour-32302",
+    "nature": "measurement"
   },
   "32306": {
     "title": "Energy log - Current power consumption",
     "factor": 100,
     "unit": "kW",
     "size": "u32",
-    "name": "energy-log-current-power-consumption-32306"
+    "name": "energy-log-current-power-consumption-32306",
+    "nature": "measurement"
   },
   "32409": {
     "title": "Energy log - Current power consumption, components",
     "factor": 100,
     "unit": "kW",
     "size": "u32",
-    "name": "energy-log-current-power-consumption-components-32409"
+    "name": "energy-log-current-power-consumption-components-32409",
+    "nature": "measurement"
   },
   "32336": {
     "title": "Compressor, total time energy storage, main unit (EP14)",

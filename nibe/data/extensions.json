@@ -354,10 +354,12 @@
     ],
     "data": {
      "40940": {
-        "unit": "DM"
+        "unit": "DM",
+        "nature": "total"
       },
       "43005": {
-        "unit": "DM"
+        "unit": "DM",
+        "nature": "total"
       }
     }
   },
@@ -513,8 +515,18 @@
       "s1155_s1255.json",
       "s1156_s1256.json",
       "s2125.json",
-      "smos40.json"],
+      "smos40.json",
+      "vvms320_vvms325.json",
+      "vvms500.json"],
     "data": {
+      "40012": {
+        "title": "Degree minutes (32 bit)",
+        "nature": "total"
+      },
+      "40019": {
+        "title": "Degree minutes (16 bit)",
+        "nature": "total"
+      },
       "40057": {
         "mappings": {
           "0": "Small",
@@ -669,14 +681,50 @@
       "s1156_s1256.json",
       "s2125.json",
       "vvms320_vvms325.json",
-      "vvms500.json"
+      "vvms500.json",
+      "smos40.json"
     ],
     "data": {
+      "32284": {
+        "nature": "measurement"
+      },
+      "32286": {
+        "nature": "measurement"
+      },
+      "32288": {
+        "nature": "measurement"
+      },
+      "32290": {
+        "nature": "measurement"
+      },
+      "32292": {
+        "nature": "measurement"
+      },
+      "32294": {
+        "nature": "measurement"
+      },
+      "32296": {
+        "nature": "measurement"
+      },
+      "32298": {
+        "nature": "measurement"
+      },
+      "32300": {
+        "nature": "measurement"
+      },
+      "32302": {
+        "nature": "measurement"
+      },
+      "32304": {
+        "nature": "measurement"
+      },
       "32306": {
-        "unit": "kW"
+        "unit": "kW",
+        "nature": "measurement"
       },
       "32409": {
-        "unit": "kW"
+        "unit": "kW",
+        "nature": "measurement"
       }
     }
   },

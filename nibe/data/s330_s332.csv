@@ -668,6 +668,8 @@ External adjustment with room sensor, cooling climate system 3	MODBUS_HOLDING_RE
 External adjustment with room sensor, cooling climate system 2	MODBUS_HOLDING_REGISTER	4152	10	°C	2	50	300	200
 External adjustment with room sensor, cooling climate system 1	MODBUS_HOLDING_REGISTER	4153	10	°C	2	50	300	200
 Current power	MODBUS_INPUT_REGISTER	2727	100	kW	6	0	0	0
+External reading of BT50 activated	MODBUS_INPUT_REGISTER	5986	1	u8	0	0	0
+External reading of value BT50	MODBUS_HOLDING_REGISTER	5987	10	°C	s16	0	0	0
 id:6917	MODBUS_HOLDING_REGISTER	4072	1		4	0	200	1
 id:6918	MODBUS_HOLDING_REGISTER	4073	1		4	0	20	1
 id:6920	MODBUS_HOLDING_REGISTER	4074	1		4	0	20	0
