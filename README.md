@@ -14,6 +14,7 @@ Library for communication with Nibe heatpumps.
 #### F series
 
  - F370
+ - F372
  - F470
  - F730
  - F750

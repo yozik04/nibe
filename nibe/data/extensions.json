@@ -1,7 +1,7 @@
 [
   {
     "files": [
-      "f370_f470.json",
+      "f370_f372_f470.json",
       "f730.json",
       "f750.json",
       "f1145_f1245.json",
@@ -54,7 +54,7 @@
     "files": [
       "f730.json",
       "f750.json",
-      "f370_f470.json",
+      "f370_f372_f470.json",
       "f1145_f1245.json",
       "f1155_f1255.json",
       "f1345.json",
@@ -124,7 +124,7 @@
   },
   {
     "files": [
-      "f370_f470.json",
+      "f370_f372_f470.json",
       "f730.json",
       "f750.json",
       "f1145_f1245.json",
@@ -175,7 +175,7 @@
   },
   {
     "files": [
-      "f370_f470.json",
+      "f370_f372_f470.json",
       "f730.json",
       "f750.json",
       "vvm225_vvm320_vvm325.json"
@@ -326,7 +326,7 @@
       "f1145_f1245.json",
       "f1155_f1255.json",
       "f1345.json",
-      "f370_f470.json",
+      "f370_f372_f470.json",
       "f730.json",
       "f750.json",
       "vvm225_vvm320_vvm325.json",
