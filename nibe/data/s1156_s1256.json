@@ -6560,6 +6560,16 @@
     "name": "additional-heat-after-diverter-valve-40759",
     "write": true
   },
+  "46065": {
+    "title": "Charging method hot water",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 2.0,
+    "default": 1.0,
+    "name": "charging-method-hot-water-46065",
+    "write": true
+  },
   "40761": {
     "title": "Heating (SG Ready)",
     "factor": 1,
@@ -9344,6 +9354,20 @@
     "name": "stop-time-45402",
     "write": true
   },
+  "30559": {
+    "title": "Ext. temp. sensor (BT37.1)",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "ext-temp-sensor-bt37-1-30559"
+  },
+  "30560": {
+    "title": "Ext. temp. sensor (BT37.2)",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "ext-temp-sensor-bt37-2-30560"
+  },
   "42767": {
     "title": "Allow add. heat during defrosting",
     "factor": 1,
@@ -11047,6 +11071,182 @@
     "name": "modbus-use-ext-calc-supply-45009",
     "write": true
   },
+  "45010": {
+    "title": "Supply Line Set Point Heating 1",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "min": 50.0,
+    "max": 800.0,
+    "default": 450.0,
+    "name": "supply-line-set-point-heating-1-45010",
+    "write": true
+  },
+  "45011": {
+    "title": "Supply Line Set Point Heating 2",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "min": 50.0,
+    "max": 800.0,
+    "default": 450.0,
+    "name": "supply-line-set-point-heating-2-45011",
+    "write": true
+  },
+  "45012": {
+    "title": "Supply Line Set Point Heating 3",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "min": 50.0,
+    "max": 800.0,
+    "default": 450.0,
+    "name": "supply-line-set-point-heating-3-45012",
+    "write": true
+  },
+  "45013": {
+    "title": "Supply Line Set Point Heating 4",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "min": 50.0,
+    "max": 800.0,
+    "default": 450.0,
+    "name": "supply-line-set-point-heating-4-45013",
+    "write": true
+  },
+  "45014": {
+    "title": "Supply Line Set Point Heating 5",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "min": 50.0,
+    "max": 800.0,
+    "default": 450.0,
+    "name": "supply-line-set-point-heating-5-45014",
+    "write": true
+  },
+  "45015": {
+    "title": "Supply Line Set Point Heating 6",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "min": 50.0,
+    "max": 800.0,
+    "default": 450.0,
+    "name": "supply-line-set-point-heating-6-45015",
+    "write": true
+  },
+  "45016": {
+    "title": "Supply Line Set Point Heating 7",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "min": 50.0,
+    "max": 800.0,
+    "default": 450.0,
+    "name": "supply-line-set-point-heating-7-45016",
+    "write": true
+  },
+  "45017": {
+    "title": "Supply Line Set Point Heating 8",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "min": 50.0,
+    "max": 800.0,
+    "default": 450.0,
+    "name": "supply-line-set-point-heating-8-45017",
+    "write": true
+  },
+  "45018": {
+    "title": "Supply Line Set Point Cooling 1",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "min": -50.0,
+    "max": 300.0,
+    "default": 250.0,
+    "name": "supply-line-set-point-cooling-1-45018",
+    "write": true
+  },
+  "45019": {
+    "title": "Supply Line Set Point Cooling 2",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "min": -50.0,
+    "max": 300.0,
+    "default": 250.0,
+    "name": "supply-line-set-point-cooling-2-45019",
+    "write": true
+  },
+  "45020": {
+    "title": "Supply Line Set Point Cooling 3",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "min": -50.0,
+    "max": 300.0,
+    "default": 250.0,
+    "name": "supply-line-set-point-cooling-3-45020",
+    "write": true
+  },
+  "45021": {
+    "title": "Supply Line Set Point Cooling 4",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "min": -50.0,
+    "max": 300.0,
+    "default": 250.0,
+    "name": "supply-line-set-point-cooling-4-45021",
+    "write": true
+  },
+  "45022": {
+    "title": "Supply Line Set Point Cooling 5",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "min": -50.0,
+    "max": 300.0,
+    "default": 250.0,
+    "name": "supply-line-set-point-cooling-5-45022",
+    "write": true
+  },
+  "45023": {
+    "title": "Supply Line Set Point Cooling 6",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "min": -50.0,
+    "max": 300.0,
+    "default": 250.0,
+    "name": "supply-line-set-point-cooling-6-45023",
+    "write": true
+  },
+  "45024": {
+    "title": "Supply Line Set Point Cooling 7",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "min": -50.0,
+    "max": 300.0,
+    "default": 250.0,
+    "name": "supply-line-set-point-cooling-7-45024",
+    "write": true
+  },
+  "45025": {
+    "title": "Supply Line Set Point Cooling 8",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "min": -50.0,
+    "max": 300.0,
+    "default": 250.0,
+    "name": "supply-line-set-point-cooling-8-45025",
+    "write": true
+  },
   "32284": {
     "title": "Energy log - Produced energy for heating over the past hour",
     "factor": 100,
@@ -11318,6 +11518,34 @@
     "default": 0.0,
     "name": "compressor-total-time-energy-storage-heat-pump-8-ep15-32370"
   },
+  "32316": {
+    "title": "Ext. temp. sensor (BT37.3)",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "ext-temp-sensor-bt37-3-32316"
+  },
+  "32317": {
+    "title": "Ext. temp. sensor (BT37.4)",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "ext-temp-sensor-bt37-4-32317"
+  },
+  "32318": {
+    "title": "Ext. temp. sensor (BT37.5)",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "ext-temp-sensor-bt37-5-32318"
+  },
+  "32319": {
+    "title": "Ext. temp. sensor (BT37.6)",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "ext-temp-sensor-bt37-6-32319"
+  },
   "45078": {
     "title": "Freeze protection with LP-Dew",
     "factor": 1,
@@ -11465,6 +11693,246 @@
     "name": "external-reading-of-value-bt52-45226",
     "write": true
   },
+  "46015": {
+    "title": "Energipris 00:00 - 01:00",
+    "factor": 1,
+    "size": "s32",
+    "min": -2147483648.0,
+    "max": 2147483647.0,
+    "default": 2147483647.0,
+    "name": "energipris-00-00-01-00-46015",
+    "write": true
+  },
+  "46017": {
+    "title": "Energipris 01:00 - 02:00",
+    "factor": 1,
+    "size": "s32",
+    "min": -2147483648.0,
+    "max": 2147483647.0,
+    "default": 2147483647.0,
+    "name": "energipris-01-00-02-00-46017",
+    "write": true
+  },
+  "46019": {
+    "title": "Energipris 02:00 - 03:00",
+    "factor": 1,
+    "size": "s32",
+    "min": -2147483648.0,
+    "max": 2147483647.0,
+    "default": 2147483647.0,
+    "name": "energipris-02-00-03-00-46019",
+    "write": true
+  },
+  "46021": {
+    "title": "Energipris 03:00 - 04:00",
+    "factor": 1,
+    "size": "s32",
+    "min": -2147483648.0,
+    "max": 2147483647.0,
+    "default": 2147483647.0,
+    "name": "energipris-03-00-04-00-46021",
+    "write": true
+  },
+  "46023": {
+    "title": "Energipris 04:00 - 05:00",
+    "factor": 1,
+    "size": "s32",
+    "min": -2147483648.0,
+    "max": 2147483647.0,
+    "default": 2147483647.0,
+    "name": "energipris-04-00-05-00-46023",
+    "write": true
+  },
+  "46025": {
+    "title": "Energipris 05:00 - 06:00",
+    "factor": 1,
+    "size": "s32",
+    "min": -2147483648.0,
+    "max": 2147483647.0,
+    "default": 2147483647.0,
+    "name": "energipris-05-00-06-00-46025",
+    "write": true
+  },
+  "46027": {
+    "title": "Energipris 06:00 - 07:00",
+    "factor": 1,
+    "size": "s32",
+    "min": -2147483648.0,
+    "max": 2147483647.0,
+    "default": 2147483647.0,
+    "name": "energipris-06-00-07-00-46027",
+    "write": true
+  },
+  "46029": {
+    "title": "Energipris 07:00 - 08:00",
+    "factor": 1,
+    "size": "s32",
+    "min": -2147483648.0,
+    "max": 2147483647.0,
+    "default": 2147483647.0,
+    "name": "energipris-07-00-08-00-46029",
+    "write": true
+  },
+  "46031": {
+    "title": "Energipris 08:00 - 09:00",
+    "factor": 1,
+    "size": "s32",
+    "min": -2147483648.0,
+    "max": 2147483647.0,
+    "default": 2147483647.0,
+    "name": "energipris-08-00-09-00-46031",
+    "write": true
+  },
+  "46033": {
+    "title": "Energipris 09:00 - 10:00",
+    "factor": 1,
+    "size": "s32",
+    "min": -2147483648.0,
+    "max": 2147483647.0,
+    "default": 2147483647.0,
+    "name": "energipris-09-00-10-00-46033",
+    "write": true
+  },
+  "46035": {
+    "title": "Energipris 10:00 - 11:00",
+    "factor": 1,
+    "size": "s32",
+    "min": -2147483648.0,
+    "max": 2147483647.0,
+    "default": 2147483647.0,
+    "name": "energipris-10-00-11-00-46035",
+    "write": true
+  },
+  "46037": {
+    "title": "Energipris 11:00 - 12:00",
+    "factor": 1,
+    "size": "s32",
+    "min": -2147483648.0,
+    "max": 2147483647.0,
+    "default": 2147483647.0,
+    "name": "energipris-11-00-12-00-46037",
+    "write": true
+  },
+  "46039": {
+    "title": "Energipris 12:00 - 13:00",
+    "factor": 1,
+    "size": "s32",
+    "min": -2147483648.0,
+    "max": 2147483647.0,
+    "default": 2147483647.0,
+    "name": "energipris-12-00-13-00-46039",
+    "write": true
+  },
+  "46041": {
+    "title": "Energipris 13:00 - 14:00",
+    "factor": 1,
+    "size": "s32",
+    "min": -2147483648.0,
+    "max": 2147483647.0,
+    "default": 2147483647.0,
+    "name": "energipris-13-00-14-00-46041",
+    "write": true
+  },
+  "46043": {
+    "title": "Energipris 14:00 - 15:00",
+    "factor": 1,
+    "size": "s32",
+    "min": -2147483648.0,
+    "max": 2147483647.0,
+    "default": 2147483647.0,
+    "name": "energipris-14-00-15-00-46043",
+    "write": true
+  },
+  "46045": {
+    "title": "Energipris 15:00 - 16:00",
+    "factor": 1,
+    "size": "s32",
+    "min": -2147483648.0,
+    "max": 2147483647.0,
+    "default": 2147483647.0,
+    "name": "energipris-15-00-16-00-46045",
+    "write": true
+  },
+  "46047": {
+    "title": "Energipris 16:00 - 17:00",
+    "factor": 1,
+    "size": "s32",
+    "min": -2147483648.0,
+    "max": 2147483647.0,
+    "default": 2147483647.0,
+    "name": "energipris-16-00-17-00-46047",
+    "write": true
+  },
+  "46049": {
+    "title": "Energipris 17:00 - 18:00",
+    "factor": 1,
+    "size": "s32",
+    "min": -2147483648.0,
+    "max": 2147483647.0,
+    "default": 2147483647.0,
+    "name": "energipris-17-00-18-00-46049",
+    "write": true
+  },
+  "46051": {
+    "title": "Energipris 18:00 - 19:00",
+    "factor": 1,
+    "size": "s32",
+    "min": -2147483648.0,
+    "max": 2147483647.0,
+    "default": 2147483647.0,
+    "name": "energipris-18-00-19-00-46051",
+    "write": true
+  },
+  "46053": {
+    "title": "Energipris 19:00 - 20:00",
+    "factor": 1,
+    "size": "s32",
+    "min": -2147483648.0,
+    "max": 2147483647.0,
+    "default": 2147483647.0,
+    "name": "energipris-19-00-20-00-46053",
+    "write": true
+  },
+  "46055": {
+    "title": "Energipris 20:00 - 21:00",
+    "factor": 1,
+    "size": "s32",
+    "min": -2147483648.0,
+    "max": 2147483647.0,
+    "default": 2147483647.0,
+    "name": "energipris-20-00-21-00-46055",
+    "write": true
+  },
+  "46057": {
+    "title": "Energipris 21:00 - 22:00",
+    "factor": 1,
+    "size": "s32",
+    "min": -2147483648.0,
+    "max": 2147483647.0,
+    "default": 2147483647.0,
+    "name": "energipris-21-00-22-00-46057",
+    "write": true
+  },
+  "46059": {
+    "title": "Energipris 22:00 - 23:00",
+    "factor": 1,
+    "size": "s32",
+    "min": -2147483648.0,
+    "max": 2147483647.0,
+    "default": 2147483647.0,
+    "name": "energipris-22-00-23-00-46059",
+    "write": true
+  },
+  "46061": {
+    "title": "Energipris 23:00 - 00:00",
+    "factor": 1,
+    "size": "s32",
+    "min": -2147483648.0,
+    "max": 2147483647.0,
+    "default": 2147483647.0,
+    "name": "energipris-23-00-00-00-46061",
+    "write": true
+  },
   "44206": {
     "title": "Auto mode, start temperature for passive cooling",
     "factor": 10,
@@ -11570,6 +12038,446 @@
     "unit": "%",
     "size": "u8",
     "name": "speed-circulation-pump-standby-mode-eb100-45997",
+    "write": true
+  },
+  "42506": {
+    "title": "Desired room temperature for zone 1",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s32",
+    "min": 50.0,
+    "max": 350.0,
+    "default": 200.0,
+    "name": "desired-room-temperature-for-zone-1-42506",
+    "write": true
+  },
+  "42508": {
+    "title": "Desired room temperature for zone 2",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s32",
+    "min": 50.0,
+    "max": 350.0,
+    "default": 200.0,
+    "name": "desired-room-temperature-for-zone-2-42508",
+    "write": true
+  },
+  "42510": {
+    "title": "Desired room temperature for zone 3",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s32",
+    "min": 50.0,
+    "max": 350.0,
+    "default": 200.0,
+    "name": "desired-room-temperature-for-zone-3-42510",
+    "write": true
+  },
+  "42512": {
+    "title": "Desired room temperature for zone 4",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s32",
+    "min": 50.0,
+    "max": 350.0,
+    "default": 200.0,
+    "name": "desired-room-temperature-for-zone-4-42512",
+    "write": true
+  },
+  "42514": {
+    "title": "Desired room temperature for zone 5",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s32",
+    "min": 50.0,
+    "max": 350.0,
+    "default": 200.0,
+    "name": "desired-room-temperature-for-zone-5-42514",
+    "write": true
+  },
+  "42516": {
+    "title": "Desired room temperature for zone 6",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s32",
+    "min": 50.0,
+    "max": 350.0,
+    "default": 200.0,
+    "name": "desired-room-temperature-for-zone-6-42516",
+    "write": true
+  },
+  "42518": {
+    "title": "Desired room temperature for zone 7",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s32",
+    "min": 50.0,
+    "max": 350.0,
+    "default": 200.0,
+    "name": "desired-room-temperature-for-zone-7-42518",
+    "write": true
+  },
+  "42520": {
+    "title": "Desired room temperature for zone 8",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s32",
+    "min": 50.0,
+    "max": 350.0,
+    "default": 200.0,
+    "name": "desired-room-temperature-for-zone-8-42520",
+    "write": true
+  },
+  "42522": {
+    "title": "Desired room temperature for zone 9",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s32",
+    "min": 50.0,
+    "max": 350.0,
+    "default": 200.0,
+    "name": "desired-room-temperature-for-zone-9-42522",
+    "write": true
+  },
+  "42524": {
+    "title": "Desired room temperature for zone 10",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s32",
+    "min": 50.0,
+    "max": 350.0,
+    "default": 200.0,
+    "name": "desired-room-temperature-for-zone-10-42524",
+    "write": true
+  },
+  "42526": {
+    "title": "Desired room temperature for zone 11",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s32",
+    "min": 50.0,
+    "max": 350.0,
+    "default": 200.0,
+    "name": "desired-room-temperature-for-zone-11-42526",
+    "write": true
+  },
+  "42528": {
+    "title": "Desired room temperature for zone 12",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s32",
+    "min": 50.0,
+    "max": 350.0,
+    "default": 200.0,
+    "name": "desired-room-temperature-for-zone-12-42528",
+    "write": true
+  },
+  "42530": {
+    "title": "Desired room temperature for zone 13",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s32",
+    "min": 50.0,
+    "max": 350.0,
+    "default": 200.0,
+    "name": "desired-room-temperature-for-zone-13-42530",
+    "write": true
+  },
+  "42532": {
+    "title": "Desired room temperature for zone 14",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s32",
+    "min": 50.0,
+    "max": 350.0,
+    "default": 200.0,
+    "name": "desired-room-temperature-for-zone-14-42532",
+    "write": true
+  },
+  "42534": {
+    "title": "Desired room temperature for zone 15",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s32",
+    "min": 50.0,
+    "max": 350.0,
+    "default": 200.0,
+    "name": "desired-room-temperature-for-zone-15-42534",
+    "write": true
+  },
+  "42536": {
+    "title": "Desired room temperature for zone 16",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s32",
+    "min": 50.0,
+    "max": 350.0,
+    "default": 200.0,
+    "name": "desired-room-temperature-for-zone-16-42536",
+    "write": true
+  },
+  "42538": {
+    "title": "Desired room temperature for zone 17",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s32",
+    "min": 50.0,
+    "max": 350.0,
+    "default": 200.0,
+    "name": "desired-room-temperature-for-zone-17-42538",
+    "write": true
+  },
+  "42540": {
+    "title": "Desired room temperature for zone 18",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s32",
+    "min": 50.0,
+    "max": 350.0,
+    "default": 200.0,
+    "name": "desired-room-temperature-for-zone-18-42540",
+    "write": true
+  },
+  "42542": {
+    "title": "Desired room temperature for zone 19",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s32",
+    "min": 50.0,
+    "max": 350.0,
+    "default": 200.0,
+    "name": "desired-room-temperature-for-zone-19-42542",
+    "write": true
+  },
+  "42544": {
+    "title": "Desired room temperature for zone 20",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s32",
+    "min": 50.0,
+    "max": 350.0,
+    "default": 200.0,
+    "name": "desired-room-temperature-for-zone-20-42544",
+    "write": true
+  },
+  "42546": {
+    "title": "Desired room temperature for zone 21",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s32",
+    "min": 50.0,
+    "max": 350.0,
+    "default": 200.0,
+    "name": "desired-room-temperature-for-zone-21-42546",
+    "write": true
+  },
+  "42548": {
+    "title": "Desired room temperature for zone 22",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s32",
+    "min": 50.0,
+    "max": 350.0,
+    "default": 200.0,
+    "name": "desired-room-temperature-for-zone-22-42548",
+    "write": true
+  },
+  "42550": {
+    "title": "Desired room temperature for zone 23",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s32",
+    "min": 50.0,
+    "max": 350.0,
+    "default": 200.0,
+    "name": "desired-room-temperature-for-zone-23-42550",
+    "write": true
+  },
+  "42552": {
+    "title": "Desired room temperature for zone 24",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s32",
+    "min": 50.0,
+    "max": 350.0,
+    "default": 200.0,
+    "name": "desired-room-temperature-for-zone-24-42552",
+    "write": true
+  },
+  "42554": {
+    "title": "Desired room temperature for zone 25",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s32",
+    "min": 50.0,
+    "max": 350.0,
+    "default": 200.0,
+    "name": "desired-room-temperature-for-zone-25-42554",
+    "write": true
+  },
+  "42556": {
+    "title": "Desired room temperature for zone 26",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s32",
+    "min": 50.0,
+    "max": 350.0,
+    "default": 200.0,
+    "name": "desired-room-temperature-for-zone-26-42556",
+    "write": true
+  },
+  "42558": {
+    "title": "Desired room temperature for zone 27",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s32",
+    "min": 50.0,
+    "max": 350.0,
+    "default": 200.0,
+    "name": "desired-room-temperature-for-zone-27-42558",
+    "write": true
+  },
+  "42560": {
+    "title": "Desired room temperature for zone 28",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s32",
+    "min": 50.0,
+    "max": 350.0,
+    "default": 200.0,
+    "name": "desired-room-temperature-for-zone-28-42560",
+    "write": true
+  },
+  "42562": {
+    "title": "Desired room temperature for zone 29",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s32",
+    "min": 50.0,
+    "max": 350.0,
+    "default": 200.0,
+    "name": "desired-room-temperature-for-zone-29-42562",
+    "write": true
+  },
+  "42564": {
+    "title": "Desired room temperature for zone 30",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s32",
+    "min": 50.0,
+    "max": 350.0,
+    "default": 200.0,
+    "name": "desired-room-temperature-for-zone-30-42564",
+    "write": true
+  },
+  "42566": {
+    "title": "Desired room temperature for zone 31",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s32",
+    "min": 50.0,
+    "max": 350.0,
+    "default": 200.0,
+    "name": "desired-room-temperature-for-zone-31-42566",
+    "write": true
+  },
+  "42568": {
+    "title": "Desired room temperature for zone 32",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s32",
+    "min": 50.0,
+    "max": 350.0,
+    "default": 200.0,
+    "name": "desired-room-temperature-for-zone-32-42568",
+    "write": true
+  },
+  "42570": {
+    "title": "Desired room temperature for zone 33",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s32",
+    "min": 50.0,
+    "max": 350.0,
+    "default": 200.0,
+    "name": "desired-room-temperature-for-zone-33-42570",
+    "write": true
+  },
+  "42572": {
+    "title": "Desired room temperature for zone 34",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s32",
+    "min": 50.0,
+    "max": 350.0,
+    "default": 200.0,
+    "name": "desired-room-temperature-for-zone-34-42572",
+    "write": true
+  },
+  "42574": {
+    "title": "Desired room temperature for zone 35",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s32",
+    "min": 50.0,
+    "max": 350.0,
+    "default": 200.0,
+    "name": "desired-room-temperature-for-zone-35-42574",
+    "write": true
+  },
+  "42576": {
+    "title": "Desired room temperature for zone 36",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s32",
+    "min": 50.0,
+    "max": 350.0,
+    "default": 200.0,
+    "name": "desired-room-temperature-for-zone-36-42576",
+    "write": true
+  },
+  "42578": {
+    "title": "Desired room temperature for zone 37",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s32",
+    "min": 50.0,
+    "max": 350.0,
+    "default": 200.0,
+    "name": "desired-room-temperature-for-zone-37-42578",
+    "write": true
+  },
+  "42580": {
+    "title": "Desired room temperature for zone 38",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s32",
+    "min": 50.0,
+    "max": 350.0,
+    "default": 200.0,
+    "name": "desired-room-temperature-for-zone-38-42580",
+    "write": true
+  },
+  "42582": {
+    "title": "Desired room temperature for zone 39",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s32",
+    "min": 50.0,
+    "max": 350.0,
+    "default": 200.0,
+    "name": "desired-room-temperature-for-zone-39-42582",
+    "write": true
+  },
+  "42584": {
+    "title": "Desired room temperature for zone 40",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s32",
+    "min": 50.0,
+    "max": 350.0,
+    "default": 200.0,
+    "name": "desired-room-temperature-for-zone-40-42584",
     "write": true
   },
   "32801": {
@@ -11705,6 +12613,16 @@
     "max": 4500.0,
     "default": 600.0,
     "name": "immersion-heater-power-emergency-mode-43029",
+    "write": true
+  },
+  "45552": {
+    "title": "Block new compressor",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "block-new-compressor-45552",
     "write": true
   },
   "43987": {
