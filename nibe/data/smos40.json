@@ -10394,16 +10394,6 @@
     "name": "zone-23-affected-by-ecs2-42182",
     "write": true
   },
-  "32183": {
-    "title": "Op.time electrical heater for heating",
-    "factor": 10,
-    "unit": "h",
-    "size": "s32",
-    "min": 0.0,
-    "max": 9999999.0,
-    "default": 0.0,
-    "name": "op-time-electrical-heater-for-heating-32183"
-  },
   "42184": {
     "title": "Zone 25 affected by ECS2",
     "factor": 1,
@@ -10413,16 +10403,6 @@
     "default": 0.0,
     "name": "zone-25-affected-by-ecs2-42184",
     "write": true
-  },
-  "32185": {
-    "title": "Op.time electrical heater for hot water",
-    "factor": 10,
-    "unit": "h",
-    "size": "s32",
-    "min": 0.0,
-    "max": 9999999.0,
-    "default": 0.0,
-    "name": "op-time-electrical-heater-for-hot-water-32185"
   },
   "42186": {
     "title": "Zone 27 affected by ECS2",
