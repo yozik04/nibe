@@ -11249,6 +11249,26 @@
     "size": "u8",
     "name": "fan-mode-8-32172"
   },
+  "45393": {
+    "title": "Disable emergency restart GP1",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "disable-emergency-restart-gp1-45393",
+    "write": true
+  },
+  "45026": {
+    "title": "Disable emergency restart GP1",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "disable-emergency-restart-gp1-45026",
+    "write": true
+  },
   "45009": {
     "title": "Modbus use ext. calc supply",
     "factor": 1,
@@ -11258,6 +11278,12 @@
     "default": 0.0,
     "name": "modbus-use-ext-calc-supply-45009",
     "write": true
+  },
+  "30001": {
+    "title": "Relay status",
+    "factor": 1,
+    "size": "u8",
+    "name": "relay-status-30001"
   },
   "45010": {
     "title": "Supply Line Set Point Heating 1",
@@ -11440,70 +11466,111 @@
     "factor": 100,
     "unit": "kWh",
     "size": "u32",
-    "name": "energy-log-produced-energy-for-heating-over-the-past-hour-32284"
+    "name": "energy-log-produced-energy-for-heating-over-the-past-hour-32284",
+    "nature": "measurement"
   },
   "32286": {
     "title": "Energy log - Produced energy for hot water over the past hour",
     "factor": 100,
     "unit": "kWh",
     "size": "u32",
-    "name": "energy-log-produced-energy-for-hot-water-over-the-past-hour-32286"
+    "name": "energy-log-produced-energy-for-hot-water-over-the-past-hour-32286",
+    "nature": "measurement"
+  },
+  "32288": {
+    "title": "Energy log - Energy produced for pool during current hour",
+    "factor": 100,
+    "unit": "kWh",
+    "size": "u32",
+    "name": "energy-log-energy-produced-for-pool-during-current-hour-32288",
+    "nature": "measurement"
   },
   "32290": {
     "title": "Energy log - Produced energy for cooling over the past hour",
     "factor": 100,
     "unit": "kWh",
     "size": "u32",
-    "name": "energy-log-produced-energy-for-cooling-over-the-past-hour-32290"
+    "name": "energy-log-produced-energy-for-cooling-over-the-past-hour-32290",
+    "nature": "measurement"
   },
   "32292": {
     "title": "Energy log - Used energy for heating over the past hour",
     "factor": 100,
     "unit": "kWh",
     "size": "u32",
-    "name": "energy-log-used-energy-for-heating-over-the-past-hour-32292"
+    "name": "energy-log-used-energy-for-heating-over-the-past-hour-32292",
+    "nature": "measurement"
   },
   "32294": {
     "title": "Energy log - Used energy for hot water over the past hour",
     "factor": 100,
     "unit": "kWh",
     "size": "u32",
-    "name": "energy-log-used-energy-for-hot-water-over-the-past-hour-32294"
+    "name": "energy-log-used-energy-for-hot-water-over-the-past-hour-32294",
+    "nature": "measurement"
+  },
+  "32296": {
+    "title": "Energy log - Energy used for pool during current hour",
+    "factor": 100,
+    "unit": "kWh",
+    "size": "u32",
+    "name": "energy-log-energy-used-for-pool-during-current-hour-32296",
+    "nature": "measurement"
   },
   "32298": {
     "title": "Energy log - Used energy for cooling over the past hour",
     "factor": 100,
     "unit": "kWh",
     "size": "u32",
-    "name": "energy-log-used-energy-for-cooling-over-the-past-hour-32298"
+    "name": "energy-log-used-energy-for-cooling-over-the-past-hour-32298",
+    "nature": "measurement"
   },
   "32300": {
     "title": "Energy log - Used energy by additional heater for heating over the past hour",
     "factor": 100,
     "unit": "kWh",
     "size": "u32",
-    "name": "energy-log-used-energy-by-additional-heater-for-heating-over-the-past-hour-32300"
+    "name": "energy-log-used-energy-by-additional-heater-for-heating-over-the-past-hour-32300",
+    "nature": "measurement"
   },
   "32302": {
     "title": "Energy log - Used energy by additional heater for hot water over the past hour",
     "factor": 100,
     "unit": "kWh",
     "size": "u32",
-    "name": "energy-log-used-energy-by-additional-heater-for-hot-water-over-the-past-hour-32302"
+    "name": "energy-log-used-energy-by-additional-heater-for-hot-water-over-the-past-hour-32302",
+    "nature": "measurement"
+  },
+  "32304": {
+    "title": "Energy log - Energy used by additional heater for pool during current hour",
+    "factor": 100,
+    "unit": "kWh",
+    "size": "u32",
+    "name": "energy-log-energy-used-by-additional-heater-for-pool-during-current-hour-32304",
+    "nature": "measurement"
   },
   "32306": {
     "title": "Energy log - Current power consumption",
     "factor": 100,
     "unit": "kW",
     "size": "u32",
-    "name": "energy-log-current-power-consumption-32306"
+    "name": "energy-log-current-power-consumption-32306",
+    "nature": "measurement"
+  },
+  "32308": {
+    "title": "Energy log - Current power consumption, components",
+    "factor": 100,
+    "unit": "kW",
+    "size": "u32",
+    "name": "energy-log-current-power-consumption-components-32308"
   },
   "32409": {
     "title": "Energy log - Current power consumption, components",
     "factor": 100,
     "unit": "kW",
     "size": "u32",
-    "name": "energy-log-current-power-consumption-components-32409"
+    "name": "energy-log-current-power-consumption-components-32409",
+    "nature": "measurement"
   },
   "32336": {
     "title": "Compressor, total time energy storage, main unit (EP14)",
@@ -11704,6 +11771,66 @@
     "max": 2147483647.0,
     "default": 0.0,
     "name": "compressor-total-time-energy-storage-heat-pump-8-ep15-32370"
+  },
+  "45209": {
+    "title": "External reading of BT1 activated",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "external-reading-of-bt1-activated-45209",
+    "write": true
+  },
+  "45210": {
+    "title": "External reading of BT25 activated",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "external-reading-of-bt25-activated-45210",
+    "write": true
+  },
+  "45211": {
+    "title": "External reading of BT71 activated",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "external-reading-of-bt71-activated-45211",
+    "write": true
+  },
+  "45212": {
+    "title": "External reading of BT5 activated",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "external-reading-of-bt5-activated-45212",
+    "write": true
+  },
+  "45213": {
+    "title": "External reading of BT6 activated",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "external-reading-of-bt6-activated-45213",
+    "write": true
+  },
+  "45214": {
+    "title": "External reading of BT7 activated",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "external-reading-of-bt7-activated-45214",
+    "write": true
   },
   "35209": {
     "title": "External reading of BT1 activated",
@@ -12107,6 +12234,13 @@
     "size": "u32",
     "name": "hot-water-including-int-add-heat-31576"
   },
+  "33801": {
+    "title": "Boiler temperature (BT52)",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "boiler-temperature-bt52-33801"
+  },
   "46001": {
     "title": "Disable offset for cluster cooling controller",
     "factor": 1,
@@ -12225,6 +12359,16 @@
     "unit": "%RH",
     "size": "s32",
     "name": "humidity-rmu-s40-1-33131"
+  },
+  "45987": {
+    "title": "External reading of BT50 activated",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "external-reading-of-bt50-activated-45987",
+    "write": true
   },
   "35987": {
     "title": "External reading of BT50 activated",
@@ -12793,6 +12937,16 @@
     "max": 4500.0,
     "default": 940.0,
     "name": "immersion-heater-power-emergency-mode-43029",
+    "write": true
+  },
+  "43987": {
+    "title": "Disable emergency restart GP1",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "disable-emergency-restart-gp1-43987",
     "write": true
   },
   "45552": {
