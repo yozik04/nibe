@@ -12290,6 +12290,8 @@
     "max": 1.0,
     "default": 0.0,
     "name": "power-limitation-activation-46013",
+    "write": true
+  },
   "42506": {
     "title": "Desired room temperature for zone 1",
     "factor": 10,
