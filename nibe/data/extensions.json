@@ -795,7 +795,7 @@
     }
   },
   {
-    "description": "Operating mode PV panels - SMOS40",
+    "description": "SG-Ready/Aux from Modbus - SMOS40",
     "files": [
       "smos40.json"
     ],
@@ -822,6 +822,12 @@
           "1": "Normal",
           "2": "Low price",
           "3": "Boost"
+        }
+      },
+      "42742": {
+        "mappings": {
+          "0": "off",
+          "1": "on"
         }
       }
     }
