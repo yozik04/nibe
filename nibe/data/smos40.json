@@ -1921,12 +1921,6 @@
     "factor": 1,
     "size": "u8",
     "name": "operating-mode-pv-panels-30580"
-    "mappings": {
-      "10": "Normal",
-      "20": "Block",
-      "30": "Low price",
-      "40": "Boost"
-    }
   },
   "30582": {
     "title": "EME lux mode without EME",
@@ -5019,12 +5013,6 @@
     "factor": 1,
     "size": "u8",
     "name": "operating-mode-sg-ready-31912"
-    "mappings": {
-      "10": "Normal",
-      "20": "Block",
-      "30": "Low price",
-      "40": "Boost"
-    }
   },
   "31913": {
     "title": "SG ready, input A",
@@ -9425,12 +9413,6 @@
     "default": 1.0,
     "name": "requested-operating-mode-sg-ready-46009",
     "write": true
-    "mappings": {
-      "0": "Block",
-      "1": "Normal",
-      "2": "Low price",
-      "3": "Boost"
-    }
   },
   "43034": {
     "title": "Factor",
