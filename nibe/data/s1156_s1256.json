@@ -9441,17 +9441,6 @@
     "name": "aux-solar-pv-42676",
     "write": true
   },
-  "40001": {
-    "title": "Temperature overcharging pool",
-    "factor": 1,
-    "unit": "\u00b0C",
-    "size": "u8",
-    "min": 1.0,
-    "max": 50.0,
-    "default": 1.0,
-    "name": "temperature-overcharging-pool-40001",
-    "write": true
-  },
   "42108": {
     "title": "Modbus TCP/IP Ext. (Solar PV)",
     "factor": 1,

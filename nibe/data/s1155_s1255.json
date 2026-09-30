@@ -9770,17 +9770,6 @@
     "name": "aux-eme20-42676",
     "write": true
   },
-  "40001": {
-    "title": "Temperature, Overload, pool",
-    "factor": 10,
-    "unit": "\u00b0C",
-    "size": "u8",
-    "min": 1.0,
-    "max": 50.0,
-    "default": 1.0,
-    "name": "temperature-overload-pool-40001",
-    "write": true
-  },
   "42108": {
     "title": "EME20 API",
     "factor": 1,
