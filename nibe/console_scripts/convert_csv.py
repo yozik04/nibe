@@ -111,6 +111,8 @@ class CSVConverter:
 
         self._unifi_column_names()
 
+        self._drop_zero_registers()
+
         self._update_index()
 
         self._fix_data_soft_hyphens()
@@ -254,6 +256,17 @@ class CSVConverter:
                 skipinitialspace=True,
                 na_values="-",
             )
+
+    def _drop_zero_registers(self):
+        if "register" not in self.data:
+            return
+
+        zero_register = pd.to_numeric(self.data["register"], errors="coerce") == 0
+        if zero_register.any():
+            logger.warning(
+                "Dropping rows with register 0:\n%s", self.data[zero_register]
+            )
+            self.data.drop(self.data.index[zero_register], inplace=True)
 
     def _update_index(self):
         def calculate_number(row):

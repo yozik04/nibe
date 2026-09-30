@@ -6319,17 +6319,6 @@
     "name": "aux-eme20-42676",
     "write": true
   },
-  "40001": {
-    "title": "Temperature, Overload, pool",
-    "factor": 1,
-    "unit": "\u00b0C",
-    "size": "u8",
-    "min": 1.0,
-    "max": 50.0,
-    "default": 1.0,
-    "name": "temperature-overload-pool-40001",
-    "write": true
-  },
   "42108": {
     "title": "EME20 API",
     "factor": 1,
@@ -7449,12 +7438,6 @@
     "default": 0.0,
     "name": "disable-emergency-restart-gp1-45026",
     "write": true
-  },
-  "30001": {
-    "title": "Relay status",
-    "factor": 1,
-    "size": "u8",
-    "name": "relay-status-30001"
   },
   "32284": {
     "title": "Energy log - Produced energy for heating over the past hour",
