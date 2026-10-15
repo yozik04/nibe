@@ -958,14 +958,14 @@
     "name": "compressor-total-time-pool-2-heat-pump-1-ep14-30272"
   },
   "30280": {
-    "title": "Total op. time compr. cooling",
+    "title": "Total run time compressor cooling",
     "factor": 1,
     "unit": "h",
     "size": "u32",
     "min": 0.0,
     "max": 2147483647.0,
     "default": 0.0,
-    "name": "total-op-time-compr-cooling-30280"
+    "name": "total-run-time-compressor-cooling-30280"
   },
   "30282": {
     "title": "Compressor, total time pool, main unit (EP14)",
@@ -3429,10 +3429,10 @@
     "name": "fan-mode-1-31038"
   },
   "31039": {
-    "title": "Current HW mode without SPA/SC",
+    "title": "Current hot water mode without SPA/SC",
     "factor": 1,
     "size": "s8",
-    "name": "current-hw-mode-without-spa-sc-31039"
+    "name": "current-hot-water-mode-without-spa-sc-31039"
   },
   "31054": {
     "title": "Blocking cooling",
@@ -4970,10 +4970,10 @@
     "name": "current-sensor-eb102-ep14-31898"
   },
   "31903": {
-    "title": "Low-pr. sens, unprocessed (EB101-EP14)",
+    "title": "Low press. sensor, unprocessed (EB101-EP14)",
     "factor": 1,
     "size": "s16",
-    "name": "low-pr-sens-unprocessed-eb101-ep14-31903"
+    "name": "low-press-sensor-unprocessed-eb101-ep14-31903"
   },
   "31904": {
     "title": "Current (EB101-EP14)",
@@ -4983,10 +4983,10 @@
     "name": "current-eb101-ep14-31904"
   },
   "31906": {
-    "title": "Low-pr. sens, unprocessed (EB100-EP15)",
+    "title": "Low press. sensor, unprocessed (EB100-EP15)",
     "factor": 1,
     "size": "s16",
-    "name": "low-pr-sens-unprocessed-eb100-ep15-31906"
+    "name": "low-press-sensor-unprocessed-eb100-ep15-31906"
   },
   "31907": {
     "title": "Current (EB100-EP15)",
@@ -4996,10 +4996,10 @@
     "name": "current-eb100-ep15-31907"
   },
   "31909": {
-    "title": "Low-pr. sens, unprocessed (EB100-EP14)",
+    "title": "Low press. sensor, unprocessed (EB100-EP14)",
     "factor": 1,
     "size": "s16",
-    "name": "low-pr-sens-unprocessed-eb100-ep14-31909"
+    "name": "low-press-sensor-unprocessed-eb100-ep14-31909"
   },
   "31910": {
     "title": "Current (EB100-EP14)",
@@ -6484,13 +6484,13 @@
     "write": true
   },
   "40682": {
-    "title": "Cooling/heating sensor set point",
+    "title": "Cooling heat sensor set point value",
     "factor": 10,
     "size": "s16",
     "min": 50.0,
     "max": 400.0,
     "default": 210.0,
-    "name": "cooling-heating-sensor-set-point-40682",
+    "name": "cooling-heat-sensor-set-point-value-40682",
     "write": true
   },
   "40683": {
@@ -8760,10 +8760,10 @@
     "write": true
   },
   "32455": {
-    "title": "Ext. add. heat active steps",
+    "title": "External addition steps active",
     "factor": 1,
     "size": "u8",
-    "name": "ext-add-heat-active-steps-32455"
+    "name": "external-addition-steps-active-32455"
   },
   "41982": {
     "title": "HTS 2",
@@ -9425,13 +9425,13 @@
     "write": true
   },
   "46009": {
-    "title": "Req. op. mode (SG Ready)",
+    "title": "Requested operating mode (SG Ready)",
     "factor": 1,
     "size": "u8",
     "min": 0.0,
     "max": 3.0,
     "default": 1.0,
-    "name": "req-op-mode-sg-ready-46009",
+    "name": "requested-operating-mode-sg-ready-46009",
     "write": true
   },
   "43034": {
@@ -10405,6 +10405,16 @@
     "name": "zone-23-affected-by-ecs2-42182",
     "write": true
   },
+  "32183": {
+    "title": "Op.time electrical heater for heating",
+    "factor": 10,
+    "unit": "h",
+    "size": "s32",
+    "min": 0.0,
+    "max": 9999999.0,
+    "default": 0.0,
+    "name": "op-time-electrical-heater-for-heating-32183"
+  },
   "42184": {
     "title": "Zone 25 affected by ECS2",
     "factor": 1,
@@ -10414,6 +10424,16 @@
     "default": 0.0,
     "name": "zone-25-affected-by-ecs2-42184",
     "write": true
+  },
+  "32185": {
+    "title": "Op.time electrical heater for hot water",
+    "factor": 10,
+    "unit": "h",
+    "size": "s32",
+    "min": 0.0,
+    "max": 9999999.0,
+    "default": 0.0,
+    "name": "op-time-electrical-heater-for-hot-water-32185"
   },
   "42186": {
     "title": "Zone 27 affected by ECS2",
@@ -11290,12 +11310,6 @@
     "name": "modbus-use-ext-calc-supply-45009",
     "write": true
   },
-  "30001": {
-    "title": "Relay status",
-    "factor": 1,
-    "size": "u8",
-    "name": "relay-status-30001"
-  },
   "45010": {
     "title": "Supply Line Set Point Heating 1",
     "factor": 10,
@@ -11471,6 +11485,12 @@
     "default": 250.0,
     "name": "supply-line-set-point-cooling-8-45025",
     "write": true
+  },
+  "30001": {
+    "title": "Relay status",
+    "factor": 1,
+    "size": "u8",
+    "name": "relay-status-30001"
   },
   "32284": {
     "title": "Energy log - Produced energy for heating over the past hour",
@@ -11843,42 +11863,6 @@
     "name": "external-reading-of-bt7-activated-45214",
     "write": true
   },
-  "35209": {
-    "title": "External reading of BT1 activated",
-    "factor": 1,
-    "size": "u8",
-    "name": "external-reading-of-bt1-activated-35209"
-  },
-  "35210": {
-    "title": "External reading of BT25 activated",
-    "factor": 1,
-    "size": "u8",
-    "name": "external-reading-of-bt25-activated-35210"
-  },
-  "35211": {
-    "title": "External reading of BT71 activated",
-    "factor": 1,
-    "size": "u8",
-    "name": "external-reading-of-bt71-activated-35211"
-  },
-  "35212": {
-    "title": "External reading of BT5 activated",
-    "factor": 1,
-    "size": "u8",
-    "name": "external-reading-of-bt5-activated-35212"
-  },
-  "35213": {
-    "title": "External reading of BT6 activated",
-    "factor": 1,
-    "size": "u8",
-    "name": "external-reading-of-bt6-activated-35213"
-  },
-  "35214": {
-    "title": "External reading of BT7 activated",
-    "factor": 1,
-    "size": "u8",
-    "name": "external-reading-of-bt7-activated-35214"
-  },
   "45217": {
     "title": "External reading of BT52 activated",
     "factor": 1,
@@ -11945,255 +11929,25 @@
     "name": "external-reading-of-value-bt52-45226",
     "write": true
   },
-  "46015": {
-    "title": "Energiepreis 00:00 - 01:00",
+  "45459": {
+    "title": "Cooling with solar energy surplus",
     "factor": 1,
-    "size": "s32",
-    "min": -2147483648.0,
-    "max": 2147483647.0,
-    "default": 2147483647.0,
-    "name": "energiepreis-00-00-01-00-46015",
-    "write": true
-  },
-  "46017": {
-    "title": "Energiepreis 01:00 - 02:00",
-    "factor": 1,
-    "size": "s32",
-    "min": -2147483648.0,
-    "max": 2147483647.0,
-    "default": 2147483647.0,
-    "name": "energiepreis-01-00-02-00-46017",
-    "write": true
-  },
-  "46019": {
-    "title": "Energiepreis 02:00 - 03:00",
-    "factor": 1,
-    "size": "s32",
-    "min": -2147483648.0,
-    "max": 2147483647.0,
-    "default": 2147483647.0,
-    "name": "energiepreis-02-00-03-00-46019",
-    "write": true
-  },
-  "46021": {
-    "title": "Energiepreis 03:00 - 04:00",
-    "factor": 1,
-    "size": "s32",
-    "min": -2147483648.0,
-    "max": 2147483647.0,
-    "default": 2147483647.0,
-    "name": "energiepreis-03-00-04-00-46021",
-    "write": true
-  },
-  "46023": {
-    "title": "Energiepreis 04:00 - 05:00",
-    "factor": 1,
-    "size": "s32",
-    "min": -2147483648.0,
-    "max": 2147483647.0,
-    "default": 2147483647.0,
-    "name": "energiepreis-04-00-05-00-46023",
-    "write": true
-  },
-  "46025": {
-    "title": "Energiepreis 05:00 - 06:00",
-    "factor": 1,
-    "size": "s32",
-    "min": -2147483648.0,
-    "max": 2147483647.0,
-    "default": 2147483647.0,
-    "name": "energiepreis-05-00-06-00-46025",
-    "write": true
-  },
-  "46027": {
-    "title": "Energiepreis 06:00 - 07:00",
-    "factor": 1,
-    "size": "s32",
-    "min": -2147483648.0,
-    "max": 2147483647.0,
-    "default": 2147483647.0,
-    "name": "energiepreis-06-00-07-00-46027",
-    "write": true
-  },
-  "46029": {
-    "title": "Energiepreis 07:00 - 08:00",
-    "factor": 1,
-    "size": "s32",
-    "min": -2147483648.0,
-    "max": 2147483647.0,
-    "default": 2147483647.0,
-    "name": "energiepreis-07-00-08-00-46029",
-    "write": true
-  },
-  "46031": {
-    "title": "Energiepreis 08:00 - 09:00",
-    "factor": 1,
-    "size": "s32",
-    "min": -2147483648.0,
-    "max": 2147483647.0,
-    "default": 2147483647.0,
-    "name": "energiepreis-08-00-09-00-46031",
-    "write": true
-  },
-  "46033": {
-    "title": "Energiepreis 09:00 - 10:00",
-    "factor": 1,
-    "size": "s32",
-    "min": -2147483648.0,
-    "max": 2147483647.0,
-    "default": 2147483647.0,
-    "name": "energiepreis-09-00-10-00-46033",
-    "write": true
-  },
-  "46035": {
-    "title": "Energiepreis 10:00 - 11:00",
-    "factor": 1,
-    "size": "s32",
-    "min": -2147483648.0,
-    "max": 2147483647.0,
-    "default": 2147483647.0,
-    "name": "energiepreis-10-00-11-00-46035",
-    "write": true
-  },
-  "46037": {
-    "title": "Energiepreis 11:00 - 12:00",
-    "factor": 1,
-    "size": "s32",
-    "min": -2147483648.0,
-    "max": 2147483647.0,
-    "default": 2147483647.0,
-    "name": "energiepreis-11-00-12-00-46037",
-    "write": true
-  },
-  "46039": {
-    "title": "Energiepreis 12:00 - 13:00",
-    "factor": 1,
-    "size": "s32",
-    "min": -2147483648.0,
-    "max": 2147483647.0,
-    "default": 2147483647.0,
-    "name": "energiepreis-12-00-13-00-46039",
-    "write": true
-  },
-  "46041": {
-    "title": "Energiepreis 13:00 - 14:00",
-    "factor": 1,
-    "size": "s32",
-    "min": -2147483648.0,
-    "max": 2147483647.0,
-    "default": 2147483647.0,
-    "name": "energiepreis-13-00-14-00-46041",
-    "write": true
-  },
-  "46043": {
-    "title": "Energiepreis 14:00 - 15:00",
-    "factor": 1,
-    "size": "s32",
-    "min": -2147483648.0,
-    "max": 2147483647.0,
-    "default": 2147483647.0,
-    "name": "energiepreis-14-00-15-00-46043",
-    "write": true
-  },
-  "46045": {
-    "title": "Energiepreis 15:00 - 16:00",
-    "factor": 1,
-    "size": "s32",
-    "min": -2147483648.0,
-    "max": 2147483647.0,
-    "default": 2147483647.0,
-    "name": "energiepreis-15-00-16-00-46045",
-    "write": true
-  },
-  "46047": {
-    "title": "Energiepreis 16:00 - 17:00",
-    "factor": 1,
-    "size": "s32",
-    "min": -2147483648.0,
-    "max": 2147483647.0,
-    "default": 2147483647.0,
-    "name": "energiepreis-16-00-17-00-46047",
-    "write": true
-  },
-  "46049": {
-    "title": "Energiepreis 17:00 - 18:00",
-    "factor": 1,
-    "size": "s32",
-    "min": -2147483648.0,
-    "max": 2147483647.0,
-    "default": 2147483647.0,
-    "name": "energiepreis-17-00-18-00-46049",
-    "write": true
-  },
-  "46051": {
-    "title": "Energiepreis 18:00 - 19:00",
-    "factor": 1,
-    "size": "s32",
-    "min": -2147483648.0,
-    "max": 2147483647.0,
-    "default": 2147483647.0,
-    "name": "energiepreis-18-00-19-00-46051",
-    "write": true
-  },
-  "46053": {
-    "title": "Energiepreis 19:00 - 20:00",
-    "factor": 1,
-    "size": "s32",
-    "min": -2147483648.0,
-    "max": 2147483647.0,
-    "default": 2147483647.0,
-    "name": "energiepreis-19-00-20-00-46053",
-    "write": true
-  },
-  "46055": {
-    "title": "Energiepreis 20:00 - 21:00",
-    "factor": 1,
-    "size": "s32",
-    "min": -2147483648.0,
-    "max": 2147483647.0,
-    "default": 2147483647.0,
-    "name": "energiepreis-20-00-21-00-46055",
-    "write": true
-  },
-  "46057": {
-    "title": "Energiepreis 21:00 - 22:00",
-    "factor": 1,
-    "size": "s32",
-    "min": -2147483648.0,
-    "max": 2147483647.0,
-    "default": 2147483647.0,
-    "name": "energiepreis-21-00-22-00-46057",
-    "write": true
-  },
-  "46059": {
-    "title": "Energiepreis 22:00 - 23:00",
-    "factor": 1,
-    "size": "s32",
-    "min": -2147483648.0,
-    "max": 2147483647.0,
-    "default": 2147483647.0,
-    "name": "energiepreis-22-00-23-00-46059",
-    "write": true
-  },
-  "46061": {
-    "title": "Energiepreis 23:00 - 00:00",
-    "factor": 1,
-    "size": "s32",
-    "min": -2147483648.0,
-    "max": 2147483647.0,
-    "default": 2147483647.0,
-    "name": "energiepreis-23-00-00-00-46061",
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "cooling-with-solar-energy-surplus-45459",
     "write": true
   },
   "46008": {
-    "title": "External power limitation",
+    "title": "Power limitation",
     "factor": 10,
     "unit": "kW",
     "size": "u16",
     "min": 11.0,
     "max": 1000.0,
     "default": 42.0,
-    "name": "external-power-limitation-46008",
+    "name": "power-limitation-46008",
     "write": true
   },
   "44205": {
@@ -12205,16 +11959,6 @@
     "max": 400.0,
     "default": 250.0,
     "name": "auto-mode-start-temperature-for-active-cooling-44205",
-    "write": true
-  },
-  "45459": {
-    "title": "Cooling with solar energy surplus",
-    "factor": 1,
-    "size": "u8",
-    "min": 0.0,
-    "max": 1.0,
-    "default": 0.0,
-    "name": "cooling-with-solar-energy-surplus-45459",
     "write": true
   },
   "31586": {
@@ -12244,23 +11988,6 @@
     "unit": "kWh",
     "size": "u32",
     "name": "hot-water-including-int-add-heat-31576"
-  },
-  "33801": {
-    "title": "Boiler temperature (BT52)",
-    "factor": 10,
-    "unit": "\u00b0C",
-    "size": "s16",
-    "name": "boiler-temperature-bt52-33801"
-  },
-  "46001": {
-    "title": "Disable offset for cluster cooling controller",
-    "factor": 1,
-    "size": "u8",
-    "min": 0.0,
-    "max": 1.0,
-    "default": 0.0,
-    "name": "disable-offset-for-cluster-cooling-controller-46001",
-    "write": true
   },
   "32446": {
     "title": "Outd. liq. line sensor (BT39)",
@@ -12325,6 +12052,13 @@
     "size": "s16",
     "name": "outdoor-liquid-line-temp-sensor-eb108-bt39-32454"
   },
+  "33801": {
+    "title": "Boiler temperature (BT52)",
+    "factor": 10,
+    "unit": "\u00b0C",
+    "size": "s16",
+    "name": "boiler-temperature-bt52-33801"
+  },
   "33822": {
     "title": "Tot. production",
     "factor": 10,
@@ -12381,12 +12115,6 @@
     "name": "external-reading-of-bt50-activated-45987",
     "write": true
   },
-  "35987": {
-    "title": "External reading of BT50 activated",
-    "factor": 1,
-    "size": "u8",
-    "name": "external-reading-of-bt50-activated-35987"
-  },
   "45988": {
     "title": "External reading of value BT50",
     "factor": 10,
@@ -12404,27 +12132,6 @@
     "max": 100.0,
     "default": 30.0,
     "name": "speed-circulation-pump-standby-mode-eb100-45997",
-    "write": true
-  },
-  "45996": {
-    "title": "Speed circulation pump waiting mode heat pump 1",
-    "factor": 1,
-    "unit": "%",
-    "size": "u8",
-    "min": 1.0,
-    "max": 100.0,
-    "default": 30.0,
-    "name": "speed-circulation-pump-waiting-mode-heat-pump-1-45996",
-    "write": true
-  },
-  "46013": {
-    "title": "Power limitation activation",
-    "factor": 1,
-    "size": "u8",
-    "min": 0.0,
-    "max": 1.0,
-    "default": 0.0,
-    "name": "power-limitation-activation-46013",
     "write": true
   },
   "42506": {
@@ -12867,6 +12574,27 @@
     "name": "desired-room-temperature-for-zone-40-42584",
     "write": true
   },
+  "45996": {
+    "title": "Speed circulation pump waiting mode heat pump 1",
+    "factor": 1,
+    "unit": "%",
+    "size": "u8",
+    "min": 1.0,
+    "max": 100.0,
+    "default": 30.0,
+    "name": "speed-circulation-pump-waiting-mode-heat-pump-1-45996",
+    "write": true
+  },
+  "46013": {
+    "title": "Power limitation activation",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "power-limitation-activation-46013",
+    "write": true
+  },
   "46004": {
     "title": "External reading of BT68 activated",
     "factor": 1,
@@ -12960,16 +12688,6 @@
     "name": "disable-emergency-restart-gp1-43987",
     "write": true
   },
-  "45552": {
-    "title": "Block new compressor",
-    "factor": 1,
-    "size": "u8",
-    "min": 0.0,
-    "max": 1.0,
-    "default": 0.0,
-    "name": "block-new-compressor-45552",
-    "write": true
-  },
   "32191": {
     "title": "Return line (AZ2-BT69)",
     "factor": 10,
@@ -13008,6 +12726,16 @@
     "size": "u8",
     "name": "eev-state-eb102-32423"
   },
+  "45552": {
+    "title": "Block new compressor",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "block-new-compressor-45552",
+    "write": true
+  },
   "45998": {
     "title": "Set point value power",
     "factor": 10,
@@ -13024,5 +12752,307 @@
     "factor": 1,
     "size": "u32",
     "name": "all-sub-units-operating-prio-33826"
+  },
+  "46065": {
+    "title": "Charging method hot water",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 1.0,
+    "name": "charging-method-hot-water-46065",
+    "write": true
+  },
+  "35209": {
+    "title": "External reading of BT1 activated",
+    "factor": 1,
+    "size": "u8",
+    "name": "external-reading-of-bt1-activated-35209"
+  },
+  "35210": {
+    "title": "External reading of BT25 activated",
+    "factor": 1,
+    "size": "u8",
+    "name": "external-reading-of-bt25-activated-35210"
+  },
+  "35211": {
+    "title": "External reading of BT71 activated",
+    "factor": 1,
+    "size": "u8",
+    "name": "external-reading-of-bt71-activated-35211"
+  },
+  "35212": {
+    "title": "External reading of BT5 activated",
+    "factor": 1,
+    "size": "u8",
+    "name": "external-reading-of-bt5-activated-35212"
+  },
+  "35213": {
+    "title": "External reading of BT6 activated",
+    "factor": 1,
+    "size": "u8",
+    "name": "external-reading-of-bt6-activated-35213"
+  },
+  "35214": {
+    "title": "External reading of BT7 activated",
+    "factor": 1,
+    "size": "u8",
+    "name": "external-reading-of-bt7-activated-35214"
+  },
+  "46015": {
+    "title": "Energy price 00:00 - 01:00",
+    "factor": 1,
+    "size": "s32",
+    "min": -2147483648.0,
+    "max": 2147483647.0,
+    "default": 2147483647.0,
+    "name": "energy-price-00-00-01-00-46015",
+    "write": true
+  },
+  "46017": {
+    "title": "Energy price 01:00 - 02:00",
+    "factor": 1,
+    "size": "s32",
+    "min": -2147483648.0,
+    "max": 2147483647.0,
+    "default": 2147483647.0,
+    "name": "energy-price-01-00-02-00-46017",
+    "write": true
+  },
+  "46019": {
+    "title": "Energy price 02:00 - 03:00",
+    "factor": 1,
+    "size": "s32",
+    "min": -2147483648.0,
+    "max": 2147483647.0,
+    "default": 2147483647.0,
+    "name": "energy-price-02-00-03-00-46019",
+    "write": true
+  },
+  "46021": {
+    "title": "Energy price 03:00 - 04:00",
+    "factor": 1,
+    "size": "s32",
+    "min": -2147483648.0,
+    "max": 2147483647.0,
+    "default": 2147483647.0,
+    "name": "energy-price-03-00-04-00-46021",
+    "write": true
+  },
+  "46023": {
+    "title": "Energy price 04:00 - 05:00",
+    "factor": 1,
+    "size": "s32",
+    "min": -2147483648.0,
+    "max": 2147483647.0,
+    "default": 2147483647.0,
+    "name": "energy-price-04-00-05-00-46023",
+    "write": true
+  },
+  "46025": {
+    "title": "Energy price 05:00 - 06:00",
+    "factor": 1,
+    "size": "s32",
+    "min": -2147483648.0,
+    "max": 2147483647.0,
+    "default": 2147483647.0,
+    "name": "energy-price-05-00-06-00-46025",
+    "write": true
+  },
+  "46027": {
+    "title": "Energy price 06:00 - 07:00",
+    "factor": 1,
+    "size": "s32",
+    "min": -2147483648.0,
+    "max": 2147483647.0,
+    "default": 2147483647.0,
+    "name": "energy-price-06-00-07-00-46027",
+    "write": true
+  },
+  "46029": {
+    "title": "Energy price 07:00 - 08:00",
+    "factor": 1,
+    "size": "s32",
+    "min": -2147483648.0,
+    "max": 2147483647.0,
+    "default": 2147483647.0,
+    "name": "energy-price-07-00-08-00-46029",
+    "write": true
+  },
+  "46031": {
+    "title": "Energy price 08:00 - 09:00",
+    "factor": 1,
+    "size": "s32",
+    "min": -2147483648.0,
+    "max": 2147483647.0,
+    "default": 2147483647.0,
+    "name": "energy-price-08-00-09-00-46031",
+    "write": true
+  },
+  "46033": {
+    "title": "Energy price 09:00 - 10:00",
+    "factor": 1,
+    "size": "s32",
+    "min": -2147483648.0,
+    "max": 2147483647.0,
+    "default": 2147483647.0,
+    "name": "energy-price-09-00-10-00-46033",
+    "write": true
+  },
+  "46035": {
+    "title": "Energy price 10:00 - 11:00",
+    "factor": 1,
+    "size": "s32",
+    "min": -2147483648.0,
+    "max": 2147483647.0,
+    "default": 2147483647.0,
+    "name": "energy-price-10-00-11-00-46035",
+    "write": true
+  },
+  "46037": {
+    "title": "Energy price 11:00 - 12:00",
+    "factor": 1,
+    "size": "s32",
+    "min": -2147483648.0,
+    "max": 2147483647.0,
+    "default": 2147483647.0,
+    "name": "energy-price-11-00-12-00-46037",
+    "write": true
+  },
+  "46039": {
+    "title": "Energy price 12:00 - 13:00",
+    "factor": 1,
+    "size": "s32",
+    "min": -2147483648.0,
+    "max": 2147483647.0,
+    "default": 2147483647.0,
+    "name": "energy-price-12-00-13-00-46039",
+    "write": true
+  },
+  "46041": {
+    "title": "Energy price 13:00 - 14:00",
+    "factor": 1,
+    "size": "s32",
+    "min": -2147483648.0,
+    "max": 2147483647.0,
+    "default": 2147483647.0,
+    "name": "energy-price-13-00-14-00-46041",
+    "write": true
+  },
+  "46043": {
+    "title": "Energy price 14:00 - 15:00",
+    "factor": 1,
+    "size": "s32",
+    "min": -2147483648.0,
+    "max": 2147483647.0,
+    "default": 2147483647.0,
+    "name": "energy-price-14-00-15-00-46043",
+    "write": true
+  },
+  "46045": {
+    "title": "Energy price 15:00 - 16:00",
+    "factor": 1,
+    "size": "s32",
+    "min": -2147483648.0,
+    "max": 2147483647.0,
+    "default": 2147483647.0,
+    "name": "energy-price-15-00-16-00-46045",
+    "write": true
+  },
+  "46047": {
+    "title": "Energy price 16:00 - 17:00",
+    "factor": 1,
+    "size": "s32",
+    "min": -2147483648.0,
+    "max": 2147483647.0,
+    "default": 2147483647.0,
+    "name": "energy-price-16-00-17-00-46047",
+    "write": true
+  },
+  "46049": {
+    "title": "Energy price 17:00 - 18:00",
+    "factor": 1,
+    "size": "s32",
+    "min": -2147483648.0,
+    "max": 2147483647.0,
+    "default": 2147483647.0,
+    "name": "energy-price-17-00-18-00-46049",
+    "write": true
+  },
+  "46051": {
+    "title": "Energy price 18:00 - 19:00",
+    "factor": 1,
+    "size": "s32",
+    "min": -2147483648.0,
+    "max": 2147483647.0,
+    "default": 2147483647.0,
+    "name": "energy-price-18-00-19-00-46051",
+    "write": true
+  },
+  "46053": {
+    "title": "Energy price 19:00 - 20:00",
+    "factor": 1,
+    "size": "s32",
+    "min": -2147483648.0,
+    "max": 2147483647.0,
+    "default": 2147483647.0,
+    "name": "energy-price-19-00-20-00-46053",
+    "write": true
+  },
+  "46055": {
+    "title": "Energy price 20:00 - 21:00",
+    "factor": 1,
+    "size": "s32",
+    "min": -2147483648.0,
+    "max": 2147483647.0,
+    "default": 2147483647.0,
+    "name": "energy-price-20-00-21-00-46055",
+    "write": true
+  },
+  "46057": {
+    "title": "Energy price 21:00 - 22:00",
+    "factor": 1,
+    "size": "s32",
+    "min": -2147483648.0,
+    "max": 2147483647.0,
+    "default": 2147483647.0,
+    "name": "energy-price-21-00-22-00-46057",
+    "write": true
+  },
+  "46059": {
+    "title": "Energy price 22:00 - 23:00",
+    "factor": 1,
+    "size": "s32",
+    "min": -2147483648.0,
+    "max": 2147483647.0,
+    "default": 2147483647.0,
+    "name": "energy-price-22-00-23-00-46059",
+    "write": true
+  },
+  "46061": {
+    "title": "Energy price 23:00 - 00:00",
+    "factor": 1,
+    "size": "s32",
+    "min": -2147483648.0,
+    "max": 2147483647.0,
+    "default": 2147483647.0,
+    "name": "energy-price-23-00-00-00-46061",
+    "write": true
+  },
+  "46001": {
+    "title": "Disable offset for cluster cooling controller",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "disable-offset-for-cluster-cooling-controller-46001",
+    "write": true
+  },
+  "35987": {
+    "title": "External reading of BT50 activated",
+    "factor": 1,
+    "size": "u8",
+    "name": "external-reading-of-bt50-activated-35987"
   }
 }
