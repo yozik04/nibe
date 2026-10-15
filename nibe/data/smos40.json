@@ -1201,7 +1201,7 @@
     "name": "status-compressor-demand-s135-30351"
   },
   "40012": {
-    "title": "Degree minutes",
+    "title": "Degree minutes (32 bit)",
     "factor": 10,
     "unit": "DM",
     "size": "s32",
@@ -3321,7 +3321,7 @@
     "name": "serial-index-eb101-31010"
   },
   "40019": {
-    "title": "Limit DM",
+    "title": "Degree minutes (16 bit)",
     "factor": 10,
     "unit": "DM",
     "size": "s16",
