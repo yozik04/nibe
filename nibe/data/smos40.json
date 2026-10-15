@@ -6752,6 +6752,16 @@
     "name": "additional-heat-after-diverter-valve-40759",
     "write": true
   },
+  "46065": {
+    "title": "Charging method hot water",
+    "factor": 1,
+    "size": "u8",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 1.0,
+    "name": "charging-method-hot-water-46065",
+    "write": true
+  },
   "40760": {
     "title": "Hot water additional heat in tank",
     "factor": 1,
@@ -10413,16 +10423,6 @@
     "name": "zone-23-affected-by-ecs2-42182",
     "write": true
   },
-  "32183": {
-    "title": "Op.time electrical heater for heating",
-    "factor": 10,
-    "unit": "h",
-    "size": "s32",
-    "min": 0.0,
-    "max": 9999999.0,
-    "default": 0.0,
-    "name": "op-time-electrical-heater-for-heating-32183"
-  },
   "42184": {
     "title": "Zone 25 affected by ECS2",
     "factor": 1,
@@ -10432,16 +10432,6 @@
     "default": 0.0,
     "name": "zone-25-affected-by-ecs2-42184",
     "write": true
-  },
-  "32185": {
-    "title": "Op.time electrical heater for hot water",
-    "factor": 10,
-    "unit": "h",
-    "size": "s32",
-    "min": 0.0,
-    "max": 9999999.0,
-    "default": 0.0,
-    "name": "op-time-electrical-heater-for-hot-water-32185"
   },
   "42186": {
     "title": "Zone 27 affected by ECS2",
@@ -10814,6 +10804,26 @@
     "default": 3.0,
     "name": "time-between-filter-replacement-42680",
     "write": true
+  },
+  "32183": {
+    "title": "Op. time el. add. heat for heating",
+    "factor": 10,
+    "unit": "h",
+    "size": "s32",
+    "min": 0.0,
+    "max": 9999999.0,
+    "default": 0.0,
+    "name": "op-time-el-add-heat-for-heating-32183"
+  },
+  "32185": {
+    "title": "Op. time el. add. heat for hot water",
+    "factor": 10,
+    "unit": "h",
+    "size": "s32",
+    "min": 0.0,
+    "max": 9999999.0,
+    "default": 0.0,
+    "name": "op-time-el-add-heat-for-hot-water-32185"
   },
   "42701": {
     "title": "Return time fan 4",
@@ -12740,16 +12750,6 @@
     "factor": 1,
     "size": "u32",
     "name": "all-sub-units-operating-prio-33826"
-  },
-  "46065": {
-    "title": "Charging method hot water",
-    "factor": 1,
-    "size": "u8",
-    "min": 0.0,
-    "max": 1.0,
-    "default": 1.0,
-    "name": "charging-method-hot-water-46065",
-    "write": true
   },
   "35209": {
     "title": "External reading of BT1 activated",

@@ -936,6 +936,7 @@ Shunted brine, accessory	MODBUS_HOLDING_REGISTER	5268	1		u8	0	1	0
 Shunted brine max. temp.	MODBUS_HOLDING_REGISTER	5271	1	°C	u8	0	30	20
 Hot water compressors step diff.	MODBUS_HOLDING_REGISTER	755	100		s16	0	400	100
 Additional heat after diverter valve	MODBUS_HOLDING_REGISTER	758	1		u8	0	1	1
+Charging method hot water	MODBUS_HOLDING_REGISTER	6064	1		u8	0	1	1
 Hot water additional heat in tank	MODBUS_HOLDING_REGISTER	759	1		u8	0	1	0
 Heating (SG Ready)	MODBUS_HOLDING_REGISTER	760	1		u8	0	1	1
 Cooling (SG Ready)	MODBUS_HOLDING_REGISTER	761	1		u8	0	1	1
@@ -1570,9 +1571,7 @@ Zone 20 affected by ECS2	MODBUS_HOLDING_REGISTER	2178	1		u8	0	1	0
 Zone 21 affected by ECS2	MODBUS_HOLDING_REGISTER	2179	1		u8	0	1	0
 Zone 22 affected by ECS2	MODBUS_HOLDING_REGISTER	2180	1		u8	0	1	0
 Zone 23 affected by ECS2	MODBUS_HOLDING_REGISTER	2181	1		u8	0	1	0
-Op.time electrical heater for heating	MODBUS_INPUT_REGISTER	2182	10	h	s32	0	9999999	0
 Zone 25 affected by ECS2	MODBUS_HOLDING_REGISTER	2183	1		u8	0	1	0
-Op.time electrical heater for hot water	MODBUS_INPUT_REGISTER	2184	10	h	s32	0	9999999	0
 Zone 27 affected by ECS2	MODBUS_HOLDING_REGISTER	2185	1		u8	0	1	0
 Zone 28 affected by ECS2	MODBUS_HOLDING_REGISTER	2186	1		u8	0	1	0
 Zone 29 affected by ECS2	MODBUS_HOLDING_REGISTER	2187	1		u8	0	1	0
@@ -1611,6 +1610,8 @@ Time between filter replacement	MODBUS_HOLDING_REGISTER	2676	1		u8	1	24	3
 Time between filter replacement	MODBUS_HOLDING_REGISTER	2677	1		u8	1	24	3
 Time between filter replacement	MODBUS_HOLDING_REGISTER	2678	1		u8	1	24	3
 Time between filter replacement	MODBUS_HOLDING_REGISTER	2679	1		u8	1	24	3
+Op. time el. add. heat for heating	MODBUS_INPUT_REGISTER	2182	10	h	s32	0	9999999	0
+Op. time el. add. heat for hot water	MODBUS_INPUT_REGISTER	2184	10	h	s32	0	9999999	0
 id:21077	MODBUS_HOLDING_REGISTER	3020	1		u8	0	0	0
 id:21078	MODBUS_HOLDING_REGISTER	3021	1		u8	0	0	0
 id:21079	MODBUS_HOLDING_REGISTER	3022	1		u8	0	0	0
@@ -2202,7 +2203,6 @@ Block new compressor	MODBUS_HOLDING_REGISTER	5551	1		u8	0	1	0
 id:55496	MODBUS_HOLDING_REGISTER	5207	10	°C	s16	0	0	0
 Set point value power	MODBUS_HOLDING_REGISTER	5997	10	kW	u16	0	600	0
 All sub units operating prio	MODBUS_INPUT_REGISTER	3825	1		u32	0	0	0
-Charging method hot water	MODBUS_HOLDING_REGISTER	6064	1		u8	0	1	1
 External reading of BT1 activated	MODBUS_INPUT_REGISTER	5208	1		u8	0	0	0
 External reading of BT25 activated	MODBUS_INPUT_REGISTER	5209	1		u8	0	0	0
 External reading of BT71 activated	MODBUS_INPUT_REGISTER	5210	1		u8	0	0	0
