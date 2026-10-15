@@ -6762,16 +6762,6 @@
     "name": "hot-water-additional-heat-in-tank-40760",
     "write": true
   },
-  "46065": {
-    "title": "Charging method hot water",
-    "factor": 1,
-    "size": "u8",
-    "min": 0.0,
-    "max": 1.0,
-    "default": 1.0,
-    "name": "charging-method-hot-water-46065",
-    "write": true
-  },
   "40761": {
     "title": "Heating (SG Ready)",
     "factor": 1,
@@ -10824,26 +10814,6 @@
     "default": 3.0,
     "name": "time-between-filter-replacement-42680",
     "write": true
-  },
-  "32183": {
-    "title": "Op. time el. add. heat for heating",
-    "factor": 10,
-    "unit": "h",
-    "size": "s32",
-    "min": 0.0,
-    "max": 9999999.0,
-    "default": 0.0,
-    "name": "op-time-el-add-heat-for-heating-32183"
-  },
-  "32185": {
-    "title": "Op. time el. add. heat for hot water",
-    "factor": 10,
-    "unit": "h",
-    "size": "s32",
-    "min": 0.0,
-    "max": 9999999.0,
-    "default": 0.0,
-    "name": "op-time-el-add-heat-for-hot-water-32185"
   },
   "42701": {
     "title": "Return time fan 4",
