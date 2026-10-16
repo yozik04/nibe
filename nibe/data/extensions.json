@@ -793,5 +793,37 @@
         }
       }
     }
+  },
+  {
+    "description": "SG-Ready/Aux from Modbus - SMOS40",
+    "files": [
+      "smos40.json"
+    ],
+    "data": {
+      "30580": {
+        "mappings": {
+          "10": "Normal",
+          "20": "Block",
+          "30": "Low price",
+          "40": "Boost"
+        }
+      },
+      "31912": {
+        "mappings": {
+          "10": "Normal",
+          "20": "Block",
+          "30": "Low price",
+          "40": "Boost"
+        }
+      },
+      "46009": {
+        "mappings": {
+          "0": "Block",
+          "1": "Normal",
+          "2": "Low price",
+          "3": "Boost"
+        }
+      }
+    }
   }
 ]
