@@ -10104,14 +10104,5 @@
     "factor": 1,
     "size": "u32",
     "name": "all-sub-units-operating-prio-33826"
-  },
-  "32288": {
-    "nature": "total"
-  },
-  "32296": {
-    "nature": "total"
-  },
-  "32304": {
-    "nature": "total"
   }
 }
