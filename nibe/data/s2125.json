@@ -7851,14 +7851,5 @@
     "factor": 1,
     "size": "u8",
     "name": "eev-state-eb101-32422"
-  },
-  "32288": {
-    "nature": "total"
-  },
-  "32296": {
-    "nature": "total"
-  },
-  "32304": {
-    "nature": "total"
   }
 }
