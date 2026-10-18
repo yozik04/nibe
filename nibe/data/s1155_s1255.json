@@ -12387,14 +12387,5 @@
     "unit": "\u00b0C",
     "size": "s16",
     "name": "supply-line-az2-bt68-32192"
-  },
-  "32288": {
-    "nature": "total"
-  },
-  "32296": {
-    "nature": "total"
-  },
-  "32304": {
-    "nature": "total"
   }
 }
