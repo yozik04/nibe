@@ -9653,5 +9653,13 @@
     "size": "s16",
     "factor": 10,
     "name": "bt71-ext-return-temp-40152"
+  },
+  "42406": {
+    "title": "Heat Meter - Passive Cooling",
+    "info": "Accumulated energy production as calculated by the heat meter",
+    "unit": "kWh",
+    "size": "u32",
+    "factor": 10,
+    "name": "heat-meter-passive-cooling-42406"
   }
 }
