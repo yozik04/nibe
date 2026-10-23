@@ -39,6 +39,21 @@ def _enqueue_datagram(nibegw: NibeGW, data: str):
     )
 
 
+async def test_read_coil_with_incomplete_broadcast(
+    nibegw: NibeGW, heatpump: HeatPump
+):
+    coil = heatpump.get_coil_by_address(43416)
+    _enqueue_datagram(
+        nibegw,
+        "5c00206850449c38004f9c8a00509c5f004e9c7c014d9ca301489c10014c9cfe00ada93c0080a8c80098a9ad0cffff0000ec9f52ffffff00000aad41a1ffff000012ad2399ffff0000889c870001a810014ea81e0002",
+    )
+    _enqueue_datagram(nibegw, "5c00206a0698a9ad0c0000dc")
+
+    data = await nibegw.read_coil(coil)
+
+    assert data.value == 3245
+
+
 async def test_status(nibegw: NibeGW, heatpump: HeatPump):
     assert nibegw.status == ConnectionStatus.LISTENING
 
@@ -168,6 +183,29 @@ async def test_read_product_info_with_extras(nibegw: NibeGW):
 @pytest.mark.parametrize(
     ("raw", "table_processing_mode", "calls"),
     [
+        (
+            "5c00206850449c38004f9c8a00509c5f004e9c7c014d9ca301489c10014c9cfe00ada93c0080a8c80098a9ad0cffff0000ec9f52ffffff00000aad41a1ffff000012ad2399ffff0000889c870001a810014ea81e0002",
+            "permissive",
+            [
+                (40004, 5.6),
+                (40008, 27.2),
+                (40012, 25.4),
+                (40013, 41.9),
+                (40014, 38.0),
+                (40015, 13.8),
+                (40016, 9.5),
+                (40072, 13.5),
+                (43009, 27.2),
+                (43086, "HEAT"),
+                (43136, 20.0),
+                (43437, 60),
+            ],
+        ),
+        (
+            "5c00206850449c38004f9c8a00509c5f004e9c7c014d9ca301489c10014c9cfe00ada93c0080a8c80098a9ad0cffff0000ec9f52ffffff00000aad41a1ffff000012ad2399ffff0000889c870001a810014ea81e0002",
+            "strict",
+            [],
+        ),
         (
             "5c00206850c9af0000889c7100a9a90a00a3a91400aba90000939c0000949c0000919c3c00929c00008f9c0000909c00003ab95000ada94600a7a91400faa90200ffff0000ffff0000ffff0000ffff0000ffff0000f0",
             "strict",
