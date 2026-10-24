@@ -456,7 +456,13 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer, ConnectionStatus
             try:
                 coil = self._heatpump.get_coil_by_address(coil_address)
                 if coil.size in ("u32", "s32"):
-                    raw_value = raw_value + data.pop(coil_address + 1, b"")
+                    if coil_address + 1 not in data:
+                        decode_exception_occurred = True
+                        logger.debug(
+                            "Skipping coil %s - incomplete 32-bit broadcast", coil_address,
+                         )
+                        continue
+                    raw_value = raw_value + data.pop(coil_address + 1)
                 coil_data = self.coil_encoder.decode(coil, raw_value)
                 successful_coil_data.append(coil_data)
             except DecodeException as e:
