@@ -6,7 +6,7 @@ coverage>=6.0.0
 exceptiongroup >= 1.0.0
 isort>=5.0.0
 
-pandas>=1.0.5
+pandas>=3.0.2
 pre-commit==4.5.1
 pytest
 pytest-asyncio
