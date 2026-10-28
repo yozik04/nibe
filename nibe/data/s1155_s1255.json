@@ -12401,5 +12401,21 @@
     "unit": "\u00b0C",
     "size": "s16",
     "name": "supply-line-az2-bt68-32192"
+  },
+  "42979": {
+    "title": "Room sensor 1 used for heating/cooling",
+    "size": "u8",
+    "factor": 1,
+    "min": 0,
+    "max": 3,
+    "default": 0,
+    "name": "room-sensor-1-used-for-heating-cooling-42979",
+    "write": true,
+    "mappings": {
+      "0": "Off",
+      "1": "Heating",
+      "2": "Cooling",
+      "3": "Heating and cooling"
+    }
   }
 }
