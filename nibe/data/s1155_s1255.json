@@ -190,7 +190,7 @@
   "30041": {
     "title": "Flow sensor (BF1)",
     "factor": 10,
-    "unit": "l/m",
+    "unit": "l/min",
     "size": "s16",
     "name": "flow-sensor-bf1-30041"
   },
@@ -555,7 +555,7 @@
   "42756": {
     "title": "Inverter fault reset",
     "factor": 1,
-    "size": "u16",
+    "size": "u8",
     "name": "inverter-fault-reset-42756",
     "write": true
   },
@@ -4011,7 +4011,7 @@
   "31529": {
     "title": "Low press (EB100-BP8)",
     "factor": 10,
-    "unit": "\u00b0C",
+    "unit": "bar",
     "size": "s16",
     "name": "low-press-eb100-bp8-31529"
   },
@@ -5362,7 +5362,7 @@
     "unit": "\u00b0C",
     "size": "s16",
     "min": 50.0,
-    "max": 600.0,
+    "max": 700.0,
     "default": 480.0,
     "name": "start-temperature-hw-normal-temperature-40060",
     "write": true
@@ -5373,7 +5373,7 @@
     "unit": "\u00b0C",
     "size": "s16",
     "min": 50.0,
-    "max": 550.0,
+    "max": 700.0,
     "default": 450.0,
     "name": "start-temperature-hw-low-temperature-40061",
     "write": true
@@ -5406,7 +5406,7 @@
     "unit": "\u00b0C",
     "size": "s16",
     "min": 50.0,
-    "max": 650.0,
+    "max": 700.0,
     "default": 510.0,
     "name": "stop-temperature-hw-normal-temperature-40064",
     "write": true
@@ -5417,7 +5417,7 @@
     "unit": "\u00b0C",
     "size": "s16",
     "min": 50.0,
-    "max": 600.0,
+    "max": 700.0,
     "default": 480.0,
     "name": "stop-temperature-hw-low-temperature-40065",
     "write": true
@@ -5487,7 +5487,7 @@
     "factor": 1,
     "size": "s8",
     "min": 0.0,
-    "max": 24.0,
+    "max": 31.0,
     "default": 0.0,
     "name": "language-40092",
     "write": true
@@ -6495,7 +6495,7 @@
     "factor": 1,
     "size": "u8",
     "min": 0.0,
-    "max": 30.0,
+    "max": 33.0,
     "default": 0.0,
     "name": "output-aux1-40217",
     "write": true
@@ -6881,7 +6881,7 @@
     "unit": "\u00b0C",
     "size": "u8",
     "min": 0.0,
-    "max": 35.0,
+    "max": 30.0,
     "default": 20.0,
     "name": "shunted-brine-max-temp-45272",
     "write": true
@@ -6939,7 +6939,7 @@
     "factor": 1,
     "size": "u8",
     "min": 0.0,
-    "max": 67.0,
+    "max": 69.0,
     "default": 0.0,
     "name": "input-aux6-40768",
     "write": true
@@ -8307,7 +8307,7 @@
     "factor": 1,
     "size": "u16",
     "min": 0.0,
-    "max": 10000.0,
+    "max": 60000.0,
     "default": 100.0,
     "name": "el-price-fixed-smart-energy-source-41109",
     "write": true
@@ -8327,7 +8327,7 @@
     "factor": 1,
     "size": "u16",
     "min": 0.0,
-    "max": 10000.0,
+    "max": 60000.0,
     "default": 100.0,
     "name": "el-price-fixed-smart-energy-source-41111",
     "write": true
@@ -8347,7 +8347,7 @@
     "factor": 1,
     "size": "u16",
     "min": 0.0,
-    "max": 10000.0,
+    "max": 60000.0,
     "default": 100.0,
     "name": "el-price-fixed-smart-energy-source-41113",
     "write": true
@@ -8367,7 +8367,7 @@
     "factor": 1,
     "size": "u16",
     "min": 0.0,
-    "max": 10000.0,
+    "max": 60000.0,
     "default": 100.0,
     "name": "el-price-fixed-smart-energy-source-41115",
     "write": true
@@ -8457,7 +8457,7 @@
     "factor": 1,
     "size": "u16",
     "min": 1.0,
-    "max": 10000.0,
+    "max": 60000.0,
     "default": 100.0,
     "name": "ext-step-add-heat-high-tariff-price-smart-energy-source-41124",
     "write": true
@@ -8467,7 +8467,7 @@
     "factor": 1,
     "size": "u16",
     "min": 1.0,
-    "max": 10000.0,
+    "max": 60000.0,
     "default": 100.0,
     "name": "ext-step-add-heat-low-tariff-price-smart-energy-source-41125",
     "write": true
@@ -8477,7 +8477,7 @@
     "factor": 1,
     "size": "u16",
     "min": 1.0,
-    "max": 10000.0,
+    "max": 60000.0,
     "default": 100.0,
     "name": "shunt-add-heat-high-tariff-price-smart-energy-source-41126",
     "write": true
@@ -8487,7 +8487,7 @@
     "factor": 1,
     "size": "u16",
     "min": 1.0,
-    "max": 10000.0,
+    "max": 60000.0,
     "default": 100.0,
     "name": "shunt-add-heat-low-tariff-price-smart-energy-source-41127",
     "write": true
@@ -8497,7 +8497,7 @@
     "factor": 1,
     "size": "u16",
     "min": 1.0,
-    "max": 10000.0,
+    "max": 60000.0,
     "default": 100.0,
     "name": "el-price-fixed-high-tariff-smart-energy-source-41128",
     "write": true
@@ -8507,7 +8507,7 @@
     "factor": 1,
     "size": "u16",
     "min": 1.0,
-    "max": 10000.0,
+    "max": 60000.0,
     "default": 100.0,
     "name": "el-price-fixed-low-tariff-smart-energy-source-41129",
     "write": true
@@ -8517,7 +8517,7 @@
     "factor": 1,
     "size": "u16",
     "min": 1.0,
-    "max": 10000.0,
+    "max": 60000.0,
     "default": 100.0,
     "name": "el-price-variable-high-tariff-smart-energy-source-41130",
     "write": true
@@ -8527,7 +8527,7 @@
     "factor": 1,
     "size": "u16",
     "min": 1.0,
-    "max": 10000.0,
+    "max": 60000.0,
     "default": 100.0,
     "name": "el-price-variable-low-tariff-smart-energy-source-41131",
     "write": true
@@ -9326,7 +9326,6 @@
   "44201": {
     "title": "Power at DOT, manual value",
     "factor": 1,
-    "unit": "kW",
     "size": "u8",
     "min": 0.0,
     "max": 1.0,
@@ -9772,7 +9771,7 @@
   },
   "40001": {
     "title": "Temperature overcharging pool",
-    "factor": 10,
+    "factor": 1,
     "unit": "\u00b0C",
     "size": "u8",
     "min": 1.0,
@@ -11612,7 +11611,7 @@
     "factor": 1,
     "size": "u8",
     "min": 0.0,
-    "max": 67.0,
+    "max": 69.0,
     "default": 0.0,
     "name": "aux-from-modbus-42741",
     "write": true
