@@ -5409,6 +5409,9 @@
     "mappings": {
       "0": "inactive",
       "1": "active"
+    },
+    "read_aliases": {
+      "10": 1
     }
   },
   "48053": {
