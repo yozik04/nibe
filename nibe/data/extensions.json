@@ -841,5 +841,29 @@
         "name": "heat-meter-passive-cooling-42406"
       }
     }
+  },
+  {
+    "description": "Add unnamed Smart Control room sensor 1 heating/cooling register for S1155/S1255",
+    "files": [
+      "s1155_s1255.json"
+    ],
+    "data": {
+      "42979": {
+        "title": "Room sensor 1 used for heating/cooling",
+        "size": "u8",
+        "factor": 1,
+        "min": 0,
+        "max": 3,
+        "default": 0,
+        "name": "room-sensor-1-used-for-heating-cooling-42979",
+        "write": true,
+        "mappings": {
+          "0": "Off",
+          "1": "Heating",
+          "2": "Cooling",
+          "3": "Heating and cooling"
+        }
+      }
+    }
   }
 ]
