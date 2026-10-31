@@ -3340,7 +3340,8 @@
     "max": 10.0,
     "default": 0.0,
     "name": "heat-offset-s4-47008",
-    "write": true
+    "write": true,
+    "unit": "\u00b0C"
   },
   "47009": {
     "title": "Heat Offset S3",
@@ -3351,7 +3352,8 @@
     "max": 10.0,
     "default": 0.0,
     "name": "heat-offset-s3-47009",
-    "write": true
+    "write": true,
+    "unit": "\u00b0C"
   },
   "47010": {
     "title": "Heat Offset S2",
@@ -3362,7 +3364,8 @@
     "max": 10.0,
     "default": 0.0,
     "name": "heat-offset-s2-47010",
-    "write": true
+    "write": true,
+    "unit": "\u00b0C"
   },
   "47011": {
     "title": "Heat Offset S1",
@@ -3373,7 +3376,8 @@
     "max": 10.0,
     "default": 0.0,
     "name": "heat-offset-s1-47011",
-    "write": true
+    "write": true,
+    "unit": "\u00b0C"
   },
   "47012": {
     "title": "Min Supply System 4",
@@ -3580,7 +3584,8 @@
     "max": 10.0,
     "default": 0.0,
     "name": "external-adjustment-s4-47029",
-    "write": true
+    "write": true,
+    "unit": "\u00b0C"
   },
   "47030": {
     "title": "External adjustment S3",
@@ -3591,7 +3596,8 @@
     "max": 10.0,
     "default": 0.0,
     "name": "external-adjustment-s3-47030",
-    "write": true
+    "write": true,
+    "unit": "\u00b0C"
   },
   "47031": {
     "title": "External adjustment S2",
@@ -3602,7 +3608,8 @@
     "max": 10.0,
     "default": 0.0,
     "name": "external-adjustment-s2-47031",
-    "write": true
+    "write": true,
+    "unit": "\u00b0C"
   },
   "47032": {
     "title": "External adjustment S1",
@@ -3613,7 +3620,8 @@
     "max": 10.0,
     "default": 0.0,
     "name": "external-adjustment-s1-47032",
-    "write": true
+    "write": true,
+    "unit": "\u00b0C"
   },
   "47033": {
     "title": "External adjustment with room sensor S4",

@@ -1227,7 +1227,8 @@
     "info": "Current value of the delta T for the heat medium flow",
     "size": "s16",
     "factor": 10,
-    "name": "heat-medium-flow-dt-actual-43065"
+    "name": "heat-medium-flow-dt-actual-43065",
+    "unit": "\u00b0C"
   },
   "43081": {
     "title": "Tot. op.time add.",
@@ -1768,7 +1769,8 @@
     "max": 10.0,
     "default": 0.0,
     "name": "heat-offset-s1-47011",
-    "write": true
+    "write": true,
+    "unit": "\u00b0C"
   },
   "47015": {
     "title": "Min Supply System 1",
@@ -1837,7 +1839,8 @@
     "max": 10.0,
     "default": 0.0,
     "name": "external-adjustment-s1-47032",
-    "write": true
+    "write": true,
+    "unit": "\u00b0C"
   },
   "47036": {
     "title": "External adjustment with room sensor S1",
