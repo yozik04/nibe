@@ -1156,7 +1156,8 @@
     "factor": 60,
     "unit": "min",
     "size": "u16",
-    "name": "timer-eme-30583"
+    "name": "timer-eme-30583",
+    "nature": "measurement"
   },
   "30591": {
     "title": "Fan mode 4",
@@ -2015,7 +2016,7 @@
   "31120": {
     "title": "Relay status, imm. heat. board (EB100-EP14)",
     "factor": 1,
-    "size": "u8",
+    "size": "u16",
     "name": "relay-status-imm-heat-board-eb100-ep14-31120"
   },
   "31121": {
@@ -7743,5 +7744,41 @@
     "factor": 1,
     "size": "u8",
     "name": "eev-state-eb101-32422"
+  },
+  "31485": {
+    "title": "Compressor status (EB101)",
+    "factor": 1,
+    "size": "u8",
+    "name": "compressor-status-eb101-31485"
+  },
+  "32727": {
+    "title": "Solar energy used for",
+    "factor": 1,
+    "size": "u16",
+    "name": "solar-energy-used-for-32727",
+    "mappings": {
+      "0": "No effect",
+      "1": "Hot water",
+      "2": "Heating",
+      "4": "Cooling",
+      "8": "Pool",
+      "16": "Pool 2",
+      "32": "Solar PV AUX",
+      "64": "Energy storage"
+    }
+  },
+  "33813": {
+    "title": "Status",
+    "factor": 1,
+    "size": "u8",
+    "name": "status-33813",
+    "mappings": {
+      "1": "Preheating",
+      "2": "Waiting",
+      "3": "Running",
+      "4": "Off",
+      "5": "Defrost",
+      "6": "Off"
+    }
   }
 }
