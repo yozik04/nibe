@@ -7402,8 +7402,8 @@
     "factor": 1,
     "name": "state-sg-ready-44874",
     "mappings": {
-      "10": "Blocking",
-      "20": "Normal",
+      "10": "Normal",
+      "20": "Blocking",
       "30": "Low Price",
       "40": "Overcapacity"
     }
