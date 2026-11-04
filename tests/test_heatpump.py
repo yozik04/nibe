@@ -89,6 +89,7 @@ class HeatpumpIntialization(unittest.IsolatedAsyncioTestCase):
     "model,series",
     [
         (Model.F370, Series.F),
+        (Model.F372, Series.F),
         (Model.F470, Series.F),
         (Model.F730, Series.F),
         (Model.F750, Series.F),
