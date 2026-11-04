@@ -1,5 +1,6 @@
 [
   {
+    "description": "Common F-Series corrections",
     "files": [
       "f370_f372_f470.json",
       "f730.json",
@@ -46,6 +47,42 @@
           "0": "OFF",
           "1": "ON"
         }
+      },
+      "43064": {
+        "unit": "\u00b0C"
+      },
+      "43065": {
+        "unit": "\u00b0C"
+      },
+      "44910": {
+        "unit": "\u00b0C"
+      },
+      "44911": {
+        "unit": "\u00b0C"
+      },
+      "47029": {
+        "unit": "\u00b0C"
+      },
+      "47030": {
+        "unit": "\u00b0C"
+      },
+      "47031": {
+        "unit": "\u00b0C"
+      },
+      "47032": {
+        "unit": "\u00b0C"
+      },
+      "47008": {
+        "unit": "\u00b0C"
+      },
+      "47009": {
+        "unit": "\u00b0C"
+      },
+      "47010": {
+        "unit": "\u00b0C"
+      },
+      "47011": {
+        "unit": "\u00b0C"
       }
     }
   },
@@ -686,37 +723,37 @@
     ],
     "data": {
       "32284": {
-        "nature": "measurement"
+        "nature": "total"
       },
       "32286": {
-        "nature": "measurement"
+        "nature": "total"
       },
       "32288": {
-        "nature": "measurement"
+        "nature": "total"
       },
       "32290": {
-        "nature": "measurement"
+        "nature": "total"
       },
       "32292": {
-        "nature": "measurement"
+        "nature": "total"
       },
       "32294": {
-        "nature": "measurement"
+        "nature": "total"
       },
       "32296": {
-        "nature": "measurement"
+        "nature": "total"
       },
       "32298": {
-        "nature": "measurement"
+        "nature": "total"
       },
       "32300": {
-        "nature": "measurement"
+        "nature": "total"
       },
       "32302": {
-        "nature": "measurement"
+        "nature": "total"
       },
       "32304": {
-        "nature": "measurement"
+        "nature": "total"
       },
       "32306": {
         "unit": "kW",
@@ -754,8 +791,8 @@
     "data": {
       "44874": {
         "mappings": {
-          "10": "Blocking",
-          "20": "Normal",
+          "10": "Normal",
+          "20": "Blocking",
           "30": "Low Price",
           "40": "Overcapacity"
         }
@@ -790,6 +827,78 @@
           "3": "EMK300/310",
           "4": "EMK500",
           "5": "EMK300/310/05"
+        }
+      }
+    }
+  },
+  {
+    "description": "SG-Ready/Aux from Modbus - SMOS40",
+    "files": [
+      "smos40.json"
+    ],
+    "data": {
+      "30580": {
+        "mappings": {
+          "10": "Normal",
+          "20": "Block",
+          "30": "Low price",
+          "40": "Boost"
+        }
+      },
+      "31912": {
+        "mappings": {
+          "10": "Normal",
+          "20": "Block",
+          "30": "Low price",
+          "40": "Boost"
+        }
+      },
+      "46009": {
+        "mappings": {
+          "0": "Block",
+          "1": "Normal",
+          "2": "Low price",
+          "3": "Boost"
+        }
+      }
+    }
+  },
+  {
+    "description": "Add missing passive cooling energy register for F1155/F1255",
+    "files": [
+      "f1155_f1255.json"
+    ],
+    "data": {
+      "42406": {
+        "title": "Heat Meter - Passive Cooling",
+        "info": "Accumulated energy production as calculated by the heat meter",
+        "unit": "kWh",
+        "size": "u32",
+        "factor": 10,
+        "name": "heat-meter-passive-cooling-42406"
+      }
+    }
+  },
+  {
+    "description": "Add unnamed Smart Control room sensor 1 heating/cooling register for S1155/S1255",
+    "files": [
+      "s1155_s1255.json"
+    ],
+    "data": {
+      "42979": {
+        "title": "Room sensor 1 used for heating/cooling",
+        "size": "u8",
+        "factor": 1,
+        "min": 0,
+        "max": 3,
+        "default": 0,
+        "name": "room-sensor-1-used-for-heating-cooling-42979",
+        "write": true,
+        "mappings": {
+          "0": "Off",
+          "1": "Heating",
+          "2": "Cooling",
+          "3": "Heating and cooling"
         }
       }
     }

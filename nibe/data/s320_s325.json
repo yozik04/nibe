@@ -7445,7 +7445,7 @@
     "unit": "kWh",
     "size": "u32",
     "name": "energy-log-produced-energy-for-heating-over-the-past-hour-32284",
-    "nature": "measurement"
+    "nature": "total"
   },
   "32286": {
     "title": "Energy log - Produced energy for hot water over the past hour",
@@ -7453,7 +7453,7 @@
     "unit": "kWh",
     "size": "u32",
     "name": "energy-log-produced-energy-for-hot-water-over-the-past-hour-32286",
-    "nature": "measurement"
+    "nature": "total"
   },
   "32288": {
     "title": "Energy log - Produced energy for pool over the past hour",
@@ -7461,7 +7461,7 @@
     "unit": "kWh",
     "size": "u32",
     "name": "energy-log-produced-energy-for-pool-over-the-past-hour-32288",
-    "nature": "measurement"
+    "nature": "total"
   },
   "32290": {
     "title": "Energy log - Produced energy for cooling over the past hour",
@@ -7469,7 +7469,7 @@
     "unit": "kWh",
     "size": "u32",
     "name": "energy-log-produced-energy-for-cooling-over-the-past-hour-32290",
-    "nature": "measurement"
+    "nature": "total"
   },
   "32292": {
     "title": "Energy log - Used energy for heating over the past hour",
@@ -7477,7 +7477,7 @@
     "unit": "kWh",
     "size": "u32",
     "name": "energy-log-used-energy-for-heating-over-the-past-hour-32292",
-    "nature": "measurement"
+    "nature": "total"
   },
   "32294": {
     "title": "Energy log - Used energy for hot water over the past hour",
@@ -7485,7 +7485,7 @@
     "unit": "kWh",
     "size": "u32",
     "name": "energy-log-used-energy-for-hot-water-over-the-past-hour-32294",
-    "nature": "measurement"
+    "nature": "total"
   },
   "32296": {
     "title": "Energy log - Used energy for pool over the past hour",
@@ -7493,7 +7493,7 @@
     "unit": "kWh",
     "size": "u32",
     "name": "energy-log-used-energy-for-pool-over-the-past-hour-32296",
-    "nature": "measurement"
+    "nature": "total"
   },
   "32298": {
     "title": "Energy log - Used energy for cooling over the past hour",
@@ -7501,7 +7501,7 @@
     "unit": "kWh",
     "size": "u32",
     "name": "energy-log-used-energy-for-cooling-over-the-past-hour-32298",
-    "nature": "measurement"
+    "nature": "total"
   },
   "32300": {
     "title": "Energy log - Used energy by additional heater for heating over the past hour",
@@ -7509,7 +7509,7 @@
     "unit": "kWh",
     "size": "u32",
     "name": "energy-log-used-energy-by-additional-heater-for-heating-over-the-past-hour-32300",
-    "nature": "measurement"
+    "nature": "total"
   },
   "32302": {
     "title": "Energy log - Used energy by additional heater for hot water over the past hour",
@@ -7517,7 +7517,7 @@
     "unit": "kWh",
     "size": "u32",
     "name": "energy-log-used-energy-by-additional-heater-for-hot-water-over-the-past-hour-32302",
-    "nature": "measurement"
+    "nature": "total"
   },
   "32304": {
     "title": "Energy log - Used energy by additional heater for pool over the past hour",
@@ -7525,7 +7525,7 @@
     "unit": "kWh",
     "size": "u32",
     "name": "energy-log-used-energy-by-additional-heater-for-pool-over-the-past-hour-32304",
-    "nature": "measurement"
+    "nature": "total"
   },
   "32306": {
     "title": "Energy log - Current power consumption",
