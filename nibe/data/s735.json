@@ -7641,17 +7641,6 @@
     "name": "aux-solar-pv-42676",
     "write": true
   },
-  "40001": {
-    "title": "Temperature overcharging pool",
-    "factor": 1,
-    "unit": "\u00b0C",
-    "size": "u8",
-    "min": 1.0,
-    "max": 50.0,
-    "default": 1.0,
-    "name": "temperature-overcharging-pool-40001",
-    "write": true
-  },
   "42675": {
     "title": "Pump speed (AZ20-GP6)",
     "factor": 1,
