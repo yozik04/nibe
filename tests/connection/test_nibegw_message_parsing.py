@@ -233,6 +233,60 @@ class MessageResponseParsingTestCase(unittest.TestCase):
         self.assertEqual(data.data.id, 10040)
         self.assertEqual(data.data.string, "värme")
 
+    def test_parse_aa5_msg_1(self):
+        data = self._parse_hexlified_raw_message("5c00025502087a27")
+        assert data.address == "ECS_S2"
+        assert data.cmd == "AA5_RELAYS_MSG"
+        assert data.data.relays.k4
+        assert not data.data.relays.k3
+        assert not data.data.relays.k2
+        assert data.data.unknown == 0x7A
+
+    def test_parse_aa5_msg_1_mixing_valve_open(self):
+        data = self._parse_hexlified_raw_message("5c000255020c7a23")
+        assert data.data.relays.k4
+        assert data.data.relays.k3
+        assert not data.data.relays.k2
+
+    def test_parse_aa5_msg_1_mixing_valve_close(self):
+        data = self._parse_hexlified_raw_message("5c000255020a7a25")
+        assert data.data.relays.k4
+        assert not data.data.relays.k3
+        assert data.data.relays.k2
+
+    def test_parse_aa5_msg_2(self):
+        data = self._parse_hexlified_raw_message("5c0002a002000cac")
+        assert data.address == "ECS_S2"
+        assert data.cmd == "AA5_SHUNT_MSG"
+        assert data.data.unknown == 0
+        assert data.data.mixing_valve_position == 12
+
+    def test_parse_aa5_msg_2_fully_open(self):
+        data = self._parse_hexlified_raw_message("5c0002a0020064c4")
+        assert data.data.mixing_valve_position == 100
+
+    def test_parse_aa5_msg_2_escaped(self):
+        data = self._parse_hexlified_raw_message("5c0002a003005c5ca1")
+        assert data.data.mixing_valve_position == 0x5C
+
+    def test_parse_aa5_msg_2_address_2b(self):
+        data = self._parse_hexlified_raw_message("5c002ba0026400ed")
+        assert data.address == 0x2B
+        assert data.data.unknown == 100
+        assert data.data.mixing_valve_position == 0
+
+    def test_parse_aa5_msg_2_heatpump(self):
+        data = self._parse_hexlified_raw_message("5c41c9a00200002a")
+        assert data.address == "HEATPUMP_1"
+        assert data.cmd == "AA5_SHUNT_MSG"
+        assert data.data.mixing_valve_position == 0
+
+    def test_parse_aa5_req_token(self):
+        data = self._parse_hexlified_raw_message("5c0002900092")
+        assert data.address == "ECS_S2"
+        assert data.cmd == "AA5_INPUTS_REQ"
+        assert data.data == b""
+
     @staticmethod
     def _parse_hexlified_raw_message(txt_raw):
         raw = binascii.unhexlify(txt_raw)
@@ -540,6 +594,25 @@ class MessageHeatpumpReqParsingTestCase(unittest.TestCase):
             cmd="HEATPUMP_REQ_FC",
             data=b"\x00\x00\x00\x06\xff\x00\x06\xff\x00\x06\xff\x00\x00\xce\xff\x00\xce\xff\x00",
         )
+
+    def test_packet_aa5_inputs_req(self):
+        """Real reply from internal module at 0x2B (elupus/esphome-nibe#115)"""
+        data = self.parse("c09010 ff03ff03b602ff03ff03ff03ff03ff03 08")
+        assert data.cmd == "AA5_INPUTS_REQ"
+        assert data.data.x2_23_24 == 1023
+        assert data.data.x2_21_22 == 1023
+        assert data.data.x2_19_20 == 694
+        assert data.data.x2_17_18 == 1023
+        assert data.data.x2_13_14 == 1023
+        assert data.data.unknown_7 == 1023
+
+    def test_packet_aa5_inputs_req_single_word(self):
+        """DEH accepts a reply with only the first sensor"""
+        data = self.parse("c09002 c802 98")
+        assert data.cmd == "AA5_INPUTS_REQ"
+        assert data.data.x2_23_24 == 712
+        assert data.data.x2_21_22 is None
+        assert data.data.unknown_7 is None
 
     @staticmethod
     def parse(txt_raw):
