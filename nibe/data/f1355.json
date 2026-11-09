@@ -4772,7 +4772,8 @@
     "min": 0.0,
     "max": 9999999.0,
     "default": 0.0,
-    "name": "compressor-starts-eb100-ep14-43416"
+    "name": "compressor-starts-eb100-ep14-43416",
+    "nature": "total_increasing"
   },
   "43418": {
     "title": "Tot. op.time compr. EB100-EP15",
@@ -5232,7 +5233,8 @@
     "title": "EB108-EP15 Compressor starts",
     "size": "u32",
     "factor": 1,
-    "name": "eb108-ep15-compressor-starts-43614"
+    "name": "eb108-ep15-compressor-starts-43614",
+    "nature": "total_increasing"
   },
   "43616": {
     "title": "EB108-EP15 Tot. op.time compr",
@@ -5365,7 +5367,8 @@
     "min": 0.0,
     "max": 9999999.0,
     "default": 0.0,
-    "name": "eb108-ep14-compressor-starts-43635"
+    "name": "eb108-ep14-compressor-starts-43635",
+    "nature": "total_increasing"
   },
   "43637": {
     "title": "EB108-EP14 Tot. op.time compr",
@@ -5520,7 +5523,8 @@
     "title": "EB107-EP15 Compressor starts",
     "size": "u32",
     "factor": 1,
-    "name": "eb107-ep15-compressor-starts-43676"
+    "name": "eb107-ep15-compressor-starts-43676",
+    "nature": "total_increasing"
   },
   "43678": {
     "title": "EB107-EP15 Tot. op.time compr",
@@ -5653,7 +5657,8 @@
     "min": 0.0,
     "max": 9999999.0,
     "default": 0.0,
-    "name": "eb107-ep14-compressor-starts-43697"
+    "name": "eb107-ep14-compressor-starts-43697",
+    "nature": "total_increasing"
   },
   "43699": {
     "title": "EB107-EP14 Tot. op.time compr",
@@ -5808,7 +5813,8 @@
     "title": "EB106-EP15 Compressor starts",
     "size": "u32",
     "factor": 1,
-    "name": "eb106-ep15-compressor-starts-43738"
+    "name": "eb106-ep15-compressor-starts-43738",
+    "nature": "total_increasing"
   },
   "43740": {
     "title": "EB106-EP15 Tot. op.time compr",
@@ -5941,7 +5947,8 @@
     "min": 0.0,
     "max": 9999999.0,
     "default": 0.0,
-    "name": "eb106-ep14-compressor-starts-43759"
+    "name": "eb106-ep14-compressor-starts-43759",
+    "nature": "total_increasing"
   },
   "43761": {
     "title": "EB106-EP14 Tot. op.time compr",
@@ -6096,7 +6103,8 @@
     "title": "EB105-EP15 Compressor starts",
     "size": "u32",
     "factor": 1,
-    "name": "eb105-ep15-compressor-starts-43800"
+    "name": "eb105-ep15-compressor-starts-43800",
+    "nature": "total_increasing"
   },
   "43802": {
     "title": "EB105-EP15 Tot. op.time compr",
@@ -6229,7 +6237,8 @@
     "min": 0.0,
     "max": 9999999.0,
     "default": 0.0,
-    "name": "eb105-ep14-compressor-starts-43821"
+    "name": "eb105-ep14-compressor-starts-43821",
+    "nature": "total_increasing"
   },
   "43823": {
     "title": "EB105-EP14 Tot. op.time compr",
@@ -6384,7 +6393,8 @@
     "title": "EB104-EP15 Compressor starts",
     "size": "u32",
     "factor": 1,
-    "name": "eb104-ep15-compressor-starts-43862"
+    "name": "eb104-ep15-compressor-starts-43862",
+    "nature": "total_increasing"
   },
   "43864": {
     "title": "EB104-EP15 Tot. op.time compr",
@@ -6517,7 +6527,8 @@
     "min": 0.0,
     "max": 9999999.0,
     "default": 0.0,
-    "name": "eb104-ep14-compressor-starts-43883"
+    "name": "eb104-ep14-compressor-starts-43883",
+    "nature": "total_increasing"
   },
   "43885": {
     "title": "EB104-EP14 Tot. op.time compr",
@@ -6672,7 +6683,8 @@
     "title": "EB103-EP15 Compressor starts",
     "size": "u32",
     "factor": 1,
-    "name": "eb103-ep15-compressor-starts-43924"
+    "name": "eb103-ep15-compressor-starts-43924",
+    "nature": "total_increasing"
   },
   "43926": {
     "title": "EB103-EP15 Tot. op.time compr",
@@ -6805,7 +6817,8 @@
     "min": 0.0,
     "max": 9999999.0,
     "default": 0.0,
-    "name": "eb103-ep14-compressor-starts-43945"
+    "name": "eb103-ep14-compressor-starts-43945",
+    "nature": "total_increasing"
   },
   "43947": {
     "title": "EB103-EP14 Tot. op.time compr",
@@ -6960,7 +6973,8 @@
     "title": "EB102-EP15 Compressor starts",
     "size": "u32",
     "factor": 1,
-    "name": "eb102-ep15-compressor-starts-43986"
+    "name": "eb102-ep15-compressor-starts-43986",
+    "nature": "total_increasing"
   },
   "43988": {
     "title": "EB102-EP15 Tot. op.time compr",
@@ -7093,7 +7107,8 @@
     "min": 0.0,
     "max": 9999999.0,
     "default": 0.0,
-    "name": "eb102-ep14-compressor-starts-44007"
+    "name": "eb102-ep14-compressor-starts-44007",
+    "nature": "total_increasing"
   },
   "44009": {
     "title": "EB102-EP14 Tot. op.time compr",
@@ -7248,7 +7263,8 @@
     "title": "EB101-EP15 Compressor starts",
     "size": "u32",
     "factor": 1,
-    "name": "eb101-ep15-compressor-starts-44048"
+    "name": "eb101-ep15-compressor-starts-44048",
+    "nature": "total_increasing"
   },
   "44050": {
     "title": "EB101-EP15 Tot. op.time compr",
@@ -7381,7 +7397,8 @@
     "min": 0.0,
     "max": 9999999.0,
     "default": 0.0,
-    "name": "eb101-ep14-compressor-starts-44069"
+    "name": "eb101-ep14-compressor-starts-44069",
+    "nature": "total_increasing"
   },
   "44071": {
     "title": "EB101-EP14 Tot. op.time compr",

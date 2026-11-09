@@ -2741,7 +2741,8 @@
     "min": 0.0,
     "max": 9999999.0,
     "default": 0.0,
-    "name": "eb101-ep14-compressor-starts-44069"
+    "name": "eb101-ep14-compressor-starts-44069",
+    "nature": "total_increasing"
   },
   "44071": {
     "title": "EB101-EP14 Tot. op.time compr",
