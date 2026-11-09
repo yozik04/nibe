@@ -83,6 +83,57 @@
       },
       "47011": {
         "unit": "\u00b0C"
+      },
+      "43416": {
+        "nature": "total_increasing"
+      },
+      "43614": {
+        "nature": "total_increasing"
+      },
+      "43635": {
+        "nature": "total_increasing"
+      },
+      "43676": {
+        "nature": "total_increasing"
+      },
+      "43697": {
+        "nature": "total_increasing"
+      },
+      "43738": {
+        "nature": "total_increasing"
+      },
+      "43759": {
+        "nature": "total_increasing"
+      },
+      "43800": {
+        "nature": "total_increasing"
+      },
+      "43821": {
+        "nature": "total_increasing"
+      },
+      "43862": {
+        "nature": "total_increasing"
+      },
+      "43883": {
+        "nature": "total_increasing"
+      },
+      "43924": {
+        "nature": "total_increasing"
+      },
+      "43945": {
+        "nature": "total_increasing"
+      },
+      "43986": {
+        "nature": "total_increasing"
+      },
+      "44007": {
+        "nature": "total_increasing"
+      },
+      "44048": {
+        "nature": "total_increasing"
+      },
+      "44069": {
+        "nature": "total_increasing"
       }
     }
   },
