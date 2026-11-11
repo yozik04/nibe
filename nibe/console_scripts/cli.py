@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 from ast import literal_eval
-import asyncio
 from contextlib import AbstractAsyncContextManager
 import io
 import logging
@@ -126,13 +125,12 @@ def add_connect_command(command: click.Command):
 @click.command(help="Monitor data sent by pump out of band")
 @click.pass_obj
 async def monitor(obj: ConnectionContext):
-    def on_coil_update(coil_data: CoilData):
-        click.echo(coil_data)
+    # Imported here so other commands start without loading textual.
+    from .tui_monitor import MonitorApp
 
-    obj.heatpump.subscribe(HeatPump.COIL_UPDATE_EVENT, on_coil_update)
-
-    while True:
-        await asyncio.sleep(1)
+    app = MonitorApp()
+    obj.heatpump.subscribe(HeatPump.COIL_UPDATE_EVENT, app.update_coil)
+    await app.run_async()
 
 
 add_connect_command(monitor)
