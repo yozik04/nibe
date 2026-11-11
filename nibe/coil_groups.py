@@ -49,6 +49,22 @@ class FanCoilGroup(CoilGroup):
     speeds: dict[str, int]
 
 
+@dataclass
+class HeatingCurveCoilGroup(CoilGroup):
+    curve: int
+    offset: int
+    min_supply: int
+    max_supply: int
+    use_room_sensor: int
+    room_setpoint: int
+    room_factor: int
+    room_temperature: int
+    calculated_supply: int
+    outdoor_temperature: int
+    supply_temperature: int
+    return_temperature: int
+
+
 _UNIT_COILGROUPS_F = {
     "main": UnitCoilGroup(
         name="Main",
@@ -232,4 +248,180 @@ _FAN_COILGROUPS_S = {}
 FAN_COILGROUPS = {
     Series.F: _FAN_COILGROUPS_F,
     Series.S: _FAN_COILGROUPS_S,
+}
+
+_HEATING_CURVE_COILGROUPS_F = {
+    "s1": HeatingCurveCoilGroup(
+        name="Heating Curve S1",
+        curve=47007,
+        offset=47011,
+        min_supply=47015,
+        max_supply=47019,
+        use_room_sensor=47394,
+        room_setpoint=47398,
+        room_factor=47402,
+        room_temperature=40195,
+        calculated_supply=43009,
+        outdoor_temperature=40067,
+        supply_temperature=40008,
+        return_temperature=40012,
+    ),
+    "s2": HeatingCurveCoilGroup(
+        name="Heating Curve S2",
+        curve=47006,
+        offset=47010,
+        min_supply=47014,
+        max_supply=47018,
+        use_room_sensor=47393,
+        room_setpoint=47397,
+        room_factor=47401,
+        room_temperature=40194,
+        calculated_supply=43008,
+        outdoor_temperature=40067,
+        supply_temperature=40007,
+        return_temperature=40129,
+    ),
+    "s3": HeatingCurveCoilGroup(
+        name="Heating Curve S3",
+        curve=47005,
+        offset=47009,
+        min_supply=47013,
+        max_supply=47017,
+        use_room_sensor=47392,
+        room_setpoint=47396,
+        room_factor=47400,
+        room_temperature=40193,
+        calculated_supply=43007,
+        outdoor_temperature=40067,
+        supply_temperature=40006,
+        return_temperature=40128,
+    ),
+    "s4": HeatingCurveCoilGroup(
+        name="Heating Curve S4",
+        curve=47004,
+        offset=47008,
+        min_supply=47012,
+        max_supply=47016,
+        use_room_sensor=47391,
+        room_setpoint=47395,
+        room_factor=47399,
+        room_temperature=40192,
+        calculated_supply=43006,
+        outdoor_temperature=40067,
+        supply_temperature=40005,
+        return_temperature=40127,
+    ),
+    "s5": HeatingCurveCoilGroup(
+        name="Heating Curve S5",
+        curve=48489,
+        offset=48494,
+        min_supply=48498,
+        max_supply=48502,
+        use_room_sensor=48678,
+        room_setpoint=48683,
+        room_factor=48688,
+        room_temperature=40191,
+        calculated_supply=40220,
+        outdoor_temperature=40067,
+        supply_temperature=40162,
+        return_temperature=40166,
+    ),
+    "s6": HeatingCurveCoilGroup(
+        name="Heating Curve S6",
+        curve=48488,
+        offset=48493,
+        min_supply=48497,
+        max_supply=48501,
+        use_room_sensor=48677,
+        room_setpoint=48682,
+        room_factor=48687,
+        room_temperature=40190,
+        calculated_supply=40219,
+        outdoor_temperature=40067,
+        supply_temperature=40161,
+        return_temperature=40165,
+    ),
+    "s7": HeatingCurveCoilGroup(
+        name="Heating Curve S7",
+        curve=47567,
+        offset=48492,
+        min_supply=48496,
+        max_supply=48500,
+        use_room_sensor=48676,
+        room_setpoint=48681,
+        room_factor=48686,
+        room_temperature=40189,
+        calculated_supply=40218,
+        outdoor_temperature=40067,
+        supply_temperature=40160,
+        return_temperature=40164,
+    ),
+    "s8": HeatingCurveCoilGroup(
+        name="Heating Curve S8",
+        curve=47525,
+        offset=48491,
+        min_supply=48495,
+        max_supply=48499,
+        use_room_sensor=48675,
+        room_setpoint=48680,
+        room_factor=48685,
+        room_temperature=40188,
+        calculated_supply=40217,
+        outdoor_temperature=40067,
+        supply_temperature=40159,
+        return_temperature=40163,
+    ),
+}
+
+_HEATING_CURVE_COILGROUPS_S = {
+    "s1": HeatingCurveCoilGroup(
+        name="Heating Curve S1",
+        curve=40027,
+        offset=40031,
+        min_supply=40035,
+        max_supply=40039,
+        use_room_sensor=40203,
+        room_setpoint=40207,
+        room_factor=40211,
+        room_temperature=30117,
+        calculated_supply=31018,
+        outdoor_temperature=30038,
+        supply_temperature=30006,
+        return_temperature=30008,
+    ),
+    "s2": HeatingCurveCoilGroup(
+        name="Heating Curve S2",
+        curve=40026,
+        offset=40030,
+        min_supply=40034,
+        max_supply=40038,
+        use_room_sensor=40202,
+        room_setpoint=40206,
+        room_factor=40210,
+        room_temperature=30116,
+        calculated_supply=31017,
+        outdoor_temperature=30038,
+        supply_temperature=30005,
+        return_temperature=30078,
+    ),
+    "s3": HeatingCurveCoilGroup(
+        name="Heating Curve S3",
+        curve=40025,
+        offset=40029,
+        min_supply=40033,
+        max_supply=40037,
+        use_room_sensor=40201,
+        room_setpoint=40205,
+        room_factor=40209,
+        room_temperature=30115,
+        calculated_supply=31016,
+        outdoor_temperature=30038,
+        supply_temperature=30004,
+        return_temperature=30077,
+    ),
+}
+
+HEATING_CURVE_COILGROUPS = {
+    Series.F: _HEATING_CURVE_COILGROUPS_F,
+    Series.S: _HEATING_CURVE_COILGROUPS_S,
 }
