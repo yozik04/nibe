@@ -2,15 +2,12 @@
 
 from __future__ import annotations
 
-import asyncio
 from collections.abc import Iterable
-import contextlib
 from pathlib import Path
-import signal
 
 from rich.segment import Segment
 from textual import events
-from textual.app import App, ComposeResult
+from textual.app import ComposeResult
 from textual.binding import Binding
 from textual.containers import Horizontal, Vertical
 from textual.message import Message
@@ -29,13 +26,7 @@ from textual.widgets.option_list import OptionDoesNotExist
 
 from ..coil import Coil
 from ..log_set import MODBUS40_SLOTS, coil_slots, format_log_set, log_set_slots
-
-# Textual leaves the terminal in full screen raw mode if these end the process.
-EXIT_SIGNALS = tuple(
-    getattr(signal, name)
-    for name in ("SIGTERM", "SIGHUP", "SIGINT")
-    if hasattr(signal, name)
-)
+from .tui_app import SignalSafeApp
 
 
 def _prompt(coil: Coil) -> str:
@@ -138,7 +129,7 @@ class SaveScreen(ModalScreen[bool]):
         yield Footer()
 
 
-class LogSetApp(App[None]):
+class LogSetApp(SignalSafeApp[None]):
     """Toggle the registers of a LOG.SET file and set their order."""
 
     TITLE = "LOG.SET"
@@ -190,16 +181,6 @@ class LogSetApp(App[None]):
         self.sub_title = str(self._path)
         self._show_registers("")
         self._show_order()
-        loop = asyncio.get_running_loop()
-        for signum in EXIT_SIGNALS:
-            with contextlib.suppress(NotImplementedError):
-                loop.add_signal_handler(signum, self.exit)
-
-    def on_unmount(self) -> None:
-        loop = asyncio.get_running_loop()
-        for signum in EXIT_SIGNALS:
-            with contextlib.suppress(NotImplementedError):
-                loop.remove_signal_handler(signum)
 
     def _show_registers(self, text: str) -> None:
         registers = self.query_one("#registers", SelectionList)
