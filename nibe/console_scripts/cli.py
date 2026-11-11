@@ -5,6 +5,7 @@ import asyncio
 from contextlib import AbstractAsyncContextManager
 import io
 import logging
+from pathlib import Path
 import re
 from typing import IO
 
@@ -14,8 +15,15 @@ from ..coil import CoilData
 from ..connection import Connection
 from ..connection.modbus import Modbus
 from ..connection.nibegw import Block, NibeGW
-from ..exceptions import NibeException
-from ..heatpump import HeatPump, Model
+from ..exceptions import CoilNotFoundException, NibeException
+from ..heatpump import HeatPump, Model, Series
+from ..log_set import (
+    DATABASE_VERSION,
+    MODBUS40_SLOTS,
+    format_log_set,
+    log_set_slots,
+    parse_log_set,
+)
 
 
 @click.group()
@@ -229,6 +237,68 @@ def parse_file(file: IO, type: str):
         remaining = stream.read()
         if remaining:
             click.echo(f"Remaining: {stream.read()}")
+
+
+LOG_SET_MODELS = [model.name for model in Model if model.series == Series.F]
+
+
+@cli.command(help="Create a LOG.SET file with the registers MODBUS40 should send")
+@click.argument("model", type=click.Choice(LOG_SET_MODELS), metavar="MODEL")
+@click.argument("addresses", type=int, nargs=-1, required=True)
+@click.option(
+    "-o",
+    "--output",
+    type=click.Path(dir_okay=False, path_type=Path),
+    default="LOG.SET",
+    show_default=True,
+)
+@click.option("--database-version", default=DATABASE_VERSION, show_default=True)
+async def log_set(
+    model: str, addresses: tuple[int, ...], output: Path, database_version: str
+):
+    heatpump = HeatPump(Model[model])
+    await heatpump.initialize()
+    try:
+        coils = [heatpump.get_coil_by_address(address) for address in addresses]
+    except CoilNotFoundException as exception:
+        raise click.BadParameter(str(exception), param_hint="ADDRESSES") from exception
+
+    slots = log_set_slots(coils)
+    if slots > MODBUS40_SLOTS:
+        click.echo(
+            f"Warning: the registers take {slots} slots,"
+            f" MODBUS40 only sends the first {MODBUS40_SLOTS}",
+            err=True,
+        )
+    output.write_bytes(format_log_set(coils, database_version=database_version))
+    click.echo(f"Wrote {len(coils)} registers ({slots} slots) to {output}")
+
+
+@cli.command(help="Select the registers of a LOG.SET file interactively")
+@click.argument("model", type=click.Choice(LOG_SET_MODELS), metavar="MODEL")
+@click.option(
+    "-o",
+    "--output",
+    type=click.Path(dir_okay=False, path_type=Path),
+    default="LOG.SET",
+    show_default=True,
+    help="File to edit, its registers are loaded when it exists",
+)
+@click.option("--database-version", default=DATABASE_VERSION, show_default=True)
+async def log_set_edit(model: str, output: Path, database_version: str):
+    try:
+        from .log_set_tui import LogSetApp
+    except ImportError as exception:
+        raise click.ClickException(
+            "The editor needs the tui extra: pip install nibe[tui]"
+        ) from exception
+
+    heatpump = HeatPump(Model[model])
+    await heatpump.initialize()
+    selected = parse_log_set(output.read_bytes()) if output.exists() else []
+    await LogSetApp(
+        heatpump.get_coils(), selected, output, database_version
+    ).run_async()
 
 
 def main():
