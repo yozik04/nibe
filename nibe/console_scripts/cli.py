@@ -287,7 +287,7 @@ async def log_set(
 @click.option("--database-version", default=DATABASE_VERSION, show_default=True)
 async def log_set_edit(model: str, output: Path, database_version: str):
     # Imported here so other commands start without loading textual.
-    from .log_set_tui import LogSetApp
+    from .tui_log_set import LogSetApp
 
     heatpump = HeatPump(Model[model])
     await heatpump.initialize()

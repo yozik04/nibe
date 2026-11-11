@@ -8,9 +8,9 @@ import pytest
 from textual.widgets import Input, Label, ListItem, SelectionList
 
 from nibe.coil import Coil
-from nibe.console_scripts import log_set_tui
+from nibe.console_scripts import tui_log_set
 from nibe.console_scripts.cli import cli
-from nibe.console_scripts.log_set_tui import (
+from nibe.console_scripts.tui_log_set import (
     FilterInput,
     LogSetApp,
     OrderList,
@@ -202,7 +202,7 @@ async def test_cli_log_set_edit(tmp_path, monkeypatch: pytest.MonkeyPatch):
         async def run_async(self):
             started["ran"] = True
 
-    monkeypatch.setattr(log_set_tui, "LogSetApp", FakeApp)
+    monkeypatch.setattr(tui_log_set, "LogSetApp", FakeApp)
     output = tmp_path / "LOG.SET"
     output.write_bytes(REFERENCE)
     result = await CliRunner().invoke(
