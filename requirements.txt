@@ -11,6 +11,8 @@ pre-commit==4.5.1
 pytest
 pytest-asyncio
 python-slugify>=4.0.0
+syrupy==4.9.1; python_version < "3.10"
+syrupy==6.1.1; python_version >= "3.10"
 tenacity >= 8.0.0
 
 tox>=3.0.0
