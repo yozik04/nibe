@@ -1,6 +1,3 @@
-from exceptiongroup import ExceptionGroup
-
-
 class NibeException(Exception):
     pass
 
