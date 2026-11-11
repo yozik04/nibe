@@ -13,5 +13,6 @@ pytest
 pytest-asyncio
 python-slugify>=4.0.0
 tenacity >= 8.0.0
+textual>=1.0.0
 
 tox>=3.0.0
