@@ -157,7 +157,7 @@ class LogSetApp(SignalSafeApp[None]):
     ) -> None:
         super().__init__()
         self._coils = {coil.address: coil for coil in coils}
-        self._selected = [address for address in selected if address in self._coils]
+        self._selected = list(dict.fromkeys(selected))
         self._saved = list(self._selected)
         self._path = path
         self._database_version = database_version
@@ -266,17 +266,26 @@ class LogSetApp(SignalSafeApp[None]):
             return
 
         def close(save: bool | None) -> None:
-            if save:
-                self.action_save()
-            self.exit()
+            if not save or self._save():
+                self.exit()
 
         self.push_screen(SaveScreen(self._path), close)
 
+    async def action_quit(self) -> None:
+        self.action_close()
+
     def action_save(self) -> None:
+        self._save()
+
+    def _save(self) -> bool:
         coils = [self._coils[address] for address in self._selected]
-        self._path.write_bytes(
-            format_log_set(coils, database_version=self._database_version)
-        )
+        try:
+            self._path.write_bytes(
+                format_log_set(coils, database_version=self._database_version)
+            )
+        except OSError as exception:
+            self.notify(f"Failed to save {self._path}: {exception}", severity="error")
+            return False
         self._saved = list(self._selected)
         slots = log_set_slots(coils)
         if slots > MODBUS40_SLOTS:
@@ -287,3 +296,4 @@ class LogSetApp(SignalSafeApp[None]):
             )
         else:
             self.notify(f"Saved {self._path}")
+        return True

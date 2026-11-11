@@ -141,6 +141,8 @@ async def test_cli_log_set_edit(
         pytest.param(True, ["ctrl+c", "d"], False, id="dont_save"),
         pytest.param(True, ["ctrl+c", "ctrl+c"], False, id="ctrl_c_twice"),
         pytest.param(True, ["escape", "escape"], False, id="escape_twice"),
+        pytest.param(True, ["ctrl+q", "s"], True, id="ctrl_q_save"),
+        pytest.param(False, ["ctrl+q"], False, id="unchanged_ctrl_q"),
     ],
 )
 async def test_editor_close(tmp_path, heatpump: HeatPump, changed, keys, saved):
@@ -156,6 +158,43 @@ async def test_editor_close(tmp_path, heatpump: HeatPump, changed, keys, saved):
         assert not app.is_running
 
     assert path.exists() is saved
+
+
+async def test_editor_save_failure(tmp_path, heatpump: HeatPump):
+    path = tmp_path / "missing" / "LOG.SET"
+    app = LogSetApp(heatpump.get_coils(), [], path, DATABASE_VERSION)
+    async with app.run_test() as pilot:
+        app.query_one("#registers", SelectionList).focus()
+        await pilot.press("down", "space", "ctrl+s")
+        await pilot.press("ctrl+c", "s")
+        await pilot.pause()
+        assert app.is_running
+        assert app._selected != app._saved
+
+    assert not path.exists()
+
+
+async def test_editor_duplicates(tmp_path, heatpump: HeatPump):
+    path = tmp_path / "LOG.SET"
+    app = LogSetApp(heatpump.get_coils(), [40868, 40883, 40868], path, "8310")
+    async with app.run_test() as pilot:
+        assert app._selected == [40868, 40883]
+        await pilot.click("#filter")
+        await pilot.press(*"40868")
+        app.query_one("#registers", SelectionList).focus()
+        await pilot.press("down", "space", "ctrl+s")
+
+    assert parse_log_set(path.read_bytes()) == [40883]
+
+
+async def test_cli_log_set_edit_unknown_address(tmp_path):
+    output = tmp_path / "LOG.SET"
+    output.write_bytes(
+        b"[NIBL;20240101;8310]\r\nDivisors\t\t1\r\nDate\tTime\tUnknown\r\n1"
+    )
+    result = await CliRunner().invoke(cli, ["log-set-edit", "F1245", "-o", str(output)])
+    assert result.exit_code == 2
+    assert "--output" in result.output
 
 
 async def test_editor_unselected_box_is_empty(tmp_path, heatpump: HeatPump):
@@ -182,6 +221,21 @@ async def test_editor_exits_on_signal(tmp_path, heatpump: HeatPump, signum: str)
         assert not app.is_running
 
     assert signal.getsignal(signum) is not signal.SIG_IGN
+
+
+@pytest.mark.skipif(not hasattr(signal, "SIGTERM"), reason="Needs POSIX signals")
+async def test_editor_restores_signal_handlers(tmp_path, heatpump: HeatPump):
+    def handler(signum, frame):
+        pass
+
+    previous = signal.signal(signal.SIGHUP, handler)
+    try:
+        app = LogSetApp(heatpump.get_coils(), [], tmp_path / "LOG.SET", "8310")
+        async with app.run_test():
+            assert signal.getsignal(signal.SIGHUP) is not handler
+        assert signal.getsignal(signal.SIGHUP) is handler
+    finally:
+        signal.signal(signal.SIGHUP, previous)
 
 
 async def test_editor_left_right(tmp_path, heatpump: HeatPump):
