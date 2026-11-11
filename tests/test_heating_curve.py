@@ -151,6 +151,15 @@ def test_data_room_sensor(use_room_sensor, adjusted):
             {**SETTINGS, "calculated_supply": 38.1, "supply_temperature": 36.4},
             id="no_outdoor",
         ),
+        pytest.param(
+            {
+                **SETTINGS,
+                "outdoor_temperature": 6.3,
+                "supply_temperature": 36.4,
+                "return_temperature": 31.2,
+            },
+            id="no_calculated_supply",
+        ),
     ],
 )
 def test_svg(values, snapshot):
