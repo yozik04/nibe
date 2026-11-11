@@ -213,7 +213,6 @@ nibe-cli log-set F1155 40004 40008 40012 43009 -o LOG.SET
 To pick the registers in a terminal UI, with a toggle per register:
 
 ```bash
-pip install nibe[tui]
 nibe-cli log-set-edit F1155 -o LOG.SET
 ```
 

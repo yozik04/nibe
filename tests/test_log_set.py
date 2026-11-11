@@ -2,13 +2,20 @@ import asyncio
 from datetime import date
 import os
 import signal
-import sys
 
 from asyncclick.testing import CliRunner
 import pytest
+from textual.widgets import Input, Label, ListItem, SelectionList
 
 from nibe.coil import Coil
+from nibe.console_scripts import log_set_tui
 from nibe.console_scripts.cli import cli
+from nibe.console_scripts.log_set_tui import (
+    FilterInput,
+    LogSetApp,
+    OrderList,
+    RegisterList,
+)
 from nibe.heatpump import HeatPump, Model
 from nibe.log_set import (
     DATABASE_VERSION,
@@ -108,11 +115,6 @@ async def test_cli_log_set_unknown_address(tmp_path):
 
 
 async def test_editor(tmp_path, heatpump: HeatPump):
-    pytest.importorskip("textual")
-    from textual.widgets import Label, ListItem, SelectionList
-
-    from nibe.console_scripts.log_set_tui import LogSetApp, OrderList
-
     path = tmp_path / "LOG.SET"
     app = LogSetApp(heatpump.get_coils(), [40868], path, DATABASE_VERSION)
     async with app.run_test() as pilot:
@@ -147,11 +149,6 @@ async def test_editor(tmp_path, heatpump: HeatPump):
 
 
 async def test_editor_edges(tmp_path, heatpump: HeatPump):
-    pytest.importorskip("textual")
-    from textual.widgets import SelectionList
-
-    from nibe.console_scripts.log_set_tui import LogSetApp, OrderList
-
     large = [coil.address for coil in heatpump.get_coils() if coil_slots(coil) == 2]
     path = tmp_path / "LOG.SET"
     app = LogSetApp(heatpump.get_coils(), large[:11], path, DATABASE_VERSION)
@@ -196,9 +193,6 @@ async def test_editor_edges(tmp_path, heatpump: HeatPump):
 
 
 async def test_cli_log_set_edit(tmp_path, monkeypatch: pytest.MonkeyPatch):
-    pytest.importorskip("textual")
-    from nibe.console_scripts import log_set_tui
-
     started = {}
 
     class FakeApp:
@@ -223,13 +217,6 @@ async def test_cli_log_set_edit(tmp_path, monkeypatch: pytest.MonkeyPatch):
     }
 
 
-async def test_cli_log_set_edit_without_textual(monkeypatch: pytest.MonkeyPatch):
-    monkeypatch.setitem(sys.modules, "nibe.console_scripts.log_set_tui", None)
-    result = await CliRunner().invoke(cli, ["log-set-edit", "F1245"])
-    assert result.exit_code == 1
-    assert "pip install nibe[tui]" in result.output
-
-
 @pytest.mark.parametrize(
     ("changed", "keys", "saved"),
     [
@@ -242,11 +229,6 @@ async def test_cli_log_set_edit_without_textual(monkeypatch: pytest.MonkeyPatch)
     ],
 )
 async def test_editor_close(tmp_path, heatpump: HeatPump, changed, keys, saved):
-    pytest.importorskip("textual")
-    from textual.widgets import SelectionList
-
-    from nibe.console_scripts.log_set_tui import LogSetApp
-
     path = tmp_path / "LOG.SET"
     app = LogSetApp(heatpump.get_coils(), [], path, DATABASE_VERSION)
     async with app.run_test() as pilot:
@@ -262,9 +244,6 @@ async def test_editor_close(tmp_path, heatpump: HeatPump, changed, keys, saved):
 
 
 async def test_editor_unselected_box_is_empty(tmp_path, heatpump: HeatPump):
-    pytest.importorskip("textual")
-    from nibe.console_scripts.log_set_tui import LogSetApp, RegisterList
-
     coils = heatpump.get_coils()
     app = LogSetApp(coils, [coils[1].address], tmp_path / "LOG.SET", "8310")
     async with app.run_test():
@@ -279,9 +258,6 @@ async def test_editor_unselected_box_is_empty(tmp_path, heatpump: HeatPump):
 @pytest.mark.skipif(not hasattr(signal, "SIGTERM"), reason="Needs POSIX signals")
 @pytest.mark.parametrize("signum", ["SIGTERM", "SIGHUP", "SIGINT"])
 async def test_editor_exits_on_signal(tmp_path, heatpump: HeatPump, signum: str):
-    pytest.importorskip("textual")
-    from nibe.console_scripts.log_set_tui import LogSetApp
-
     signum = getattr(signal, signum)
     app = LogSetApp(heatpump.get_coils(), [], tmp_path / "LOG.SET", "8310")
     async with app.run_test() as pilot:
@@ -294,11 +270,6 @@ async def test_editor_exits_on_signal(tmp_path, heatpump: HeatPump, signum: str)
 
 
 async def test_editor_left_right(tmp_path, heatpump: HeatPump):
-    pytest.importorskip("textual")
-    from textual.widgets import Input, SelectionList
-
-    from nibe.console_scripts.log_set_tui import LogSetApp, OrderList
-
     app = LogSetApp(heatpump.get_coils(), [40868], tmp_path / "LOG.SET", "8310")
     async with app.run_test() as pilot:
         registers = app.query_one("#registers", SelectionList)
@@ -318,9 +289,6 @@ async def test_editor_left_right(tmp_path, heatpump: HeatPump):
 
 @pytest.mark.parametrize("start", ["registers", "order"])
 async def test_editor_type_to_filter(tmp_path, heatpump: HeatPump, start: str):
-    pytest.importorskip("textual")
-    from nibe.console_scripts.log_set_tui import FilterInput, LogSetApp, RegisterList
-
     app = LogSetApp(heatpump.get_coils(), [40868], tmp_path / "LOG.SET", "8310")
     async with app.run_test() as pilot:
         filter_input = app.query_one("#filter", FilterInput)

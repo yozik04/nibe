@@ -286,12 +286,8 @@ async def log_set(
 )
 @click.option("--database-version", default=DATABASE_VERSION, show_default=True)
 async def log_set_edit(model: str, output: Path, database_version: str):
-    try:
-        from .log_set_tui import LogSetApp
-    except ImportError as exception:
-        raise click.ClickException(
-            "The editor needs the tui extra: pip install nibe[tui]"
-        ) from exception
+    # Imported here so other commands start without loading textual.
+    from .log_set_tui import LogSetApp
 
     heatpump = HeatPump(Model[model])
     await heatpump.initialize()
