@@ -210,6 +210,12 @@ pip install nibe[cli]
 nibe-cli log-set F1155 40004 40008 40012 43009 -o LOG.SET
 ```
 
+To pick the registers in a terminal UI, with a toggle per register:
+
+```bash
+nibe-cli log-set-edit F1155 -o LOG.SET
+```
+
 ## Disclaimer
 
 Nibe is registered mark of NIBE Energy Systems.
