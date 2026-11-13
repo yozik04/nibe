@@ -953,5 +953,31 @@
         }
       }
     }
+  },
+  {
+    "description": "S1156/S1256 HWC period start/stop times are 32-bit u32 seconds-past-midnight, not the u16 the raw CSV leaves undefined",
+    "files": [
+      "s1156_s1256.json"
+    ],
+    "data": {
+      "45410": {
+        "size": "u32"
+      },
+      "45414": {
+        "size": "u32"
+      },
+      "45418": {
+        "size": "u32"
+      },
+      "45422": {
+        "size": "u32"
+      },
+      "45426": {
+        "size": "u32"
+      },
+      "45430": {
+        "size": "u32"
+      }
+    }
   }
 ]
