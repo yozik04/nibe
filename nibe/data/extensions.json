@@ -979,5 +979,58 @@
         "size": "u32"
       }
     }
+  },
+  {
+    "description": "Add HWC period enable/disable registers for S1156/S1256",
+    "files": [
+      "s1156_s1256.json"
+    ],
+    "data": {
+      "45242": {
+        "title": "Hot water period 1 - Enable",
+        "info": "0=period disabled, 1=period enabled",
+        "size": "u8",
+        "factor": 1,
+        "min": 0.0,
+        "max": 1.0,
+        "default": 0.0,
+        "name": "hot-water-period-1-enable-45242",
+        "write": true,
+        "mappings": {
+          "0": "Off",
+          "1": "On"
+        }
+      },
+      "45243": {
+        "title": "Hot water period 2 - Enable",
+        "info": "0=period disabled, 1=period enabled",
+        "size": "u8",
+        "factor": 1,
+        "min": 0.0,
+        "max": 1.0,
+        "default": 0.0,
+        "name": "hot-water-period-2-enable-45243",
+        "write": true,
+        "mappings": {
+          "0": "Off",
+          "1": "On"
+        }
+      },
+      "45244": {
+        "title": "Hot water period 3 - Enable",
+        "info": "0=period disabled, 1=period enabled",
+        "size": "u8",
+        "factor": 1,
+        "min": 0.0,
+        "max": 1.0,
+        "default": 0.0,
+        "name": "hot-water-period-3-enable-45244",
+        "write": true,
+        "mappings": {
+          "0": "Off",
+          "1": "On"
+        }
+      }
+    }
   }
 ]
