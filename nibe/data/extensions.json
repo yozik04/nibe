@@ -915,6 +915,56 @@
     }
   },
   {
+    "description": "VVM S320/S325 diagnostic inputs and EME timer metadata",
+    "files": [
+      "s320_s325.json"
+    ],
+    "data": {
+      "30583": {
+        "nature": "measurement"
+      },
+      "31120": {
+        "size": "u16"
+      },
+      "31485": {
+        "title": "Compressor status (EB101)",
+        "factor": 1,
+        "size": "u8",
+        "name": "compressor-status-eb101-31485"
+      },
+      "32727": {
+        "title": "Solar energy used for",
+        "factor": 1,
+        "size": "u16",
+        "name": "solar-energy-used-for-32727",
+        "mappings": {
+          "0": "No effect",
+          "1": "Hot water",
+          "2": "Heating",
+          "4": "Cooling",
+          "8": "Pool",
+          "16": "Pool 2",
+          "32": "Solar PV AUX",
+          "64": "Energy storage"
+        }
+      },
+      "33813": {
+        "title": "Status",
+        "factor": 1,
+        "size": "u8",
+        "name": "status-33813",
+        "mappings": {
+          "1": "Preheating",
+          "2": "Waiting",
+          "3": "Running",
+          "4": "Off",
+          "5": "Defrost",
+          "6": "Off"
+        }
+      }
+    }
+  },
+  {
     "description": "Add missing passive cooling energy register for F1155/F1255",
     "files": [
       "f1155_f1255.json"
