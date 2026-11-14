@@ -8975,42 +8975,42 @@
   "45410": {
     "title": "Start time HWC period 1",
     "factor": 1,
-    "size": "u16",
+    "size": "u32",
     "name": "start-time-hwc-period-1-45410",
     "write": true
   },
   "45414": {
     "title": "Start time HWC period 2",
     "factor": 1,
-    "size": "u16",
+    "size": "u32",
     "name": "start-time-hwc-period-2-45414",
     "write": true
   },
   "45418": {
     "title": "Start time HWC period 3",
     "factor": 1,
-    "size": "u16",
+    "size": "u32",
     "name": "start-time-hwc-period-3-45418",
     "write": true
   },
   "45422": {
     "title": "Stop time HWC period 1",
     "factor": 1,
-    "size": "u16",
+    "size": "u32",
     "name": "stop-time-hwc-period-1-45422",
     "write": true
   },
   "45426": {
     "title": "Stop time HWC period 2",
     "factor": 1,
-    "size": "u16",
+    "size": "u32",
     "name": "stop-time-hwc-period-2-45426",
     "write": true
   },
   "45430": {
     "title": "Stop time HWC period 3",
     "factor": 1,
-    "size": "u16",
+    "size": "u32",
     "name": "stop-time-hwc-period-3-45430",
     "write": true
   },
@@ -12644,5 +12644,50 @@
     "factor": 1,
     "size": "u32",
     "name": "all-sub-units-operating-prio-33826"
+  },
+  "45242": {
+    "title": "Hot water period 1 - Enable",
+    "info": "0=period disabled, 1=period enabled",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "hot-water-period-1-enable-45242",
+    "write": true,
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
+  },
+  "45243": {
+    "title": "Hot water period 2 - Enable",
+    "info": "0=period disabled, 1=period enabled",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "hot-water-period-2-enable-45243",
+    "write": true,
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
+  },
+  "45244": {
+    "title": "Hot water period 3 - Enable",
+    "info": "0=period disabled, 1=period enabled",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "hot-water-period-3-enable-45244",
+    "write": true,
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
   }
 }
