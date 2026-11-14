@@ -29,11 +29,6 @@ from ..log_set import (
 if TYPE_CHECKING:
     from textual.app import App
 
-# Textual leaves the terminal in full screen raw mode if these end the process.
-TERMINATE_SIGNALS = tuple(
-    getattr(signal, name) for name in ("SIGTERM", "SIGHUP") if hasattr(signal, name)
-)
-
 
 async def run_tui(app: App) -> None:
     """Run a textual app, closing it when the process is asked to terminate."""
@@ -42,8 +37,11 @@ async def run_tui(app: App) -> None:
     def terminate(signum, frame):
         loop.call_soon_threadsafe(app.exit)
 
+    # Textual leaves the terminal in full screen raw mode if these end the process.
     previous = {
-        signum: signal.signal(signum, terminate) for signum in TERMINATE_SIGNALS
+        signum: signal.signal(signum, terminate)
+        for name in ("SIGTERM", "SIGHUP")
+        if (signum := getattr(signal, name, None)) is not None
     }
     try:
         await app.run_async()
