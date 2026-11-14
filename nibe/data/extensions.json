@@ -955,9 +955,13 @@
     }
   },
   {
-    "description": "S1156/S1256 HWC period start/stop times are 32-bit u32 seconds-past-midnight, not the u16 the raw CSV leaves undefined",
+    "description": "HWC period start/stop times are 32-bit u32 seconds-past-midnight, not the u16 the raw CSV leaves undefined",
     "files": [
-      "s1156_s1256.json"
+      "s1156_s1256.json",
+      "s320_s325.json",
+      "s735.json",
+      "smos40.json",
+      "vvms500.json"
     ],
     "data": {
       "45410": {
@@ -981,9 +985,12 @@
     }
   },
   {
-    "description": "Add HWC period enable/disable registers for S1156/S1256",
+    "description": "Add HWC period enable/disable registers for S1156/S1256, S320/S325, S735 and SMOS40",
     "files": [
-      "s1156_s1256.json"
+      "s1156_s1256.json",
+      "s320_s325.json",
+      "s735.json",
+      "smos40.json"
     ],
     "data": {
       "45242": {
