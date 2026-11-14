@@ -273,7 +273,9 @@
     "max": 30000.0,
     "default": 0.0,
     "name": "degree-minutes-32-bit-40940",
-    "write": true
+    "write": true,
+    "unit": "DM",
+    "nature": "total"
   },
   "41000": {
     "title": "EB101 F2120 Alarm Number",
@@ -1190,7 +1192,9 @@
     "max": 30000.0,
     "default": 0.0,
     "name": "degree-minutes-16-bit-43005",
-    "write": true
+    "write": true,
+    "unit": "DM",
+    "nature": "total"
   },
   "43009": {
     "title": "Calc. Supply S1",
@@ -2499,17 +2503,13 @@
     "title": "Outdoor Filter Time",
     "info": " 12=12 Hours 24=24 Hours",
     "unit": "h",
-    "size": "u8",
+    "size": "s16",
     "factor": 1,
     "min": 0.0,
     "max": 48.0,
     "default": 24.0,
     "name": "outdoor-filter-time-47377",
-    "write": true,
-    "mappings": {
-      "12": "12 Hours",
-      "24": "24 Hours"
-    }
+    "write": true
   },
   "47378": {
     "title": "Max diff. comp.",

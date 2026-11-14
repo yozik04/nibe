@@ -1,6 +1,6 @@
 ---
 name: nibe-registers
-description: Add or fix heat-pump register metadata in extensions.json and regenerate model JSONs from CSVs.
+description: Add or fix heat-pump register metadata (register, CSV, model JSON) in extensions.json and regenerate model JSONs from CSVs.
 ---
 
 # NIBE register updates
@@ -13,9 +13,11 @@ description: Add or fix heat-pump register metadata in extensions.json and regen
   Each entry has `description`, `files` (model JSON filenames), and `data`
   (register-address strings mapped to metadata).
 - Reuse an existing override by extending its `files` list; do not duplicate
-  overrides per model. For models with confirmed shared firmware, compare both
-  address and title before sharing a correction. Do not infer missing
-  register support from an address alone. Preserve existing register names.
+  overrides per model.
+- Before sharing a correction across models with confirmed shared firmware,
+  compare both address and title.
+- Do not infer missing register support from an address alone.
+- Preserve existing register names.
 
 ## Generate and validate
 

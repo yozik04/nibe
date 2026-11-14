@@ -4547,7 +4547,12 @@
     "title": "Defrosting (EB103)",
     "factor": 1,
     "size": "u8",
-    "name": "defrosting-eb103-31778"
+    "name": "defrosting-eb103-31778",
+    "mappings": {
+      "0": "Off",
+      "1": "Active",
+      "2": "Passive"
+    }
   },
   "31779": {
     "title": "Power (EB103-EP14)",
@@ -4598,7 +4603,12 @@
     "title": "Defrosting (EB102)",
     "factor": 1,
     "size": "u8",
-    "name": "defrosting-eb102-31792"
+    "name": "defrosting-eb102-31792",
+    "mappings": {
+      "0": "Off",
+      "1": "Active",
+      "2": "Passive"
+    }
   },
   "31793": {
     "title": "Power (EB102-EP14)",
@@ -4649,7 +4659,12 @@
     "title": "Defrosting (EB101)",
     "factor": 1,
     "size": "u8",
-    "name": "defrosting-eb101-31806"
+    "name": "defrosting-eb101-31806",
+    "mappings": {
+      "0": "Off",
+      "1": "Active",
+      "2": "Passive"
+    }
   },
   "31807": {
     "title": "Power (EB101-EP14)",

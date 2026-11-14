@@ -1525,7 +1525,11 @@
     "title": "Class 1 alarm",
     "factor": 1,
     "size": "u8",
-    "name": "class-1-alarm-32196"
+    "name": "class-1-alarm-32196",
+    "mappings": {
+      "0": "No alarm",
+      "1": "Alarm"
+    }
   },
   "31019": {
     "title": "Frost protection status",
@@ -2028,7 +2032,12 @@
     "title": "Defrosting (EB101)",
     "factor": 1,
     "size": "u8",
-    "name": "defrosting-eb101-31806"
+    "name": "defrosting-eb101-31806",
+    "mappings": {
+      "0": "Off",
+      "1": "Active",
+      "2": "Passive"
+    }
   },
   "31807": {
     "title": "Power (EB101-EP14)",
