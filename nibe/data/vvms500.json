@@ -5623,42 +5623,42 @@
   "45410": {
     "title": "Start time HWC period 1",
     "factor": 1,
-    "size": "u16",
+    "size": "u32",
     "name": "start-time-hwc-period-1-45410",
     "write": true
   },
   "45414": {
     "title": "Start time HWC period 2",
     "factor": 1,
-    "size": "u16",
+    "size": "u32",
     "name": "start-time-hwc-period-2-45414",
     "write": true
   },
   "45418": {
     "title": "Start time HWC period 3",
     "factor": 1,
-    "size": "u16",
+    "size": "u32",
     "name": "start-time-hwc-period-3-45418",
     "write": true
   },
   "45422": {
     "title": "Stop time HWC period 1",
     "factor": 1,
-    "size": "u16",
+    "size": "u32",
     "name": "stop-time-hwc-period-1-45422",
     "write": true
   },
   "45426": {
     "title": "Stop time HWC period 2",
     "factor": 1,
-    "size": "u16",
+    "size": "u32",
     "name": "stop-time-hwc-period-2-45426",
     "write": true
   },
   "45430": {
     "title": "Stop time HWC period 3",
     "factor": 1,
-    "size": "u16",
+    "size": "u32",
     "name": "stop-time-hwc-period-3-45430",
     "write": true
   },
