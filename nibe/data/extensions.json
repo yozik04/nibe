@@ -2,13 +2,13 @@
   {
     "description": "Common F-Series corrections",
     "files": [
-      "f370_f372_f470.json",
-      "f730.json",
-      "f750.json",
       "f1145_f1245.json",
       "f1155_f1255.json",
       "f1345.json",
       "f1355.json",
+      "f370_f372_f470.json",
+      "f730.json",
+      "f750.json",
       "smo20.json",
       "smo40.json",
       "vvm225_vvm320_vvm325.json",
@@ -140,13 +140,13 @@
   {
     "description": "Corrections for fan speed current units",
     "files": [
-      "f730.json",
-      "f750.json",
-      "f370_f372_f470.json",
       "f1145_f1245.json",
       "f1155_f1255.json",
       "f1345.json",
-      "f1355.json"
+      "f1355.json",
+      "f370_f372_f470.json",
+      "f730.json",
+      "f750.json"
     ],
     "data": {
       "41256": {
@@ -212,13 +212,13 @@
   },
   {
     "files": [
-      "f370_f372_f470.json",
-      "f730.json",
-      "f750.json",
       "f1145_f1245.json",
       "f1155_f1255.json",
       "f1345.json",
-      "f1355.json"
+      "f1355.json",
+      "f370_f372_f470.json",
+      "f730.json",
+      "f750.json"
     ],
     "data": {
       "43431": {
@@ -245,11 +245,11 @@
   },
   {
     "files": [
-      "f750.json",
       "f1145_f1245.json",
       "f1155_f1255.json",
       "f1345.json",
       "f1355.json",
+      "f750.json",
       "smo40.json",
       "vvm225_vvm320_vvm325.json"
     ],
@@ -323,10 +323,10 @@
   {
     "description": "Corrections for compressor power units",
     "files": [
-      "f730.json",
-      "f750.json",
       "f1155_f1255.json",
-      "f1355.json"
+      "f1355.json",
+      "f730.json",
+      "f750.json"
     ],
     "data": {
       "43141": {
@@ -410,13 +410,15 @@
   {
     "description": "Allow for numerical selection for Outdoor Filter Time",
     "files": [
-      "smo40.json",
       "f1145_f1245.json",
       "f1155_f1255.json",
       "f1345.json",
+      "f1355.json",
       "f370_f372_f470.json",
       "f730.json",
       "f750.json",
+      "smo20.json",
+      "smo40.json",
       "vvm225_vvm320_vvm325.json",
       "vvm310_vvm500.json"
     ],
@@ -430,13 +432,14 @@
   {
     "description": "Add units to degree minutes parameters",
     "files": [
-      "smo40.json",
       "f1145_f1245.json",
       "f1155_f1255.json",
       "f1345.json",
       "f1355.json",
       "f730.json",
       "f750.json",
+      "smo20.json",
+      "smo40.json",
       "vvm225_vvm320_vvm325.json",
       "vvm310_vvm500.json"
     ],
@@ -455,7 +458,8 @@
     "description": "M12676EN-1 - S1155/S1255 ",
     "files": [
       "s1155_s1255.json",
-      "s1156_s1256.json"
+      "s1156_s1256.json",
+      "s735.json"
     ],
     "data": {
       "31101": {
@@ -470,7 +474,9 @@
     "description": "Reversing valve hot water (QN10) - S1155/S1255 ",
     "files": [
       "s1155_s1255.json",
-      "s1156_s1256.json"
+      "s1156_s1256.json",
+      "s320_s325.json",
+      "s330_s332.json"
     ],
     "data": {
       "32197": {
@@ -500,7 +506,7 @@
   },
   {
     "description": "M12676EN-1 - SMOS40 Mappings",
-    "files": ["smos40.json"],
+    "files": ["s1156_s1256.json", "s320_s325.json", "smos40.json"],
     "data": {
       "31067": {
         "mappings": {
@@ -511,8 +517,20 @@
     }
   },
   {
-    "description": "M12676EN-1 - F2120 slave 1",
-    "files": ["smos40.json"],
+    "description": "M12676EN-1 - F2120 slave 1-3",
+    "files": [
+      "s1155_s1255.json",
+      "s1156_s1256.json",
+      "s2125.json",
+      "s320_s325.json",
+      "s330_s332.json",
+      "s735.json",
+      "smos40.json",
+      "vvms320.json",
+      "vvms320_vvms325.json",
+      "vvms325.json",
+      "vvms500.json"
+    ],
     "data": {
       "31806": {
         "mappings": {
@@ -520,26 +538,14 @@
           "1": "Active",
           "2": "Passive"
         }
-      }
-    }
-  },
-  {
-    "description": "M12676EN-1 - F2120 slave 2",
-    "files": ["smos40.json"],
-    "data": {
+      },
       "31792": {
         "mappings": {
           "0": "Off",
           "1": "Active",
           "2": "Passive"
         }
-      }
-    }
-  },
-  {
-    "description": "M12676EN-1 - F2120 slave 3",
-    "files": ["smos40.json"],
-    "data": {
+      },
       "31778": {
         "mappings": {
           "0": "Off",
@@ -578,13 +584,17 @@
   {
     "description": "Alarm class 1 mapping - S series",
     "files": [
-      "s320_s325.json",
-      "s330_s332.json",
-      "s735.json",
       "s1155_s1255.json",
       "s1156_s1256.json",
       "s2125.json",
-      "smos40.json"],
+      "s320_s325.json",
+      "s330_s332.json",
+      "s735.json",
+      "smos40.json",
+      "vvms320.json",
+      "vvms320_vvms325.json",
+      "vvms325.json",
+      "vvms500.json"],
     "data": {
       "32196": {
         "mappings": {
@@ -597,12 +607,12 @@
   {
     "description": "M12676EN-1 - Common Parameters",
     "files": [
-      "s320_s325.json",
-      "s330_s332.json",
-      "s735.json",
       "s1155_s1255.json",
       "s1156_s1256.json",
       "s2125.json",
+      "s320_s325.json",
+      "s330_s332.json",
+      "s735.json",
       "smos40.json",
       "vvms320_vvms325.json",
       "vvms500.json"],
@@ -643,7 +653,7 @@
   },
   {
     "description": "Holiday settings",
-    "files": ["f750.json", "f1155_f1255.json"],
+    "files": ["f1155_f1255.json", "f750.json"],
     "data": {
       "48043": {
         "title": "Holiday - Activated",
@@ -744,9 +754,12 @@
     }
   },
   {
-    "description": "Limit allowed Brine In/Out temperature values for F1155/F1255",
+    "description": "Limit allowed Brine In/Out temperature values",
     "files": [
-      "f1155_f1255.json"
+      "f1145_f1245.json",
+      "f1155_f1255.json",
+      "f1345.json",
+      "f1355.json"
     ],
     "data": {
       "40015": {
@@ -762,15 +775,17 @@
   {
     "description": "Fix units for current power consumption",
     "files": [
-      "s320_s325.json",
-      "s330_s332.json",
-      "s735.json",
       "s1155_s1255.json",
       "s1156_s1256.json",
       "s2125.json",
+      "s320_s325.json",
+      "s330_s332.json",
+      "s735.json",
+      "smos40.json",
+      "vvms320.json",
       "vvms320_vvms325.json",
-      "vvms500.json",
-      "smos40.json"
+      "vvms325.json",
+      "vvms500.json"
     ],
     "data": {
       "32284": {

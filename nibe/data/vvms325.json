@@ -1488,7 +1488,11 @@
     "title": "Class 1 alarm",
     "factor": 1,
     "size": "u8",
-    "name": "class-1-alarm-32196"
+    "name": "class-1-alarm-32196",
+    "mappings": {
+      "0": "No alarm",
+      "1": "Alarm"
+    }
   },
   "31019": {
     "title": "Frost protection status",
@@ -1977,7 +1981,12 @@
     "title": "Defrosting (EB101)",
     "factor": 1,
     "size": "u8",
-    "name": "defrosting-eb101-31806"
+    "name": "defrosting-eb101-31806",
+    "mappings": {
+      "0": "Off",
+      "1": "Active",
+      "2": "Passive"
+    }
   },
   "31807": {
     "title": "Power (EB101-EP14)",
@@ -6339,56 +6348,64 @@
     "factor": 100,
     "unit": "kWh",
     "size": "u32",
-    "name": "energy-log-produced-energy-for-heating-over-the-past-hour-32284"
+    "name": "energy-log-produced-energy-for-heating-over-the-past-hour-32284",
+    "nature": "total"
   },
   "32286": {
     "title": "Energy log - Produced energy for hot water over the past hour",
     "factor": 100,
     "unit": "kWh",
     "size": "u32",
-    "name": "energy-log-produced-energy-for-hot-water-over-the-past-hour-32286"
+    "name": "energy-log-produced-energy-for-hot-water-over-the-past-hour-32286",
+    "nature": "total"
   },
   "32292": {
     "title": "Energy log - Used energy for heating over the past hour",
     "factor": 100,
     "unit": "kWh",
     "size": "u32",
-    "name": "energy-log-used-energy-for-heating-over-the-past-hour-32292"
+    "name": "energy-log-used-energy-for-heating-over-the-past-hour-32292",
+    "nature": "total"
   },
   "32294": {
     "title": "Energy log - Used energy for hot water over the past hour",
     "factor": 100,
     "unit": "kWh",
     "size": "u32",
-    "name": "energy-log-used-energy-for-hot-water-over-the-past-hour-32294"
+    "name": "energy-log-used-energy-for-hot-water-over-the-past-hour-32294",
+    "nature": "total"
   },
   "32300": {
     "title": "Energy log - Used energy by additional heater for heating over the past hour",
     "factor": 100,
     "unit": "kWh",
     "size": "u32",
-    "name": "energy-log-used-energy-by-additional-heater-for-heating-over-the-past-hour-32300"
+    "name": "energy-log-used-energy-by-additional-heater-for-heating-over-the-past-hour-32300",
+    "nature": "total"
   },
   "32302": {
     "title": "Energy log - Used energy by additional heater for hot water over the past hour",
     "factor": 100,
     "unit": "kWh",
     "size": "u32",
-    "name": "energy-log-used-energy-by-additional-heater-for-hot-water-over-the-past-hour-32302"
+    "name": "energy-log-used-energy-by-additional-heater-for-hot-water-over-the-past-hour-32302",
+    "nature": "total"
   },
   "32306": {
     "title": "Energy log - Current power consumption",
     "factor": 100,
-    "unit": "kWh",
+    "unit": "kW",
     "size": "u32",
-    "name": "energy-log-current-power-consumption-32306"
+    "name": "energy-log-current-power-consumption-32306",
+    "nature": "measurement"
   },
   "32409": {
     "title": "Energy log - Current power consumption, components",
     "factor": 100,
-    "unit": "kWh",
+    "unit": "kW",
     "size": "u32",
-    "name": "energy-log-current-power-consumption-components-32409"
+    "name": "energy-log-current-power-consumption-components-32409",
+    "nature": "measurement"
   },
   "32336": {
     "title": "Compressor, total time energy storage, main unit (EP14)",
