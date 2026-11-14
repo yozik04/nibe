@@ -7,7 +7,7 @@ from pathlib import Path
 
 from rich.segment import Segment
 from textual import events
-from textual.app import ComposeResult
+from textual.app import App, ComposeResult
 from textual.binding import Binding
 from textual.containers import Horizontal, Vertical
 from textual.message import Message
@@ -26,7 +26,6 @@ from textual.widgets.option_list import OptionDoesNotExist
 
 from ..coil import Coil
 from ..log_set import MODBUS40_SLOTS, coil_slots, format_log_set, log_set_slots
-from .tui_app import SignalSafeApp
 
 
 def _prompt(coil: Coil) -> str:
@@ -129,7 +128,7 @@ class SaveScreen(ModalScreen[bool]):
         yield Footer()
 
 
-class LogSetApp(SignalSafeApp[None]):
+class LogSetApp(App[None]):
     """Toggle the registers of a LOG.SET file and set their order."""
 
     TITLE = "LOG.SET"

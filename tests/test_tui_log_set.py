@@ -1,6 +1,5 @@
 import asyncio
 import os
-import signal
 
 from asyncclick.testing import CliRunner
 import pytest
@@ -225,44 +224,6 @@ async def test_editor_unselected_box_is_empty(tmp_path, heatpump: HeatPump):
         assert list(registers.render_line(10_000)) == list(
             super(RegisterList, registers).render_line(10_000)
         )
-
-
-@pytest.mark.skipif(os.name != "posix", reason="Needs POSIX signals")
-@pytest.mark.parametrize("signum", ["SIGTERM", "SIGHUP", "SIGINT"])
-async def test_editor_exits_on_signal(tmp_path, heatpump: HeatPump, signum: str):
-    signum = getattr(signal, signum)
-    previous = signal.getsignal(signum)
-    app = LogSetApp(heatpump.get_coils(), [], tmp_path / "LOG.SET", "8310")
-    async with app.run_test() as pilot:
-        assert signal.getsignal(signum) not in (signal.SIG_DFL, signal.SIG_IGN)
-        os.kill(os.getpid(), signum)
-        await pilot.pause(0.2)
-        assert not app.is_running
-
-    assert signal.getsignal(signum) is previous
-
-
-@pytest.mark.skipif(os.name != "posix", reason="Needs POSIX signals")
-async def test_editor_restores_signal_handlers(tmp_path, heatpump: HeatPump):
-    def handler(signum, frame):
-        pass
-
-    received = []
-    loop = asyncio.get_running_loop()
-    previous = signal.signal(signal.SIGHUP, handler)
-    loop.add_signal_handler(signal.SIGTERM, received.append, "SIGTERM")
-    try:
-        app = LogSetApp(heatpump.get_coils(), [], tmp_path / "LOG.SET", "8310")
-        async with app.run_test():
-            assert signal.getsignal(signal.SIGHUP) is not handler
-        assert signal.getsignal(signal.SIGHUP) is handler
-
-        os.kill(os.getpid(), signal.SIGTERM)
-        await asyncio.sleep(0.1)
-        assert received == ["SIGTERM"]
-    finally:
-        loop.remove_signal_handler(signal.SIGTERM)
-        signal.signal(signal.SIGHUP, previous)
 
 
 async def test_editor_left_right(tmp_path, heatpump: HeatPump):

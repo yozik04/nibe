@@ -5,13 +5,12 @@ from __future__ import annotations
 from datetime import datetime
 import logging
 
-from textual.app import ComposeResult
+from textual.app import App, ComposeResult
 from textual.binding import Binding
 from textual.message import Message
 from textual.widgets import DataTable, Footer, Header, Log
 
 from ..coil import CoilData
-from .tui_app import SignalSafeApp
 
 COLUMNS = ("Address", "Title", "Value", "Unit", "Seen", "Count")
 
@@ -32,7 +31,7 @@ class _LogHandler(logging.Handler):
         self._app.post_message(MonitorApp.LogLine(self.format(record)))
 
 
-class MonitorApp(SignalSafeApp[None]):
+class MonitorApp(App[None]):
     """Last value of each coil, with logging output below once there is any."""
 
     TITLE = "NIBE monitor"

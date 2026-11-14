@@ -1,12 +1,14 @@
 from __future__ import annotations
 
 from ast import literal_eval
+import asyncio
 from contextlib import AbstractAsyncContextManager
 import io
 import logging
 from pathlib import Path
 import re
-from typing import IO
+import signal
+from typing import IO, TYPE_CHECKING
 
 import asyncclick as click
 
@@ -23,6 +25,31 @@ from ..log_set import (
     log_set_slots,
     parse_log_set,
 )
+
+if TYPE_CHECKING:
+    from textual.app import App
+
+# Textual leaves the terminal in full screen raw mode if these end the process.
+TERMINATE_SIGNALS = tuple(
+    getattr(signal, name) for name in ("SIGTERM", "SIGHUP") if hasattr(signal, name)
+)
+
+
+async def run_tui(app: App) -> None:
+    """Run a textual app, closing it when the process is asked to terminate."""
+    loop = asyncio.get_running_loop()
+
+    def terminate(signum, frame):
+        loop.call_soon_threadsafe(app.exit)
+
+    previous = {
+        signum: signal.signal(signum, terminate) for signum in TERMINATE_SIGNALS
+    }
+    try:
+        await app.run_async()
+    finally:
+        for signum, handler in previous.items():
+            signal.signal(signum, signal.SIG_DFL if handler is None else handler)
 
 
 @click.group()
@@ -130,7 +157,7 @@ async def monitor(obj: ConnectionContext):
 
     app = MonitorApp()
     obj.heatpump.subscribe(HeatPump.COIL_UPDATE_EVENT, app.update_coil)
-    await app.run_async()
+    await run_tui(app)
 
 
 add_connect_command(monitor)
@@ -295,9 +322,7 @@ async def log_set_edit(model: str, output: Path, database_version: str):
             heatpump.get_coil_by_address(address)
     except (OSError, ValueError, CoilNotFoundException) as exception:
         raise click.BadParameter(str(exception), param_hint="--output") from exception
-    await LogSetApp(
-        heatpump.get_coils(), selected, output, database_version
-    ).run_async()
+    await run_tui(LogSetApp(heatpump.get_coils(), selected, output, database_version))
 
 
 def main():
