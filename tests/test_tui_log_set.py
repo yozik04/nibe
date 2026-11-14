@@ -187,11 +187,29 @@ async def test_editor_duplicates(tmp_path, heatpump: HeatPump):
     assert parse_log_set(path.read_bytes()) == [40883]
 
 
-async def test_cli_log_set_edit_unknown_address(tmp_path):
+@pytest.mark.parametrize(
+    ("content", "mode"),
+    [
+        pytest.param(
+            b"[NIBL;20240101;8310]\r\nDivisors\t\t1\r\nDate\tTime\tUnknown\r\n1",
+            0o644,
+            id="unknown_address",
+        ),
+        pytest.param(b"", 0o644, id="malformed"),
+        pytest.param(
+            b"",
+            0o000,
+            id="unreadable",
+            marks=pytest.mark.skipif(
+                os.name != "posix" or os.geteuid() == 0, reason="Needs file modes"
+            ),
+        ),
+    ],
+)
+async def test_cli_log_set_edit_bad_output(tmp_path, content: bytes, mode: int):
     output = tmp_path / "LOG.SET"
-    output.write_bytes(
-        b"[NIBL;20240101;8310]\r\nDivisors\t\t1\r\nDate\tTime\tUnknown\r\n1"
-    )
+    output.write_bytes(content)
+    output.chmod(mode)
     result = await CliRunner().invoke(cli, ["log-set-edit", "F1245", "-o", str(output)])
     assert result.exit_code == 2
     assert "--output" in result.output
@@ -209,10 +227,11 @@ async def test_editor_unselected_box_is_empty(tmp_path, heatpump: HeatPump):
         )
 
 
-@pytest.mark.skipif(not hasattr(signal, "SIGTERM"), reason="Needs POSIX signals")
+@pytest.mark.skipif(os.name != "posix", reason="Needs POSIX signals")
 @pytest.mark.parametrize("signum", ["SIGTERM", "SIGHUP", "SIGINT"])
 async def test_editor_exits_on_signal(tmp_path, heatpump: HeatPump, signum: str):
     signum = getattr(signal, signum)
+    previous = signal.getsignal(signum)
     app = LogSetApp(heatpump.get_coils(), [], tmp_path / "LOG.SET", "8310")
     async with app.run_test() as pilot:
         assert signal.getsignal(signum) not in (signal.SIG_DFL, signal.SIG_IGN)
@@ -220,21 +239,29 @@ async def test_editor_exits_on_signal(tmp_path, heatpump: HeatPump, signum: str)
         await pilot.pause(0.2)
         assert not app.is_running
 
-    assert signal.getsignal(signum) is not signal.SIG_IGN
+    assert signal.getsignal(signum) is previous
 
 
-@pytest.mark.skipif(not hasattr(signal, "SIGTERM"), reason="Needs POSIX signals")
+@pytest.mark.skipif(os.name != "posix", reason="Needs POSIX signals")
 async def test_editor_restores_signal_handlers(tmp_path, heatpump: HeatPump):
     def handler(signum, frame):
         pass
 
+    received = []
+    loop = asyncio.get_running_loop()
     previous = signal.signal(signal.SIGHUP, handler)
+    loop.add_signal_handler(signal.SIGTERM, received.append, "SIGTERM")
     try:
         app = LogSetApp(heatpump.get_coils(), [], tmp_path / "LOG.SET", "8310")
         async with app.run_test():
             assert signal.getsignal(signal.SIGHUP) is not handler
         assert signal.getsignal(signal.SIGHUP) is handler
+
+        os.kill(os.getpid(), signal.SIGTERM)
+        await asyncio.sleep(0.1)
+        assert received == ["SIGTERM"]
     finally:
+        loop.remove_signal_handler(signal.SIGTERM)
         signal.signal(signal.SIGHUP, previous)
 
 

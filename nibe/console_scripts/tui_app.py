@@ -18,7 +18,10 @@ EXIT_SIGNALS = tuple(
 
 
 class SignalSafeApp(App[ReturnType]):
-    """App that exits cleanly, restoring the terminal, on termination signals."""
+    """App that exits cleanly, restoring the terminal, on termination signals.
+
+    Signals the event loop already handles are left to it.
+    """
 
     _previous_handlers: dict[int, Any] = {}
 
@@ -27,6 +30,8 @@ class SignalSafeApp(App[ReturnType]):
         self._previous_handlers = {}
         for signum in EXIT_SIGNALS:
             previous = signal.getsignal(signum)
+            if _owned_by_loop(previous):
+                continue
             with contextlib.suppress(NotImplementedError):
                 loop.add_signal_handler(signum, self.exit)
                 self._previous_handlers[signum] = previous
@@ -37,3 +42,8 @@ class SignalSafeApp(App[ReturnType]):
             loop.remove_signal_handler(signum)
             if previous is not None:
                 signal.signal(signum, previous)
+
+
+def _owned_by_loop(handler: Any) -> bool:
+    """Return if asyncio installed the handler for loop.add_signal_handler."""
+    return getattr(handler, "__module__", None) == "asyncio.unix_events"

@@ -289,11 +289,11 @@ async def log_set_edit(model: str, output: Path, database_version: str):
 
     heatpump = HeatPump(Model[model])
     await heatpump.initialize()
-    selected = parse_log_set(output.read_bytes()) if output.exists() else []
     try:
+        selected = parse_log_set(output.read_bytes()) if output.exists() else []
         for address in selected:
             heatpump.get_coil_by_address(address)
-    except CoilNotFoundException as exception:
+    except (OSError, ValueError, CoilNotFoundException) as exception:
         raise click.BadParameter(str(exception), param_hint="--output") from exception
     await LogSetApp(
         heatpump.get_coils(), selected, output, database_version
