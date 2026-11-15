@@ -906,9 +906,9 @@
           "1": "Preheating",
           "2": "Waiting",
           "3": "Running",
-          "4": "Off",
+          "4": "Off (4)",
           "5": "Defrost",
-          "6": "Off"
+          "6": "Off (6)"
         }
       }
     }
