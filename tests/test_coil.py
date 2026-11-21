@@ -607,3 +607,25 @@ def test_date_encode(
 ):
     coil_data = CoilData(coil_date, value)
     assert encoder_word_swap.encode(coil_data) == raw_value
+
+
+def test_read_aliases_boolean():
+    coil = Coil(
+        48043,
+        "holiday-activated-48043",
+        "Holiday - Activated",
+        "u8",
+        min=0,
+        max=1,
+        write=True,
+        mappings={"0": "inactive", "1": "active"},
+        read_aliases={"10": 1},
+    )
+    assert coil.is_boolean
+
+    encoder = CoilDataEncoderNibeGw()
+    assert encoder.decode(coil, b"\x0a\x00\x61\x1a").value == "ACTIVE"
+    assert encoder.decode(coil, b"\x01\x00\x00\x00").value == "ACTIVE"
+    assert encoder.decode(coil, b"\x00\x00\x00\x00").value == "INACTIVE"
+    assert encoder.encode(CoilData(coil, "ACTIVE")) == b"\x01\x00\x00\x00"
+    assert encoder.encode(CoilData(coil, "INACTIVE")) == b"\x00\x00\x00\x00"

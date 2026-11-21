@@ -77,6 +77,10 @@ class Coil:
         self.unit = kwargs.pop("unit", None)
         self.type = kwargs.pop("type", "number")
         self.nature = kwargs.pop("nature", None)
+        # Raw values some firmwares report that must be read as another raw value
+        self.read_aliases = {
+            int(k): int(v) for k, v in kwargs.pop("read_aliases", {}).items()
+        }
 
         assert (
             self.nature is None or self.nature in NATURES
@@ -195,6 +199,7 @@ class CoilData:
         """Create CoilData from raw value."""
         if value is None:
             return CoilData(coil, None)
+        value = coil.read_aliases.get(value, value)
         assert coil.is_raw_value_valid(
             value
         ), f"Raw value {value} is out of range for coil {coil.name}"
