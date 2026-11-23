@@ -166,6 +166,20 @@
     "factor": 10,
     "name": "bt54-solar-load-temp-40044"
   },
+  "40047": {
+    "title": "EB100-BT61 Supply Radiator Temp",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "name": "eb100-bt61-supply-radiator-temp-40047"
+  },
+  "40048": {
+    "title": "EB100-BT62 Return Radiator Temp",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "name": "eb100-bt62-return-radiator-temp-40048"
+  },
   "40050": {
     "title": "EB100-BS1 Air flow",
     "size": "s16",
@@ -254,6 +268,14 @@
     "factor": 10,
     "name": "eb100-be1-current-40083"
   },
+  "40122": {
+    "title": "BT52 external water heater load temp.",
+    "info": "Used in DEH and AHPS Docking accessories",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "name": "bt52-external-water-heater-load-temp-40122"
+  },
   "40127": {
     "title": "EP23-BT3 Return temp S4",
     "info": "Return temperature for system 4",
@@ -277,6 +299,50 @@
     "size": "s16",
     "factor": 10,
     "name": "ep21-bt3-return-temp-s2-40129"
+  },
+  "40141": {
+    "title": "AZ2-BT22 Supply air temp. SAM",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "name": "az2-bt22-supply-air-temp-sam-40141"
+  },
+  "40142": {
+    "title": "AZ2-BT23 Outdoor temp. SAM",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "name": "az2-bt23-outdoor-temp-sam-40142"
+  },
+  "40143": {
+    "title": "AZ2-BT68 Flow temp. SAM",
+    "info": "Heat medium flow temperature to SAM module",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "name": "az2-bt68-flow-temp-sam-40143"
+  },
+  "40144": {
+    "title": "AZ2-BT69 Return temp. SAM",
+    "info": "Heat medium return temperature from SAM module",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "name": "az2-bt69-return-temp-sam-40144"
+  },
+  "40157": {
+    "title": "EP30-BT53 Solar Panel Temp",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "name": "ep30-bt53-solar-panel-temp-40157"
+  },
+  "40158": {
+    "title": "EP30-BT54 Solar Load Temp",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "name": "ep30-bt54-solar-load-temp-40158"
   },
   "40159": {
     "title": "EP47-BT2 Supply temp S8",
@@ -502,6 +568,12 @@
     "factor": 1,
     "name": "mixing-valve-state-s5-40308"
   },
+  "40316": {
+    "title": "Inverter limit status",
+    "size": "u8",
+    "factor": 1,
+    "name": "inverter-limit-status-40316"
+  },
   "40317": {
     "title": "Inverter drive status",
     "size": "u16",
@@ -602,6 +674,17 @@
     "factor": 1,
     "name": "external-adjustment-activated-via-input-s5-40342"
   },
+  "40364": {
+    "title": "AHPS Docking blocked",
+    "info": "0 = unblocked, 1 = blocked",
+    "size": "u8",
+    "factor": 1,
+    "name": "ahps-docking-blocked-40364",
+    "mappings": {
+      "0": "unblocked",
+      "1": "blocked"
+    }
+  },
   "40365": {
     "title": "Extra heating system pump S8",
     "size": "u8",
@@ -626,6 +709,17 @@
     "factor": 1,
     "name": "extra-heating-system-pump-s5-40368"
   },
+  "40370": {
+    "title": "AHPS Docking accessory relays",
+    "info": "0=Off, 1=On. b0:EM1-GP4, b1:Cool need, b2:QN32, b3:QN11 close, b4:EP30-GP4, b5:QN11 open ,b6:Ext add",
+    "size": "u8",
+    "factor": 1,
+    "name": "ahps-docking-accessory-relays-40370",
+    "mappings": {
+      "0": "Off",
+      "1": "On. b0"
+    }
+  },
   "40755": {
     "title": "Tot. ext. HW add op.time",
     "info": "Total external hw-electric additive operation time",
@@ -637,6 +731,29 @@
     "default": 0.0,
     "name": "tot-ext-hw-add-op-time-40755"
   },
+  "40760": {
+    "title": "Hz unlimited",
+    "size": "u8",
+    "factor": 1,
+    "name": "hz-unlimited-40760"
+  },
+  "40762": {
+    "title": "Reg. state AHPS Docking shunt",
+    "info": "10 = Off, 20 = Running",
+    "size": "u8",
+    "factor": 1,
+    "name": "reg-state-ahps-docking-shunt-40762",
+    "mappings": {
+      "10": "Off",
+      "20": "Running"
+    }
+  },
+  "40763": {
+    "title": "AHPS Docking calc. supply temp.",
+    "size": "s16",
+    "factor": 10,
+    "name": "ahps-docking-calc-supply-temp-40763"
+  },
   "40771": {
     "title": "Heat Meter - Pool2 Cpr EP14",
     "info": "Accumulated energy production as calculated by the heat meter",
@@ -644,27 +761,6 @@
     "size": "u32",
     "factor": 10,
     "name": "heat-meter-pool2-cpr-ep14-40771"
-  },
-  "40813": {
-    "title": "Compressor slow down reason",
-    "info": "Bitmap telling the reason to why the compressor slows down. b0:inverter b1:brine b2:current b3:high cond b4:hot gas b5:evaporator",
-    "size": "u8",
-    "factor": 1,
-    "name": "compressor-slow-down-reason-40813"
-  },
-  "40818": {
-    "title": "Available Heat Compressors",
-    "info": "Number of compressors available for heating",
-    "size": "u8",
-    "factor": 1,
-    "name": "available-heat-compressors-40818"
-  },
-  "40819": {
-    "title": "Available Hot Water Compressors",
-    "info": "Number of compressors available for to hot water",
-    "size": "u8",
-    "factor": 1,
-    "name": "available-hot-water-compressors-40819"
   },
   "40868": {
     "title": "+Adjust AUX Port",
@@ -752,13 +848,6 @@
     "size": "s16",
     "factor": 1,
     "name": "eb100-fd3-temperature-limiter-40918"
-  },
-  "40919": {
-    "title": "State Outdoor Air Mixing",
-    "info": "The state of the Outdoor Air Mixing function",
-    "size": "u8",
-    "factor": 1,
-    "name": "state-outdoor-air-mixing-40919"
   },
   "40932": {
     "title": "Kind of defrost",
@@ -874,20 +963,6 @@
     "size": "u8",
     "factor": 1,
     "name": "oek-accessory-block-status-41214"
-  },
-  "41215": {
-    "title": "OEK state",
-    "info": "Indicates the internal state of the OEK accessory. Inactive states: 10, 40:. Active states: 20, 30, 50, 60, 70.",
-    "size": "u8",
-    "factor": 1,
-    "name": "oek-state-41215"
-  },
-  "41216": {
-    "title": "OEK accessory relays",
-    "info": "b0:QN38 outdoor air damper, b1-b7: 0 (not used)",
-    "size": "u8",
-    "factor": 1,
-    "name": "oek-accessory-relays-41216"
   },
   "41256": {
     "title": "Fan speed current",
@@ -1006,42 +1081,6 @@
     "size": "u8",
     "factor": 1,
     "name": "smart-home-ctrl-syst-1-41274"
-  },
-  "41787": {
-    "title": "EB100-BL3 Condensation water level guard",
-    "size": "s16",
-    "factor": 1,
-    "name": "eb100-bl3-condensation-water-level-guard-41787"
-  },
-  "41846": {
-    "title": "HP consumed energy due to ventilation",
-    "unit": "kWh",
-    "size": "u32",
-    "factor": 10,
-    "min": 0.0,
-    "max": 2147483647.0,
-    "default": 0.0,
-    "name": "hp-consumed-energy-due-to-ventilation-41846"
-  },
-  "41848": {
-    "title": "HP consumed energy due to hot water",
-    "unit": "kWh",
-    "size": "u32",
-    "factor": 10,
-    "min": 0.0,
-    "max": 2147483647.0,
-    "default": 0.0,
-    "name": "hp-consumed-energy-due-to-hot-water-41848"
-  },
-  "41850": {
-    "title": "HP consumed energy due to heating",
-    "unit": "kWh",
-    "size": "u32",
-    "factor": 10,
-    "min": 0.0,
-    "max": 2147483647.0,
-    "default": 0.0,
-    "name": "hp-consumed-energy-due-to-heating-41850"
   },
   "41928": {
     "title": "Smart Price Adaption Price",
@@ -1706,6 +1745,14 @@
     "factor": 1,
     "name": "aa23-be5-alarm-511-42087"
   },
+  "42093": {
+    "title": "External SAM accessory GQ3 speed",
+    "info": "Indicates the speed of the GQ3 fan speed in the SAM accessory.",
+    "unit": "%",
+    "size": "u8",
+    "factor": 1,
+    "name": "external-sam-accessory-gq3-speed-42093"
+  },
   "42100": {
     "title": "BT1 Average, 24h",
     "info": "EB100-BT1 Outdoor temperature average, 24h",
@@ -1831,6 +1878,12 @@
       "1": "ON"
     }
   },
+  "43061": {
+    "title": "t. after start timer",
+    "size": "u8",
+    "factor": 1,
+    "name": "t-after-start-timer-43061"
+  },
   "43062": {
     "title": "t. after mode change",
     "info": "Time after mode change",
@@ -1932,6 +1985,18 @@
     "factor": 1,
     "name": "mixing-valve-state-s1-43096"
   },
+  "43097": {
+    "title": "Status of the shunt controlled additional heat accessory",
+    "info": "10 = Off, 20 = Running, 30 = Passive",
+    "size": "u8",
+    "factor": 1,
+    "name": "status-of-the-shunt-controlled-additional-heat-accessory-43097",
+    "mappings": {
+      "10": "Off",
+      "20": "Running",
+      "30": "Passive"
+    }
+  },
   "43108": {
     "title": "Fan speed current",
     "info": "The current fan speed after scheduling and blocks are considered",
@@ -2001,6 +2066,17 @@
     "factor": 100,
     "name": "compr-in-power-43141"
   },
+  "43144": {
+    "title": "Compr. energy total",
+    "info": "Total compressor energy in kWh",
+    "unit": "kWh",
+    "size": "u32",
+    "factor": 100,
+    "min": 0.0,
+    "max": 9999999.0,
+    "default": 0.0,
+    "name": "compr-energy-total-43144"
+  },
   "43147": {
     "title": "Compr. in current",
     "info": "The current delivered from the inverter to the compressor",
@@ -2033,6 +2109,24 @@
     "factor": 1,
     "name": "external-adjustment-activated-via-input-s1-43161"
   },
+  "43180": {
+    "title": "HWC Pump Status GP11",
+    "info": "Hot water circulation pump status. 1=on, 0=off",
+    "size": "u8",
+    "factor": 1,
+    "name": "hwc-pump-status-gp11-43180",
+    "mappings": {
+      "0": "off",
+      "1": "on"
+    }
+  },
+  "43181": {
+    "title": "Chargepump speed",
+    "unit": "%",
+    "size": "u8",
+    "factor": 1,
+    "name": "chargepump-speed-43181"
+  },
   "43182": {
     "title": "Compressor Frequency, Target",
     "info": "The targeted compressor frequency, before excluding any blocked frequencies",
@@ -2040,17 +2134,6 @@
     "size": "u16",
     "factor": 1,
     "name": "compressor-frequency-target-43182"
-  },
-  "43189": {
-    "title": "GP10 Ext. Supply Pump Status",
-    "info": "External supply pump status. 1=on,0=off",
-    "size": "u8",
-    "factor": 1,
-    "name": "gp10-ext-supply-pump-status-43189",
-    "mappings": {
-      "0": "off",
-      "1": "on"
-    }
   },
   "43239": {
     "title": "Tot. HW op.time add.",
@@ -2063,6 +2146,29 @@
     "default": 0.0,
     "name": "tot-hw-op-time-add-43239"
   },
+  "43305": {
+    "title": "Compr. energy HW",
+    "info": "Compressor energy during hot water production in kWh",
+    "unit": "kWh",
+    "size": "u32",
+    "factor": 100,
+    "min": 0.0,
+    "max": 9999999.0,
+    "default": 0.0,
+    "name": "compr-energy-hw-43305"
+  },
+  "43371": {
+    "title": "Hot gas limit status",
+    "size": "u8",
+    "factor": 1,
+    "name": "hot-gas-limit-status-43371"
+  },
+  "43372": {
+    "title": "Evaporater limit status",
+    "size": "u8",
+    "factor": 1,
+    "name": "evaporater-limit-status-43372"
+  },
   "43375": {
     "title": "compr. in power mean",
     "info": "Mean power delivered from the inverter to the compressor. Mean is calculated every 10 seconds.",
@@ -2070,6 +2176,12 @@
     "size": "s16",
     "factor": 100,
     "name": "compr-in-power-mean-43375"
+  },
+  "43382": {
+    "title": "Inverter mem error code",
+    "size": "u16",
+    "factor": 1,
+    "name": "inverter-mem-error-code-43382"
   },
   "43416": {
     "title": "Compressor starts EB100-EP14",
@@ -2150,6 +2262,13 @@
     "factor": 1,
     "name": "supply-pump-speed-ep14-43437"
   },
+  "43444": {
+    "title": "State OEK",
+    "info": "The state of the OEK accessory",
+    "size": "u8",
+    "factor": 1,
+    "name": "state-oek-43444"
+  },
   "43514": {
     "title": "EB100-EP14 PCA Base Relays",
     "info": "Indicates active relays on the PCA Base card. Please refer to the wiring diagram for relay description. Binary encoded. 1=on, 0=off. Bit0=K4,Bit1=K3,Bit2=K2,Bit3=K1",
@@ -2164,19 +2283,25 @@
     "factor": 1,
     "name": "pca-power-relays-ep14-43516"
   },
-  "44282": {
-    "title": "Used cprs. HW",
-    "info": "The number of compressors that's currently producing hot water",
-    "size": "u8",
-    "factor": 1,
-    "name": "used-cprs-hw-44282"
+  "43542": {
+    "title": "Calculated supply air temp.",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "name": "calculated-supply-air-temp-43542"
   },
-  "44283": {
-    "title": "Used cprs. heat",
-    "info": "The number of compressors that's currently producing heating",
+  "43561": {
+    "title": "Pool 1 blocked",
     "size": "u8",
     "factor": 1,
-    "name": "used-cprs-heat-44283"
+    "name": "pool-1-blocked-43561"
+  },
+  "44258": {
+    "title": "External supply air accessory relays",
+    "info": "Indicates the status of the relays on the external supply air accessory. The information is binary encoded. B0: relay K1 (QN40 close signal). B1: relay K2 (QN40 open signal)",
+    "size": "u8",
+    "factor": 1,
+    "name": "external-supply-air-accessory-relays-44258"
   },
   "44298": {
     "title": "Heat Meter - HW Cpr and Add EP14",
@@ -2218,6 +2343,13 @@
     "factor": 10,
     "name": "heat-meter-heat-cpr-ep14-44308"
   },
+  "44317": {
+    "title": "SCA accessory relays",
+    "info": "Indicates the status of the relays on the SCA accessory. The information is binary encoded. B0: relay K1 (Solar pump). B1: relay K2 (Solar Cooling Pump) B2: relay K3 (QN28)",
+    "size": "u8",
+    "factor": 1,
+    "name": "sca-accessory-relays-44317"
+  },
   "44331": {
     "title": "Software release",
     "size": "u8",
@@ -2241,6 +2373,18 @@
     "size": "u8",
     "factor": 1,
     "name": "extra-heating-system-pump-s2-44746"
+  },
+  "44755": {
+    "title": "DEW hot water valve",
+    "size": "u8",
+    "factor": 1,
+    "name": "dew-hot-water-valve-44755"
+  },
+  "44757": {
+    "title": "SCA hot water valve",
+    "size": "u8",
+    "factor": 1,
+    "name": "sca-hot-water-valve-44757"
   },
   "44874": {
     "title": "State SG Ready",
@@ -2304,6 +2448,15 @@
     "size": "s16",
     "factor": 1,
     "name": "alarm-45001"
+  },
+  "47062": {
+    "title": "HW charge offset",
+    "info": "Offset of HW charge temperature from the stop temperature",
+    "unit": "\u00b0C",
+    "size": "s8",
+    "factor": 10,
+    "name": "hw-charge-offset-47062",
+    "write": true
   },
   "47291": {
     "title": "Floor drying timer",
@@ -2973,6 +3126,75 @@
     "name": "still-time-hwc-47055",
     "write": true
   },
+  "47092": {
+    "title": "Manual compfreq HW",
+    "info": "Should the compressor frequency be manual set in HW?",
+    "size": "u8",
+    "factor": 1,
+    "name": "manual-compfreq-hw-47092",
+    "write": true
+  },
+  "47093": {
+    "title": "Manual compfreq speed HW",
+    "info": "Manual compressor frequency in HW?",
+    "unit": "Hz",
+    "size": "u16",
+    "factor": 1,
+    "name": "manual-compfreq-speed-hw-47093",
+    "write": true
+  },
+  "47094": {
+    "title": "Sec per compfreq step",
+    "info": "Time between changes of the copmpressor frequency",
+    "unit": "s",
+    "size": "u8",
+    "factor": 1,
+    "name": "sec-per-compfreq-step-47094",
+    "write": true
+  },
+  "47095": {
+    "title": "Max compfreq step",
+    "info": "Largest allowed change of compressor frequency in normal run",
+    "unit": "Hz",
+    "size": "u8",
+    "factor": 1,
+    "name": "max-compfreq-step-47095",
+    "write": true
+  },
+  "47096": {
+    "title": "Manual compfreq Heating",
+    "info": "Should the compressor frequency be manual set in Heating?",
+    "size": "u8",
+    "factor": 1,
+    "name": "manual-compfreq-heating-47096",
+    "write": true
+  },
+  "47097": {
+    "title": "Min speed after start",
+    "info": "Time with minimum compressor frequency when heating demand occurs",
+    "unit": "Min",
+    "size": "u8",
+    "factor": 1,
+    "name": "min-speed-after-start-47097",
+    "write": true
+  },
+  "47098": {
+    "title": "Min speed after HW",
+    "info": "Should the compressor frequency be manual set in HW?",
+    "unit": "Min",
+    "size": "u8",
+    "factor": 1,
+    "name": "min-speed-after-hw-47098",
+    "write": true
+  },
+  "47099": {
+    "title": "GMz",
+    "info": "Compressor frequency regulator GMz",
+    "size": "u8",
+    "factor": 1,
+    "name": "gmz-47099",
+    "write": true
+  },
   "47100": {
     "title": "Max diff VBF-BerVBF",
     "info": "Largest allowed difference between Supply and calc supply",
@@ -3015,6 +3237,15 @@
     "size": "s16",
     "factor": 1,
     "name": "max-comp-freq-47104",
+    "write": true
+  },
+  "47105": {
+    "title": "Comp freq heating",
+    "info": "Compressor frequency used in heating mode",
+    "unit": "Hz",
+    "size": "s16",
+    "factor": 1,
+    "name": "comp-freq-heating-47105",
     "write": true
   },
   "47131": {
@@ -3119,6 +3350,16 @@
     "name": "dm-between-add-steps-47209",
     "write": true
   },
+  "47210": {
+    "title": "DM start add. with shunt",
+    "size": "s16",
+    "factor": 1,
+    "min": -2000.0,
+    "max": -30.0,
+    "default": -400.0,
+    "name": "dm-start-add-with-shunt-47210",
+    "write": true
+  },
   "47212": {
     "title": "Max int add. power",
     "unit": "kW",
@@ -3195,6 +3436,61 @@
     "max": 100.0,
     "default": 65.0,
     "name": "exhaust-fan-speed-normal-47265",
+    "write": true
+  },
+  "47266": {
+    "title": "Supply Fan speed 4",
+    "unit": "%",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 100.0,
+    "default": 90.0,
+    "name": "supply-fan-speed-4-47266",
+    "write": true
+  },
+  "47267": {
+    "title": "Supply Fan speed 3",
+    "unit": "%",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 100.0,
+    "default": 70.0,
+    "name": "supply-fan-speed-3-47267",
+    "write": true
+  },
+  "47268": {
+    "title": "Supply Fan speed 2",
+    "unit": "%",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 100.0,
+    "default": 25.0,
+    "name": "supply-fan-speed-2-47268",
+    "write": true
+  },
+  "47269": {
+    "title": "Supply Fan speed 1",
+    "unit": "%",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 100.0,
+    "default": 0.0,
+    "name": "supply-fan-speed-1-47269",
+    "write": true
+  },
+  "47270": {
+    "title": "Supply Fan speed normal",
+    "unit": "%",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 100.0,
+    "default": 60.0,
+    "name": "supply-fan-speed-normal-47270",
     "write": true
   },
   "47271": {
@@ -3440,6 +3736,41 @@
     "name": "floor-drying-temp-1-47290",
     "write": true
   },
+  "47294": {
+    "title": "Use airflow defrost",
+    "info": "If reduced airflow should start defrost",
+    "size": "u8",
+    "factor": 1,
+    "name": "use-airflow-defrost-47294",
+    "write": true
+  },
+  "47295": {
+    "title": "Airflow reduction trig",
+    "info": "How much the airflow is allowed to be reduced before a defrost is trigged",
+    "unit": "%",
+    "size": "u8",
+    "factor": 1,
+    "name": "airflow-reduction-trig-47295",
+    "write": true
+  },
+  "47296": {
+    "title": "Airflow defrost done",
+    "info": "How much the airflow has to raise before a defrost is ended",
+    "unit": "%",
+    "size": "u8",
+    "factor": 1,
+    "name": "airflow-defrost-done-47296",
+    "write": true
+  },
+  "47299": {
+    "title": "Min time defrost",
+    "info": "Minimum duration of the defrost",
+    "unit": "min",
+    "size": "u8",
+    "factor": 1,
+    "name": "min-time-defrost-47299",
+    "write": true
+  },
   "47300": {
     "title": "DOT",
     "info": "Dimensioning outdoor temperature",
@@ -3578,6 +3909,66 @@
     "name": "climate-system-2-shunt-wait-47310",
     "write": true
   },
+  "47317": {
+    "title": "Shunt controlled add. accessory",
+    "info": "Activates the shunt controlled addition accessory. 1=on,0=off 0=Off 1=On",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "shunt-controlled-add-accessory-47317",
+    "write": true,
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
+  },
+  "47318": {
+    "title": "Shunt controlled add. min. temp.",
+    "unit": "\u00b0C",
+    "size": "s8",
+    "factor": 1,
+    "min": 5.0,
+    "max": 90.0,
+    "default": 55.0,
+    "name": "shunt-controlled-add-min-temp-47318",
+    "write": true
+  },
+  "47319": {
+    "title": "Shunt controlled add. min. runtime",
+    "unit": "hrs",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 48.0,
+    "default": 12.0,
+    "name": "shunt-controlled-add-min-runtime-47319",
+    "write": true
+  },
+  "47320": {
+    "title": "Shunt controlled add. mixing valve amp.",
+    "info": "Mixing valve amplification for shunt controlled add.",
+    "size": "s8",
+    "factor": 10,
+    "min": 1.0,
+    "max": 100.0,
+    "default": 10.0,
+    "name": "shunt-controlled-add-mixing-valve-amp-47320",
+    "write": true
+  },
+  "47321": {
+    "title": "Shunt controlled add. mixing valve wait",
+    "info": "Wait time between changes of the shunt in shunt controlled add.",
+    "unit": "secs",
+    "size": "s16",
+    "factor": 1,
+    "min": 10.0,
+    "max": 300.0,
+    "default": 30.0,
+    "name": "shunt-controlled-add-mixing-valve-wait-47321",
+    "write": true
+  },
   "47340": {
     "title": "Cooling with room sensor",
     "info": "Enables use of room sensor together with cooling 0=Off 1=On",
@@ -3605,6 +3996,50 @@
     "max": 1.0,
     "default": 0.0,
     "name": "sms40-accessory-47352",
+    "write": true
+  },
+  "47365": {
+    "title": "RMU System 1",
+    "info": "Activates the RMU accessory for system 1",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "rmu-system-1-47365",
+    "write": true
+  },
+  "47366": {
+    "title": "RMU System 2",
+    "info": "Activates the RMU accessory for system 2",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "rmu-system-2-47366",
+    "write": true
+  },
+  "47367": {
+    "title": "RMU System 3",
+    "info": "Activates the RMU accessory for system 3",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "rmu-system-3-47367",
+    "write": true
+  },
+  "47368": {
+    "title": "RMU System 4",
+    "info": "Activates the RMU accessory for system 4",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "rmu-system-4-47368",
     "write": true
   },
   "47370": {
@@ -3943,6 +4378,15 @@
       "3": "radiator + floor heating"
     }
   },
+  "47473": {
+    "title": "Max time defrost",
+    "info": "Maximum duration of the defrost",
+    "unit": "min",
+    "size": "u8",
+    "factor": 1,
+    "name": "max-time-defrost-47473",
+    "write": true
+  },
   "47525": {
     "title": "Heat Curve S8",
     "info": "Heat curve, see manual for more information",
@@ -3992,6 +4436,17 @@
     "name": "night-cooling-min-diff-47539",
     "write": true
   },
+  "47555": {
+    "title": "DEW accessory",
+    "info": "Activates the DEW accessory",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "dew-accessory-47555",
+    "write": true
+  },
   "47567": {
     "title": "Heat Curve S7",
     "info": "Heat curve, see manual for more information",
@@ -4005,18 +4460,83 @@
   },
   "48043": {
     "title": "Holiday - Activated",
-    "info": "0=inactive, 10=active",
+    "info": "0=inactive, 1=active",
     "size": "u8",
     "factor": 1,
     "min": 0.0,
-    "max": 10.0,
+    "max": 1.0,
     "default": 0.0,
     "name": "holiday-activated-48043",
     "write": true,
     "mappings": {
       "0": "inactive",
-      "10": "active"
+      "1": "active"
     }
+  },
+  "48044": {
+    "title": "Holiday - Start Date",
+    "info": "Days since 1 January 2007",
+    "size": "u16",
+    "factor": 1,
+    "name": "holiday-start-date-48044",
+    "write": true,
+    "type": "date"
+  },
+  "48045": {
+    "title": "Holiday - End Date",
+    "info": "Days since 1 January 2007",
+    "size": "u16",
+    "factor": 1,
+    "name": "holiday-end-date-48045",
+    "write": true,
+    "type": "date"
+  },
+  "48047": {
+    "title": "Holiday - HW Comfort Mode",
+    "info": "-1=Off 0=Economy 1=Normal 2=Luxury",
+    "size": "s8",
+    "factor": 1,
+    "min": -1,
+    "max": 2,
+    "default": 1,
+    "name": "holiday-hot-water-comfort-mode-48047",
+    "write": true,
+    "mappings": {
+      "-1": "Off",
+      "0": "Economy",
+      "1": "Normal",
+      "2": "Luxury"
+    }
+  },
+  "48048": {
+    "title": "Holiday - Fan Mode",
+    "info": "0=Normal 1=Fan speed 1, 2=Fan speed 2, 3=Fan speed 3, 4=Fan speed 4",
+    "size": "u8",
+    "factor": 1,
+    "min": 0,
+    "max": 4,
+    "default": 0,
+    "name": "holiday-fan-mode-48048",
+    "write": true,
+    "mappings": {
+      "0": "Normal",
+      "1": "Fan mode 1",
+      "2": "Fan mode 2",
+      "3": "Fan mode 3",
+      "4": "Fan mode 4"
+    }
+  },
+  "48051": {
+    "title": "Holiday - Room Temperature",
+    "info": "Room temperature during holiday",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "min": 50,
+    "max": 300,
+    "default": 200,
+    "name": "holiday-room-temperature-48051",
+    "write": true
   },
   "48072": {
     "title": "DM diff start add.",
@@ -4041,6 +4561,88 @@
       "4": "One time increase"
     }
   },
+  "48139": {
+    "title": "DM startdiff add. with shunt",
+    "size": "s16",
+    "factor": 1,
+    "min": 0.0,
+    "max": 2000.0,
+    "default": 400.0,
+    "name": "dm-startdiff-add-with-shunt-48139",
+    "write": true
+  },
+  "48158": {
+    "title": "SAM supply air curve: outdoor temp T3",
+    "info": "The supply air curve is defined by 3 supply air temperatures at 3 different outdoor temperatures T1, T2 and T3.",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "min": -400.0,
+    "max": 200.0,
+    "default": 150.0,
+    "name": "sam-supply-air-curve-outdoor-temp-t3-48158",
+    "write": true
+  },
+  "48159": {
+    "title": "SAM supply air curve: outdoor temp T2",
+    "info": "The supply air curve is defined by 3 supply air temperatures at 3 different outdoor temperatures T1, T2 and T3.",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "min": -390.0,
+    "max": 190.0,
+    "default": 0.0,
+    "name": "sam-supply-air-curve-outdoor-temp-t2-48159",
+    "write": true
+  },
+  "48160": {
+    "title": "SAM supply air curve: outdoor temp T1",
+    "info": "The supply air curve is defined by 3 supply air temperatures at 3 different outdoor temperatures T1, T2 and T3.",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "min": -400.0,
+    "max": 200.0,
+    "default": -150.0,
+    "name": "sam-supply-air-curve-outdoor-temp-t1-48160",
+    "write": true
+  },
+  "48161": {
+    "title": "SAM supply air curve: supply air temp at T3",
+    "info": "The supply air curve is defined by 3 supply air temperatures at 3 different outdoor temperatures T1, T2 and T3.",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "min": 160.0,
+    "max": 520.0,
+    "default": 180.0,
+    "name": "sam-supply-air-curve-supply-air-temp-at-t3-48161",
+    "write": true
+  },
+  "48162": {
+    "title": "SAM supply air curve: supply air temp at T2",
+    "info": "The supply air curve is defined by 3 supply air temperatures at 3 different outdoor temperatures T1, T2 and T3.",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "min": 160.0,
+    "max": 520.0,
+    "default": 180.0,
+    "name": "sam-supply-air-curve-supply-air-temp-at-t2-48162",
+    "write": true
+  },
+  "48163": {
+    "title": "SAM supply air curve: supply air temp at T1",
+    "info": "The supply air curve is defined by 3 supply air temperatures at 3 different outdoor temperatures T1, T2 and T3.",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "min": 160.0,
+    "max": 520.0,
+    "default": 180.0,
+    "name": "sam-supply-air-curve-supply-air-temp-at-t1-48163",
+    "write": true
+  },
   "48201": {
     "title": "SCA accessory",
     "info": "Activates the SCA accessory",
@@ -4062,17 +4664,6 @@
     "max": 100.0,
     "default": 100.0,
     "name": "max-charge-pump-reg-speed-48275",
-    "write": true
-  },
-  "48281": {
-    "title": "Charge method HW",
-    "info": "Heating medium pump control when hot water is charged",
-    "size": "u8",
-    "factor": 1,
-    "min": 0.0,
-    "max": 1.0,
-    "default": 1.0,
-    "name": "charge-method-hw-48281",
     "write": true
   },
   "48282": {
@@ -4413,6 +5004,22 @@
     "name": "external-adjustment-with-room-sensor-s5-48510",
     "write": true
   },
+  "48567": {
+    "title": "Initiate inverter",
+    "info": "Start initiation process of the inverter",
+    "size": "u8",
+    "factor": 1,
+    "name": "initiate-inverter-48567",
+    "write": true
+  },
+  "48568": {
+    "title": "Force inverter init",
+    "info": "Force inverter initiation process of the inverter",
+    "size": "u8",
+    "factor": 1,
+    "name": "force-inverter-init-48568",
+    "write": true
+  },
   "48569": {
     "title": "Climate system 5 accessory",
     "info": "Activates the climate system 5 accessory",
@@ -4548,6 +5155,81 @@
     "default": 30.0,
     "name": "climate-system-5-shunt-wait-48580",
     "write": true
+  },
+  "48637": {
+    "title": "AHPS docking accessory",
+    "info": "0=not activated, 1=activated",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "ahps-docking-accessory-48637",
+    "write": true,
+    "mappings": {
+      "0": "not activated",
+      "1": "activated"
+    }
+  },
+  "48638": {
+    "title": "AHPS docking: solar heating",
+    "info": "The specific AHPS docking: 0=not activated, 1=activated",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "ahps-docking-solar-heating-48638",
+    "write": true,
+    "mappings": {
+      "0": "not activated",
+      "1": "activated"
+    }
+  },
+  "48639": {
+    "title": "AHPS docking: prioritized add.",
+    "info": "The specific AHPS docking: 0=not activated, 1=activated",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "ahps-docking-prioritized-add-48639",
+    "write": true,
+    "mappings": {
+      "0": "not activated",
+      "1": "activated"
+    }
+  },
+  "48640": {
+    "title": "AHPS docking: ext. addition",
+    "info": "The specific AHPS docking: 0=not activated, 1=activated",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "ahps-docking-ext-addition-48640",
+    "write": true,
+    "mappings": {
+      "0": "not activated",
+      "1": "activated"
+    }
+  },
+  "48641": {
+    "title": "AHPS docking: ext. hot water",
+    "info": "The specific AHPS docking: 0=not activated, 1=activated",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "ahps-docking-ext-hot-water-48641",
+    "write": true,
+    "mappings": {
+      "0": "not activated",
+      "1": "activated"
+    }
   },
   "48659": {
     "title": "Cut off frequency activated 2",
@@ -4964,16 +5646,31 @@
     "name": "prevent-humidity-s1-48817",
     "write": true
   },
-  "48890": {
-    "title": "Outdoor Air Fan Speed",
-    "unit": "%",
+  "48852": {
+    "title": "Modbus40 Word Swap",
+    "info": "If set; swapping the words in 32-bit variables when value requested via ''read holding register'' commando.",
     "size": "u8",
     "factor": 1,
-    "min": 10.0,
-    "max": 100.0,
-    "default": 100.0,
-    "name": "outdoor-air-fan-speed-48890",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 1.0,
+    "name": "modbus40-word-swap-48852",
     "write": true
+  },
+  "48889": {
+    "title": "MODBUS40 Disable LOG.SET",
+    "info": "If set, the system will ignore the existing LOG.SET on the USB stick.1=ignore LOG.SET,0=use LOG.SET",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "modbus40-disable-log-set-48889",
+    "write": true,
+    "mappings": {
+      "0": "use LOG.SET",
+      "1": "ignore LOG.SET"
+    }
   },
   "48891": {
     "title": "Setting up ventilation",
@@ -4981,14 +5678,6 @@
     "size": "u8",
     "factor": 1,
     "name": "setting-up-ventilation-48891",
-    "write": true
-  },
-  "48892": {
-    "title": "Setting up ventilation, OA mixing",
-    "info": "Setting up ventilation for outdoor air mixing when used.",
-    "size": "u8",
-    "factor": 1,
-    "name": "setting-up-ventilation-oa-mixing-48892",
     "write": true
   },
   "48908": {
@@ -5123,17 +5812,6 @@
       "1": "affecting"
     }
   },
-  "48947": {
-    "title": "Outdoor Air Fan Speed, high temp.",
-    "unit": "%",
-    "size": "u8",
-    "factor": 1,
-    "min": 0.0,
-    "max": 100.0,
-    "default": 35.0,
-    "name": "outdoor-air-fan-speed-high-temp-48947",
-    "write": true
-  },
   "48968": {
     "title": "FLM 1 set point, cooling",
     "info": "Set point, cooling, when using FLM cooling",
@@ -5146,6 +5824,14 @@
     "name": "flm-1-set-point-cooling-48968",
     "write": true
   },
+  "48969": {
+    "title": "AUX block OPT",
+    "info": "AUX block OPT",
+    "size": "u8",
+    "factor": 1,
+    "name": "aux-block-opt-48969",
+    "write": true
+  },
   "48970": {
     "title": "Outdoor Air Mixing function",
     "info": "Activates the Outdoor Air Mixing function.",
@@ -5155,17 +5841,6 @@
     "max": 1.0,
     "default": 0.0,
     "name": "outdoor-air-mixing-function-48970",
-    "write": true
-  },
-  "48971": {
-    "title": "Outdoor air max. temp.",
-    "info": "Maximum outdoor air temperature set.",
-    "size": "s8",
-    "factor": 1,
-    "min": 0.0,
-    "max": 40.0,
-    "default": 10.0,
-    "name": "outdoor-air-max-temp-48971",
     "write": true
   },
   "48972": {
@@ -5193,18 +5868,6 @@
       "0": "deactivated",
       "1": "activated"
     }
-  },
-  "48974": {
-    "title": "High outdoor air temperature",
-    "info": "Above this limit the ventilation is reduced.",
-    "unit": "\u00b0C",
-    "size": "s16",
-    "factor": 1,
-    "min": 20.0,
-    "max": 50.0,
-    "default": 25.0,
-    "name": "high-outdoor-air-temperature-48974",
-    "write": true
   },
   "48975": {
     "title": "OEK accessory",
@@ -5267,6 +5930,14 @@
     "max": 1.0,
     "default": 0.0,
     "name": "block-top-frequencies-49227",
+    "write": true
+  },
+  "49281": {
+    "title": "SAM fan model",
+    "info": "SAM fan model",
+    "size": "u8",
+    "factor": 1,
+    "name": "sam-fan-model-49281",
     "write": true
   },
   "49282": {
@@ -5333,6 +6004,28 @@
     "max": 1.0,
     "default": 0.0,
     "name": "ground-water-pump-speed-control-49289",
+    "write": true
+  },
+  "49295": {
+    "title": "AHPS External Addition start temperature.",
+    "unit": "\u00b0C",
+    "size": "u8",
+    "factor": 1,
+    "min": 40.0,
+    "max": 55.0,
+    "default": 50.0,
+    "name": "ahps-external-addition-start-temperature-49295",
+    "write": true
+  },
+  "49296": {
+    "title": "AHPS External Addition stop temperature.",
+    "unit": "\u00b0C",
+    "size": "u8",
+    "factor": 1,
+    "min": 44.0,
+    "max": 59.0,
+    "default": 54.0,
+    "name": "ahps-external-addition-stop-temperature-49296",
     "write": true
   },
   "49297": {
@@ -5464,6 +6157,173 @@
     "name": "night-cooling-min-diff-49366",
     "write": true
   },
+  "40813": {
+    "title": "Compressor slow down reason",
+    "info": "Bitmap telling the reason to why the compressor slows down. b0:inverter b1:brine b2:current b3:high cond b4:hot gas b5:evaporator",
+    "size": "u8",
+    "factor": 1,
+    "name": "compressor-slow-down-reason-40813"
+  },
+  "40818": {
+    "title": "Available Heat Compressors",
+    "info": "Number of compressors available for heating",
+    "size": "u8",
+    "factor": 1,
+    "name": "available-heat-compressors-40818"
+  },
+  "40819": {
+    "title": "Available Hot Water Compressors",
+    "info": "Number of compressors available for to hot water",
+    "size": "u8",
+    "factor": 1,
+    "name": "available-hot-water-compressors-40819"
+  },
+  "40919": {
+    "title": "State Outdoor Air Mixing",
+    "info": "The state of the Outdoor Air Mixing function",
+    "size": "u8",
+    "factor": 1,
+    "name": "state-outdoor-air-mixing-40919"
+  },
+  "41215": {
+    "title": "OEK state",
+    "info": "Indicates the internal state of the OEK accessory. Inactive states: 10, 40:. Active states: 20, 30, 50, 60, 70.",
+    "size": "u8",
+    "factor": 1,
+    "name": "oek-state-41215"
+  },
+  "41216": {
+    "title": "OEK accessory relays",
+    "info": "b0:QN38 outdoor air damper, b1-b7: 0 (not used)",
+    "size": "u8",
+    "factor": 1,
+    "name": "oek-accessory-relays-41216"
+  },
+  "41787": {
+    "title": "EB100-BL3 Condensation water level guard",
+    "size": "s16",
+    "factor": 1,
+    "name": "eb100-bl3-condensation-water-level-guard-41787"
+  },
+  "41846": {
+    "title": "HP consumed energy due to ventilation",
+    "unit": "kWh",
+    "size": "u32",
+    "factor": 10,
+    "min": 0.0,
+    "max": 2147483647.0,
+    "default": 0.0,
+    "name": "hp-consumed-energy-due-to-ventilation-41846"
+  },
+  "41848": {
+    "title": "HP consumed energy due to hot water",
+    "unit": "kWh",
+    "size": "u32",
+    "factor": 10,
+    "min": 0.0,
+    "max": 2147483647.0,
+    "default": 0.0,
+    "name": "hp-consumed-energy-due-to-hot-water-41848"
+  },
+  "41850": {
+    "title": "HP consumed energy due to heating",
+    "unit": "kWh",
+    "size": "u32",
+    "factor": 10,
+    "min": 0.0,
+    "max": 2147483647.0,
+    "default": 0.0,
+    "name": "hp-consumed-energy-due-to-heating-41850"
+  },
+  "43189": {
+    "title": "GP10 Ext. Supply Pump Status",
+    "info": "External supply pump status. 1=on,0=off",
+    "size": "u8",
+    "factor": 1,
+    "name": "gp10-ext-supply-pump-status-43189",
+    "mappings": {
+      "0": "off",
+      "1": "on"
+    }
+  },
+  "44282": {
+    "title": "Used cprs. HW",
+    "info": "The number of compressors that's currently producing hot water",
+    "size": "u8",
+    "factor": 1,
+    "name": "used-cprs-hw-44282"
+  },
+  "44283": {
+    "title": "Used cprs. heat",
+    "info": "The number of compressors that's currently producing heating",
+    "size": "u8",
+    "factor": 1,
+    "name": "used-cprs-heat-44283"
+  },
+  "48281": {
+    "title": "Charge method HW",
+    "info": "Heating medium pump control when hot water is charged",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 1.0,
+    "name": "charge-method-hw-48281",
+    "write": true
+  },
+  "48890": {
+    "title": "Outdoor Air Fan Speed",
+    "unit": "%",
+    "size": "u8",
+    "factor": 1,
+    "min": 10.0,
+    "max": 100.0,
+    "default": 100.0,
+    "name": "outdoor-air-fan-speed-48890",
+    "write": true
+  },
+  "48892": {
+    "title": "Setting up ventilation, OA mixing",
+    "info": "Setting up ventilation for outdoor air mixing when used.",
+    "size": "u8",
+    "factor": 1,
+    "name": "setting-up-ventilation-oa-mixing-48892",
+    "write": true
+  },
+  "48947": {
+    "title": "Outdoor Air Fan Speed, high temp.",
+    "unit": "%",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 100.0,
+    "default": 35.0,
+    "name": "outdoor-air-fan-speed-high-temp-48947",
+    "write": true
+  },
+  "48971": {
+    "title": "Outdoor air max. temp.",
+    "info": "Maximum outdoor air temperature set.",
+    "size": "s8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 40.0,
+    "default": 10.0,
+    "name": "outdoor-air-max-temp-48971",
+    "write": true
+  },
+  "48974": {
+    "title": "High outdoor air temperature",
+    "info": "Above this limit the ventilation is reduced.",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 1,
+    "min": 20.0,
+    "max": 50.0,
+    "default": 25.0,
+    "name": "high-outdoor-air-temperature-48974",
+    "write": true
+  },
   "47260": {
     "title": "Fan Mode",
     "info": "0=Normal 1=Fan speed 1, 2=Fan speed 2, 3=Fan speed 3, 4=Fan speed 4",
@@ -5480,32 +6340,6 @@
       "2": "Fan mode 2",
       "3": "Fan mode 3",
       "4": "Fan mode 4"
-    }
-  },
-  "48852": {
-    "title": "Modbus40 Word Swap",
-    "info": "If set; swapping the words in 32-bit variables when value requested via ''read holding register'' commando.",
-    "size": "u8",
-    "factor": 1,
-    "min": 0.0,
-    "max": 1.0,
-    "default": 1.0,
-    "name": "modbus40-word-swap-48852",
-    "write": true
-  },
-  "48889": {
-    "title": "MODBUS40 Disable LOG.SET",
-    "info": "If set, the system will ignore the existing LOG.SET on the USB stick.1=ignore LOG.SET,0=use LOG.SET",
-    "size": "u8",
-    "factor": 1,
-    "min": 0.0,
-    "max": 1.0,
-    "default": 0.0,
-    "name": "modbus40-disable-log-set-48889",
-    "write": true,
-    "mappings": {
-      "0": "use LOG.SET",
-      "1": "ignore LOG.SET"
     }
   }
 }

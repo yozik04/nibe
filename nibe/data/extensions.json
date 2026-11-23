@@ -5,8 +5,7 @@
       "f1145_f1245_f1345_f1355.json",
       "f1155_f1255.json",
       "f370_f372_f470.json",
-      "f730.json",
-      "f750.json",
+      "f730_f750.json",
       "smo20.json",
       "smo40.json",
       "vvm225_vvm310_vvm320_vvm325_vvm500.json"
@@ -140,8 +139,7 @@
       "f1145_f1245_f1345_f1355.json",
       "f1155_f1255.json",
       "f370_f372_f470.json",
-      "f730.json",
-      "f750.json"
+      "f730_f750.json"
     ],
     "data": {
       "41256": {
@@ -189,8 +187,7 @@
   {
     "description": "Corrections for airflow units",
     "files": [
-      "f730.json",
-      "f750.json"
+      "f730_f750.json"
     ],
     "data": {
       "40050": {
@@ -210,8 +207,7 @@
       "f1145_f1245_f1345_f1355.json",
       "f1155_f1255.json",
       "f370_f372_f470.json",
-      "f730.json",
-      "f750.json"
+      "f730_f750.json"
     ],
     "data": {
       "43431": {
@@ -238,7 +234,7 @@
     "files": [
       "f1145_f1245_f1345_f1355.json",
       "f1155_f1255.json",
-      "f750.json",
+      "f730_f750.json",
       "smo40.json",
       "vvm225_vvm310_vvm320_vvm325_vvm500.json"
     ],
@@ -253,8 +249,7 @@
   {
     "files": [
       "f370_f372_f470.json",
-      "f730.json",
-      "f750.json",
+      "f730_f750.json",
       "vvm225_vvm310_vvm320_vvm325_vvm500.json"
     ],
     "data": {
@@ -279,7 +274,7 @@
     }
   },
   {
-    "files": ["f730.json", "smo20.json"],
+    "files": ["f730_f750.json", "smo20.json"],
     "data": {
       "48852": {
         "title": "Modbus40 Word Swap",
@@ -314,8 +309,7 @@
     "files": [
       "f1155_f1255.json",
       "f1145_f1245_f1345_f1355.json",
-      "f730.json",
-      "f750.json"
+      "f730_f750.json"
     ],
     "data": {
       "43141": {
@@ -400,8 +394,7 @@
       "f1145_f1245_f1345_f1355.json",
       "f1155_f1255.json",
       "f370_f372_f470.json",
-      "f730.json",
-      "f750.json",
+      "f730_f750.json",
       "smo20.json",
       "smo40.json",
       "vvm225_vvm310_vvm320_vvm325_vvm500.json"
@@ -418,8 +411,7 @@
     "files": [
       "f1145_f1245_f1345_f1355.json",
       "f1155_f1255.json",
-      "f730.json",
-      "f750.json",
+      "f730_f750.json",
       "smo20.json",
       "smo40.json",
       "vvm225_vvm310_vvm320_vvm325_vvm500.json"
@@ -634,7 +626,7 @@
   },
   {
     "description": "Holiday settings",
-    "files": ["f1155_f1255.json", "f750.json"],
+    "files": ["f1155_f1255.json", "f730_f750.json"],
     "data": {
       "48043": {
         "title": "Holiday - Activated",

@@ -40,8 +40,8 @@ class Model(Enum):
     F1345 = "f1145_f1245_f1345_f1355", Series.F
     F1355 = "f1145_f1245_f1345_f1355", Series.F
 
-    F730 = "f730", Series.F
-    F750 = "f750", Series.F
+    F730 = "f730_f750", Series.F
+    F750 = "f730_f750", Series.F
 
     F370 = "f370_f372_f470", Series.F
     F372 = "f370_f372_f470", Series.F
