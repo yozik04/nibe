@@ -8046,7 +8046,13 @@
     "title": "State SG Ready",
     "size": "u8",
     "factor": 1,
-    "name": "state-sg-ready-44874"
+    "name": "state-sg-ready-44874",
+    "mappings": {
+      "10": "Normal",
+      "20": "Blocking",
+      "30": "Low Price",
+      "40": "Overcapacity"
+    }
   },
   "44878": {
     "title": "SG Ready input A",
@@ -14930,5 +14936,277 @@
       "10": "VPB",
       "20": "VPA"
     }
+  },
+  "40074": {
+    "title": "EB100-FR1 Anode Status",
+    "size": "s16",
+    "factor": 1,
+    "name": "eb100-fr1-anode-status-40074"
+  },
+  "40868": {
+    "title": "+Adjust AUX Port",
+    "unit": "1",
+    "size": "u8",
+    "factor": 1,
+    "name": "adjust-aux-port-40868"
+  },
+  "40870": {
+    "title": "+Adjust OP mode",
+    "info": "Tells if plusadjust system calls for heat or cool",
+    "size": "u8",
+    "factor": 1,
+    "name": "adjust-op-mode-40870"
+  },
+  "40871": {
+    "title": "+Adjust Comfort mode",
+    "info": "Which comfort mode",
+    "size": "u8",
+    "factor": 1,
+    "name": "adjust-comfort-mode-40871"
+  },
+  "40872": {
+    "title": "+Adjust Parallell adjustment",
+    "info": "requested adjustment",
+    "size": "s8",
+    "factor": 1,
+    "name": "adjust-parallell-adjustment-40872"
+  },
+  "40873": {
+    "title": "+Adjust Humidity",
+    "info": "Humidity",
+    "unit": "%RH",
+    "size": "s16",
+    "factor": 10,
+    "name": "adjust-humidity-40873"
+  },
+  "40874": {
+    "title": "+Adjust Temp indoor",
+    "info": "Average of all room sensors",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "name": "adjust-temp-indoor-40874"
+  },
+  "40875": {
+    "title": "+Adjust Temp outdoor",
+    "info": "Outdoor temp",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "name": "adjust-temp-outdoor-40875"
+  },
+  "40876": {
+    "title": "+Adjust Version",
+    "info": "PCA input version",
+    "size": "u16",
+    "factor": 1,
+    "name": "adjust-version-40876"
+  },
+  "40877": {
+    "title": "+Adjust Activated",
+    "info": "If plusadjust accessory is activated",
+    "size": "u8",
+    "factor": 1,
+    "name": "adjust-activated-40877"
+  },
+  "40878": {
+    "title": "+Adjust Need",
+    "info": "If plusadjust system calls for heat",
+    "size": "u8",
+    "factor": 1,
+    "name": "adjust-need-40878"
+  },
+  "41189": {
+    "title": "AA20-BE5 EME10 Current",
+    "unit": "A",
+    "size": "s16",
+    "factor": 10,
+    "name": "aa20-be5-eme10-current-41189"
+  },
+  "41190": {
+    "title": "AA20-BE5 EME10 Average Current",
+    "unit": "A",
+    "size": "s16",
+    "factor": 10,
+    "name": "aa20-be5-eme10-average-current-41190"
+  },
+  "43024": {
+    "title": "Status Cooling",
+    "info": " 0=Off 1=On",
+    "size": "u8",
+    "factor": 1,
+    "name": "status-cooling-43024",
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
+  },
+  "43152": {
+    "title": "Internal cooling blocked",
+    "size": "u8",
+    "factor": 1,
+    "name": "internal-cooling-blocked-43152"
+  },
+  "43230": {
+    "title": "Heat Meter (OBSOLETE)",
+    "info": "Obsolete since v4798 of the controller software",
+    "unit": "kWh",
+    "size": "u32",
+    "factor": 10,
+    "min": 0.0,
+    "max": 9999999.0,
+    "default": 0.0,
+    "name": "heat-meter-obsolete-43230"
+  },
+  "43395": {
+    "title": "HPAC Relays",
+    "info": "Indicates the active relays on the HPAC accessory. The information is binary encoded",
+    "size": "u8",
+    "factor": 1,
+    "name": "hpac-relays-43395"
+  },
+  "40879": {
+    "title": "+Adjust Parallell factor",
+    "unit": "1",
+    "size": "s8",
+    "factor": 1,
+    "min": 1.0,
+    "max": 10.0,
+    "default": 5.0,
+    "name": "adjust-parallell-factor-40879",
+    "write": true
+  },
+  "40880": {
+    "title": "+Adjust Max change",
+    "info": "Largest allowed change",
+    "size": "s8",
+    "factor": 1,
+    "name": "adjust-max-change-40880",
+    "write": true
+  },
+  "40881": {
+    "title": "+Adjust Affect system8",
+    "info": "System affected by paralell change",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "adjust-affect-system8-40881",
+    "write": true
+  },
+  "40882": {
+    "title": "+Adjust Affect system7",
+    "info": "System affected by paralell change",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "adjust-affect-system7-40882",
+    "write": true
+  },
+  "40883": {
+    "title": "+Adjust Affect system6",
+    "info": "System affected by paralell change",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "adjust-affect-system6-40883",
+    "write": true
+  },
+  "40884": {
+    "title": "+Adjust Affect system5",
+    "info": "System affected by paralell change",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "adjust-affect-system5-40884",
+    "write": true
+  },
+  "40885": {
+    "title": "+Adjust Affect system4",
+    "info": "System affected by paralell change",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "adjust-affect-system4-40885",
+    "write": true
+  },
+  "40886": {
+    "title": "+Adjust Affect system3",
+    "info": "System affected by paralell change",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "adjust-affect-system3-40886",
+    "write": true
+  },
+  "40887": {
+    "title": "+Adjust Affect system2",
+    "info": "System affected by paralell change",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "adjust-affect-system2-40887",
+    "write": true
+  },
+  "40888": {
+    "title": "+Adjust Affect system1",
+    "info": "System affected by paralell change",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "adjust-affect-system1-40888",
+    "write": true
+  },
+  "47212": {
+    "title": "Max int add. power",
+    "unit": "kW",
+    "size": "s16",
+    "factor": 100,
+    "min": 0.0,
+    "max": 4500.0,
+    "default": 600.0,
+    "name": "max-int-add-power-47212",
+    "write": true
+  },
+  "48930": {
+    "title": "EME10 Activated",
+    "info": "0=not activated, 1=activated",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "eme10-activated-48930",
+    "write": true,
+    "mappings": {
+      "0": "not activated",
+      "1": "activated"
+    }
+  },
+  "49221": {
+    "title": "Delta brine pump passive cooling",
+    "unit": "\u00b0C",
+    "size": "u8",
+    "factor": 1,
+    "min": 1.0,
+    "max": 15.0,
+    "default": 4.0,
+    "name": "delta-brine-pump-passive-cooling-49221",
+    "write": true
   }
 }

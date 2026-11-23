@@ -2,9 +2,8 @@
   {
     "description": "Common F-Series corrections",
     "files": [
-      "f1145_f1245.json",
+      "f1145_f1245_f1345_f1355.json",
       "f1155_f1255.json",
-      "f1345_f1355.json",
       "f370_f372_f470.json",
       "f730.json",
       "f750.json",
@@ -139,9 +138,8 @@
   {
     "description": "Corrections for fan speed current units",
     "files": [
-      "f1145_f1245.json",
+      "f1145_f1245_f1345_f1355.json",
       "f1155_f1255.json",
-      "f1345_f1355.json",
       "f370_f372_f470.json",
       "f730.json",
       "f750.json"
@@ -210,9 +208,8 @@
   },
   {
     "files": [
-      "f1145_f1245.json",
+      "f1145_f1245_f1345_f1355.json",
       "f1155_f1255.json",
-      "f1345_f1355.json",
       "f370_f372_f470.json",
       "f730.json",
       "f750.json"
@@ -227,9 +224,8 @@
   },
   {
     "files": [
-      "f1145_f1245.json",
-      "f1155_f1255.json",
-      "f1345_f1355.json"
+      "f1145_f1245_f1345_f1355.json",
+      "f1155_f1255.json"
     ],
     "data": {
       "44752": {
@@ -241,9 +237,8 @@
   },
   {
     "files": [
-      "f1145_f1245.json",
+      "f1145_f1245_f1345_f1355.json",
       "f1155_f1255.json",
-      "f1345_f1355.json",
       "f750.json",
       "smo40.json",
       "vvm225_vvm320_vvm325.json"
@@ -319,7 +314,7 @@
     "description": "Corrections for compressor power units",
     "files": [
       "f1155_f1255.json",
-      "f1345_f1355.json",
+      "f1145_f1245_f1345_f1355.json",
       "f730.json",
       "f750.json"
     ],
@@ -405,9 +400,8 @@
   {
     "description": "Allow for numerical selection for Outdoor Filter Time",
     "files": [
-      "f1145_f1245.json",
+      "f1145_f1245_f1345_f1355.json",
       "f1155_f1255.json",
-      "f1345_f1355.json",
       "f370_f372_f470.json",
       "f730.json",
       "f750.json",
@@ -426,9 +420,8 @@
   {
     "description": "Add units to degree minutes parameters",
     "files": [
-      "f1145_f1245.json",
+      "f1145_f1245_f1345_f1355.json",
       "f1155_f1255.json",
-      "f1345_f1355.json",
       "f730.json",
       "f750.json",
       "smo20.json",
@@ -749,9 +742,8 @@
   {
     "description": "Limit allowed Brine In/Out temperature values",
     "files": [
-      "f1145_f1245.json",
-      "f1155_f1255.json",
-      "f1345_f1355.json"
+      "f1145_f1245_f1345_f1355.json",
+      "f1155_f1255.json"
     ],
     "data": {
       "40015": {
@@ -826,9 +818,8 @@
   {
     "description": "Correction for Cool Degree Minutes unit",
     "files": [
-      "f1145_f1245.json",
+      "f1145_f1245_f1345_f1355.json",
       "f1155_f1255.json",
-      "f1345_f1355.json",
       "smo20.json",
       "smo40.json",
       "vvm225_vvm320_vvm325.json",
@@ -841,9 +832,9 @@
     }
   },
    {
-    "description": "SG Ready Operating Mode - F1145/F1245",
+    "description": "SG Ready Operating Mode - F1145/F1245/F1345/F1355",
     "files": [
-      "f1145_f1245.json"
+      "f1145_f1245_f1345_f1355.json"
     ],
     "data": {
       "44874": {
