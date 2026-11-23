@@ -9,8 +9,7 @@
       "f750.json",
       "smo20.json",
       "smo40.json",
-      "vvm225_vvm320_vvm325.json",
-      "vvm310_vvm500.json"
+      "vvm225_vvm310_vvm320_vvm325_vvm500.json"
     ],
     "data": {
       "47041": {
@@ -241,7 +240,7 @@
       "f1155_f1255.json",
       "f750.json",
       "smo40.json",
-      "vvm225_vvm320_vvm325.json"
+      "vvm225_vvm310_vvm320_vvm325_vvm500.json"
     ],
     "data": {
       "43097": {
@@ -256,7 +255,7 @@
       "f370_f372_f470.json",
       "f730.json",
       "f750.json",
-      "vvm225_vvm320_vvm325.json"
+      "vvm225_vvm310_vvm320_vvm325_vvm500.json"
     ],
     "data": {
       "47260": {
@@ -345,8 +344,7 @@
     "files": [
       "smo20.json",
       "smo40.json",
-      "vvm225_vvm320_vvm325.json",
-      "vvm310_vvm500.json"
+      "vvm225_vvm310_vvm320_vvm325_vvm500.json"
     ],
     "data": {
       "40121": {
@@ -359,8 +357,7 @@
     "files": [
       "smo20.json",
       "smo40.json",
-      "vvm225_vvm320_vvm325.json",
-      "vvm310_vvm500.json"
+      "vvm225_vvm310_vvm320_vvm325_vvm500.json"
     ],
     "data": {
       "44866": {
@@ -407,8 +404,7 @@
       "f750.json",
       "smo20.json",
       "smo40.json",
-      "vvm225_vvm320_vvm325.json",
-      "vvm310_vvm500.json"
+      "vvm225_vvm310_vvm320_vvm325_vvm500.json"
     ],
     "data": {
      "47377": {
@@ -426,8 +422,7 @@
       "f750.json",
       "smo20.json",
       "smo40.json",
-      "vvm225_vvm320_vvm325.json",
-      "vvm310_vvm500.json"
+      "vvm225_vvm310_vvm320_vvm325_vvm500.json"
     ],
     "data": {
      "40940": {
@@ -822,8 +817,7 @@
       "f1155_f1255.json",
       "smo20.json",
       "smo40.json",
-      "vvm225_vvm320_vvm325.json",
-      "vvm310_vvm500.json"
+      "vvm225_vvm310_vvm320_vvm325_vvm500.json"
     ],
     "data": {
       "44266": {
@@ -848,9 +842,9 @@
     }
   },
   {
-    "description": "Energy meter mode mappings - VVM225/VVM320/VVM325",
+    "description": "Energy meter mode mappings - VVM225/VVM310/VVM320/VVM325/VVM500",
     "files": [
-      "vvm225_vvm320_vvm325.json"
+      "vvm225_vvm310_vvm320_vvm325_vvm500.json"
     ],
     "data": {
       "49287": {

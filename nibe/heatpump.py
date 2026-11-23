@@ -63,12 +63,12 @@ class Model(Enum):
 
     SMOS40 = "smos40", Series.S
 
-    VVM225 = "vvm225_vvm320_vvm325", Series.F
-    VVM320 = "vvm225_vvm320_vvm325", Series.F
-    VVM325 = "vvm225_vvm320_vvm325", Series.F
+    VVM225 = "vvm225_vvm310_vvm320_vvm325_vvm500", Series.F
+    VVM320 = "vvm225_vvm310_vvm320_vvm325_vvm500", Series.F
+    VVM325 = "vvm225_vvm310_vvm320_vvm325_vvm500", Series.F
 
-    VVM310 = "vvm310_vvm500", Series.F
-    VVM500 = "vvm310_vvm500", Series.F
+    VVM310 = "vvm225_vvm310_vvm320_vvm325_vvm500", Series.F
+    VVM500 = "vvm225_vvm310_vvm320_vvm325_vvm500", Series.F
 
     VVMS320 = "vvms320_vvms325", Series.S
     VVMS325 = "vvms320_vvms325", Series.S

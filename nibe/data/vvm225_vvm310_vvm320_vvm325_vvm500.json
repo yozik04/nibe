@@ -113,22 +113,6 @@
     "factor": 10,
     "name": "cl11-bt51-pool-1-temp-40042"
   },
-  "40043": {
-    "title": "BT53 Solar Panel Temp",
-    "info": "Used in Solar and AHPS Docking accessories",
-    "unit": "\u00b0C",
-    "size": "s16",
-    "factor": 10,
-    "name": "bt53-solar-panel-temp-40043"
-  },
-  "40044": {
-    "title": "BT54 Solar Load Temp",
-    "info": "Used in Solar and AHPS Docking accessories",
-    "unit": "\u00b0C",
-    "size": "s16",
-    "factor": 10,
-    "name": "bt54-solar-load-temp-40044"
-  },
   "40045": {
     "title": "EQ1-BT64 Cool Supply Temp",
     "info": "Cool supply temperature, BT64",
@@ -158,6 +142,14 @@
     "size": "s16",
     "factor": 10,
     "name": "em1-bt52-boiler-temperature-40070"
+  },
+  "40071": {
+    "title": "BT25 Ext. Supply",
+    "info": "External supply temperature, BT25",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "name": "bt25-ext-supply-40071"
   },
   "40072": {
     "title": "BF1 EP14 Flow",
@@ -232,12 +224,13 @@
     "factor": 10,
     "name": "ep21-bt3-return-temp-s2-40129"
   },
-  "40154": {
-    "title": "EP30-BT51 Solar pool Temp",
+  "40147": {
+    "title": "BT70 HW Comfort Supply Temp.",
+    "info": "Hot water comfort supply temperature, BT70",
     "unit": "\u00b0C",
     "size": "s16",
     "factor": 10,
-    "name": "ep30-bt51-solar-pool-temp-40154"
+    "name": "bt70-hw-comfort-supply-temp-40147"
   },
   "40159": {
     "title": "EP47-BT2 Supply temp S8",
@@ -410,6 +403,13 @@
     "factor": 10,
     "name": "bt74-average-40212"
   },
+  "40216": {
+    "title": "BT25 Ext. supply temp, cooling",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "name": "bt25-ext-supply-temp-cooling-40216"
+  },
   "40217": {
     "title": "Calc. Supply S8",
     "info": "Calculated supply temperature for the climate system",
@@ -572,6 +572,20 @@
     "size": "u8",
     "factor": 1,
     "name": "extra-heating-system-pump-s5-40368"
+  },
+  "40625": {
+    "title": "BT82 HW Comfort Return Temp",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "name": "bt82-hw-comfort-return-temp-40625"
+  },
+  "40626": {
+    "title": "BT83 HW Comfort Cylinder Temp",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "name": "bt83-hw-comfort-cylinder-temp-40626"
   },
   "40737": {
     "title": "EB101-EP14 Tot. Cooling op.time compr",
@@ -2420,14 +2434,6 @@
       "1": "On"
     }
   },
-  "43065": {
-    "title": "Heat Medium Flow dT Actual",
-    "info": "Current value of the delta T for the heat medium flow",
-    "size": "s16",
-    "factor": 10,
-    "name": "heat-medium-flow-dt-actual-43065",
-    "unit": "\u00b0C"
-  },
   "43081": {
     "title": "Tot. op.time add.",
     "info": "Total electric additive operation time",
@@ -2498,6 +2504,18 @@
     "factor": 1,
     "name": "mixing-valve-state-s1-43096"
   },
+  "43097": {
+    "title": "Status of the shunt controlled additional heat accessory",
+    "info": "10 = Off, 20 = Running, 30 = Passive",
+    "size": "u8",
+    "factor": 1,
+    "name": "status-of-the-shunt-controlled-additional-heat-accessory-43097",
+    "mappings": {
+      "10": "Off",
+      "20": "Running",
+      "30": "Passive"
+    }
+  },
   "43158": {
     "title": "External adjustment activated via input S4",
     "size": "u8",
@@ -2522,6 +2540,17 @@
     "factor": 1,
     "name": "external-adjustment-activated-via-input-s1-43161"
   },
+  "43163": {
+    "title": "Blocking status of the shunt controlled add heat acc",
+    "info": "0 = Unblocked, 1 = Blocked",
+    "size": "u8",
+    "factor": 1,
+    "name": "blocking-status-of-the-shunt-controlled-add-heat-acc-43163",
+    "mappings": {
+      "0": "Unblocked",
+      "1": "Blocked"
+    }
+  },
   "43171": {
     "title": "Blocking status of the step controlled add heat acc",
     "info": "0 = Unblocked, 1 = Blocked",
@@ -2531,17 +2560,6 @@
     "mappings": {
       "0": "Unblocked",
       "1": "Blocked"
-    }
-  },
-  "43180": {
-    "title": "HWC Pump Status GP11",
-    "info": "Hot water circulation pump status. 1=on, 0=off",
-    "size": "u8",
-    "factor": 1,
-    "name": "hwc-pump-status-gp11-43180",
-    "mappings": {
-      "0": "off",
-      "1": "on"
     }
   },
   "43230": {
@@ -2616,11 +2634,28 @@
     "factor": 1,
     "name": "pca-power-relays-ep14-43516"
   },
-  "43536": {
-    "title": "Ext. Addition Blocked",
+  "43555": {
+    "title": "HW Comfort Shunt State",
+    "info": "10=shunt off,20=shunt open,30=shunt closed",
     "size": "u8",
     "factor": 1,
-    "name": "ext-addition-blocked-43536"
+    "name": "hw-comfort-shunt-state-43555",
+    "mappings": {
+      "10": "shunt off",
+      "20": "shunt open",
+      "30": "shunt closed"
+    }
+  },
+  "43556": {
+    "title": "HW Comfort Add Status",
+    "info": "1=on,0=off",
+    "size": "u8",
+    "factor": 1,
+    "name": "hw-comfort-add-status-43556",
+    "mappings": {
+      "0": "off",
+      "1": "on"
+    }
   },
   "43561": {
     "title": "Pool 1 blocked",
@@ -2862,13 +2897,6 @@
     "factor": 10,
     "name": "eb101-ep14-bt16-evaporator-44363"
   },
-  "44379": {
-    "title": "Ext. Addition Pump",
-    "info": "On/Off",
-    "size": "u8",
-    "factor": 1,
-    "name": "ext-addition-pump-44379"
-  },
   "44396": {
     "title": "EB101 Speed charge pump",
     "unit": "%",
@@ -2946,12 +2974,6 @@
     "size": "u8",
     "factor": 1,
     "name": "eb101-ep14-calculated-power-outdoor-unit-44706"
-  },
-  "44742": {
-    "title": "HW valve QN35",
-    "size": "u8",
-    "factor": 1,
-    "name": "hw-valve-qn35-44742"
   },
   "44743": {
     "title": "Internal charge pump",
@@ -3118,24 +3140,6 @@
     "max": 7.0,
     "default": 3.0,
     "name": "step-controlled-add-max-step-47325"
-  },
-  "47633": {
-    "title": "State ext. add.",
-    "info": "Only relevant if not in step mode",
-    "size": "u8",
-    "factor": 1,
-    "name": "state-ext-add-47633"
-  },
-  "48083": {
-    "title": "Solar Pool Heating Active",
-    "info": "1=Yes, 0=No",
-    "size": "u8",
-    "factor": 1,
-    "name": "solar-pool-heating-active-48083",
-    "mappings": {
-      "0": "No",
-      "1": "Yes"
-    }
   },
   "48206": {
     "title": "Silent Mode Status",
@@ -3769,6 +3773,29 @@
     "name": "stop-temperature-hw-economy-47049",
     "write": true
   },
+  "47050": {
+    "title": "Periodic HW",
+    "info": "Activates the periodic hot water generation",
+    "size": "s8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 1.0,
+    "name": "periodic-hw-47050",
+    "write": true
+  },
+  "47051": {
+    "title": "Periodic HW Interval",
+    "info": "Interval between Periodic hot water sessions",
+    "unit": "days",
+    "size": "s8",
+    "factor": 1,
+    "min": 1.0,
+    "max": 90.0,
+    "default": 14.0,
+    "name": "periodic-hw-interval-47051",
+    "write": true
+  },
   "47054": {
     "title": "Run time HWC",
     "info": "Run time for the hot water circulation system",
@@ -3904,6 +3931,16 @@
     "size": "s16",
     "factor": 1,
     "name": "dm-between-add-steps-47209",
+    "write": true
+  },
+  "47210": {
+    "title": "DM start add. with shunt",
+    "size": "s16",
+    "factor": 1,
+    "min": -2000.0,
+    "max": -30.0,
+    "default": -400.0,
+    "name": "dm-start-add-with-shunt-47210",
     "write": true
   },
   "47212": {
@@ -4370,6 +4407,32 @@
     "name": "shunt-controlled-add-mixing-valve-wait-47321",
     "write": true
   },
+  "47322": {
+    "title": "Step controlled add. accessory",
+    "info": "Activates the step controlled addition accessory 0=Off 1=On",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "step-controlled-add-accessory-47322",
+    "write": true,
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
+  },
+  "47323": {
+    "title": "Step controlled add. start DM",
+    "info": "DM where the first step of step controlled add. starts",
+    "size": "s16",
+    "factor": 1,
+    "min": -2000.0,
+    "max": -30.0,
+    "default": -400.0,
+    "name": "step-controlled-add-start-dm-47323",
+    "write": true
+  },
   "47324": {
     "title": "Step controlled add. diff. DM",
     "info": "Difference in DM of each step in the step controlled add.",
@@ -4430,17 +4493,6 @@
     "max": 100.0,
     "default": 30.0,
     "name": "cool-at-room-over-temp-47337",
-    "write": true
-  },
-  "47339": {
-    "title": "Cooling mix. valve step delay",
-    "unit": "s",
-    "size": "s16",
-    "factor": 1,
-    "min": 10.0,
-    "max": 300.0,
-    "default": 30.0,
-    "name": "cooling-mix-valve-step-delay-47339",
     "write": true
   },
   "47340": {
@@ -4934,29 +4986,6 @@
     "name": "heat-curve-s7-47567",
     "write": true
   },
-  "47631": {
-    "title": "External add step controlled",
-    "info": "Puts the external addition i step mode",
-    "size": "u8",
-    "factor": 1,
-    "min": 0.0,
-    "max": 1.0,
-    "default": 0.0,
-    "name": "external-add-step-controlled-47631",
-    "write": true
-  },
-  "47632": {
-    "title": "External add. min. runtime",
-    "info": "Min. runtime, only relevant if not step mode",
-    "unit": "hrs",
-    "size": "u8",
-    "factor": 1,
-    "min": 0.0,
-    "max": 48.0,
-    "default": 12.0,
-    "name": "external-add-min-runtime-47632",
-    "write": true
-  },
   "48043": {
     "title": "Holiday - Activated",
     "info": "0=inactive, 10=active",
@@ -4989,18 +5018,6 @@
     "max": 400.0,
     "default": 210.0,
     "name": "cool-heat-sensor-set-point-48074",
-    "write": true
-  },
-  "48085": {
-    "title": "Heat medium pump manual speed",
-    "info": "Heat medium pump speed if manual",
-    "unit": "%",
-    "size": "s8",
-    "factor": 1,
-    "min": 1.0,
-    "max": 100.0,
-    "default": 70.0,
-    "name": "heat-medium-pump-manual-speed-48085",
     "write": true
   },
   "48088": {
@@ -5049,51 +5066,15 @@
     "name": "pool-1-activated-48094",
     "write": true
   },
-  "48099": {
-    "title": "External add. accessory",
-    "info": "Activates the external addition accessory",
+  "48120": {
+    "title": "HW Comfort",
+    "info": "Activates the HW Comfort Accessory.",
     "size": "u8",
     "factor": 1,
     "min": 0.0,
     "max": 1.0,
     "default": 0.0,
-    "name": "external-add-accessory-48099",
-    "write": true
-  },
-  "48107": {
-    "title": "Charge pump manual speed",
-    "info": "Charge pump speed if manual",
-    "unit": "%",
-    "size": "s8",
-    "factor": 1,
-    "min": 1.0,
-    "max": 100.0,
-    "default": 70.0,
-    "name": "charge-pump-manual-speed-48107",
-    "write": true
-  },
-  "48130": {
-    "title": "Manual heat medium pump speed",
-    "info": "Manual heat medium pump speed?",
-    "unit": "%",
-    "size": "s8",
-    "factor": 1,
-    "min": 0.0,
-    "max": 1.0,
-    "default": 0.0,
-    "name": "manual-heat-medium-pump-speed-48130",
-    "write": true
-  },
-  "48131": {
-    "title": "Manual charge pump speed",
-    "info": "Manual charge pump speed?",
-    "unit": "%",
-    "size": "s8",
-    "factor": 1,
-    "min": 0.0,
-    "max": 1.0,
-    "default": 0.0,
-    "name": "manual-charge-pump-speed-48131",
+    "name": "hw-comfort-48120",
     "write": true
   },
   "48132": {
@@ -5110,6 +5091,16 @@
       "3": "12h",
       "4": "One time increase"
     }
+  },
+  "48139": {
+    "title": "DM startdiff add. with shunt",
+    "size": "s16",
+    "factor": 1,
+    "min": 0.0,
+    "max": 2000.0,
+    "default": 400.0,
+    "name": "dm-startdiff-add-with-shunt-48139",
+    "write": true
   },
   "48156": {
     "title": "External cooling accessory",
@@ -5280,26 +5271,14 @@
     "name": "cooling-delta-temp-at-40degc-48215",
     "write": true
   },
-  "48275": {
-    "title": "Max charge pump reg speed",
-    "info": "Max heat medium pump reg speed",
-    "unit": "%",
+  "48235": {
+    "title": "Operational mode charge pump S1",
     "size": "u8",
     "factor": 1,
-    "min": 50.0,
-    "max": 100.0,
-    "default": 100.0,
-    "name": "max-charge-pump-reg-speed-48275",
-    "write": true
-  },
-  "48278": {
-    "title": "DM start ext. add.",
-    "size": "s16",
-    "factor": 1,
-    "min": 50.0,
-    "max": 2000.0,
-    "default": 1400.0,
-    "name": "dm-start-ext-add-48278",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 1.0,
+    "name": "operational-mode-charge-pump-s1-48235",
     "write": true
   },
   "48282": {
@@ -5346,6 +5325,101 @@
     "name": "sg-ready-pool-48285",
     "write": true
   },
+  "48374": {
+    "title": "Speed circ.pump Heat Slave 1",
+    "unit": "%",
+    "size": "u8",
+    "factor": 1,
+    "min": 1.0,
+    "max": 100.0,
+    "default": 70.0,
+    "name": "speed-circ-pump-heat-slave-1-48374",
+    "write": true
+  },
+  "48382": {
+    "title": "Op mode circ.pump Heat Slave 1",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 1.0,
+    "name": "op-mode-circ-pump-heat-slave-1-48382",
+    "write": true
+  },
+  "48390": {
+    "title": "Speed circ.pump HW Slave 1",
+    "unit": "%",
+    "size": "u8",
+    "factor": 1,
+    "min": 1.0,
+    "max": 100.0,
+    "default": 70.0,
+    "name": "speed-circ-pump-hw-slave-1-48390",
+    "write": true
+  },
+  "48398": {
+    "title": "Op mode circ.pump HW Slave 1",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 1.0,
+    "name": "op-mode-circ-pump-hw-slave-1-48398",
+    "write": true
+  },
+  "48406": {
+    "title": "Speed circ.pump Pool Slave 1",
+    "unit": "%",
+    "size": "u8",
+    "factor": 1,
+    "min": 1.0,
+    "max": 100.0,
+    "default": 70.0,
+    "name": "speed-circ-pump-pool-slave-1-48406",
+    "write": true
+  },
+  "48414": {
+    "title": "Op mode circ.pump Pool Slave 1",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 1.0,
+    "name": "op-mode-circ-pump-pool-slave-1-48414",
+    "write": true
+  },
+  "48422": {
+    "title": "Speed circ.pump Cooling Slave 1",
+    "unit": "%",
+    "size": "u8",
+    "factor": 1,
+    "min": 1.0,
+    "max": 100.0,
+    "default": 70.0,
+    "name": "speed-circ-pump-cooling-slave-1-48422",
+    "write": true
+  },
+  "48431": {
+    "title": "Op mode circ.pump Cooling Slave 1",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 1.0,
+    "name": "op-mode-circ-pump-cooling-slave-1-48431",
+    "write": true
+  },
+  "48440": {
+    "title": "Speed circ.pump Waiting Slave 1",
+    "unit": "%",
+    "size": "u8",
+    "factor": 1,
+    "min": 1.0,
+    "max": 100.0,
+    "default": 30.0,
+    "name": "speed-circ-pump-waiting-slave-1-48440",
+    "write": true
+  },
   "48467": {
     "title": "EB101 Max charge pump reg speed",
     "info": "Max charge pump reg speed",
@@ -5356,6 +5430,16 @@
     "max": 100.0,
     "default": 100.0,
     "name": "eb101-max-charge-pump-reg-speed-48467",
+    "write": true
+  },
+  "48475": {
+    "title": "Operational mode charge pump in cooling mode S1",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 1.0,
+    "name": "operational-mode-charge-pump-in-cooling-mode-s1-48475",
     "write": true
   },
   "48486": {
@@ -7550,6 +7634,33 @@
     "name": "max-diff-ses-other-prios-49209",
     "write": true
   },
+  "49225": {
+    "title": "max add power",
+    "info": "max addition power",
+    "unit": "kW",
+    "size": "s16",
+    "factor": 100,
+    "min": 250.0,
+    "max": 2500.0,
+    "default": 2500.0,
+    "name": "max-add-power-49225",
+    "write": true
+  },
+  "49226": {
+    "title": "OPT Gas Type",
+    "info": "0 = G20/G25, 1 = G31",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "opt-gas-type-49226",
+    "write": true,
+    "mappings": {
+      "0": "G20",
+      "1": "G31"
+    }
+  },
   "49241": {
     "title": "External ERS 1 accessory bypass set temp.",
     "unit": "\u00b0C",
@@ -7595,25 +7706,41 @@
   },
   "49287": {
     "title": "Energy Meter mode X23",
-    "info": "Energy meter X23 in mode Wh/pulse = 0 or pulses/kWh = 1",
+    "info": "Energy meter X23 in mode Wh/pulse = 0, pulses/kWh = 1, EMK150 = 2, EMK300/310 = 3, EMK500 = 4, EMK300/310/05 = 5",
     "size": "u8",
     "factor": 1,
     "min": 0.0,
-    "max": 1.0,
+    "max": 5.0,
     "default": 0.0,
     "name": "energy-meter-mode-x23-49287",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "Wh/pulse",
+      "1": "pulses/kWh",
+      "2": "EMK150",
+      "3": "EMK300/310",
+      "4": "EMK500",
+      "5": "EMK300/310/05"
+    }
   },
   "49288": {
     "title": "Energy Meter mode X22",
-    "info": "Energy meter X22 in mode Wh/pulse = 0 or pulses/kWh = 1",
+    "info": "Energy meter X22 in mode Wh/pulse = 0, pulses/kWh = 1, EMK150 = 2, EMK300/310 = 3, EMK500 = 4, EMK300/310/05 = 5",
     "size": "u8",
     "factor": 1,
     "min": 0.0,
-    "max": 1.0,
+    "max": 5.0,
     "default": 0.0,
     "name": "energy-meter-mode-x22-49288",
-    "write": true
+    "write": true,
+    "mappings": {
+      "0": "Wh/pulse",
+      "1": "pulses/kWh",
+      "2": "EMK150",
+      "3": "EMK300/310",
+      "4": "EMK500",
+      "5": "EMK300/310/05"
+    }
   },
   "49289": {
     "title": "Ground water pump speed control ",
@@ -7624,6 +7751,17 @@
     "max": 1.0,
     "default": 0.0,
     "name": "ground-water-pump-speed-control-49289",
+    "write": true
+  },
+  "49294": {
+    "title": "DM diff start add.",
+    "info": "The value below the last compressor step the degree minutes needed to be reached for the pump to start electric addition",
+    "size": "s16",
+    "factor": 1,
+    "min": 10.0,
+    "max": 2400.0,
+    "default": 700.0,
+    "name": "dm-diff-start-add-49294",
     "write": true
   },
   "49297": {
@@ -7652,6 +7790,73 @@
       "0": "not affecting",
       "1": "affecting"
     }
+  },
+  "49301": {
+    "title": "Speed circ.pump add prio",
+    "unit": "%",
+    "size": "u8",
+    "factor": 1,
+    "name": "speed-circ-pump-add-prio-49301",
+    "write": true
+  },
+  "49302": {
+    "title": "Speed circ.pump add prio",
+    "unit": "%",
+    "size": "u8",
+    "factor": 1,
+    "name": "speed-circ-pump-add-prio-49302",
+    "write": true
+  },
+  "49303": {
+    "title": "Speed circ.pump add prio",
+    "unit": "%",
+    "size": "u8",
+    "factor": 1,
+    "name": "speed-circ-pump-add-prio-49303",
+    "write": true
+  },
+  "49304": {
+    "title": "Speed circ.pump add prio",
+    "unit": "%",
+    "size": "u8",
+    "factor": 1,
+    "name": "speed-circ-pump-add-prio-49304",
+    "write": true
+  },
+  "49305": {
+    "title": "Speed circ.pump add prio",
+    "unit": "%",
+    "size": "u8",
+    "factor": 1,
+    "name": "speed-circ-pump-add-prio-49305",
+    "write": true
+  },
+  "49306": {
+    "title": "Speed circ.pump add prio",
+    "unit": "%",
+    "size": "u8",
+    "factor": 1,
+    "name": "speed-circ-pump-add-prio-49306",
+    "write": true
+  },
+  "49307": {
+    "title": "Speed circ.pump add prio",
+    "unit": "%",
+    "size": "u8",
+    "factor": 1,
+    "name": "speed-circ-pump-add-prio-49307",
+    "write": true
+  },
+  "49308": {
+    "title": "Speed circ.pump add prio",
+    "unit": "%",
+    "size": "u8",
+    "factor": 1,
+    "min": 1.0,
+    "max": 100.0,
+    "default": 70.0,
+    "name": "speed-circ-pump-add-prio-49308",
+    "write": true
   },
   "49328": {
     "title": "ERS 4 Exhaust Fan speed 4",
@@ -8254,5 +8459,217 @@
     "factor": 1,
     "name": "aux-ers-fire-place-guard-49430",
     "write": true
+  },
+  "40043": {
+    "title": "BT53 Solar Panel Temp",
+    "info": "Used in Solar and AHPS Docking accessories",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "name": "bt53-solar-panel-temp-40043"
+  },
+  "40044": {
+    "title": "BT54 Solar Load Temp",
+    "info": "Used in Solar and AHPS Docking accessories",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "name": "bt54-solar-load-temp-40044"
+  },
+  "40154": {
+    "title": "EP30-BT51 Solar pool Temp",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "name": "ep30-bt51-solar-pool-temp-40154"
+  },
+  "43065": {
+    "title": "Heat Medium Flow dT Actual",
+    "info": "Current value of the delta T for the heat medium flow",
+    "size": "s16",
+    "factor": 10,
+    "name": "heat-medium-flow-dt-actual-43065",
+    "unit": "\u00b0C"
+  },
+  "43180": {
+    "title": "HWC Pump Status GP11",
+    "info": "Hot water circulation pump status. 1=on, 0=off",
+    "size": "u8",
+    "factor": 1,
+    "name": "hwc-pump-status-gp11-43180",
+    "mappings": {
+      "0": "off",
+      "1": "on"
+    }
+  },
+  "43536": {
+    "title": "Ext. Addition Blocked",
+    "size": "u8",
+    "factor": 1,
+    "name": "ext-addition-blocked-43536"
+  },
+  "44379": {
+    "title": "Ext. Addition Pump",
+    "info": "On/Off",
+    "size": "u8",
+    "factor": 1,
+    "name": "ext-addition-pump-44379"
+  },
+  "44742": {
+    "title": "HW valve QN35",
+    "size": "u8",
+    "factor": 1,
+    "name": "hw-valve-qn35-44742"
+  },
+  "47633": {
+    "title": "State ext. add.",
+    "info": "Only relevant if not in step mode",
+    "size": "u8",
+    "factor": 1,
+    "name": "state-ext-add-47633"
+  },
+  "48083": {
+    "title": "Solar Pool Heating Active",
+    "info": "1=Yes, 0=No",
+    "size": "u8",
+    "factor": 1,
+    "name": "solar-pool-heating-active-48083",
+    "mappings": {
+      "0": "No",
+      "1": "Yes"
+    }
+  },
+  "47339": {
+    "title": "Cooling mix. valve step delay",
+    "unit": "s",
+    "size": "s16",
+    "factor": 1,
+    "min": 10.0,
+    "max": 300.0,
+    "default": 30.0,
+    "name": "cooling-mix-valve-step-delay-47339",
+    "write": true
+  },
+  "47631": {
+    "title": "External add step controlled",
+    "info": "Puts the external addition i step mode",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "external-add-step-controlled-47631",
+    "write": true
+  },
+  "47632": {
+    "title": "External add. min. runtime",
+    "info": "Min. runtime, only relevant if not step mode",
+    "unit": "hrs",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 48.0,
+    "default": 12.0,
+    "name": "external-add-min-runtime-47632",
+    "write": true
+  },
+  "48085": {
+    "title": "Heat medium pump manual speed",
+    "info": "Heat medium pump speed if manual",
+    "unit": "%",
+    "size": "s8",
+    "factor": 1,
+    "min": 1.0,
+    "max": 100.0,
+    "default": 70.0,
+    "name": "heat-medium-pump-manual-speed-48085",
+    "write": true
+  },
+  "48099": {
+    "title": "External add. accessory",
+    "info": "Activates the external addition accessory",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "external-add-accessory-48099",
+    "write": true
+  },
+  "48107": {
+    "title": "Charge pump manual speed",
+    "info": "Charge pump speed if manual",
+    "unit": "%",
+    "size": "s8",
+    "factor": 1,
+    "min": 1.0,
+    "max": 100.0,
+    "default": 70.0,
+    "name": "charge-pump-manual-speed-48107",
+    "write": true
+  },
+  "48130": {
+    "title": "Manual heat medium pump speed",
+    "info": "Manual heat medium pump speed?",
+    "unit": "%",
+    "size": "s8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "manual-heat-medium-pump-speed-48130",
+    "write": true
+  },
+  "48131": {
+    "title": "Manual charge pump speed",
+    "info": "Manual charge pump speed?",
+    "unit": "%",
+    "size": "s8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "manual-charge-pump-speed-48131",
+    "write": true
+  },
+  "48275": {
+    "title": "Max charge pump reg speed",
+    "info": "Max heat medium pump reg speed",
+    "unit": "%",
+    "size": "u8",
+    "factor": 1,
+    "min": 50.0,
+    "max": 100.0,
+    "default": 100.0,
+    "name": "max-charge-pump-reg-speed-48275",
+    "write": true
+  },
+  "48278": {
+    "title": "DM start ext. add.",
+    "size": "s16",
+    "factor": 1,
+    "min": 50.0,
+    "max": 2000.0,
+    "default": 1400.0,
+    "name": "dm-start-ext-add-48278",
+    "write": true
+  },
+  "47260": {
+    "title": "Fan Mode",
+    "info": "0=Normal 1=Fan speed 1, 2=Fan speed 2, 3=Fan speed 3, 4=Fan speed 4",
+    "size": "u8",
+    "factor": 1,
+    "min": 0,
+    "max": 4,
+    "default": 0,
+    "name": "fan-mode-47260",
+    "write": true,
+    "mappings": {
+      "0": "Normal",
+      "1": "Fan mode 1",
+      "2": "Fan mode 2",
+      "3": "Fan mode 3",
+      "4": "Fan mode 4"
+    }
   }
 }
