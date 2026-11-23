@@ -37,8 +37,8 @@ class Model(Enum):
     F1145 = "f1145_f1245", Series.F
     F1245 = "f1145_f1245", Series.F
 
-    F1345 = "f1345", Series.F
-    F1355 = "f1355", Series.F
+    F1345 = "f1345_f1355", Series.F
+    F1355 = "f1345_f1355", Series.F
 
     F730 = "f730", Series.F
     F750 = "f750", Series.F

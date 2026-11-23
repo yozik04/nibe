@@ -14622,5 +14622,313 @@
     "factor": 1,
     "name": "aux-ers-fire-place-guard-49430",
     "write": true
+  },
+  "40155": {
+    "title": "EQ1-BT57 Collector Temp.",
+    "info": "External collector temperature, BT57, for ACS",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "name": "eq1-bt57-collector-temp-40155"
+  },
+  "40156": {
+    "title": "EQ1-BT75 Heatdump Temp.",
+    "info": "Heating medium dump temperature, BT75, for ACS",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "name": "eq1-bt75-heatdump-temp-40156"
+  },
+  "40627": {
+    "title": "MP brine pump.",
+    "info": "Motor protection brine pump",
+    "size": "s16",
+    "factor": 1,
+    "name": "mp-brine-pump-40627"
+  },
+  "44138": {
+    "title": "EB108-EP15 Prio",
+    "info": "Indicates what need is assigned to the compressor module, 0 = Off, 1 = Heat, 2 = Hot water, 3 = Pool 1, 4 = Pool2, 5=External Request",
+    "size": "u8",
+    "factor": 1,
+    "name": "eb108-ep15-prio-44138",
+    "mappings": {
+      "0": "Off",
+      "1": "Heat",
+      "2": "Hot water",
+      "3": "Pool 1",
+      "4": "Pool2",
+      "5": "External Request"
+    }
+  },
+  "44139": {
+    "title": "EB108-EP14 Prio",
+    "info": "Indicates what need is assigned to the compressor module, 0 = Off, 1 = Heat, 2 = Hot water, 3 = Pool 1, 4 = Pool2, 5=External Request",
+    "size": "u8",
+    "factor": 1,
+    "name": "eb108-ep14-prio-44139",
+    "mappings": {
+      "0": "Off",
+      "1": "Heat",
+      "2": "Hot water",
+      "3": "Pool 1",
+      "4": "Pool2",
+      "5": "External Request"
+    }
+  },
+  "44151": {
+    "title": "EB107-EP15 Prio",
+    "info": "Indicates what need is assigned to the compressor module, 0 = Off, 1 = Heat, 2 = Hot water, 3 = Pool 1, 4 = Pool2, 5=External Request",
+    "size": "u8",
+    "factor": 1,
+    "name": "eb107-ep15-prio-44151",
+    "mappings": {
+      "0": "Off",
+      "1": "Heat",
+      "2": "Hot water",
+      "3": "Pool 1",
+      "4": "Pool2",
+      "5": "External Request"
+    }
+  },
+  "44152": {
+    "title": "EB107-EP14 Prio",
+    "info": "Indicates what need is assigned to the compressor module, 0 = Off, 1 = Heat, 2 = Hot water, 3 = Pool 1, 4 = Pool2, 5=External Request",
+    "size": "u8",
+    "factor": 1,
+    "name": "eb107-ep14-prio-44152",
+    "mappings": {
+      "0": "Off",
+      "1": "Heat",
+      "2": "Hot water",
+      "3": "Pool 1",
+      "4": "Pool2",
+      "5": "External Request"
+    }
+  },
+  "44164": {
+    "title": "EB106-EP15 Prio",
+    "info": "Indicates what need is assigned to the compressor module, 0 = Off, 1 = Heat, 2 = Hot water, 3 = Pool 1, 4 = Pool2, 5=External Request",
+    "size": "u8",
+    "factor": 1,
+    "name": "eb106-ep15-prio-44164",
+    "mappings": {
+      "0": "Off",
+      "1": "Heat",
+      "2": "Hot water",
+      "3": "Pool 1",
+      "4": "Pool2",
+      "5": "External Request"
+    }
+  },
+  "44165": {
+    "title": "EB106-EP14 Prio",
+    "info": "Indicates what need is assigned to the compressor module, 0 = Off, 1 = Heat, 2 = Hot water, 3 = Pool 1, 4 = Pool2, 5=External Request",
+    "size": "u8",
+    "factor": 1,
+    "name": "eb106-ep14-prio-44165",
+    "mappings": {
+      "0": "Off",
+      "1": "Heat",
+      "2": "Hot water",
+      "3": "Pool 1",
+      "4": "Pool2",
+      "5": "External Request"
+    }
+  },
+  "44177": {
+    "title": "EB105-EP15 Prio",
+    "info": "Indicates what need is assigned to the compressor module, 0 = Off, 1 = Heat, 2 = Hot water, 3 = Pool 1, 4 = Pool2, 5=External Request",
+    "size": "u8",
+    "factor": 1,
+    "name": "eb105-ep15-prio-44177",
+    "mappings": {
+      "0": "Off",
+      "1": "Heat",
+      "2": "Hot water",
+      "3": "Pool 1",
+      "4": "Pool2",
+      "5": "External Request"
+    }
+  },
+  "44178": {
+    "title": "EB105-EP14 Prio",
+    "info": "Indicates what need is assigned to the compressor module, 0 = Off, 1 = Heat, 2 = Hot water, 3 = Pool 1, 4 = Pool2, 5=External Request",
+    "size": "u8",
+    "factor": 1,
+    "name": "eb105-ep14-prio-44178",
+    "mappings": {
+      "0": "Off",
+      "1": "Heat",
+      "2": "Hot water",
+      "3": "Pool 1",
+      "4": "Pool2",
+      "5": "External Request"
+    }
+  },
+  "44190": {
+    "title": "EB104-EP15 Prio",
+    "info": "Indicates what need is assigned to the compressor module, 0 = Off, 1 = Heat, 2 = Hot water, 3 = Pool 1, 4 = Pool2, 5=External Request",
+    "size": "u8",
+    "factor": 1,
+    "name": "eb104-ep15-prio-44190",
+    "mappings": {
+      "0": "Off",
+      "1": "Heat",
+      "2": "Hot water",
+      "3": "Pool 1",
+      "4": "Pool2",
+      "5": "External Request"
+    }
+  },
+  "44191": {
+    "title": "EB104-EP14 Prio",
+    "info": "Indicates what need is assigned to the compressor module, 0 = Off, 1 = Heat, 2 = Hot water, 3 = Pool 1, 4 = Pool2, 5=External Request",
+    "size": "u8",
+    "factor": 1,
+    "name": "eb104-ep14-prio-44191",
+    "mappings": {
+      "0": "Off",
+      "1": "Heat",
+      "2": "Hot water",
+      "3": "Pool 1",
+      "4": "Pool2",
+      "5": "External Request"
+    }
+  },
+  "44203": {
+    "title": "EB103-EP15 Prio",
+    "info": "Indicates what need is assigned to the compressor module, 0 = Off, 1 = Heat, 2 = Hot water, 3 = Pool 1, 4 = Pool2, 5=External Request",
+    "size": "u8",
+    "factor": 1,
+    "name": "eb103-ep15-prio-44203",
+    "mappings": {
+      "0": "Off",
+      "1": "Heat",
+      "2": "Hot water",
+      "3": "Pool 1",
+      "4": "Pool2",
+      "5": "External Request"
+    }
+  },
+  "44204": {
+    "title": "EB103-EP14 Prio",
+    "info": "Indicates what need is assigned to the compressor module, 0 = Off, 1 = Heat, 2 = Hot water, 3 = Pool 1, 4 = Pool2, 5=External Request",
+    "size": "u8",
+    "factor": 1,
+    "name": "eb103-ep14-prio-44204",
+    "mappings": {
+      "0": "Off",
+      "1": "Heat",
+      "2": "Hot water",
+      "3": "Pool 1",
+      "4": "Pool2",
+      "5": "External Request"
+    }
+  },
+  "44216": {
+    "title": "EB102-EP15 Prio",
+    "info": "Indicates what need is assigned to the compressor module, 0 = Off, 1 = Heat, 2 = Hot water, 3 = Pool 1, 4 = Pool2, 5=External Request",
+    "size": "u8",
+    "factor": 1,
+    "name": "eb102-ep15-prio-44216",
+    "mappings": {
+      "0": "Off",
+      "1": "Heat",
+      "2": "Hot water",
+      "3": "Pool 1",
+      "4": "Pool2",
+      "5": "External Request"
+    }
+  },
+  "44217": {
+    "title": "EB102-EP14 Prio",
+    "info": "Indicates what need is assigned to the compressor module, 0 = Off, 1 = Heat, 2 = Hot water, 3 = Pool 1, 4 = Pool2, 5=External Request",
+    "size": "u8",
+    "factor": 1,
+    "name": "eb102-ep14-prio-44217",
+    "mappings": {
+      "0": "Off",
+      "1": "Heat",
+      "2": "Hot water",
+      "3": "Pool 1",
+      "4": "Pool2",
+      "5": "External Request"
+    }
+  },
+  "44229": {
+    "title": "EB101-EP15 Prio",
+    "info": "Indicates what need is assigned to the compressor module, 0 = Off, 1 = Heat, 2 = Hot water, 3 = Pool 1, 4 = Pool2, 5=External Request",
+    "size": "u8",
+    "factor": 1,
+    "name": "eb101-ep15-prio-44229",
+    "mappings": {
+      "0": "Off",
+      "1": "Heat",
+      "2": "Hot water",
+      "3": "Pool 1",
+      "4": "Pool2",
+      "5": "External Request"
+    }
+  },
+  "44230": {
+    "title": "EB101-EP14 Prio",
+    "info": "Indicates what need is assigned to the compressor module, 0 = Off, 1 = Heat, 2 = Hot water, 3 = Pool 1, 4 = Pool2, 5=External Request",
+    "size": "u8",
+    "factor": 1,
+    "name": "eb101-ep14-prio-44230",
+    "mappings": {
+      "0": "Off",
+      "1": "Heat",
+      "2": "Hot water",
+      "3": "Pool 1",
+      "4": "Pool2",
+      "5": "External Request"
+    }
+  },
+  "44242": {
+    "title": "EB100-EP15 Prio",
+    "info": "Indicates what need is assigned to the compressor module, 0 = Off, 1 = Heat, 2 = Hot water, 3 = Pool 1, 4 = Pool2, 5=External Request",
+    "size": "u8",
+    "factor": 1,
+    "name": "eb100-ep15-prio-44242",
+    "mappings": {
+      "0": "Off",
+      "1": "Heat",
+      "2": "Hot water",
+      "3": "Pool 1",
+      "4": "Pool2",
+      "5": "External Request"
+    }
+  },
+  "44243": {
+    "title": "EB100-EP14 Prio",
+    "info": "Indicates what need is assigned to the compressor module, 0 = Off, 1 = Heat, 2 = Hot water, 3 = Pool 1, 4 = Pool2, 5=External Request",
+    "size": "u8",
+    "factor": 1,
+    "name": "eb100-ep14-prio-44243",
+    "mappings": {
+      "0": "Off",
+      "1": "Heat",
+      "2": "Hot water",
+      "3": "Pool 1",
+      "4": "Pool2",
+      "5": "External Request"
+    }
+  },
+  "48086": {
+    "title": "Hot water tank type",
+    "info": " 10=VPB 20=VPA",
+    "size": "u8",
+    "factor": 1,
+    "min": 10.0,
+    "max": 20.0,
+    "default": 20.0,
+    "name": "hot-water-tank-type-48086",
+    "write": true,
+    "mappings": {
+      "10": "VPB",
+      "20": "VPA"
+    }
   }
 }
