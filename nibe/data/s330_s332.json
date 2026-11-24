@@ -1726,7 +1726,11 @@
     "title": "Reversing valve hot water (QN10)",
     "factor": 1,
     "size": "u8",
-    "name": "reversing-valve-hot-water-qn10-32197"
+    "name": "reversing-valve-hot-water-qn10-32197",
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
   },
   "31116": {
     "title": "Operating mode step controlled additional heat",
@@ -2029,7 +2033,12 @@
     "title": "Defrosting (EB101)",
     "factor": 1,
     "size": "u8",
-    "name": "defrosting-eb101-31806"
+    "name": "defrosting-eb101-31806",
+    "mappings": {
+      "0": "Off",
+      "1": "Active",
+      "2": "Passive"
+    }
   },
   "31807": {
     "title": "Power (EB101-EP14)",
@@ -5585,17 +5594,6 @@
     "name": "aux-eme20-42676",
     "write": true
   },
-  "40001": {
-    "title": "Temperature, Overload, pool",
-    "factor": 1,
-    "unit": "\u00b0C",
-    "size": "u8",
-    "min": 1.0,
-    "max": 50.0,
-    "default": 1.0,
-    "name": "temperature-overload-pool-40001",
-    "write": true
-  },
   "32126": {
     "title": "Flow sensor, hot water (BF4)",
     "factor": 100,
@@ -7229,12 +7227,6 @@
     "default": 0.0,
     "name": "modbus-external-control-45009",
     "write": true
-  },
-  "30001": {
-    "title": "Relay status",
-    "factor": 1,
-    "size": "u8",
-    "name": "relay-status-30001"
   },
   "32284": {
     "title": "Energy log - Produced energy for heating over the past hour",

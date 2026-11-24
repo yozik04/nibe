@@ -2,17 +2,13 @@
   {
     "description": "Common F-Series corrections",
     "files": [
-      "f370_f372_f470.json",
-      "f730.json",
-      "f750.json",
-      "f1145_f1245.json",
+      "f1145_f1245_f1345_f1355.json",
       "f1155_f1255.json",
-      "f1345.json",
-      "f1355.json",
+      "f370_f372_f470.json",
+      "f730_f750.json",
       "smo20.json",
       "smo40.json",
-      "vvm225_vvm320_vvm325.json",
-      "vvm310_vvm500.json"
+      "vvm225_vvm310_vvm320_vvm325_vvm500.json"
     ],
     "data": {
       "47041": {
@@ -83,19 +79,67 @@
       },
       "47011": {
         "unit": "\u00b0C"
+      },
+      "43416": {
+        "nature": "total_increasing"
+      },
+      "43614": {
+        "nature": "total_increasing"
+      },
+      "43635": {
+        "nature": "total_increasing"
+      },
+      "43676": {
+        "nature": "total_increasing"
+      },
+      "43697": {
+        "nature": "total_increasing"
+      },
+      "43738": {
+        "nature": "total_increasing"
+      },
+      "43759": {
+        "nature": "total_increasing"
+      },
+      "43800": {
+        "nature": "total_increasing"
+      },
+      "43821": {
+        "nature": "total_increasing"
+      },
+      "43862": {
+        "nature": "total_increasing"
+      },
+      "43883": {
+        "nature": "total_increasing"
+      },
+      "43924": {
+        "nature": "total_increasing"
+      },
+      "43945": {
+        "nature": "total_increasing"
+      },
+      "43986": {
+        "nature": "total_increasing"
+      },
+      "44007": {
+        "nature": "total_increasing"
+      },
+      "44048": {
+        "nature": "total_increasing"
+      },
+      "44069": {
+        "nature": "total_increasing"
       }
     }
   },
   {
     "description": "Corrections for fan speed current units",
     "files": [
-      "f730.json",
-      "f750.json",
-      "f370_f372_f470.json",
-      "f1145_f1245.json",
+      "f1145_f1245_f1345_f1355.json",
       "f1155_f1255.json",
-      "f1345.json",
-      "f1355.json"
+      "f370_f372_f470.json",
+      "f730_f750.json"
     ],
     "data": {
       "41256": {
@@ -143,8 +187,7 @@
   {
     "description": "Corrections for airflow units",
     "files": [
-      "f730.json",
-      "f750.json"
+      "f730_f750.json"
     ],
     "data": {
       "40050": {
@@ -161,13 +204,10 @@
   },
   {
     "files": [
-      "f370_f372_f470.json",
-      "f730.json",
-      "f750.json",
-      "f1145_f1245.json",
+      "f1145_f1245_f1345_f1355.json",
       "f1155_f1255.json",
-      "f1345.json",
-      "f1355.json"
+      "f370_f372_f470.json",
+      "f730_f750.json"
     ],
     "data": {
       "43431": {
@@ -179,10 +219,8 @@
   },
   {
     "files": [
-      "f1145_f1245.json",
-      "f1155_f1255.json",
-      "f1345.json",
-      "f1355.json"
+      "f1145_f1245_f1345_f1355.json",
+      "f1155_f1255.json"
     ],
     "data": {
       "44752": {
@@ -194,13 +232,11 @@
   },
   {
     "files": [
-      "f750.json",
-      "f1145_f1245.json",
+      "f1145_f1245_f1345_f1355.json",
       "f1155_f1255.json",
-      "f1345.json",
-      "f1355.json",
+      "f730_f750.json",
       "smo40.json",
-      "vvm225_vvm320_vvm325.json"
+      "vvm225_vvm310_vvm320_vvm325_vvm500.json"
     ],
     "data": {
       "43097": {
@@ -213,9 +249,8 @@
   {
     "files": [
       "f370_f372_f470.json",
-      "f730.json",
-      "f750.json",
-      "vvm225_vvm320_vvm325.json"
+      "f730_f750.json",
+      "vvm225_vvm310_vvm320_vvm325_vvm500.json"
     ],
     "data": {
       "47260": {
@@ -239,7 +274,7 @@
     }
   },
   {
-    "files": ["f730.json", "smo20.json"],
+    "files": ["f730_f750.json", "smo20.json"],
     "data": {
       "48852": {
         "title": "Modbus40 Word Swap",
@@ -272,10 +307,9 @@
   {
     "description": "Corrections for compressor power units",
     "files": [
-      "f730.json",
-      "f750.json",
       "f1155_f1255.json",
-      "f1355.json"
+      "f1145_f1245_f1345_f1355.json",
+      "f730_f750.json"
     ],
     "data": {
       "43141": {
@@ -304,8 +338,7 @@
     "files": [
       "smo20.json",
       "smo40.json",
-      "vvm225_vvm320_vvm325.json",
-      "vvm310_vvm500.json"
+      "vvm225_vvm310_vvm320_vvm325_vvm500.json"
     ],
     "data": {
       "40121": {
@@ -318,8 +351,7 @@
     "files": [
       "smo20.json",
       "smo40.json",
-      "vvm225_vvm320_vvm325.json",
-      "vvm310_vvm500.json"
+      "vvm225_vvm310_vvm320_vvm325_vvm500.json"
     ],
     "data": {
       "44866": {
@@ -359,15 +391,13 @@
   {
     "description": "Allow for numerical selection for Outdoor Filter Time",
     "files": [
-      "smo40.json",
-      "f1145_f1245.json",
+      "f1145_f1245_f1345_f1355.json",
       "f1155_f1255.json",
-      "f1345.json",
       "f370_f372_f470.json",
-      "f730.json",
-      "f750.json",
-      "vvm225_vvm320_vvm325.json",
-      "vvm310_vvm500.json"
+      "f730_f750.json",
+      "smo20.json",
+      "smo40.json",
+      "vvm225_vvm310_vvm320_vvm325_vvm500.json"
     ],
     "data": {
      "47377": {
@@ -379,15 +409,12 @@
   {
     "description": "Add units to degree minutes parameters",
     "files": [
-      "smo40.json",
-      "f1145_f1245.json",
+      "f1145_f1245_f1345_f1355.json",
       "f1155_f1255.json",
-      "f1345.json",
-      "f1355.json",
-      "f730.json",
-      "f750.json",
-      "vvm225_vvm320_vvm325.json",
-      "vvm310_vvm500.json"
+      "f730_f750.json",
+      "smo20.json",
+      "smo40.json",
+      "vvm225_vvm310_vvm320_vvm325_vvm500.json"
     ],
     "data": {
      "40940": {
@@ -404,7 +431,8 @@
     "description": "M12676EN-1 - S1155/S1255 ",
     "files": [
       "s1155_s1255.json",
-      "s1156_s1256.json"
+      "s1156_s1256.json",
+      "s735.json"
     ],
     "data": {
       "31101": {
@@ -419,7 +447,9 @@
     "description": "Reversing valve hot water (QN10) - S1155/S1255 ",
     "files": [
       "s1155_s1255.json",
-      "s1156_s1256.json"
+      "s1156_s1256.json",
+      "s320_s325.json",
+      "s330_s332.json"
     ],
     "data": {
       "32197": {
@@ -449,7 +479,7 @@
   },
   {
     "description": "M12676EN-1 - SMOS40 Mappings",
-    "files": ["smos40.json"],
+    "files": ["s1156_s1256.json", "s320_s325.json", "smos40.json"],
     "data": {
       "31067": {
         "mappings": {
@@ -460,8 +490,18 @@
     }
   },
   {
-    "description": "M12676EN-1 - F2120 slave 1",
-    "files": ["smos40.json"],
+    "description": "M12676EN-1 - F2120 slave 1-3",
+    "files": [
+      "s1155_s1255.json",
+      "s1156_s1256.json",
+      "s2125.json",
+      "s320_s325.json",
+      "s330_s332.json",
+      "s735.json",
+      "smos40.json",
+      "vvms320_vvms325.json",
+      "vvms500.json"
+    ],
     "data": {
       "31806": {
         "mappings": {
@@ -469,26 +509,14 @@
           "1": "Active",
           "2": "Passive"
         }
-      }
-    }
-  },
-  {
-    "description": "M12676EN-1 - F2120 slave 2",
-    "files": ["smos40.json"],
-    "data": {
+      },
       "31792": {
         "mappings": {
           "0": "Off",
           "1": "Active",
           "2": "Passive"
         }
-      }
-    }
-  },
-  {
-    "description": "M12676EN-1 - F2120 slave 3",
-    "files": ["smos40.json"],
-    "data": {
+      },
       "31778": {
         "mappings": {
           "0": "Off",
@@ -527,13 +555,15 @@
   {
     "description": "Alarm class 1 mapping - S series",
     "files": [
-      "s320_s325.json",
-      "s330_s332.json",
-      "s735.json",
       "s1155_s1255.json",
       "s1156_s1256.json",
       "s2125.json",
-      "smos40.json"],
+      "s320_s325.json",
+      "s330_s332.json",
+      "s735.json",
+      "smos40.json",
+      "vvms320_vvms325.json",
+      "vvms500.json"],
     "data": {
       "32196": {
         "mappings": {
@@ -546,12 +576,12 @@
   {
     "description": "M12676EN-1 - Common Parameters",
     "files": [
-      "s320_s325.json",
-      "s330_s332.json",
-      "s735.json",
       "s1155_s1255.json",
       "s1156_s1256.json",
       "s2125.json",
+      "s320_s325.json",
+      "s330_s332.json",
+      "s735.json",
       "smos40.json",
       "vvms320_vvms325.json",
       "vvms500.json"],
@@ -592,7 +622,7 @@
   },
   {
     "description": "Holiday settings",
-    "files": ["f750.json", "f1155_f1255.json"],
+    "files": ["f1155_f1255.json", "f730_f750.json"],
     "data": {
       "48043": {
         "title": "Holiday - Activated",
@@ -693,8 +723,9 @@
     }
   },
   {
-    "description": "Limit allowed Brine In/Out temperature values for F1155/F1255",
+    "description": "Limit allowed Brine In/Out temperature values",
     "files": [
+      "f1145_f1245_f1345_f1355.json",
       "f1155_f1255.json"
     ],
     "data": {
@@ -711,15 +742,15 @@
   {
     "description": "Fix units for current power consumption",
     "files": [
-      "s320_s325.json",
-      "s330_s332.json",
-      "s735.json",
       "s1155_s1255.json",
       "s1156_s1256.json",
       "s2125.json",
+      "s320_s325.json",
+      "s330_s332.json",
+      "s735.json",
+      "smos40.json",
       "vvms320_vvms325.json",
-      "vvms500.json",
-      "smos40.json"
+      "vvms500.json"
     ],
     "data": {
       "32284": {
@@ -768,14 +799,11 @@
   {
     "description": "Correction for Cool Degree Minutes unit",
     "files": [
-      "f1145_f1245.json",
+      "f1145_f1245_f1345_f1355.json",
       "f1155_f1255.json",
-      "f1345.json",
-      "f1355.json",
       "smo20.json",
       "smo40.json",
-      "vvm225_vvm320_vvm325.json",
-      "vvm310_vvm500.json"
+      "vvm225_vvm310_vvm320_vvm325_vvm500.json"
     ],
     "data": {
       "44266": {
@@ -784,15 +812,15 @@
     }
   },
    {
-    "description": "SG Ready Operating Mode - F1145/F1245",
+    "description": "SG Ready Operating Mode - F1145/F1245/F1345/F1355",
     "files": [
-      "f1145_f1245.json"
+      "f1145_f1245_f1345_f1355.json"
     ],
     "data": {
       "44874": {
         "mappings": {
-          "10": "Blocking",
-          "20": "Normal",
+          "10": "Normal",
+          "20": "Blocking",
           "30": "Low Price",
           "40": "Overcapacity"
         }
@@ -800,9 +828,9 @@
     }
   },
   {
-    "description": "Energy meter mode mappings - VVM225/VVM320/VVM325",
+    "description": "Energy meter mode mappings - VVM225/VVM310/VVM320/VVM325/VVM500",
     "files": [
-      "vvm225_vvm320_vvm325.json"
+      "vvm225_vvm310_vvm320_vvm325_vvm500.json"
     ],
     "data": {
       "49287": {
@@ -926,6 +954,116 @@
         "size": "u32",
         "factor": 10,
         "name": "heat-meter-passive-cooling-42406"
+      }
+    }
+  },
+  {
+    "description": "Add unnamed Smart Control room sensor 1 heating/cooling register for S1155/S1255",
+    "files": [
+      "s1155_s1255.json"
+    ],
+    "data": {
+      "42979": {
+        "title": "Room sensor 1 used for heating/cooling",
+        "size": "u8",
+        "factor": 1,
+        "min": 0,
+        "max": 3,
+        "default": 0,
+        "name": "room-sensor-1-used-for-heating-cooling-42979",
+        "write": true,
+        "mappings": {
+          "0": "Off",
+          "1": "Heating",
+          "2": "Cooling",
+          "3": "Heating and cooling"
+        }
+      }
+    }
+  },
+  {
+    "description": "HWC period start/stop times are 32-bit u32 seconds-past-midnight, not the u16 the raw CSV leaves undefined",
+    "files": [
+      "s1156_s1256.json",
+      "s320_s325.json",
+      "s735.json",
+      "smos40.json",
+      "vvms500.json"
+    ],
+    "data": {
+      "45410": {
+        "size": "u32"
+      },
+      "45414": {
+        "size": "u32"
+      },
+      "45418": {
+        "size": "u32"
+      },
+      "45422": {
+        "size": "u32"
+      },
+      "45426": {
+        "size": "u32"
+      },
+      "45430": {
+        "size": "u32"
+      }
+    }
+  },
+  {
+    "description": "Add HWC period enable/disable registers for S1156/S1256, S320/S325, S735 and SMOS40",
+    "files": [
+      "s1156_s1256.json",
+      "s320_s325.json",
+      "s735.json",
+      "smos40.json"
+    ],
+    "data": {
+      "45242": {
+        "title": "Hot water period 1 - Enable",
+        "info": "0=period disabled, 1=period enabled",
+        "size": "u8",
+        "factor": 1,
+        "min": 0.0,
+        "max": 1.0,
+        "default": 0.0,
+        "name": "hot-water-period-1-enable-45242",
+        "write": true,
+        "mappings": {
+          "0": "Off",
+          "1": "On"
+        }
+      },
+      "45243": {
+        "title": "Hot water period 2 - Enable",
+        "info": "0=period disabled, 1=period enabled",
+        "size": "u8",
+        "factor": 1,
+        "min": 0.0,
+        "max": 1.0,
+        "default": 0.0,
+        "name": "hot-water-period-2-enable-45243",
+        "write": true,
+        "mappings": {
+          "0": "Off",
+          "1": "On"
+        }
+      },
+      "45244": {
+        "title": "Hot water period 3 - Enable",
+        "info": "0=period disabled, 1=period enabled",
+        "size": "u8",
+        "factor": 1,
+        "min": 0.0,
+        "max": 1.0,
+        "default": 0.0,
+        "name": "hot-water-period-3-enable-45244",
+        "write": true,
+        "mappings": {
+          "0": "Off",
+          "1": "On"
+        }
       }
     }
   }

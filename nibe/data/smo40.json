@@ -3894,7 +3894,8 @@
     "min": 0.0,
     "max": 9999999.0,
     "default": 0.0,
-    "name": "eb108-ep14-compressor-starts-43635"
+    "name": "eb108-ep14-compressor-starts-43635",
+    "nature": "total_increasing"
   },
   "43637": {
     "title": "EB108-EP14 Tot. op.time compr",
@@ -3995,7 +3996,8 @@
     "min": 0.0,
     "max": 9999999.0,
     "default": 0.0,
-    "name": "eb107-ep14-compressor-starts-43697"
+    "name": "eb107-ep14-compressor-starts-43697",
+    "nature": "total_increasing"
   },
   "43699": {
     "title": "EB107-EP14 Tot. op.time compr",
@@ -4096,7 +4098,8 @@
     "min": 0.0,
     "max": 9999999.0,
     "default": 0.0,
-    "name": "eb106-ep14-compressor-starts-43759"
+    "name": "eb106-ep14-compressor-starts-43759",
+    "nature": "total_increasing"
   },
   "43761": {
     "title": "EB106-EP14 Tot. op.time compr",
@@ -4197,7 +4200,8 @@
     "min": 0.0,
     "max": 9999999.0,
     "default": 0.0,
-    "name": "eb105-ep14-compressor-starts-43821"
+    "name": "eb105-ep14-compressor-starts-43821",
+    "nature": "total_increasing"
   },
   "43823": {
     "title": "EB105-EP14 Tot. op.time compr",
@@ -4298,7 +4302,8 @@
     "min": 0.0,
     "max": 9999999.0,
     "default": 0.0,
-    "name": "eb104-ep14-compressor-starts-43883"
+    "name": "eb104-ep14-compressor-starts-43883",
+    "nature": "total_increasing"
   },
   "43885": {
     "title": "EB104-EP14 Tot. op.time compr",
@@ -4399,7 +4404,8 @@
     "min": 0.0,
     "max": 9999999.0,
     "default": 0.0,
-    "name": "eb103-ep14-compressor-starts-43945"
+    "name": "eb103-ep14-compressor-starts-43945",
+    "nature": "total_increasing"
   },
   "43947": {
     "title": "EB103-EP14 Tot. op.time compr",
@@ -4500,7 +4506,8 @@
     "min": 0.0,
     "max": 9999999.0,
     "default": 0.0,
-    "name": "eb102-ep14-compressor-starts-44007"
+    "name": "eb102-ep14-compressor-starts-44007",
+    "nature": "total_increasing"
   },
   "44009": {
     "title": "EB102-EP14 Tot. op.time compr",
@@ -4601,7 +4608,8 @@
     "min": 0.0,
     "max": 9999999.0,
     "default": 0.0,
-    "name": "eb101-ep14-compressor-starts-44069"
+    "name": "eb101-ep14-compressor-starts-44069",
+    "nature": "total_increasing"
   },
   "44071": {
     "title": "EB101-EP14 Tot. op.time compr",

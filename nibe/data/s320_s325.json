@@ -1945,7 +1945,11 @@
     "title": "External heating medium pump (GP10) status",
     "factor": 1,
     "size": "u8",
-    "name": "external-heating-medium-pump-gp10-status-31067"
+    "name": "external-heating-medium-pump-gp10-status-31067",
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
   },
   "31070": {
     "title": "Total HW run time additional heat",
@@ -1999,7 +2003,11 @@
     "title": "Reversing valve hot water (QN10)",
     "factor": 1,
     "size": "u8",
-    "name": "reversing-valve-hot-water-qn10-32197"
+    "name": "reversing-valve-hot-water-qn10-32197",
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
   },
   "31116": {
     "title": "Operating mode step controlled additional heat",
@@ -2310,7 +2318,12 @@
     "title": "Defrosting (EB101)",
     "factor": 1,
     "size": "u8",
-    "name": "defrosting-eb101-31806"
+    "name": "defrosting-eb101-31806",
+    "mappings": {
+      "0": "Off",
+      "1": "Active",
+      "2": "Passive"
+    }
   },
   "31807": {
     "title": "Power (EB101-EP14)",
@@ -5888,42 +5901,42 @@
   "45410": {
     "title": "Start time HWC period 1",
     "factor": 1,
-    "size": "u16",
+    "size": "u32",
     "name": "start-time-hwc-period-1-45410",
     "write": true
   },
   "45414": {
     "title": "Start time HWC period 2",
     "factor": 1,
-    "size": "u16",
+    "size": "u32",
     "name": "start-time-hwc-period-2-45414",
     "write": true
   },
   "45418": {
     "title": "Start time HWC period 3",
     "factor": 1,
-    "size": "u16",
+    "size": "u32",
     "name": "start-time-hwc-period-3-45418",
     "write": true
   },
   "45422": {
     "title": "Stop time HWC period 1",
     "factor": 1,
-    "size": "u16",
+    "size": "u32",
     "name": "stop-time-hwc-period-1-45422",
     "write": true
   },
   "45426": {
     "title": "Stop time HWC period 2",
     "factor": 1,
-    "size": "u16",
+    "size": "u32",
     "name": "stop-time-hwc-period-2-45426",
     "write": true
   },
   "45430": {
     "title": "Stop time HWC period 3",
     "factor": 1,
-    "size": "u16",
+    "size": "u32",
     "name": "stop-time-hwc-period-3-45430",
     "write": true
   },
@@ -6318,17 +6331,6 @@
     "max": 1.0,
     "default": 0.0,
     "name": "aux-eme20-42676",
-    "write": true
-  },
-  "40001": {
-    "title": "Temperature, Overload, pool",
-    "factor": 1,
-    "unit": "\u00b0C",
-    "size": "u8",
-    "min": 1.0,
-    "max": 50.0,
-    "default": 1.0,
-    "name": "temperature-overload-pool-40001",
     "write": true
   },
   "42108": {
@@ -7451,12 +7453,6 @@
     "name": "disable-emergency-restart-gp1-45026",
     "write": true
   },
-  "30001": {
-    "title": "Relay status",
-    "factor": 1,
-    "size": "u8",
-    "name": "relay-status-30001"
-  },
   "32284": {
     "title": "Energy log - Produced energy for heating over the past hour",
     "factor": 100,
@@ -7779,6 +7775,51 @@
       "4": "Off (4)",
       "5": "Defrost",
       "6": "Off (6)"
+    }
+  },
+  "45242": {
+    "title": "Hot water period 1 - Enable",
+    "info": "0=period disabled, 1=period enabled",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "hot-water-period-1-enable-45242",
+    "write": true,
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
+  },
+  "45243": {
+    "title": "Hot water period 2 - Enable",
+    "info": "0=period disabled, 1=period enabled",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "hot-water-period-2-enable-45243",
+    "write": true,
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
+  },
+  "45244": {
+    "title": "Hot water period 3 - Enable",
+    "info": "0=period disabled, 1=period enabled",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "hot-water-period-3-enable-45244",
+    "write": true,
+    "mappings": {
+      "0": "Off",
+      "1": "On"
     }
   }
 }

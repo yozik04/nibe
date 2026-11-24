@@ -3,7 +3,6 @@ import logging
 from typing import Optional
 
 from async_modbus import AsyncClient, AsyncTCPClient, modbus_for_url
-import async_timeout
 from tenacity import retry, retry_if_exception_type, stop_after_attempt
 from umodbus.exceptions import ModbusError
 
@@ -104,7 +103,7 @@ class Modbus(Connection):
         entity_type, entity_number, entity_count = split_modbus_data(coil)
 
         try:
-            async with async_timeout.timeout(timeout), self._send_lock:
+            async with asyncio.timeout(timeout), self._send_lock:
                 if entity_type == 3:
                     result = await self._client.read_input_registers(
                         slave_id=self._slave_id,
@@ -160,7 +159,7 @@ class Modbus(Connection):
             values = self.coil_encoder.encode(coil_data)
 
             logger.debug("Sending write request")
-            async with async_timeout.timeout(timeout), self._send_lock:
+            async with asyncio.timeout(timeout), self._send_lock:
                 if entity_type == 4:
                     result = await self._client.write_registers(
                         slave_id=self._slave_id,

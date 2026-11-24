@@ -2984,7 +2984,11 @@
     "title": "Compressor status",
     "factor": 1,
     "size": "u8",
-    "name": "compressor-status-31101"
+    "name": "compressor-status-31101",
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
   },
   "31103": {
     "title": "Heating medium pump speed (GP1)",
@@ -3544,7 +3548,12 @@
     "title": "Defrosting (EB103)",
     "factor": 1,
     "size": "u8",
-    "name": "defrosting-eb103-31778"
+    "name": "defrosting-eb103-31778",
+    "mappings": {
+      "0": "Off",
+      "1": "Active",
+      "2": "Passive"
+    }
   },
   "31779": {
     "title": "Power (EB103-EP14)",
@@ -3595,7 +3604,12 @@
     "title": "Defrosting (EB102)",
     "factor": 1,
     "size": "u8",
-    "name": "defrosting-eb102-31792"
+    "name": "defrosting-eb102-31792",
+    "mappings": {
+      "0": "Off",
+      "1": "Active",
+      "2": "Passive"
+    }
   },
   "31793": {
     "title": "Power (EB102-EP14)",
@@ -3646,7 +3660,12 @@
     "title": "Defrosting (EB101)",
     "factor": 1,
     "size": "u8",
-    "name": "defrosting-eb101-31806"
+    "name": "defrosting-eb101-31806",
+    "mappings": {
+      "0": "Off",
+      "1": "Active",
+      "2": "Passive"
+    }
   },
   "31807": {
     "title": "Power (EB101-EP14)",
@@ -7208,42 +7227,42 @@
   "45410": {
     "title": "Start time HWC period 1",
     "factor": 1,
-    "size": "u16",
+    "size": "u32",
     "name": "start-time-hwc-period-1-45410",
     "write": true
   },
   "45414": {
     "title": "Start time HWC period 2",
     "factor": 1,
-    "size": "u16",
+    "size": "u32",
     "name": "start-time-hwc-period-2-45414",
     "write": true
   },
   "45418": {
     "title": "Start time HWC period 3",
     "factor": 1,
-    "size": "u16",
+    "size": "u32",
     "name": "start-time-hwc-period-3-45418",
     "write": true
   },
   "45422": {
     "title": "Stop time HWC period 1",
     "factor": 1,
-    "size": "u16",
+    "size": "u32",
     "name": "stop-time-hwc-period-1-45422",
     "write": true
   },
   "45426": {
     "title": "Stop time HWC period 2",
     "factor": 1,
-    "size": "u16",
+    "size": "u32",
     "name": "stop-time-hwc-period-2-45426",
     "write": true
   },
   "45430": {
     "title": "Stop time HWC period 3",
     "factor": 1,
-    "size": "u16",
+    "size": "u32",
     "name": "stop-time-hwc-period-3-45430",
     "write": true
   },
@@ -7639,17 +7658,6 @@
     "max": 1.0,
     "default": 0.0,
     "name": "aux-solar-pv-42676",
-    "write": true
-  },
-  "40001": {
-    "title": "Temperature overcharging pool",
-    "factor": 1,
-    "unit": "\u00b0C",
-    "size": "u8",
-    "min": 1.0,
-    "max": 50.0,
-    "default": 1.0,
-    "name": "temperature-overcharging-pool-40001",
     "write": true
   },
   "42675": {
@@ -10104,5 +10112,50 @@
     "factor": 1,
     "size": "u32",
     "name": "all-sub-units-operating-prio-33826"
+  },
+  "45242": {
+    "title": "Hot water period 1 - Enable",
+    "info": "0=period disabled, 1=period enabled",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "hot-water-period-1-enable-45242",
+    "write": true,
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
+  },
+  "45243": {
+    "title": "Hot water period 2 - Enable",
+    "info": "0=period disabled, 1=period enabled",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "hot-water-period-2-enable-45243",
+    "write": true,
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
+  },
+  "45244": {
+    "title": "Hot water period 3 - Enable",
+    "info": "0=period disabled, 1=period enabled",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "hot-water-period-3-enable-45244",
+    "write": true,
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
   }
 }

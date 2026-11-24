@@ -37,6 +37,7 @@ from construct import (
     Int16ub,
     Int16ul,
     NullTerminated,
+    Optional as OptionalConstruct,
     Peek,
     Pointer,
     Prefixed,
@@ -459,8 +460,9 @@ class NibeGW(asyncio.DatagramProtocol, Connection, EventServer, ConnectionStatus
                     if coil_address + 1 not in data:
                         decode_exception_occurred = True
                         logger.debug(
-                            "Skipping coil %s - incomplete 32-bit broadcast", coil_address,
-                         )
+                            "Skipping coil %s - incomplete 32-bit broadcast",
+                            coil_address,
+                        )
                         continue
                     raw_value = raw_value + data.pop(coil_address + 1)
                 coil_data = self.coil_encoder.decode(coil, raw_value)
@@ -623,11 +625,10 @@ Command = Enum(
     MODBUS_ADDRESS_MSG=0x6E,
     PRODUCT_INFO_MSG=0x6D,
     ACCESSORY_VERSION_REQ=0xEE,
-    ECS_DATA_REQ=0x90,
-    ECS_DATA_MSG_1=0x55,
-    ECS_DATA_MSG_2=0xA0,
+    AA5_INPUTS_REQ=0x90,
+    AA5_RELAYS_MSG=0x55,
+    AA5_SHUNT_MSG=0xA0,
     STRING_MSG=0xB1,
-    HEATPUMP_MSG_A0=0xA0,
     HEATPUMP_REQ_73=0x73,
     HEATPUMP_REQ_B7=0xB7,
     HEATPUMP_REQ_ED=0xED,
@@ -709,6 +710,26 @@ RmuData = Struct(
     "unknown5" / GreedyBytes,
 )
 
+AA5Relays = Struct(
+    "relays"
+    / BitStruct(
+        "unknown_80" / Flag,
+        "unknown_40" / Flag,
+        "unknown_20" / Flag,
+        "unknown_10" / Flag,
+        "k4" / Flag * "AA5-X9:8 - ECS40: GP20 pump, POOL40: GP9 pool pump",
+        "k3" / Flag * "AA5-X9:6 - ECS40: QN25 mixing valve open, POOL40: QN19 valve",
+        "k2" / Flag * "AA5-X9:4 - ECS40: QN25 mixing valve close",
+        "k1" / Flag * "AA5-X9:2 - POOL40: GP10 climate system pump",
+    ),
+    "unknown" / Int8ub,
+)
+
+AA5Shunt = Struct(
+    "unknown" / Int8ub,
+    "mixing_valve_position" / Int8ub,
+)
+
 ModbusDataValue = Struct("coil_address" / Int16ul, "value" / Bytes(2))
 ModbusData = GreedyRange(ModbusDataValue)
 ModbusReadResp = Struct("coil_address" / Int16ul, "value" / Bytes(4))
@@ -723,11 +744,18 @@ ResponseTypes = {
     "PRODUCT_INFO_MSG": ProductInfoData,
     "RMU_DATA_MSG": RmuData,
     "STRING_MSG": StringData,
+    "AA5_RELAYS_MSG": AA5Relays,
+    "AA5_SHUNT_MSG": AA5Shunt,
 }
 
 Address = Enum(
     Int16ub,
     ECS_S2=0x02,
+    ECS_S3=0x03,
+    AXC40=0x05,
+    POOL310=0x06,
+    HTS1=0x09,
+    SCA35=0x0A,
     # 0x13 = 19, ?
     SMS40=0x16,
     RMU40_S1=0x19,
@@ -735,6 +763,14 @@ Address = Enum(
     RMU40_S3=0x1B,
     RMU40_S4=0x1C,
     MODBUS40=0x20,
+    DEH=0x27,
+    ERS2=0x3A,
+    ERS3=0x3B,
+    ERS4=0x3C,
+    HTS3=0x49,
+    HTS2=0x89,
+    EME20=0xA4,
+    HTS4=0xC9,
     HEATPUMP_1=0x41C9,
     HEATPUMP_2=0x42C9,
     HEATPUMP_3=0x43C9,
@@ -877,12 +913,24 @@ HeatpumpReqF1 = Struct(
     "unknown11" / Int16ul,
 )
 
+AA5Inputs = Struct(
+    "x2_23_24" / OptionalConstruct(Int16ul) * "ECS40: BT2, POOL40: BT51, DEH: BT52, SOLAR42: BT53",
+    "x2_21_22" / OptionalConstruct(Int16ul) * "ECS40: BT3, POOL40/DEH: ext. blocking, SOLAR42: BT54",
+    "x2_19_20" / OptionalConstruct(Int16ul) * "ECS40: BT50",
+    "x2_17_18" / OptionalConstruct(Int16ul) * "ECS40: external adjustment",
+    "x2_15_16" / OptionalConstruct(Int16ul) * "PVT40: BT53",
+    "x2_13_14" / OptionalConstruct(Int16ul) * "ECS40: shunt blocking",
+    "unknown_6" / OptionalConstruct(Int16ul),
+    "unknown_7" / OptionalConstruct(Int16ul),
+)
+
 RequestTypes = {
     "ACCESSORY_VERSION_REQ": AccessoryVersionReq,
     "RMU_WRITE_REQ": RmuWriteReq,
     "MODBUS_READ_REQ": ModbusReadReq,
     "MODBUS_WRITE_REQ": ModbusWriteReq,
     "HEATPUMP_REQ_F1": HeatpumpReqF1,
+    "AA5_INPUTS_REQ": AA5Inputs,
 }
 
 RequestData = Struct(

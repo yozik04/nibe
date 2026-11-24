@@ -2191,7 +2191,8 @@
     "min": 0.0,
     "max": 9999999.0,
     "default": 0.0,
-    "name": "compressor-starts-eb100-ep14-43416"
+    "name": "compressor-starts-eb100-ep14-43416",
+    "nature": "total_increasing"
   },
   "43420": {
     "title": "Tot. op.time compr. EB100-EP14",
@@ -6154,6 +6155,173 @@
     "max": 10.0,
     "default": 6.0,
     "name": "night-cooling-min-diff-49366",
+    "write": true
+  },
+  "40813": {
+    "title": "Compressor slow down reason",
+    "info": "Bitmap telling the reason to why the compressor slows down. b0:inverter b1:brine b2:current b3:high cond b4:hot gas b5:evaporator",
+    "size": "u8",
+    "factor": 1,
+    "name": "compressor-slow-down-reason-40813"
+  },
+  "40818": {
+    "title": "Available Heat Compressors",
+    "info": "Number of compressors available for heating",
+    "size": "u8",
+    "factor": 1,
+    "name": "available-heat-compressors-40818"
+  },
+  "40819": {
+    "title": "Available Hot Water Compressors",
+    "info": "Number of compressors available for to hot water",
+    "size": "u8",
+    "factor": 1,
+    "name": "available-hot-water-compressors-40819"
+  },
+  "40919": {
+    "title": "State Outdoor Air Mixing",
+    "info": "The state of the Outdoor Air Mixing function",
+    "size": "u8",
+    "factor": 1,
+    "name": "state-outdoor-air-mixing-40919"
+  },
+  "41215": {
+    "title": "OEK state",
+    "info": "Indicates the internal state of the OEK accessory. Inactive states: 10, 40:. Active states: 20, 30, 50, 60, 70.",
+    "size": "u8",
+    "factor": 1,
+    "name": "oek-state-41215"
+  },
+  "41216": {
+    "title": "OEK accessory relays",
+    "info": "b0:QN38 outdoor air damper, b1-b7: 0 (not used)",
+    "size": "u8",
+    "factor": 1,
+    "name": "oek-accessory-relays-41216"
+  },
+  "41787": {
+    "title": "EB100-BL3 Condensation water level guard",
+    "size": "s16",
+    "factor": 1,
+    "name": "eb100-bl3-condensation-water-level-guard-41787"
+  },
+  "41846": {
+    "title": "HP consumed energy due to ventilation",
+    "unit": "kWh",
+    "size": "u32",
+    "factor": 10,
+    "min": 0.0,
+    "max": 2147483647.0,
+    "default": 0.0,
+    "name": "hp-consumed-energy-due-to-ventilation-41846"
+  },
+  "41848": {
+    "title": "HP consumed energy due to hot water",
+    "unit": "kWh",
+    "size": "u32",
+    "factor": 10,
+    "min": 0.0,
+    "max": 2147483647.0,
+    "default": 0.0,
+    "name": "hp-consumed-energy-due-to-hot-water-41848"
+  },
+  "41850": {
+    "title": "HP consumed energy due to heating",
+    "unit": "kWh",
+    "size": "u32",
+    "factor": 10,
+    "min": 0.0,
+    "max": 2147483647.0,
+    "default": 0.0,
+    "name": "hp-consumed-energy-due-to-heating-41850"
+  },
+  "43189": {
+    "title": "GP10 Ext. Supply Pump Status",
+    "info": "External supply pump status. 1=on,0=off",
+    "size": "u8",
+    "factor": 1,
+    "name": "gp10-ext-supply-pump-status-43189",
+    "mappings": {
+      "0": "off",
+      "1": "on"
+    }
+  },
+  "44282": {
+    "title": "Used cprs. HW",
+    "info": "The number of compressors that's currently producing hot water",
+    "size": "u8",
+    "factor": 1,
+    "name": "used-cprs-hw-44282"
+  },
+  "44283": {
+    "title": "Used cprs. heat",
+    "info": "The number of compressors that's currently producing heating",
+    "size": "u8",
+    "factor": 1,
+    "name": "used-cprs-heat-44283"
+  },
+  "48281": {
+    "title": "Charge method HW",
+    "info": "Heating medium pump control when hot water is charged",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 1.0,
+    "name": "charge-method-hw-48281",
+    "write": true
+  },
+  "48890": {
+    "title": "Outdoor Air Fan Speed",
+    "unit": "%",
+    "size": "u8",
+    "factor": 1,
+    "min": 10.0,
+    "max": 100.0,
+    "default": 100.0,
+    "name": "outdoor-air-fan-speed-48890",
+    "write": true
+  },
+  "48892": {
+    "title": "Setting up ventilation, OA mixing",
+    "info": "Setting up ventilation for outdoor air mixing when used.",
+    "size": "u8",
+    "factor": 1,
+    "name": "setting-up-ventilation-oa-mixing-48892",
+    "write": true
+  },
+  "48947": {
+    "title": "Outdoor Air Fan Speed, high temp.",
+    "unit": "%",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 100.0,
+    "default": 35.0,
+    "name": "outdoor-air-fan-speed-high-temp-48947",
+    "write": true
+  },
+  "48971": {
+    "title": "Outdoor air max. temp.",
+    "info": "Maximum outdoor air temperature set.",
+    "size": "s8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 40.0,
+    "default": 10.0,
+    "name": "outdoor-air-max-temp-48971",
+    "write": true
+  },
+  "48974": {
+    "title": "High outdoor air temperature",
+    "info": "Above this limit the ventilation is reduced.",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 1,
+    "min": 20.0,
+    "max": 50.0,
+    "default": 25.0,
+    "name": "high-outdoor-air-temperature-48974",
     "write": true
   },
   "47260": {

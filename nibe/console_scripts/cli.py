@@ -5,8 +5,10 @@ import asyncio
 from contextlib import AbstractAsyncContextManager
 import io
 import logging
+from pathlib import Path
 import re
-from typing import IO
+import signal
+from typing import IO, TYPE_CHECKING
 
 import asyncclick as click
 
@@ -14,8 +16,38 @@ from ..coil import CoilData
 from ..connection import Connection
 from ..connection.modbus import Modbus
 from ..connection.nibegw import Block, NibeGW
-from ..exceptions import NibeException
-from ..heatpump import HeatPump, Model
+from ..exceptions import CoilNotFoundException, NibeException
+from ..heatpump import HeatPump, Model, Series
+from ..log_set import (
+    DATABASE_VERSION,
+    MODBUS40_SLOTS,
+    format_log_set,
+    log_set_slots,
+    parse_log_set,
+)
+
+if TYPE_CHECKING:
+    from textual.app import App
+
+
+async def run_tui(app: App) -> None:
+    """Run a textual app, closing it when the process is asked to terminate."""
+    loop = asyncio.get_running_loop()
+
+    def terminate(signum, frame):
+        loop.call_soon_threadsafe(app.exit)
+
+    # Textual leaves the terminal in full screen raw mode if these end the process.
+    previous = {
+        signum: signal.signal(signum, terminate)
+        for name in ("SIGTERM", "SIGHUP")
+        if (signum := getattr(signal, name, None)) is not None
+    }
+    try:
+        await app.run_async()
+    finally:
+        for signum, handler in previous.items():
+            signal.signal(signum, signal.SIG_DFL if handler is None else handler)
 
 
 @click.group()
@@ -118,13 +150,12 @@ def add_connect_command(command: click.Command):
 @click.command(help="Monitor data sent by pump out of band")
 @click.pass_obj
 async def monitor(obj: ConnectionContext):
-    def on_coil_update(coil_data: CoilData):
-        click.echo(coil_data)
+    # Imported here so other commands start without loading textual.
+    from .tui_monitor import MonitorApp
 
-    obj.heatpump.subscribe(HeatPump.COIL_UPDATE_EVENT, on_coil_update)
-
-    while True:
-        await asyncio.sleep(1)
+    app = MonitorApp()
+    obj.heatpump.subscribe(HeatPump.COIL_UPDATE_EVENT, app.update_coil)
+    await run_tui(app)
 
 
 add_connect_command(monitor)
@@ -229,6 +260,67 @@ def parse_file(file: IO, type: str):
         remaining = stream.read()
         if remaining:
             click.echo(f"Remaining: {stream.read()}")
+
+
+LOG_SET_MODELS = [model.name for model in Model if model.series == Series.F]
+
+
+@cli.command(help="Create a LOG.SET file with the registers MODBUS40 should send")
+@click.argument("model", type=click.Choice(LOG_SET_MODELS), metavar="MODEL")
+@click.argument("addresses", type=int, nargs=-1, required=True)
+@click.option(
+    "-o",
+    "--output",
+    type=click.Path(dir_okay=False, path_type=Path),
+    default="LOG.SET",
+    show_default=True,
+)
+@click.option("--database-version", default=DATABASE_VERSION, show_default=True)
+async def log_set(
+    model: str, addresses: tuple[int, ...], output: Path, database_version: str
+):
+    heatpump = HeatPump(Model[model])
+    await heatpump.initialize()
+    try:
+        coils = [heatpump.get_coil_by_address(address) for address in addresses]
+    except CoilNotFoundException as exception:
+        raise click.BadParameter(str(exception), param_hint="ADDRESSES") from exception
+
+    slots = log_set_slots(coils)
+    if slots > MODBUS40_SLOTS:
+        click.echo(
+            f"Warning: the registers take {slots} slots,"
+            f" MODBUS40 only sends the first {MODBUS40_SLOTS}",
+            err=True,
+        )
+    output.write_bytes(format_log_set(coils, database_version=database_version))
+    click.echo(f"Wrote {len(coils)} registers ({slots} slots) to {output}")
+
+
+@cli.command(help="Select the registers of a LOG.SET file interactively")
+@click.argument("model", type=click.Choice(LOG_SET_MODELS), metavar="MODEL")
+@click.option(
+    "-o",
+    "--output",
+    type=click.Path(dir_okay=False, path_type=Path),
+    default="LOG.SET",
+    show_default=True,
+    help="File to edit, its registers are loaded when it exists",
+)
+@click.option("--database-version", default=DATABASE_VERSION, show_default=True)
+async def log_set_edit(model: str, output: Path, database_version: str):
+    # Imported here so other commands start without loading textual.
+    from .tui_log_set import LogSetApp
+
+    heatpump = HeatPump(Model[model])
+    await heatpump.initialize()
+    try:
+        selected = parse_log_set(output.read_bytes()) if output.exists() else []
+        for address in selected:
+            heatpump.get_coil_by_address(address)
+    except (OSError, ValueError, CoilNotFoundException) as exception:
+        raise click.BadParameter(str(exception), param_hint="--output") from exception
+    await run_tui(LogSetApp(heatpump.get_coils(), selected, output, database_version))
 
 
 def main():

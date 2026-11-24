@@ -2722,7 +2722,8 @@
     "min": 0.0,
     "max": 9999999.0,
     "default": 0.0,
-    "name": "compressor-starts-eb100-ep14-43416"
+    "name": "compressor-starts-eb100-ep14-43416",
+    "nature": "total_increasing"
   },
   "43420": {
     "title": "Tot. op.time compr. EB100-EP14",

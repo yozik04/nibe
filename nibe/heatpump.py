@@ -34,14 +34,14 @@ class Model(Enum):
     S1156 = "s1156_s1256", Series.S
     S1256 = "s1156_s1256", Series.S
 
-    F1145 = "f1145_f1245", Series.F
-    F1245 = "f1145_f1245", Series.F
+    F1145 = "f1145_f1245_f1345_f1355", Series.F
+    F1245 = "f1145_f1245_f1345_f1355", Series.F
 
-    F1345 = "f1345", Series.F
-    F1355 = "f1355", Series.F
+    F1345 = "f1145_f1245_f1345_f1355", Series.F
+    F1355 = "f1145_f1245_f1345_f1355", Series.F
 
-    F730 = "f730", Series.F
-    F750 = "f750", Series.F
+    F730 = "f730_f750", Series.F
+    F750 = "f730_f750", Series.F
 
     F370 = "f370_f372_f470", Series.F
     F372 = "f370_f372_f470", Series.F
@@ -63,12 +63,12 @@ class Model(Enum):
 
     SMOS40 = "smos40", Series.S
 
-    VVM225 = "vvm225_vvm320_vvm325", Series.F
-    VVM320 = "vvm225_vvm320_vvm325", Series.F
-    VVM325 = "vvm225_vvm320_vvm325", Series.F
+    VVM225 = "vvm225_vvm310_vvm320_vvm325_vvm500", Series.F
+    VVM320 = "vvm225_vvm310_vvm320_vvm325_vvm500", Series.F
+    VVM325 = "vvm225_vvm310_vvm320_vvm325_vvm500", Series.F
 
-    VVM310 = "vvm310_vvm500", Series.F
-    VVM500 = "vvm310_vvm500", Series.F
+    VVM310 = "vvm225_vvm310_vvm320_vvm325_vvm500", Series.F
+    VVM500 = "vvm225_vvm310_vvm320_vvm325_vvm500", Series.F
 
     VVMS320 = "vvms320_vvms325", Series.S
     VVMS325 = "vvms320_vvms325", Series.S
