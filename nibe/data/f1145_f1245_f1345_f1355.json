@@ -39,6 +39,13 @@
     "factor": 10,
     "name": "bt2-supply-temp-s1-40008"
   },
+  "40011": {
+    "title": "EB100-EP15-BT3 Return temp",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "name": "eb100-ep15-bt3-return-temp-40011"
+  },
   "40012": {
     "title": "EB100-EP14-BT3 Return temp",
     "info": "Return temperature",
@@ -251,12 +258,6 @@
     "factor": 10,
     "name": "bf1-ep14-flow-40072"
   },
-  "40074": {
-    "title": "EB100-FR1 Anode Status",
-    "size": "s16",
-    "factor": 1,
-    "name": "eb100-fr1-anode-status-40074"
-  },
   "40075": {
     "title": "BT22 Supply air temp.",
     "unit": "\u00b0C",
@@ -284,6 +285,54 @@
     "size": "u32",
     "factor": 10,
     "name": "eb100-be1-current-40083"
+  },
+  "40085": {
+    "title": "EB100-EP15-BT11 Brine Out Temp",
+    "info": "Brine out temperature, BT11",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "name": "eb100-ep15-bt11-brine-out-temp-40085"
+  },
+  "40086": {
+    "title": "EB100-EP15-BT12 Condensor Out",
+    "info": "Condensor out temperature, BT12",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "name": "eb100-ep15-bt12-condensor-out-40086"
+  },
+  "40087": {
+    "title": "EB100-EP15-BT14 Hot Gas Temp",
+    "info": "Hot gas temperature, BT14",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "name": "eb100-ep15-bt14-hot-gas-temp-40087"
+  },
+  "40088": {
+    "title": "EB100-EP15-BT15 Liquid Line",
+    "info": "Liquid line temperature, BT15",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "name": "eb100-ep15-bt15-liquid-line-40088"
+  },
+  "40089": {
+    "title": "EB100-EP15-BT17 Suction",
+    "info": "Suction temperature, BT17",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "name": "eb100-ep15-bt17-suction-40089"
+  },
+  "40100": {
+    "title": "EB100-EP15-BT10 Brine In Temp",
+    "info": "Brine in temperature, BT10",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "name": "eb100-ep15-bt10-brine-in-temp-40100"
   },
   "40106": {
     "title": "CL12-BT51 Pool 2 Temp",
@@ -407,6 +456,38 @@
     "factor": 10,
     "name": "ep21-bt3-return-temp-s2-40129"
   },
+  "40131": {
+    "title": "EB100-EP15-BP8 Pressure Transmitter",
+    "info": "Temperature reported by the pressure transmitter",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "name": "eb100-ep15-bp8-pressure-transmitter-40131"
+  },
+  "40132": {
+    "title": "EB100-EP14-BP8 Pressure Transmitter",
+    "info": "Temperature reported by the pressure transmitter",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "name": "eb100-ep14-bp8-pressure-transmitter-40132"
+  },
+  "40145": {
+    "title": "EB100-EP15-BT29 Cpr Oil Temp",
+    "info": "Compressor oil temperature, BT29",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "name": "eb100-ep15-bt29-cpr-oil-temp-40145"
+  },
+  "40146": {
+    "title": "EB100-EP14-BT29 Cpr Oil Temp",
+    "info": "Compressor oil temperature, BT29",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "name": "eb100-ep14-bt29-cpr-oil-temp-40146"
+  },
   "40147": {
     "title": "BT70 HW Comfort Supply Temp.",
     "info": "Hot water comfort supply temperature, BT70",
@@ -422,22 +503,6 @@
     "size": "s16",
     "factor": 10,
     "name": "bt71-ext-return-temp-40152"
-  },
-  "40155": {
-    "title": "EQ1-BT57 Collector Temp.",
-    "info": "External collector temperature, BT57, for ACS",
-    "unit": "\u00b0C",
-    "size": "s16",
-    "factor": 10,
-    "name": "eq1-bt57-collector-temp-40155"
-  },
-  "40156": {
-    "title": "EQ1-BT75 Heatdump Temp.",
-    "info": "Heating medium dump temperature, BT75, for ACS",
-    "unit": "\u00b0C",
-    "size": "s16",
-    "factor": 10,
-    "name": "eq1-bt75-heatdump-temp-40156"
   },
   "40159": {
     "title": "EP47-BT2 Supply temp S8",
@@ -531,6 +596,14 @@
     "factor": 10,
     "name": "ep44-bt50-room-temp-s5-40170"
   },
+  "40179": {
+    "title": "EP10-BT26 Brine in",
+    "info": "Brine in temperature in EP10 module",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "name": "ep10-bt26-brine-in-40179"
+  },
   "40183": {
     "title": "AZ30-BT23 Outdoor temp. ERS 1",
     "unit": "\u00b0C",
@@ -609,6 +682,14 @@
     "size": "s16",
     "factor": 10,
     "name": "bt74-average-40212"
+  },
+  "40215": {
+    "title": "BF1 EP15 Flow",
+    "info": "Current flow EP15",
+    "unit": "l/m",
+    "size": "s16",
+    "factor": 10,
+    "name": "bf1-ep15-flow-40215"
   },
   "40216": {
     "title": "BT25 Ext. supply temp, cooling",
@@ -732,6 +813,93 @@
     "factor": 1,
     "name": "external-ers-1-accessory-gq3-speed-40312"
   },
+  "40314": {
+    "title": "QN10 Need",
+    "info": "0=Heating, 1=Hot water",
+    "size": "u8",
+    "factor": 1,
+    "name": "qn10-need-40314",
+    "mappings": {
+      "0": "Heating",
+      "1": "Hot water"
+    }
+  },
+  "40317": {
+    "title": "Inverter drive status",
+    "size": "u16",
+    "factor": 1,
+    "name": "inverter-drive-status-40317"
+  },
+  "40321": {
+    "title": "Compressor Frequency, Request",
+    "info": "The compressor frequency that has been requested by the system",
+    "unit": "Hz",
+    "size": "u16",
+    "factor": 1,
+    "name": "compressor-frequency-request-40321"
+  },
+  "40322": {
+    "title": "Max Compressor Frequency, Heating",
+    "info": "The maximum frequency of the compressor in heating mode",
+    "unit": "Hz",
+    "size": "u16",
+    "factor": 100,
+    "name": "max-compressor-frequency-heating-40322"
+  },
+  "40323": {
+    "title": "Inverter alarm code",
+    "size": "u16",
+    "factor": 1,
+    "name": "inverter-alarm-code-40323"
+  },
+  "40324": {
+    "title": "Inverter fault code",
+    "size": "u16",
+    "factor": 1,
+    "name": "inverter-fault-code-40324"
+  },
+  "40326": {
+    "title": "Inverter drive command",
+    "size": "u16",
+    "factor": 1,
+    "name": "inverter-drive-command-40326"
+  },
+  "40327": {
+    "title": "NIBE Inverter Pic version",
+    "size": "u16",
+    "factor": 1,
+    "name": "nibe-inverter-pic-version-40327"
+  },
+  "40328": {
+    "title": "NIBE Inverter 8051 version",
+    "size": "u16",
+    "factor": 1,
+    "name": "nibe-inverter-8051-version-40328"
+  },
+  "40329": {
+    "title": "NIBE Inverter Def. Wizard",
+    "size": "u16",
+    "factor": 1,
+    "name": "nibe-inverter-def-wizard-40329"
+  },
+  "40330": {
+    "title": "NIBE Inverter Mce version",
+    "size": "u16",
+    "factor": 1,
+    "name": "nibe-inverter-mce-version-40330"
+  },
+  "40331": {
+    "title": "NIBE Inverter Hw version",
+    "size": "u16",
+    "factor": 1,
+    "name": "nibe-inverter-hw-version-40331"
+  },
+  "40332": {
+    "title": "NIBE Inverter Hw type",
+    "size": "u16",
+    "factor": 1,
+    "name": "nibe-inverter-hw-type-40332"
+  },
   "40339": {
     "title": "External adjustment activated via input S8",
     "size": "u8",
@@ -785,6 +953,54 @@
     "size": "u8",
     "factor": 1,
     "name": "extra-cooling-hpac-acs-40369"
+  },
+  "40607": {
+    "title": "Heat Meter - HW Cpr and Add EP15",
+    "info": "Accumulated energy production as calculated by the heat meter",
+    "unit": "kWh",
+    "size": "u32",
+    "factor": 10,
+    "name": "heat-meter-hw-cpr-and-add-ep15-40607"
+  },
+  "40609": {
+    "title": "Heat Meter - Heat Cpr and Add EP15",
+    "info": "Accumulated energy production as calculated by the heat meter",
+    "unit": "kWh",
+    "size": "u32",
+    "factor": 10,
+    "name": "heat-meter-heat-cpr-and-add-ep15-40609"
+  },
+  "40611": {
+    "title": "Heat Meter - Cooling Cpr EP15",
+    "info": "Accumulated energy production as calculated by the heat meter",
+    "unit": "kWh",
+    "size": "u32",
+    "factor": 10,
+    "name": "heat-meter-cooling-cpr-ep15-40611"
+  },
+  "40613": {
+    "title": "Heat Meter - Pool Cpr EP15",
+    "info": "Accumulated energy production as calculated by the heat meter",
+    "unit": "kWh",
+    "size": "u32",
+    "factor": 10,
+    "name": "heat-meter-pool-cpr-ep15-40613"
+  },
+  "40615": {
+    "title": "Heat Meter - HW Cpr EP15",
+    "info": "Accumulated energy production as calculated by the heat meter",
+    "unit": "kWh",
+    "size": "u32",
+    "factor": 10,
+    "name": "heat-meter-hw-cpr-ep15-40615"
+  },
+  "40617": {
+    "title": "Heat Meter - Heat Cpr EP15",
+    "info": "Accumulated energy production as calculated by the heat meter",
+    "unit": "kWh",
+    "size": "u32",
+    "factor": 10,
+    "name": "heat-meter-heat-cpr-ep15-40617"
   },
   "40625": {
     "title": "BT82 HW Comfort Return Temp",
@@ -1219,6 +1435,14 @@
     "default": 0.0,
     "name": "tot-ext-hw-add-op-time-40755"
   },
+  "40769": {
+    "title": "Heat Meter - Pool2 Cpr EP15",
+    "info": "Accumulated energy production as calculated by the heat meter",
+    "unit": "kWh",
+    "size": "u32",
+    "factor": 10,
+    "name": "heat-meter-pool2-cpr-ep15-40769"
+  },
   "40771": {
     "title": "Heat Meter - Pool2 Cpr EP14",
     "info": "Accumulated energy production as calculated by the heat meter",
@@ -1335,79 +1559,6 @@
     "factor": 10,
     "name": "bm1-dewpoint-40858"
   },
-  "40868": {
-    "title": "+Adjust AUX Port",
-    "unit": "1",
-    "size": "u8",
-    "factor": 1,
-    "name": "adjust-aux-port-40868"
-  },
-  "40870": {
-    "title": "+Adjust OP mode",
-    "info": "Tells if plusadjust system calls for heat or cool",
-    "size": "u8",
-    "factor": 1,
-    "name": "adjust-op-mode-40870"
-  },
-  "40871": {
-    "title": "+Adjust Comfort mode",
-    "info": "Which comfort mode",
-    "size": "u8",
-    "factor": 1,
-    "name": "adjust-comfort-mode-40871"
-  },
-  "40872": {
-    "title": "+Adjust Parallell adjustment",
-    "info": "requested adjustment",
-    "size": "s8",
-    "factor": 1,
-    "name": "adjust-parallell-adjustment-40872"
-  },
-  "40873": {
-    "title": "+Adjust Humidity",
-    "info": "Humidity",
-    "unit": "%RH",
-    "size": "s16",
-    "factor": 10,
-    "name": "adjust-humidity-40873"
-  },
-  "40874": {
-    "title": "+Adjust Temp indoor",
-    "info": "Average of all room sensors",
-    "unit": "\u00b0C",
-    "size": "s16",
-    "factor": 10,
-    "name": "adjust-temp-indoor-40874"
-  },
-  "40875": {
-    "title": "+Adjust Temp outdoor",
-    "info": "Outdoor temp",
-    "unit": "\u00b0C",
-    "size": "s16",
-    "factor": 10,
-    "name": "adjust-temp-outdoor-40875"
-  },
-  "40876": {
-    "title": "+Adjust Version",
-    "info": "PCA input version",
-    "size": "u16",
-    "factor": 1,
-    "name": "adjust-version-40876"
-  },
-  "40877": {
-    "title": "+Adjust Activated",
-    "info": "If plusadjust accessory is activated",
-    "size": "u8",
-    "factor": 1,
-    "name": "adjust-activated-40877"
-  },
-  "40878": {
-    "title": "+Adjust Need",
-    "info": "If plusadjust system calls for heat",
-    "size": "u8",
-    "factor": 1,
-    "name": "adjust-need-40878"
-  },
   "40889": {
     "title": "BT64 Average",
     "info": "BT64 Cooling supply average",
@@ -1471,6 +1622,18 @@
       "1": "closed"
     }
   },
+  "40993": {
+    "title": "Inverter min speed",
+    "size": "u16",
+    "factor": 1,
+    "name": "inverter-min-speed-40993"
+  },
+  "40994": {
+    "title": "Inverter max speed",
+    "size": "u16",
+    "factor": 1,
+    "name": "inverter-max-speed-40994"
+  },
   "40995": {
     "title": "External Energy Meter 2 Accumulated Energy",
     "unit": "kWh",
@@ -1506,20 +1669,6 @@
     "size": "s16",
     "factor": 10,
     "name": "set-point-opt-boiler-41186"
-  },
-  "41189": {
-    "title": "AA20-BE5 EME10 Current",
-    "unit": "A",
-    "size": "s16",
-    "factor": 10,
-    "name": "aa20-be5-eme10-current-41189"
-  },
-  "41190": {
-    "title": "AA20-BE5 EME10 Average Current",
-    "unit": "A",
-    "size": "s16",
-    "factor": 10,
-    "name": "aa20-be5-eme10-average-current-41190"
   },
   "41191": {
     "title": "PV Panel State",
@@ -2037,6 +2186,318 @@
     "size": "s16",
     "factor": 10,
     "name": "eb101-ep14-alarm-condensor-out-level-41773"
+  },
+  "41789": {
+    "title": "EB108 Compressor EP15 size",
+    "unit": "kW",
+    "size": "u8",
+    "factor": 1,
+    "name": "eb108-compressor-ep15-size-41789"
+  },
+  "41793": {
+    "title": "EB107 Compressor EP15 size",
+    "unit": "kW",
+    "size": "u8",
+    "factor": 1,
+    "name": "eb107-compressor-ep15-size-41793"
+  },
+  "41797": {
+    "title": "EB106 Compressor EP15 size",
+    "unit": "kW",
+    "size": "u8",
+    "factor": 1,
+    "name": "eb106-compressor-ep15-size-41797"
+  },
+  "41801": {
+    "title": "EB105 Compressor EP15 size",
+    "unit": "kW",
+    "size": "u8",
+    "factor": 1,
+    "name": "eb105-compressor-ep15-size-41801"
+  },
+  "41805": {
+    "title": "EB104 Compressor EP15 size",
+    "unit": "kW",
+    "size": "u8",
+    "factor": 1,
+    "name": "eb104-compressor-ep15-size-41805"
+  },
+  "41809": {
+    "title": "EB103 Compressor EP15 size",
+    "unit": "kW",
+    "size": "u8",
+    "factor": 1,
+    "name": "eb103-compressor-ep15-size-41809"
+  },
+  "41813": {
+    "title": "EB102 Compressor EP15 size",
+    "unit": "kW",
+    "size": "u8",
+    "factor": 1,
+    "name": "eb102-compressor-ep15-size-41813"
+  },
+  "41817": {
+    "title": "EB101 Compressor EP15 size",
+    "unit": "kW",
+    "size": "u8",
+    "factor": 1,
+    "name": "eb101-compressor-ep15-size-41817"
+  },
+  "41862": {
+    "title": "EB108-EP15 set point for BT12",
+    "info": "set point for BT12",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 1,
+    "name": "eb108-ep15-set-point-for-bt12-41862"
+  },
+  "41863": {
+    "title": "EB108-EP15 start up frequency for inverter module",
+    "info": "start up frequency in heating for inverter module",
+    "unit": "Hz",
+    "size": "u8",
+    "factor": 1,
+    "name": "eb108-ep15-start-up-frequency-for-inverter-module-41863"
+  },
+  "41864": {
+    "title": "EB108-EP14 set point for BT12",
+    "info": "set point for BT12",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 1,
+    "name": "eb108-ep14-set-point-for-bt12-41864"
+  },
+  "41865": {
+    "title": "EB108-EP14 start up frequency for inverter module",
+    "info": "start up frequency in heating for inverter module",
+    "unit": "Hz",
+    "size": "u8",
+    "factor": 1,
+    "name": "eb108-ep14-start-up-frequency-for-inverter-module-41865"
+  },
+  "41866": {
+    "title": "EB107-EP15 set point for BT12",
+    "info": "set point for BT12",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 1,
+    "name": "eb107-ep15-set-point-for-bt12-41866"
+  },
+  "41867": {
+    "title": "EB107-EP15 start up frequency for inverter module",
+    "info": "start up frequency in heating for inverter module",
+    "unit": "Hz",
+    "size": "u8",
+    "factor": 1,
+    "name": "eb107-ep15-start-up-frequency-for-inverter-module-41867"
+  },
+  "41868": {
+    "title": "EB107-EP14 set point for BT12",
+    "info": "set point for BT12",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 1,
+    "name": "eb107-ep14-set-point-for-bt12-41868"
+  },
+  "41869": {
+    "title": "EB107-EP14 start up frequency for inverter module",
+    "info": "start up frequency in heating for inverter module",
+    "unit": "Hz",
+    "size": "u8",
+    "factor": 1,
+    "name": "eb107-ep14-start-up-frequency-for-inverter-module-41869"
+  },
+  "41870": {
+    "title": "EB106-EP15 set point for BT12",
+    "info": "set point for BT12",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 1,
+    "name": "eb106-ep15-set-point-for-bt12-41870"
+  },
+  "41871": {
+    "title": "EB106-EP15 start up frequency for inverter module",
+    "info": "start up frequency in heating for inverter module",
+    "unit": "Hz",
+    "size": "u8",
+    "factor": 1,
+    "name": "eb106-ep15-start-up-frequency-for-inverter-module-41871"
+  },
+  "41872": {
+    "title": "EB106-EP14 set point for BT12",
+    "info": "set point for BT12",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 1,
+    "name": "eb106-ep14-set-point-for-bt12-41872"
+  },
+  "41873": {
+    "title": "EB106-EP14 start up frequency for inverter module",
+    "info": "start up frequency in heating for inverter module",
+    "unit": "Hz",
+    "size": "u8",
+    "factor": 1,
+    "name": "eb106-ep14-start-up-frequency-for-inverter-module-41873"
+  },
+  "41874": {
+    "title": "EB105-EP15 set point for BT12",
+    "info": "set point for BT12",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 1,
+    "name": "eb105-ep15-set-point-for-bt12-41874"
+  },
+  "41875": {
+    "title": "EB105-EP15 start up frequency for inverter module",
+    "info": "start up frequency in heating for inverter module",
+    "unit": "Hz",
+    "size": "u8",
+    "factor": 1,
+    "name": "eb105-ep15-start-up-frequency-for-inverter-module-41875"
+  },
+  "41876": {
+    "title": "EB105-EP14 set point for BT12",
+    "info": "set point for BT12",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 1,
+    "name": "eb105-ep14-set-point-for-bt12-41876"
+  },
+  "41877": {
+    "title": "EB105-EP14 start up frequency for inverter module",
+    "info": "start up frequency in heating for inverter module",
+    "unit": "Hz",
+    "size": "u8",
+    "factor": 1,
+    "name": "eb105-ep14-start-up-frequency-for-inverter-module-41877"
+  },
+  "41878": {
+    "title": "EB104-EP15 set point for BT12",
+    "info": "set point for BT12",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 1,
+    "name": "eb104-ep15-set-point-for-bt12-41878"
+  },
+  "41879": {
+    "title": "EB104-EP15 start up frequency for inverter module",
+    "info": "start up frequency in heating for inverter module",
+    "unit": "Hz",
+    "size": "u8",
+    "factor": 1,
+    "name": "eb104-ep15-start-up-frequency-for-inverter-module-41879"
+  },
+  "41880": {
+    "title": "EB104-EP14 set point for BT12",
+    "info": "set point for BT12",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 1,
+    "name": "eb104-ep14-set-point-for-bt12-41880"
+  },
+  "41881": {
+    "title": "EB104-EP14 start up frequency for inverter module",
+    "info": "start up frequency in heating for inverter module",
+    "unit": "Hz",
+    "size": "u8",
+    "factor": 1,
+    "name": "eb104-ep14-start-up-frequency-for-inverter-module-41881"
+  },
+  "41882": {
+    "title": "EB103-EP15 set point for BT12",
+    "info": "set point for BT12",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 1,
+    "name": "eb103-ep15-set-point-for-bt12-41882"
+  },
+  "41883": {
+    "title": "EB103-EP15 start up frequency for inverter module",
+    "info": "start up frequency in heating for inverter module",
+    "unit": "Hz",
+    "size": "u8",
+    "factor": 1,
+    "name": "eb103-ep15-start-up-frequency-for-inverter-module-41883"
+  },
+  "41884": {
+    "title": "EB103-EP14 set point for BT12",
+    "info": "set point for BT12",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 1,
+    "name": "eb103-ep14-set-point-for-bt12-41884"
+  },
+  "41885": {
+    "title": "EB103-EP14 start up frequency for inverter module",
+    "info": "start up frequency in heating for inverter module",
+    "unit": "Hz",
+    "size": "u8",
+    "factor": 1,
+    "name": "eb103-ep14-start-up-frequency-for-inverter-module-41885"
+  },
+  "41886": {
+    "title": "EB102-EP15 set point for BT12",
+    "info": "set point for BT12",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 1,
+    "name": "eb102-ep15-set-point-for-bt12-41886"
+  },
+  "41887": {
+    "title": "EB102-EP15 start up frequency for inverter module",
+    "info": "start up frequency in heating for inverter module",
+    "unit": "Hz",
+    "size": "u8",
+    "factor": 1,
+    "name": "eb102-ep15-start-up-frequency-for-inverter-module-41887"
+  },
+  "41888": {
+    "title": "EB102-EP14 set point for BT12",
+    "info": "set point for BT12",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 1,
+    "name": "eb102-ep14-set-point-for-bt12-41888"
+  },
+  "41889": {
+    "title": "EB102-EP14 start up frequency for inverter module",
+    "info": "start up frequency in heating for inverter module",
+    "unit": "Hz",
+    "size": "u8",
+    "factor": 1,
+    "name": "eb102-ep14-start-up-frequency-for-inverter-module-41889"
+  },
+  "41890": {
+    "title": "EB101-EP15 set point for BT12",
+    "info": "set point for BT12",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 1,
+    "name": "eb101-ep15-set-point-for-bt12-41890"
+  },
+  "41891": {
+    "title": "EB101-EP15 start up frequency for inverter module",
+    "info": "start up frequency in heating for inverter module",
+    "unit": "Hz",
+    "size": "u8",
+    "factor": 1,
+    "name": "eb101-ep15-start-up-frequency-for-inverter-module-41891"
+  },
+  "41892": {
+    "title": "EB101-EP14 set point for BT12",
+    "info": "set point for BT12",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 1,
+    "name": "eb101-ep14-set-point-for-bt12-41892"
+  },
+  "41893": {
+    "title": "EB101-EP14 start up frequency for inverter module",
+    "info": "start up frequency in heating for inverter module",
+    "unit": "Hz",
+    "size": "u8",
+    "factor": 1,
+    "name": "eb101-ep14-start-up-frequency-for-inverter-module-41893"
   },
   "41928": {
     "title": "Smart Price Adaption Price",
@@ -2882,6 +3343,14 @@
       "1": "closed"
     }
   },
+  "42166": {
+    "title": "EB108-EP15 Heat Meter - Pool2 Cpr",
+    "info": "Accumulated energy production as calculated by the heat meter",
+    "unit": "kWh",
+    "size": "u32",
+    "factor": 10,
+    "name": "eb108-ep15-heat-meter-pool2-cpr-42166"
+  },
   "42168": {
     "title": "EB108-EP15 Heat Meter - HW Cpr and Add",
     "info": "Accumulated energy production as calculated by the heat meter",
@@ -2929,6 +3398,14 @@
     "size": "u32",
     "factor": 10,
     "name": "eb108-ep15-heat-meter-heat-cpr-42178"
+  },
+  "42181": {
+    "title": "EB108-EP14 Heat Meter - Pool2 Cpr",
+    "info": "Accumulated energy production as calculated by the heat meter",
+    "unit": "kWh",
+    "size": "u32",
+    "factor": 10,
+    "name": "eb108-ep14-heat-meter-pool2-cpr-42181"
   },
   "42183": {
     "title": "EB108-EP14 Heat Meter - HW Cpr and Add",
@@ -2978,6 +3455,14 @@
     "factor": 10,
     "name": "eb108-ep14-heat-meter-heat-cpr-42193"
   },
+  "42196": {
+    "title": "EB107-EP15 Heat Meter - Pool2 Cpr",
+    "info": "Accumulated energy production as calculated by the heat meter",
+    "unit": "kWh",
+    "size": "u32",
+    "factor": 10,
+    "name": "eb107-ep15-heat-meter-pool2-cpr-42196"
+  },
   "42198": {
     "title": "EB107-EP15 Heat Meter - HW Cpr and Add",
     "info": "Accumulated energy production as calculated by the heat meter",
@@ -3025,6 +3510,14 @@
     "size": "u32",
     "factor": 10,
     "name": "eb107-ep15-heat-meter-heat-cpr-42208"
+  },
+  "42211": {
+    "title": "EB107-EP14 Heat Meter - Pool2 Cpr",
+    "info": "Accumulated energy production as calculated by the heat meter",
+    "unit": "kWh",
+    "size": "u32",
+    "factor": 10,
+    "name": "eb107-ep14-heat-meter-pool2-cpr-42211"
   },
   "42213": {
     "title": "EB107-EP14 Heat Meter - HW Cpr and Add",
@@ -3074,6 +3567,14 @@
     "factor": 10,
     "name": "eb107-ep14-heat-meter-heat-cpr-42223"
   },
+  "42226": {
+    "title": "EB106-EP15 Heat Meter - Pool2 Cpr",
+    "info": "Accumulated energy production as calculated by the heat meter",
+    "unit": "kWh",
+    "size": "u32",
+    "factor": 10,
+    "name": "eb106-ep15-heat-meter-pool2-cpr-42226"
+  },
   "42228": {
     "title": "EB106-EP15 Heat Meter - HW Cpr and Add",
     "info": "Accumulated energy production as calculated by the heat meter",
@@ -3121,6 +3622,14 @@
     "size": "u32",
     "factor": 10,
     "name": "eb106-ep15-heat-meter-heat-cpr-42238"
+  },
+  "42241": {
+    "title": "EB106-EP14 Heat Meter - Pool2 Cpr",
+    "info": "Accumulated energy production as calculated by the heat meter",
+    "unit": "kWh",
+    "size": "u32",
+    "factor": 10,
+    "name": "eb106-ep14-heat-meter-pool2-cpr-42241"
   },
   "42243": {
     "title": "EB106-EP14 Heat Meter - HW Cpr and Add",
@@ -3170,6 +3679,14 @@
     "factor": 10,
     "name": "eb106-ep14-heat-meter-heat-cpr-42253"
   },
+  "42256": {
+    "title": "EB105-EP15 Heat Meter - Pool2 Cpr",
+    "info": "Accumulated energy production as calculated by the heat meter",
+    "unit": "kWh",
+    "size": "u32",
+    "factor": 10,
+    "name": "eb105-ep15-heat-meter-pool2-cpr-42256"
+  },
   "42258": {
     "title": "EB105-EP15 Heat Meter - HW Cpr and Add",
     "info": "Accumulated energy production as calculated by the heat meter",
@@ -3217,6 +3734,14 @@
     "size": "u32",
     "factor": 10,
     "name": "eb105-ep15-heat-meter-heat-cpr-42268"
+  },
+  "42271": {
+    "title": "EB105-EP14 Heat Meter - Pool2 Cpr",
+    "info": "Accumulated energy production as calculated by the heat meter",
+    "unit": "kWh",
+    "size": "u32",
+    "factor": 10,
+    "name": "eb105-ep14-heat-meter-pool2-cpr-42271"
   },
   "42273": {
     "title": "EB105-EP14 Heat Meter - HW Cpr and Add",
@@ -3266,6 +3791,14 @@
     "factor": 10,
     "name": "eb105-ep14-heat-meter-heat-cpr-42283"
   },
+  "42286": {
+    "title": "EB104-EP15 Heat Meter - Pool2 Cpr",
+    "info": "Accumulated energy production as calculated by the heat meter",
+    "unit": "kWh",
+    "size": "u32",
+    "factor": 10,
+    "name": "eb104-ep15-heat-meter-pool2-cpr-42286"
+  },
   "42288": {
     "title": "EB104-EP15 Heat Meter - HW Cpr and Add",
     "info": "Accumulated energy production as calculated by the heat meter",
@@ -3313,6 +3846,14 @@
     "size": "u32",
     "factor": 10,
     "name": "eb104-ep15-heat-meter-heat-cpr-42298"
+  },
+  "42301": {
+    "title": "EB104-EP14 Heat Meter - Pool2 Cpr",
+    "info": "Accumulated energy production as calculated by the heat meter",
+    "unit": "kWh",
+    "size": "u32",
+    "factor": 10,
+    "name": "eb104-ep14-heat-meter-pool2-cpr-42301"
   },
   "42303": {
     "title": "EB104-EP14 Heat Meter - HW Cpr and Add",
@@ -3362,6 +3903,14 @@
     "factor": 10,
     "name": "eb104-ep14-heat-meter-heat-cpr-42313"
   },
+  "42316": {
+    "title": "EB103-EP15 Heat Meter - Pool2 Cpr",
+    "info": "Accumulated energy production as calculated by the heat meter",
+    "unit": "kWh",
+    "size": "u32",
+    "factor": 10,
+    "name": "eb103-ep15-heat-meter-pool2-cpr-42316"
+  },
   "42318": {
     "title": "EB103-EP15 Heat Meter - HW Cpr and Add",
     "info": "Accumulated energy production as calculated by the heat meter",
@@ -3409,6 +3958,14 @@
     "size": "u32",
     "factor": 10,
     "name": "eb103-ep15-heat-meter-heat-cpr-42328"
+  },
+  "42331": {
+    "title": "EB103-EP14 Heat Meter - Pool2 Cpr",
+    "info": "Accumulated energy production as calculated by the heat meter",
+    "unit": "kWh",
+    "size": "u32",
+    "factor": 10,
+    "name": "eb103-ep14-heat-meter-pool2-cpr-42331"
   },
   "42333": {
     "title": "EB103-EP14 Heat Meter - HW Cpr and Add",
@@ -3458,6 +4015,14 @@
     "factor": 10,
     "name": "eb103-ep14-heat-meter-heat-cpr-42343"
   },
+  "42346": {
+    "title": "EB102-EP15 Heat Meter - Pool2 Cpr",
+    "info": "Accumulated energy production as calculated by the heat meter",
+    "unit": "kWh",
+    "size": "u32",
+    "factor": 10,
+    "name": "eb102-ep15-heat-meter-pool2-cpr-42346"
+  },
   "42348": {
     "title": "EB102-EP15 Heat Meter - HW Cpr and Add",
     "info": "Accumulated energy production as calculated by the heat meter",
@@ -3505,6 +4070,14 @@
     "size": "u32",
     "factor": 10,
     "name": "eb102-ep15-heat-meter-heat-cpr-42358"
+  },
+  "42361": {
+    "title": "EB102-EP14 Heat Meter - Pool2 Cpr",
+    "info": "Accumulated energy production as calculated by the heat meter",
+    "unit": "kWh",
+    "size": "u32",
+    "factor": 10,
+    "name": "eb102-ep14-heat-meter-pool2-cpr-42361"
   },
   "42363": {
     "title": "EB102-EP14 Heat Meter - HW Cpr and Add",
@@ -3554,6 +4127,14 @@
     "factor": 10,
     "name": "eb102-ep14-heat-meter-heat-cpr-42373"
   },
+  "42376": {
+    "title": "EB101-EP15 Heat Meter - Pool2 Cpr",
+    "info": "Accumulated energy production as calculated by the heat meter",
+    "unit": "kWh",
+    "size": "u32",
+    "factor": 10,
+    "name": "eb101-ep15-heat-meter-pool2-cpr-42376"
+  },
   "42378": {
     "title": "EB101-EP15 Heat Meter - HW Cpr and Add",
     "info": "Accumulated energy production as calculated by the heat meter",
@@ -3602,6 +4183,14 @@
     "factor": 10,
     "name": "eb101-ep15-heat-meter-heat-cpr-42388"
   },
+  "42391": {
+    "title": "EB101-EP14 Heat Meter - Pool2 Cpr",
+    "info": "Accumulated energy production as calculated by the heat meter",
+    "unit": "kWh",
+    "size": "u32",
+    "factor": 10,
+    "name": "eb101-ep14-heat-meter-pool2-cpr-42391"
+  },
   "42393": {
     "title": "EB101-EP14 Heat Meter - HW Cpr and Add",
     "info": "Accumulated energy production as calculated by the heat meter",
@@ -3649,6 +4238,14 @@
     "size": "u32",
     "factor": 10,
     "name": "eb101-ep14-heat-meter-heat-cpr-42403"
+  },
+  "42435": {
+    "title": "Heat Meter - HW Cpr and Add - Total system",
+    "info": "Accumulated energy production as calculated by the heat meter, summaries of all heat pumps in system",
+    "unit": "kWh",
+    "size": "u32",
+    "factor": 10,
+    "name": "heat-meter-hw-cpr-and-add-total-system-42435"
   },
   "42437": {
     "title": "Heat Meter - HW Cpr and Add - Total system",
@@ -3903,17 +4500,6 @@
       "1": "ON"
     }
   },
-  "43024": {
-    "title": "Status Cooling",
-    "info": " 0=Off 1=On",
-    "size": "u8",
-    "factor": 1,
-    "name": "status-cooling-43024",
-    "mappings": {
-      "0": "Off",
-      "1": "On"
-    }
-  },
   "43064": {
     "title": "Heat Medium Flow dT Set Point",
     "info": "Set point delta T for the heat medium flow",
@@ -4033,11 +4619,53 @@
       "4": "Fan mode 4"
     }
   },
-  "43152": {
-    "title": "Internal cooling blocked",
-    "size": "u8",
+  "43122": {
+    "title": "Compr. current min.freq.",
+    "info": "The current minimum frequency of the compressor",
+    "unit": "Hz",
+    "size": "s16",
     "factor": 1,
-    "name": "internal-cooling-blocked-43152"
+    "name": "compr-current-min-freq-43122"
+  },
+  "43132": {
+    "title": "Inverter com. timer",
+    "info": "This value shows the time since last communication with the inverter",
+    "unit": "sec",
+    "size": "u16",
+    "factor": 1,
+    "name": "inverter-com-timer-43132"
+  },
+  "43136": {
+    "title": "Compressor Frequency, Actual",
+    "info": "The compressor frequency the compressor is currently running at",
+    "unit": "Hz",
+    "size": "u16",
+    "factor": 10,
+    "name": "compressor-frequency-actual-43136"
+  },
+  "43140": {
+    "title": "Inverter Temperature",
+    "info": "Current inverter temparture",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "name": "inverter-temperature-43140"
+  },
+  "43141": {
+    "title": "compr. in power",
+    "info": "The power delivered from the inverter to the compressor",
+    "unit": "kW",
+    "size": "u16",
+    "factor": 100,
+    "name": "compr-in-power-43141"
+  },
+  "43147": {
+    "title": "Compr. in current",
+    "info": "The current delivered from the inverter to the compressor",
+    "unit": "A",
+    "size": "s16",
+    "factor": 1,
+    "name": "compr-in-current-43147"
   },
   "43158": {
     "title": "External adjustment activated via input S4",
@@ -4114,17 +4742,6 @@
       "1": "on"
     }
   },
-  "43230": {
-    "title": "Heat Meter (OBSOLETE)",
-    "info": "Obsolete since v4798 of the controller software",
-    "unit": "kWh",
-    "size": "u32",
-    "factor": 10,
-    "min": 0.0,
-    "max": 9999999.0,
-    "default": 0.0,
-    "name": "heat-meter-obsolete-43230"
-  },
   "43239": {
     "title": "Tot. HW op.time add.",
     "info": "Total electric additive operation time in hot water mode",
@@ -4136,12 +4753,20 @@
     "default": 0.0,
     "name": "tot-hw-op-time-add-43239"
   },
-  "43395": {
-    "title": "HPAC Relays",
-    "info": "Indicates the active relays on the HPAC accessory. The information is binary encoded",
-    "size": "u8",
+  "43375": {
+    "title": "compr. in power mean",
+    "info": "Mean power delivered from the inverter to the compressor. Mean is calculated every 10 seconds.",
+    "unit": "kW",
+    "size": "s16",
+    "factor": 100,
+    "name": "compr-in-power-mean-43375"
+  },
+  "43414": {
+    "title": "Compressor starts EB100-EP15",
+    "info": "Number of compressorer starts",
+    "size": "s32",
     "factor": 1,
-    "name": "hpac-relays-43395"
+    "name": "compressor-starts-eb100-ep15-43414"
   },
   "43416": {
     "title": "Compressor starts EB100-EP14",
@@ -4154,6 +4779,14 @@
     "name": "compressor-starts-eb100-ep14-43416",
     "nature": "total_increasing"
   },
+  "43418": {
+    "title": "Tot. op.time compr. EB100-EP15",
+    "info": "Total compressorer operation time",
+    "unit": "h",
+    "size": "s32",
+    "factor": 1,
+    "name": "tot-op-time-compr-eb100-ep15-43418"
+  },
   "43420": {
     "title": "Tot. op.time compr. EB100-EP14",
     "info": "Total compressorer operation time",
@@ -4165,6 +4798,14 @@
     "default": 0.0,
     "name": "tot-op-time-compr-eb100-ep14-43420"
   },
+  "43422": {
+    "title": "Tot. HW op.time compr. EB100-EP15",
+    "info": "Total compressorer operation time in hot water mode",
+    "unit": "h",
+    "size": "s32",
+    "factor": 1,
+    "name": "tot-hw-op-time-compr-eb100-ep15-43422"
+  },
   "43424": {
     "title": "Tot. HW op.time compr. EB100-EP14",
     "info": "Total compressorer operation time in hot water mode",
@@ -4175,6 +4816,19 @@
     "max": 9999999.0,
     "default": 0.0,
     "name": "tot-hw-op-time-compr-eb100-ep14-43424"
+  },
+  "43426": {
+    "title": "Compressor State EP15",
+    "info": "20 = Stopped, 40 = Starting, 60 = Running, 100 = Stopping",
+    "size": "u8",
+    "factor": 1,
+    "name": "compressor-state-ep15-43426",
+    "mappings": {
+      "20": "Stopped",
+      "40": "Starting",
+      "60": "Running",
+      "100": "Stopping"
+    }
   },
   "43427": {
     "title": "Compressor State EP14",
@@ -4189,12 +4843,40 @@
       "100": "Stopping"
     }
   },
+  "43430": {
+    "title": "Supply Pump State EP15",
+    "info": "10=off,15=starting,20=on,40=10-day mode,80=calibration",
+    "size": "u8",
+    "factor": 1,
+    "name": "supply-pump-state-ep15-43430",
+    "mappings": {
+      "10": "off",
+      "15": "starting",
+      "20": "on",
+      "40": "10-day mode",
+      "80": "calibration"
+    }
+  },
   "43431": {
     "title": "Supply Pump State EP14",
     "info": "10=off,15=starting,20=on,40=10-day mode,80=calibration",
     "size": "u8",
     "factor": 1,
     "name": "supply-pump-state-ep14-43431",
+    "mappings": {
+      "10": "off",
+      "15": "starting",
+      "20": "on",
+      "40": "10-day mode",
+      "80": "calibration"
+    }
+  },
+  "43432": {
+    "title": "Brine Pump State EP15",
+    "info": "10=off,15=starting,20=on,40=10-day mode,80=calibration",
+    "size": "u8",
+    "factor": 1,
+    "name": "brine-pump-state-ep15-43432",
     "mappings": {
       "10": "off",
       "15": "starting",
@@ -4217,6 +4899,17 @@
       "80": "calibration"
     }
   },
+  "43434": {
+    "title": "Cpr Status EP15",
+    "info": "Status of the compressor. 1=on,0=off 0=Off 1=On",
+    "size": "u8",
+    "factor": 1,
+    "name": "cpr-status-ep15-43434",
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
+  },
   "43435": {
     "title": "Cpr Status EP14",
     "info": "Status of the compressor. 1=on,0=off 0=Off 1=On",
@@ -4228,6 +4921,14 @@
       "1": "On"
     }
   },
+  "43436": {
+    "title": "Supply Pump Speed EP15",
+    "info": "Supply pump speed in %",
+    "unit": "%",
+    "size": "u8",
+    "factor": 1,
+    "name": "supply-pump-speed-ep15-43436"
+  },
   "43437": {
     "title": "Supply Pump Speed EP14",
     "info": "Supply pump speed in %",
@@ -4235,6 +4936,14 @@
     "size": "u8",
     "factor": 1,
     "name": "supply-pump-speed-ep14-43437"
+  },
+  "43438": {
+    "title": "EP15-GP2 Brine Pump Status",
+    "info": "Brine pump speed in %",
+    "unit": "%",
+    "size": "u8",
+    "factor": 1,
+    "name": "ep15-gp2-brine-pump-status-43438"
   },
   "43439": {
     "title": "EP14-GP2 Brine Pump Status EP14",
@@ -4264,6 +4973,17 @@
     "size": "u8",
     "factor": 1,
     "name": "docked-pool-1-compressors-43475"
+  },
+  "43481": {
+    "title": "QN10 State",
+    "info": "0=Heating, 1=Hot water",
+    "size": "u8",
+    "factor": 1,
+    "name": "qn10-state-43481",
+    "mappings": {
+      "0": "Heating",
+      "1": "Hot water"
+    }
   },
   "43484": {
     "title": "FLM 4 Cooling Status",
@@ -4308,6 +5028,20 @@
       "0": "no",
       "1": "yes"
     }
+  },
+  "43490": {
+    "title": "Steps ext. add.",
+    "info": "Number of steps active external addition",
+    "size": "u8",
+    "factor": 1,
+    "name": "steps-ext-add-43490"
+  },
+  "43513": {
+    "title": "EB100-EP15 PCA Base Relays",
+    "info": "Indicates active relays on the PCA Base card. Please refer to the wiring diagram for relay description. Binary encoded. 1=on, 0=off. Bit0=K4,Bit1=K3,Bit2=K2,Bit3=K1",
+    "size": "u8",
+    "factor": 1,
+    "name": "eb100-ep15-pca-base-relays-43513"
   },
   "43514": {
     "title": "EB100-EP14 PCA Base Relays",
@@ -6697,140 +7431,19 @@
     "factor": 1,
     "name": "eb101-ep14-alarm-number-44075"
   },
-  "44139": {
-    "title": "EB108-EP14 Prio",
-    "info": "Indicates what need is assigned to the compressor module, 0 = Off, 1 = Heat, 2 = Hot water, 3 = Pool 1, 4 = Pool2, 5=External Request",
-    "size": "u8",
+  "44116": {
+    "title": "EB100-EP15 Alarm Number",
+    "info": "The value indicates the most severe current alarm",
+    "size": "s16",
     "factor": 1,
-    "name": "eb108-ep14-prio-44139",
-    "mappings": {
-      "0": "Off",
-      "1": "Heat",
-      "2": "Hot water",
-      "3": "Pool 1",
-      "4": "Pool2",
-      "5": "External Request"
-    }
+    "name": "eb100-ep15-alarm-number-44116"
   },
-  "44152": {
-    "title": "EB107-EP14 Prio",
-    "info": "Indicates what need is assigned to the compressor module, 0 = Off, 1 = Heat, 2 = Hot water, 3 = Pool 1, 4 = Pool2, 5=External Request",
-    "size": "u8",
+  "44137": {
+    "title": "EB100-EP14 Alarm Number",
+    "info": "The value indicates the most severe current alarm",
+    "size": "s16",
     "factor": 1,
-    "name": "eb107-ep14-prio-44152",
-    "mappings": {
-      "0": "Off",
-      "1": "Heat",
-      "2": "Hot water",
-      "3": "Pool 1",
-      "4": "Pool2",
-      "5": "External Request"
-    }
-  },
-  "44165": {
-    "title": "EB106-EP14 Prio",
-    "info": "Indicates what need is assigned to the compressor module, 0 = Off, 1 = Heat, 2 = Hot water, 3 = Pool 1, 4 = Pool2, 5=External Request",
-    "size": "u8",
-    "factor": 1,
-    "name": "eb106-ep14-prio-44165",
-    "mappings": {
-      "0": "Off",
-      "1": "Heat",
-      "2": "Hot water",
-      "3": "Pool 1",
-      "4": "Pool2",
-      "5": "External Request"
-    }
-  },
-  "44178": {
-    "title": "EB105-EP14 Prio",
-    "info": "Indicates what need is assigned to the compressor module, 0 = Off, 1 = Heat, 2 = Hot water, 3 = Pool 1, 4 = Pool2, 5=External Request",
-    "size": "u8",
-    "factor": 1,
-    "name": "eb105-ep14-prio-44178",
-    "mappings": {
-      "0": "Off",
-      "1": "Heat",
-      "2": "Hot water",
-      "3": "Pool 1",
-      "4": "Pool2",
-      "5": "External Request"
-    }
-  },
-  "44191": {
-    "title": "EB104-EP14 Prio",
-    "info": "Indicates what need is assigned to the compressor module, 0 = Off, 1 = Heat, 2 = Hot water, 3 = Pool 1, 4 = Pool2, 5=External Request",
-    "size": "u8",
-    "factor": 1,
-    "name": "eb104-ep14-prio-44191",
-    "mappings": {
-      "0": "Off",
-      "1": "Heat",
-      "2": "Hot water",
-      "3": "Pool 1",
-      "4": "Pool2",
-      "5": "External Request"
-    }
-  },
-  "44204": {
-    "title": "EB103-EP14 Prio",
-    "info": "Indicates what need is assigned to the compressor module, 0 = Off, 1 = Heat, 2 = Hot water, 3 = Pool 1, 4 = Pool2, 5=External Request",
-    "size": "u8",
-    "factor": 1,
-    "name": "eb103-ep14-prio-44204",
-    "mappings": {
-      "0": "Off",
-      "1": "Heat",
-      "2": "Hot water",
-      "3": "Pool 1",
-      "4": "Pool2",
-      "5": "External Request"
-    }
-  },
-  "44217": {
-    "title": "EB102-EP14 Prio",
-    "info": "Indicates what need is assigned to the compressor module, 0 = Off, 1 = Heat, 2 = Hot water, 3 = Pool 1, 4 = Pool2, 5=External Request",
-    "size": "u8",
-    "factor": 1,
-    "name": "eb102-ep14-prio-44217",
-    "mappings": {
-      "0": "Off",
-      "1": "Heat",
-      "2": "Hot water",
-      "3": "Pool 1",
-      "4": "Pool2",
-      "5": "External Request"
-    }
-  },
-  "44230": {
-    "title": "EB101-EP14 Prio",
-    "info": "Indicates what need is assigned to the compressor module, 0 = Off, 1 = Heat, 2 = Hot water, 3 = Pool 1, 4 = Pool2, 5=External Request",
-    "size": "u8",
-    "factor": 1,
-    "name": "eb101-ep14-prio-44230",
-    "mappings": {
-      "0": "Off",
-      "1": "Heat",
-      "2": "Hot water",
-      "3": "Pool 1",
-      "4": "Pool2",
-      "5": "External Request"
-    }
-  },
-  "44243": {
-    "title": "EB100-EP14 Prio",
-    "info": "Indicates what need is assigned to the compressor module, 0 = Off, 1 = Heat, 2 = Hot water, 3 = Pool 1, 4 = Pool2, 5=External Request",
-    "size": "u8",
-    "factor": 1,
-    "name": "eb100-ep14-prio-44243",
-    "mappings": {
-      "0": "Off",
-      "1": "Heat",
-      "2": "Hot water",
-      "3": "Pool 1",
-      "4": "Pool2",
-      "5": "External Request"
-    }
+    "name": "eb100-ep14-alarm-number-44137"
   },
   "44266": {
     "title": "Cool Degree Minutes",
@@ -7417,6 +8030,18 @@
     "factor": 1,
     "name": "state-ground-water-pump-44756"
   },
+  "44778": {
+    "title": "EP10-QN41 State Brine Shunt",
+    "info": "10=shunt off,20=shunt open,30=shunt closed",
+    "size": "u8",
+    "factor": 1,
+    "name": "ep10-qn41-state-brine-shunt-44778",
+    "mappings": {
+      "10": "shunt off",
+      "20": "shunt open",
+      "30": "shunt closed"
+    }
+  },
   "44874": {
     "title": "State SG Ready",
     "size": "u8",
@@ -7593,113 +8218,6 @@
     "max": 1.0,
     "default": 0.0,
     "name": "eb101-installed-49239"
-  },
-  "40879": {
-    "title": "+Adjust Parallell factor",
-    "unit": "1",
-    "size": "s8",
-    "factor": 1,
-    "min": 1.0,
-    "max": 10.0,
-    "default": 5.0,
-    "name": "adjust-parallell-factor-40879",
-    "write": true
-  },
-  "40880": {
-    "title": "+Adjust Max change",
-    "info": "Largest allowed change",
-    "size": "s8",
-    "factor": 1,
-    "name": "adjust-max-change-40880",
-    "write": true
-  },
-  "40881": {
-    "title": "+Adjust Affect system8",
-    "info": "System affected by paralell change",
-    "size": "u8",
-    "factor": 1,
-    "min": 0.0,
-    "max": 1.0,
-    "default": 0.0,
-    "name": "adjust-affect-system8-40881",
-    "write": true
-  },
-  "40882": {
-    "title": "+Adjust Affect system7",
-    "info": "System affected by paralell change",
-    "size": "u8",
-    "factor": 1,
-    "min": 0.0,
-    "max": 1.0,
-    "default": 0.0,
-    "name": "adjust-affect-system7-40882",
-    "write": true
-  },
-  "40883": {
-    "title": "+Adjust Affect system6",
-    "info": "System affected by paralell change",
-    "size": "u8",
-    "factor": 1,
-    "min": 0.0,
-    "max": 1.0,
-    "default": 0.0,
-    "name": "adjust-affect-system6-40883",
-    "write": true
-  },
-  "40884": {
-    "title": "+Adjust Affect system5",
-    "info": "System affected by paralell change",
-    "size": "u8",
-    "factor": 1,
-    "min": 0.0,
-    "max": 1.0,
-    "default": 0.0,
-    "name": "adjust-affect-system5-40884",
-    "write": true
-  },
-  "40885": {
-    "title": "+Adjust Affect system4",
-    "info": "System affected by paralell change",
-    "size": "u8",
-    "factor": 1,
-    "min": 0.0,
-    "max": 1.0,
-    "default": 0.0,
-    "name": "adjust-affect-system4-40885",
-    "write": true
-  },
-  "40886": {
-    "title": "+Adjust Affect system3",
-    "info": "System affected by paralell change",
-    "size": "u8",
-    "factor": 1,
-    "min": 0.0,
-    "max": 1.0,
-    "default": 0.0,
-    "name": "adjust-affect-system3-40886",
-    "write": true
-  },
-  "40887": {
-    "title": "+Adjust Affect system2",
-    "info": "System affected by paralell change",
-    "size": "u8",
-    "factor": 1,
-    "min": 0.0,
-    "max": 1.0,
-    "default": 0.0,
-    "name": "adjust-affect-system2-40887",
-    "write": true
-  },
-  "40888": {
-    "title": "+Adjust Affect system1",
-    "info": "System affected by paralell change",
-    "size": "u8",
-    "factor": 1,
-    "min": 0.0,
-    "max": 1.0,
-    "default": 0.0,
-    "name": "adjust-affect-system1-40888",
-    "write": true
   },
   "42097": {
     "title": "Ground water pump auto speed",
@@ -8249,6 +8767,50 @@
     "name": "still-time-hwc-47055",
     "write": true
   },
+  "47100": {
+    "title": "Max diff VBF-BerVBF",
+    "info": "Largest allowed difference between Supply and calc supply",
+    "unit": "\u00b0C",
+    "size": "u8",
+    "factor": 10,
+    "name": "max-diff-vbf-bervbf-47100",
+    "write": true
+  },
+  "47101": {
+    "title": "Comp freq reg P",
+    "info": "Compressor frequency regulator P",
+    "size": "u8",
+    "factor": 1,
+    "name": "comp-freq-reg-p-47101",
+    "write": true
+  },
+  "47102": {
+    "title": "Comp freq max delta F",
+    "info": "Maximum change of copmpressor frequency in compressor frequency regulator",
+    "unit": "Hz",
+    "size": "s8",
+    "factor": 1,
+    "name": "comp-freq-max-delta-f-47102",
+    "write": true
+  },
+  "47103": {
+    "title": "Min comp freq",
+    "info": "Minimum allowed compressor frequency",
+    "unit": "Hz",
+    "size": "s16",
+    "factor": 1,
+    "name": "min-comp-freq-47103",
+    "write": true
+  },
+  "47104": {
+    "title": "Max comp freq",
+    "info": "Maximum allowed compressor frequency",
+    "unit": "Hz",
+    "size": "s16",
+    "factor": 1,
+    "name": "max-comp-freq-47104",
+    "write": true
+  },
   "47131": {
     "title": "Language",
     "info": "Display language in the heat pump 0=English 1=Svenska 2=Deutsch 3=Francais 4=Espanol 5=Suomi 6=Lietuviu 7=Cesky 8=Polski 9=Nederlands 10=Norsk 11=Dansk 12=Eesti 13=Latviesu 16=Magyar",
@@ -8387,17 +8949,6 @@
     "max": -30.0,
     "default": -400.0,
     "name": "dm-start-add-with-shunt-47210",
-    "write": true
-  },
-  "47212": {
-    "title": "Max int add. power",
-    "unit": "kW",
-    "size": "s16",
-    "factor": 100,
-    "min": 0.0,
-    "max": 4500.0,
-    "default": 600.0,
-    "name": "max-int-add-power-47212",
     "write": true
   },
   "47214": {
@@ -9730,6 +10281,32 @@
     "name": "heat-curve-s7-47567",
     "write": true
   },
+  "47613": {
+    "title": "Max Internal Add",
+    "info": "Maximum allowed steps for the internally connected addition.",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 7.0,
+    "default": 3.0,
+    "name": "max-internal-add-47613",
+    "write": true
+  },
+  "47614": {
+    "title": "Int. connected add. mode",
+    "info": "Binary or linear stepping method for the internally connected external addition. 0=Linear 1=Binary",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "int-connected-add-mode-47614",
+    "write": true,
+    "mappings": {
+      "0": "Linear",
+      "1": "Binary"
+    }
+  },
   "48043": {
     "title": "Holiday - Activated",
     "info": "0=inactive, 10=active",
@@ -10123,6 +10700,28 @@
     "name": "dm-startdiff-add-with-shunt-48139",
     "write": true
   },
+  "48140": {
+    "title": "Max pool 2 compr.",
+    "info": "Maximum number of compressors that are simultaneously charging the pool",
+    "size": "u8",
+    "factor": 1,
+    "min": 1.0,
+    "max": 18.0,
+    "default": 18.0,
+    "name": "max-pool-2-compr-48140",
+    "write": true
+  },
+  "48141": {
+    "title": "Max pool 1 compr.",
+    "info": "Maximum number of compressors that are simultaneously charging the pool",
+    "size": "u8",
+    "factor": 1,
+    "min": 1.0,
+    "max": 18.0,
+    "default": 18.0,
+    "name": "max-pool-1-compr-48141",
+    "write": true
+  },
   "48142": {
     "title": "Step controlled add. start diff DM",
     "info": "DM diff from last compressor step where the first step of step controlled add. starts",
@@ -10471,6 +11070,17 @@
     "name": "max-charge-pump-reg-speed-48275",
     "write": true
   },
+  "48280": {
+    "title": "Internal HW add in tank",
+    "info": "Internal HW add in tank",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "internal-hw-add-in-tank-48280",
+    "write": true
+  },
   "48281": {
     "title": "Charge method HW",
     "info": "Heating medium pump control when hot water is charged",
@@ -10582,6 +11192,16 @@
     "max": 20.0,
     "default": 10.0,
     "name": "operational-mode-heat-medium-pump-cooling-48456",
+    "write": true
+  },
+  "48457": {
+    "title": "Int shunt controlled add.",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "int-shunt-controlled-add-48457",
     "write": true
   },
   "48458": {
@@ -11538,6 +12158,16 @@
     "name": "own-cooling-curve-p1-48742",
     "write": true
   },
+  "48743": {
+    "title": "Hot water high power mode",
+    "size": "s8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "hot-water-high-power-mode-48743",
+    "write": true
+  },
   "48755": {
     "title": "Transformer ratio",
     "info": "Ratio of the current measurement transformers",
@@ -12344,21 +12974,6 @@
     "name": "opt-hystereses-48928",
     "write": true
   },
-  "48930": {
-    "title": "EME10 Activated",
-    "info": "0=not activated, 1=activated",
-    "size": "u8",
-    "factor": 1,
-    "min": 0.0,
-    "max": 1.0,
-    "default": 0.0,
-    "name": "eme10-activated-48930",
-    "write": true,
-    "mappings": {
-      "0": "not activated",
-      "1": "activated"
-    }
-  },
   "48931": {
     "title": "EME PV Panel Affect Heating",
     "info": "0=not affecting, 1=affecting",
@@ -12388,6 +13003,17 @@
       "0": "not affecting",
       "1": "affecting"
     }
+  },
+  "48944": {
+    "title": " Low brine out temp.EP15",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "min": -120.0,
+    "max": 150.0,
+    "default": -80.0,
+    "name": "low-brine-out-temp-ep15-48944",
+    "write": true
   },
   "48948": {
     "title": "FLM pump 4",
@@ -13087,15 +13713,26 @@
       "2": "fixed delta controlled"
     }
   },
-  "49221": {
-    "title": "Delta brine pump passive cooling",
-    "unit": "\u00b0C",
-    "size": "u8",
+  "49228": {
+    "title": "DM start value EP15.",
+    "info": "The value the degree minutes needed to be reached for the pump to start heating with EP15",
+    "size": "s16",
     "factor": 1,
-    "min": 1.0,
-    "max": 15.0,
-    "default": 4.0,
-    "name": "delta-brine-pump-passive-cooling-49221",
+    "min": -1000.0,
+    "max": -30.0,
+    "default": -60.0,
+    "name": "dm-start-value-ep15-49228",
+    "write": true
+  },
+  "49229": {
+    "title": "DM start value EP14",
+    "info": "The value the degree minutes needed to be reached for the pump to start heating with EP14",
+    "size": "s16",
+    "factor": 1,
+    "min": -1000.0,
+    "max": -30.0,
+    "default": -200.0,
+    "name": "dm-start-value-ep14-49229",
     "write": true
   },
   "49241": {
@@ -13117,6 +13754,116 @@
     "max": 1.0,
     "default": 0.0,
     "name": "external-ers-1-accessory-bypass-at-heat-49242",
+    "write": true
+  },
+  "49243": {
+    "title": "Speed circ.pump HW EP15",
+    "unit": "%",
+    "size": "u8",
+    "factor": 1,
+    "min": 1.0,
+    "max": 100.0,
+    "default": 70.0,
+    "name": "speed-circ-pump-hw-ep15-49243",
+    "write": true
+  },
+  "49244": {
+    "title": "Speed circ.pump Heat EP15",
+    "unit": "%",
+    "size": "u8",
+    "factor": 1,
+    "min": 1.0,
+    "max": 100.0,
+    "default": 70.0,
+    "name": "speed-circ-pump-heat-ep15-49244",
+    "write": true
+  },
+  "49245": {
+    "title": "Speed circ.pump Pool EP15",
+    "unit": "%",
+    "size": "u8",
+    "factor": 1,
+    "min": 1.0,
+    "max": 100.0,
+    "default": 70.0,
+    "name": "speed-circ-pump-pool-ep15-49245",
+    "write": true
+  },
+  "49246": {
+    "title": "Speed Circulation Pump Passive Cooling EP15",
+    "unit": "%",
+    "size": "u8",
+    "factor": 1,
+    "min": 1.0,
+    "max": 100.0,
+    "default": 70.0,
+    "name": "speed-circulation-pump-passive-cooling-ep15-49246",
+    "write": true
+  },
+  "49247": {
+    "title": "Speed Circulation Pump Active Cooling EP15",
+    "unit": "%",
+    "size": "u8",
+    "factor": 1,
+    "min": 1.0,
+    "max": 100.0,
+    "default": 70.0,
+    "name": "speed-circulation-pump-active-cooling-ep15-49247",
+    "write": true
+  },
+  "49248": {
+    "title": "Speed brine pump EP15 ",
+    "unit": "%",
+    "size": "u8",
+    "factor": 1,
+    "min": 1.0,
+    "max": 100.0,
+    "default": 100.0,
+    "name": "speed-brine-pump-ep15-49248",
+    "write": true
+  },
+  "49249": {
+    "title": "Speed brine pump passive cooling EP15",
+    "unit": "%",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 100.0,
+    "default": 75.0,
+    "name": "speed-brine-pump-passive-cooling-ep15-49249",
+    "write": true
+  },
+  "49250": {
+    "title": "Speed brine pump active cooling EP15",
+    "unit": "%",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 100.0,
+    "default": 75.0,
+    "name": "speed-brine-pump-active-cooling-ep15-49250",
+    "write": true
+  },
+  "49251": {
+    "title": "Waiting speed brine pump cooling EP15",
+    "unit": "%",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 100.0,
+    "default": 30.0,
+    "name": "waiting-speed-brine-pump-cooling-ep15-49251",
+    "write": true
+  },
+  "49252": {
+    "title": " Speed brine pump wait mode EP15",
+    "unit": "%",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 100.0,
+    "default": 30.0,
+    "name": "speed-brine-pump-wait-mode-ep15-49252",
     "write": true
   },
   "49277": {
@@ -13880,6 +14627,586 @@
     "size": "u8",
     "factor": 1,
     "name": "aux-ers-fire-place-guard-49430",
+    "write": true
+  },
+  "40155": {
+    "title": "EQ1-BT57 Collector Temp.",
+    "info": "External collector temperature, BT57, for ACS",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "name": "eq1-bt57-collector-temp-40155"
+  },
+  "40156": {
+    "title": "EQ1-BT75 Heatdump Temp.",
+    "info": "Heating medium dump temperature, BT75, for ACS",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "name": "eq1-bt75-heatdump-temp-40156"
+  },
+  "40627": {
+    "title": "MP brine pump.",
+    "info": "Motor protection brine pump",
+    "size": "s16",
+    "factor": 1,
+    "name": "mp-brine-pump-40627"
+  },
+  "44138": {
+    "title": "EB108-EP15 Prio",
+    "info": "Indicates what need is assigned to the compressor module, 0 = Off, 1 = Heat, 2 = Hot water, 3 = Pool 1, 4 = Pool2, 5=External Request",
+    "size": "u8",
+    "factor": 1,
+    "name": "eb108-ep15-prio-44138",
+    "mappings": {
+      "0": "Off",
+      "1": "Heat",
+      "2": "Hot water",
+      "3": "Pool 1",
+      "4": "Pool2",
+      "5": "External Request"
+    }
+  },
+  "44139": {
+    "title": "EB108-EP14 Prio",
+    "info": "Indicates what need is assigned to the compressor module, 0 = Off, 1 = Heat, 2 = Hot water, 3 = Pool 1, 4 = Pool2, 5=External Request",
+    "size": "u8",
+    "factor": 1,
+    "name": "eb108-ep14-prio-44139",
+    "mappings": {
+      "0": "Off",
+      "1": "Heat",
+      "2": "Hot water",
+      "3": "Pool 1",
+      "4": "Pool2",
+      "5": "External Request"
+    }
+  },
+  "44151": {
+    "title": "EB107-EP15 Prio",
+    "info": "Indicates what need is assigned to the compressor module, 0 = Off, 1 = Heat, 2 = Hot water, 3 = Pool 1, 4 = Pool2, 5=External Request",
+    "size": "u8",
+    "factor": 1,
+    "name": "eb107-ep15-prio-44151",
+    "mappings": {
+      "0": "Off",
+      "1": "Heat",
+      "2": "Hot water",
+      "3": "Pool 1",
+      "4": "Pool2",
+      "5": "External Request"
+    }
+  },
+  "44152": {
+    "title": "EB107-EP14 Prio",
+    "info": "Indicates what need is assigned to the compressor module, 0 = Off, 1 = Heat, 2 = Hot water, 3 = Pool 1, 4 = Pool2, 5=External Request",
+    "size": "u8",
+    "factor": 1,
+    "name": "eb107-ep14-prio-44152",
+    "mappings": {
+      "0": "Off",
+      "1": "Heat",
+      "2": "Hot water",
+      "3": "Pool 1",
+      "4": "Pool2",
+      "5": "External Request"
+    }
+  },
+  "44164": {
+    "title": "EB106-EP15 Prio",
+    "info": "Indicates what need is assigned to the compressor module, 0 = Off, 1 = Heat, 2 = Hot water, 3 = Pool 1, 4 = Pool2, 5=External Request",
+    "size": "u8",
+    "factor": 1,
+    "name": "eb106-ep15-prio-44164",
+    "mappings": {
+      "0": "Off",
+      "1": "Heat",
+      "2": "Hot water",
+      "3": "Pool 1",
+      "4": "Pool2",
+      "5": "External Request"
+    }
+  },
+  "44165": {
+    "title": "EB106-EP14 Prio",
+    "info": "Indicates what need is assigned to the compressor module, 0 = Off, 1 = Heat, 2 = Hot water, 3 = Pool 1, 4 = Pool2, 5=External Request",
+    "size": "u8",
+    "factor": 1,
+    "name": "eb106-ep14-prio-44165",
+    "mappings": {
+      "0": "Off",
+      "1": "Heat",
+      "2": "Hot water",
+      "3": "Pool 1",
+      "4": "Pool2",
+      "5": "External Request"
+    }
+  },
+  "44177": {
+    "title": "EB105-EP15 Prio",
+    "info": "Indicates what need is assigned to the compressor module, 0 = Off, 1 = Heat, 2 = Hot water, 3 = Pool 1, 4 = Pool2, 5=External Request",
+    "size": "u8",
+    "factor": 1,
+    "name": "eb105-ep15-prio-44177",
+    "mappings": {
+      "0": "Off",
+      "1": "Heat",
+      "2": "Hot water",
+      "3": "Pool 1",
+      "4": "Pool2",
+      "5": "External Request"
+    }
+  },
+  "44178": {
+    "title": "EB105-EP14 Prio",
+    "info": "Indicates what need is assigned to the compressor module, 0 = Off, 1 = Heat, 2 = Hot water, 3 = Pool 1, 4 = Pool2, 5=External Request",
+    "size": "u8",
+    "factor": 1,
+    "name": "eb105-ep14-prio-44178",
+    "mappings": {
+      "0": "Off",
+      "1": "Heat",
+      "2": "Hot water",
+      "3": "Pool 1",
+      "4": "Pool2",
+      "5": "External Request"
+    }
+  },
+  "44190": {
+    "title": "EB104-EP15 Prio",
+    "info": "Indicates what need is assigned to the compressor module, 0 = Off, 1 = Heat, 2 = Hot water, 3 = Pool 1, 4 = Pool2, 5=External Request",
+    "size": "u8",
+    "factor": 1,
+    "name": "eb104-ep15-prio-44190",
+    "mappings": {
+      "0": "Off",
+      "1": "Heat",
+      "2": "Hot water",
+      "3": "Pool 1",
+      "4": "Pool2",
+      "5": "External Request"
+    }
+  },
+  "44191": {
+    "title": "EB104-EP14 Prio",
+    "info": "Indicates what need is assigned to the compressor module, 0 = Off, 1 = Heat, 2 = Hot water, 3 = Pool 1, 4 = Pool2, 5=External Request",
+    "size": "u8",
+    "factor": 1,
+    "name": "eb104-ep14-prio-44191",
+    "mappings": {
+      "0": "Off",
+      "1": "Heat",
+      "2": "Hot water",
+      "3": "Pool 1",
+      "4": "Pool2",
+      "5": "External Request"
+    }
+  },
+  "44203": {
+    "title": "EB103-EP15 Prio",
+    "info": "Indicates what need is assigned to the compressor module, 0 = Off, 1 = Heat, 2 = Hot water, 3 = Pool 1, 4 = Pool2, 5=External Request",
+    "size": "u8",
+    "factor": 1,
+    "name": "eb103-ep15-prio-44203",
+    "mappings": {
+      "0": "Off",
+      "1": "Heat",
+      "2": "Hot water",
+      "3": "Pool 1",
+      "4": "Pool2",
+      "5": "External Request"
+    }
+  },
+  "44204": {
+    "title": "EB103-EP14 Prio",
+    "info": "Indicates what need is assigned to the compressor module, 0 = Off, 1 = Heat, 2 = Hot water, 3 = Pool 1, 4 = Pool2, 5=External Request",
+    "size": "u8",
+    "factor": 1,
+    "name": "eb103-ep14-prio-44204",
+    "mappings": {
+      "0": "Off",
+      "1": "Heat",
+      "2": "Hot water",
+      "3": "Pool 1",
+      "4": "Pool2",
+      "5": "External Request"
+    }
+  },
+  "44216": {
+    "title": "EB102-EP15 Prio",
+    "info": "Indicates what need is assigned to the compressor module, 0 = Off, 1 = Heat, 2 = Hot water, 3 = Pool 1, 4 = Pool2, 5=External Request",
+    "size": "u8",
+    "factor": 1,
+    "name": "eb102-ep15-prio-44216",
+    "mappings": {
+      "0": "Off",
+      "1": "Heat",
+      "2": "Hot water",
+      "3": "Pool 1",
+      "4": "Pool2",
+      "5": "External Request"
+    }
+  },
+  "44217": {
+    "title": "EB102-EP14 Prio",
+    "info": "Indicates what need is assigned to the compressor module, 0 = Off, 1 = Heat, 2 = Hot water, 3 = Pool 1, 4 = Pool2, 5=External Request",
+    "size": "u8",
+    "factor": 1,
+    "name": "eb102-ep14-prio-44217",
+    "mappings": {
+      "0": "Off",
+      "1": "Heat",
+      "2": "Hot water",
+      "3": "Pool 1",
+      "4": "Pool2",
+      "5": "External Request"
+    }
+  },
+  "44229": {
+    "title": "EB101-EP15 Prio",
+    "info": "Indicates what need is assigned to the compressor module, 0 = Off, 1 = Heat, 2 = Hot water, 3 = Pool 1, 4 = Pool2, 5=External Request",
+    "size": "u8",
+    "factor": 1,
+    "name": "eb101-ep15-prio-44229",
+    "mappings": {
+      "0": "Off",
+      "1": "Heat",
+      "2": "Hot water",
+      "3": "Pool 1",
+      "4": "Pool2",
+      "5": "External Request"
+    }
+  },
+  "44230": {
+    "title": "EB101-EP14 Prio",
+    "info": "Indicates what need is assigned to the compressor module, 0 = Off, 1 = Heat, 2 = Hot water, 3 = Pool 1, 4 = Pool2, 5=External Request",
+    "size": "u8",
+    "factor": 1,
+    "name": "eb101-ep14-prio-44230",
+    "mappings": {
+      "0": "Off",
+      "1": "Heat",
+      "2": "Hot water",
+      "3": "Pool 1",
+      "4": "Pool2",
+      "5": "External Request"
+    }
+  },
+  "44242": {
+    "title": "EB100-EP15 Prio",
+    "info": "Indicates what need is assigned to the compressor module, 0 = Off, 1 = Heat, 2 = Hot water, 3 = Pool 1, 4 = Pool2, 5=External Request",
+    "size": "u8",
+    "factor": 1,
+    "name": "eb100-ep15-prio-44242",
+    "mappings": {
+      "0": "Off",
+      "1": "Heat",
+      "2": "Hot water",
+      "3": "Pool 1",
+      "4": "Pool2",
+      "5": "External Request"
+    }
+  },
+  "44243": {
+    "title": "EB100-EP14 Prio",
+    "info": "Indicates what need is assigned to the compressor module, 0 = Off, 1 = Heat, 2 = Hot water, 3 = Pool 1, 4 = Pool2, 5=External Request",
+    "size": "u8",
+    "factor": 1,
+    "name": "eb100-ep14-prio-44243",
+    "mappings": {
+      "0": "Off",
+      "1": "Heat",
+      "2": "Hot water",
+      "3": "Pool 1",
+      "4": "Pool2",
+      "5": "External Request"
+    }
+  },
+  "48086": {
+    "title": "Hot water tank type",
+    "info": " 10=VPB 20=VPA",
+    "size": "u8",
+    "factor": 1,
+    "min": 10.0,
+    "max": 20.0,
+    "default": 20.0,
+    "name": "hot-water-tank-type-48086",
+    "write": true,
+    "mappings": {
+      "10": "VPB",
+      "20": "VPA"
+    }
+  },
+  "40074": {
+    "title": "EB100-FR1 Anode Status",
+    "size": "s16",
+    "factor": 1,
+    "name": "eb100-fr1-anode-status-40074"
+  },
+  "40868": {
+    "title": "+Adjust AUX Port",
+    "unit": "1",
+    "size": "u8",
+    "factor": 1,
+    "name": "adjust-aux-port-40868"
+  },
+  "40870": {
+    "title": "+Adjust OP mode",
+    "info": "Tells if plusadjust system calls for heat or cool",
+    "size": "u8",
+    "factor": 1,
+    "name": "adjust-op-mode-40870"
+  },
+  "40871": {
+    "title": "+Adjust Comfort mode",
+    "info": "Which comfort mode",
+    "size": "u8",
+    "factor": 1,
+    "name": "adjust-comfort-mode-40871"
+  },
+  "40872": {
+    "title": "+Adjust Parallell adjustment",
+    "info": "requested adjustment",
+    "size": "s8",
+    "factor": 1,
+    "name": "adjust-parallell-adjustment-40872"
+  },
+  "40873": {
+    "title": "+Adjust Humidity",
+    "info": "Humidity",
+    "unit": "%RH",
+    "size": "s16",
+    "factor": 10,
+    "name": "adjust-humidity-40873"
+  },
+  "40874": {
+    "title": "+Adjust Temp indoor",
+    "info": "Average of all room sensors",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "name": "adjust-temp-indoor-40874"
+  },
+  "40875": {
+    "title": "+Adjust Temp outdoor",
+    "info": "Outdoor temp",
+    "unit": "\u00b0C",
+    "size": "s16",
+    "factor": 10,
+    "name": "adjust-temp-outdoor-40875"
+  },
+  "40876": {
+    "title": "+Adjust Version",
+    "info": "PCA input version",
+    "size": "u16",
+    "factor": 1,
+    "name": "adjust-version-40876"
+  },
+  "40877": {
+    "title": "+Adjust Activated",
+    "info": "If plusadjust accessory is activated",
+    "size": "u8",
+    "factor": 1,
+    "name": "adjust-activated-40877"
+  },
+  "40878": {
+    "title": "+Adjust Need",
+    "info": "If plusadjust system calls for heat",
+    "size": "u8",
+    "factor": 1,
+    "name": "adjust-need-40878"
+  },
+  "41189": {
+    "title": "AA20-BE5 EME10 Current",
+    "unit": "A",
+    "size": "s16",
+    "factor": 10,
+    "name": "aa20-be5-eme10-current-41189"
+  },
+  "41190": {
+    "title": "AA20-BE5 EME10 Average Current",
+    "unit": "A",
+    "size": "s16",
+    "factor": 10,
+    "name": "aa20-be5-eme10-average-current-41190"
+  },
+  "43024": {
+    "title": "Status Cooling",
+    "info": " 0=Off 1=On",
+    "size": "u8",
+    "factor": 1,
+    "name": "status-cooling-43024",
+    "mappings": {
+      "0": "Off",
+      "1": "On"
+    }
+  },
+  "43152": {
+    "title": "Internal cooling blocked",
+    "size": "u8",
+    "factor": 1,
+    "name": "internal-cooling-blocked-43152"
+  },
+  "43230": {
+    "title": "Heat Meter (OBSOLETE)",
+    "info": "Obsolete since v4798 of the controller software",
+    "unit": "kWh",
+    "size": "u32",
+    "factor": 10,
+    "min": 0.0,
+    "max": 9999999.0,
+    "default": 0.0,
+    "name": "heat-meter-obsolete-43230"
+  },
+  "43395": {
+    "title": "HPAC Relays",
+    "info": "Indicates the active relays on the HPAC accessory. The information is binary encoded",
+    "size": "u8",
+    "factor": 1,
+    "name": "hpac-relays-43395"
+  },
+  "40879": {
+    "title": "+Adjust Parallell factor",
+    "unit": "1",
+    "size": "s8",
+    "factor": 1,
+    "min": 1.0,
+    "max": 10.0,
+    "default": 5.0,
+    "name": "adjust-parallell-factor-40879",
+    "write": true
+  },
+  "40880": {
+    "title": "+Adjust Max change",
+    "info": "Largest allowed change",
+    "size": "s8",
+    "factor": 1,
+    "name": "adjust-max-change-40880",
+    "write": true
+  },
+  "40881": {
+    "title": "+Adjust Affect system8",
+    "info": "System affected by paralell change",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "adjust-affect-system8-40881",
+    "write": true
+  },
+  "40882": {
+    "title": "+Adjust Affect system7",
+    "info": "System affected by paralell change",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "adjust-affect-system7-40882",
+    "write": true
+  },
+  "40883": {
+    "title": "+Adjust Affect system6",
+    "info": "System affected by paralell change",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "adjust-affect-system6-40883",
+    "write": true
+  },
+  "40884": {
+    "title": "+Adjust Affect system5",
+    "info": "System affected by paralell change",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "adjust-affect-system5-40884",
+    "write": true
+  },
+  "40885": {
+    "title": "+Adjust Affect system4",
+    "info": "System affected by paralell change",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "adjust-affect-system4-40885",
+    "write": true
+  },
+  "40886": {
+    "title": "+Adjust Affect system3",
+    "info": "System affected by paralell change",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "adjust-affect-system3-40886",
+    "write": true
+  },
+  "40887": {
+    "title": "+Adjust Affect system2",
+    "info": "System affected by paralell change",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "adjust-affect-system2-40887",
+    "write": true
+  },
+  "40888": {
+    "title": "+Adjust Affect system1",
+    "info": "System affected by paralell change",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "adjust-affect-system1-40888",
+    "write": true
+  },
+  "47212": {
+    "title": "Max int add. power",
+    "unit": "kW",
+    "size": "s16",
+    "factor": 100,
+    "min": 0.0,
+    "max": 4500.0,
+    "default": 600.0,
+    "name": "max-int-add-power-47212",
+    "write": true
+  },
+  "48930": {
+    "title": "EME10 Activated",
+    "info": "0=not activated, 1=activated",
+    "size": "u8",
+    "factor": 1,
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.0,
+    "name": "eme10-activated-48930",
+    "write": true,
+    "mappings": {
+      "0": "not activated",
+      "1": "activated"
+    }
+  },
+  "49221": {
+    "title": "Delta brine pump passive cooling",
+    "unit": "\u00b0C",
+    "size": "u8",
+    "factor": 1,
+    "min": 1.0,
+    "max": 15.0,
+    "default": 4.0,
+    "name": "delta-brine-pump-passive-cooling-49221",
     "write": true
   }
 }
