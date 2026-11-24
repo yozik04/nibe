@@ -2,17 +2,13 @@
   {
     "description": "Common F-Series corrections",
     "files": [
-      "f1145_f1245.json",
+      "f1145_f1245_f1345_f1355.json",
       "f1155_f1255.json",
-      "f1345.json",
-      "f1355.json",
       "f370_f372_f470.json",
-      "f730.json",
-      "f750.json",
+      "f730_f750.json",
       "smo20.json",
       "smo40.json",
-      "vvm225_vvm320_vvm325.json",
-      "vvm310_vvm500.json"
+      "vvm225_vvm310_vvm320_vvm325_vvm500.json"
     ],
     "data": {
       "47041": {
@@ -140,13 +136,10 @@
   {
     "description": "Corrections for fan speed current units",
     "files": [
-      "f1145_f1245.json",
+      "f1145_f1245_f1345_f1355.json",
       "f1155_f1255.json",
-      "f1345.json",
-      "f1355.json",
       "f370_f372_f470.json",
-      "f730.json",
-      "f750.json"
+      "f730_f750.json"
     ],
     "data": {
       "41256": {
@@ -194,8 +187,7 @@
   {
     "description": "Corrections for airflow units",
     "files": [
-      "f730.json",
-      "f750.json"
+      "f730_f750.json"
     ],
     "data": {
       "40050": {
@@ -212,13 +204,10 @@
   },
   {
     "files": [
-      "f1145_f1245.json",
+      "f1145_f1245_f1345_f1355.json",
       "f1155_f1255.json",
-      "f1345.json",
-      "f1355.json",
       "f370_f372_f470.json",
-      "f730.json",
-      "f750.json"
+      "f730_f750.json"
     ],
     "data": {
       "43431": {
@@ -230,10 +219,8 @@
   },
   {
     "files": [
-      "f1145_f1245.json",
-      "f1155_f1255.json",
-      "f1345.json",
-      "f1355.json"
+      "f1145_f1245_f1345_f1355.json",
+      "f1155_f1255.json"
     ],
     "data": {
       "44752": {
@@ -245,13 +232,11 @@
   },
   {
     "files": [
-      "f1145_f1245.json",
+      "f1145_f1245_f1345_f1355.json",
       "f1155_f1255.json",
-      "f1345.json",
-      "f1355.json",
-      "f750.json",
+      "f730_f750.json",
       "smo40.json",
-      "vvm225_vvm320_vvm325.json"
+      "vvm225_vvm310_vvm320_vvm325_vvm500.json"
     ],
     "data": {
       "43097": {
@@ -264,9 +249,8 @@
   {
     "files": [
       "f370_f372_f470.json",
-      "f730.json",
-      "f750.json",
-      "vvm225_vvm320_vvm325.json"
+      "f730_f750.json",
+      "vvm225_vvm310_vvm320_vvm325_vvm500.json"
     ],
     "data": {
       "47260": {
@@ -290,7 +274,7 @@
     }
   },
   {
-    "files": ["f730.json", "smo20.json"],
+    "files": ["f730_f750.json", "smo20.json"],
     "data": {
       "48852": {
         "title": "Modbus40 Word Swap",
@@ -324,9 +308,8 @@
     "description": "Corrections for compressor power units",
     "files": [
       "f1155_f1255.json",
-      "f1355.json",
-      "f730.json",
-      "f750.json"
+      "f1145_f1245_f1345_f1355.json",
+      "f730_f750.json"
     ],
     "data": {
       "43141": {
@@ -355,8 +338,7 @@
     "files": [
       "smo20.json",
       "smo40.json",
-      "vvm225_vvm320_vvm325.json",
-      "vvm310_vvm500.json"
+      "vvm225_vvm310_vvm320_vvm325_vvm500.json"
     ],
     "data": {
       "40121": {
@@ -369,8 +351,7 @@
     "files": [
       "smo20.json",
       "smo40.json",
-      "vvm225_vvm320_vvm325.json",
-      "vvm310_vvm500.json"
+      "vvm225_vvm310_vvm320_vvm325_vvm500.json"
     ],
     "data": {
       "44866": {
@@ -410,17 +391,13 @@
   {
     "description": "Allow for numerical selection for Outdoor Filter Time",
     "files": [
-      "f1145_f1245.json",
+      "f1145_f1245_f1345_f1355.json",
       "f1155_f1255.json",
-      "f1345.json",
-      "f1355.json",
       "f370_f372_f470.json",
-      "f730.json",
-      "f750.json",
+      "f730_f750.json",
       "smo20.json",
       "smo40.json",
-      "vvm225_vvm320_vvm325.json",
-      "vvm310_vvm500.json"
+      "vvm225_vvm310_vvm320_vvm325_vvm500.json"
     ],
     "data": {
      "47377": {
@@ -432,16 +409,12 @@
   {
     "description": "Add units to degree minutes parameters",
     "files": [
-      "f1145_f1245.json",
+      "f1145_f1245_f1345_f1355.json",
       "f1155_f1255.json",
-      "f1345.json",
-      "f1355.json",
-      "f730.json",
-      "f750.json",
+      "f730_f750.json",
       "smo20.json",
       "smo40.json",
-      "vvm225_vvm320_vvm325.json",
-      "vvm310_vvm500.json"
+      "vvm225_vvm310_vvm320_vvm325_vvm500.json"
     ],
     "data": {
      "40940": {
@@ -526,9 +499,7 @@
       "s330_s332.json",
       "s735.json",
       "smos40.json",
-      "vvms320.json",
       "vvms320_vvms325.json",
-      "vvms325.json",
       "vvms500.json"
     ],
     "data": {
@@ -591,9 +562,7 @@
       "s330_s332.json",
       "s735.json",
       "smos40.json",
-      "vvms320.json",
       "vvms320_vvms325.json",
-      "vvms325.json",
       "vvms500.json"],
     "data": {
       "32196": {
@@ -653,7 +622,7 @@
   },
   {
     "description": "Holiday settings",
-    "files": ["f1155_f1255.json", "f750.json"],
+    "files": ["f1155_f1255.json", "f730_f750.json"],
     "data": {
       "48043": {
         "title": "Holiday - Activated",
@@ -756,10 +725,8 @@
   {
     "description": "Limit allowed Brine In/Out temperature values",
     "files": [
-      "f1145_f1245.json",
-      "f1155_f1255.json",
-      "f1345.json",
-      "f1355.json"
+      "f1145_f1245_f1345_f1355.json",
+      "f1155_f1255.json"
     ],
     "data": {
       "40015": {
@@ -782,9 +749,7 @@
       "s330_s332.json",
       "s735.json",
       "smos40.json",
-      "vvms320.json",
       "vvms320_vvms325.json",
-      "vvms325.json",
       "vvms500.json"
     ],
     "data": {
@@ -834,14 +799,11 @@
   {
     "description": "Correction for Cool Degree Minutes unit",
     "files": [
-      "f1145_f1245.json",
+      "f1145_f1245_f1345_f1355.json",
       "f1155_f1255.json",
-      "f1345.json",
-      "f1355.json",
       "smo20.json",
       "smo40.json",
-      "vvm225_vvm320_vvm325.json",
-      "vvm310_vvm500.json"
+      "vvm225_vvm310_vvm320_vvm325_vvm500.json"
     ],
     "data": {
       "44266": {
@@ -850,9 +812,9 @@
     }
   },
    {
-    "description": "SG Ready Operating Mode - F1145/F1245",
+    "description": "SG Ready Operating Mode - F1145/F1245/F1345/F1355",
     "files": [
-      "f1145_f1245.json"
+      "f1145_f1245_f1345_f1355.json"
     ],
     "data": {
       "44874": {
@@ -866,9 +828,9 @@
     }
   },
   {
-    "description": "Energy meter mode mappings - VVM225/VVM320/VVM325",
+    "description": "Energy meter mode mappings - VVM225/VVM310/VVM320/VVM325/VVM500",
     "files": [
-      "vvm225_vvm320_vvm325.json"
+      "vvm225_vvm310_vvm320_vvm325_vvm500.json"
     ],
     "data": {
       "49287": {
