@@ -638,6 +638,20 @@ Command = Enum(
     HEATPUMP_REQ_FC=0xFC,
 )
 
+HeatpumpCommand = Enum(
+    Int8ub,
+    ACCESSORY_VERSION_REQ=0xEE,
+    HEATPUMP_MSG_55=0x55,
+    HEATPUMP_REQ_73=0x73,
+    HEATPUMP_MSG_A0=0xA0,
+    HEATPUMP_REQ_B7=0xB7,
+    HEATPUMP_REQ_ED=0xED,
+    HEATPUMP_REQ_F1=0xF1,
+    HEATPUMP_REQ_F2=0xF2,
+    HEATPUMP_REQ_F7=0xF7,
+    HEATPUMP_REQ_FC=0xFC,
+)
+
 
 StringData = Struct(
     "unknown" / Int8ub,
@@ -805,7 +819,11 @@ ADDRESS_TO_ROOM_TEMP_COIL = {
 
 ResponseData = Struct(
     "address" / Address,
-    "cmd" / Command,
+    "cmd" / IfThenElse(
+        lambda ctx: Address.encmapping.get(ctx.address, ctx.address) >= 0x100,
+        HeatpumpCommand,
+        Command,
+    ),
     "data" / Prefixed(Int8ub,
         Dedupe5C(
             Switch(

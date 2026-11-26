@@ -172,6 +172,7 @@ async def test_read_product_info_with_extras(nibegw: NibeGW):
         "5c0019ee00f7"  # token accessory version
         "c0ee03ee0101c3"  # accessory version from accessory
         "06"  # ack from pump
+        "5c41c9550101dd"  # 1-byte heatpump 0x55 msg
         "5c00206d0d0124e346313235352d313220529f",
     )
     product = await nibegw.read_product_info()
