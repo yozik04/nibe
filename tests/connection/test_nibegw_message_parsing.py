@@ -275,11 +275,17 @@ class MessageResponseParsingTestCase(unittest.TestCase):
         assert data.data.unknown == 100
         assert data.data.mixing_valve_position == 0
 
-    def test_parse_aa5_msg_2_heatpump(self):
+    def test_parse_heatpump_msg_55(self):
+        data = self._parse_hexlified_raw_message("5c41c9550101dd")
+        assert data.address == "HEATPUMP_1"
+        assert data.cmd == "HEATPUMP_MSG_55"
+        assert data.data == b"\x01"
+
+    def test_parse_heatpump_msg_a0(self):
         data = self._parse_hexlified_raw_message("5c41c9a00200002a")
         assert data.address == "HEATPUMP_1"
-        assert data.cmd == "AA5_SHUNT_MSG"
-        assert data.data.mixing_valve_position == 0
+        assert data.cmd == "HEATPUMP_MSG_A0"
+        assert data.data == b"\x00\x00"
 
     def test_parse_aa5_req_token(self):
         data = self._parse_hexlified_raw_message("5c0002900092")
